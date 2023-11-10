@@ -1,5 +1,8 @@
 /.obsidian/**
 /.trash/**
-/attach/**
-# 忽略所有附件?
+/.stash/**
+.obsidian.vimrc
+desktop.ini
+
+# 大文件
 /Hack/Tutorials/**
