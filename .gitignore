@@ -1,0 +1,5 @@
+/.obsidian/**
+/.trash/**
+/attach/**
+# 忽略所有附件?
+/Hack/Tutorials/**
