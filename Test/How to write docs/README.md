@@ -7,7 +7,7 @@
 1. [段落](paragraph.md)
 1. [数值](number.md)
 1. [标点符号](marks.md)
-1. [文档体系](structure.md)
+1. [文档体系](Test/How%20to%20write%20docs/docs/structure.md)
 1. [参考链接](reference.md)
 
 ## License
