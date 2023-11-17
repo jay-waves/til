@@ -1,0 +1,3 @@
+- Address Sanitizer: `libasan5`
+- Leak Sanitizer: `liblsan0`
+- Undefined Behavior Snitizer: `libubsan1`
