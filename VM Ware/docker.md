@@ -20,11 +20,13 @@
 
 #### docker 实现机制
 
-**层次构建**: Docker 构建时, 如果某一层需要修改前一层的文件, 该文件会被复制到当前层 (写时复制, copy-on-write, CoW), 当前层存在一个 OverlayFS 来记录这些改动, 保证修改不会影响到前一层, 这也意味着除非重新构建否则无法删除之前层的缓存. 而容器运行时有 UnioinFS 来将分层文件系统组合为统一文件系统, 让FS对容器内进程透明和连续.
+**层次构建**: Docker 构建时, 如果某一层需要修改前一层的文件, 该文件会被复制到当前层 (写时复制, copy-on-write, CoW), 当前层存在一个 OverlayFS 来记录这些改动, 保证修改不会影响到前一层, 这也意味着除非重新构建否则无法删除之前层的缓存. 而容器运行时有 UnioinFS 来将分层文件系统组合为统一文件系统, 让FS对容器内进程透明和连续. 镜像层次和命令层次是类似的, 也可以复用.
 
 **容器分离**: 前一层次一旦被构建好, 就不可被更改, 除非重新构建. 镜像被放入容器内运行时, docker会在素有只读层上添加一个可写层, 所有(持久)写入操作都发生在这个容器层上, 而镜像是只读的. 基于此, Docker 的各个容器彼此隔离, 有独立的运行环境/文件系统/网络配置/进程空间, 允许为同一镜像创建多个容器实例. 由于共享了同样的镜像层, 节省了磁盘空间
 
 **轻量级并发**: 容器们共享宿主机操作系统内核, 并且可以共享镜像层. 所以启动时间较快, 并且磁盘空间也占用较小.
+
+***
 
 ## 网络
 
@@ -41,27 +43,71 @@ docker 默认网桥模式: 虚拟一个网桥(docker0), 为每一个容器分配
 
 ps: git 不走系统代理, 构建时也要设置 proxy.
 
+隔离网络:
+```shell
+# 用户自定义网络时, 默认和宿主网络是隔离的
+docker network create <my_network>
+
+docker run ... --network <my_network>
+```
+
+## 文件系统
+
+### 卷 Volume
+
+用于持久化数据, 即使容器被删除, 卷也会保留. 卷的位置由docker管理, 一般在 `/var/lib/docker/volumes` 下, 适合迁移.
+```shell
+docker volume create <my-volume>
+
+docker run ... -v <my-volume>:/path/to/container/dir 
+```
+
+### 绑定挂载 Bind Mount
+
+将主机上目录挂载到容器的特定目录, 用于多容器和宿主机共享.
+```shell
+docker run ... -v /path/to/host/dir:/path/to/container/dir
+```
+
 ## 基础指令
 
-ros2 docker:
+docker 指令结构: `docker <func> <params>` 
+- docker image ...
+- docker container ...
+- docker volume ...
+- docker network ...
 
+### 管理容器和镜像
+
+拉取 DockerHub 镜像: docker pull
+
+删除镜像: delete mounted containers -> delete image
+
+### 运行
+
+`docker run --name <container_name> <image_name>`
+
+- docker run
+- docker ps : 运行中容器进程
+
+docker run:
+- `-d` 后台运行
+- `-it` 交互终端运行
+
+容器多开:
+```shell
+# 交互模式
+docker exec -it <my-container> /bin/sh
+
+# 快速执行命令
+docker exec <my-container> ls
 ```
-docker pull osrf/ros:foxy-desktop
 
-docker run -it osrf/ros:foxy-desktop
-```
-
-### 工具
-
-docker 中一些常见工具不能正常安装:
-
-ping: `apt install iputils-ping`
-
-`apt install net-tools`
+***
 
 ## Dockerfile
 
-dockfile 定义了 docker engine 如何构建一个 docker 镜像, 构建过程为root用户. 可以参考我为 Rozz 设计的 [rozz_dockfile](../Hack/ROZZ/rozz_dockfile.md)
+dockfile 定义了 docker engine 如何构建一个 docker 镜像, 构建过程为root用户. 可以参考我为 Rozz 设计的 [rozz_dockerfile](../Hack/ROZZ/rozz_dockerfile.md)
 
 - `ENV`: 镜像构建和执行过程中都会存在参.
 - `ARG`: 仅镜像构建中存在的参数.
@@ -75,11 +121,16 @@ dockerfile 构建技巧 (方便构建时 debug):
 - 易改动指令放在后面, 声明参数等不易改动指令放在前面. 
 - 尽量RUN指令合并多个命令, 比如将多个安装命令合并, 可以一次清理更多文件.
 - 每个层次中, apt update 更新的源列表, 应该在使用完后立刻删掉, 来减小镜像体积. 因为本层不删除, 后续曾就无法删除(虽然只存储一次), 但是这样也会造成构建缓慢的问题.
+- 注意, 宿主机构建命令的不同, 也会导致 dockerfile 重新构建
 
 #### 构建 dockerfile
+
+`-t repos/image:tag`
 
 ```shell
 docker build -t <image_name> .
 
 docker run -it --name <coutainer_name> <image_name>
+
+docker build -r /path/to/my/dockerfile .
 ```
