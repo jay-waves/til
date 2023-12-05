@@ -1,3 +1,13 @@
+## IPv4
+
+
+
+## IPv6
+
+ipv6 和 ipv4 是不兼容的, 这导致了从 ipv4 向 ipv6 过渡困难.
+
+## host & DNS
+
 windows 上 hosts 文件: `C:\Windows\System32\drivers\etc\hosts`
 
 linux: `/etc/hosts`
