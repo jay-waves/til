@@ -63,8 +63,34 @@ amcl                       y        y
 nav2_bt_navigator          n        n
 nav2_behaviors             n        n
 ```
-			
-***
+
+使用 sancov 覆盖率编译:
+
+```shell
+source /opt/ros/humble/setup.bash
+export CC=/usr/bin/clang
+export CXX=/usr/bin/clang++
+
+colcon build \
+	--symlink-install \
+	--cmake-clean-cache \
+	--packages-select <pkg_name> \
+	--cmake-args \
+		-DBUILD_TESTING=OFF \
+		-DCMAKE_BUILD_TYPE=Debug \
+		-DCMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} \
+			-w -Wno-error -Wno-everything \
+			-fsanitize=address,thread \
+			-fsanitize-coverage=edge,trace-pc-guard \
+			--coverage -DCOVERAGE_RUN=1"  \
+		-DCMAKE_C_FLAGS="${CMAKE_C_FLAGS} \
+			-w -Wno-error -Wno-format-security \
+			-fsanitize=address,thread \
+			-fsanitize-coverage=edge,trace-pc-guard \
+			--coverage -DCOVERAGE_RUN=1" 
+```
+
+> [sancov](https://clang.llvm.org/docs/SanitizerCoverage.html)
 
 ## debug 记录
 
@@ -212,7 +238,7 @@ using-clang:
 
 > https://github.com/google/sanitizers/issues/89
 
-==已解决==, 见 [nav2_bringup](nav2_bringup.md)
+==已解决==, 见 [nav2_bringup](nav2/nav2_bringup.md)
 
 ### 使用 clang 编译
 

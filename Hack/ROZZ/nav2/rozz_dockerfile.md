@@ -154,6 +154,8 @@ RUN echo "source /opt/ros/humble/setup.bash && source /root/nav2_ws/install/setu
 docker run ... -v /path/to/host/rozz:/rozz/
 ```
 
+docker 绑定挂载宿主机 rozz_2 的 log 目录. 
+
 ### 配置 ros2 进程间通信
 
 `ROS_HOSTNAME`
