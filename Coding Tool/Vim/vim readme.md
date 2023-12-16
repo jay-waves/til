@@ -1,27 +1,5 @@
-<div align='center'>
-  <h1>Vim 从入门到精通</h1>
-  <div>
-    <a href='https://github.com/mhinz/vim-galore'>English</a> |
-    <a href='http://postd.cc/?s=vim-galore'>Japanese</a> |
-    <a href='https://github.com/lsrdg/vim-galore'>Portuguese</a> |
-    <a href='http://givi.olnd.ru/vim-galore/vim-galore-ru.html'>Russian</a>
-    <div>
-      <br />
-      <sub>Licensed under <a href='https://creativecommons.org/licenses/by-sa/4.0'>CC BY-SA 4.0<a/>.</sub>
-    </div>
-  </div>
-  <br /><br />
-</div>
-
-<!-- vim-markdown-toc GFM -->
 
 - [简介](#简介)
-  - [什么是 Vim？](#什么是-vim)
-  - [Vim 哲学](#vim-哲学)
-  - [入门](#入门)
-  - [精简的 vimrc](#精简的-vimrc)
-    - [Windows 系统](#windows-系统)
-    - [Linux 或者 Mac OS](#linux-或者-mac-os)
   - [我正在使用什么样的 Vim](#我正在使用什么样的-vim)
   - [备忘录](#备忘录)
 - [基础](#基础)
@@ -122,114 +100,6 @@
 
 # 简介
 
-## 什么是 Vim？
-
-[Vim](https://github.com/vim/vim) 是一个历史悠久的文本编辑器，可以追溯到
-[qed](<https://en.wikipedia.org/wiki/QED_(text_editor)>)。
-[Bram Moolenaar](https://en.wikipedia.org/wiki/Bram_Moolenaar) 于
-1991 年发布初始版本。
-
-Linux、Mac 用户，可以使用包管理器安装 Vim，对于 Windows 用户，可以从
-[我的网盘](https://www.jianguoyun.com/p/DVBqom8QtY2QCBj7xL0EIAA) 下载。
-该版本可轻易添加 `python` 、`python3` 、`lua` 等支持，只需要安装 python、lua
-即可。
-
-项目在 [Github](https://github.com/vim/vim) 上开发，项目讨论请订阅
-[`vim_dev`](https://groups.google.com/forum/#!forum/vim_dev) 邮件列表。
-
-通过阅读 [Why, oh WHY, do those #?@! nutheads use vi?](http://www.viemu.com/a-why-vi-vim.html)
-来对 Vim 进行大致的了解。
-
-## Vim 哲学
-
-Vim 采用模式编辑的理念，即它提供了多种模式，按键在不同的模式下作用不同。
-你可以在**普通模式** 下浏览文件，在**插入模式**下插入文本，
-在**可视模式**下选择行，在**命令模式**下执行命令等等。起初这听起来可能很复杂，
-但是这有一个很大的优点：不需要通过同时按住多个键来完成操作，
-大多数时候你只需要依次按下这些按键即可。越常用的操作，所需要的按键数量越少。
-
-和模式编辑紧密相连的概念是 **操作符** 和 **动作**。**操作符** 指的是开始某个行为，
-例如：修改、删除或者选择文本，之后你要用一个 **动作** 来指定需要操作的文本区域。
-比如，要改变括号内的文本，需要执行 `ci(` （读做 `change inner parentheses`）；
-删除整个段落的内容，需要执行 `dap` （读做：`delete around paragraph`）。
-
-如果你能看见 Vim 老司机操作，你会发现他们使用 Vim 脚本语言就如同钢琴师弹钢琴一样。复杂的操作只需要几个按键就能完成。他们甚至不用刻意去想，因为这已经成为[肌肉记忆](https://en.wikipedia.org/wiki/Muscle_memory)了。这减少[认识负荷](https://en.wikipedia.org/wiki/Cognitive_load)并帮助人们专注于实际任务。
-
-## 入门
-
-Vim 自带一个交互式的教程，内含你需要了解的最基础的信息，你可以通过终端运行以下命令打开教程：
-
-    $ vimtutor
-
-不要因为这个看上去很无聊而跳过，按照此教程多练习。你以前用的 IDE 或者其他编辑器很少是有“模式”概念的，因此一开始你会很难适应模式切换。但是你 Vim 使用的越多，[肌肉记忆](https://en.wikipedia.org/wiki/Muscle_memory) 将越容易形成。
-
-Vim 基于一个 [vi](https://en.wikipedia.org/wiki/Vi) 克隆，叫做 [Stevie](<https://en.wikipedia.org/wiki/Stevie_(text_editor)>)，支持两种运行模式："compatible" 和 "nocompatible"。在兼容模式下运行 Vim 意味着使用 vi 的默认设置，而不是 Vim 的默认设置。除非你新建一个用户的 `vimrc` 或者使用 `vim -N` 命令启动 Vim，否则就是在兼容模式下运行 Vim！请大家不要在兼容模式下运行 Vim。
-
-下一步
-
-1. 创建你自己的 [vimrc](#精简的-vimrc)。
-2. 在第一周准备[备忘录](#备忘录)。
-3. 通读[基础](#基础-1)章节了解 Vim 还有哪些功能。
-4. 按需学习！Vim 是学不完的。如果你遇到了问题，先上网寻找解决方案，你的问题可能已经被解决了。Vim 拥有大量的参考文档，知道如何利用这些参考文档很有必要：[获取离线帮助](#获取离线帮助)。
-5. 浏览[附加资源](#附加资源)。
-
-最后一个建议：使用[插件](#插件管理)之前，请先掌握 Vim 的基本操作。很多插件都只是对 Vim 自带功能的封装。
-
-返回主目录 [:arrow_heading_up:](#简介)
-
-## 精简的 vimrc
-
-Vim 启动是会按照一定的优先顺序来搜索配置文件，这个顺序，可以通过 `:version` 命令查看。下面分 Windows 系统，
-和 \*niux 系统分别来说明 Vim 是如何载入配置文件的。
-
-### Windows 系统
-
-```
-   system vimrc file: "$VIM\vimrc"
-     user vimrc file: "$HOME\_vimrc"
- 2nd user vimrc file: "$HOME\vimfiles\vimrc"
- 3rd user vimrc file: "$VIM\_vimrc"
-      user exrc file: "$HOME\_exrc"
-  2nd user exrc file: "$VIM\_exrc"
-  system gvimrc file: "$VIM\gvimrc"
-    user gvimrc file: "$HOME\_gvimrc"
-2nd user gvimrc file: "$HOME\vimfiles\gvimrc"
-3rd user gvimrc file: "$VIM\_gvimrc"
-       defaults file: "$VIMRUNTIME\defaults.vim"
-    system menu file: "$VIMRUNTIME\menu.vim"
-```
-
-我们只看上面这一段，Vim 会优先读取 user vimrc file: `$HOME\_vimrc`, 当这一文件不存在是，
-Vim 再去寻找 2nd user vimrc file: `$HOME\vimfiles\vimrc`; 倘若这个文件还是不存在，那么 Vim
-会去继续寻找 3rd user vimrc file: `$VIM\_vimrc`。 了解以上顺序后，就不会再因为 Vim
-总是不读取配置文件而感到烦恼了。
-
-### Linux 或者 Mac OS
-
-同 Windows 系统类似，也可以使用 `:version` 命令查看 vim 载入配置的优先顺序。
-
-```
-     系统 vimrc 文件: "/etc/vimrc"
-     用户 vimrc 文件: "$HOME/.vimrc"
- 第二用户 vimrc 文件: "~/.vim/vimrc"
-      用户 exrc 文件: "$HOME/.exrc"
-       defaults file: "$VIMRUNTIME/defaults.vim"
-         $VIM 预设值: "/etc"
-  $VIMRUNTIME 预设值: "/usr/share/vim/vim81"
-```
-
-你可以在网上找到许多精简的 vimrc 配置文件，我的版本可能并不是最简单的版本，但是我的版本提供了一套我认为良好的，非常适合入门的设置。
-
-最终你需要阅读完那些设置，然后自行决定需要使用哪些。:-)
-
-精简的 vimrc 地址：[minimal-vimrc](contents/minimal-vimrc.vim)
-
-如果你有兴趣，这里是我（原作者）的 [vimrc](https://github.com/mhinz/dotfiles/blob/master/.vim/vimrc)。
-
-**建议**：大多数插件作者都维护不止一个插件并且将他们的 vimrc 放在 Github 上展示（通常放在叫做 "vim-config" 或者 "dotfiles" 的仓库中），所以当你发现你喜欢的插件时，去插件维护者的 Github 主页看看有没有这样的仓库。
-
-返回主目录 [:arrow_heading_up:](#简介)
-
 ## 我正在使用什么样的 Vim
 
 使用 `:version` 命令将向你展示当前正在运行的 Vim 的所有相关信息，包括它是如何编译的。
@@ -275,6 +145,12 @@ endif
 或者在 Vim 中快速打开备忘录：[vim-cheat40](https://github.com/lifepillar/vim-cheat40)。
 
 返回主目录 [:arrow_heading_up:](#简介)
+
+## 获取在线帮助
+
+如果你遇到了无法解决的问题，或者需要指引的话，可以参考 [Vim 使用](https://groups.google.com/forum/#!forum/vim_use)邮件列表。 [IRC](https://de.wikipedia.org/wiki/Internet_Relay_Chat) 也是一个很不错的资源。 [Freenode](https://freenode.net/) 上的 `#vim` 频道很庞大，并且里面有许多乐于助人的人。
+
+如果你想给 Vim 提交 Bug 的话，可以使用 [vim_dev](https://groups.google.com/forum/#!forum/vim_dev) 邮件列表。
 
 # 基础
 
@@ -776,84 +652,7 @@ Vim 中，全局位置信息表只能有一个，但每一个窗口都可以有�
 
 ## 宏
 
-你可以在 Vim 中录制一系列按键，并把他们存储到[寄存器](#寄存器)中。对于一些需要临时使用多次的一系列操作，把它们作为宏保存起来会显著地提升效率。对于一些复杂的操作，建议使用 Vim 脚本来实现。
-
-- 首先，按下 <kbd>q</kbd>，然后按下你想要保存的寄存器，任何小写字母都可以。比如我们来把它保存到 `q` 这个寄存器中。按下 `qq`，你会发现命令行里已经显示了 "recording @q"。
-- 如果你已经录制完成，那么只需要再按一次 <kbd>q</kbd> 就可以结束录制。
-- 如果你想调用刚才录制的宏，只需要 `[count]@q`
-- 如果你想调用上一次使用的宏，只需要 `[count]@@`
-
-**实例 1**：
-
-一个插入字符串 "abc" 后换行的宏，重复调用十次：
-
-```vim
-qq
-iabc<cr><esc>
-q
-10@q
-```
-
-（对于上面这个功能，你同样可以通过如下的按键： <kbd>o</kbd><kbd>a</kbd><kbd>b</kbd><kbd>c</kbd> 然后 <kbd>ESC</kbd> 然后 <kbd>1</kbd><kbd>0</kbd><kbd>.</kbd> 来实现）。
-
-**实例 2**：
-
-一个在每行前都加上行号的宏。从第一行开始，行号为 1，后面依次递增。我们可以通过 <kbd>Ctrl</kbd> + <kbd>a</kbd> 来实现递增的行号，在定义宏的时候，它会显示成 `^A`。
-
-```vim
-qq
-0yf jP0^A
-q
-1000 @q
-```
-
-这里能实现功能，是因为我们假定了文件最多只有 1000 行。但更好的方式是使用「递归」宏，它会一直执行，知道不能执行为止：
-
-```vim
-qq
-0yf jP0^A@q
-q
-@q
-```
-
-（对于上面这个插入行号的功能，如果你不愿意使用宏，同样可以通过这段按键操作来实现：`:%s/^/\=line('.') . '. '`）。
-
-这里向大家展示了如何不用宏来达到相应的效果，但要注意，这些不用宏的实现方式只适用于这些简单的示例。对于一些比较复杂的自动化操作，你确实应该考虑使用宏。
-
-请参阅以下文档获取更多帮助：
-
-```vim
-:h recording
-:h 'lazyredraw'
-```
-
-返回主目录 [:arrow_heading_up:](#基础)
-
-## 颜色主题
-
-颜色主题可以把你的 Vim 变得更漂亮。Vim 是由多个组件构成的，我们可以给每一个组件都设置不同的文字颜色、背景颜色以及文字加粗等等。比如，我们可以通过这个命令来设置背景颜色：
-
-```vim
-:highlight Normal ctermbg=1 guibg=red
-```
-
-执行后你会发现，现在背景颜色变成红色了。请参阅 `:h :highlight` 来获取更多帮助。
-
-其实，颜色主题就是一系列的 `:highlight` 命令的集合。
-
-事实上，大部分颜色主题都包含两套配置。一套适用于例如 xterm 和 iTerm 这样的终端环境（使用前缀 `cterm`），另一套适用于例如 gvim 和 MacVim 的图形界面环境（使用前缀 `gui`）。对于上面的例子，`ctermbg` 就是针对终端环境的，而 `guibg` 就是针对图形界面环境的。
-
-如果你下载了一个颜色主题，并且在终端环境中打开了 Vim，然后发现显示的颜色与主题截图中差别很大，那很可能是配置文件只设置了图形界面环境的颜色。反之同理，如果你使用的是图形界面环境，发现显示颜色有问题，那就很可能是配置文件只设置了终端环境的颜色。
-
-第二种情况（图形界面环境的显示问题）其实不难解决。如果你使用的是 Neovim 或者 Vim 7.4.1830 的后续版本，可以通过打开[真彩色](https://zh.wikipedia.org/wiki/真彩色)设置来解决显示问题。这就可以让终端环境的 Vim 使用 GUI 的颜色定义，但首先，你要确认一下你的终端环境和环境内的组件（比如 tmux）是否都支持真彩色。可以看一下[这篇文档](https://gist.github.com/XVilka/8346728)，描述的十分详细。
-
-请参阅以下文档或链接来获取更多帮助：
-
-- `:h 'termguicolors'`
-- [主题列表](#主题列表)
-- [自定义主题中的颜色](#自定义主题中的颜色)
-
-返回主目录 [:arrow_heading_up:](#基础)
+见 [宏](宏.md)
 
 ## 折叠
 
@@ -1004,12 +803,6 @@ Vim 自带了一套很完善的帮助文档，它们是一个个有固定排版�
 22. 关于包含的语法文件的文档的帮助话题格式是 `:h ft-*-syntax`。如：`:h ft-c-syntax` 说的就是 C 语言语法文件以及它所提供的选项。有的语法文件还会带有自动完成（`:h ft-php-omni`）或文件类型插件（`:h ft-tex-plugin`）相关的章节可以查看。
 
 另外在每个帮助页的顶端通常会包含一个用户文档链接（更多的从从用户的角度出发来主角命令的功能和用法，不涉及那么多细节）。如：`:h pattern.txt` 里包含了 `:h 03.9` 和 `:h usr_27` 两个章节的链接。
-
-## 获取在线帮助
-
-如果你遇到了无法解决的问题，或者需要指引的话，可以参考 [Vim 使用](https://groups.google.com/forum/#!forum/vim_use)邮件列表。 [IRC](https://de.wikipedia.org/wiki/Internet_Relay_Chat) 也是一个很不错的资源。 [Freenode](https://freenode.net/) 上的 `#vim` 频道很庞大，并且里面有许多乐于助人的人。
-
-如果你想给 Vim 提交 Bug 的话，可以使用 [vim_dev](https://groups.google.com/forum/#!forum/vim_dev) 邮件列表。
 
 ## 执行自动命令
 
@@ -2031,16 +1824,3 @@ set ttimeoutlen=10    " unnoticeable small value
 而在你在函数中进行这些操作的时候，一切就会变得不同。因此你不能用 N/n 查找某个函数刚刚查找的内容，也不能重做函数中对文本的修改。
 
 帮助文档：`:h function-search-undo`。
-
-## 进阶阅读
-
-- [Vim 插件开发指南](https://github.com/wsdjeg/vim-plugin-dev-guide)
-- [常用插件列表](PLUGINS.md)
-
-## 加入我们
-
-可以协助我们核对翻译，或者从[章节列表](Coding%20Tool/Vim/官方指导书/CONTRIBUTING.md)中认领章节进行翻译。
-
-## 参考资料
-
-- [Nifty Little Nvim Techniques to Make My Life Easier -- Series 1](https://jdhao.github.io/2019/03/28/nifty_nvim_techniques_s1/)

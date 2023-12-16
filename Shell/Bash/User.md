@@ -17,7 +17,7 @@
 
 修改主机名 `sudo hostnamectl set-hostname <host_name>`
 
-修改用户名:
-- `sudo usermod -l <new> <old>`
+修改用户名: (最好使用临时sudo用户进行操作)
+- `sudo usermod -l <new_usr> -m <old_usr>`
 - `sudo groupmod -n <new_group> <old_group>`
-- `sudo mv /home/<old> /home/<new>`
+- `sudo mv /home/<old> /home/<new>`, 并修改 `/etc/passwd` (如果未自动修改)
