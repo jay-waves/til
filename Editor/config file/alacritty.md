@@ -1,14 +1,5 @@
-### editor
+alacritty 配置文件 `./config/alacritty/alcritty.yml`
 
-- vim
-- helix-editor: 类 vim, windows 终端用
-
-### terminal
-
-- alacritty: 终端模拟器, linux 自带的渲染太烂
-- zellij: 分屏用
-
-alacritty 配置文件 ./config/alacritty/alcritty.yml
 ```yaml
 # Dracula colors for Alacritty
 
@@ -89,7 +80,3 @@ scrolling:
 	# 自动滚动至最新行 
 	auto_scroll: true
 ```
-
-### Other
-
-- xmodmap: x11 用键盘映射.
