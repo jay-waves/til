@@ -1,7 +1,7 @@
 ---
 date: 2023-09-26
 tags:
-  - closed_issue
+  - Issue
 url: https://github.com/GoesM/ros2_msg_interceptor/issues/9
 ---
 launch 顺序:

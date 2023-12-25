@@ -20,8 +20,17 @@ curl -v http://www.google.com
 - `L`: 让 curl 跟随服务器重定向.
 - `--resolve example.com:443:1.2.3.4` 手动指定域名的dns解析
 
-### 实例
+### Invoke-WebRequest
 
+Powershell 中 `curl` 实际是 `Invoke-WebRequest` 的别名 (不是原来的工具), 参数有变化:
+
+- `-Uri` 
+- `-Proxy` --> `-x`
+- `-Headers` --> `-H`
+- `-ContentType` --> `-X`
+
+### 实例
+	
 windows 上 curl 默认不会走 clash proxy, 需要手动指定代理:
 ```bash
 curl https://www.google.com -x http://127.0.0.1:7890

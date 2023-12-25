@@ -1,7 +1,7 @@
 ---
 date: 2023-09-01
 tags:
-  - paper
+  - Paper
 简化版msg数据库: true
 数据流版数据库: false
 ---

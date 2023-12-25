@@ -1,7 +1,7 @@
 ---
 date: 2023-09-01
 tags:
-  - paper
+  - Paper
 ---
 > 参考 [Fuzzing: A Survey](../Docs/Fuzzing%20a%20survey%201.pdf)
 

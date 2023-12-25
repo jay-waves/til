@@ -117,8 +117,9 @@ int main()
 
 Here is a ~~text~~ with strikethrough.
 
-* [x] this is a complete item.
-* [ ] this is an incomplete item.
+`* [x] this is a complete item.`
+
+`* [ ] this is an incomplete item.`
 
 This is the 1^st^ superscript.  哈哈^我是上标^
 This is the H~2~O subscript.   嗯,不错~我是下标~.

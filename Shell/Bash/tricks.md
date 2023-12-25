@@ -8,9 +8,8 @@
 `^R` 可以开始查询, 只需正常输出命令, 它就会根据你的输入(从调命令以后的输入)匹配历史命令
 
 ### 查询文件
-#find
 
-找到含有字符串'score'的文件名, 并列出其路径: `find /path/to/dir -type f | grep score`
+`find` 找到含有字符串'score'的文件名, 并列出其路径: `find /path/to/dir -type f | grep score`
 
 使用find命令会自动查询文件夹*及其子文件夹*的内容, 比如`find /dir -name file_name`
 

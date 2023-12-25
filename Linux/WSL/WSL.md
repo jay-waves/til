@@ -25,9 +25,7 @@ localhostForwaring=true
 
 注意: 似乎 TUN Mode 也能解决这个问题
 
-#troubleshooting 
-
-#git 配置:
+git 配置:
 ```
 git config --global http.proxy "socks5://127.0.0.1:1080"
 git config --global https.proxy "socks5://127.0.0.1:1080"
@@ -40,11 +38,10 @@ git config --list
 
 ## 兼容性
 
-#vim
+vim:
 - **_vimrc全局设置文件**在用户文件夹下
 
-#windows #linux
-- windows下使用linux命令的简单方法: windows平台有个GitBash虚拟终端很强大, 将它的目录下程序文件夹添加到windows的环境变量中即可. `...\Git\usr\bin`
+windows下使用linux命令的简单方法: windows平台有个GitBash虚拟终端很强大, 将它的目录下程序文件夹添加到windows的环境变量中即可. `...\Git\usr\bin`
 
 #### 删除 wsl
 
