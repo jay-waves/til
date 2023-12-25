@@ -8,7 +8,8 @@ print(rootpath)
 ret = abspath.replace(rootpath, '.', 1)
 ```
 ### python中路径使用`/`而不是windows中的`\`
-#error 
+
+#Trouble
 `‘unicodeescape‘ codec can‘t decode bytes in position 2-3: truncated \\UXXXXXXXX escape`
 
 - 解决办法:

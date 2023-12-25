@@ -1,6 +1,7 @@
-`DIR [path:][path][filename] [/parameters]`
-其中文件路径可以隐藏，默认为pwd。也支持文本正则匹配
-#dir 
+`DIR [path:][path][filename] [/parameters]` 
+
+其中文件路径可以隐藏，默认为pwd。也支持文本正则匹配 
+
 ## 常用参数
 1. /a[:drhas- ] 显示具有指定属性的文件
 - d 目录
@@ -24,7 +25,7 @@
 
 ## 获取当前路径
 linux的bash中可以使用pwd
-cmd中则使用 #chdir 
+cmd中则使用 `chdir`
 
 ## 应用
 ### 统计当前文件下所有文件的名称
