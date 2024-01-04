@@ -17,6 +17,6 @@
 
 
 **基础知识**
-- [形式语言](https://github.com/Jay-Waves/Math/blob/main/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/%E8%AE%A1%E7%AE%97%E7%90%86%E8%AE%BA/%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80.md)与[自动机](obsidian://open?vault=Math&file=%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%2F%E8%AE%A1%E7%AE%97%E7%90%86%E8%AE%BA%2F%E8%87%AA%E5%8A%A8%E6%9C%BA)
+- [形式语言](obsidian://open?vault=Math&file=%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%2F%E8%AE%A1%E7%AE%97%E7%90%86%E8%AE%BA%2F%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80)与[自动机](obsidian://open?vault=Math&file=%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%2F%E8%AE%A1%E7%AE%97%E7%90%86%E8%AE%BA%2F%E8%87%AA%E5%8A%A8%E6%9C%BA)
 - [概率论](obsidian://open?vault=Math&file=%E5%88%86%E6%9E%90%2F%E6%A6%82%E7%8E%87%E4%B8%8E%E7%BB%9F%E8%AE%A1%2F%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%85%AC%E5%BC%8F)
 - [信息论](obsidian://open?vault=Math&file=%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%2F%E4%BF%A1%E6%81%AF%E8%AE%BA%2F%E4%BF%A1%E6%81%AF%E8%AE%BA)
