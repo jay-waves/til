@@ -9,7 +9,9 @@
 ### Tasks:
 
 - [ ] add template for `.zshrc` #LowPrior 
-
+- [ ] 补全 [并发控制](Storage/SQL/理论/并发控制.md)
+- [ ] 补全 *上下文分析法* [词汇歧义消解](Narrow%20AI/NLP/词汇歧义消解.md)
+- [ ] 补全 *基于马尔可夫模型* 的分词法 [隐马尔可夫模型](Narrow%20AI/NLP/隐马尔可夫模型.md)
 
 ### Tags:
 
