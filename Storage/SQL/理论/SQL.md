@@ -80,11 +80,12 @@ from <表名> [, <其他表名>] [as] <别名>
 | 条件     | 谓词              |
 | -------- | ----------------- |
 | 比较     | =, >, <, <>       |
-| 确定范围 | (not) between and |
-| 确定集合 | (not) in          |
 | 字符匹配 | (not) like        |
 | 空值     | is (not) null     |
 | 逻辑     | and, or, not      |
+| 确定范围 | (not) between and |
+| 确定集合 | (not) in          |
+| 存在     | (not) exists             | 
 
 聚合函数: 注意 `where` 不能使用聚合函数, 需要使用 `having`. 除 `count()` 外所有聚合函数会忽略**含 null 行**, 分组时多个 null 会被分为一组.
 - `count([distinct] <列名>)`
@@ -93,7 +94,27 @@ from <表名> [, <其他表名>] [as] <别名>
 - `max()`
 - `min()`
 
-## 查询优化
+### 子语句
+
+**嵌套查询:**
+
+![|500](../../../-%20attach/Pasted%20image%2020240105121556.png)
+
+嵌套集合关系:
+
+|     | =   | <>     | <    | <=    | >    | >=    |
+| --- | --- | ------ | ---- | ----- | ---- | ----- |
+| ANY | IN  | --     | <MAX | <=MAX | >MIN | >=MIN |
+| ALL | --  | NOT IN | <MIN | <=MIN | >MAX | >=MAX      |
+
+数据库没有全称量词 (for all), 需要用存在量词等价转换: $(\forall x) P\equiv \neg (\exists x(\neg P))$, 其中量词 $x\in Q$, P 为谓词. 举例而言, `选择了所有课程的学生`<->`不存在有课程没有被该学生选过`, 其中 $x=\text{课程}\in Q=\text{所有课程集合}$, $P=\text{学生选择了该门课}$.
+
+**集合查询**:
+- minus
+- `union [all]` all 保留重复元组.
+- intersect
+
+### 查询优化
 
 数据库 SQL 处理过程: 
 ![|350](../../../-%20attach/Pasted%20image%2020240104222337.png)
@@ -118,16 +139,33 @@ SQL 语句
 执行程序
 ```
 
-### 执行开销
+#### 执行开销
 
 - 磁盘存取块数 (IO代价), **主要代价**.
 - 处理机时间 (CPU代价).
 - 查询的内存开销.
+- (通信开销)
 
-### 启发式代数优化
+#### 启发式代数优化
 
 1. **选择**运算尽可能先做
 2. 投影和选择同时进行 (运算顺序接近), 对行列同时运算
 3. 将投影同其前后的双目运算符结合. 
 4. 选择操作和前面的笛卡尔积结合. 如 $R\substack{\bowtie\\A\theta B}S=\sigma_{t[A]\theta s[B]}(R\times S)$
 5. 找出并合并公共子表达式
+
+## 数据修改
+
+```sql
+update <table>
+set <col> = <expr> [, ...]
+[where <condition>];
+
+insert
+into <table> [<col1>, ...]
+values (<cosnt1 [, ...]);
+
+delete
+from <table>
+[where <condition>];
+```
