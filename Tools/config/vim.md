@@ -1,8 +1,9 @@
+`~/_vimrc`
+
+```vim
 "vimrc在windows用户目录urs/yjw中
 "设置固定字体
-"set guifont=Microsoft_YaHei_Mono:h13,Cascadia_Mono_ExtraLight:h13
-"set guifont=Consolas:h13
-set guifont=JetBrainsMonoNL_NFM:h13,Microsoft_YaHei_Mono:h13
+set guifont=JetBrainsMonoNL_NFM:h12,Microsoft_YaHei_Mono:h12
 
 "plug in, 默认目录在usr/yjw/vimfiles/plugged.  
 ":PlugUpdate :PlugInstall, PlugClean
@@ -11,14 +12,14 @@ Plug 'nightsense/snow'
 "Plug 'hzchirs/vim-material'
 "Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'} 
 Plug 'vim-syntastic/syntastic' " 语法检查插件
-"Plug 'Yggdroot/LeaderF', { 'do': './install.sh' } 	
 Plug 'vim-airline/vim-airline' " taskbar美化插件
-"Plug 'enricobacis/vim-airline-clock'  taskbar美化插件
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ctrlpvim/ctrlp.vim'  " 寻找文件, 模糊查找
-Plug 'davidhalter/jedi-vim' " python 自动补全
 "Plug 'vim-scripts/taglist.vim'
 "Plug 'itchyny/lightline.vim'
+Plug 'davidhalter/jedi-vim' " python 自动补全
+Plug 'fatih/vim-go'
+Plug 'neovimhaskell/haskell-vim'
 call plug#end()
 
 set nu 
@@ -27,8 +28,10 @@ set mouse=a
 " 平滑滚动, 默认一次滚5行, 太快了
 map <ScrollWhellUp> <C-Y>
 map <ScrollWheelDown> <C-E>
-set lines=37   
-set columns=80 
+
+" 窗口
+set lines=30
+set columns=100
 
 " 映射键盘
 " 按视觉行上下移动, 配合wrap用
@@ -53,24 +56,19 @@ set expandtab
 let &termencoding=&encoding
 set fileencoding=utf-8
 
-"snow配色配置汇总, 还需要开启Plug
+" snow 配色配置汇总, 还需要开启Plug
 colorscheme snow
 set background=light
 "set termguicolors
 let g:airline_theme='snow_light'
-
-"material配色汇总
+set cursorline " 高亮当前行
+" material 配色汇总
 "colorscheme vim-material
 "set background=light
 "set background=dark
 "let g:material_style='palenight'
 "let g:airline_theme='material'
 set termguicolors
-
-"配色
-"colorscheme snow
-"背景暗黑还是明亮
-"set background=light
 
 "taskbar
 "let g:airline_theme='snow_light'
@@ -83,8 +81,19 @@ let g:airline_section_c = ''  " 禁用文件名
 "let g:airline_left_sep = '|'
 "let g:airline_right_sep = '|'
             
-"语法高亮
-syntax enable
+"其他 GUI
+syntax enable  " 语法高亮
+set showcmd    " 展示输入命令
+set incsearch  " 高亮搜索时匹配项
+set hlsearch
+set ttyfast    " 快速重新渲染
+set lazyredraw " 必要时重新渲染
+"窗口设定
+set guioptions-=m "去掉菜单
+set guioptions-=T "去掉工具栏
+set guioptions-=r 
+set guioptions-=l "大写则在分割窗口时隐藏
+set guioptions-=b
 
 "syntastic
 set statusline+=%#warningmsg#  
@@ -99,15 +108,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0 
 let g:syntastic_check_on_wq=1
 
-"窗口设定
-set guioptions-=m "去掉菜单
-set guioptions-=T "去掉工具栏
-set guioptions-=r 
-set guioptions-=l "大写则在分割窗口时隐藏
-set guioptions-=b
-
 "auto code complete
-"autocmd FileType pyhon set omnifunc=pythoncomplete#Complete
 filetype plugin indent on
 set completeopt=menu
 set wildmenu  "自动补全命令时候使用菜单式匹配列表  
@@ -135,3 +136,4 @@ autocmd FileType python set omnifunc=python3complete#Complete
 "        exec "!python %"
 "  endif
 "endfunc
+```
