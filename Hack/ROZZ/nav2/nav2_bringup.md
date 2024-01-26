@@ -30,6 +30,7 @@ launch 顺序:
 ./map_server 2>&1 | grep -E '^\[INFO\] |^\[ERROR\]' 
 ```
 
+开启 asan 后, 不能使用 container. 也不必可以指定链接库 LD.
 ```bash
 source /opt/ros/humble/setup.zsh
 source ./install/setup.zsh # 工作区
@@ -37,9 +38,14 @@ export TURTLEBOT3_MODEL=waffle
 export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:/opt/ros/humble/share/turtlebot3_gazebo/models
 export ASAN_OPTIONS="new_delete_type_mismatch=0 detect_leaks=0 halt_on_erro=0"
 
-LD_PRELOAD="/usr/lib/x86_64-linux-gnu/libasan.so.6 /usr/lib/x86_64-linux-gnu/libstdc++.so.6" \
-ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False \
-2>&1 | grep -E '^\[INFO\] |^\[ERROR\] |^\[DEBUG\]'  
+#LD_PRELOAD="/usr/lib/x86_64-linux-gnu/libasan.so.6 /usr/lib/x86_64-linux-gnu/libstdc++.so.6"
+ros2 launch nav2_bringup tb3_simulation_launch.py headless:=True use_composition:=False # log_level:=log
+```
+
+相关日志:
+```bash
+export ROS_LOG_DIR=./runtime_log/
+export ASAN_OPTIONS=log_path=./runtime_log/asan_log.%p
 ```
 
 ### 报错记录

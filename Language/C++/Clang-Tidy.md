@@ -1,0 +1,13 @@
+建议开启的检查项:
+- `modernize-*`, 代码现代化检查 (c++11 +)
+- `bugprone-*`, 基础错误检查
+- `performance-*`, 性能检查
+- `readability-*`, 可读性检查
+- `clang-analyzer-*`, 代码数据流检查
+
+建议关闭:
+- `modernize-use-trailing-return-type`, 要求将函数声明写成 `auto funct() -> return_type` 的狗屎形式.
+- `modernize-use-nodiscard`, 用 `[[nodiscard]]` 关键词要求函数的返回值不可被忽略, 即必须被接受.
+- `readability-braces-around-statements`, 要求没有单行 `if` 或 `for`, 即必须要加 `{}` 标识区域.
+- `readability-magic-numbers`, 不让直接在程序中使用特殊数值, 如`0XFF`, 因为会降低语义易懂程度, 应该用宏来魔术字替换为语义上易懂的文字代号.
+- `performance-avoid-endl` do not use `std::endl` with streams; use `\n` instead. 因为 `std::endl` 会刷新缓冲区, 其实区别不大, 知道就好.

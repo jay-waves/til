@@ -1,4 +1,4 @@
-内存管理见[进程与线程](../../Linux/理论/进程与线程.md)
+内存管理见[进程与线程](../../Linux/Preliminaries/进程与线程.md)
 
 常见CPU寄存器:
 - `EBP` Extended Base Pointer, 堆栈帧指针. 初始指向上一个函数堆栈帧基址.

@@ -1,8 +1,9 @@
 ## Network Operations
 
-| ping | dig | whois | scp | rsync |
-| ---- | --- | ----- | --- | ----- |
-| ssh  | w   | wget  | curl    |   ip   |
+| ping | dig | whois | scp  | rsync |
+| ---- | --- | ----- | ---- | ----- |
+| ssh  | w   | wget  | curl | ip    |
+| netstat     |     |       |      |       |
 
 ### `ip`
 
@@ -107,3 +108,9 @@ curl url
 Use  `-X` or `--request` to specify which method you would like invoke (GET, POST, DELETE, ...).
 Use `-d <data>` or `--data <data>` to POST data on given URL.
 
+### `netstat`
+
+检查哪些进程在监听端口:
+```bash
+netstat -lntp
+```
