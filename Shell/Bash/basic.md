@@ -78,4 +78,11 @@ $ which php
 
 Clears content on window.
 
+### `history`
 
+```bash
+history # 显示编号历史
+!n      # 执行第n条历史命令
+!!      # 代指上一条命令
+!$      # 代指上一条参数
+```

@@ -3,7 +3,7 @@
 | cal    | date   |       |        |     |
 | ------ | ------ | ----- | ------ | --- |
 | df     | du     | quota |        |     |
-| bg     | fg     | jobs  | ps     | top |
+| bg     | fg     | jobs  | ps     | (h)top |
 | kill | killall| & | nohup | lsof |
 | finger | whoami | last  | passwd |     |
 | man    | uname       |       |        |     |
@@ -76,6 +76,8 @@ Lists your processes.
 
 ```bash
 ps -u yourusername
+
+pstree -p
 ```
 
 Use the flags ef. e for every process and f for full listing. 

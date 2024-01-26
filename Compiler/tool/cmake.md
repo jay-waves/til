@@ -30,6 +30,21 @@ include_directories(include)
 target_link_libraries(my_app my_library)
 ```
 
+### 添加动态链接库
+
+假设 `a.cc` 为主文件, 依赖为: `a.cc -> b.cc -> c.cc`
+
+```cmake
+add_library(c c.cc)
+add_library(b b.cc)
+
+target_link_libraries(b private c)
+
+add_executable(a a.cc)
+
+target_link_libraries(a b c)
+```
+
 ### 构建
 
 生成构建系统文件:

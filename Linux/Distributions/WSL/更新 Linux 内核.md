@@ -1,6 +1,8 @@
 ### 1 下载源码
 
-下载github发布的WSL2内核 `wget https://github.com/microsoft/WSL2-Linux-Kernel/archive/refs/tags/linux-msft-wsl-5.15.90.1.tar.gz`, 详见[WSL2优化Linux内核下载-github](https://github.com/microsoft/WSL2-Linux-Kernel/releases)
+查看当前 linux kernel 版本: `uname -r`
+
+下载 github 发布的 WSL2 内核 `wget https://github.com/microsoft/WSL2-Linux-Kernel/archive/refs/tags/linux-msft-wsl-<version>.tar.gz`, 详见 [github release](https://github.com/microsoft/WSL2-Linux-Kernel/releases)
 
 或者直接从官网下载[Linux官方发行版](https://www.kernel.org/)
 
@@ -18,8 +20,8 @@
 
 进入源码目录
 
-需要为编译文件夹创建一个配置文件`.config`, 用来适配WSL.   
-该配置文件可以从官方GithubRelease中[`Microsoft/config-wsl`](https://github.com/microsoft/WSL2-Linux-Kernel/blob/linux-msft-wsl-5.15.y/Microsoft/config-wsl)获取. 
+需要为编译文件夹创建一个配置文件`.config`, 用来适配WSL. 
+该配置文件可以从官方GithubRelease中[`Microsoft/config-wsl`](https://github.com/microsoft/WSL2-Linux-Kernel/blob/linux-msft-wsl-5.15.y/Microsoft/config-wsl)获取, 实际上就在源码中: `arch/x86/configs/config-wsl`
 
 **编译 `sudo make -j 4`, j4指开四个线程编译**  
 一般linux编译可能还需要步骤:  

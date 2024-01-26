@@ -58,4 +58,5 @@ clean:
 - `make -j 4` 指定并行任务数量
 - `make -s` 或 `make --silent` 只显示错误信息
 - `make -k` 或 `make --keep-going` 即使中途失败, 也继续构建
+- `make -p` 打印 Makefile 中的环境变量字面值 
 
