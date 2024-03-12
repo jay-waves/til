@@ -4,6 +4,8 @@ Pony Diffusion V6 is a versatile SDXL finetune capable of producing stunning SFW
 
 base model: sdxl 
 
+type: checkpoints
+
 files:
 - pruned model: ponyDiffusionV6XL_v6StartWithThisOne.safetensors
 - vae: sdxl_vae.safetensors
