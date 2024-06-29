@@ -68,4 +68,4 @@ void print_deque(struct list_head *deque) {
 }
 ```
 
-总体实现详见: [deque.c](../../src/deque.c)
+总体实现详见: [deque.c](../../../src/deque.c)

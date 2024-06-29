@@ -5,7 +5,7 @@
 | 数组实现, 简单高效                           | `O(1)`       | 无法动态变化 |
 | 链表实现, 参考 [list](linked%20list/list.md) | `O(n)`       | 动态分配空间             |
 
-数组和链表的区别分析详见 [Array vs Linked List](linked%20list/linked%20list%20vs%20array.md)
+数组和链表的区别分析详见 [Array vs Linked List](linked%20list%20or%20array.md)
 
 ## 数组实现
 
