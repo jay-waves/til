@@ -24,9 +24,18 @@ ret
 
 算术运算指令:
 
-```
+```asm
 subl $0x05, %eax     -> Reg[eax] = Reg[eax]-0x05
 subl %eax, -4(%ebp)  -> Mem[Reg[ebp]-4] = Mem[Reg[ebp]-4]-Reg[eax]
+```
+
+逻辑运算指令:
+
+```asm
+and %eax, %ebx
+or %eax, %ebx
+xor %eax, %ebx
+not %eax
 ```
 
 跳转指令:

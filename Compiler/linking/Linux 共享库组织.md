@@ -52,7 +52,7 @@ Glibc 相关库中得到了应用, 没有广泛推广.
 将其放入 `/home/usr` 中, 然后指定:
 
 ```sh
-LD_LIBRARY_PATH=/home/user:/bin/ls
+LD_LIBRARY_PATH=/home/user:/bin/ls ...
 ```
 
 另一种办法是, **直接用动态链接器启动程序**:
@@ -63,7 +63,29 @@ LD_LIBRARY_PATH=/home/user:/bin/ls
 
 ### LD_PRELOAD
 
+`LD_PRELOAD` 的优先级比 `LD_LIBRARY_PATH` 还高. 无论程序是否依赖于它们, 
+`LD_PRELOAD` 指定的共享库或目标文件都会被装载. 即, 全局符号会覆盖后续加载的同名
+全局符号. 
+
+类似 `LD_PRELOAD` 作用的是配置文件 `/etc/ld.so.preload`
+
 ### LD_DEBUG
+
+用于打印连接时调试信息, 即显示整个装载流程. 
+
+```sh
+LD_DEBUG=files ./a.out
+```
+
+`LD_DEBUG` 可以设置为:
+- `bindings` 显示动态链接的符号绑定过程
+- `libs` 显示共享库的查找过程
+- `version` 显示符号的版本依赖关系
+- `reloc` 显示重定位过程
+- `symbols` 显示符号表的查找过程
+- `statistics` 显示动态链接过程中的各种统计信息
+- `all` 显示所有
+- `files` 
 
 ## 共享库管理
 
@@ -99,3 +121,25 @@ ld -rpath /home/mylib -o a.out a.o -lsomelib
 
 共享模块反向引用主模块中的符号时, 可能该符号并没有放到动态符号表中, 此时反向引用
 会失败. ld 提供了 `-export-dynamic` 参数用于将所有全局符号导出到动态符号表.
+
+### 安装
+
+如果有 root 权限, 那么将共享库复制到 `/lib, /usr/lib` 等标准目录中, 然后运行 
+ldconfig. 若没有 root, 可以手动向 ldconfig 指定目录, 用于构建 SO-NAME, 然后在
+编译时用 `-L` 参数指定共享库搜索目录, 或用 `-I` 指定共享库路径.
+
+```sh
+ldconfig -n /path/to/shared_lib_dir
+```
+
+### 共享库构造与析构
+
+GCC 提供了内置的共享库构造函数和析构函数, 但并不是语言标准, 需要和 GCC 标准库
+一起使用.
+
+```c
+void __attribute__((constructor)) init_func(void);
+void __attribute__((destructor)) fini_func(void);
+```
+
+

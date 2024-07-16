@@ -26,7 +26,7 @@ BSS: block started by symbol, ELF 文件中存储未初始化全局变量和局�
 
 # C
 
-Clang: 基于 LLVM 的 C/C++/Objective-C 编译器前端. 见 [Comiler/LLVM/clang](Compiler/LLVM/clang.md)
+Clang: 基于 LLVM 的 C/C++/Objective-C 编译器前端. 见 [Comiler/LLVM/clang](Compiler/ToolChain/LLVM/clang.md)
 
 CI/CD: continuous integration/continuous deployment, 用于自动化测试/集成/部署, 来加快
 软件交互速度.
@@ -39,7 +39,7 @@ COFF, common object file format, ELF 格式前身. 见 [Unix-ELF](Compiler/Linki
 
 COM, component object model, 组件对象模型.
 
-Complilation: 编译. 见 [Compiler](Compiler/Compiler.md)
+Complilation: 编译. 见 [编译过程](Compiler/编译过程.md)
 
 CVE: Common Vulnerabilities and Exposures. 用于标识和追踪已知的网络安全漏洞与安全问题, 每个 CVE-ID 对应一个漏洞及其描述/影响范围/补丁信息. 
 
@@ -97,7 +97,7 @@ Generics: 泛型, 即允许接口同时复用于多种数据类型, 使用类型
 
 GOT: globale offset table, 全局偏移表
 
-Grammar Parser: 语法分析器. 见 [Compiler](Compiler/Compiler.md)
+Grammar Parser: 语法分析器. 见 [编译过程](Compiler/编译过程.md)
 
 # H
 
@@ -241,7 +241,7 @@ SQL: 数据库结构化查询语言, 见 [Data Storage/SQL](Database/SQL/理论/
 
 Soundness: 健全性, 一个逻辑系统是健全的, 当它所有推导都仅产生真实结论; 即不会错误地证明假命题为真.
 
-Semantic Analyzer: 语义分析器. 见 [Compiler](Compiler/Compiler.md)
+Semantic Analyzer: 语义分析器. 见 [编译过程](Compiler/编译过程.md)
 
 Semaphore: 信号量. 见 [进程同步与互斥](System/Process/进程同步与互斥.md)
 
@@ -261,7 +261,7 @@ Symbol Resolution: 符号决议.
 
 Synchronization: 进程间同步, 见 [进程同步与互斥](System/Process/进程同步与互斥.md)
 
-Syntax Tree: 语法树, 编译前端的中间产物, 见 [Compiler](Compiler/Compiler.md)
+Syntax Tree: 语法树, 编译前端的中间产物, 见 [编译过程](Compiler/编译过程.md)
 
 System Call: 系统调用. 见 [操作系统概述](System/Process/操作系统概述.md)
 

@@ -25,27 +25,3 @@ dumpbin /ALL hello.obj > hello.txt
 dumpbin /SUMMARY hello.obj
 ```
 
-## C CRT
-
-以 Visual C++ 2005 为例, 标准库实现有:
-
-| 文件名      | DLL              | 属性                   | 编译选项 | 预编译宏            |
-| ----------- | ---------------- | ---------------------- | -------- | ------------------- |
-| libcmt.lib  |                  | 多线程[^2], 静态链接       | /MT      | `_MT`               |
-| msvcrt.lib  | msvcrt80.dll[^1] | 多线程, 动态链接       | /MD      | `_MT, _DLL`         |
-| libcmtd.lib |                  | 多线程, 静态链接, 调试 | /MTd     | `_DEBUG,_MT`        |
-| msvcrtd.lib | msvcr90.dll      | 多线程, 动态链接, 调试 | /MDd     | `_DEBUG, _MT, _DLL` |
-| msvcmrt     | msvcm90.dll      | 托管/本地混合代码      | /clr         |                     |
-
-[^2]: 自 MSVC8.0 (Visual C++ 2005) 之后, MSVC 不再提供静态链接单线程版的运行库. 微软认为改进后的多线程运行库, 在单线程模式下运行速度已经接近单线程版本. 此后默认版本为 libcmt.lib
-
-MSVC 也提供的 C++ 标准库, 称为 C++ CRT. 
-
-| 文件名       | DLL          | 属性                   | 编译选项 | 预编译宏     |
-| ------------ | ------------ | ---------------------- | -------- | ---------- |
-| libcpmt.lib  |              | 多线程, 静态链接       | /MT      | `_MT`        |
-| msvcprt.lib  | msvcp90.dll  | 多线程, 动态链接       | /MD      | `_MT, _DLL`  |
-| libcpmtd.lib |              | 多线程, 静态链接, 调试 | /MTd     | `_DEBUG, _MT` |
-| msvcprtd.lib | msvcp90d.dll | 多线程, 动态链接, 调试 | /MDd     | `_DEBUG, _MT, _DLL`           |
-
-[^1]: 运行库的命名办法: `libcpmtd.lib`, `p` 指 C++, `mt` 指 Multi-Thread 支持多线程, `d` 支持调试. 动态链接库命名前缀为 `msvc`, 还会加上版本号, 如 Visual C++ 2005 内部版本号为 8.0, 其多线程动态链接版的 DLL 命名为 `msvcrt80.dll`.

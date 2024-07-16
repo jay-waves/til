@@ -94,11 +94,11 @@ image 的名称通常为 `name:tag`.
 `docker run --name <container_name> <image_name>`
 
 - docker run
-- docker ps : 运行中容器进程
 
 docker run:
 - `-d` 后台运行
 - `-it` 交互终端运行
+- `-p 8080:80` 端口映射
 
 容器多开:
 ```shell
@@ -107,6 +107,13 @@ docker exec -it <my-container> /bin/sh
 
 # 快速执行命令
 docker exec <my-container> ls
+```
+
+运行容器:
+```sh
+docker ps -a                # 查看停止或运行中的容器
+docker start <id_or_name>   # 运行容器
+docker stop  <id_or_name>   # 关闭容器
 ```
 
 ***
