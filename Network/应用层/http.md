@@ -21,7 +21,7 @@ port:
 HTTP 定义了多种请求方法 (http 动词), 表示对服务器资源的不同操作. 常见请求方法是 `GET` 和 `POST`.
 
 - `Get` 最常见, 如打开网页操作.
-- `Post` 用于提交数据到服务器, 如登录操作.
+- `Post` 用于提交表单到服务器, 如登录操作.
 - `Put` 发送数据更新
 - `Delete`
 - `Patch` 更新资源
@@ -54,3 +54,32 @@ HTTP 定义了多种请求方法 (http 动词), 表示对服务器资源的不�
 | 502    | Bad Gateway                | 作为网关/代理的服务器尝试执行请求时, 从远程服务器接收到一个无效响应. |
 | 505    | HTTP Version Not Supported |                                                                      |
 | 5xx    |                            | **服务器错误状态码**                                                                     |
+
+
+### 请求头
+
+| 字段名           | 说明                       | 常见值                                                  |
+| ---------------- | -------------------------- | ------------------------------------------------------- |
+| `Host`           | 请求的主机名和端口号       | `Host: www.example.com`                                 |
+| `User-Agent`     | 客户端浏览器标识符         | `User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)` |
+| `Accept`         | 客户端可处理的内容类型     | `Accept: text/html,application/xhtml+xml`               |
+| `Content-Type`   | 请求内容的类型 (用于 POST) | `Content-Type: applcation/json`                         |
+| `Content-Length` | 请求主体的长度 (字节数)    | `Content-Length: 348`                                   |
+| `Authorization`  | 身份验证凭证               | `Authorization: Basic YWxhZGRpbjpvcGVuc2VzYW1l`                                                      |
+
+
+```http
+GET /search?q=openai HTTP/1.1
+Host: www.example.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+Accept: text/html,application/xhtml+xml
+```
+
+```htt
+POST /submit-form HTTP/1.1
+Host: www.example.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 27
+name=John+Doe&age=30
+```

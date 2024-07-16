@@ -19,26 +19,16 @@
 | paper          | 论文        |                                     |      |
 | src            | 代码附件            |                                     |      |
 
-### Workflow Tags:
-
-personal workflow:
+### Workflow Tags
 
 #LGTM #HighPrior #Question #HelpWanted #TODO #Overdue #LowPrior 
 
-note category:
-
 #Paper #Extract #Issue #PR #KeyPoints
-
-code category:
 
 #Security #Document #Bug #NewFeature #Performance #Trouble
 
-coding workflow:
-
  #Refactor #WIP (Work in Progress) #Invalid #Test
  
-issue status:
-
 #WontFix #MisConfig #UserError ( #PEBKAC ) #Blocked #FAQ #Open #Closed
 
 ### Vim Scripts

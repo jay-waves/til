@@ -20,7 +20,9 @@ Bus: 总线
 
 Bootstrap: 自举
 
-BSS: block started by symbol, ELF 文件中存储未初始化全局变量和局部静态变量的段. 见 [目标文件](Compiler/linking/目标文件.md)
+Silver Bullet: 银弹. 西方传说中只有银弹才能杀死狼人, 巨人和巫师. 人们把在软件体系结构中添加抽象层以解决兼容性问题的做法也叫做"银弹", 用以形容其是能解决各种问题的万灵药.
+
+BSS: block started by symbol, ELF 文件中存储未初始化全局变量和局部静态变量的段. 见 [Unix-ELF](Compiler/Linking/Unix-ELF.md)
 
 # C
 
@@ -33,11 +35,19 @@ Completeness: 完备性. 逻辑系统是完备的, 如果它能证明该逻辑�
 
 Casting/Coercion: 显式类型转换/隐式类型转换
 
-COFF, common object file format, ELF 格式前身. 见 [目标文件](Compiler/linking/目标文件.md)
+COFF, common object file format, ELF 格式前身. 见 [Unix-ELF](Compiler/Linking/Unix-ELF.md)
 
 COM, component object model, 组件对象模型.
 
 Complilation: 编译. 见 [Compiler](Compiler/Compiler.md)
+
+CVE: Common Vulnerabilities and Exposures. 用于标识和追踪已知的网络安全漏洞与安全问题, 每个 CVE-ID 对应一个漏洞及其描述/影响范围/补丁信息. 
+
+CWE: Common Weakness Enumeration, 常见弱点枚举. 用于分类和描述各种软件安全中的弱点, 比如 CWE-89 指的是 SQL 注入弱点.
+
+CVSS: Common Vulnerabilities Scoring System, 用于评估漏洞严重性. CVSS v3.1 标准规定, 0.1-3.9 为低危漏洞, 4.0-6.9 为中危漏洞, 7.0-8.9 为高危漏洞, 9.0-10.0 为严重漏洞.
+
+CNVD/CNNVD: 类似于美国的 CVE/NVD, CNVD (中国国家信息安全漏洞共享平台) 用于发布漏洞编号, CNNVD (中国国家信息安全漏洞库) 用于提供漏洞的详细分析信息.
 
 # D
 
@@ -55,7 +65,7 @@ DSO: dynamic shared object, 动态共享对象.
 
 # E
 
-ELF: executable linkable format, 可执行可连接格式. 见 [目标文件](Compiler/linking/目标文件.md)
+ELF: executable linkable format, 可执行可连接格式. 见 [Unix-ELF](Compiler/Linking/Unix-ELF.md)
 
 Environment Variables: 环境变量, 指 SHELL 运行的关键共享变量.
 
@@ -63,13 +73,15 @@ Exit Code: 程序退出码.
 
 EAT: export address table, 导出地址表.
 
+EDB: Exploit Database. 公开发布一些漏洞的详细信息和利用代码, 每个漏洞利用代码以 EDB-ID 标识. CVE 相比之下, 默认隐藏了漏洞细节, 最多能提供一些链接.
+
 # F
 
 Fuzzing: 高效软件模糊测试框架, 见 [Fuzzing Survey](Security/Hack/相关研究/Fuzzing%20Survey.md)
 
-FHS: file hierarchy standard, 文件层次结构标准. 见 [系统目录](System/File%20System/系统目录.md)
+FHS: file hierarchy standard, 文件层次结构标准. 见 [linux 系统目录](System/File%20System/linux%20系统目录.md)
 
-Function Signature: 函数签名. 见 [compiler/linking/符号](Compiler/linking/符号.md)
+Function Signature: 函数签名. 见 [compiler/linking/符号](Compiler/Linking/符号.md)
 
 Finite State Machine: 有限状态自动机. 见计算理论.
 
@@ -111,6 +123,12 @@ Interrupt: 操作系统中断, 见 [操作系统概述](System/Process/操作系
 
 ISR: interrupt service routine, 中断处理程序.
 
+Internet Standards: 互联网标准, 为全球互联网互操作性和统一性提供规范和指南. 内容包括各层网络协议, 密码学和安全, 数据交换格式 (JSON) 及标记语言 (HTML).
+
+IETF: Internet Engineering Task Force, 互联网工程任务组, 负责开发和维护互联网标准. 互联网标准制定过程包括: 互联网草案 (Internet Drafts, I-Ds), 工作组审议, IESG 审核, Last Call, 发布为 RFC.
+
+IESG: Internet Engineering Steering Group, 互联网工程指导组, 负责管理 IETF 的技术活动, 并评审和批准互联网草案, 并广泛征求社区意见.
+
 # J
 
 JSON: JavaScript Object Notation, 轻量级数据交换格式, 易于解析和阅读.
@@ -127,7 +145,7 @@ LLVM: low level virtaul machine, 编译器框架.
 
 Lazy Binding: 延迟绑定.
 
-Linking: 链接, 程序编译的步骤. 见 [静态链接](Compiler/linking/静态链接.md)
+Linking: 链接, 程序编译的步骤. 见 [静态链接](Compiler/Linking/静态链接.md)
 
 LSB: linux standard base.
 
@@ -153,9 +171,11 @@ Namespace: 命名空间.
 
 Northbright: 北桥, 计算机硬件架构组成部分. 见 [计算机架构](HardWare/计算机架构.md)
 
+NVD: National Vulnerability Database, 由 NIST 维护的国家漏洞数据库. 为每个 CVE 漏洞提供详细评分, 影响和补丁信息. 用于对 CVE 中漏洞的补充和扩展.
+
 # O
 
-Object File: 目标文件, 编译过程中中间文件. 见 [目标文件](Compiler/linking/目标文件.md)
+Object File: 目标文件, 编译过程中中间文件. 见 [Unix-ELF](Compiler/Linking/Unix-ELF.md)
 
 ORM: Object-Relational Mapping, 软件开发概念, 将面向对象的类资源/方法和一个关系型数据库绑定起来, 对类操作即等价于对数据表操作. 类的元类等价于数据库表, 一个类实例等价于表中的一行.
 
@@ -212,6 +232,8 @@ ROS: Robot Operating System, 开源机器人操作系统
 Reflection: 反射, 在**运行时**操作和配置对象及其属性, 在编写代码时这些类和方法可能不是已知的, 常用于实现框架和库. 如 python 的[元类](Language/Python/运行时服务/元类.md)
 
 RTT: 网络报文往返时间
+
+RFC: IETF 请求评论文档, 是正式的互联网标准文档. 分为三个级别: 提案标准 (Prposed Standard, 初步认可), 草案标准 (Draft Standard, 经过广泛评估后证明其稳定性和有效性) 和互联网标准 (Internet Standard, 成熟且广泛使用, 正式确定为标准).
 
 # S
 

@@ -1,6 +1,6 @@
 ## 指南
 
-使用 kernel 风格 [kernel code style](../../Language/Coding%20Style/kernel%20code%20style.md)
+使用 kernel 风格 [Kernel C Style](../Language/Coding%20Style/Kernel%20C%20Style.md)
 
 大部分数据结构有三个核心接口:
 - `search()`, 最基础的遍历, 用于一窥核心结构.
@@ -14,13 +14,14 @@
 - 序列: 指顺序容器, Sequence Containers, 元素按插入顺序存储, 通过索引访问.[^1] 
 - 映射: 指关联容器, Assocaiative Containers. 一般基于树结构实现, 存储键值对.
 - 散列: 指散列容器, Unordered Containers. 一般基于哈希表实现, 也存储键值对, 但存储位置无序, 由哈希函数决定, 查找较快.
-- size, 指当前结构中有意义的数据个数.
-- capacity, 指当前结构为数据开辟的总内存体积, 一般以字节为单位.
+- size, 指当前结构中有意义的元素个数.
+- capacity, 指当前结构中可容纳的最大元素个数. 非内存字节体积.
 - peek, 指从当前数据结构中挑选出首个元素, 但不移除.
 - pop, 指从当前数据结构中挑选出首个元素, 同时移除.
 - push, 指向当前数据结构压入一个元素.
 - xxx_init, 指某数据结构的初始化方法, 仅初始化数值, 不开辟内存.
 - new_xxx, alloc_xxx, create_xxx, 指开辟内存 (声明对象) 同时对其初始化.
+- num, 当数组元素类型不明确时, 如 `void *`, size 应表示单个数组元素的字节大小, num 表示数组元素数量. 
 
 [^1]: 详见 [STL](../../Language/C++/标准库/STL/STL.md)
 
