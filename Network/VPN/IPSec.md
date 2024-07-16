@@ -15,6 +15,16 @@ IPSec (Internet Protocol Security) 工作于网络层, 通过认证和加密保�
 
 IPSec 主要由**加密协议 (ESP, Encapsulating Security Payload)** 和**认证协议 (AH, )** 构成. Auth 协议负责认证数据, 即确保数据的真实性和完整性.
 
+VPN-IPsec 建立过程:
+```
+PC A -> GateWay A   --- ipsec ---> GateWay B -> PC B
+```
+
+1. PC A 将报文发送给 网关 A (也是 VPN 设备)
+2. 网关 A 加密报文, 添加 ESP 头部, 用公网发送给网关 B.
+3. 网关 B 验证密文, 检查 ESP 和 AH 头部合规性.
+4. 网关 B 取出冗余, 还原原始报文, 发送给 PC B
+
 ## 传输模式
 
 Transport Mode. 仅对 IP 数据包的有效载荷部分 (Payload) 进行加密保护, IP 头不变. 主要用于端到端安全通信.

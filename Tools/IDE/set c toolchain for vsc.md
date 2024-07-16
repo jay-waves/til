@@ -16,7 +16,7 @@ author: JayWaves
 
 > 微软是不是写代码也只想在 GUI 上点点点, 不敢想这是21世纪的编程工具.... 
 
-[^1]: 参见 [C ReadMe](../../Language/C/C%20Standard.md)rd.md), UCRT 为微软 MSVCrt 标准库的升级版. 在 Windows 平台上, 默认的 C 标准为 UCRT, C++ 标准为 MSVC++. 皆在 Visual Studio 套件中.
+[^1]: 参见 [C ReadMe](../../Compiler/Runtime%20Library/C%20标准.md)andard.md)rd.md), UCRT 为微软 MSVCrt 标准库的升级版. 在 Windows 平台上, 默认的 C 标准为 UCRT, C++ 标准为 MSVC++. 皆在 Visual Studio 套件中.
 
 ### 配置语言服务器
 

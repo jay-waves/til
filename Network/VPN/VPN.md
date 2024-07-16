@@ -1,8 +1,8 @@
-### vpn
+## VPN
 
-虚拟专用网络, Virtual Private Network, 使用加密隧道协议建立专用网络连接.
+Virtual Private Network, 虚拟专用网络. 在公有网络上通过加密隧道协议, 搭建私有内部网络, 保密信息.
+- site-to-site VPN: 点对点的建立数据链路层链路, 如 PPTP, L2TP.
+- network-to-network VPN: 网关间 VPN, 网络层协议, 如 IPSec.
+- remote VPN: 远程访问 VPN, 应用层协议, 如 SSL/TLS.
 
-常用隧道技术:
-- PPTP, L2TP: 数据链路层协议.
-- IPSec: 网络层协议, 是网关-网关 VPN.
-- SSL/TLS: 应用层协议, 是远程访问 VPN.
+
