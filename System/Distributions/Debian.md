@@ -32,14 +32,17 @@ sudo apt update
 若成功更新, 说明上一步网络配置也成功了. 下一步安装一些必要软件
 
 ```bash
-# 我习惯的 shell 和 editor
-sudo apt install zsh vim nvim
+# shell
+sudo apt install zsh
 
 # 编译用
 sudo apt install git make build-essential llvm
 
 # 网络
 sudo apt install net-tools curl traceroute wget
+
+# 其他
+sudo apt install jq vim nvim
 ```
 
 ## 软件配置

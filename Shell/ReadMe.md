@@ -1,20 +1,20 @@
 
 ## Bash 工具列表
 
-[安全与权限](Bash/安全与权限.md)
+[安全与权限](sh/安全与权限.md)
 
 | `chmod` | `chown` |
 | ------- | ------- |
 | `getfacl`        |         |
 
-[调试及技巧](Bash/调试及技巧.md)
+[调试及技巧](sh/调试及技巧.md)
 
 | `ldd`    |  | `dmesg` | `strace, ltrace` |
 | -------- | ------ | ------- | ---------------- |
 | `nm`     | `stap` | `stap`  | `perf`           |
 | `sysdig` | `time` | `hyperfine`        |                  |
 
-[进程管理](Bash/进程管理.md)
+[进程管理](sh/进程管理.md)
 
 | `pkill`  | `pgrep`   | `pstree` | `lsof`          | `(h)top`    |
 | -------- | --------- | -------- | --------------- | --- |
@@ -22,13 +22,13 @@
 | `nohup`  | `timeout` |     |                 |     |
 | `watch`  | `inotifywait`          |          |                 |     |
 
-[配置及帮助](Bash/配置及帮助.md)
+[配置及帮助](sh/配置及帮助.md)
 
 | `man`     | `type`  | `whatis` |
 | --------- | ------- | -------- |
 | `whereis` | `which` |          |
 
-[网络](Bash/网络.md)
+[网络](sh/网络.md)
 
 | `ip`                | `ping`      | `mtr`   | `netcat, socat` |
 | ------------------- | ----------- | ------- | --------------- |
@@ -39,7 +39,7 @@
 | `curl`              | `wget`      |         |                 |
 | `unshare`           | `firejail`  |         |                 |
 
-[文本处理](Bash/文本处理.md)
+[文本处理](sh/文本处理.md)
 
 | `pandoc`           | `jq`                 | `shyaml`        | `xmlstarlet`   | `csvkit` |
 | ------------------ | -------------------- | --------------- | -------------- | -------- |
@@ -49,7 +49,7 @@
 | `uniq`             | `sort`               | `nl`            | `iconv, uconv` | `expand` |
 | `cat, bat`         | `diff`               | `tail, head`    | `more, less`   |          |
 
-[文件系统](Bash/文件系统.md)
+[文件系统](sh/文件系统.md)
 
 |            | `mount`        | `fdisk`  | `mkfs`   | `lsblk` |
 | ---------- | -------------- | -------- | -------- | ------- |
@@ -61,7 +61,7 @@
 | `stat`     | `file`         | `chattr` | `wc`     |         |
 | `xz`       | `7zip`         | `tar`    | `gzip`         |         |
 
-[系统信息采集](Bash/系统信息采集.md)
+[系统信息采集](sh/系统信息采集.md)
 
 | `/proc`    | | `w`      | `uname` | `sysstat, dstat` |
 | ---------- | -------- | -------- | ------- | ---------------- |
@@ -70,13 +70,13 @@
 | `shutdown` | `halt`   | `reboot` |         |                  |
 | `uptime`   | `dateutils`         |          |         |                  |
 
-[用户管理](Bash/用户管理.md)
+[用户管理](sh/用户管理.md)
 
 | `finger`   | `whoami`  | `last` | `passwd` | `id` |
 | ---------- | --------- | ------ | -------- | ---- |
 | `sudo, su` | `usermod` | `exit` | `groupmod`         |      |
 
-[Bash 脚本编程](Bash/编程/1%20Variables.md)
+[Bash 脚本编程](sh/编程/1%20变量.md)
 
 | `export` | `env`   |     |     |     |
 | -------- | ------- | --- | --- | --- |

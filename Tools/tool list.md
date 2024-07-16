@@ -1,3 +1,10 @@
+品味如下:
+- 界面不能太丑, 并且保持简洁和现代
+- 开源, 免费, 有社区版优先. 不喜欢自行编译, 除非性能需要.
+- 功能够用, 多平台 (起码支持 Windows + Debian)
+- 不能占用太多资源. (不喜欢 web 应用和 java 应用)
+- 使用方式可以复杂, 但不能繁琐丑陋.
+
 ### GUI
 
 - Obsidian, 主力笔记软件
@@ -26,8 +33,7 @@
 - **Traffic Monitor**, 任务栏网速/硬件状态监控, 小巧.
 - [Files](https://github.com/files-community/Files)
 - rufus, 刷盘工具
-- V2ray, V2rayN, Clash, 翻墙工具.
-- Wireshark (tShark), 抓包工具.
+- V2ray, V2rayN, Clash, 科学上网.
 - UsbEAm Hosts Editor
 - **HandBrake** 音视频编码转换
 - **PotPlayer**
@@ -38,12 +44,20 @@
 - Captura, 便携录屏软件, 依赖 ffmpg
 - SumatraPDF, Adobe Acrobat DC
 - CryptoMator, 硬盘加密工具
-- **CyberChefs, 加密/编码/压缩/数据分析工具**.
 - TrafficMonitor, windows 任务栏系统监控器
 - GoldenDict, 本地词典
 - Jupyter Lab (kernel: ipython, ihaskell, wolfram14)
 - 7zip, winRaR 压缩软件.
 - Jane Reader, windows 下 EUPB 阅读器.
+- WinSCP
+
+### Hack
+
+- **CyberChefs, 加密/编码/压缩/数据分析工具**
+- Wireshark (tShark), 抓包工具.
+- imhex
+- BurpSuite, ZAP (free)
+- sqlmap
 
 ### Cli-Tools
 
@@ -72,3 +86,4 @@
 - 隐形滚动条 (edge)
 - TemperMonkey
 - Tab Stash (firefox)
+

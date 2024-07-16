@@ -1,20 +1,47 @@
-## buffer, window, tab page
+## 会话
 
-```
-Vim 会话
-	-> 缓冲区, buffer, 代表一个文件, 一个文件可被多个窗口查看.
-	-> 窗口, window , 可查看多个文件(缓冲区). 一个窗口仅显示一个缓冲区.
-	-> 标签页, tab page, 多个窗口(或标签页, 或分屏)的集合
-```
+缓冲区 (Buffers) 是文件在内存中的表示, 文件被打开后存储到**全局的缓冲区列表**中, 所有标签页或窗口共享该列表. *不用多标签页时, VIM 最上方的栏其实是缓冲区列表.*
 
-```vim 
-$ vim f1 f2   " 激活 f1 buffer, f2 buffer
-:e f3         " 激活 f3 buffer, 隐藏 f1,f2 buffer
-:ls           " 列出可用 buffer
-:bd           " 关闭当前 buffer, 但不关闭 window
+```vim
+:bn           " 切换到下一个缓冲区, buffer next
+:bp           " 切换到上一个缓冲区, buffer previous
+:b2           " 切换到第二个标签页, 用 :buffers 查看编号
+:bd <buffer>  " 删除缓冲区, buffer delete
+:ls
+:buffers      " 列出全局缓冲区列表
+:e <file>     " 激活新 buffer, 隐藏当前 buffer
 ```
 
-## navigation, operator, text-objects
+标签页 (Tab Pages) 是一组窗口的集合. VIM 会话启动时, 有一个默认标签页和一个窗口. 当标签页不分屏时, 一个标签页就只有一个窗口; 当标签页分屏时, 就有了多个窗口.
+
+```vim
+:tabnew          " 打开一个新标签页
+:tabn            " 切换到下一个标签页
+:tabp
+:tabc            " 关闭标签页
+:tabs            " 列出所有标签页
+:tabe <file>     " 在新标签页编辑文件
+```
+
+窗口 (Windows) 是显示缓冲区的区域.
+
+```vim
+:sp  <file>           " 分屏
+:vs  <file>           " 垂直分屏
+:new <file>
+^w w                  " 窗口间切换
+^w h/j/k/l            " 在窗口间按方向键切换
+^w H/L/x              " 窗口之间调换
+^w c                  " 关闭分屏
+:only
+:q                    " 关闭当前窗口
+:set (no)scrollbind   " 左右屏同时滚动
+```
+
+> 查看帮助: `:h CTRL-W_*`, 如 `:h CTRL-W_p` 查看切换窗口命令  
+> 访问 `:h windows.txt` 查看所有窗口管理命令.
+
+## 操作
 
 **动作** -> 移动光标, 如 `h, j, k, l, w, b`
 
