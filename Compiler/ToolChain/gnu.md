@@ -42,8 +42,12 @@ gcc使用格式: `gcc [选项] 要编译的文件 [选项] [目标文件]`
 
 `gcc -c file.s -o file.o`
 
+`as`
+
 ### 链接
 
 - 符号表的合并与重定位. 详见 [分页技术](../../System/Memory/分页技术.md)
 
 `gcc file1.o file2.o file.o -o file.exe`
+
+`ld`

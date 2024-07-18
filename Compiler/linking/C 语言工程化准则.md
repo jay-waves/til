@@ -1,5 +1,5 @@
 - 代码应保持同一编程风格, 如 [Google C++ Style](../../Language/Coding%20Style/Google%20C++%20Style.md)
-- C语言预编译规则: [C Preprocessor](../../Language/C/C%20Preprocessor.md)
+- C语言预编译规则: [C 语言预处理](../../Language/C/C%20语言预处理.md)
 - C++预编译规则: [Cpp Preprocessor](../../Language/C++/语法/Cpp%20Preprocessor.md)
 
 ## 头文件

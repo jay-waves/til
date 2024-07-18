@@ -22,17 +22,17 @@ libc 仅指 C 语言标准库, libc++ 指 C++ 标准库. 语言委员会提供�
 但不规定底层究竟如何实现 (比如在 linux 和 windows 上, `printf()` 可能会调用不同
 的系统调用来达成功能), 所以不同编译器和操作系统都会有独立的实现.
 
-| 操作系统                       | 编译器    | 编译环境   | C 标准实现    | C++ 标准实现 | 解释                                                                      |
-| ------------------------------ | --- | ---------- | ------------- | ------------ | ------------------------------------------------------------------------- |
-| GNU/Linux                      | `gcc, ld`    | GCC        | glibc         | libstdc++    |                                                                           |
-| GNU/Linux                      | `clang, lld`    | Clang/LLVM | llvm-libc[^2] | libc++       | 较旧版本的 LLVM 仍使用 glibc, 而 libc++ 是 LLVM 独立实现的现代 C++ 标准库 |
-| Alpine Linux                   |     |            | musl libc     |              | Alpine 发行版使用 musl libc                                               |
-| BSD (FreeBSD, NetBSD, OpenBSD) |     |            | BSD libc      |              |                                                                           |
-| macOS, iOS                     |   | Clang/LLVM | Apple libc    | libc++       | macOS 前身基于 BSD, 因而 Apple libc 基于 BSD libc                         |
-| Windows                        |   | Clang/LLVM | MSCVrt [^3]   | MSVC++       | 一套标准实现就支持*多平台*是 LLVM 的设计目标                              |
-| Windows                        |    | GCC/MinGW  | MSVCrt        | MSVC++       | 借助 MinGW 模拟 GNU[^1]                                                   |
-| Windows                        | `cl, link`    | MSVC[^6]       | MSVCrt        | MSVC++       | Microsoft Visual C, 原生库和集成环境                                      |
-| 嵌入式系统                     |     |           | newlib        |              |                                                                           |
+| 操作系统                   | 编译环境   | C 标准实现    | C++ 标准实现 | 解释                                                                      |
+| ------------------------------| ---------- | ------------- | ------------ | ------------------------------------------------------------------------- |
+| GNU/Linux                   | GCC        | glibc         | libstdc++    |                                                                           |
+| GNU/Linux                         | Clang/LLVM | llvm-libc[^2] | libc++       | 较旧版本的 LLVM 仍使用 glibc, 而 libc++ 是 LLVM 独立实现的现代 C++ 标准库 |
+| Alpine Linux                   |              | musl libc     |              | Alpine 发行版使用 musl libc                                               |
+| BSD (FreeBSD, NetBSD, OpenBSD) |              | BSD libc      |              |                                                                           |
+| macOS, iOS                     |   Clang/LLVM | apple libc    | libc++       | macOS 前身基于 BSD, 因而 Apple libc 基于 BSD libc                         |
+| Windows                        |   Clang/LLVM | MSCVrt [^3]   | MSVC++       | 一套标准实现就支持*多平台*是 LLVM 的设计目标                              |
+| Windows                        |    GCC/MinGW  | MSVCrt        | MSVC++       | 借助 MinGW 模拟 GNU[^1]                                                   |
+| Windows                        |  MSVC[^6]       | MSVCrt        | MSVC++       | Microsoft Visual C, 原生库和集成环境                                      |
+| 嵌入式系统                     |               | newlib        |              |                                                                           |
 
 [^6]: MSVC: MicroSoft Visual C/C++ 集成开发环境, 现已集成到 MiscroSoft Visual Studio 中. 相关编译器工具可以用 Developer Command Prompt for VS 直接访问.
 

@@ -1,3 +1,5 @@
+> It has always been the spirit of Unix to have separate programs 
+> that do their job well, and work together to perform a bigger task.
 
 ## Bash 工具列表
 
@@ -45,7 +47,7 @@
 | ------------------ | -------------------- | --------------- | -------------- | -------- |
 | `hd, hexdump, xxd` | `hexedit, biew, bvi` | `(c)split`      | `strings`      |          |
 | `awk`              | `sed`                | `grep, ripgrep` | `tokei`               |          |
-| `cut, paste, join` | `echo, printf`       | `fmt`           |                |          |
+| `cut, paste, join` | `echo, printf`       | `fmt`           |  `wc`             |          |
 | `uniq`             | `sort`               | `nl`            | `iconv, uconv` | `expand` |
 | `cat, bat`         | `diff`               | `tail, head`    | `more, less`   |          |
 
