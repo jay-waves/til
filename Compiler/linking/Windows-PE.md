@@ -17,6 +17,8 @@ Win32 平台的标准**可执行文件格式**为 PE (Portable Executable), 也�
 |                 | ...                      |      |
 | 符号表                |                          |      |
 
+
+COFF 文件头:
 ```sh
 > dumpbin hello.obj
 
@@ -32,4 +34,26 @@ FILE HEADER VALUES
                0 characteristics
 
 
+```
+
+段表信息, 一个结构体代表一个段 (类似 `Elf32_Shdr` ):
+
+```c
+// in WinNT.h
+typedef struct _IMAGE_SECTION_HEADER {
+	BYTE Name[8];
+	unioin {
+		DWORD PhysicalAddress;
+		DWORD VirtualSize; /* 该段被加载至内存后的大小 */
+	} Misc;
+	DWORD VirtualAddress; /* 该段被加载至内存后的虚拟地址 */
+	 /* 该段文件中大小, 如 .bss 段 的VirtualSize != SizeofRawData */
+	DWORD SizeofRawData; 
+	DWORD PointerToRawData;
+	DWORD PointerToRelocations;
+	DWORD PointerToLinenumbers;
+	WORD NumberOfRelocations;
+	WORD NumberOfLinenumbers;
+	DWORD Characteristices; /* 标志位: 段类型, 对齐方式, 读写权限 */
+} IMAGE_SECTION_HEADER, *PIAMGE_SECTION_HEADER;
 ```

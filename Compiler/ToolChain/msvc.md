@@ -15,6 +15,8 @@ Visual Studio 包含了整个微软的配套编程环境, 从中下载 Visual C/
 - `/Fe.\\build\\...exe`        执行文件 .exe 和链接文件 .ilk 输出路径
 - `/Fo.\\target\\...exe`       目标文件 .obj 输出路径                
 
+### link
+
 ### dumpbin
 
 类似 objdump, 查看可执行文件.

@@ -79,7 +79,7 @@ EDB: Exploit Database. 公开发布一些漏洞的详细信息和利用代码, �
 
 Fuzzing: 高效软件模糊测试框架, 见 [Fuzzing Survey](Security/Hack/相关研究/Fuzzing%20Survey.md)
 
-FHS: file hierarchy standard, 文件层次结构标准. 见 [linux 系统目录](System/File%20System/linux%20系统目录.md)
+FHS: file hierarchy standard, 文件层次结构标准. 见 [Linux 系统目录](System/File%20System/Linux%20系统目录.md)
 
 Function Signature: 函数签名. 见 [compiler/linking/符号](Compiler/Linking/符号.md)
 
@@ -119,7 +119,7 @@ IDE: 集成开发环境
 
 I/O Bound: I/O 密集型.
 
-Interrupt: 操作系统中断, 见 [操作系统概述](System/Process/操作系统概述.md)
+Interrupt: 操作系统中断, 见 [中断](System/Process/中断.md)
 
 ISR: interrupt service routine, 中断处理程序.
 
@@ -251,7 +251,7 @@ SDK: software development kit, 软件开发工具集.
 
 Southbridge: 南桥. 见 [计算机架构](HardWare/计算机架构.md)
 
-Stack: 先入后出的栈数据结构, 见 [kernel/list](Data%20Structure/linux%20kernel/list.md). 也指进程内存空间的一种结构, 见 [linux 内存空间分布](System/Memory/linux%20内存空间分布.md)
+Stack: 先入后出的栈数据结构, 见 [kernel/list](Data%20Structure/linux%20kernel/list.md). 也指进程内存空间的一种结构, 见 [Linux 内存空间分布](System/Memory/Linux%20内存空间分布.md)
 
 Static Shared Library: 静态共享库.
 
@@ -263,7 +263,7 @@ Synchronization: 进程间同步, 见 [进程同步与互斥](System/Process/进
 
 Syntax Tree: 语法树, 编译前端的中间产物, 见 [编译过程](Compiler/编译过程.md)
 
-System Call: 系统调用. 见 [操作系统概述](System/Process/操作系统概述.md)
+System Call: 系统调用. 见 [中断](System/Process/中断.md)
 
 # T
 
@@ -289,7 +289,7 @@ User Mode: 操作系统用户空间.
 
 Virtual Address Space: 虚拟地址空间. 一种管理内存的方式.
 
-VMA: virtual Memory Area, 代指进程拥有的某片连续虚拟内存区域. 见 [linux 进程与内存管理数据结构](System/Process/linux%20进程内存管理结构.canvas) 的 `vm_area_struct` 结构.
+VMA: virtual Memory Area, 代指进程拥有的某片连续虚拟内存区域. 见 [linux 进程与内存管理数据结构](System/Process/Linux%20进程内存管理结构.canvas) 的 `vm_area_struct` 结构.
 
 # W
 
