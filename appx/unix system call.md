@@ -1,9 +1,25 @@
----
-date: 24-06-03
-path: <unistd.h>
----
+## Linux
+### x86
 
-`unistd.h` 指由 [POSIX API](../../C++/ReadMe.md) 定义的系统调用标准库, 适用于 Unix-like 系统. 在 windows 上头文件则为 `windows.h`
+| eax | name    | C prototype                                              | description  | args description                                                              |
+| --- | ------- | -------------------------------------------------------- | ------------ | ----------------------------------------------------------------------------- |
+| 1   | exit    | `void _exit(int status)`                                 | process exit | ebx: exit code                                                                |
+| 2   | fork    | `pid_t fork(void)`                                       | process copy |                                                                               |
+| 3   | read    | `ssize_t read(int fd, void *buf, size_t count)`          |              | ebx: file description </br> ecx: read buffer </br> edx: read size             |
+| 4   | write   | `ssize_t write(int fd, const void *buf, size_t count)`   |              |                                                                               |
+| 5   | open    | `int open(const char *pathname, int flags, mode_t mode)` |              | ebx: file path </br> ecx: permission (rwxp) </br> edx: if not existed, create |
+| 6   | close   | `int close(int fd)`                                      |              | ebx: file description                                                         |
+| 7   | waitpid | `pid_t waitpid( pid_t pid, int *status, int options)`    |              | ebx: pid </br> ecx: ptr to exit code </br> edx: mode                          |
+| 8   | create  | `int create(const char *pathname, mode_t mode)`          | create file  | ebx: file path </br> ecx: mode                                                |
+
+### amd64
+
+`x86_64` 中, Linux 的系统调用号被重新分配.
+
+
+## POSIX
+
+`/usr/include/unistd.h` 包含 Unix 系统调用标准库, 扩展 POSIX API 定义的标准系统调用. 是 POSIX 标准库的一部分, 如 `unistd.h, fcntl.h, sys/types.h`.
 
 | 分类       | 函数                                         | 作用                           |
 | ---------- | -------------------------------------------- | ------------------------------ |
