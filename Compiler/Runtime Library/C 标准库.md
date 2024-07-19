@@ -2,21 +2,9 @@
 
 C 语言诞生于 AT&T 的贝尔实验室, 但功能不完善. 1983 年美国国家标准协会 (ANSI) 
 成立 C 语言标准委员会, 于 1989 年建立第一个完整的 C 语言标准, 称为 ANSI C89, 
-其中包括了标准函数库.
+其中包括了标准函数库[^7].
 
-C 语言标准函数库主要头文件有:
-- `stdio.h` 标准输入输出
-- `stdio.h` 文件操作
-- `ctype.h` 字符操作
-- `string.h` 字符串操作
-- `math.h` 数学函数
-- `stdlib.h` 资源管理
-- `stdlib.h` 格式转换
-- `time.h` 时间/日期
-- `assert.h` 断言
-- `limits.h, float.h` 各种常数
-- `stdarg.h` 变长参数
-- `setjmp.h` 非局部跳转
+[^7]: 具体函数库内容详见 [C/StandardLib/ReadMe](../../Language/C/standard%20lib/ReadMe.md)
 
 libc 仅指 C 语言标准库, libc++ 指 C++ 标准库. 语言委员会提供一套标准库函数标准, 
 但不规定底层究竟如何实现 (比如在 linux 和 windows 上, `printf()` 可能会调用不同

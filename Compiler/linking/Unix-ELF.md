@@ -1,4 +1,13 @@
-可执行文件格式包括 windows 下的 PE (Portable Executable) 和 Linux 下的 ELF (Executable Linkable Foramt), 它们都是 COFF (Common File Format) 格式的变种.
+## a.out
+
+Ken Thompson 创建原始 Unix 系统时, 使用的可执行文件格式为 `a.out`, 是 "assembler 
+output" 的缩写. 编译器默认输出文件名也叫 `a.out`. 文件结构相对简单, 难以实现动态
+链接, 已被淘汰.
+
+## ELF
+
+现代可执行文件格式包括 windows 下的 PE (Portable Executable) 和 Linux 下的 ELF 
+(Executable and Linkable Foramt), 它们都是 COFF (Common File Format) 格式的变种.
 
 目标文件, 动态链接库以及静态链接库*都*是可执行文件格式.
 
@@ -19,7 +28,7 @@ libceres.so.2.0.0: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynam
 
 ## 目标文件内容
 
-以源码[^1]为例, 说明链接过程ELF文件内容的变化. 可参考 [linux 内存空间分布](../../System/Memory/linux%20内存空间分布.md) 查看.
+以源码[^1]为例, 说明链接过程ELF文件内容的变化. 可参考 [Linux 内存空间分布](../../System/Memory/Linux%20内存空间分布.md) 查看.
 
 [^1]: 程序员的自我修养--链接, 装载与库. 俞甲子等. P61.
 
@@ -92,6 +101,10 @@ Idx Name               Size     VMA              Type
 | .shstrtab       | 段名表 (Section String Table) |                                                                                      | `SHT_STRTAB`   | (`SHF_ALLOC`)              |
 
 ### 文件头
+
+文件头部的 `Magic` 字段表示了 Linux 可执行文件类型, 如 ELF 文件魔数的前四个字节
+为 `0x7f e l f`, 而 Java 可执行文件的魔数为 `c a f e`, 脚本语言可执行文件 (如 
+Python 和 Perl) 的魔数为 `# !`, 后面跟字符串标注具体类型, 如 `#!/usr/bin/perl`
 
 ```bash
 > readelf test.o --all
