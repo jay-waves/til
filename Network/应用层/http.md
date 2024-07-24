@@ -65,7 +65,8 @@ HTTP 定义了多种请求方法 (http 动词), 表示对服务器资源的不�
 | `Accept`         | 客户端可处理的内容类型     | `Accept: text/html,application/xhtml+xml`               |
 | `Content-Type`   | 请求内容的类型 (用于 POST) | `Content-Type: applcation/json`                         |
 | `Content-Length` | 请求主体的长度 (字节数)    | `Content-Length: 348`                                   |
-| `Authorization`  | 身份验证凭证               | `Authorization: Basic YWxhZGRpbjpvcGVuc2VzYW1l`                                                      |
+| `Authorization`  | 身份验证凭证               | `Authorization: Basic YWxhZGRpbjpvcGVuc2VzYW1l`         |
+| `XFF`            | X-Forwarded-For, 经过代理或负载均衡时, 用此字段保存客户端的真实源 IP 地址.                           |                                                         |
 
 
 ```http
