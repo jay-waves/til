@@ -8,7 +8,7 @@
 | Data Structure | 数据结构    |                                     |
 | Database       | 数据库      | SQL, NoSQL, 标记语言                |
 | HardWare       | 硬件        |                                     |
-| Language       | 编程语言    | C, C++, Go, Haskell, Python         | 
+| Language       | 编程语言    | C, C++, Go, Haskell, Python, Zig         | 
 | Network        | 网络        |                                     |
 | System         | 操作系统    | Linux (Kernel), Windows, Containers | 
 | Security       | 网络安全    | 调试, 漏洞挖掘, 软件测试            |
