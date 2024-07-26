@@ -36,7 +36,7 @@ ManagedResourceHandle handle(createNewResource()); // 获取即初始化
 handle->performInvalidOperation(); // 作用域结束即释放
 ```
 
-智能指针也是 RAII 原则的良好实践:
+[智能指针](智能指针.md)也是 RAII 原则的良好实践:
 - `unique_ptr`.
 - `shared_ptr`, 注意 `auto_ptr` 应被废弃.
 
