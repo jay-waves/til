@@ -1,12 +1,14 @@
 {
 	"nodes":[
-		{"id":"023dcffb0c310089","x":-537,"y":-75,"width":245,"height":170,"type":"text","text":"### Mono\n- Monospace\n- Proportional\n- Auasi-Proportional\n"},
-		{"id":"d94e7fa44de3171f","x":-539,"y":135,"width":250,"height":150,"type":"text","text":"### Serif\n- slab serif\n- serif\n- sans serif\n"},
-		{"id":"0b25f842150a9a9d","x":-542,"y":330,"width":250,"height":60,"type":"text","text":"### ligatures"},
+		{"id":"023dcffb0c310089","type":"text","text":"### Mono\n\n### Monospace \n\n等宽字体,, 每个字符占用相同宽度, 也是常用于编程环境, 使代码对齐, 控制每行字数.\n\n- Courier\n- Consolas\n- Monaco\n\n> 注意, 有的英文等宽不保证和全角字符对齐, 比如两个英文字符和一个中文字符不一样长.\n\n### Proportional\n\n比例字体, 字符宽度和实际大小相匹配, 如 `W` 比 `i` 宽. 一般在出版物中使用.\n\n- Arial\n- Times New Roman\n- Calibri\n\n### Quasi-Proportional\n\n","x":-740,"y":-460,"width":448,"height":555},
+		{"id":"d94e7fa44de3171f","type":"text","text":"### Serif\n\n衬线\n- slab serif\n- serif\n- sans serif\n","x":-539,"y":135,"width":250,"height":167},
+		{"id":"0b25f842150a9a9d","type":"text","text":"### ligatures\n\n连词字体, 常见于代码字体. \n\n- Fira Code\n- Cascadia Code","x":-542,"y":330,"width":253,"height":170},
 		{"id":"c7b6fbf760fe24c5","type":"text","text":"### Style\n- Curly\n- Andale\n- Anonymous Pro\n- Consolas\n- Menlo\n- Fira Code\n- Liberation\n- Monaco\n- Pragmata Pro\n- Source Code Pro\n- Envy Code R\n- X Windows fixed\n- Ubuntu\n- Lucida\n- JetBrains\n- IBM Plex\n- PT\n","x":-165,"y":-100,"width":250,"height":510},
-		{"id":"02197939b9acaf72","type":"text","text":"### Weights\n- Heavy\n- Bold\n- Medium\n- Thin\n- Light\n","x":220,"y":-55,"width":250,"height":210},
-		{"id":"e2dcf9952138088d","x":220,"y":204,"width":250,"height":156,"type":"text","text":"### Italic\n- Italic\n- Oblique\n- Regular"},
-		{"id":"bf832064d0578311","type":"text","text":"### Extended","x":-542,"y":440,"width":250,"height":60}
+		{"id":"02197939b9acaf72","type":"text","text":"### Weights\n\n粗体, 类似于标签 `<strong>`\n- Heavy\n- Bold\n- Medium\n- Thin\n- Light\n","x":220,"y":-80,"width":300,"height":235},
+		{"id":"e2dcf9952138088d","type":"text","text":"### Italic\n\n斜体, 类似标签 `<em>`\n- Italic\n- Oblique\n- Regular","x":220,"y":204,"width":300,"height":196},
+		{"id":"db0aa9d9a669acc5","type":"text","text":"## 自用中文字体\n\n- 方正小标宋, 仿宋_GB2312, 用于政府公文标准\n- 得意黑, 设计字体, 用于海报.\n- 多米手写体, 品如手写体, 上首鸿志手写体, 依赖于UI软件显示效果.\n- Miscrosoft YaHei Mono \n- 方正屏显雅宋简体\n- 悠哉字体\n- 文泉驿微米黑\n- 文泉驿正黑, 等宽正黑, 点阵正黑\n- 思源黑体 CN\n- [霞鹜文楷](https://github.com/lxgw/LxgwWenKai) (LXWG WenKai /Mono), 霞鹜文楷GB\n- [霞鹜新晰黑](https://github.com/lxgw/LxgwNeoXiHei), 挺喜欢这个作者的字体的.\n- [SarasaMono](https://github.com/be5invis/Sarasa-Gothic) 等距更纱黑体, **特色为保持全角字符为半角字符的两倍宽度**.","x":127,"y":646,"width":773,"height":554},
+		{"id":"bf832064d0578311","type":"text","text":"### Extended\n\n扩展字符集, 如中日文, 各种特殊符号, 多样式字符.\n\n- Nerd Fonts","x":-542,"y":540,"width":322,"height":200},
+		{"id":"50d526b74bb1c7c2","type":"text","text":"## 自用代码字体\n\n- [Source Code Pro](https://github.com/adobe-fonts/source-code-pro)\n- JetBrains Mono NL (Nerd Fonts)\n- [Fira Code](https://github.com/tonsky/FiraCode) Regular (Nerd Fonts)\n- [Cascadia Code](https://github.com/microsoft/cascadia-code) (Nerd Fonts), 微软为终端开源的字体","x":-493,"y":840,"width":547,"height":437}
 	],
 	"edges":[
 		{"id":"d7afc69a76592f03","fromNode":"023dcffb0c310089","fromSide":"right","toNode":"c7b6fbf760fe24c5","toSide":"left"},
