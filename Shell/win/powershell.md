@@ -1,7 +1,7 @@
 寻求帮助:
 
 - 参数: `-Help`
-- 命令: `Get-Help <cmd> -Detailed`
+- 命令: `Get-Help <cmd> -Detailed -Full -Examples`
 - [官方文档](https://learn.microsoft.com/en-us/powershell/)
 
 powershell 为 bash 和 cmd 用户准备了对应命令的别名.
@@ -57,4 +57,14 @@ Write-Output $MyVar
 Get-Type $MyVar
 
 $homeDir = $env:USERPROFILE
+```
+
+## 命令补全模块
+
+(powershell7)
+
+```powershell
+Install-Module -Name PSReadLine -AllowPrerelease -Scope CurrentUser -Force -SkipPublisherCheck
+Set-PSReadLineOption -ShowToolTips
+Set-PSReadLineOption -PredictionViewStyle ListView
 ```
