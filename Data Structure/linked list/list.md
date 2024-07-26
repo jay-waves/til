@@ -45,7 +45,7 @@ int list_len(struct list_node *list)
 ```
 
 > 应注意到, 该实现和**栈**结构十分类似.   
-> 代码实现详见 [list.h](../../../appendix/程序/list.h) 以及 [list.c](../../../appendix/程序/list.c)
+> 代码实现详见 [list.h](../../../src/list.h) 
 
 ## push
 

@@ -17,7 +17,7 @@ GPU 包含更多的运算单元, CPU 负责处理逻辑. 而 GPU 有更多运算
 4. 将 device 结果拷贝到 host. `cudaMemcpy(...., kind=cudaMemcpyDeviceToHost)`
 5. 释放 device 和 host 上分配的内存. `free()` + `cudaFree()`
 
-![|500](../../../attach/Pasted%20image%2020240518124424.png)
+![|500](../../../attach/CUDA%20编程抽象.png)
 
 CUDA 编程的核心是核函数 (`kernel_func<<<grid, block>>>`), 该函数会被放入 device 中并行化执行. 一个核在 device 中的映射称为**网格 (grid)**, 同一网格上的线程共享相同的全局内存空间; 每个网格又可分为多个**区块 (block)**, 每个区块中包含多个**线程 (thread)**. 
 

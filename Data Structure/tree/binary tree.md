@@ -475,7 +475,71 @@ deleteElement( ELEMENTTYPE X, SEARCHTREE_ T ){
 
 ![|500](../../../attach/Pasted%20image%2020240527120240.png)
 
-## 树的数组实现
 
+```zig
+const std = @import("std");
 
-其中，**数组A下标从1到N**，N为堆的大小，A\[1\]是根节点，A\[2\]是根节点的左子孩节点，A\[3\]是根节点的右子孩节点。实际上，对于任何一个节点，若其在数组中的位置是i，则它的左子孩节点位置$left\_child(i)=2i$，右子孩节点位置$right\_child=2i+1$，它的父节点（假如有）的位置$parent(i)=\lfloor i/2 \rfloor$，$\lfloor \rfloor$表示向下取整。图3中的箭头从父节点分别指向左右子孩节点。???
+const Node = struct {
+    value: i32,
+    left: ?*Node,
+    right: ?*Node,
+
+    pub fn init(value: i32) Node {
+        return Node{
+            .value = value,
+            .left = null,
+            .right = null,
+        };
+    }
+};
+
+const BinaryTree = struct {
+    root: ?*Node,
+
+    pub fn init() BinaryTree {
+        return BinaryTree{ .root = null };
+    }
+
+    pub fn insert(self: *BinaryTree, value: i32) void {
+        const allocator = std.heap.page_allocator;
+
+        const new_node = allocator.create(Node) catch unreachable;
+        new_node.* = Node.init(value);
+
+        if (self.root == null) {
+            self.root = new_node;
+        } else {
+            var current = self.root;
+            while (true) {
+                if (value < current.?.value) {
+                    if (current.?.left == null) {
+                        current.?.left = new_node;
+                        break;
+                    } else {
+                        current = current.?.left;
+                    }
+                } else {
+                    if (current.?.right == null) {
+                        current.?.right = new_node;
+                        break;
+                    } else {
+                        current = current.?.right;
+                    }
+                }
+            }
+        }
+    }
+
+    pub fn inorder_traversal(self: *const BinaryTree, visit: fn (value: i32) void) void {
+        inline fn inorder(node: ?*Node, visit: fn (value: i32) void) void {
+            if (node != null) {
+                inorder(node.?.left, visit);
+                visit(node.?.value);
+                inorder(node.?.right, visit);
+            }
+        }
+        inorder(self.root, visit);
+    }
+};
+
+```

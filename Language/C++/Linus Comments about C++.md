@@ -1,3 +1,6 @@
+---
+tags: [Repost]
+---
 
 > When I first looked at Git source code two things struck me as odd:   
 > Pure C as opposed to C++. No idea why. Please don't talk about portability, it's BS (bullshit) ...

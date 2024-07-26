@@ -1,43 +1,35 @@
 ### TOC 🚀
 
-| 英文标题       | 中文标题    | 描述                                | 更新 |
-| -------------- | ----------- | ----------------------------------- | ---- |
-| Algorithm      | 算法        |                                     | 24-02     |
-| Intelligence   | 人工智能    |                                    | 24-01     |
-| Compiler       | 编译      | LLVM, 链接过程, 汇编                                   | 24-06     |
-| Data Structure | 数据结构    |                                     |   24-06   |
-| Database       | 数据库      | SQL, NoSQL, 标记语言                | 24-03     |
-| HardWare       | 硬件        |                                     | 24-06     |
-| Language       | 编程语言    | C, C++, Go, Haskell, Python         |  24-06    |
-| Network        | 网络        |                                     | 24-06     |
-| System         | 操作系统    | Linux (Kernel), Windows, Containers | 24-06     |
-| Security       | 网络安全    | 调试, 漏洞挖掘, 软件测试            | 24-06     |
-| Shell          |             | Bash, Powershell                    |  24-03    |
-| Tools          | 工具        | Git, Vim, Latex ...                 |  24-01    |
-| attach         | 图片附件 |                                     |      |
-| appendix       | 附录        | 文档等                              |      |
-| paper          | 论文        |                                     |      |
-| src            | 代码附件            |                                     |      |
+| 英文标题       | 中文标题    | 描述                                | 
+| -------------- | ----------- | ----------------------------------- | 
+| Algorithm      | 算法        |                                     | 
+| Intelligence   | 人工智能    |                                    | 
+| Compiler       | 编译      | LLVM, 链接过程, 汇编            | 
+| Data Structure | 数据结构    |                                     |
+| Database       | 数据库      | SQL, NoSQL, 标记语言                |
+| HardWare       | 硬件        |                                     |
+| Language       | 编程语言    | C, C++, Go, Haskell, Python         | 
+| Network        | 网络        |                                     |
+| System         | 操作系统    | Linux (Kernel), Windows, Containers | 
+| Security       | 网络安全    | 调试, 漏洞挖掘, 软件测试            |
+| Shell          |             | Bash, Powershell                    |
+| Tools          | 工具        | Git, Vim, Latex, IDE ...                 |  
+| attach         | 图片附件 |                                     |     
+| appx      | 附录        | 文档等                              |    
+| paper          | 论文        |                                     |     
+| src            | 代码            |                                     |   
 
 ### Workflow Tags
 
-#LGTM #HighPrior #Question #HelpWanted #TODO #Overdue #LowPrior 
-
-#Paper #Extract #Issue #PR #KeyPoints
-
-#Security #Document #Bug #NewFeature #Performance #Trouble
-
- #Refactor #WIP (Work in Progress) #Invalid #Test
- 
-#WontFix #MisConfig #UserError ( #PEBKAC ) #Blocked #FAQ #Open #Closed
-
-### Vim Scripts
-
-- `:%s/,\s/，/g`
-- `:%s/\.\s/。/g`
-- `:%s/;\s/；/g`
-- `:%s/:\s/：/g`
-- `:%s/\?\s/？/g`
-- `:%s/!\s/！/g`
-- `:%s/\s(/（/g`
-- `:%s/)\s/）/g`
+| tags                            | descrp                         |
+| ------------------------------- | ------------------------------ |
+| #LGTM                           | 有兴趣, 值得二刷的笔记         |
+| #Paper                          | 文章笔记                       |
+| #Trouble                        | 遇到的问题                     |
+| #FAQ                            | 问题及解决办法, 以及一些好奇心 |
+| #KeyPoints                      | 重点                           |
+| #TODO, #WIP, #WontFix, #Overdue | 表进度状态, 一般用于日志       |
+| #NSFW                           | 奇怪内容, 加入 `.gitignore`    |
+| #Code                           | 笔记内容为源码                 |
+| #Docs                           | 笔记内容为复述文档或定义       |
+| #Repost                         | 笔记内容为转载                               |

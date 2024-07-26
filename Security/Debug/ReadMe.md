@@ -22,5 +22,3 @@
 | 查看全局变量     | N/A                                | info variables                     | target variable                                          |
 | 修改变量的值     | N/A                                | set var [变量名]=[值]              | expr [变量名] = [值]                                     |
 | 退出调试器       | q (quit)                           | q (quit)                           | q (quit) / exit                                          |
-
-#python
