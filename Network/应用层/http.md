@@ -1,16 +1,10 @@
-HTTP, hyper text transfer protocol, 超文本传输协议.
+HTTP, hyper text transfer protocol, 超文本传输协议. 端口为 80, 加密端口 (https) 为 443.
 
 软件作为客户端 (Client) 和服务器 (Server) 通信, 称为 C/S 架构, 可以使用 RPC 协议.
 
 浏览器 (Browser) 并不是和自家服务器 (Server) 通信, 而是和各个网络公司网页进行通信, 所以在 1990s 诞生了 HTTP 协议, 用于 B/S 架构下的通信.
 
 目前多端开发中, B/S 和 C/S 在逐渐融合, 通信使用同一的 HTTP, 避免重复开发.
-
-***
-
-port:
-- https 443
-- http 80
 
 ### 重定向
 
