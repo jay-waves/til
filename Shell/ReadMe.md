@@ -1,9 +1,79 @@
 > It has always been the spirit of Unix to have separate programs 
 > that do their job well, and work together to perform a bigger task.
 
+## 获取帮助
+
+### `man`
+
+```sh
+man <command>
+
+man -k           # 基于关键词检索, 等价于 apropos
+man ascii
+man unicode 
+man utf-8
+
+info
+help
+Get-Help          # Powershell 专属
+
+tldr   # too long don't read, 基于例子的命令手册. 需要在线使用.
+
+cht.sh  # 类似 tldr, 不过语义更智能, 还能查各语言文档. 
+curl cht.sh/python/what+is+venv 
+
+<command> -h
+<command> -Help    # Powershell 专属
+<command> --help
+<command> /h       # CMD 命令参数
+```
+
+### `type`
+
+`type command` 显示某个命令的类型, linux中命令有四种类型:
+- /bin文件夹中的可执行程序
+- shell builtins内置程序
+- shell function即scripts
+- alias 别名
+
+<pre>
+$ type cd
+cd is a shell builtin
+</pre>
+
+### `whatis`
+
+显示单行, 非常简短的命令介绍
+
+<pre>
+$ whatis bash
+bash (1)             - GNU Bourne-Again SHell
+</pre>
+
+### `whereis`
+
+whereis searches for executables, source files, and manual pages using a database built by system automatically.
+
+Example:
+
+```bash
+$ whereis php
+/usr/bin/php
+```
+
+### `which`
+
+模拟搜索 PATH 查询可执行文件的过程, 若成功, 显示完整路径. (不能检查其他类型命令!) 可用于检查当多个重名程序存在于 PATH 中时, bash 究竟执行了哪一个.
+
+```bash
+$ which php
+/c/xampp/php/php
+```
+
+
 ## Bash 工具列表
 
-[安全与权限](sh/安全与权限.md)
+[系统用户管理](sh/系统用户管理.md)
 
 | `chmod` | `chown` |
 | ------- | ------- |
