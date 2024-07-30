@@ -1,3 +1,8 @@
+---
+tags:
+  - Repost
+---
+
 First up, some basics about the source code control tool that the Linux
 kernel uses, git.  Git can be found in any Linux distro these days, and
 there are numerous good tutorials on how to use it and set it up
