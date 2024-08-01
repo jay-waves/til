@@ -2,17 +2,16 @@
 
 | 英文标题       | 中文标题    | 描述                                | 
 | -------------- | ----------- | ----------------------------------- | 
-| Algorithm      | 算法        |                                     | 
+| Algorithm      | 算法        | 数据结构与算法                                  | 
 | Intelligence   | 人工智能    |                                    | 
 | Compiler       | 编译      | LLVM, 链接过程, 汇编            | 
-| Data Structure | 数据结构    |                                     |
-| Database       | 数据库      | SQL, NoSQL, 标记语言                |
+| Information       | 信息      | 数据库, 数据交换格式, 文本编码格式                |
 | HardWare       | 硬件        |                                     |
 | Language       | 编程语言    | C, C++, Go, Haskell, Python, Zig         | 
 | Network        | 网络        |                                     |
-| System         | 操作系统    | Linux (Kernel), Windows, Containers | 
+| System         | 操作系统    | Linux, Windows, 虚拟机和容器 | 
 | Security       | 网络安全    | 调试, 漏洞挖掘, 软件测试            |
-| Shell          |             | Bash, Powershell                    |
+| Shell          |             | Bash, Powershell, 命令行软件                  |
 | Tools          | 工具        | Git, Vim, Latex, IDE ...                 |  
 | attach         | 图片附件 |                                     |     
 | appx      | 附录        | 文档等                              |    
