@@ -1,8 +1,8 @@
 ## IPv4
 
-### IP地址分类
+### IP 地址分类
 
-开头为哈夫曼编码, 对IP进行唯一区分
+开头为哈夫曼编码, 对 IP 进行唯一区分
 
 |     | 网络地址位宽    | 主机地址位宽 | 固定前缀格式     |
 | --- | --------------- | ------------ | -------- |
@@ -11,7 +11,6 @@
 | C   | `24b`           | `8b`         | `110...` |
 | D   | `32b`, 用于多播 |              | `1110...`   |
 | E   | `32b`, 保留后用 |              | `1111...`         |
-
 
 #### 特殊地址
 
@@ -29,9 +28,9 @@
 - `192.168.0.0` -- `192.168.255.255` ..
 - `100.64.0.0` -- `100.127.255.255` RFC 6598 定义的用于私有网络地址转换 (Carrier-Grade NAT, CGN) 的网段, 进一步提高 NAT 规模.
 
-### IP数据报
+### IP 数据报
 
-首部前20字节固定长, 其后长度可变.
+首部前 20 字节固定长, 其后长度可变.
 
 ```
   0                   1                   2                   3   
@@ -54,15 +53,23 @@
 ```
 
 - Version: 版本号 (IPv4: 4, IPv6: 6)
-- IHL (Internet Header Length):  IP头长度, 单位 4 bytes.
+- IHL (Internet Header Length):  IP 头长度, 单位 4 bytes.
 - Type of Service: usually unused
-- Total Length: 数据+头部总长度, 单位 bytes.
+- Total Length: 数据 + 头部总长度, 单位 bytes.
 - Identification: 用于分片, 标识同一数据的分片
-- Flags: reserved|DF|MF, DF: don't fragment 不分片, MF: more fragment 后续还有改报文的分片.
+- Flags: `Reserved|DF|MF`, DF: don't fragment 不分片, MF: more fragment 后续还有改报文的分片.
 - Fragment Offset: 分片原偏移, 单位 8 bytes
 - Time to Live: 每转发一次, 减一.
 - Protocol: 数据是哪个上层协议负责处理的, 比如 ICMP/OSPF/TCP/UDP 等.
 - Options: 可扩展功能段
+
+### MTU
+
+*MTU (Maximum Transmission Unit, 最大传输单元)* 指协议在单个数据包中能传输的最大数据量. 以字节为单位, 数据量包括 IP 头和 MAC 头, 并且和实际的网络协议和技术有关. 
+
+当单一数据包大小超过路径任一网络链路的 MTU 时, 其会被拆分为多个更小的片段来传输. 该过程称为*分片 (Fragmentation)*. 该过程会消耗网络性能.
+
+以太网标准的 MTU 为 1500 字节, MAC 头为 14字节, IPv4 头为 20 字节, 实际的*载荷 (Payload)* 为 $1500-14-20=1466$ 字节.
 
 ## IPv6
 
@@ -71,4 +78,3 @@ ipv6 和 ipv4 是不兼容的, 这导致了从 ipv4 向 ipv6 过渡困难.
 ## DHCP
 
 动态主机配置协议 (Dynamic Host Configuration Protocol, DHCP) 用于自动分配和配置网段中的主机的 IP 地址.
-
