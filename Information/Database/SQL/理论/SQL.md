@@ -1,4 +1,4 @@
-SQL (Structured Query Language) 是[声明式语言](../../../Language/编程范式.md), 其功能:
+SQL (Structured Query Language) 是[声明式语言](../../../../Language/编程范式.md), 其功能:
 - 数据定义语言 (Data Definition Lanuguage): 数据库结构定义
 - 数据操纵语言 (Data Manipulation Language): 数据查询与修改
 - 数据控制语言 (Data Control Language): 权限控制
@@ -98,7 +98,7 @@ from <表名> [, <其他表名>] [as] <别名>
 
 **嵌套查询:**
 
-![|500](../../../attach/Pasted%20image%2020240105121556.png)
+![|500](../../../../attach/Pasted%20image%2020240105121556.png)
 
 嵌套集合关系:
 
@@ -117,7 +117,7 @@ from <表名> [, <其他表名>] [as] <别名>
 ### 查询优化
 
 数据库 SQL 处理过程: 
-![|350](../../../attach/Pasted%20image%2020240104222337.png)
+![|350](../../../../attach/Pasted%20image%2020240104222337.png)
 
 查询优化分类
 - 代数优化: 关系代数表达式优化
