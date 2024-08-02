@@ -1,4 +1,4 @@
-SSL (Secure Sockets Layer, 安全套接层), 及其继任者 TLS (Transport Lyayer Security, 传输安全) 提供了 TCP/IP协议 与 应用层协议 间的透明安全协议. 现在 ssl 多代指 tls.
+SSL (Secure Sockets Layer, 安全套接层), 及其继任者 TLS (Transport Lyayer Security, 传输安全) 提供了 TCP/IP协议 与 应用层协议 间的透明安全协议. 现在 SSL 多代指 TLS.
 
 | 网络层级 | 协议             |
 | -------- | ---------------- |
