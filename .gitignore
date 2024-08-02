@@ -7,6 +7,4 @@ desktop.ini
 NSFW/
 
 # 大文件
-/Hack/Tutorials/**
-/Language/C++/并发/**
 /Language/Haskell/Haskell LLVM JIT Compiler/**
