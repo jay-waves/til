@@ -24,5 +24,4 @@
 |      | ARM64   | ARM         | ARM Coretx-A...             |
 |      | RISC-V |             |                             |
 
-Linux 较早有对 32 位 `ARMv7` 指令集的支持, 而 Windows 和 macOS 则从 `x86` 直接转向 64 位的 `ARMv8`.  
-macOS 的架构称为 `ARM64`, 而 Windows 的架构称为 `AArch64`.
+Linux 较早有对 32 位 `ARMv7` 指令集的支持, 而 Windows 和 macOS 则从 `x86` 直接转向 64 位的 `ARMv8`. macOS 的架构称为 `ARM64`, 而 Windows 的架构称为 `AArch64`.
