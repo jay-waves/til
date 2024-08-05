@@ -8,3 +8,4 @@ NSFW/
 
 # 大文件
 /Language/Haskell/Haskell LLVM JIT Compiler/**
+/src/sgi/
