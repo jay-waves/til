@@ -32,8 +32,8 @@ Names of types (values) start with a capital letter, but Variables and functions
 
 
 function types: `->`
-- one argus functions: argumentType -> returnType
-- ...of two argus: argument1Type -> argument2Type -> returnType
+- one argus functions: `argumentType -> returnType`
+- ...of two argus: `argument1Type -> argument2Type -> returnType`
 
 ### Program Structure
 
@@ -58,12 +58,14 @@ main = do
 
 #### div 
 
-\`div\` 仅用于整数型, 如 Int, Integer.
+`` `div` `` 仅用于整数型, 如 Int, Integer.
 
 ```haskell
-Prelude> 7 `div` 2
+Prelude> 7 div 2
 3
 ```
+
+> 注意,  `` ` `` 用于将函数变为中缀表达式. 如 `div 10 3` 改写为 `` 10 `div` 3``
 
 `/` 仅用于浮点数型, 如 Double.
 
