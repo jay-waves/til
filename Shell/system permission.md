@@ -1,34 +1,45 @@
+### `chmod`
 
-#### 权限判定
-
-1. 判定是否是*属主*, 如是, 赋予权限, **结束判定**
-2. 判定是否是*属组*, 如是, 赋予权限, **结束判定**
-3. 赋予*其他*权限
-
-### 进程权限
-
-文件权限位`rwx rwx rwx`
-
-进程权限位`ugs rwx rwx rwx`
-
-`--s`
-提权问题
-
-### super user
-
-用户管理员权限详见 [用户管理](用户管理.md)
-
-### `chmod` !
-
-change mode. 改变文件(夹)的读/写/执行权限. 
+改变文件(夹)的读/写/执行权限. Linux 中权限以权限位形式出现, 如文件权限为可能是 `rwx rwx r--`, 第一个 `rwx` 为属主权限, 第二个 `rwx` 为群组权限, 第三个 `rwx` 为访客权限, 无权限用 `-` 占位. 
 
 ```bash
 chmod -options filename
 ```
 
-将某个文件夹递归设置权限: `chmod -R 777 path`
+`rwx` 字母分别对应数字权限 `124`, 权限简写为三者之和. 如 `rw-` 对应 `3`.
+
+设置权限为 `rwxr-xr-x`, 如下:
+
+```bash
+# 设原本权限为 r-xr-xr-x, 给用户添加写权限:
+# u 代表用户, g 代表群组
+chmod u+w file 
+
+# 或直接:
+chmod 755 file
+```
+
+将某个文件夹递归设置权限: 
+
+```bash
+chmod -R 777 path
+```
 
 设置新建文件权限: `umask 000`, umask 是一个权限掩码, 请求的权限码和 umask 进行按位与非, 生成最终权限码 (即 umask 中定义的权限被移除. 仅在临时会话有效. 系统默认 `umask 022`, 在 /etc/profile 中.
+
+#### `s` 位
+
+`chmod u+s ...` 指 setuid, 无论谁执行该文件, 程序都会自动以文件所有者的权限运行. 用于需要提供临时提权的程序. 
+
+`chmod g+s ...` 指 setgid, 无论谁执行该文件, 都会以文件属组的权限运行. 设置在目录时, 目录下所有新文件都会继承此目录的组, 而非创建者的组.
+
+此时程序权限如: `rws...`
+
+#### `t` 位
+
+也称粘滞位, 设置在目录上时, 即使多个用户都有对目录的写权限, 但只有文件的所有者或超级用户才能**删除或重命名**该目录.
+
+此时权限如: `drwxrwx--T`
 
 ### `chown` !
 
@@ -46,6 +57,26 @@ chown -options user:group filename
    getfacl -R /some/path > permissions.txt
    setfacl --restore=permissions.txt
 ```
+
+### `finger`
+
+`finger username` 展示用户信息
+
+### `whoami`
+
+展示当前登入用户的用户名.
+
+### `last`
+
+`list <username>` 展示该用户上次登入信息.
+
+### `passwd`
+
+修改密码
+
+### `id`
+
+用户/组 ID 信息
 
 ## 用户管理
 
@@ -83,10 +114,6 @@ chown -options user:group filename
 
 如果无法使用su (即无法使用 root), 那么需要初始化root密码: `sudo passwd`
 
-使用`exit`退出管理员模式使用`su`命令进入管理员模式(`#`)
-
-如果无法使用su, 那么需要初始化root密码: `sudo passwd`
-
 使用`exit`退出管理员模式
 
 ### 将用户添加到 wheel 组
@@ -106,24 +133,3 @@ $ visduo
 # %wheel ALL=(ALL) ALL
 ```
 
-## usr info
-
-### `finger`
-
-`finger username` 展示用户信息
-
-### `whoami`
-
-展示当前登入用户的用户名.
-
-### `last`
-
-`list <username>` 展示该用户上次登入信息.
-
-### `passwd`
-
-修改密码
-
-### `id`
-
-用户/组 ID 信息

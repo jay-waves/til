@@ -227,7 +227,7 @@ https://github.com/joh/when-changed, 自动监控文件改动
 
 ## 安全
 
-managerment of files access permissions, see [系统用户管理](系统用户管理.md)
+managerment of files access permissions, see [system permission](system%20permission.md)
 
 ### `gopass`
 
