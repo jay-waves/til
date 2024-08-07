@@ -1,7 +1,7 @@
 ## System Info
 
-- 系统网络相关工具见 [bash/network](网络.md)
-- 系统存储相关工具见 [文件系统](文件系统.md)
+- 系统网络相关工具见 [bash/network](network.md)
+- 系统存储相关工具见 [file system](file%20system.md)
 
 ### `/proc` Info
 
