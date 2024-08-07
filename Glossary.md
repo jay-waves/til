@@ -197,11 +197,11 @@ PE: portable executable, windows 用可执行文件格式. 源于 COFF.
 
 Physical Page: 物理内存页, 也叫页框 Frame.
 
-PIC: position-independent code, 地址无关代码.
+PIC: position-independent code, 地址无关代码. 见 [动态链接](Compiler/Linking/动态链接.md)
 
 PIE: position-independent executable, 地址无关可执行文件.
 
-PLT: procedure linkage table. 过程链接表.
+PLT: procedure linkage table. 过程链接表. 见 [动态链接](Compiler/Linking/动态链接.md)
 
 Preemption: 抢占式调度. 见 [进程调度](System/Process/进程调度.md)
 
