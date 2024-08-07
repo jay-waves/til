@@ -73,20 +73,20 @@ $ which php
 
 ## Bash 工具列表
 
-[系统用户管理](sh/系统用户管理.md)
+[system permission](system%20permission.md)
 
 | `chmod` | `chown` |
 | ------- | ------- |
 | `getfacl`        |         |
 
-[调试及技巧](sh/调试及技巧.md)
+[debug](debug.md)
 
 | `ldd`    |  | `dmesg` | `strace, ltrace` |
 | -------- | ------ | ------- | ---------------- |
 | `nm`     | `stap` | `stap`  | `perf`           |
 | `sysdig` | `time` | `hyperfine`        |                  |
 
-[进程管理](sh/进程管理.md)
+[process](process.md)
 
 | `pkill`  | `pgrep`   | `pstree` | `lsof`          | `(h)top`    |
 | -------- | --------- | -------- | --------------- | --- |
@@ -100,7 +100,7 @@ $ which php
 | --------- | ------- | -------- |
 | `whereis` | `which` |          |
 
-[网络](sh/网络.md)
+[network](network.md)
 
 | `ip`                | `ping`      | `mtr`   | `netcat, socat` |
 | ------------------- | ----------- | ------- | --------------- |
@@ -111,7 +111,7 @@ $ which php
 | `curl`              | `wget`      |         |                 |
 | `unshare`           | `firejail`  |         |                 |
 
-[文本处理](sh/文本处理.md)
+[text handling](text%20handling.md)
 
 | `pandoc`           | `jq`                 | `shyaml`        | `xmlstarlet`   | `csvkit` |
 | ------------------ | -------------------- | --------------- | -------------- | -------- |
@@ -121,7 +121,7 @@ $ which php
 | `uniq`             | `sort`               | `nl`            | `iconv, uconv` | `expand` |
 | `cat, bat`         | `diff`               | `tail, head`    | `more, less`   |          |
 
-[文件系统](sh/文件系统.md)
+[file system](file%20system.md)
 
 |            | `mount`        | `fdisk`  | `mkfs`   | `lsblk` |
 | ---------- | -------------- | -------- | -------- | ------- |
@@ -133,7 +133,7 @@ $ which php
 | `stat`     | `file`         | `chattr` | `wc`     |         |
 | `xz`       | `7zip`         | `tar`    | `gzip`         |         |
 
-[系统信息采集](sh/系统信息采集.md)
+[system information](system%20information.md)
 
 | `/proc`    | | `w`      | `uname` | `sysstat, dstat` |
 | ---------- | -------- | -------- | ------- | ---------------- |
@@ -148,11 +148,29 @@ $ which php
 | ---------- | --------- | ------ | -------- | ---- |
 | `sudo, su` | `usermod` | `exit` | `groupmod`         |      |
 
-[Bash 脚本编程](sh/编程/1%20变量.md)
+[Bash 脚本编程](sh%20script/1%20变量.md)
 
 | `export` | `env`   |     |     |     |
 | -------- | ------- | --- | --- | --- |
 | `tee`    | `xargs` | `history`    |     |     |
+
+## Bash 热键
+
+查看 `man readline`
+
+- `Ctrl-r`: 查找历史命令
+- `Tab`: 补全
+- `Ctrl-a, Ctrl-e`: 行首, 行尾
+- `Alt-f, Alt-b`: 前进一单词, 后退一单词
+- `Alt-*` 展开通配符匹配项
+- `Ctrl-f, Ctrl-b`: 前进一字符, 后退一字符
+- `Ctrl-u`: 删除光标前内容
+- `Ctrl-w`: 删除光标前单词
+- `Ctrl-d`: 删除当前字符
+- `Ctrl-l`: 清屏
+- `Alt [0-9] Alt .` 黏贴上一条命令的最后`[1-9]`个参数
+- `Ctrl-x`, `Ctrl-e` 使用系统默认编辑器编辑命令
+- `Ctrl-z` 将命令移至后台, 后可用 `fg` 调回
 
 ## 参考
 
