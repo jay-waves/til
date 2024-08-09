@@ -7,7 +7,7 @@
 | Compiler       | 编译      | LLVM, 链接过程, 汇编            | 
 | Information       | 信息      | 数据库, 数据交换格式, 文本编码格式                |
 | HardWare       | 硬件        |                                     |
-| Language       | 编程语言    | C, C++, Go, Haskell, Python, Zig         | 
+| Language       | 编程语言    | C, C++, Go, Haskell, Python         | 
 | Network        | 网络        |                                     |
 | System         | 操作系统    | Linux, Windows, 虚拟机和容器 | 
 | Security       | 网络安全    | 调试, 漏洞挖掘, 软件测试            |
@@ -17,6 +17,13 @@
 | appx      | 附录        | 技术标准, 参考信息等                            |    
 | paper          | 论文        |                                     |     
 | src            | 代码            |                                     |   
+
+### TODO
+
+- [ ] 链接过程
+- [ ] C++ 现代化部分
+- [ ] 数据结构: rb tree, finger tree, leafy tree
+- [ ] 算法: KMP 算法, 
 
 ### Workflow Tags
 

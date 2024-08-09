@@ -87,18 +87,25 @@ Idx Name               Size     VMA              Type
 | ELF Header      |                               | 入口地址, 目标平台, ELF类型, 段表                                                    |                |                            |
 | .text           | 代码段                        | 可执行代码                                                                           | `SHT_PROGBITS` | `SHF_ALLOC, SHF_EXECINSTR` |
 | .rela.text      | 重定位表 (relocation table)   | 记录代码和数据段中需要地址重定位的位置                                               | `SHT_REL`      |                            |
-| .data           | 数据段                        | 记录初始化的全局变量或局部静态变量                                                                                     | `SHT_PROGBITS` | `SHF_ALLOC, SHF_WRITE`     |
+| .data           | 数据段                        | 记录初始化的全局变量或局部静态变量                                                   | `SHT_PROGBITS` | `SHF_ALLOC, SHF_WRITE`     |
 | .bss            | BSS段                         | 记录未初始化的全局变量或局部静态变量. 由于默认值为 0, 所以实际没有内容.              | `SHT_NOBITS`   | `SHF_ALLOC, SHF_WRITE`     |
 | .rodata         | 只读数据段                    | 存放字符串常量, 全局常量变量.                                                        | `SHT_PROGBITS` | `SHF_ALLOC`                |
 | .comment        | 注释信息段                    | 编译器版本信息等, 如 `GCC:(Ubuntu-22.04)11.4.0`/ `.note` 字段还会存储更多编译器信息. | `SHT_PROGBITS` |                            |
 | .note.GNU-stack | 堆栈提示段                    |                                                                                      | `SHT_NOTE`     |                            |
 | .line           | 调试时的行号表                | 源代码行号与编译后指令的对应表                                                       | `SHT+PROGBITS` |                            |
 | .debug          | 调试信息                      |                                                                                      | `SHT_PROGBITS` |                            |
-| .dynamic        | 动态链接信息                  |                                                                                      | `SHT_DYNAMIC`  | `SHF_ALLOC`, (`SHF_WRITE`) |
-| .hash           | 符号哈希表                    |                                                                                      | `SHT_HASH`     | `SHF_ALLOC`                |
 | .strtab         | 字符串表                      |                                                                                      | `SHT_STRTAB`   |                            |
-| .symtab         | 符号表                        | 详见 [编译/链接/符号](符号.md)                                                                                     | `SHT_SYMTAB`   |                            |
+| .symtab         | 符号表                        | 详见 [编译/链接/符号](符号.md)                                                       | `SHT_SYMTAB`   |                            |
 | .shstrtab       | 段名表 (Section String Table) |                                                                                      | `SHT_STRTAB`   | (`SHF_ALLOC`)              |
+
+[动态链接](动态链接.md)的共享目标文件还包括以下几个段:
+
+|          | 名称             | 信息                                 | sh_type       | sh_flag                    |
+| -------- | ---------------- | ------------------------------------ | ------------- | -------------------------- |
+| .hash    | 符号哈希表       | 用于加速动态链接时查找符号的过程     | `SHT_HASH`    | `SHF_ALLOC`                |
+| .dynstr  | 动态符号字符串表 | 动态链接时, 帮助动态符号表存储字符串 |               |                            |
+| .dynamic | 动态链接信息     |                                      | `SHT_DYNAMIC` | `SHF_ALLOC`, (`SHF_WRITE`) |
+| .dynsym  | 动态符号表       | 存储动态链接相关的符号, `.symtab` 中也存储这些符号                                      |               |                            |
 
 ### 文件头
 
