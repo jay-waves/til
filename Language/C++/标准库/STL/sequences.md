@@ -1,5 +1,46 @@
 ## 顺序容器
 
+### vector
+
+向量是一种容器.
+
+|        | array          | vector     |
+| ------ | -------------- | ---------- |
+| 大小   | 不可变         | 可变       |
+| 内存   | 栈上分配       | 堆上分配   |
+| 接口   | 和原生数组类似 | 功能接口多 |
+| 初始化 | 编译时         | 运行时           |
+
+原型定义在 `#include <vector>`
+
+**声明**: `vector<var_type> var;`
+
+**方法**:
+- `push_back()`
+- `pop_back()` 
+- `size_type` unsigned 类型, 可以保存向量长度 (甚至最大长度). 
+- `size()`
+- `capacity()` 
+
+```cpp
+// 用标准库定义的惯例变量, 可以保证不同环境下的一致性.
+typedef vector::size_type vec_sz; 
+vec_sz size=homework.size();
+```
+
+- `clear()` 
+- `erase(start, end)`
+- `at()` 等同于用 `[]` 计算下表
+
+
+### deque
+
+### list
+
+### forward_list
+
+### array
+
 - **std::vector**：
     
     - **特点**：动态数组，支持快速随机访问和在末尾的高效插入和删除。

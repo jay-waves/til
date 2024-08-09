@@ -23,7 +23,7 @@
 - new_xxx, alloc_xxx, create_xxx, 指开辟内存 (声明对象) 同时对其初始化.
 - num, 当数组元素类型不明确时, 如 `void *`, size 应表示单个数组元素的字节大小, num 表示数组元素数量. 
 
-[^1]: 详见 [STL](../../Language/C++/标准库/STL/STL.md)
+[^1]: 详见 [ReadMe](../../Language/C++/标准库/STL/ReadMe.md)Me.md)
 
 ### 数据结构列表
 
