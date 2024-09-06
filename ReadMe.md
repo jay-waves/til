@@ -1,22 +1,24 @@
 ### TOC 🚀
 
-| 英文标题       | 中文标题    | 描述                                | 
-| -------------- | ----------- | ----------------------------------- | 
-| Algorithm      | 算法        | 数据结构与算法                                  | 
-| Intelligence   | 人工智能    |                                    | 
-| Compiler       | 编译      | LLVM, 链接过程, 汇编            | 
-| Information       | 信息      | 数据库, 数据交换格式, 文本编码格式                |
-| HardWare       | 硬件        |                                     |
-| Language       | 编程语言    | C, C++, Go, Haskell, Python         | 
-| Network        | 网络        |                                     |
-| System         | 操作系统    | Linux, Windows, 虚拟机和容器 | 
-| Security       | 网络安全    | 调试, 漏洞挖掘, 软件测试            |
-| Shell          |             | Bash, Powershell, 命令行软件                  |
-| Tools          | 工具        | Git, Vim, Latex, IDE ...                 |  
-| attach         | 图片附件 |                                     |     
-| appx      | 附录        | 技术标准, 参考信息等                            |    
-| paper          | 论文        |                                     |     
-| src            | 代码            |                                     |   
+| 英文标题     | 中文标题 | 描述                                           |
+| ------------ | -------- | ---------------------------------------------- |
+| Algorithm    | 算法     | 数据结构与算法                                 |
+| Intelligence | 人工智能 |                                                |
+| Compiler     | 编译     | LLVM, 链接过程, 汇编                           |
+| Information  | 信息     | 数据库, 数据交换, 字符串编码, 信息论, 数字信号 |
+| HardWare     | 硬件     |                                                |
+| Language     | 编程语言 | C, C++, Go, Haskell, Python                    |
+| Network      | 网络     | 网络分层模型, 防火墙, 网络代理                                               |
+| System       | 操作系统 | Linux, Windows, 虚拟机和容器                   |
+| Security     | 网络安全 | 调试, 漏洞攻击, 软件测试, 密码学               |
+| Math         | 数学     | 微积分, 线性代数, 数论, 抽象代数, 概率论, 计算理论                                               |
+| Shell        |          | Bash, Powershell, 命令行软件                   |
+| Tools        | 工具     | Git, Vim, Latex, IDE, Wolfram      |
+| attach       | 图片附件 |                                                |
+| appx         | 附录     | 技术标准, 参考信息等                           |
+| paper        | 论文     |                                                |
+| src          | 代码     |                                                |
+
 
 ### TODO
 
@@ -57,7 +59,7 @@
 - 强调句使用粗体 `**`, 新名词使用斜体 `*`, 名词收录到名词表中.
 - 推荐字体使用 "文泉驿等宽微米黑" 或 "等距更纱黑体 SC", 代码段字体使用 Fira Code.
 - 推荐 Markdown 渲染软件使用 Obsidian, 其界面主题选用 Github Theme, 开启 Markdown 严格断行模式.
-- 文内 C 代码使用 [Kernel 风格](Language/Coding%20Style/Kernel%20C%20Style.md), C++ 和 Go 代码使用 [Google 风格](Language/Coding%20Style/Google%20C++%20Style.md), Python 使用 [PEP8](Language/Coding%20Style/PEP8.md) 风格.
+- 文内 C 代码使用 [Kernel 风格](Language/C/Kernel%20C%20Style.md), C++ 和 Go 代码使用 [Google 风格](Language/C++/Google%20C++%20Style.md), Python 使用 [PEP8 Style](Language/Python/PEP8%20Style.md) 风格.
 - 不要求控制行长度, 建议行长度不超过 100 字符, 全角占两字符.
 
 > 免责:   
