@@ -148,7 +148,7 @@ $ which php
 | ---------- | --------- | ------ | -------- | ---- |
 | `sudo, su` | `usermod` | `exit` | `groupmod`         |      |
 
-[Bash 脚本编程](sh%20script/1%20变量.md)
+[Bash 脚本编程](script/1%20变量.md)
 
 | `export` | `env`   |     |     |     |
 | -------- | ------- | --- | --- | --- |

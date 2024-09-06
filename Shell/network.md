@@ -78,7 +78,7 @@ lsof -iTCP -sTCP:LISTEN -P -n
 
 ### `iftop`, `nethogs`,`slurm`
 
-[`iftop`](http://www.ex-parrot.com/~pdw/iftop/) 或 [`nethogs`](https://github.com/raboof/nethogs) 用于查找正在使用带宽的套接字连接或进程. 其中 nethogs 可以将流量分解到进程, 诊断带宽使用时更有效. slurm 则用于对总体流量变化进行可视化, 更简洁.
+[`iftop`](http://www.ex-parrot.com/~pdw/iftop/), [`bandwhich`](https://github.com/imsnif/bandwhich) 或 [`nethogs`](https://github.com/raboof/nethogs) 用于查找正在使用带宽的套接字连接或进程. 其中 nethogs 可以将流量分解到进程, 诊断带宽使用时更有效. slurm 则用于对总体流量变化进行可视化, 更简洁.
 
 iftop 侧重于持续监控网络连接, netstat 则用于一次性检查网络配置和状态.
 

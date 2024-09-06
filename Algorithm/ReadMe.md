@@ -1,4 +1,4 @@
-使用 [kernel c 风格](../Language/Coding%20Style/Kernel%20C%20Style.md). 内容为组合优化
+使用 [kernel c 风格](../Language/C/Kernel%20C%20Style.md). 内容为组合优化
 
 ## 名词表
 

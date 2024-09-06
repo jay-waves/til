@@ -42,10 +42,7 @@ VSCode 安装 Microsoft C/C++ 插件. VSCode 的用户工作区配置文件放�
 
 配置位于 `Settings > Extension > C/C++ > Formatting` 以及 `Settings > Text Editor > Formatting`. C/C++ 插件支持自带的 vcFormat 以及 Clang-Format. 尽量轻量化配置, 配置自动插入空格和换行即可, 培养代码习惯, 保持对多种 Coding Style 的兼容[^4].
 
-[^4]: [Google C++ Style](../../Language/Coding%20Style/Google%20C++%20Style.md), [Kernel C Style](../../Language/Coding%20Style/Kernel%20C%20Style.md)
-
-```json
-// in settings.json
+[^4]: [Google C++ Style](../../Language/C++/Google%20C++%20Style.md) Style](../../Language/C/Kernel%20C%20Style.md)in settings.json
 "editor.formatOnPaste": true,
 "editor.formatOnType": true,
 "editor.renderWhitespace": "none",

@@ -4,9 +4,7 @@ C 语言诞生于 AT&T 的贝尔实验室, 但功能不完善. 1983 年美国国
 成立 C 语言标准委员会, 于 1989 年建立第一个完整的 C 语言标准, 称为 ANSI C89, 
 其中包括了标准函数库[^7].
 
-[^7]: 具体函数库内容详见 [C/StandardLib/ReadMe](../../Language/C/standard%20lib/ReadMe.md)
-
-libc 仅指 C 语言标准库, libc++ 指 C++ 标准库. 语言委员会提供一套标准库函数标准, 
+[^7]: 具体函数库内容详见 [C/StandardLib/ReadMe](../../Language/C/标准库/ReadMe.md) 语言标准库, libc++ 指 C++ 标准库. 语言委员会提供一套标准库函数标准, 
 但不规定底层究竟如何实现 (比如在 linux 和 windows 上, `printf()` 可能会调用不同
 的系统调用来达成功能), 所以不同编译器和操作系统都会有独立的实现.
 
