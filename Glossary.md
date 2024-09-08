@@ -285,7 +285,7 @@ RSA: 目前广泛使用的公钥加密算法, 见 [RSA](Security/密码学/公�
 
 # S
 
-SQL: 数据库结构化查询语言, 见 [Data Storage/SQL](Information/数据库/SQL/理论/SQL.md)
+SQL: 数据库结构化查询语言, 见 [Data Storage/SQL](Information/数据库/SQL/ReadMe.md)
 
 Soundness: 健全性, 一个逻辑系统是健全的, 当它所有推导都仅产生真实结论; 即不会错误地证明假命题为真. 见 [可靠性与完备性](Math/计算理论/可靠性与完备性.md)
 
@@ -350,6 +350,8 @@ VMA: virtual Memory Area, 代指进程拥有的某片连续虚拟内存区域. �
 # W
 
 WSL: Windows Subsystem for Linux, 见 [OS/Linux Distribution/WSL](System/Distributions/WSL/配置%20-%20从此开始.md)
+
+Whitening: 白化, 在第一轮和最后一轮加密中对密钥和明文进行**异或**操作, 旨在加强分组加密安全性. 最早用于 DES-X 加密算法.
 
 # X
 
