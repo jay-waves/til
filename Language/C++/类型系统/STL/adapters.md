@@ -39,7 +39,7 @@ int main() {
 
 ### priority_queue
 
-`std::priority_queue` 是 STL 中的一种[容器适配器](adapters.md). 默认情况下是最[堆](../../../../Algorithm/数据结构/tree/binary%20heap.md), 但是可自定义比较函数 `Compare()` 来改变行为. 
+`std::priority_queue` 是 STL 中的一种[容器适配器](adapters.md). 默认情况下是最[堆](../../../../Algorithm/树/binary%20heap.md), 但是可自定义比较函数 `Compare()` 来改变行为. 
 
 ```cpp
 template<
