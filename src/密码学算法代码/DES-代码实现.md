@@ -1,7 +1,5 @@
 我这拿整型实现真是贱呐，给自己没事找事
 
-# Python 实现
-
 - P: permutate
 - C: compress
 - S: substitute

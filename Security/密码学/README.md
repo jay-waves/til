@@ -1,7 +1,3 @@
-本文件夹仅收录**密码学**相关部分, 网络空间安全 (Cyber Security) 相关请移步 [Code/Security](obsidian://open?vault=Code&file=Security%2FREADME)
-
-***
-
 ## 内容目录
 
 现代密码学分为单钥密码 (对称密码) 和公钥密码 (非对称密码), 单钥密码分为分组密码 (Block Cipher) 和流密码 (Stream Cipher). 公钥密码效率比单钥密码低, 但提供了更强的密码学功能, 被用于密钥交换和数字签名. 
