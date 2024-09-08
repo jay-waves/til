@@ -133,7 +133,7 @@ HTTPs: HTTP+SSL/TLS, 对 HTTP 协议提供安全加密.
 
 Handle: 句柄
 
-Heap: 堆, 数据结构. 见 [binary heap](Algorithm/数据结构/tree/binary%20heap.md)
+Heap: 堆, 数据结构. 见 [binary heap](Algorithm/树/binary%20heap.md)
 
 Hook: 钩子.
 
@@ -299,7 +299,7 @@ SDK: software development kit, 软件开发工具集.
 
 Southbridge: 南桥. 见 [计算机架构](HardWare/计算机架构.md)
 
-Stack: 先入后出的栈数据结构, 见 [kernel/list](Algorithm/数据结构/linux%20kernel/list.md). 也指进程内存空间的一种结构, 见 [Linux 内存空间分布](System/Memory/Linux%20内存空间分布.md)
+Stack: 先入后出的栈数据结构, 见 [kernel/list](Algorithm/内核/list.md). 也指进程内存空间的一种结构, 见 [Linux 内存空间分布](System/Memory/Linux%20内存空间分布.md)
 
 Static Shared Library: 静态共享库.
 

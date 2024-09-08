@@ -4,7 +4,7 @@ license: GPL2
 copyright: Andrea Arcangeli (1999)
 ---
 
-红黑树原理请见 [red-black tree](../tree/red-black%20tree.md)
+红黑树原理请见 [red-black tree](../树/red-black%20tree.md)
 
 ```c
 // in include/linux/rbtree_types.h
