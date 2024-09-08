@@ -1,3 +1,6 @@
+OAEP (Optimal Asymmetric Encryption Padding) 是现代 RSA 加密的填充方式.
+
+
 ```
                      +----------+------+--+-------+
                 DB = |  lHash   |  PS  |01|   M   |
@@ -24,6 +27,17 @@
 - PS: padding string
 
 ```python
+from hashlib import sha1
+import rsa
+
+hash = lambda m: sha1(m).digest()
+hlen: int = sha1.digest_size
+
+i2osp = lambda num, length: num.to_bytes(length, 'big')
+os2ip = lambda bstr: int.from_bytes(bstr, 'big')
+read_hex_bstr = lambda : bytes.fromhex(input().strip()[2:])
+xor = lambdadata, mask: bytes(a^b for a,b in zip(data, mask))
+
 def mgf1(z: bytes, l: int) -> bytes:
     assert l <= (hlen << 32), "mask too long"
 
@@ -115,21 +129,4 @@ def decrypt(d, n, data, seed, label=b'0x'):
 		...
 	else:
 		return m.hex()
-```
-
-
-无聊的前摇:
-
-```python
-# 此部分放在开头
-from hashlib import sha1
-import rsa
-
-hash = lambda m: sha1(m).digest()
-hlen: int = sha1.digest_size
-
-i2osp = lambda num, length: num.to_bytes(length, 'big')
-os2ip = lambda bstr: int.from_bytes(bstr, 'big')
-read_hex_bstr = lambda : bytes.fromhex(input().strip()[2:])
-xor = lambdadata, mask: bytes(a^b for a,b in zip(data, mask))
 ```

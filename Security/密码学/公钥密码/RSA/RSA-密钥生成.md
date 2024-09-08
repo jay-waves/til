@@ -9,7 +9,7 @@
 3. 在恰当随机填充下 (如OAEP), 公钥较小也可以安全. 当然小如 $1, 2$ 也不行.
 
 什么 $e$ 不行?
-- $e$ 较小, 如 $e=3$, 且不正确填充 (如 `PKCS#1 v2.1 OAEP`), 存在 [RSA-低指数广播攻击](RSA-攻击/RSA-低指数广播攻击.md), 即 [Coppersmith's attack](https://en.wikipedia.org/wiki/Coppersmith%27s_attack)
+- $e$ 较小, 如 $e=3$, 且不正确填充 (填充方法如 `PKCS#1 v2.1`, `OAEP`), 存在 [RSA-低指数广播攻击](RSA-攻击/RSA-低指数广播攻击.md), 即 [Coppersmith's attack](https://en.wikipedia.org/wiki/Coppersmith%27s_attack)
 - $e$ 使 $e^{i}\equiv 1 \pmod{\phi(n)}, i\geq \frac{\phi(n)}{2}$ 的 $i$ 较小, 存在 [RSA-循环攻击](RSA-攻击/RSA-循环攻击.md)
 
 ### 大素数 $p,q$
