@@ -1,6 +1,6 @@
-SQL (Structured Query Language) 是[声明式语言](../../../../Language/编程范式.md), 其功能:
-- 数据定义语言 (Data Definition Lanuguage): 数据库结构定义
-- 数据操纵语言 (Data Manipulation Language): 数据查询与修改
+SQL (Structured Query Language) 是结构化查询语言, 专用于与数据库交互和通信. 语言类型为[声明式语言](../../../../Language/编程范式.md), 其功能:
+- 数据定义语言 (Data Definition Lanuguage): 数据库结构定义, 用于创建, 修改和删除数据库对象 (表, 列, 索引, 视图, 存储过程)
+- 数据操纵语言 (Data Manipulation Language): 管理数据库数据, 查询, 修改, 插入与删除数据对象.
 - 数据控制语言 (Data Control Language): 权限控制
 - 事务控制语言 (Transaction Control Language): 
 
@@ -10,7 +10,22 @@ SQL (Structured Query Language) 是[声明式语言](../../../../Language/编程
 | DML      | select, insert, update, delete |
 | DCL      | grant, revoke                               |
 
-## 数据定义
+## 基础概念
+
+数据库, database.
+
+表, table, 表是某种数据的结构化清单. 
+
+列, column 构成表中的字段; 行, raw 构成表中的一个记录, 也称为记录, record.
+
+模式, schema, 数据库的结构信息.
+
+主键, primary key 指**唯一**标识该行的一列. 应总是定义主键.  
+- 不应更新主键列中的值
+- 不重用主键列的值
+- 主键不适用将来变化的值, 如来源可能会更新
+
+## 对象定义
 
 | 对象                    | 创建操作      | 删除操作    | 修改操作    |
 | ----------------------- | ------------- | ----------- | ----------- |
@@ -19,7 +34,7 @@ SQL (Structured Query Language) 是[声明式语言](../../../../Language/编程
 | 视图                    | create view   | drop view   |             |
 | 索引                    | create index  | drop index  | alter index            |
 
-建表:
+建表: 定义列时, 需要指定具体的[数据类型](数据类型.md)
 
 ```sql
 create table Student(
@@ -30,26 +45,6 @@ create table Student(
 	foreign key (Cno) reference Class(Cno)
 );
 ```
-
-| 数据类型                     | 含  义                                                         |
-| ---------------------------- | -------------------------------------------------------------- |
-| CHAR(n) <br> CHARACTER(n)    | 长度为n的定长字符串 `'my char'`                                |
-| VARCHAR(n)                   | 最大长度为n的变长字符串                                        |
-| CLOB                         | 字符串大对象 (character large object)                          |
-| BLOB                         | 二进制大对象(binary large object)                              |
-| INT，INTEGER                 | 整数 (4字节)                                                   |
-| SMALLINT                     | 短整数 (2字节)                                                 |
-| BIGINT                       | 长整数 (8字节)                                                 |
-| NUMERIC(p，d)                | 定点数, 由p位数字 (不包括符号, 小数点) 组成, 小数后面有d位数字 |
-| DECIMAL(p, d) <br> DEC(p, d) | 同 NUMERIC                                                     |
-| REAL                         | 取决于机器精度的单精度浮点数                                   |
-| DOUBLE PRECISION             | 取决于机器精度的双精度浮点数                                   |
-| FLOAT(n)                     | 可选精度的浮点数, 精度至少为n位数字                            |
-| BOOLEAN                      | 逻辑布尔量                                                     |
-| DATE                         | 日期, 包含年月日, 格式为 `YYYY-MM-DD`                          |
-| TIME                         | 时间, 包含时分秒，格式为 `HH:MM:SS`                            |
-| TIMESTAMP                    | 时间戳类型 `'1970-01-01 00:00:01' UTC`                         |
-| INTERVAL                     | 时间间隔类型                                                   |
 
 删除表: `drop table <t> [restrict | cascade]`
 - restrict: 和 cascade 相反
@@ -66,6 +61,8 @@ alter table <表名>
 ```
 
 ## 数据查询
+
+数据查询详见 [SQL/数据过滤](数据过滤.md).
 
 ```sql
 select [all|distinct] <列表达式>[, <其他列表达式>]
@@ -87,13 +84,6 @@ from <表名> [, <其他表名>] [as] <别名>
 | 确定集合 | (not) in          |
 | 存在     | (not) exists             | 
 
-聚合函数: 注意 `where` 不能使用聚合函数, 需要使用 `having`. 除 `count()` 外所有聚合函数会忽略**含 null 行**, 分组时多个 null 会被分为一组.
-- `count([distinct] <列名>)`
-- `sum()`
-- `avg()`
-- `max()`
-- `min()`
-
 ### 子语句
 
 **嵌套查询:**
@@ -107,12 +97,7 @@ from <表名> [, <其他表名>] [as] <别名>
 | ANY | IN  | --     | <MAX | <=MAX | >MIN | >=MIN |
 | ALL | --  | NOT IN | <MIN | <=MIN | >MAX | >=MAX      |
 
-数据库没有全称量词 (for all), 需要用存在量词等价转换: $(\forall x) P\equiv \neg (\exists x(\neg P))$, 其中量词 $x\in Q$, P 为谓词. 举例而言, `选择了所有课程的学生`<->`不存在有课程没有被该学生选过`, 其中 $x=\text{课程}\in Q=\text{所有课程集合}$, $P=\text{学生选择了该门课}$.
-
-**集合查询**:
-- minus
-- `union [all]` all 保留重复元组.
-- intersect
+数据库没有全称量词 (for all), 需要用存在量词等价转换: $(\forall x) P\equiv \neg (\exists x(\neg P))$, 其中量词 $x\in Q$, P 为谓词. 举例而言, "选择了所有课程的学生" 等价于 "不存在有课程没有被该学生选过", 其中 $x=\text{课程}\in Q=\text{所有课程集合}$, $P=\text{学生选择了该门课}$.
 
 ### 查询优化
 
@@ -155,6 +140,8 @@ SQL 语句
 5. 找出并合并公共子表达式
 
 ## 数据修改
+
+详见 [SQL/基础语法](基础语法.md)
 
 ```sql
 update <table>
