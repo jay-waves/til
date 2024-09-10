@@ -275,7 +275,7 @@ OSI: 一种安全框架, 定义了安全攻击/安全机制/安全服务, 见 [�
 
 ROS: Robot Operating System, 开源机器人操作系统
 
-Reflection: 反射, 在**运行时**操作和配置对象及其属性, 在编写代码时这些类和方法可能不是已知的, 常用于实现框架和库. 如 python 的[元类](Language/Python/运行时服务/元类.md)
+Reflection: 反射, 在**运行时**操作和配置对象及其属性, 在编写代码时这些类和方法可能不是已知的, 常用于实现框架和库. 如 python 的[元编程](Language/Python/元编程.md)
 
 RTT: 网络报文往返时间
 
