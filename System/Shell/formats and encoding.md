@@ -3,13 +3,13 @@
 | 名称   | 作用                                                                | 例子                                                         |
 | ------ | ------------------------------------------------------------------- | ------------------------------------------------------------ |
 | [Base64](../Information/字符串编码/Base64.md) | 用于将文件/图片的二进制数据, 编码为纯 ASCII 字符串.| `YGlklD4gZXh6ZHYudHh0YA==`                                                          |
-| [Base](../Information/字符串编码/Base.md) | 类似 Base64, 去除了易混淆的 O0Il, 用于比特币                        |                                                              |
+| [Base](../../Information/字符串编码/Base.md) | 类似 Base64, 去除了易混淆的 O0Il, 用于比特币                        |                                                              |
 | Hex    | 二进制转化为十六进制字符串. 用于加密和校验                          |                                                              |
-|  [XML](../Information/数据交换格式/XML.md)   |                                                                     |                                                              |
-| [YAML](../Information/数据交换格式/YAML.md)   | 类似 JSON, 更反人类一点. 既不易读, 也不易懂...                                                                    |                                                              |
-| [JSON](../Information/数据交换格式/JSON.md)   | 文本交换格式, 自带简单数据结构, 便于解析.                             |                                                              |
+|  [XML](../../Information/数据交换格式/XML.md)   |                                                                     |                                                              |
+| [YAML](../../Information/数据交换格式/YAML.md)   | 类似 JSON, 更反人类一点. 既不易读, 也不易懂...                                                                    |                                                              |
+| [JSON](../../Information/数据交换格式/JSON.md)   | 文本交换格式, 自带简单数据结构, 便于解析.                             |                                                              |
 | HTML   | 用于在 HTML 中标识特殊字符, 避免和标签关键字冲突.                   | `&apos, &lt, &gt, &times, &divide, &amp, &quot, &nbsp, &copy, &reg` |
-| [URL](../Information/字符串编码/URL.md)   | 用于避免 URL 中的特殊字符                            | `Hello%20world%21`                                           |
+| [URL](../../Information/字符串编码/URL.md)   | 用于避免 URL 中的特殊字符                            | `Hello%20world%21`                                           |
 
 ## 不同文件格式
 
@@ -63,7 +63,7 @@ strings -tx -n 6 --encoding={s,S,b,l,B,L} example.bin
 
 ### `iconv`, `uconv`
 
-`iconv` 更改[Char](../Information/字符串编码/Char.md)方式. 
+`iconv` 更改[Char](../../Information/字符串编码/Char.md)方式. 
 
 ```sh
 # 转换为 Windows 默认的 UTF-16LE 编码 
