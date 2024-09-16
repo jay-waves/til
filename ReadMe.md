@@ -19,13 +19,19 @@
 | paper        | 论文     |                                                |
 | src          | 代码     |                                                |
 
+### License
 
-### TODO
+如未明确说明, 原创内容一律使用 CC0 许可. 放弃所有版权, 可自由使用.
 
-- [ ] 链接过程
-- [ ] C++ 现代化部分
-- [ ] 数据结构: rb tree, finger tree, leafy tree
-- [ ] 算法: KMP 算法, 
+### TODOs
+
+- [ ] **编译链接过程**
+- [ ] **C++ 现代化部分: A Tour of C++**
+- [ ] **面向对象设计模式**
+- [ ] **数据结构: rb tree, finger tree, leafy tree, graph**
+- [ ] 机器学习相关重要论文
+- [ ] 比特币和以太坊思想
+- [ ] 应用数学 (偏微分方程, 泛函分析, 数值分析, 复变函数), 数学物理方法
 
 ### Workflow Tags
 
