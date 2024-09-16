@@ -10,6 +10,8 @@ $ time ./lab2
 
 ### `hyperfine`
 
+### `tokei`
+
 ## network debug
 
 see [Bash/network](network.md)

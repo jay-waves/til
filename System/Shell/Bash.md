@@ -70,6 +70,9 @@ $ which php
 /c/xampp/php/php
 ```
 
+### BashScript
+
+[Language/BashScript](../../Language/BashScript/杂.md)
 
 ## Bash 工具列表
 
@@ -148,7 +151,7 @@ $ which php
 | ---------- | --------- | ------ | -------- | ---- |
 | `sudo, su` | `usermod` | `exit` | `groupmod`         |      |
 
-[Bash 脚本编程](script/1%20变量.md)
+[Bash 脚本编程](../../Language/BashScript/1%20变量.md)
 
 | `export` | `env`   |     |     |     |
 | -------- | ------- | --- | --- | --- |
