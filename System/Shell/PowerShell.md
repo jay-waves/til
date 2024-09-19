@@ -38,7 +38,7 @@ Powershell 中想要直接使用 CMD 中命令, 而不是别名, 请加上 `.exe
 
 ## Invoke-WebRequest
 
-Powershell 中 `curl` 实际是 `Invoke-WebRequest` 的别名 (不是[原来的工具](network.md#`curl`)), **参数**有变化 (真的坑):
+Powershell 中 `curl` 实际是 `Invoke-WebRequest` 的别名 (不是[原来的工具](网络调试.md#`curl`)), **参数**有变化 (真的坑):
 
 - `-Uri` 
 - `-Proxy` --> `-x`
