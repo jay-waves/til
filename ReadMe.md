@@ -32,6 +32,8 @@
 - [ ] 机器学习相关重要论文
 - [ ] 比特币和以太坊思想
 - [ ] 应用数学 (偏微分方程, 泛函分析, 数值分析, 复变函数), 数学物理方法
+- [ ] [Bash](System/Shell/Bash.md) 这里改成按专题组织, 如管理文件/压缩加密文件
+- [ ] [Stable Difussoin](Intelligence/Stable%20Diffusion/Stable%20Difussoin.md) 全部挪走到F盘, 有风险, 包括附件
 
 ### Workflow Tags
 

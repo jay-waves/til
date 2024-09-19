@@ -111,13 +111,19 @@ inode    type     filename
 
 #### 硬链接
 
-**硬链接**, Hard Link, 指多个目录项指向同一个索引节点, 该索引节点的被引用数增加. 该链接方法无法跨文件系统, 当所有硬链接和源文件被删除时, 源文件才会被彻底删除.
+**硬链接**, Hard Link, 指多个目录项指向同一个索引节点, 该索引节点的被引用数增加. 该链接方法无法跨文件系统, 当所有硬链接和源文件被删除时, 源文件才会被彻底删除, 即无法立即释放空间. 
+
+硬链接也无法指向文件夹, 因为硬链接直接指向 `inode`, 和原文件的结构是等价的, 所以文件系统无法区分哪一个才是该目录文件真正的位置, 甚至导致目录死循环.
 
 ```
 dentry  name        inode
 1       myfile      101
 2       hardlink1   101
 3       hardlink2   101
+```
+
+```
+file2 -> file1 inode -> file1 data_block
 ```
 
 #### 软链接
@@ -132,4 +138,8 @@ dentry name       inode
 inode blocks 
 101   ...
 103   /path/to/myfile
+```
+
+```
+file2 -> file2 inode -> file2 data_block (l) -> file1 -> file1 inode -> file1 data_block
 ```
