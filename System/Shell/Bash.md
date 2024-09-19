@@ -76,20 +76,20 @@ $ which php
 
 ## Bash 工具列表
 
-[system permission](system%20permission.md)
+[用户权限管理](用户权限管理.md)
 
 | `chmod` | `chown` |
 | ------- | ------- |
 | `getfacl`        |         |
 
-[debug](debug.md)
+[进程调试](进程调试.md)
 
 | `ldd`    |  | `dmesg` | `strace, ltrace` |
 | -------- | ------ | ------- | ---------------- |
 | `nm`     | `stap` | `stap`  | `perf`           |
 | `sysdig` | `time` | `hyperfine`        |                  |
 
-[process](process.md)
+[进程管理](进程管理.md)
 
 | `pkill`  | `pgrep`   | `pstree` | `lsof`          | `(h)top`    |
 | -------- | --------- | -------- | --------------- | --- |
@@ -103,7 +103,7 @@ $ which php
 | --------- | ------- | -------- |
 | `whereis` | `which` |          |
 
-[network](network.md)
+[网络调试](网络调试.md)
 
 | `ip`                | `ping`      | `mtr`   | `netcat, socat` |
 | ------------------- | ----------- | ------- | --------------- |
@@ -114,7 +114,7 @@ $ which php
 | `curl`              | `wget`      |         |                 |
 | `unshare`           | `firejail`  |         |                 |
 
-[text handling](text%20handling.md)
+[文件内容浏览和编辑](文件内容浏览和编辑.md)
 
 | `pandoc`           | `jq`                 | `shyaml`        | `xmlstarlet`   | `csvkit` |
 | ------------------ | -------------------- | --------------- | -------------- | -------- |
@@ -124,7 +124,7 @@ $ which php
 | `uniq`             | `sort`               | `nl`            | `iconv, uconv` | `expand` |
 | `cat, bat`         | `diff`               | `tail, head`    | `more, less`   |          |
 
-[file system](file%20system.md)
+[文件系统管理](文件系统管理.md)
 
 |            | `mount`        | `fdisk`  | `mkfs`   | `lsblk` |
 | ---------- | -------------- | -------- | -------- | ------- |
@@ -136,7 +136,7 @@ $ which php
 | `stat`     | `file`         | `chattr` | `wc`     |         |
 | `xz`       | `7zip`         | `tar`    | `gzip`         |         |
 
-[system information](system%20information.md)
+[系统硬件信息](系统硬件信息.md)
 
 | `/proc`    | | `w`      | `uname` | `sysstat, dstat` |
 | ---------- | -------- | -------- | ------- | ---------------- |
