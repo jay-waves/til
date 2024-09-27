@@ -269,7 +269,7 @@ PKI: Public Key Infrastructure, 公钥基础设置, 见 [密钥分发与管理](
 
 # Q
 
-OSI: 一种安全框架, 定义了安全攻击/安全机制/安全服务, 见 [安全模型/OSI](Security/安全模型.md)
+OSI: 一种安全框架, 定义了安全攻击/安全机制/安全服务, 见 [安全模型/OSI](Security/ReadMe.md)
 
 # R
 

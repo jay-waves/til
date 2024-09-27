@@ -1,29 +1,29 @@
 ### TOC 🚀
 
-| 英文标题     | 中文标题 | 描述                                           |
-| ------------ | -------- | ---------------------------------------------- |
-| Algorithm    | 算法     | 数据结构与算法                                 |
-| Intelligence | 人工智能 |                                                |
-| Compiler     | 编译     | LLVM, 链接过程, 汇编                           |
-| Information  | 信息     | 数据库, 数据交换, 字符串编码, 信息论, 数字信号 |
-| HardWare     | 硬件     |                                                |
-| Language     | 编程语言 | C, C++, Go, Haskell, Python                    |
-| Network      | 网络     | 网络分层模型, 防火墙, 网络代理                                               |
-| System       | 操作系统 | Linux, Windows, 虚拟机和容器                   |
-| Security     | 网络安全 | 调试, 漏洞攻击, 软件测试, 密码学               |
-| Math         | 数学     | 微积分, 线性代数, 数论, 抽象代数, 概率论, 计算理论                                               |
-| Shell        |          | Bash, Powershell, 命令行软件                   |
-| Tools        | 工具     | Git, Vim, Latex, IDE, Wolfram      |
-| attach       | 图片附件 |                                                |
-| appx         | 附录     | 技术标准, 参考信息等                           |
-| paper        | 论文     |                                                |
-| src          | 代码     |                                                |
+| 英文标题      | 中文标题 | 描述                                               |
+| ------------- | -------- | -------------------------------------------------- |
+| Algorithm     | 算法     | 数据结构, 算法                                     |
+| Intelligence  | 人工智能 |                                                    |
+| Compiler      | 编译     | LLVM, 链接过程, 汇编                               |
+| Information   | 信息     | 数据库, 信息论, 数字信号     |
+| HardWare      | 硬件     | 计算机组成, 字符串编码                                                   |
+| Language      | 编程语言 | C, C++, Go, Haskell, Python                        |
+| Network       | 网络     | 网络分层模型, 防火墙, 网络代理                     |
+| System        | 操作系统 | Linux, Windows, Container, Shell                   |
+| Security      | 网络安全 | 调试, 漏洞攻击, 软件测试, 密码学                   |
+| Math          | 数学     | 微积分, 线性代数, 数论, 抽象代数, 概率论, 计算理论 |
+| Miscellaneous | 杂项     | 数据交换格式,                                                    |
+| Tools         | 工具     | Git, Vim, Latex, IDE, Wolfram                      |
+| attach        | 图片附件 |                                                    |
+| appx          | 附录     | 技术标准, 参考信息等                               |
+| paper         | 论文     |                                                    |
+| src           | 代码     |                                                    |
 
 ### License
 
 如未明确说明, 原创内容一律使用 CC0 许可. 放弃所有版权, 可自由使用.
 
-### TODOs
+### ToDos
 
 - [ ] **编译链接过程**
 - [ ] **C++ 现代化部分: A Tour of C++**
@@ -32,25 +32,27 @@
 - [ ] 机器学习相关重要论文
 - [ ] 比特币和以太坊思想
 - [ ] 应用数学 (偏微分方程, 泛函分析, 数值分析, 复变函数), 数学物理方法
-- [ ] [Bash](System/Shell/Bash.md) 这里改成按专题组织, 如管理文件/压缩加密文件
-- [ ] [Stable Difussoin](Intelligence/Stable%20Diffusion/Stable%20Difussoin.md) 全部挪走到F盘, 有风险, 包括附件
 
 ### Workflow Tags
 
-| tags                            | descrp                         |
-| ------------------------------- | ------------------------------ |
-| #LGTM                           | 有兴趣, 值得二刷的笔记         |
-| #Paper                          | 文章笔记                       |
-| #Trouble                        | 遇到的问题                     |
-| #FAQ                            | 问题及解决办法, 以及一些好奇心 |
-| #KeyPoints                      | 重点                           |
-| #TODO, #WIP, #WontFix, #Overdue | 表进度状态, 一般用于日志       |
-| #NSFW                           | 奇怪内容, 加入 `.gitignore`    |
-| #Code                           | 笔记内容为源码                 |
-| #Docs                           | 笔记内容为复述文档或定义       |
-| #Repost                         | 笔记内容为转载                 |
-| #Recipes                        | 最佳实践                       |
-| #TroubleShooting                |   故障处理                             |
+分为内容标签和进度标签两类, 进度标签不会出现在正文中.
+
+| tags                      | descrp                      |
+| ------------------------- | --------------------------- |
+| #LGTM #KeyPoints          | 有兴趣, 重点, 值得二刷      |
+| #Trouble #TroubleShooting | 遇到的难题, 故障处理        |
+| #FAQ                      | 提问, 一些好奇心            |
+| #NSFW                     | 奇怪内容, 加入 `.gitignore` |
+| #Code                     | 笔记内容为源码              |
+| #Docs                     | 笔记内容为复述文档或定义    |
+| #Repost                   | 笔记内容为转载              |
+| #Paper                                  | 笔记内容为文献                    |
+| #Recipes                  | 最佳实践                    |
+| #ToDo                     | 进度标签, 未来会投入精力    |
+| #NoPlan                   | 进度标签, 未来不会投入精力  |
+| #WIP                      | 进度标签, 正在              |
+| #Recall                   | 进度标签, 需要回忆复习      |
+| #TypeSet                  | 进度标签, 需要调整排版      |
 
 ### Writing Standards
 
@@ -63,14 +65,20 @@
 - 大篇幅参考时, 在开头文章元信息处列明来源. 
 - 小篇幅参考时, 在文内用脚注列明来源.
 - 图片应在 `[]` 括号中列明来源, 尽量自行绘制, 并压缩空间.
-- 语言简洁有力, 减少口语和形容词, 减少重复叙述.
-- 强调句使用粗体 `**`, 新名词使用斜体 `*`, 名词收录到名词表中.
+- 仓库整体使用 [CC0](License.md) 许可证, 部分摘录文章或原创文章使用不同版权许可的, 在文章开头标明.
+- 语言简洁有力, 减少口语和形容词, 减少重复叙述, 体现清晰发展逻辑.
+- 强调句使用粗体 `**`, 新名词使用斜体 `*`, 名词收录到[名词表](Glossary.md)中.
 - 推荐字体使用 "文泉驿等宽微米黑" 或 "等距更纱黑体 SC", 代码段字体使用 Fira Code.
 - 推荐 Markdown 渲染软件使用 Obsidian, 其界面主题选用 Github Theme, 开启 Markdown 严格断行模式.
 - 文内 C 代码使用 [Kernel 风格](Language/C/Kernel%20C%20Style.md), C++ 和 Go 代码使用 [Google 风格](Language/C++/Google%20C++%20Style.md), Python 使用 [PEP8 Style](Language/Python/PEP8%20Style.md) 风格.
-- 不要求控制行长度, 建议行长度不超过 100 字符, 全角占两字符.
+- 不要求控制行长度, 建议代码行长度不超过 100 字符, 全角占两字符.
+- 数学中*定理, 定义, 例子, 证明*皆使用标题格式, 便于链接和折叠. 
+- 数学标题应使用数字层次标号, 如 `1.3.1`.
+- 数学定理和定义内容使用粗体.
+- 数学证明中, 每行由条件开启, 用结论结束, 构成一条明显的因果关系. 用 $\blacksquare$ 标识结束.
+- 数学公式符号 `$$` 和左右文字间隔一个半角空格, 避免渲染问题.
 
 > 免责:   
 > 1. 历史原因, 部分笔记无法做到上述标准. 
 > 2. 标准还在猥琐发育, 未来可能改变.   
-> 3. 使用的并不是标准 Markdown 语法, 例如: `==` 高亮, `#` 打标签, 文件元信息, 部分数学符号 可能仅在 Obsidian 支持.
+> 3. 使用的并不是标准 Markdown 语法.
