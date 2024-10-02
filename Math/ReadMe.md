@@ -41,6 +41,14 @@ The Art of Linear Algebra. Kenji Hiranabe.
 
 Linear Algebra for Everyone. Gilbert Strang.
 
+[线性代数的本质 - 3Blue1Brown](https://www.bilibili.com/video/BV1ys411472E)
+
+[Immersive Linear Algebra](http://immersivemath.com/ila/index.html)
+
+[Linear Algebra - MIT 18.06 - Spring 2023](https://github.com/mitmath/1806/tree/master)
+
+高等代数. 邱维声.
+
 Mathematical Merthods in the Physical Sciences. Mary L Boas.
 
 陶哲轩实分析.
