@@ -39,7 +39,7 @@ Let $\Pi = (\text{Gen}, \text{Encaps}, \text{Decaps})$ be a KEM with key length 
 	1. Compute $k := \text{Decaps}_{sk}(c)$.
 	2. Output the message $m := \text{Dec}'_k(c')$.
 
-![|300](../../../../attach/Pasted%20image%2020231228193014.png)
+![|300](../../../../attach/密码学_零知识证明_混合加密.png)
 
 ### Security of Hybrid Enc
 

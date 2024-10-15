@@ -4,7 +4,7 @@
 
 ### 2G-GSM AKA
 
-![](../../../../attach/2G-GSM-AKA协议.png)
+![|700](../../../../attach/无线通信网络_2G-GSM-AKA协议.png)
 
 GSM 安全性缺陷:
 - 主密钥 $K$ 存储在 SIM 卡中, 有复制 SIM 卡风险.
@@ -19,6 +19,10 @@ GSM 安全性缺陷:
 CDMA 使用防篡改的 UMI (UserIdentity Module) 卡替代了 GSM 的 SIM 卡.
 
 ### 3G-WCDMA AKA
+
+![|1000](../../../../attach/无线通信网络_3G_AKA协议.png)
+
+> f6~f10 在哪?
 
 3G 网络的新增安全机制
 - 用户网络间双向认证
