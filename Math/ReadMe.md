@@ -5,12 +5,12 @@
 | 计算理论         | 形式语言, 自动机, 数理逻辑, 关系代数 | Discrete Math                      |
 | 数论             | 素数                                 | Number Theory                      |
 | 微积分           |                                      | Calculus                           |
-| 线性代数         | 矩阵, 线性方程组                     | Linear Algebra, Vector Calculus                     |
+| 线性代数         | 矩阵, 线性方程组                     | Linear Algebra, Vector Calculus    |
 | 数值分析         |                                      | Numerical Analysis                 |
 | 泛函分析         |                                      | Functional Analysis                |
 | 复变函数         |                                      | Complex Analysis                   |
 | 图论和网络分析   |                                      | Graph and Network Analysis         |
-| 微分方程         |  常微分方程 (ODE), 偏微分方程 (PDE)                                   | Differential Equations                                   |
+| 微分方程         | 常微分方程 (ODE), 偏微分方程 (PDE)   | Differential Equations             |
 
 Subjects:
 - ODEs
@@ -26,6 +26,19 @@ Subjects:
 - Probablitiy and Statistics
 - Abstract Algebra
 - Number Theory
+
+## 数学工具
+
+- [Wolfram Mathematica](../Language/MMA/wolfram%20语法.md)
+- Python: 
+	- [numpy](../Language/Python/数学/numpy.md)
+	- [sympy](../Language/Python/数学/sympy.md)
+	- seaborn/matplotlib
+	- scipy
+	- [pandas](../Language/Python/数学/pandas.md)
+	- [3b1b/manim](../Language/Python/数学/manim.md)
+- [Latex/Mathjax](../Tools/Latex/Mathjax.md)
+
 
 ## 参考
 
