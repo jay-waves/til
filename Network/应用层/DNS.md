@@ -41,12 +41,27 @@ The Domain Name System (DNS) translates human-readable domain names, like `www.e
 
 Domain Names: In `blog.csdn.cn`, `.cn` is the top-level domain (TLD), `csdn` is the second level domain, `blog` is a subdomain.
 
+**DNS Records**: 指存储在 DNS 服务器中的记录信息, 有很多种类: 
+- **A**: 将一个域名映射为 IPv4 地址
+- **AAAA**: 将一个域名映射为 IPv6 地址
+- **CNAME**: 将一个域名映射到另一个域名, 类似域名的别名. 比如 `www` 映射到根域名.
+- **MX**: 指定某个权限域名服务器下的邮件服务器的地址.
+- **TXT**: 存储文本信息, 一般用于安全性配置. 
+- **NS**: 指定负责解析的 DNS 服务器 (DNS 委派).
+- **PTR** (Pointer Record): 反向 DNS 解析. 当来源 IP 的 PTR 和对应的 A 记录不一致时, 可能被归类为恶意活动 (如垃圾邮件).
 
-**DNS Records**: Information stored in DNS servers that define mappings between domain names and IP addresses. Common record types include:
-   - **A Record**: Maps a domain name to an IPv4 address.
-   - **AAAA Record**: Maps a domain name to an IPv6 address.
-   - **CNAME Record**: Canonical Name Record, used for aliasing one domain name to another.
-   - **MX Record**: Mail Exchange Record, specifies the mail server responsible for receiving email messages for a domain.
+```dns
+example.com.    3600    IN    A    93.184.216.34
+example.com.    3600    IN    AAAA    2606:2800:220:1:248:1893:25c8:1946
+www.example.com.    3600    IN    CNAME    example.com.
+example.com.    3600    IN    MX    10 mail.example.com.
+example.com.    3600    IN    MX    20 backup.example.com.
+example.com.    3600    IN    TXT    "v=spf1 include:_spf.google.com ~all"
+example.com.    3600    IN    NS    ns1.example.com.
+example.com.    3600    IN    NS    ns2.example.com.
+example.com.    3600    IN    SOA    ns1.example.com. admin.example.com. 2023101501 7200 3600 1209600 3600
+34.216.184.93.in-addr.arpa.    3600    IN    PTR    example.com.
+```
 
 ![](../../attach/Pasted%20image%2020240802105050.png)
 

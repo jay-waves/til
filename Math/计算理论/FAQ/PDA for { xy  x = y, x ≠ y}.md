@@ -1,5 +1,6 @@
 ---
-tag: QAA, 摘抄
+tags:
+  - QAA
 url: https://cs.stackexchange.com/questions/66807/pda-for-xy-x-y-x-%E2%89%A0-y-from-its-grammar-and-intuition-behind-it
 ---
 

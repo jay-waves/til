@@ -70,7 +70,7 @@
 	- Las Vegas Algorithms
 	- 随机森林
 	- 遗传算法
-- 机器学习算法
+- 线性机器学习算法
 	- 线性回归
 	- 逻辑回归
 	- 支持向量机
@@ -81,7 +81,7 @@
 
 ### 错误码
 
-使用 C POSIC LIB `errno.h` 中定义的部分错误状态码. 详见 [appendix/errno.h](../../src/errno.h)
+使用 C POSIC LIB `errno.h` 中定义的部分错误状态码. 详见 [src/errno.h](../../src/errno.h)
 - `-ENOMEM` 内存不足, 无法分配内存. 即 `malloc` 失败时返回.
 - `-EINVAL` 无效参数.
 - `-ENOENT` 资源不存在, 如查找操作未找到指定键, 或数据结构已空.

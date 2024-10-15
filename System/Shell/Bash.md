@@ -97,7 +97,7 @@ $ which php
 | `nohup`  | `timeout` |     |                 |     |
 | `watch`  | `inotifywait`          |          |                 |     |
 
-[配置及帮助](sh/配置及帮助.md)
+配置及帮助
 
 | `man`     | `type`  | `whatis` |
 | --------- | ------- | -------- |
@@ -145,7 +145,7 @@ $ which php
 | `shutdown` | `halt`   | `reboot` |         |                  |
 | `uptime`   | `dateutils`         |          |         |                  |
 
-[用户管理](sh/用户管理.md)
+用户管理
 
 | `finger`   | `whoami`  | `last` | `passwd` | `id` |
 | ---------- | --------- | ------ | -------- | ---- |

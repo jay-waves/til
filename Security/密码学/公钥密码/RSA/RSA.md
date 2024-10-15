@@ -15,7 +15,7 @@ $\begin{array}{l}{{(c^{d})^{e}\equiv c^{d e}({\mathrm{mod~}}p q)}}\\ {{\equiv c^
 1. 加密算法: $C=M^{e}\pmod n$, 其中 $(e,n)$ 为公钥
 2. 解密算法: $M=C^{d}\pmod n$, 其中 $d$ 为私钥
 
-![|500](../../../../attach/Pasted%20image%2020230420135629.png)
+![|500](../../../../attach/密码学_RSA.png)
 
 ### 2 数字签名
 
