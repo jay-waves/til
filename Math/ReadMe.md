@@ -5,7 +5,7 @@
 | 计算理论         | 形式语言, 自动机, 数理逻辑, 关系代数 | Discrete Math                      |
 | 数论             | 素数                                 | Number Theory                      |
 | 微积分           |                                      | Calculus                           |
-| 线性代数         | 矩阵, 线性方程组                     | Linear Algebra, Vector Calculus    |
+| 线性代数         | 矩阵, 线性方程组, 张量分析                     | Linear Algebra, Vector Calculus    |
 | 数值分析         |                                      | Numerical Analysis                 |
 | 泛函分析         |                                      | Functional Analysis                |
 | 复变函数         |                                      | Complex Analysis                   |
@@ -29,7 +29,7 @@ Subjects:
 
 ## 数学工具
 
-- [Wolfram Mathematica](../Language/MMA/wolfram%20语法.md)
+- [Wolfram Mathematica](../Language/Wolfram/Wolfram%20TLDR.md)
 - Python: 
 	- [numpy](../Language/Python/数学/numpy.md)
 	- [sympy](../Language/Python/数学/sympy.md)
