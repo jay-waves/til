@@ -27,6 +27,14 @@ Subjects:
 - Abstract Algebra
 - Number Theory
 
+## 数学证明
+
+- 公理 (Axiom) 基本假设, 不言自明, 无需证明.
+- 定理 (Theorem): 重要和核心的数学命题, 是证明过程的关键结果或最终目标.
+- 引理 (Lemma): 用于证明定理的重要辅助命题, 本身独立性不那么强.
+- 命题 (Proposition): 比引理和定理重要性稍低
+- 推论 (Corollary): 从命题的证明中引申出的结果, 证明一般很短, 依赖于已证明的定理或引理.
+
 ## 数学工具
 
 - [Wolfram Mathematica](../Language/Wolfram/Wolfram%20TLDR.md)
