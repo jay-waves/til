@@ -72,7 +72,7 @@ $ which php
 
 ### BashScript
 
-[Language/BashScript](../../Language/BashScript/杂.md)
+[Language/BashScript](../../Language/Bash/杂.md)
 
 ## Bash 工具列表
 
@@ -82,14 +82,14 @@ $ which php
 | ------- | ------- |
 | `getfacl`        |         |
 
-[进程调试](进程调试.md)
+[进程及程序调试](进程及程序调试.md)
 
 | `ldd`    |  | `dmesg` | `strace, ltrace` |
 | -------- | ------ | ------- | ---------------- |
 | `nm`     | `stap` | `stap`  | `perf`           |
 | `sysdig` | `time` | `hyperfine`        |                  |
 
-[进程管理](进程管理.md)
+[进程任务管理](进程任务管理.md)
 
 | `pkill`  | `pgrep`   | `pstree` | `lsof`          | `(h)top`    |
 | -------- | --------- | -------- | --------------- | --- |
@@ -151,7 +151,7 @@ $ which php
 | ---------- | --------- | ------ | -------- | ---- |
 | `sudo, su` | `usermod` | `exit` | `groupmod`         |      |
 
-[Bash 脚本编程](../../Language/BashScript/1%20变量.md)
+[Bash 脚本编程](../../Language/Bash/变量.md)
 
 | `export` | `env`   |     |     |     |
 | -------- | ------- | --- | --- | --- |

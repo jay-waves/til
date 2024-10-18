@@ -60,7 +60,7 @@ $x=m\times 2^{e}$, where $0.5\leq |m|<1$ .
 (m,e) = math.frexp(x) 
 ```
 
-$m\times 2^{2}$
+$m\times 2^{e}$
 
 ```python
 math.ldexp(m, e) 
