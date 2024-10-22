@@ -8,6 +8,21 @@
 
 $\sum_{k=1}$, $\sum\limits_{k=1}$
 
+另外, 用行间公式 `$$$$` 时, 也会自动渲染在求和号的上下.
+
+### 如何调整括号的大小, 使其匹配内容高度?
+
+使用 `\left` 和 `\right` 修饰括号
+
+```latex
+\left( \frac{a}{b} \right)
+\left[ \frac{a}{b} \right]
+\left\{ \frac{a}{b} \right\}
+\left| \frac{a}{b} \right|
+%%如果括号不匹配, 使用 . 代替另一侧不需要的符号%%
+\left\{ \frac{a}{b} \right.
+```
+
 ### Latex 输入空格
 
 latex多个连续空格会被视为一个, 如下命令可输入多空格:

@@ -58,7 +58,7 @@ Information and Entropy. Paul Penfield.
 
 Linear Algebra Done Right. Sheldon Axler.
 
-The Art of Linear Algebra. Kenji Hiranabe.
+[The Art of Linear Algebra. Kenji Hiranabe.](https://github.com/kenjihiranabe/The-Art-of-Linear-Algebra)
 
 Linear Algebra for Everyone. Gilbert Strang.
 
