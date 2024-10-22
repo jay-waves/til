@@ -101,7 +101,7 @@ ElGamal: 一种基于 DLP 困难性的公钥密码算法, 包括加密和签名.
 
 # F
 
-Fuzzing: 高效软件模糊测试框架, 见 [Fuzzing Survey](Security/软件测试/相关研究/Fuzzing%20Survey.md)
+Fuzzing: 高效软件模糊测试框架, 见 [Fuzzing Survey](Security/软件安全测试/相关研究/Fuzzing%20Survey.md)
 
 FHS: file hierarchy standard, 文件层次结构标准. 见 [Linux 系统目录](System/File%20System/Linux%20系统目录.md)
 
