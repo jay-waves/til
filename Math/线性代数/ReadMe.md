@@ -7,3 +7,10 @@
 |[合同](矩阵相合.md)  (相合) | $R_{n\times n}\simeq R_{n\times n}$ | 存在可逆矩阵 $P$, 有 $B=P^{\top}AP$                            | 合同标准型 $\Lambda=diag(1,\cdots,1,-1,\cdots,-1,0,\cdots)$ | 惯性指数, 秩           |    
 
 ![|400](../../attach/线性代数_三种实数矩阵关系.png)
+
+## 参考
+
+- [The art of linear algebra](https://github.com/kenjihiranabe/The-Art-of-Linear-Algebra)  
+- Linear Algebra For Everyone.
+- Linear Algebra Done Right
+- 线性代数. 李尚志.
