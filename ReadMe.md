@@ -15,7 +15,7 @@
 | Miscellaneous | 杂项     | 数据交换格式,                                                    |
 | Tools         | 工具     | Git, Vim, Latex, IDE, Wolfram                      |
 | attach        | 图片附件 |                                                    |
-| appx          | 附录     | 技术标准, 参考信息等                               |
+| appx          | 附录     | 技术标准, 参考信息, 对照表, 杂项                               |
 | paper         | 论文     |                                                    |
 | src           | 代码     |                                                    |
 
