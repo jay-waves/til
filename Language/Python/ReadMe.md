@@ -1,8 +1,14 @@
-## 参考
+## Reference
 
 Effective Python, 59 Specific Ways to Write Better Python - Brett Slatkin
 
 Python 3.10.4 Documentation.
+
+## Library
+
+符号推导不推荐使用 `sympy`, 使用 Wolfram Mathematica 更方便.
+- [manim](数学/manim.md)
+- [numpy](数学/numpy.md)
 
 ## Zen of Python
 
