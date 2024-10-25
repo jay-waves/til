@@ -1,3 +1,7 @@
+## 设计模式
+
+设计模式 (Design Pattern)
+
 1. 创建型模式:
 	- 工厂模式 (Factory Pattern)
 	- 抽象工厂模式 (Abstract Factory Pattern)
