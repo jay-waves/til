@@ -1,8 +1,18 @@
 ### 如何放大公式?
 
-不同程度: `\large` `\Large` `\LARGE` `\huge` `\Huge`
+不同程度: `\large` `\Large` `\LARGE` `\huge` `\Huge` `\big` 
 
 作为修饰符, 修饰整个作用域: `{\large x}`
+
+### 如何输入长竖线?
+
+$$f(x)\Bigg\vert^{\pi}_{-\pi}$$
+
+### 如何手动给公式编号
+
+Markdown 里可以用 `\tag{}` 给行间公式编号.
+
+$$x^{2}=1\tag{1.1}$$
 
 ### 如何让角标显示在正上下方?
 
