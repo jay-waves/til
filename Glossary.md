@@ -323,7 +323,7 @@ SM2: 中国标准公钥密码算法, 基于 ECC, 包括: 加密算法, 数字签
 
 # T
 
-TagDispatch: 一种函数反射方法, 见 [运行时调用选择](Language/C++/类型系统/运行时调用选择.md#函数体)
+TagDispatch: 一种函数反射方法, 见 [运行时调用选择](Language/C++/语法工具/运行时调用选择.md#函数体)
 
 Time-Sharing System: 分时系统.
 
