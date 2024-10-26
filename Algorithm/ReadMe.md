@@ -25,7 +25,7 @@
 - sort, 排序
 - swap, 交换两元素在内存中的位置.
 
-[^1]: 详见 [ReadMe](../Language/C++/STL/ReadMe.md)d)
+[^1]: 详见 [ReadMe](../Language/C++/类型系统/STL/ReadMe.md)d)
 
 ### 数据结构列表
 

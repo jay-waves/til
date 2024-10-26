@@ -1,6 +1,6 @@
-python 中变量 " 引用 " 和 " 赋值 " 的方式不同, 作用域也不同.
+python 中变量 "引用" 和 "赋值" 的方式不同, 作用域也不同.
 
-- 对于变量引用, 子作用域可以任意引用其父域的变量. 
+对于变量引用, 子作用域可以任意引用其父域的变量. 
 
 ```python
 def sort_priority(values, group):
@@ -11,14 +11,14 @@ def sort_priority(values, group):
 	values.sort(key=helper)
 ```
 
-> 事实上，当变量引用时，解释器会**依次**遍历以下作用域去解释这个变量：
-> 1. 当前函数作用域
-> 2. 闭包作用域，即包含当前局部作用域的外层作用域。？
-> 3. 全局作用域。global，或者称为 module
-> 4. 内建变量，built-in scope  
-> 如果都找不到这个被引用的变量，那么就会产生 `NameError` 异常
+事实上, 当变量引用时, 解释器会**依次**遍历以下作用域去解释这个变量:
+1. 当前函数作用域
+2. 闭包作用域, 即包含当前局部作用域的外层作用域
+3. 全局作用域 global, 或者称为 module
+4. 内建变量, built-in scope  
+5. 如果各处都找不到被引用的变量, 产生 `NameError` 异常
 
-对于变量赋值 (值改变), 子作用域不能修改父域变量, 否则会被解释为新声明变量.
+对于变量赋值 (值改变), 子作用域不能修改父域的不可变变量, 否则会被解释为新声明变量. **但是可以直接修改全局可变变量.**
 
 ```python
 def sort_priority2(numbers, group):
@@ -32,7 +32,7 @@ def sort_priority2(numbers, group):
 	return found
 ```
 
-此时可以使用 `nonlocal` 关键字补救：`nonlocal` 可以让解释器去外层作用域寻找该被改变 (而非被引用) 的变量. 但是解释器不会去全局 scope 中去寻找, 那是 global 的功能.
+当函数局部试图修改父作用域的不可变变量, Python 会默认创建新变量. 使用 `nonlocal` 关键字来声明: 确实要修改父作用域的该名称不可变变量.
 
 ```python
 def sort_priority3(numbers, group):
@@ -45,6 +45,12 @@ def sort_priority3(numbers, group):
 		return (1, x)
 	numbers.sort(key=helper)
 	return found
+```
+
+当函数局部试图修改全局不可变变量时, Python 默认会重新创建一个新变量. 使用 `global` 关键字来声明: 确实要修改全局的该名称变量.
+
+```
+...
 ```
 
 当然, 修改变量作用域是比较危险的行为. 更好的方法是定义一个类:
