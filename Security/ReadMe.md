@@ -45,23 +45,70 @@
 
 ### 安全威胁和攻击
 
+[RFC 4949, 2007, P22] 对 **Attack** 的定义为:
+
+> An intentional act by which an entity attempts to evade 
+> security services and violate the security policy of a system.
+> That is, an actual assault on system security that derives from an
+> intelligent threat.
+
+[RFC 4949, 2007, P23] 对 **Attack** 进行了分类:
+- 按意图分类:
+	- 主动攻击 (Active Attack). 尝试直接修改和影响系统的资源和操作.
+		- 拒绝服务, Denial of Service: 攻击**可用性**
+		- 消息篡改, Modification: 攻击**完整性**
+		- 伪装, Masquerade: 攻击**真实性**
+		- 重放, Replay. 防御手段有序列号机制, 挑战应答机制, 时间戳(全局时钟)机制.
+	- 被动攻击 (Passive Attack). 利用系统的信息, 但是并不直接影响系统资源, 即不影响正常通信也不篡改消息. 被动攻击的目的是获取实施离线攻击 (Off-line Attack) 所需的信息, 离线攻击从目标系统获取信息, 然后在另一个攻击者选择的系统中去分析. **被动攻击难以检测, 易于预防**, 也称为*窃听 (Eavesdropping)*.
+		- 信息内容泄露 (Information Leakage)
+		- 流量分析 (Traffic Analysis)
+- 按攻击的发起地点分类:
+	- 内部攻击 (Inside Attack), 被授权的内部人员, 恶意使用系统资源.
+	- 外部攻击 (Outside Attack), 未授权或不合法的用户, 从互联网攻击系统内部.
+- 按攻击的传送方式分类:
+	- 直接攻击 (Direct Attack)
+	- 简洁攻击 (Indirect Attack), 攻击者将数据包发送给第三方, 委托第三方通过某种方式攻击.
+
+
+[RFC 4949, 2007, P251] 对 **Risk** 的定义为:
+
+> An expectation of loss expressed as the probability that a
+> particular threat will exploit a particular vulnerability with a
+> particular harmful result.
+
+根据 [NIST SP 800-30 Rev.1, 2012], 处理 **Risk** 有四种方式:
+1. Risk Avoidance, 通过填补漏洞来消除风险.
+2. Risk Transference, 将风险转移到其他系统或实体. 如商业保险和外包服务.
+3. Risk Limitations, 实施控制来最小化风险和损失.
+4. Risk Assumption, 评估并接受可能的风险.
+
+从经济和技术的角度看, 完全避免和转义风险都是不可行的. 即使部署了所有可用对策, 仍会有参与风险, 因此, 分析风险时会将风险按成本和关键性顺序列出, 针对性应用对策. 完整和定量的风险分析很难, 机构会避免列出可能的安全威胁, 而只制定具体的安全手段.
+
+???
+
 安全威胁的基本目标是使: 信息泄露, 完整性破坏, 拒绝服务, 非法使用. 和基本安全目标相对应.
 
-**被动攻击**, 又称为**窃听** (Eavesdropping), 指以获取信息为下目的, 攻击系统**保密性**, 但不影响正常通信, 不篡改消息的攻击. 难以检测, 易于预防. 主要分为以下两类:
-- 信息内容泄露, Release Message Contents 
-- 流量分析, Traffic Analysis
-
-**主动攻击**, 指对数据流进行篡改和假冒. 难以预防, 易于检测. 分类:
-- 拒绝服务, Denial of Service: 攻击**可用性**
-- 消息篡改, Modification: 攻击**完整性**
-- 伪装, Masquerade: 攻击**真实性**
-- 重放, Replay. 防御手段有序列号机制, 挑战应答机制, 时间戳(全局时钟)机制.
+???
 
 口令碰撞和窃取, 欺骗, 缺陷和后门 (trapdoor), 认证失效, 协议缺陷, 信息泄露, 病毒和蠕虫, 拒绝服务, 木马 (Trojan Horse), 内部攻击者.
 
 [安全漏洞](安全漏洞.md)
 
 ???
+
+```
+      + - - - - - - - - - - - - +  + - - - - +  + - - - - - - - - - - -+
+      | An Attack:              |  |Counter- |  | A System Resource:   |
+      | i.e., A Threat Action   |  | measure |  | Target of the Attack |
+      | +----------+            |  |         |  | +-----------------+  |
+      | | Attacker |<==================||<=========                 |  |
+      | |   i.e.,  |   Passive  |  |         |  | |  Vulnerability  |  |
+      | | A Threat |<=================>||<========>                 |  |
+      | |  Agent   |  or Active |  |         |  | +-------|||-------+  |
+      | +----------+   Attack   |  |         |  |         VVV          |
+      |                         |  |         |  | Threat Consequences  |
+      + - - - - - - - - - - - - +  + - - - - +  + - - - - - - - - - - -+
+```
 
 ### 安全服务及安全机制
 
@@ -82,8 +129,8 @@
 	- Peer entity authentication. 对等实体身份验证.
 	- Data origin authentication. 信息源身份验证.
 2. 不可否认性, Nonrepudiation.
-	- Non-repudiation with proof of origin.
-	- Non-repudiation with proof of delivery.
+	- Non-repudiation with proof of origin. 消息发送者否认发送行为.
+	- Non-repudiation with proof of delivery (receipt). 消息接收者否认收到拥有数据.
 3. 访问控制, Access Control, 和**授权**休戚相关.
 
 
@@ -103,7 +150,7 @@
 
 [X.800, 1991] 还列有一些不属于特定安全服务的安全机制, 如*事件检测*, *安全审计 (Security Audit Trail)*, *灾难恢复 (Security Recovery)*. 这些安全机制的重要性和所需的安全等级相关.
 
-安全服务所处的[网络层次](../Network/网络体系结构.md):
+[X.800, 1991] 和 [RFC 4949, 2007] 都定义了安全服务所处的[网络层次](../Network/网络体系结构.md), 不过随着技术进步和定义变化, 下表在不同标准间区别较大, 仅作参考.
 
 <table border="1" cellspacing="0" cellpadding="5">
     <caption><strong>the relationship of security services and layers</strong></caption>
@@ -124,11 +171,11 @@
     </thead>
     <tbody>
         <tr>
-            <td rowspan="2">Authenticatio</td><td>Peer entity authentication</td>
+            <td rowspan="2">Authentication</td><td>Peer Entity</td>
             <td></td><td></td><td>Y</td><td>Y</td><td></td><td></td><td>Y</td>
         </tr>
         <tr>
-            <td>Data origin authentication</td>
+            <td>Data Origin</td>
             <td></td><td></td><td>Y</td><td>Y</td><td></td><td></td><td>Y</td>
         </tr>
         <tr>
@@ -136,48 +183,49 @@
             <td></td><td></td><td>Y</td><td>Y</td><td></td><td></td><td>Y</td>
         </tr>
         <tr>
-            <td rowspan="4">Confidentiality</td><td>Connection confidentiality</td>
+            <td rowspan="4">Confidentiality</td><td>Stream</td>
             <td>Y</td><td>Y</td><td>Y</td><td>Y</td><td></td><td>Y</td><td>Y</td>
         </tr>
         <tr>
-            <td>Connectionless confidentiality</td>
-            <td></td><td>Y</td><td>Y</td><td>Y</td><td></td><td>Y</td><td>Y</td>
+            <td>Datagram</td>
+            <td>Y</td><td>Y</td><td>Y</td><td>Y</td><td></td><td>Y</td><td>Y</td>
         </tr>
         <tr>
-            <td>Selective field confidentiality</td>
-            <td></td><td></td><td></td><td></td><td></td><td>Y</td><td>Y</td>
+            <td>Selective Field</td>
+            <td></td><td></td><td>Y</td><td></td><td></td><td>Y</td><td>Y</td>
         </tr>
         <tr>
-            <td>Traffic flow confidentiality</td>
+            <td>Traffic Flow</td>
             <td>Y</td><td></td><td>Y</td><td></td><td></td><td></td><td>Y</td>
         </tr>
         <tr>
-            <td rowspan="5">Integrity</td><td>Connection Integrity with recovery</td>
+            <td rowspan="5">Integrity</td><td>Stream with Recovery</td>
             <td></td><td></td><td></td><td>Y</td><td></td><td></td><td>Y</td>
         </tr>
         <tr>
-            <td>Connection integrity without recovery</td>
+            <td>Stream without Recovery</td>
             <td></td><td></td><td>Y</td><td>Y</td><td></td><td></td><td>Y</td>
         </tr>
         <tr>
-            <td>Selective field connection integrity</td>
+            <td>Stream Selective Field</td>
             <td></td><td></td><td></td><td></td><td></td><td></td><td>Y</td>
         </tr>
         <tr>
-            <td>Connectionless integrity</td>
-            <td></td><td></td><td>Y</td><td>Y</td><td></td><td></td><td>Y</td>
+            <td>Datagram</td>
+            <td>Y</td><td>Y</td><td>Y</td><td>Y</td><td></td><td></td><td>Y</td>
         </tr>
         <tr>
-            <td>Selective field connectionless integrity</td>
+            <td>Datagram Selective Field</td>
             <td></td><td></td><td></td><td></td><td></td><td></td><td>Y</td>
         </tr>
         <tr>
-            <td rowspan="2">Non-repudiation</td><td>Non-repudiation Origin</td>
+            <td rowspan="2">Non-repudiation</td><td>of Origin</td>
             <td></td><td></td><td></td><td></td><td></td><td></td><td>Y</td>
         </tr>
         <tr>
-            <td>Non-repudiation Delivery</td>
+            <td>of Delivery (Receipt)</td>
             <td></td><td></td><td></td><td></td><td></td><td></td><td>Y</td>
         </tr>
     </tbody>
 </table>
+
