@@ -1,8 +1,10 @@
-> 惯例应记录下**作者与日期**, 代码应标明 License.
-> 
-> 4/21/2024, @yjw
+---
+date: 24-04-21
+license: CC0
+author: yjw
+---
 
-## markdown syntax
+## Markdown语法
 
 我是正文, 标准格式下正文换行不会被渲染, 新段落间必须隔一空行 (即两次回车 `\n\n`). 
 不同格式区域间也需要隔一空行, 来标识新段落.
@@ -99,7 +101,7 @@ def main():
 ***
 我是分割线, 以下不太重要.
 
-### 内嵌 HTML
+### 内嵌HTML
 
 另一种注释方法:
 
@@ -111,7 +113,7 @@ def main():
 
 其他注释方式: 
 
-```
+```markdown
 %%我是注释%%
 <!--我是注释--> 
 [//]: 我是注释
@@ -143,3 +145,84 @@ def main():
 ```html
  <center>居中文本</center>
 ```
+
+链接和图片:
+
+```html
+<a> <img>
+```
+
+段落和格式:
+
+```html
+<div> <span> <strong> <em> <br> <p>
+```
+
+<em>斜体</em>
+
+<strong>粗体</strong>
+
+空行:
+```html
+<br>
+```
+
+插入表格: 可以参考 [安全服务与安全机制的关系](../Security/ReadMe.md) 里的复杂表格
+
+```html
+<table>
+	<tr>
+		<th>Header 1</th>
+		<th>Header 2</th>
+	</tr>
+	<tr>
+		<td>Row 1, Cell 1</td>
+		<td>Row 1, Cell 2</td>
+	</tr>
+</table>
+```
+
+无序列表:
+<ul>
+	<li>项目 1</li>
+	<li>项目 2</li>
+</ul>
+
+有序列表:
+<ol>
+	<li>项目 1</li>
+	<li>项目 2</li>
+</ol>
+
+段落:
+```html
+<span> <!--inline element, 用于给小范围文本添加样式-->
+<div>  <!--block element, 独立的块级的布局容器, 创建一个新行-->
+<p>    <!--block element, 独立的段落, 上下有默认间距-->
+```
+
+注意, 一些 HTML 嵌套结构和脚本不会被解析.
+
+### GFM
+
+GitHub Flavored Markdown (GFM) 是对标准 Markdown 进行扩展的格式.
+
+1. 调整表格对齐方式:
+
+```markdown
+|        |        |        |
+|:------ |:------:| ------:|
+|左对齐   |  居中  |   右对齐|
+```
+
+2. 添加任务列表: (Obsidian 也支持)
+
+```markdown
+- [x] 任务一
+- [ ] 任务二
+```
+
+3. 删除线: ~~文本~~
+4. 宽松换行: 单个换行符被渲染为换行, 而标准语法需要两个空格来段内换行, 两个换行符段间换行.
+5. 表情符号: :smile:
+6. 转义特殊字符 \*你好\*
