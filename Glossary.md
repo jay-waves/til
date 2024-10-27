@@ -153,13 +153,9 @@ ISR: interrupt service routine, 中断处理程序.
 
 Internet Standards: 互联网标准, 为全球互联网互操作性和统一性提供规范和指南. 内容包括各层网络协议, 密码学和安全, 数据交换格式 (JSON) 及标记语言 (HTML).
 
-IETF: Internet Engineering Task Force, 互联网工程任务组, 负责开发和维护互联网标准. 互联网标准制定过程包括: 互联网草案 (Internet Drafts, I-Ds), 工作组审议, IESG 审核, Last Call, 发布为 RFC.
-
-IESG: Internet Engineering Steering Group, 互联网工程指导组, 负责管理 IETF 的技术活动, 并评审和批准互联网草案, 并广泛征求社区意见.
-
 IV: Initializtion vector, 初始化向量, 用于在迭代型密码算法中提供初始随机性.
 
-IaaS:
+IaaS: Infrastructure as a Service, 一种云服务交付模型
 
 # J
 
@@ -279,8 +275,6 @@ Reflection: 反射, 在**运行时**操作和配置对象及其属性, 在编写
 
 RTT: 网络报文往返时间
 
-RFC: IETF 请求评论文档, 是正式的互联网标准文档. 分为三个级别: 提案标准 (Prposed Standard, 初步认可), 草案标准 (Draft Standard, 经过广泛评估后证明其稳定性和有效性) 和互联网标准 (Internet Standard, 成熟且广泛使用, 正式确定为标准).
-
 RSA: 目前广泛使用的公钥加密算法, 见 [RSA](Security/密码学/公钥密码/RSA/RSA.md)
 
 # S
@@ -313,7 +307,7 @@ Syntax Tree: 语法树, 编译前端的中间产物, 见 [编译过程](Compiler
 
 System Call: 系统调用. 见 [中断](System/Process/中断.md)
 
-SaaS: Software as a Service
+SaaS: Software as a Service, 一种云服务交付模型.
 
 SHA: Secure Hash Algorithm, 密码学哈希函数 (消息摘要函数, 杂凑函数, 散列函数)
 
