@@ -153,7 +153,7 @@ ISR: interrupt service routine, 中断处理程序.
 
 Internet Standards: 互联网标准, 为全球互联网互操作性和统一性提供规范和指南. 内容包括各层网络协议, 密码学和安全, 数据交换格式 (JSON) 及标记语言 (HTML).
 
-IV: Initializtion vector, 初始化向量, 用于在迭代型密码算法中提供初始随机性.
+IV: Initialization value. 设置加密算法或加密模式的初始状态的输入参数. IV 也有引入同步和方差 (cryptographic variance). *注意, 全称 Initialization Vector 在 RFC 4949 中被标记为废弃.*
 
 IaaS: Infrastructure as a Service, 一种云服务交付模型
 
@@ -247,6 +247,10 @@ Process: 计算机进程. 见 [进程与线程](System/Process/进程与线程.m
 
 Priority Schedule: 进程优先级调度. 见 [进程调度](System/Process/进程调度.md)
 
+POSIX: Portable Operating System Interface. [IEEE P1003.1] 定义了一系列操作系统的标准接口, 被广泛应用于各类 Unix 系统.
+
+# R
+
 Round Robin: 时间片轮转法调度. 见 [进程调度](System/Process/进程调度.md)
 
 Read-Write Lock: 读写锁. 见 [进程同步与互斥](System/Process/进程同步与互斥.md)
@@ -262,6 +266,10 @@ PaaS: Platform as a Service
 PRNG: Pseudo-Random Number Generator, 伪随机数生成器, 见 [流密码](Security/密码学/流密码与伪随机数/流密码.md)
 
 PKI: Public Key Infrastructure, 公钥基础设置, 见 [密钥分发与管理](Security/密码学/安全协议/密钥分发与管理.md)
+
+PKCS: Public-Key Cryptography Standards, 公钥密码学标准. 由原 RSA Data Security Inc. 发布的一系列标准:
+	- PKCS #1: RSA 加密和签名, 包括 RSA OAEP 和 PSS 填充方案.
+	- PKCS #7: 定义加密和签名消息的语法 (Syntax).
 
 # Q
 

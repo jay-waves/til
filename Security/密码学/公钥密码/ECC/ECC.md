@@ -22,7 +22,9 @@ ECDH (Elliptic Curve Diffie-Hellman Protocol) 基于ECC实现的DH密钥交换�
 
 ### ECC 数字签名
 
-椭圆曲线签名算法 (ECDSA)
+椭圆曲线签名算法 (ECDSA, Elliptic Curve Digital Signature Algorithm)[^1] 
+
+[^1]: "Public Key Cryptography for the Financial Services Industry: The Elliptic Curve Digital Signature Algorithm (ECDSA)", X9.62-1998, ANSI approval 7 January 1999.
 
 设私钥 $d$, 公钥 $P=[d]G$, 基点G
 

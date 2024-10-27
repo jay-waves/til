@@ -1,10 +1,14 @@
- Kerberos (地狱三头犬) 通信协议, 基于对称密码, 目前广泛应用于操作系统中. 该协议中, 客户 C 向 KDC 发送安全通信请求, 获得会话密钥后, 与特定服务器 S 通信.
+Kerberos v5 (地狱三头犬) 通信协议, 基于对称密码, 目前广泛应用于操作系统中. Kerboeros 协议最初由麻省理工学院 (MIT) 在 1993 年发布, 后续版本 (v5) 成为互联网标准 [(RFC 1510, 1993)](https://datatracker.ietf.org/doc/html/rfc1510), [(RFC 4120, 2005)](https://datatracker.ietf.org/doc/html/rfc4120) 对其进行修订和替代. [(RFC 4556, 2006)](https://datatracker.ietf.org/doc/html/rfc4556) 将公钥密码部署在了 Kerberos 协议的认证 (Authenticatino) 阶段.
+
+在 Kerberos 协议中, 客户 C 向 KDC 发送安全通信请求, 获得会话密钥后, 与特定服务器 S 通信.
+
+
 
 ## 名词解释
 
-- KDC: 密钥分配中心
-- AS: 认证服务器
-- TGS: 票据授权服务器
+- KDC: 密钥分配中心 (Key Distribution Center)
+- AS: 认证服务器 (Authentication Server)
+- TGS: 票据授权服务器 (Ticket-Granting Server)
 - TGT: 票据授权票据
 - 主密钥: 用户 $C$ 与 TGS 间通信的密钥.
 - $K_{A,B}$ 指实体 A 和 B 间共享的对称密钥.
