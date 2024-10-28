@@ -1,4 +1,4 @@
-UDP(**User Datagram Protocol**), 中文名是**用户数据报协**议, 是OSI(Open System Interconnection,开放式系统互联) 参考模型中一种*无连接的传输层协议*. 有如下特点:
+UDP (User Datagram Protocol, 用户数据报协议), 是OSI (Open System Interconnection, 开放式系统互联) 参考模型中一种*无连接的传输层协议*. 有如下特点:
 
 - 面向无连接: 发送数据前不需要建立连接, 时延和开销小. 不需要套接字
 - 不保证可靠交付, 仅尽最大努力

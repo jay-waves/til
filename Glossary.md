@@ -26,6 +26,8 @@ Silver Bullet: 银弹. 西方传说中只有银弹才能杀死狼人, 巨人和�
 
 BSS: block started by symbol, ELF 文件中存储未初始化全局变量和局部静态变量的段. 见 [Unix-ELF](Compiler/Linking/Unix-ELF.md)
 
+Brain-damaged, Brain-dead: 错误和傻逼的产品设计, 无法使用和接受, 对大脑产生损害.
+
 # C
 
 Clang: 基于 LLVM 的 C/C++/Objective-C 编译器前端. 见 [Comiler/LLVM/clang](Compiler/ToolChain/LLVM/clang.md)
@@ -263,7 +265,7 @@ Runtime: 程序运行时.
 
 PaaS: Platform as a Service
 
-PRNG: Pseudo-Random Number Generator, 伪随机数生成器, 见 [流密码](Security/密码学/流密码与伪随机数/流密码.md)
+PRNG: Pseudo-Random Number Generator, 伪随机数生成器, 见 [流密码](Security/密码学/流密码与伪随机数/ReadMe.md)
 
 PKI: Public Key Infrastructure, 公钥基础设置, 见 [密钥分发与管理](Security/密码学/安全协议/密钥分发与管理.md)
 
