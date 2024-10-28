@@ -1,6 +1,4 @@
-> 详见 [SHA1与SM3算法文档](../../paper/crypto/SHA1%20and%20SM3%20implement.pdf)
-
-SHA (Security Hash Algorithm) 由美国标准与技术研究所 (NIST) 设计, 并于 1993 年作为 FIPS180 标准发布, 该版本称为 SHA-0. 修订版 FIPS 180 于1995年发布, 称之为 SHA-1.
+SHA (Security Hash Algorithm) 由 [NIST](../../../appx/各类互联网国际标准组织.md) 设计, 并于 1993 年作为 FIPS180 标准发布, 该版本称为 SHA-0. 修订版 FIPS 180 于1995年发布, 称之为 SHA-1.
 
 SHA-1 对输入最大长度有限制, 分组长度为 `512b`, 输出 `160b`
 
