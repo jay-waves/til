@@ -12,11 +12,14 @@
 - Iconize, 给文件夹和文件加图标
 - Ninja Cursor, 光标闪烁
 - Obsidian Git 
-- Completr, 自动补全, 有点烦
 - Cursor Location, 状态栏查看当前光标的位置 (行列)
 - Dangling links, 检查是否有无效链接
-- Latex Suites / Quick Latex for Obsidian
-- 
+
+## 数学插件
+
+- Completr, 弹窗提示补全
+- Latex Suites
+- Quick Latex for Obsidian
 
 ## 文件结构
 

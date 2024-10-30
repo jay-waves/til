@@ -1,3 +1,7 @@
+---
+tags: [FAQ]
+---
+
 ## Word
 
 ### 如何写伪代码?
@@ -36,3 +40,16 @@
 1. 设置 > 加载项 > 管理 > Excel/COM加载项, 禁用全部加载项.
 2. 设置 > 高级 > 常规 > 请求自动更新链接. 关闭.
 3. 设置 > 高级 > 显示 > 禁用硬件图形加速. 关闭. (Excel 默认用的是核显, 可以在 Nvidia 控制面板设置为独显, 效果未知)
+
+## SearchEngine
+
+1. 完全匹配: `"my question"`
+2. 特定站点: `site:zhihu.com my question`
+3. 查询字典: `define:myword`
+4. 排除某个词汇: `-csdn`
+5. 特定文件类型: `filetype:pdf`
+6. 通配符: `* of money`
+7. 逻辑暗示: `and, or`
+8. 筛选年份: `after:2020`, `before:2019`, `2010..2020`
+9. 近义词: `~mobile phone`
+10. 搜索 url 内内容, `inurl:edu`

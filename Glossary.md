@@ -219,6 +219,8 @@ ORM: Object-Relational Mapping, 软件开发概念, 将面向对象的类资源/
 
 OO: object-orientation, 面向对象编程.
 
+OTP: One-Time Password, 用于单次登录的临时密码. TOTP (Time-based OTP) 基于当前时间戳生成密码, 常用于服务器的双因素认证 (2FA) 中, 使服务器和客户端共享可不断更新的密码. HOTP (HMAC-based OTP) 指基于加密的哈希认证码的单次密钥.
+
 # P
 
 Package: 程序打包.

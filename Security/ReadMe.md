@@ -1,6 +1,7 @@
 ## 参考
 
 - Internet Security Glossary, [RFC 2828](https://www.ietf.org/rfc/rfc2828.txt) (v1, 2000), [RFC 4949](https://datatracker.ietf.org/doc/html/rfc4949) (v2, 2007)
+- Glossar of Key Information Security Terms. [NIST IR 7298 Rev.3, 2019](https://csrc.nist.gov/glossary)
 - [NIST SP 800.53](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final). [NIST SP 800-92](https://csrc.nist.gov/pubs/sp/800/92/final). NIST Cybersecurity Framwork (NIST CSF)
 - Information Security, cybersecurity and privacy protection: Evaluation criteria for IT security, [ISO/IEC 15408](https://www.iso.org/standard/72891.html) (Edition 4, 2022). Information security management systems, [ISO/IEC 27001](https://www.iso.org/standard/27001) (Edition 3, 2022). Information security controls, [ISO/IEC 27002](https://www.iso.org/standard/75652.html) (Edition 3, 2022). 
 - Information Security, cybersecurity and privacy protection -- 

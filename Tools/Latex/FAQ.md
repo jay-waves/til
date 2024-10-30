@@ -1,3 +1,7 @@
+---
+tags: [FAQ, ]
+---
+
 ### 如何放大公式?
 
 不同程度: `\large` `\Large` `\LARGE` `\huge` `\Huge` `\big` 
