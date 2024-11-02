@@ -1,7 +1,7 @@
 不推荐使用 BashScript 写复杂程序. 
 
 
-这里仅有 Bash 语法, Shell 使用相关内容见 [System/Shell/Bash](../../System/Shell/Bash.md), 推荐阅读顺序:
+这里仅有 Bash 语法, Shell 使用相关内容见 [System/Shell/Bash](../Bash.md), 推荐阅读顺序:
 
 1. [变量](变量.md)
 2. [集合变量](集合变量.md)
