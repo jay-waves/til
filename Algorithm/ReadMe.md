@@ -47,13 +47,13 @@
 	- [选择排序](排序/选择排序.md)
 - 图和搜索算法: 
 	- [A*](最短路径/A%20star.md), 
-	- [对分查找](查找/对分查找.md), 
+	- [对分查找](排序/对分查找.md), 
 	- [Dijkstra](最短路径/Dijkstra.md), 
 	- [Floyd-Warshall](最短路径/Floyd-Warshall.md), 
 	- Bellman-Ford, Krushkal, Prim
 	- 收缩层级算法 (CH), 调用 OpenStreetMap
-	- [广度优先搜索](查找/广度优先搜索.md), 
-	- [深度优先搜索](查找/深度优先搜索.md)
+	- [BFS](图/BFS.md), 
+	- [DFS](图/DFS.md)
 - 图算法: 
 
 - 数值优化:

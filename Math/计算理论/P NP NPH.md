@@ -1,5 +1,5 @@
 
-![[../../../attach/P NP NPH NPC_image_1_20231223224923.png|400]]
+![|400](../../attach/P_NP_NPC_NPH.png)
 
 P和NP指两种复杂类  
 - 问题 $L\in P$ , 指能够在多项式时间内找到问题 $L$ 的解.  

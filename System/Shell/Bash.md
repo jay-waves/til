@@ -72,7 +72,7 @@ $ which php
 
 ### BashScript
 
-[Language/BashScript](../../Language/Bash/杂.md)
+Bash 作为编程语言的语法和细节请见: [BashScript](BashScript/ReadMe.md)
 
 ## Bash 工具列表
 
@@ -114,7 +114,7 @@ $ which php
 | `curl`              | `wget`      |         |                 |
 | `unshare`           | `firejail`  |         |                 |
 
-[文件内容浏览](文件内容浏览.md)
+[文件内容](文件内容.md)
 
 | `pandoc`           | `jq`                 | `shyaml`        | `xmlstarlet`   | `csvkit` |
 | ------------------ | -------------------- | --------------- | -------------- | -------- |
@@ -151,7 +151,7 @@ $ which php
 | ---------- | --------- | ------ | -------- | ---- |
 | `sudo, su` | `usermod` | `exit` | `groupmod`         |      |
 
-[Bash 脚本编程](../../Language/Bash/变量.md)
+[Bash 脚本编程](BashScript/变量.md)
 
 | `export` | `env`   |     |     |     |
 | -------- | ------- | --- | --- | --- |
@@ -174,12 +174,3 @@ $ which php
 - `Alt [0-9] Alt .` 黏贴上一条命令的最后`[1-9]`个参数
 - `Ctrl-x`, `Ctrl-e` 使用系统默认编辑器编辑命令
 - `Ctrl-z` 将命令移至后台, 后可用 `fg` 调回
-
-## 参考
-
-- [awesome-shell](https://github.com/alebcay/awesome-shell) 一份工具列表.
-- [awesome-osx-command-line](https://github.com/herrbischoff/awesome-osx-command-line): 一份针对 osX 的工具列表
-- [Strict mode](http://redsymbol.net/articles/unofficial-bash-strict-mode/): bash 编程指导
-- [shellcheck](https://github.com/koalaman/shellcheck): 静态 Shell 脚本分析工具, 本质是 bash/sh/zsh 的 lint
-- [Filenames and Pathnames in Shell](http://www.dwheeler.com/essays/filenames-in-shell.html): 如何在脚本中正确处理文件名.
-- [Data Science at the Command Line](http://datascienceatthecommandline.com/#tools)
