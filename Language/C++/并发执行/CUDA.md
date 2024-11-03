@@ -288,7 +288,8 @@ CUDA 标准库:
 
 ## 参考
 
-![|300](../../../attach/Pasted%20image%2020240513160710.png)
+
+![docs.nvidia.com/cuda/wsl-user-guide/index.html|300](../../../attach/Pasted%20image%2020241102190843.png)
 
 https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html
 
