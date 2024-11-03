@@ -38,13 +38,13 @@
 
 ## OSI 安全框架
 
-[X.800, 1991] 对 OSI 安全框架进行了系统定义, 包括:
+[X.800, 1991] 对 OSI (Open Systems Interconnection Refernce Model) 安全框架进行了系统定义, 包括:
 
 - 安全攻击: 任何危及信息系统安全的行为
 - 安全机制: 用来检测攻击, 阻止攻击或从攻击状态恢复到正常状态的过程.
 - 安全服务: 加强数据处理系统和信息传输的安全性的一种处理过程或通信的服务, 目的在于利用一种或多种**安全机制**进行反攻击.
 
-### 安全威胁和攻击
+### 安全攻击
 
 [RFC 4949, 2007, P22] 对 **Attack** 的定义为:
 
@@ -119,25 +119,6 @@
 
 ### 安全服务及安全机制
 
-[RFC 4949, 2007] 描述道: 
-
-> Security services implement security policies, and are implemented by security mechanisms.
-
-```
-		 What Security Services
-         Should Be Provided?        +- - - - - - - - - - - - -+
-         ^  +- - - - - - - - - - - -| Mission Functions View  |
-         |  | Security Policy       |- - - - - - - - - - - - -+
-         |  +- - - - - - - - - - - -| Domain Practices View   |
-         |  | Security Model        |- - - - - - - - - - - - -+
-         |  +- - - - - - - - - - - -| Enclave Services View   |
-         |  | Security Architecture |- - - - - - - - - - - - -+
-         |  +- - - - - - - - - - - -| Agent Mechanisms View   |
-         |  | Security Mechanism    |- - - - - - - - - - - - -+
-         v  +- - - - - - - - - - - -| Platform Devices View   |
-         How Are Security           +- - - - - - - - - - - - -+
-         Services Implemented?
-```
 
 [X.800, 1991] 定义了五类安全服务 (security services) 安全服务:
 1. 数据保密性, Data Confidentiality.
@@ -160,9 +141,29 @@
 	- Non-repudiation with proof of delivery (receipt). 消息接收者否认收到拥有数据.
 3. 访问控制, Access Control, 和**授权**休戚相关.
 
+[RFC 4949, 2007] 描述道: 
 
-安全服务在技术层面通过**特定安全机制 (security machanisms)** 来实现安全策略:
+> Security services implement security policies, and are implemented by security mechanisms.
 
+安全策略规定了"该做什么"和"不该做什么", 安全服务则是"如何做". 
+
+```
+		 What Security Services
+         Should Be Provided?        +- - - - - - - - - - - - -+
+         ^  +- - - - - - - - - - - -| Mission Functions View  |
+         |  | Security Policy       |- - - - - - - - - - - - -+
+         |  +- - - - - - - - - - - -| Domain Practices View   |
+         |  | Security Model        |- - - - - - - - - - - - -+
+         |  +- - - - - - - - - - - -| Enclave Services View   |
+         |  | Security Architecture |- - - - - - - - - - - - -+
+         |  +- - - - - - - - - - - -| Agent Mechanisms View   |
+         |  | Security Mechanism    |- - - - - - - - - - - - -+
+         v  +- - - - - - - - - - - -| Platform Devices View   |
+         How Are Security           +- - - - - - - - - - - - -+
+         Services Implemented?
+```
+
+在具体技术上, 安全服务通过安全机制来实现:
 
 | <table><tr><th></th><th>安全机制</th></tr><tr><td>安全服务</td><td></td></tr></table> | 加密 | 数字签名 | 访问控制 | 数据完整性 | 认证交换 | 流量填充 | 路由控制 | 公证 (Notarization) |
 | ----------------------------------------- | ---- | -------- | -------- | ---------- | -------- | -------- | -------- | ---- |
@@ -175,7 +176,7 @@
 | 不可否认性                                |      | Y        |          | Y          |          |          |          | Y    |
 | 可用性                                    |      |          |          | Y          | Y         |          |          |      |
 
-[X.800, 1991] 还列有一些不属于特定安全服务的安全机制, 如*事件检测*, *安全审计 (Security Audit Trail)*, *灾难恢复 (Security Recovery)*. 这些安全机制的重要性和所需的安全等级相关.
+[X.800, 1991] 还列有一些不属于特定安全服务的安全机制, 如*事件检测*, *安全审计 (Security Audit Trail)*, *灾难恢复 (Security Recovery)*. 这些安全机制的重要性和所需的安全等级相关, 有的则普遍存在.
 
 [X.800, 1991] 和 [RFC 4949, 2007] 都定义了安全服务所处的[网络层次](../Network/网络体系结构.md), 不过随着技术进步和定义变化, 下表在不同标准间区别较大, 仅作参考.
 
@@ -256,3 +257,93 @@
     </tbody>
 </table>
 
+## 安全, 可靠, 可信
+
+- 可信 (Trustworthy) 系统: 行为是正确且可预期的, 即按照设计意图和预期功能工作.
+- 安全 (Reliable Systems) 系统: 能够防止未授权的访问和修改, 确保数据的机密性, 完整性和可用性.
+- 可靠 (Secure Systems) 系统: 能够持续执行预期功能, 故障率较低, 恢复能力强.
+
+> [RFC 4949, 2007] 对安全的定义为:
+> 
+> **reliability**
+> 
+>   (I) The ability of a system to perform a required function under
+>   stated conditions for a specified period of time. (Compare:
+>   availability, survivability.)
+> 
+> **trust**
+> 
+>   1. (I) /information system/ A feeling of certainty (sometimes
+>   based on inconclusive evidence) either (a) that the system will
+>   not fail or (b) that the system meets its specifications (i.e.,
+>   the system does what it claims to do and does not perform unwanted
+>   functions). 
+> 
+>   Tutorial: Components of a system can be grouped into three classes
+>   of trust [[Gass](https://datatracker.ietf.org/doc/html/rfc4949#ref-Gass)]:
+>   -  "Trusted": The component is responsible for enforcing security
+> 	 policy on other components; the system's security depends on
+> 	 flawless operation of the component. (See: trusted process.)
+>   -  "Benign": The component is not responsible for enforcing
+> 	 security policy, but it has sensitive authorizations. It must
+> 	 be trusted not to intentionally violate security policy, butR
+> 	 security violations are assumed to be accidental and not likely
+> 	 to affect overall system security.
+>   -  "Untrusted": The component is of unknown or suspicious
+> 	 provenance and must be treated as deliberately malicious. (See:
+> 	 malicious logic.)
+> 
+>   2. (I) /PKI/ A relationship between a certificate user and a CA in
+>   which the user acts according to the assumption that the CA
+>   creates only valid digital certificates.
+> 
+>   Tutorial: "Generally, an entity is said to 'trust' a second entity
+>   when the first entity makes the assumption that the second entity
+>   will behave exactly as the first entity expects. This trust may
+>   apply only for some specific function. The key role of trust in
+>   [X.509] is to describe the relationship between an entity [i.e., a
+>   certificate user] and a [CA]; an entity shall be certain that it
+>   can trust the CA to create only valid and reliable certificates."
+> 
+> **trustworthy system**
+> 
+>   1. (I) /information system/ A system that operates as expected,
+>   according to design and policy, doing what is required -- despite
+>   environmental disruption, human user and operator errors, and
+>   attacks by hostile parties -- and not doing other things.
+> 
+> **security** 
+> 
+>   1a. (I) A system condition that results from the establishment and
+>   maintenance of measures to protect the system.
+> 
+>   1b. (I) A system condition in which system resources are free from
+>   unauthorized access and from unauthorized or accidental change,
+>   destruction, or loss. (Compare: safety.)
+> 
+>   2. (I) Measures taken to protect a system.
+> 
+>   Tutorial: Parker [^1]] suggests that providing a condition of
+>   system security may involve the following six basic functions,
+>   which overlap to some extent:
+>   -  "Deterrence": Reducing an intelligent threat by discouraging
+> 	 action, such as by fear or doubt. (See: attack, threat action.)
+>   -  "Avoidance": Reducing a risk by either reducing the value of
+> 	 the potential loss or reducing the probability that the loss
+> 	 will occur. (See: risk analysis. Compare: "risk avoidance"
+> 	 under "risk".)
+>   -  "Prevention": Impeding or thwarting a potential security
+> 	 violation by deploying a countermeasure.
+>   -  "Detection": Determining that a security violation is
+> 	 impending, is in progress, or has recently occurred, and thus
+> 	 make it possible to reduce the potential loss. (See: intrusion
+> 	 detection.)
+>   -  "Recovery": Restoring a normal state of system operation by
+> 	 compensating for a security violation, possibly by eliminating
+> 	 or repairing its effects. (See: contingency plan, main entry
+> 	 for "recovery".)
+>   -  "Correction": Changing a security architecture to eliminate or
+> 	 reduce the risk of reoccurrence of a security violation or
+> 	 threat consequence, such as by eliminating a vulnerability.
+> 
+> [^1]: Parker, D., "Computer Security Management", ISBN 0-8359- 0905-0, 1981

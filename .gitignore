@@ -9,3 +9,12 @@ NSFW/
 # 大文件
 /Language/Haskell/Haskell LLVM JIT Compiler/**
 /src/sgi/
+
+# PPT 和 DrawIO 可能产生的临时文件
+~$*.ppt*
+*.ppt.bak
+*.pptx.bak
+
+*.drawio.bak
+*.drawio~
+*.drawio.dtmp
