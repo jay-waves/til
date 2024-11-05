@@ -1,8 +1,13 @@
-RSA基于指数运算, 其数学特性导致其易被篡改
+---
+url: https://crypto.stackexchange.com/questions/35644/chosen-message-attack-rsa-signature/35656#35656
+---
+
+RSA 基于指数运算, 其数学特性导致其易被篡改. 该攻击需要获知 $m_{1}$, 主要用于攻击数字签名场景, 是中间人攻击的一种类型.
 
 ## RSA 密文篡改
 
-对于密文 $m_{1}^{e}$, 很容易修改其对应明文:  $m_{2}^{e}\times m_{1}^{e}=(m_{2}m_{1})^{e}$.  
+对于密文 $m_{1}^{e}$, 很容易修改其对应明文:  $m_{2}^{e}\times m_{1}^{e}=(m_{2}m_{1})^{e}$.
+
 若 $m_{2}=m_{1}^{-1}m_{3}$, 就可以将对应明文完全篡改为 $m_{3}$
 
 ## RSA 签名攻击
@@ -13,4 +18,8 @@ RSA基于指数运算, 其数学特性导致其易被篡改
 
 另一种手段是, 请求 $s^{e}$ 的签名, 即得到 $s^{d\times e}\equiv s\pmod n$
 
-> 来源: [RSA签名攻击](https://crypto.stackexchange.com/questions/35644/chosen-message-attack-rsa-signature/35656#35656) 当然, 该法容易克制, 可以引入时变值, 也可以引入哈希函数.
+***
+
+当然, 该法容易克制, 可以引入时变值, 也可以引入哈希函数, 使 $(m_{2}\Vert N_{1})^{e}\times (m_{1}\Vert N_{2})^{e}\neq(m_{2}m_{1}\Vert N_{3})^{e}$. 
+
+实践中, 请参考 [PKCS#1 PSS 填充算法](../PKCS1.md). 
