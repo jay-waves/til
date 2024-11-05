@@ -1,30 +1,4 @@
-OAEP (Optimal Asymmetric Encryption Padding) 是现代 RSA 加密的填充方式.
-
-
-```
-                     +----------+------+--+-------+
-                DB = |  lHash   |  PS  |01|   M   |
-                     +----------+------+--+-------+
-                                    |
-          +----------+              |
-          |   seed   |              |
-          +----------+              |
-                |                   |
-                |-------> MGF ---> xor
-                |                   |
-                V                   |
-               xor <----- MGF <-----|
-                |                   |
-                V                   V
-       +----+------------+----------------------------+
- EM =  | 00 | maskedSeed |          maskedDB          |
-       +----+------------+----------------------------+
-```
-
-- DB: data block
-- lHash: hash of label
-- MGF: mask generation function
-- PS: padding string
+[PKCS#1](../../Security/密码学/公钥密码/RSA/PKCS1.md) v2.0 中描述的 RSA 加密及填充算法:
 
 ```python
 from hashlib import sha1

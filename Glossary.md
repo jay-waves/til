@@ -265,15 +265,18 @@ Relocation: 地址重定位.
 
 Runtime: 程序运行时.
 
-PaaS: Platform as a Service
+PaaS: Platform as a Service. 同见 IaaS, SaaS
 
 PRNG: Pseudo-Random Number Generator, 伪随机数生成器, 见 [流密码](Security/密码学/流密码与伪随机数/ReadMe.md)
 
 PKI: Public Key Infrastructure, 公钥基础设置, 见 [密钥分发与管理](Security/密码学/安全协议/密钥分发与管理.md)
 
-PKCS: Public-Key Cryptography Standards, 公钥密码学标准. 由原 RSA Data Security Inc. 发布的一系列标准:
-	- PKCS #1: RSA 加密和签名, 包括 RSA OAEP 和 PSS 填充方案.
-	- PKCS #7: 定义加密和签名消息的语法 (Syntax).
+PKCS: Public-Key Cryptography Standards, 公钥密码学标准. 由原 RSA Data Security Inc. 发布的一系列**可不断修改和更新的**标准:
+- [PKCS #1](Security/密码学/公钥密码/RSA/PKCS1.md): RSA 加密和签名, 包括 RSA OAEP 和 PSS 填充方案.
+	- v1.5 (1993): v1.5 填充算法, 不安全.
+	- v2.0 (1998): [OAEP (Optimal Asymmetric Encryption Padding)](Security/密码学/公钥密码/RSA/PKCS1.md) 加密填充算法, 推荐.
+	- v2.1 (2002): PSS (Probabilistic Signature Scheme) 签名填充算法, 推荐.
+- PKCS #7: 定义加密和签名消息的语法 (Syntax).
 
 # Q
 

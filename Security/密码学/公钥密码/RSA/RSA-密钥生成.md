@@ -9,7 +9,7 @@
 3. 在恰当随机填充下 (如OAEP), 公钥较小也可以安全. 当然小如 $1, 2$ 也不行.
 
 什么 $e$ 不行?
-- $e$ 较小, 如 $e=3$, 且不正确填充 (填充方法如 `PKCS#1 v2.1`, `OAEP`), 存在 [RSA-低指数广播攻击](RSA-攻击/RSA-低指数广播攻击.md), 即 [Coppersmith's attack](https://en.wikipedia.org/wiki/Coppersmith%27s_attack)
+- $e$ 较小, 如 $e=3$, 且[不正确填充](PKCS1.md), 存在 [RSA-低指数广播攻击](RSA-攻击/RSA-低指数广播攻击.md), 即 [Coppersmith's attack](https://en.wikipedia.org/wiki/Coppersmith%27s_attack)
 - $e$ 使 $e^{i}\equiv 1 \pmod{\phi(n)}, i\geq \frac{\phi(n)}{2}$ 的 $i$ 较小, 存在 [RSA-循环攻击](RSA-攻击/RSA-循环攻击.md)
 
 ### 大素数 $p,q$
@@ -57,13 +57,11 @@
 
 *<应用密码学>* 2017.P156-157  
 
- [超重点 RSA 参数选择](http://www.waveshare.net/study/article-700-1.html)    
+[超重点 RSA 参数选择](http://www.waveshare.net/study/article-700-1.html)    
  
- [RSA 算法中几种可能泄密的参数选择](https://wenku.baidu.com/view/1743d7a6284ac850ad024289.html)    
+[RSA 算法中几种可能泄密的参数选择](https://wenku.baidu.com/view/1743d7a6284ac850ad024289.html)    
 
 [RSA 填充方法](https://zhidao.baidu.com/question/1303282736275569219.html)  
-  
-[PKCS#1Padding](https://blog.csdn.net/jinhill/article/details/6607859)    
 
 [强素数生成方法](https://wenku.baidu.com/view/ac764f573c1ec5da50e27078.html?re=view)  
 
