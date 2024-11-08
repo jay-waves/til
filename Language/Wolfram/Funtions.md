@@ -81,10 +81,19 @@ Integrate[x^2, x]
 Limit[sin(x)/x, x->0]
 ```
 
+### Series
+
 幂级数展开:
 
 ```wolfram
 Series[Exp[x], {x, 0, 5}]
+```
+
+级数求和, 也可用于求和函数:
+
+```wolfram
+Sum[1/^n^2, {n, 1, 10}]
+Sum[x^n, {n, 0, Infinity}]
 ```
 
 ## Probabilistic
@@ -126,4 +135,14 @@ ChineseRemainder[]
 Mod[]
 PowerMod[]
 PrimitiveRoot[]
+
+Binomial[n, k] (* C(n, k) *)
+n! / (n - k)!  (* A(n, k) *)
+Pochhammer[x, n]
 ```
+
+Pochhammer 符号, 也称为上升阶乘, 定义为: $$(x)_{n}=x(x+1)(x+2)\dots(x+n-1)=\frac{\Gamma(x+n)}{\Gamma(x)}$$
+
+$(x)_{0}=1$, 
+
+排列数可以用 Pochhammer 符号符号表示: $$A(n,k)=(n-k+1)_{k}$$
