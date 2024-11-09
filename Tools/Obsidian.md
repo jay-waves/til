@@ -38,6 +38,8 @@
 "（"->" ("  
 "）"->") "
 ```
+- Git, 很喜欢 diff view 和 source control view.
+- VSCode Editor/Code Files, 直接在 Obsidian 里编辑源码 (内嵌了一个代码编辑器)
 
 ## 数学插件
 
@@ -45,6 +47,7 @@
 - Latex Suites
 - Quick Latex for Obsidian
 - No more flickering inline math, 注意和 Latex Suites 的兼容问题
+- Pseudocode, 在 Obsidian 中渲染 Latex 的伪代码环境
 
 ## 文件结构
 

@@ -1,4 +1,3 @@
-```python
 from typing import Tuple, NewType, Iterator
 
 Point = NewType('Point', Tuple[int, int])
@@ -164,4 +163,3 @@ class ec:
                 k >>= 1
         naf_k.reverse()
         return tuple(naf_k)    
-```
