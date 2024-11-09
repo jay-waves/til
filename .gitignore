@@ -3,7 +3,6 @@
 /.stash/**
 build/
 .obsidian.vimrc
-desktop.ini
 NSFW/
 
 # 大文件
@@ -18,3 +17,9 @@ NSFW/
 *.drawio.bak
 *.drawio~
 *.drawio.dtmp
+
+# 系统文件
+.DS_Store
+MACDOX_*
+Thumbs.db
+desktop.ini
