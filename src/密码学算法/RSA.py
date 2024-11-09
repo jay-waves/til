@@ -1,6 +1,5 @@
 ## 教科书式RSA实现
 
-```python
 def egcd(a, b):
     '''扩展欧几里得求最大公因子算法
     :return (s, t, gcd) for s*a + t*b = gcd'''
@@ -72,4 +71,3 @@ def key_gen(safe_params: int =1024):
 
 	return {'n': n, 'e': e, 'd': d, 'safe_params': safe_params}
 
-```

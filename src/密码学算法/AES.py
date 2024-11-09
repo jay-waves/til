@@ -1,21 +1,16 @@
-
-
-## 说明文档
-
+"""
 代码包含以下几个模块:
 
 1. 密钥生成 (key_expansion.py)
 2. 加密和解密操作 (aes.py)
 3. 有限域运算 (gf.py)
 4. 常量和置换盒 (constant.py)
+"""
 
-## 详细代码
+# gf.py 实现有限域 $GF(GF(2^{8})^{4})$ 上的运算, 见 有限域.py
 
-- gf.py 实现有限域 $GF(GF(2^{8})^{4})$ 上的运算, 见 [有限域.py](有限域.py.md)
+# aes.py 加解密主体
 
-- aes.py 加解密主体
-
-```python
 import gf
 import key
 import constant as Con
@@ -120,11 +115,9 @@ def enc(in_block, rkey):
         for b in range(4):
             out_block[w*4+b] = state[w][b]
     return out_block
-```
 
-- key.py 密钥扩展
+# key.py 密钥扩展
 
-```python
 '''might be more natural to use OO of key word'''
 from constant import s_box, Rcon, Nk, Nr, Nb
 
@@ -166,11 +159,9 @@ def key_expansion(in_key):
         words.append(xor_word(w, words[i-Nk]  ))
         
     return words
-```
 
-- constant.py 存放常量
+# constant.py 存放常量
 
-```python
 '''constant: for AES-128'''
 Nk = 4
 Nb = 4
@@ -233,4 +224,3 @@ inv_s_box = [
 [ 0xa0, 0xe0, 0x3b, 0x4d, 0xae, 0x2a, 0xf5, 0xb0, 0xc8, 0xeb, 0xbb, 0x3c, 0x83, 0x53, 0x99, 0x61 ],
 [ 0x17, 0x2b, 0x04, 0x7e, 0xba, 0x77, 0xd6, 0x26, 0xe1, 0x69, 0x14, 0x63, 0x55, 0x21, 0x0c, 0x7d ],
 ]
-```

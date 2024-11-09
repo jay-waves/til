@@ -1,4 +1,3 @@
-```python
 from math import sqrt
 from random import randint
 from typing import Iterable
@@ -367,4 +366,3 @@ def pos_egcd(a, b):
     该函数有一些问题，要保证一定有双正整数解，必须要在环上进行求逆元。整数域上，若gcd较小，一定会有负数系数
     '''
 
-```

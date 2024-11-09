@@ -1,4 +1,3 @@
-```python
 """
 +-* on finite field GF(2^8)
 /mod on finite field GF(2)
@@ -81,4 +80,3 @@ def mmul(A, B):
             for k in range(len(B)):
                 C[i][j] = add_or_sub(C[i][j], mul(A[i][k], B[k][j]))
     return C
-```
