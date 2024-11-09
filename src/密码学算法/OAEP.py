@@ -1,6 +1,5 @@
-[PKCS#1](../../Security/密码学/公钥密码/RSA/PKCS1.md) v2.0 中描述的 RSA 加密及填充算法:
+# [PKCS#1](/Security/密码学/公钥密码/RSA/PKCS1.md) v2.0 中描述的 RSA 加密及填充算法:
 
-```python
 from hashlib import sha1
 import rsa
 
@@ -103,4 +102,3 @@ def decrypt(d, n, data, seed, label=b'0x'):
 		...
 	else:
 		return m.hex()
-```

@@ -1,3 +1,4 @@
+"""
 我这拿整型实现真是贱呐，给自己没事找事
 
 - P: permutate
@@ -6,8 +7,8 @@
 - LK: left_key_28b
 - RK: right_key_28b
 - rK: round_key_48b
+"""
 
-```python
 import table
 from table import permutate
 import key
@@ -100,10 +101,8 @@ def DES(k, data, is_enc=True)->int:
     data_64b = (R<<32) | L
     cipher = F_IP_inv(data_64b)
     return cipher
-```
 
-密钥扩展模块 key.py
-```python
+"""密钥扩展模块 key.py"""
 import table
 from table import permutate
 
@@ -147,10 +146,8 @@ def rk_gen(K):
     for i in range(16):
         LK, RK, rks[i] = round(LK, RK, i)
     return rks
-```
 
-常数以及替换盒模块 table.py
-```python
+"""常数以及替换盒模块 table.py"""
 def permutate(table, data, data_size):
     '''
     Input: 
@@ -236,4 +233,3 @@ Sbox=[[
     [1, 15, 13, 8, 10, 3, 7, 4, 12, 5, 6, 11, 0, 14, 9, 2],
     [7, 11, 4, 1, 9, 12, 14, 2, 0, 6, 10, 13, 15, 3, 5, 8],
     [2, 1, 14, 7, 4, 10, 8, 13, 15, 12, 9, 0, 3, 5, 6, 11]]]
-```
