@@ -1,7 +1,7 @@
 ## Base64
 
 
-用于将二进制数据编码为可见字符串, 便于 HTTP 和 Email 协议的多媒体数据传输. 包含 64 个字符和用于填充的等号 `=`. 
+用于将二进制数据编码为可见字符串, 便于 HTTP 和 Email 协议的多媒体数据传输. 包含 64 个字符和用于填充的等号 `=`. 每三个字节二进制数据变为四字节的 ASCII 字符串, 将导致约 33% 的数据膨胀.
 
 **Encoding Rules**: 
 It divides the input data into groups of three bytes (24 bits), then splits these 24 bits into four groups of six bits each (padding with `0` if no aligned to 3bytes). Each six-bit group is then mapped to one of $2^6=64$ characters from the Base64 character set.
