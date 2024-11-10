@@ -65,7 +65,8 @@
 - 嵌入 C++ 和 Go 代码使用 [Google 风格](Language/C++/Google%20C++%20Style.md).
 - 嵌入 Python 使用 [PEP8 Style](Language/Python/PEP8%20Style.md) 风格.
 - 不要求控制行长度, 建议代码行长度不超过 100 字符, 全角占两字符.
-- `src` 源码文件夹中, JupterNotebook 仍用 `.md` 文件, 其他源码使用原文件格式.
+- `/src` 文件夹中, 默认使用原文件格式, 如 C 语言使用 `.c` 文件; 
+- `/src` 文件夹中, 需要记录笔记的, 使用类 Jupter 格式, 如 Python Notebook 使用 `.py.md` 文件, 其中 `.py` 仅起到标注语言类型作用.
 
 #### Reference Style
 

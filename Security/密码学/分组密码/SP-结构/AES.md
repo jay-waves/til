@@ -1,4 +1,8 @@
-[AES](../../../paper/crypto/AES-standard.pdf) (Advanced Encryption Standard) 是 NIST 于2001年选定的, 用于替代 DES 的算法.
+---
+src: [src/cryptography/aes.py, src/cryptography/aes_constant.py, src/cryptography/aes_key.py]
+---
+
+AES (Advanced Encryption Standard) 是 NIST 于2001年选定的, 用于替代 DES 的算法.
 
 AES 以 **Rijndael 迭代型密码算法**为基础, 但**分组长度固定为 `128bits`**, 仅允许密钥长度可变 (`128bits`, `192bits`, `256bits`). 和 DES 以比特为处理单位不同, AES 处理单位是字节, 用 $\mathbb{GF}(2^{8})$ 上元素表示.
 
