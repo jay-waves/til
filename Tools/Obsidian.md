@@ -39,7 +39,8 @@
 "）"->") "
 ```
 - Git, 很喜欢 diff view 和 source control view.
-- VSCode Editor/Code Files, 直接在 Obsidian 里编辑源码 (内嵌了一个代码编辑器)
+- VSCode Editor/Code Files, 直接在 Obsidian 里编辑源码 (内嵌了一个代码编辑器, 用处不大)
+- Terminal, 打开终端的快捷办法, 也没啥用
 
 ## 数学插件
 
