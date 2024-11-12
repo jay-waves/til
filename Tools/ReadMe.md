@@ -100,16 +100,20 @@
 - Starship, prompt 加强工具
 - httpie
 - Clink, cmd prompt 加强工具
-- bat
-- duf, dust
-- fq, yq, jq
+- bat, cat 的增强版
+- duf, dust, du 磁盘空间查看
+- iconv, uchardet 字符编码工具
+- fq 类 yq, jq, 还支持各类二进制二年间查看
+- fd, find 的加强版, 使用正则表达式而不是通配符.
 - rg (ripgrep)
 - tokei
 - viu, 终端查看图片 (模糊版)
+- yazi, 终端文件浏览器
 - zoxide
 - ffmpeg
 - mpv, VLC, 终端视频播放器
 - graphviz, 代码绘图工具
+- imagicMagick, 终端图片批处理工具
 - iconv
 - mdv, 终端 Markdown 文件渲染器
 - wolframscript, 数学

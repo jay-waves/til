@@ -1,4 +1,3 @@
-> 详见 [SHA1与SM3实现](../../paper/crypto/SHA1%20and%20SM3%20implement.pdf)
 
 **SM3密码杂凑算法**于 2010 年发布, 2012 年发布为密码行业标准 (GM/T 0004-2012), 2016年发布为国家密码杂凑算法标准 (GB/T 32905-2016).
 
@@ -40,7 +39,10 @@ class SM3:
 		self.name: str = 'SM-3'
 		
 		# init internal state with IV
-		self._state = [0x7380166f, 0x4914b2b9, 0x172442d7, 0xda8a0600, 0xa96f30bc, 0x163138aa, 0xe38dee4d, 0xb0fb0e4e]
+		self._state = [
+			0x7380166f, 0x4914b2b9,  0x172442d7, 0xda8a0600, 
+			0xa96f30bc, 0x163138aa,  0xe38dee4d, 0xb0fb0e4e
+			]
 		self._buffer = b''
 
 	@staticmethod
