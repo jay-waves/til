@@ -5,12 +5,12 @@ MD-5 不限定输入数据长度, 如果输入长度高于 $2^{64}$ 位, 就只�
 MD-5 遵循 [Merkle-Damgard 结构](迭代型散列函数.md), 结构大致如下:
 
 ```python
-def md5(msg: bytes)->int:
+def md5(msg: bytes) -> int:
 	msg <- padding(msg)                 # 填充消息
 	chunks <- divide(msg)               # 分组为 512b 块
 	regs <- IV                       # 初始化寄存器
 	for chunk in chunks:                # 迭代, 更新寄存器
-		process_chunk(msg)        
+		process_chunk(msg, regs)        
 	return cat(regs)
 	
 # md5 标准输出为 128b 二进制数, 但通常表示为 32 字符的十六进制串, 
