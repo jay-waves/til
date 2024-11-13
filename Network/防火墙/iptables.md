@@ -1,3 +1,5 @@
+类似 ACL
+
 ## IPTables
 
 linux 内核防火墙配置工具, 应用于 Kernel Netfilter 框架中.

@@ -5,7 +5,7 @@ SSL (Secure Sockets Layer, 安全套接层)[^1], 及其继任者 [TLS (Transport
 | 网络层级 | 协议             |
 | -------- | ---------------- |
 | 应用层   | smtp, http, nntp |
-| 安全层(应用层)   | TLS              |
+| 安全层, 应用层, 表示层   | TLS              |
 | 传输层   | TCP          |
 | 网络层   | IP                 |
 

@@ -94,6 +94,26 @@ PCI pseudo driver in `drivers/pci/pci.c` and `include/linux/pci.h`
 - net
 - sound
 
+1. 块设备 (block device), 按块缓存传输.
+2. 字符设备 (char device), 字节流传输.
+
+|              | 字符设备               | 块设备             |
+| ------------ | ---------------------- | ------------------ |
+| 缓存机制     | 不缓存                 | 系统缓存           |
+| 随机访问     | 不支持, 仅顺序访问     | 支持, 任意位置读写 |
+| 常见设备类型 | 键盘, 鼠标 `/dev/input/mice/`, 串口 `/dev/ttyS0`, 终端 | 硬盘 `/dev/sda`, SSD, USB `/dev/sdb`                  |
+
+常见文件类型有:
+1. file (f)
+2. directory (d)
+3. symlink (l)
+4. executable (x)
+5. empty (e)
+6. scket (s)
+7. pipe (p)
+8. char-device (c)
+9. block-device (b)
+
 ## File Systems
 
 `fs` file system, like `ext4`, `vfat`
