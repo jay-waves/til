@@ -29,7 +29,7 @@ receive packet: | src_addr: 210.10.20.20 | src_port: 14000 | packet_data |
 
 外网主机访问内网中服务器, 称为**入站通信**, NAT 负责将外部网关地址转换为服务器内网地址. 映射规则一般是提前配置的, 即 SNAT, 无须建立动态映射 (但也需要记录, 称为*连接追踪表 CTT*), 消耗资源少. 
 
-在严格 NAT 模式下, 用户动态地入站通信难以实现, 该技术称为[内网穿透](内网穿透.md).
+在严格 NAT 模式下, 用户动态地入站通信难以实现, 该技术称为[Intranet Tunnel](Network/防火墙/Intranet%20Tunnel.md).
 
 ```
 external PC:
