@@ -1,6 +1,8 @@
 ---
-url: https://github.com/jamesroutley/write-a-hash-table/
-src: [src/hash_table.c, src/hash_table.h]
+source: https://github.com/jamesroutley/write-a-hash-table/
+code:
+  - src/hash_table.c
+  - src/hash_table.h
 ---
 
 Hash Table, 哈希表存储一系列无序"键值对", 将"键"输入哈希函数, 获取对"值"存储位置的索引, "键"总是唯一对应"值"的. 哈希表索引速度快 `O(1)`, 适合快速存取数据.

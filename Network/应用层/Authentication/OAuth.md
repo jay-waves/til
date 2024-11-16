@@ -1,6 +1,6 @@
 ---
-	url: https://datatracker.ietf.org/doc/html/rfc6749
-date: 24-08-02
+source: https://datatracker.ietf.org/doc/html/rfc6749
+revised: 24-08-02
 ---
 
 ## 令牌与密码的区别

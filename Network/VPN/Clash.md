@@ -1,6 +1,6 @@
 ---
-author: JayWaves
-date: 24-07-12
+copyright: JayWaves (2023)
+revised: 24-07-12
 ---
 
 Clash 是一个代理工具, 负责将流量中继到代理节点, 需要搭配外部代理节点 (俗称机场, 有独立的服务提供商) 来绕过 GFW. 传统 VPN 协议则主动建立一个加密隧道来保护网络流量. 常见的 ClashN, ClashForWindows, ClashX 都是对命令行工具 clash 的UI 封装.

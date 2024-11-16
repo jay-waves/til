@@ -1,6 +1,6 @@
 ---
-path: <stddef.h>, <stdint.h>, <signal.h>, <errno.h>
-date: 24-06-03
+library: <stddef.h>, <stdint.h>, <signal.h>, <errno.h>
+revised: 24-06-03
 ---
 
 ## stddef.h

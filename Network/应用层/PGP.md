@@ -5,7 +5,7 @@ PGP (Pretty Good Privacy) 是一种流行加密协议, 用于电子邮件和文�
 
 | 服务         | 功能     | 算法          | 描述               |
 | ------------ | -------- | ------------- | ------------------ |
-| **认证**     | 数字签名 | DSS/RSA + [SHA](Security/密码学/消息摘要/SHA-1.md) | 哈希和数字签名套件 |
+| **认证**     | 数字签名 | DSS/RSA + [SHA](Security/密码学/消息摘要/ReadMe.md) | 哈希和数字签名套件 |
 | **保密**     | 消息加密 | CAST5, [AES](Security/密码学/分组密码/SP-结构/AES.md), [IDEA](Security/密码学/分组密码/SP-结构/IDEA.md), [3DES](Security/密码学/分组密码/Feistel-结构/EDE.md), Blowfish    | 内容对称加密       |
 | **压缩**     |          | ZIP           |                    |
 | **邮件兼容** | 兼容 MIME 标准         | [Base64](Network/应用层/Char%20Encoding/Base%20编码.md)        | 将加密消息转化为 ACSII 串                 |

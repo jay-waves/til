@@ -1,6 +1,6 @@
 ---
-date: 24-07-09
-author: JayWaves
+revised: 24-07-09
+copyright: JayWaves
 ---
 
 - 所配置软件: VSCode

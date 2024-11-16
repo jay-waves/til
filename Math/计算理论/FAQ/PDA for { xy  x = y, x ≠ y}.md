@@ -1,7 +1,9 @@
 ---
 tags:
   - QAA
-url: https://cs.stackexchange.com/questions/66807/pda-for-xy-x-y-x-%E2%89%A0-y-from-its-grammar-and-intuition-behind-it
+source: https://cs.stackexchange.com/questions/66807/pda-for-xy-x-y-x-%E2%89%A0-y-from-its-grammar-and-intuition-behind-it
+copyright:
+  - Yuval Filmus (2016)
 ---
 
 ## PDA for { xy : |x| = |y|, x ≠ y} from its grammar, and intuition behind it

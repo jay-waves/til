@@ -1,5 +1,5 @@
 ---
-url: https://docs.python.org/3/library/math.html
+source: https://docs.python.org/3/library/math.html
 license: PDL
 ---
 
