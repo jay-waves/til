@@ -13,7 +13,7 @@ linux 支持很多文件系统:
 | NFS             | Network File System, 用于实现主机间文件挂载共享                          |
 | iso9660         | 光盘标准文件系统                                                         |
 | [FAT](fat.md)   | windows 下文件系统. vFAT 也叫 FAT32.                                     |
-| NTFS            | windows NT 文件系统, 更安全高效, linux 默认无法识别                      |
+| NTFS            | windows NT 文件系统, 更安全高效, linux 默认驱动无法识别. 无文件大小限制, 支持高级安全功能, 支持稀疏文件和动态扩展体积                      |
 | [proc](proc.md) | linux 用于记录系统调试信息的 VFS, 基于内存                               |
 | ufs             | Sun 公司的 Solaris, SunOS 操作系统所用文件系统                           |
 | sysfs           | linux 用于管理内存存储的 VFS, 基于内存                                   |
@@ -22,7 +22,7 @@ linux 支持很多文件系统:
 | msdos           |                                                                          |
 | smb             |                                                                          |
 | sysv            |                                                                          |
-| exFAT           | Extedned File Allocation Table, 适用于 SSD.                                                                         |
+| exFAT           | Extedned File Allocation Table, 微软开发, 作为 FAT32 改进版本. 跨平台兼容性较好, 用于 U 盘或外部硬盘. 文件最大 16EB, 但没有自带加密功能和稀疏文件支持.                                                                         |
 
 linux 每个文件有两个结构:
 - 索引节点 index node, `inode`, 记录文件元信息, **是文件的唯一标识**. 会占用磁盘空间. 目录也是一种文件, 用于保存子目录和文件信息.

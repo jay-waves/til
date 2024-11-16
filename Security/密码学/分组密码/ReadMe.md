@@ -35,7 +35,7 @@
 
 分组密码的性能通常被认为快于[公钥密码](../公钥密码/ReadMe.md), 慢于[流密码](../流密码与伪随机数/ReadMe.md).
 
-### 潜在攻击手段
+## 潜在攻击手段
 
 攻击者通常只具有概率多项式时间计算能力, 称为 Probabilistic Polynomial Time, PPT 攻击者. 密码协议能抵抗 PPT 攻击者, 就称为**密码学安全的**; 如果额外考虑了有无限计算能力的攻击者, 就称为**信息论安全**的. [^1]
 
@@ -47,3 +47,15 @@
 3. 选择明文 (CPA): 掌握 Enc(,k), 可以选择明文, 并得到其对应密文.
 4. 选择密文 (CCA): 掌握 Dec(,k), 可以选择密文, 并得到对应明文.
 5. 选择文本: 选择明文 + 选择密文
+
+## 常见分组密码算法
+
+- [DES](Security/密码学/分组密码/Feistel-结构/DES.md)
+- [AES, Nijndael](Security/密码学/分组密码/SP-结构/AES.md)
+- Serpent. Ross Anderson etc. 1998. SPN 结构.
+- Twofish. Bruce Schneier. 1998. 采用 Feistel 结构, 添加了 MDS 矩阵变换
+- Camelia. Jepanese NTT Inc. 2000. 采用 Feistel 结构, 添加了 FL/FL-1 逆变换
+- Kuznyechik (草地鹞). Russian FSB. 2015. 采用 SPN 网络
+- [SM4](Security/密码学/分组密码/Feistel-结构/SM4.md). Chinese SCA. 2012
+
+Twofish, Serpent 都是 NIST AES 的候选算法之一. Camelia, SM4, Kuznyechik 则有较浓政治色彩. 

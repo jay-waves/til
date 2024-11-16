@@ -31,9 +31,6 @@
 - SimpleNotePad
 - NeatConverter 电子书格式转换
 - FileConverter 右键菜单中的格式转换工具
-- LosslessCut 快速裁切视频, 无转码导出
-- Microsoft ClipChamp, 傻瓜式轻量剪辑, 对我够用了.
-- **HandBrake** 音视频编码转换
 - [Files](https://github.com/files-community/Files)
 - CrystallDiskInfo, 用于检查存储硬盘状态
 - DiskGenius
@@ -49,22 +46,33 @@
 - autoruns, 微软家的管理启动项工具
 - process explorer, 微软的进程工具
 - **Luna**, 自动切换 Windows 亮暗主题
-- StartKiller, 删掉任务栏windows图标
+- StartKiller, 删掉任务栏 windows 图标
 - BitDock, 给 windows 加上 dockhub
 - **PowerToys**, 微软的小工具集
 - **Snipaste** 截图与贴图
 - 7zip, winRaR 压缩软件.
 - [Carnac](https://github.com/Code52/carnac) 键盘可视化
 - [keyviz](https://github.com/mulaRahul/keyviz) 键盘可视化
-- Captura, 便携录屏软件, 依赖 ffmpg
 - Calibre, 管理电子书库
 	- ebook-convert, 书籍格式转换
 	- ebook-meta, 编辑查看元信息
 	- ebook-veiwer
 	- calibredb
 - CPU-Z 又一个硬件信息收集器
+
+
+### Medai
+
+- 
+- ffmpeg, 终端音视频编解码器
 - GIMP2, 开源界的 Photoshop
 - ImageMagick, 命令行的 Photoshop
+- mpv, 终端视频播放器
+- imagicMagick, 终端图片批处理工具
+- **HandBrake**, 视频编码压缩和转换
+- LosslessCut 快速裁切视频, 无转码导出
+- Microsoft ClipChamp, 傻瓜式轻量剪辑, 对我够用了.
+- Captura, 便携录屏软件, 依赖 ffmpeg
 
 ### Network
 
@@ -83,6 +91,7 @@
 - imhex, 原始数据查看器
 - BurpSuite, ZAP (free)
 - CryptoMator, 硬盘加密工具
+- VeraCrypt, 也是硬盘加密工具, 可以自己选择算法
 - SET, 社工库
 - sqlmap, sql 注入工具
 - Sandboxie Pro 沙盒
@@ -110,7 +119,6 @@
 - viu, 终端查看图片 (模糊版)
 - yazi, 终端文件浏览器
 - zoxide
-- ffmpeg
 - mpv, VLC, 终端视频播放器
 - graphviz, 代码绘图工具
 - imagicMagick, 终端图片批处理工具
