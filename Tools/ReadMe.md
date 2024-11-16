@@ -111,7 +111,7 @@
 - Clink, cmd prompt 加强工具
 - bat, cat 的增强版
 - duf, dust, du 磁盘空间查看
-- iconv, uchardet 字符编码工具
+- iconv, uchardet [字符编码](Network/应用层/Char%20Encoding/字符编码.md)工具
 - fq 类 yq, jq, 还支持各类二进制二年间查看
 - fd, find 的加强版, 使用正则表达式而不是通配符.
 - rg (ripgrep)

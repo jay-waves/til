@@ -8,10 +8,10 @@ python3 中有两种字符串类型:
 
 两者可以互相转换, `str` 转化为 `bytes` 时需要解码, 如使用 UTF-8 标准解码: `str(mybytes, "utf-8")`. Python 3.15 已经将 UTF-8  设为默认编码格式, 而不是当前语言区域所使用的编码格式.  多数 Unix 平台默认使用 UTF-8 同一格式, 但早期 Windows 在不同语言区域的编码格式并不一样[^3], 可使用 `encoding="local"` 来获取当前语言区域的编码格式[^2].
 
-[^1]: 万国码详见[字符编码](../../../Information/信息论与编码/字符编码/字符编码.md)符串编码.md)
+[^1]: 万国码详见[字符编码](Network/应用层/Char%20Encoding/字符编码.md)符串编码.md)
 [^2]: `>= Python 3.10`
 
-[^3]: Windows95/98 使用 GB2312, Windows 2000 后使用 GBK, Windows XP 后支持 GB18030 (中国政府推荐的版本), Windows10 开始使用 Unicode/UTF-8 统一标准. 详见[字符编码](../../../Information/信息论与编码/字符编码/字符编码.md)符串编码.md)
+[^3]: Windows95/98 使用 GB2312, Windows 2000 后使用 GBK, Windows XP 后支持 GB18030 (中国政府推荐的版本), Windows10 开始使用 Unicode/UTF-8 统一标准. 详见[字符编码](Network/应用层/Char%20Encoding/字符编码.md)符串编码.md)
 ### 字符串前缀
 
 |                | 含义                         |
