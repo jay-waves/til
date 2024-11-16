@@ -1,5 +1,7 @@
 ---
-url: https://crypto.stackexchange.com/questions/35644/chosen-message-attack-rsa-signature/35656#35656
+source: https://crypto.stackexchange.com/questions/35644/chosen-message-attack-rsa-signature/35656#35656
+copyright:
+  - user94293 (2016)
 ---
 
 RSA 基于指数运算, 其数学特性导致其易被篡改. 该攻击需要获知 $m_{1}$, 主要用于攻击数字签名场景, 是中间人攻击的一种类型.

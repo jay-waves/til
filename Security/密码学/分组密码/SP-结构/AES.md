@@ -1,5 +1,8 @@
 ---
-src: [src/cryptography/aes.py, src/cryptography/aes_constant.py, src/cryptography/aes_key.py]
+code:
+  - src/cryptography/aes.py
+  - src/cryptography/aes_constant.py
+  - src/cryptography/aes_key.py
 ---
 
 AES (Advanced Encryption Standard) 是 NIST 于2001年选定的, 用于替代 DES 的算法.

@@ -1,6 +1,8 @@
 ---
-date: 2024-04-09
-author: Dave Marshall, Jay Waves
+revised: 2024-04-09
+copyright:
+  - Dave Marshall (1899)
+  - Jay Waves (2024)
 ---
 
 ## SystemV API

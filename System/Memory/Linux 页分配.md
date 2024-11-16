@@ -1,5 +1,5 @@
 ---
-path: include/linux/mm_types.h
+library: include/linux/mm_types.h
 ---
 
 页是内核中基本的内存管理单元.

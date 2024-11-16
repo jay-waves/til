@@ -1,5 +1,5 @@
 ---
-url: https://ninja-build.org/
+source: https://ninja-build.org/
 ---
 
 google 推出的轻量级构建系统, 应用于 chrome, android, llvm 等项目. 特点如下:

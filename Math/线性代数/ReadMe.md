@@ -10,7 +10,9 @@
 
 ## 参考
 
-- [The art of linear algebra](https://github.com/kenjihiranabe/The-Art-of-Linear-Algebra)  
-- Linear Algebra For Everyone.
-- Linear Algebra Done Right
-- 线性代数. 李尚志.
+| TITLE | AUTHORS | PUBL / CONF / JOUR | YEAR | VOLUME | URL / DOI / ISBN |
+| ----- | ------ | ------------------ | ---- | ------ | ---------------- |
+| <nobr>The Art of Linear Algebra</nobr>     | Kenji Hiranabe     | GitHub                            | 2021 |   | <https://github.com/kenjihiranabe/The-Art-of-Linear-Algebra> |
+| <nobr>Linear Algebra for Everyone</nobr>   | Gilbert Strang     | Wellesley-Cambridge Press         | 2020 |    | ISBN: 978-1-7331466-3-0                   |
+| <nobr>Linear Algebra Done Right</nobr>     | Sheldon Axler      | Springer                          | 2015 | 3rd ed.| ISBN: 978-3-319-11079-0                   |
+| <nobr>线性代数</nobr>                       | 李尚志             | 高等教育出版社                     | 2004 | 4th ed. | ISBN: 978-7-04-014815-5                   |

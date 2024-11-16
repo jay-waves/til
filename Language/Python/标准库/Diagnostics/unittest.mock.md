@@ -1,6 +1,6 @@
 ---
-url: https://docs.python.org/zh-cn/3.12/library/unittest.mock-examples.html
-date: 24-06-14
+source: https://docs.python.org/zh-cn/3.12/library/unittest.mock-examples.html
+revised: 24-06-14
 ---
 
 在测试时, 可能被测代码所依赖的其他模块并没有写完, 此时可以用 `mock` 来模拟各种调用. 另一个优点是, `mock` 模拟的返回值能更高效地探索边界, 主动构造特殊值.
