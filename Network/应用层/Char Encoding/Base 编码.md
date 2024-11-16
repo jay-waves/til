@@ -1,16 +1,25 @@
+> Base Encoding (RFC 3548, 2003), MIME (RFC 2045, 1996):
+> 
+> "Base Encoding of data is used in many situations to store or transfer
+> data in environments that, perhaps for legacy resons, are restricted 
+> to only US-ASCII data. Base encoding can also be used in new applications 
+> that do not have legacy restrictions, simply because it possible to 
+> manipulate objects with text editors."
+
+Base 编码将数据编码为可见字符串, 防止老旧信道将二进制数据默认识别为 ASCII 控制字符. 比如传输 `0x04`, 在 ASCII 里表示的意思是 End of Transmission; 又比如电子邮件中, 不同操作系统可能会自动修改邮件中的换行符 `\n` 或 `\r\n`, 可能造成附件被篡改. 本质也是类似反斜杠 `\t` 这样的转义方式.
+
 ## Base64
 
-
-用于将二进制数据编码为可见字符串, 便于 HTTP 和 Email 协议的多媒体数据传输. 包含 64 个字符和用于填充的等号 `=`. 每三个字节二进制数据变为四字节的 ASCII 字符串, 将导致约 33% 的数据膨胀.
+包含 64 个字符和用于填充的等号 `=`. 每三个字节二进制数据变为四字节的 ASCII 字符串, 将导致约 33% 的数据膨胀.
 
 **Encoding Rules**: 
 It divides the input data into groups of three bytes (24 bits), then splits these 24 bits into four groups of six bits each (padding with `0` if no aligned to 3bytes). Each six-bit group is then mapped to one of $2^6=64$ characters from the Base64 character set.
 
 The Base64 character set includes:
-- Uppercase letters: A-Z
-- Lowercase letters: a-z
-- Digits: 0-9
-- Special characters: + and /
+- Uppercase letters: `A-Z`
+- Lowercase letters: `a-z`
+- Digits: `0-9`
+- Special characters: `+` and `/`
 
 If the input data's length is not a multiple of three, the output is padded with one or two `=` characters to ensure the encoded data's length is a multiple of four.
 
