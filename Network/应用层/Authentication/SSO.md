@@ -4,7 +4,7 @@
 
 Session 是服务器端的数据, 也用于存储用户数据. 当用户通过 Cookie 上传 Session ID, 服务器用此 ID 在数据库寻找对应 Session, 从而获取到该用户的数据. 
 
-![|400](../../attach/sso%20using%20cookie.png)
+![|400](attach/sso%20using%20cookie.png)
 
 以下情况被称为*跨域 (Cross-Region)*:
 - 不同域名, 如 `http://blog.example.com` 与 `http://store.example.com` 
@@ -25,6 +25,6 @@ Session 是服务器端的数据, 也用于存储用户数据. 当用户通过 C
 2. 全局会话存在, 局部会话不一定存在.
 3. 全局会话销毁, 局部会话必须销毁.
 
-![](../../attach/sso.png)
+![](attach/sso.png)
 
-![](../../attach/sso%20destroy.png)
+![](attach/sso%20destroy.png)
