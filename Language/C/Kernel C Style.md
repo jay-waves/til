@@ -162,3 +162,28 @@ p = kmalloc(sizeof(*p), ...);
 	1. 非透明对象, 用 `typedef` 掩饰其具体类型
 	2. 明确数据长度, 如 `u8, u16, u32`, 来避免 `int, long` 架构不一致导致的混淆, 或者对标准库的 `uint32_t` 等进行检查或功能扩充.
 
+***
+
+内核常使用 `goto` 进行集中错误管理:
+
+```c
+int foo() {
+    int ret;
+
+    if (....) {
+        ret = -EINVAL;
+        goto fail;
+    }
+
+    if (...) {
+        ret = -EIO;
+        goto fail;
+    }
+
+    // 正常逻辑
+    ret = 0;
+
+fail:
+    return ret;
+}
+```
