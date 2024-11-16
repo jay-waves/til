@@ -1,6 +1,6 @@
 ---
-url: https://docs.python.org/zh-cn/3.12/library/profile.html
-date: 24-06-14
+source: https://docs.python.org/zh-cn/3.12/library/profile.html
+revised: 24-06-14
 ---
 
 精确的性能分析需要**确定性**, 而 Python 解释器会引入大量开销. 但也由于解释器的存在, 无需在源代码中插入过多桩代码, 解释器自动为各个事件提供钩子 (hook), 精确分析所需要的开销相比解释器开销就很小了.

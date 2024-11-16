@@ -1,5 +1,9 @@
 ---
-src: []
+code:
+  - src/cryptography/des.py
+  - src/cryptography/des_acceleration.py.md
+  - src/cryptography/des_key.py
+  - src/cryptography/des_table.py
 ---
 
 DES, Data Encryption Standard, 是 1977 年颁布的美帝标准加密算法, 源于 IBM 的 Lucifer 算法. DES 接受 56 位密钥, 64 位明文, 输出 64 位密文. DES 的置换和代换盒的设计标准至今未被公布, 但其有良好抗差分析性质.

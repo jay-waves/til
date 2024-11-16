@@ -1,5 +1,5 @@
 ---
-path: <math.h>
+library: <math.h>
 ---
 
 linkin while compiling:

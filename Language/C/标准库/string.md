@@ -1,6 +1,6 @@
 ---
-date: 2024-04-09
-path: <string.h>, <ctype.h>
+revised: 2024-04-09
+library: <string.h>, <ctype.h>
 ---
 
 字符串类型形如 `"whatever\0"`, 用法简单:

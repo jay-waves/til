@@ -35,6 +35,7 @@
 - 权责分离 (Separation of Duties)
 - 数据最小化 (Data Minimization)
 - 抗篡改 (Anti-tampering)
+- 抗碰撞 (Collision Resistance)
 
 > 安全目标是系统希望实现的最终状态或保护需求, 是一种外部需求.  
 > 安全属性是系统设计和实现中所具备的特征, 是一种内部特性.

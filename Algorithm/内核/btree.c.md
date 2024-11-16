@@ -1,7 +1,9 @@
 ---
-author: Joern Engel, Peter Zijlstra
+copyright:
+  - Joern Engel
+  - Peter Zijlstra
 license: GPL2
-path: lib/btree.c
+library: lib/btree.c
 ---
 ## Simple In-memory B+Tree
 

@@ -1,5 +1,5 @@
 ---
-path: include/linux/rbtree.h
+library: include/linux/rbtree.h
 license: GPL2
 copyright: Andrea Arcangeli (1999)
 ---

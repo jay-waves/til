@@ -1,7 +1,6 @@
 ---
-date: 24-04-21
 license: CC0
-author: yjw
+copyright: yjw (2024-04)
 ---
 
 ## Markdown 语法
@@ -86,6 +85,8 @@ $$
 J(\theta) = \frac 1 2 \sum_{i=1}^m (h_\theta(x^{(i)})-y^{(i)})^2
 $$
 
+MathJax 语法详见 [Latex/Mathjax](Tools/Latex/Mathjax.md)
+
 ### 代码
 
 行内代码如: `hello, world`
@@ -165,6 +166,7 @@ def main():
 空行:
 ```html
 <br>
+<nobr>此段不文本不要自动渲染换行</nobr>
 ```
 
 插入表格: 可以参考 [安全服务与安全机制的关系](../Security/ReadMe.md) 里的复杂表格

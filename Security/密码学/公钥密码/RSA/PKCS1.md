@@ -1,6 +1,6 @@
 ---
-date: 24-11-05
-url: https://datatracker.ietf.org/doc/html/rfc8017
+revised: 24-11-05
+source: https://datatracker.ietf.org/doc/html/rfc8017
 ---
 
 PKCS (Public-Key Cryptography Standards, 公钥密码学标准) 由原 RSA Data Security Inc. 发布的一系列不断更新的标准. PKCS #1 重点规定了 RSA 加密和签名算法, 包括 PSS 签名填充算法 (v2.1, 2002) 和 OAEP 加密填充算法 (v2.0, 1993).
