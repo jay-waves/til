@@ -5,12 +5,12 @@ PGP (Pretty Good Privacy) 是一种流行加密协议, 用于电子邮件和文�
 
 | 服务         | 功能     | 算法          | 描述               |
 | ------------ | -------- | ------------- | ------------------ |
-| **认证**     | 数字签名 | DSS/RSA + [SHA](Security/密码学/消息摘要/ReadMe.md) | 哈希和数字签名套件 |
+| **认证**     | 数字签名 | [DSS](Security/密码学/公钥密码/数字签名.md#3%20DSA%20数字签名)/[RSA](Security/密码学/公钥密码/RSA/RSA.md) + [SHA](Security/密码学/消息摘要/ReadMe.md) | 哈希和数字签名套件 |
 | **保密**     | 消息加密 | CAST5, [AES](Security/密码学/分组密码/SP-结构/AES.md), [IDEA](Security/密码学/分组密码/SP-结构/IDEA.md), [3DES](Security/密码学/分组密码/Feistel-结构/EDE.md), Blowfish    | 内容对称加密       |
 | **压缩**     |          | ZIP           |                    |
-| **邮件兼容** | 兼容 MIME 标准         | [Base64](Network/应用层/Char%20Encoding/Base%20编码.md)        | 将加密消息转化为 ACSII 串                 |
+| **邮件兼容** | 兼容 MIME 标准         | [Base64](Network/应用层/Char%20Encoding/Base%20编码.md)        | 将加密消息转化为 [ACSII](Network/应用层/Char%20Encoding/字符编码.md) 串                 |
 
-PGP 加密电子邮件时, 与 MIME (Multipurpose Internet Mail Extension) 结合在一起形成 PGP/MIME 标准.
+PGP 加密电子邮件时, 与 [MIME](Network/应用层/E-Mail.md) (Multipurpose Internet Mail Extension) 结合在一起形成 PGP/MIME 标准.
 
 PGP 依赖于[公钥基础设施](Security/密码学/安全协议/密钥分发与管理.md)进行管理和分发, 但自身没有完善证书管理体系. 支持公钥信任链.
 
@@ -19,7 +19,7 @@ PGP 依赖于[公钥基础设施](Security/密码学/安全协议/密钥分发�
 | 网络层次   | 表示层                                                                | 应用层                                                               |
 | 保护对象   | TCP 连接通道                                                          | 电子邮件内容和附件, 不包括邮件头部                                    |
 | 持久性     | 传输至接收方后立即解密                                                | 传输完成后仍持久加密, 直到接收方主动正确解密                          |
-| 邮件兼容性 | SSL/TLS 透明地嵌入 SMTP 下层, 交付给 SMTP 后再加密, 使用 TCP 465 端口 | PGP 先行加密, 再交付给 SMTP. 从这点看, PGP 更像是独立的**应用层加密工具** |
+| 邮件兼容性 | SSL/TLS 透明地嵌入 [SMTP](Network/应用层/E-Mail.md#SMTP) 下层, 交付给 SMTP 后再加密, 使用 TCP 465 端口 | PGP 先行加密, 再交付给 SMTP. 从这点看, PGP 更像是独立的**应用层加密工具** |
 | 保密场景   | 服务器间加密连接, 由于企业等场景存在 SSL 提前卸载再转发到端, 并不是端到端加密的                                                      | 端到端加密, 内容只被受授权方查看                                                                      |
 
 ## PGP 工作流程
