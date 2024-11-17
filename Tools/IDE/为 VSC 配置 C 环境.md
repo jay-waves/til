@@ -1,6 +1,7 @@
 ---
 revised: 24-07-09
-copyright: JayWaves
+copyright:
+  - JayWaves (2024)
 ---
 
 - 所配置软件: VSCode
