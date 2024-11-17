@@ -1,13 +1,17 @@
+# Obsidian 相关文件
 /.obsidian/**
 /.trash/**
 /.stash/**
-build/
 .obsidian.vimrc
-NSFW/
 
-# 大文件
+# 代码相关文件
+build/
+tags
+
+# 不相关文件
 /Language/Haskell/Haskell LLVM JIT Compiler/**
 /src/sgi/
+NSFW/
 
 # PPT 和 DrawIO 可能产生的临时文件
 ~$*.ppt*

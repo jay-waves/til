@@ -1,6 +1,6 @@
 <https://wxamples.com>
 
-## 插件
+## Plugins
 
 - Advanced Tables
 - Reveal Active File Button, 在文件管理器高亮当前文件

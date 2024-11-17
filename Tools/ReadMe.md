@@ -1,22 +1,18 @@
 品味如下:
-- 界面现代化, 有审美. 
-- 特别丑的, 宁愿用命令行.
-- 
-
-- 界面不能太丑, 并且保持简洁和现代. 古早的神器除外, 因为不可避免得丑.
-- 开源, 免费, 有社区版优先. 不喜欢自行编译 (喷我吧, 我懒), 除非性能需要.
+- 界面不能太丑, 并且保持简洁和现代. 最好有黑色主题. 特别丑的, 宁愿用命令行.
+- 开源, 免费, 有社区版优先. 不喜欢自行编译 (我懒), 除非性能和移植需要.
 - 多平台, 跨平台功能不阉割. 起码支持 Windows + Debian, 不需要跨平台重新适应软件.
 - 不能占用太多资源. 不喜欢 Web 应用和 Java 应用, 尤其烦没好好打包的 NPM.
-- 使用方式可以复杂, 但不能繁琐丑陋. 比如 CMD, 伪装成命令行的💩.
-- 配置方式可以复杂, 但也应足够开箱即用. 唯一例外可能是 VSCode/NVim, 编辑器我愿意花更多时间来配置.
+- 使用配置方式可以复杂, 但不能繁琐丑陋, 不能绕圈子解决问题. 比如 CMD, 伪装成命令行的💩.
+- 专注于某个功能领域, 不搞大杂烩.
 
 ***
 
 - **PotPlayer**
 - **Mail Master** 网易邮箱大师
 - **Zotero7**, 文献管理
-- SumatraPDF, Adobe Acrobat DC
-- GoldenDict, EuDic, 本地词典
+- SumatraPDF, Adobe Acrobat DC.
+- GoldenDict, EuDic, 本地词典 (不太喜欢, 现在只用网页谷歌翻译)
 - Jane Reader, windows 下 EUPB 阅读器
 - XnViewMP, XnConvert, 图片库查看器
 - Obsidian, 主力笔记软件
@@ -99,38 +95,40 @@
 
 ## Cli
 
+- PowerShell7. Windows 下使用的命令行.
+- Zsh. Debian 下使用的命令行.
+- Clink. cmd prompt 加强工具, 已弃用 cmd.
+- Starship. zsh prompt 加强工具
+
+<br>
+
 - **pandoc**
-- helix, 终端编辑器
-- nivm, neovide
-- Graphviz + Doxygen
-- sl, genact 摸鱼用
-- neofetch, Figlet 装逼用
-- **mpv**, 播放视频和音频
-- Starship, prompt 加强工具
+- helix. 终端编辑器, 键位反人类, 已弃用.
+- nivm, neovide, ctags
+- **mpv**, 终端音视频播放器.
 - httpie
-- Clink, cmd prompt 加强工具
 - bat, cat 的增强版
 - duf, dust, du 磁盘空间查看
 - iconv, uchardet [字符编码](Network/应用层/Char%20Encoding/字符编码.md)工具
 - fq 类 yq, jq, 还支持各类二进制二年间查看
 - fd, find 的加强版, 使用正则表达式而不是通配符.
 - rg (ripgrep)
-- tokei
+- fzf, 模糊查找工具, 将 fd, find, rg 用管道传给它, 来进一步查找.
+- tokei, 统计代码行数
 - viu, 终端查看图片 (模糊版)
 - yazi, 终端文件浏览器
 - zoxide
-- mpv, VLC, 终端视频播放器
-- graphviz, 代码绘图工具
 - imagicMagick, 终端图片批处理工具
-- iconv
 - mdv, 终端 Markdown 文件渲染器
-- wolframscript, 数学
+- wolframscript, 数学引擎.
 - gopass, 密码管理器
-- age, 加密工具 (这个不能自己搭配密码套件, 开箱即用)
+- age, 加密工具 (不能自定义密码套件, 封装 [PGP](Network/应用层/PGP.md), 开箱即用)
 - bandwhich, 查看当前占用宽带的应用和IP
 - [when-changed](https://github.com/joh/when-changed)
 - [repren](https://github.com/jlevy/repren)
-
+- Graphviz + Doxygen. 代码可视化工具.
+- sl, genact 摸鱼用
+- neofetch, Figlet 装逼用.
 
 ## Browser Plugins
 
@@ -145,5 +143,10 @@
 - Ublock Origin, WebRTC Leak Shield (edge)
 - 隐形滚动条 (edge)
 - TemperMonkey
+	- Github 增强 - 高速下载
+	- m3u8-downloader
+	- CSDN Greener
+	- 知乎增强, 知乎美化, 知乎下载器
+	- 网盘直链下载助手
 - Tab Stash (firefox)
 
