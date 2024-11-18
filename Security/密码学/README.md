@@ -34,3 +34,7 @@
 ## 参考
 
 Introduction to Modern Cryptography. Jonathan Katz.
+
+Cryptograhpy and Network Security -- Principles and Practice. William Stallings. 8th ed.
+
+信息网络安全. 刘建伟. 3rd ed.
