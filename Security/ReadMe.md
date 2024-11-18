@@ -1,14 +1,3 @@
-## 参考
-
-- Internet Security Glossary, [RFC 2828](https://www.ietf.org/rfc/rfc2828.txt) (v1, 2000), [RFC 4949](https://datatracker.ietf.org/doc/html/rfc4949) (v2, 2007)
-- Glossar of Key Information Security Terms. [NIST IR 7298 Rev.3, 2019](https://csrc.nist.gov/glossary)
-- [NIST SP 800.53](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final). [NIST SP 800-92](https://csrc.nist.gov/pubs/sp/800/92/final). NIST Cybersecurity Framwork (NIST CSF)
-- Information Security, cybersecurity and privacy protection: Evaluation criteria for IT security, [ISO/IEC 15408](https://www.iso.org/standard/72891.html) (Edition 4, 2022). Information security management systems, [ISO/IEC 27001](https://www.iso.org/standard/27001) (Edition 3, 2022). Information security controls, [ISO/IEC 27002](https://www.iso.org/standard/75652.html) (Edition 3, 2022). 
-- Information Security, cybersecurity and privacy protection -- 
-- [ITU-T X.800](https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=3102&lang=en), 1991.
-- [ISO 7498-2, 1988](https://www.iso.org/standard/14256.html). Open Systems Interconnection — Basic Reference Model
-- [ISO/IEC 10181-1:1996](https://www.iso.org/standard/24404.html). Open Systems Interconnection — Security frameworks for open systems: Overview
-
 ## 安全目标
 
 基础安全目标 (CIA 不可能三角, 信息安全三要素):
@@ -352,3 +341,21 @@
 > 	 threat consequence, such as by eliminating a vulnerability.
 > 
 > [^1]: Parker, D., "Computer Security Management", ISBN 0-8359- 0905-0, 1981
+
+## 参考
+
+| TITLE                                                                         | AUTHORS | PUBL / CONF / JOUR | YEAR | VOLUME       | LICENSE  | URL / DOI / ISBN                                                      |
+| ----------------------------------------------------------------------------- | ------- | ------------------ | ---- | ------------ | -------- | --------------------------------------------------------------------- |
+| <nobr>Internet Security Glossary, RFC 2828 (v1)</nobr>                              | IETF    | RFC 2828               | 2000 |              |          | <https://www.ietf.org/rfc/rfc2828.txt>                                |
+| <nobr>Internet Security Glossary, RFC 4949 (v2)</nobr>                              | IETF    | RFC 4949               | 2007 |              |          | <https://datatracker.ietf.org/doc/html/rfc4949>                       |
+| <nobr>Glossary of Key Information Security Terms</nobr>                              | NIST    | NIST IR            | 2019 | 7298 Rev.3   |          | <https://csrc.nist.gov/glossary>                                      |
+| <nobr>Security and Privacy Controls for Information Systems and Organizations</nobr> | NIST    | NIST SP 800            | 2020 | 800-53 Rev.5 |          | <https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final>                  |
+| <nobr>Guide to Computer Security Log Management</nobr>                                     | NIST    | NIST SP 800            | 2006 | 800-92       |          | <https://csrc.nist.gov/pubs/sp/800/92/final>                          |
+|<nobr>NIST Cybersecurity Framework (NIST CSF)</nobr>                                       | NIST    | NIST               | 2014 |              |          |  <https://www.nist.gov/cyberframework>                                                                     |
+|<nobr>Evaluation criteria for IT security</nobr>                                           | ISO/IEC | ISO/IEC 15408      | 2022 | Ed.4        |          | <https://www.iso.org/standard/72891.html>                             |
+|  <nobr>Information Security management systems</nobr>                                       | ISO/IEC | ISO/IEC 27001      | 2022 | Ed.3        |          | <https://www.iso.org/standard/27001>                                  |
+| <nobr>Information Security controls</nobr>                                                 | ISO/IEC | ISO/IEC 27002      | 2022 | Ed.3        |          | <https://www.iso.org/standard/75652.html>                             |
+| <nobr>Security architecture for Open Systems Interconnection for CCITT applications</nobr>                    | ITU-T   | ITU-T X.800        | 1991 |              |          | <https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=3102&lang=en> |
+| <nobr>Open Systems Interconnection — Basic Reference Model</nobr>                          | ISO     | ISO 7498-2         | 1988 |              |          | <https://www.iso.org/standard/14256.html>                             |
+| <nobr>Open Systems Interconnection — Security frameworks for open systems: Overview</nobr> | ISO/IEC | ISO/IEC 10181-1    | 1996 |              |          | <https://www.iso.org/standard/24404.html>                             |
+| <nobr>OWASP Cheat Sheet Series</nobr>                                                      | <nobr>Jim Manico, Jakub Mackowski</nobr>   | OWASP              | 2019      | Ed.2              | CC BY-SA | <https://cheatsheetseries.owasp.org/index.html>                       |
