@@ -114,7 +114,7 @@
 - fd, find 的加强版, 使用正则表达式而不是通配符.
 - rg (ripgrep)
 - fzf, 模糊查找工具, 将 fd, find, rg 用管道传给它, 来进一步查找.
-- tokei, 统计代码行数
+- tokei, 统计代码行数. cloc 替代品.
 - viu, 终端查看图片 (模糊版)
 - yazi, 终端文件浏览器
 - zoxide

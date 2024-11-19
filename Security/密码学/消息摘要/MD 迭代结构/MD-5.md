@@ -2,7 +2,7 @@ MD-5 消息摘要算法由 Ronald Linn Rivest 于 1992 年公开, 输出 `128b`,
 
 MD-5 不限定输入数据长度, 如果输入长度高于 $2^{64}$ 位, 就只用其低 $2^{64}$ 位. 后续哈希函数考虑安全性, 为输入设定了上限.
 
-MD-5 遵循 [Merkle-Damgard 结构](迭代型散列函数.md), 结构大致如下:
+MD-5 遵循 [Merkle-Damgard 结构](Security/密码学/消息摘要/MD%20迭代结构/MD%20结构.md), 结构大致如下:
 
 ```python
 def md5(msg: bytes) -> int:
@@ -41,7 +41,7 @@ def padding(msg: bytes):
 ### 单轮迭代结构
 
 单轮结构:
-![图源wiki|250](../../../attach/Pasted%20image%2020240405172905.png)
+![图源wiki|250](attach/Pasted%20image%2020240405172905.png)
 
 ```python
 '''input: msg: bytes'''
