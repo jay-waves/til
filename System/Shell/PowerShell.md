@@ -93,3 +93,16 @@ Install-Module -Name PSReadLine -AllowPrerelease -Scope CurrentUser -Force -Skip
 Set-PSReadLineOption -ShowToolTips
 Set-PSReadLineOption -PredictionViewStyle ListView
 ```
+
+## 命令编辑模块
+
+在外部编辑器中编辑命令行当前键入的命令: 
+
+```powershell
+Install-Module -Name PSReadLine -Force -Scope CurrentUser
+Set-PSReadLineOption -EditMode Vi
+$env:VISUAL = 'nvim' # 指定编辑器, 需要 nvim 在 PATH 中.
+
+# 建立键绑定: alt+x
+- `Set-PSReadLineKeyHandler -Chord Alt+x -Function ViEditVisually
+```
