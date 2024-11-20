@@ -3,7 +3,7 @@ AES 密钥扩展模块
 """
 
 '''might be more natural to use OO of key word'''
-from constant import s_box, Rcon, Nk, Nr, Nb
+from aes_constant import s_box, Rcon, Nk, Nr, Nb
 
 def sub_word(w):
 	return [s_box[b>>4][b&0xF] for b in w]
