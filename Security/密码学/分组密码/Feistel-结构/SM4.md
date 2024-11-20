@@ -16,185 +16,183 @@ T 变换由线性变换 $L$ 和非线性变换 $\tau$ 组成: $T(m)\ =\ L(\tau(m
 
 ## 源码
 
-- 主函数模块 sm4.py
+`sm4.py`
+
 ```python
-'''
-主模块
-byte: 8bit int, 
-word: 32bit int,
-byte_array: 4*8bit int array, (a0, a1, a2, a3)
-'''
+"""
+words: array of 4 bytes, like [B1, B2, B3, B4]
+bytes: array of bytes
+bytes: 8bits binary number
+"""
 
 import key_expansion as key
-import constant as Con
-from basic import pack, unpack
-
-SM4_ENCRYPT = 1
-SM4_DECRYPT = 0
+from constant import SBOX
 
 def _non_linear_map(word):
-    """
-    非线性变换t, b_i = Sbox(a_i)
-    input: 1 word
-    ouput: 1 word, after sbox
-    """
-    _s_box = lambda byte: Con.S_BOX.get(byte)
-
-    a0, a1, a2, a3 = unpack(word)
-    B = (_s_box(a0), _s_box(a1), _s_box(a2), _s_box(a3))
-    return pack(B)
+    return bytes(SBOX.get(byte) for byte in word)
 
 def _linear_map(word):
     """
-    线性变换L
+    线性变换 L
     L(B) = B ^ (B <<< 2) ^ (B <<< 10) ^ (B <<< 18) ^ (B <<< 24)
-    input: 1 word
-    ouput: 1 word
+    :param block: bytes, 32b
     """
-    _loop_left_shift = lambda num, base: ((num << base) & 0xFFFFFFFF) | (num >> (32-base))
-    schedule = (2, 10, 18, 24)
+    _loop_left_shift = lambda num, base: ((num << base) & 0xFFFFFFFF) | (num >> (32 - base))
+	SCHEDULE = (2, 10, 18, 24)
+	
+    a = _w2i(word)
+    b = a
+    for shift in SCHEDULE:
+	    b ^=i _loop_left_shift(a, shift)
+	return _i2w(b)
 
-    tmp = word
-    for i in schedule:
-        tmp ^= _loop_left_shift(word, i)
-    return tmp
-
-def _round_f(word_array, rk):
+def _round_f(words, rk):
     """
     轮函数变换
     F(X0, X1, X2, X3, rk) = X0 ^ T(X1 ^ X2 ^ X3 ^ rk)
-    :param word_array: word per (X0, X1, X2, X3)
-    :param rk: round keys 4bytes
+    :param blocks: bytes (X0, X1, X2, X3), 4*32b
+    :param rk: round keys, bytes, 32b
     """
-    x0, x1, x2, x3 = word_array
-    x4 = _non_linear_map(x1 ^ x2 ^ x3 ^ rk)
-    x4 = _linear_map(x4)
-    return x0 ^ x4
+    x0, x1, x2, x3 = words
+    # x1 ^ x2 ^ x3 ^ rk
+    a = _xor(x1, x2)
+    b = _xor(a, x3)
+    c = _xor(b, rk)
+    
+    d = _non_linear_map(c)
+    e = _linear_map(d)
+    x4 = _xor(x0, e)
+    return x4
 
-def crypt(num, mk, mode=SM4_ENCRYPT):
+def _crypt(block, rk):
     """
-    SM4加密和解密
-    :param num: 密文或明文 16bytes=4words, int
-    :param mk:  密钥 16bytes, int
-    :param mode: 轮密钥顺序, 加密或解密
+    :param block: 16bytes
+    :param rks: 16bytes
     """
-    x = list( unpack(num, full_width=128, split_width=32))
-    rks = key.rks_gen(mk)
-    if mode == SM4_DECRYPT:
-        # 解密则轮密钥顺序相反
-        rks = rks[::-1]
+	for i in range(32):
+		blocks += _round_f(x[i:i+4], rks[i])
 
-    #轮函数
-    for i in range(32):
-        x.append( _round_f(x[i:i + 4], rks[i]))
+	# 反序变换 R
+    return b''.join(blocks[-4:][::-1])
 
-    # 反序变换R
-    return pack( x[-4:][::-1], split_width=32)
+def encrypt(data, mk):
+    """
+    :param data: 16bytes
+    :param mk: 16bytes
+    """
+    if len(data) != 16 or len(mk) != 16:
+	    raise ValueError
+	# 128b to 4*32b, bytes to words
+	words = [data[i:i + 4] for i in range(0, 16, 4)]
+    rks = key.rks_gen(mk) 
+    return _crypt(words, rks)
+
+def decrypt(data, mk):
+    """
+    :param data: 16bytes
+    :param mk: 16bytes
+    """
+    if len(data) != 16 or len(mk) != 16:
+	    raise ValueError
+	# 128b to 4*32b, bytes to words
+	words = [data[i:i + 4] for i in range(0, 16, 4)]
+    rks = key.rks_gen(mk)[::-1]  # 逆序轮密钥
+    return _crypt(words, rks)
+	
 ```
 
-- 轮密钥扩展模块 key_expansion.py
-```python
-'''rk generation for SM4'''
-import constant as Con
-from basic import pack, unpack
+`key_expansion.py`
 
-# 轮密钥缓存
-_rk_cache = {}
+```python
+'''RK generation for SM4'''
+from constant import SBOX, FK, CK
+from utils import _xor, _w2i, _i2w
 
 def _non_linear_map(word):
-    """
-    非线性变换t, b_i = Sbox(a_i)
-    input: 1 word
-    ouput: 1 word, after sbox
-    """
-    _s_box = lambda byte: Con.S_BOX.get(byte)
-
-    a0, a1, a2, a3 = unpack(word)
-    B = (_s_box(a0), _s_box(a1), _s_box(a2), _s_box(a3))
-    return pack(B)
+	return bytes( SBOX.get(byte) for byte in word )
 
 def _linear_map(word):
     """
-    线性变换L'
+    线性变换 L'
     L'(B) = B ^ (B <<< 13) ^ (B <<< 23)
-    input: 1 word
-    ouput: 1 word
+    :return: 1 word
     """
-    _loop_left_shift = lambda num, base: ((num << base) & 0xFFFFFFFF) | (num >> (32-base))
-    schedule = (13, 23)
+    _loop_left_shift = lambda num, base: ((num << base) & 0xFFFFFFFF) | (num >> (32 - base))
+    SCHEDULE = (13, 23)
 
-    tmp = word
-    for i in schedule:
-        tmp ^= _loop_left_shift(word, i)
-    return tmp
+	a = _w2i(word)
+	b = a
+    for shift in SCHEDULE:
+        b ^=i _loop_left_shift(a, shift)
+    return _i2w(b)
 
+def _round_f(word, ck):
+    """
+    轮函数 (线性 + 非线性变换)
+    F(K) = K0 ^ T'(K1 ^ K2 ^ K3 ^ CK)
+    :return: 1 word 
+    """
+    k0, k1, k2, k3 = word
 
-def _round_f(word_array, ck):
-    '''
-    轮函数(线性+非线性变换)
-    rk_i = K_{i+4} = Ki ^ T'(Ki+1 ^ Ki+2 ^ Ki+3 ^ CKi) 
-    '''
-    k0, k1, k2, k3 = word_array
-    k4 = _non_linear_map(k1 ^ k2 ^ k3 ^ ck)
+    k4 = _xor(k1, k2)
+    k4 = _xor(k4, k3)
+    k4 = _xor(k4, ck)
+    
+    k4 = _non_linear_map(k4)
     k4 = _linear_map(k4)
-    return k0 ^ k4
 
+    return _xor(k0, k4)
 
 def rks_gen(mk):
     """
-    密钥扩展, 生成轮密钥
-    :param mk: 加密密钥, 16bytes
-    :return list
+    :param mk: master key, 16bytes
+    :return: list of 32 words
     """
-    # try to read rks from cache
-    rks = _rk_cache.get(mk)
-    if rks is None:
-        mk0, mk1, mk2, mk3 = unpack(mk, full_width=128, split_width=32)
-        # k0, k1, k2, k3 = MK ^ FK
-        keys = [mk0 ^ Con.FK[0], mk1 ^ Con.FK[1], mk2 ^ Con.FK[2], mk3 ^ Con.FK[3]]
+    # K0,K1,K2,K3 = MK ^ FK
+    k0 = _xor(mk[0 :4 ], FK[0])
+    k1 = _xor(mk[4 :8 ], FK[1])
+    k2 = _xor(mk[8 :12], FK[2])
+    k3 = _xor(mk[12:16], FK[3])
+    rks = [k0, k1, k2, k3]
 
-        for i in range(32):
-            rk = _round_f(keys[i:i+4], Con.CK[i]) 
-            keys.append(rk)
-        rks = keys[4:]
+    # 32 轮密钥生成
+    for i in range(32):
+        ks += _round_f(rks[i:i + 4], CK[i])
 
-        # 加入轮密钥缓存中
-        _rk_cache[mk] = rks
-    return rks
+    return keys[4:]
 ```
 
-数据格式转换与打包 basic.py
+`utils.py`
+
 ```python
-def pack(array, split_width=8):
-    '''pack tuple of int into big int'''
-    cnt = len(array)
-    num = 0
-    for i in range(cnt):
-        num = (num << split_width) | array[i]
-    return num
+def _xor(a, b):
+    """
+    对两个字节序列逐字节异或
+    """
+    return bytes(x ^ y for x, y in zip(a, b))
 
-def unpack(num, full_width=32, split_width=8):
-    '''unpack big int to int tuple, by bit width'''
-    # 要求输出full_width ，是因为对输出元组元素的个数有对齐要求， 
-    # 比如含多前缀0的整型有时需拆解为(0,0,num1,num2)
-    mask = (1 << split_width) - 1
-    cnt = full_width // split_width
-    array = []
-    for _ in range(cnt):
-        array.append(num & mask)
-        num = num >> split_width
-    array.reverse()
-    return tuple(array)
+def _w2i(data):
+    """
+    将字节序列转化为整数
+    """
+    return int.from_bytes(data, 'big')
+
+def _i2w(value, length=4):
+    """
+    将整数转化为 4 字节长的字节序列 (一字)
+    """
+    return value.to_bytes(length, 'big')
 ```
 
-常数模块 constant.py
+`constant.py`
+
 ```python
 '''constant for SM4'''
 
-# 系统参数FK
+# 系统参数 FK
 FK = (0XA3B1BAC6, 0X56AA3350, 0X677D9197, 0XB27022DC)
 
-# 固定参数CK
+# 固定参数 CK
 CK = (0X00070E15, 0X1C232A31, 0X383F464D, 0X545B6269,
       0X70777E85, 0X8C939AA1, 0XA8AFB6BD, 0XC4CBD2D9,
       0XE0E7EEF5, 0XFC030A11, 0X181F262D, 0X343B4249,
@@ -205,7 +203,7 @@ CK = (0X00070E15, 0X1C232A31, 0X383F464D, 0X545B6269,
       0X10171E25, 0X2C333A41, 0X484F565D, 0X646B7279)
 
 # S盒
-S_BOX = {
+SBOX = {
     0X00: 0XD6, 0X01: 0X90, 0X02: 0XE9, 0X03: 0XFE, 0X04: 0XCC, 0X05: 0XE1, 0X06: 0X3D, 0X07: 0XB7,
     0X08: 0X16, 0X09: 0XB6, 0X0A: 0X14, 0X0B: 0XC2, 0X0C: 0X28, 0X0D: 0XFB, 0X0E: 0X2C, 0X0F: 0X05,
     0X10: 0X2B, 0X11: 0X67, 0X12: 0X9A, 0X13: 0X76, 0X14: 0X2A, 0X15: 0XBE, 0X16: 0X04, 0X17: 0XC3,

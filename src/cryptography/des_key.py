@@ -1,6 +1,6 @@
 """密钥扩展模块 key.py"""
-import table
-from table import permutate
+import des_table
+from des_table import permutate
 
 def PC1(key_64b):
     '''

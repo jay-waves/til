@@ -104,5 +104,5 @@ Set-PSReadLineOption -EditMode Vi
 $env:VISUAL = 'nvim' # 指定编辑器, 需要 nvim 在 PATH 中.
 
 # 建立键绑定: alt+x
-- `Set-PSReadLineKeyHandler -Chord Alt+x -Function ViEditVisually
+Set-PSReadLineKeyHandler -Chord Alt+x -Function ViEditVisually
 ```

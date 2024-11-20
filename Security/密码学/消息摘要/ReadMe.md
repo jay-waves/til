@@ -87,7 +87,7 @@ MMO 构造, **Davies-Meyer 构造**, 基于 CBC 构造....
 
 Wide Pipe Hash
 
-## 6 基于全域哈希
+### 6 基于全域哈希
 
 [UMAC](Security/密码学/消息摘要/消息认证码/UMAC.md)
 
