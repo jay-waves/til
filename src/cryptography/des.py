@@ -9,9 +9,9 @@
 - rK: round_key_48b
 """
 
-import table
-from table import permutate
-import key
+import des_table
+from des_table import permutate
+import des_key
 
 def F_Sbox(data_48b):
     '''

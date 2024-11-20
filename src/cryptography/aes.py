@@ -4,8 +4,8 @@ AES
 
 
 import gf # 有限域 GF(GF(2^{8})^{4})
-import key
-import constant as Con
+import aes_key
+import aes_constant as Con
 
 def add_round_key(state, key):
     '''add round key'''
