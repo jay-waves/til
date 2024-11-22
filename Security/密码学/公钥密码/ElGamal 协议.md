@@ -108,6 +108,6 @@ H(m_{2})=XS_{2}+kS_{2}
 
 <br>
 
-> ElGamal 签名存在较多变形, 见[数字签名算法汇总](数字签名.md), 如 Schenorr 和  DSA.
+> ElGamal 签名存在较多变形, 见[数字签名算法汇总](Security/密码学/公钥密码/数字签名/数字签名.md), 如 Schenorr 和  DSA.
 
 > ElGamal 协议也被构建于椭圆曲线有限域上, 见 [ECC-Elgamal](ECC/ECC-Elgamal.md)

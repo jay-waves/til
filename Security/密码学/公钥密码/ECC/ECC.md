@@ -41,7 +41,7 @@ ECDH (Elliptic Curve Diffie-Hellman Protocol) 基于ECC实现的DH密钥交换�
 
 原理: $\frac{[hash(M)]G+[x]P}{s}=\frac{[hash(M)+xd]G}{s}=[k]G$
 
-> 分析见[ElGamal-协议](../ElGamal-协议.md). SM2验证方式类似ElGamal; ECDSA构造s方式和ElGamal类似, 但由于签名中已无法恢复出 $[k]G$ (而且椭圆点不能作为标量), 所以采用了Schnorr协议的验证 $k$ (而不是m)的方式.
+> 分析见[ElGamal 协议](Security/密码学/公钥密码/ElGamal%20协议.md). SM2验证方式类似ElGamal; ECDSA构造s方式和ElGamal类似, 但由于签名中已无法恢复出 $[k]G$ (而且椭圆点不能作为标量), 所以采用了Schnorr协议的验证 $k$ (而不是m)的方式.
 
 ### 与RSA对比
 
