@@ -34,6 +34,15 @@ https://en.wikipedia.org/wiki/Algebraic_structure
 	- 域代数 (Algebra Over a Field)
 - 格 (Lattice)
 
+| $(R^{*}, *)$ | 封闭 | 单位元 | 逆元 | 交换 | 例子 |
+| ------------------ | ---- | ------ | ---- | ---- | ---- |
+| 幺环               |      | Y      |      |      |      |
+| 交换环             |      |        |      | Y    |      |
+| 无零因子环         | Y    |        |      |      | $\mathbb{Z}\times \{0  \}$    |
+| 整环               | Y    | Y      |      | Y    | $\mathbb{Z}, \mathbb{F}_{p}[x]$     |
+| 除环/体            | Y    | Y      | Y    |      |      |
+| 域                 | Y    | Y      | Y    | Y     | $\mathbb{R}, \mathbb{Q},\mathbb{C}, \mathbb{R}(x)$      |
+
 #### 抽象空间
 
 https://en.wikipedia.org/wiki/Space_(mathematics)

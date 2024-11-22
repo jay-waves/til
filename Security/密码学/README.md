@@ -12,8 +12,8 @@
 1. 公钥密码
 	- [ECC](公钥密码/ECC/ECC.md)
 	- [RSA](公钥密码/RSA/RSA.md)
-	- [常见数字签名算法](公钥密码/数字签名.md)
-	- [DiffieHellman-密钥交换](公钥密码/DiffieHellman-密钥交换.md)
+	- [常见数字签名算法](Security/密码学/公钥密码/数字签名/数字签名.md)
+	- [DiffieHellman 协议](Security/密码学/公钥密码/DiffieHellman%20协议.md)
 1. [消息摘要 (密码学哈希函数)](消息摘要/ReadMe.md)
 	- [MAC](消息摘要/消息认证码/MAC.md)
 	- [HMAC](消息摘要/消息认证码/HMAC.md)
@@ -53,7 +53,7 @@
 | [3DES](Security/密码学/分组密码/Feistel-结构/EDE.md)                                                   | 块密码   |          | 28.24                                                           |              |                                         |
 | AES-128-CBC, 192, 256                                  | 块加密   |          | 116.86, 109.87, 89.92                                           |              |                                         |
 | [RSA2048](Security/密码学/公钥密码/RSA/RSA.md)                                                | 公钥密码 |          | 23847.8 (verify/s) 747.7 (sign/s)                               |              |                                         |
-| [DSA](Security/密码学/公钥密码/数字签名.md)2048                                                | 公钥密码 |          | 2111.3 (verify/s) 2438.4 (sign/s)                               |              |                                         |
+| [DSA](Security/密码学/公钥密码/数字签名/数字签名.md)2048                                                | 公钥密码 |          | 2111.3 (verify/s) 2438.4 (sign/s)                               |              |                                         |
 
 [^1]: 吞吐量 = 周转速度 (C/S) * 单次数据块大小. 
 
