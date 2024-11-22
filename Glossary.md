@@ -202,7 +202,7 @@ Discrete Logarithm Problem, 离散对数问题, 见 [欧拉定理](Math/数论/�
 
 ### DH
 
-Diffie-Hellman 密钥交换, 两实体在非安全信道交换秘密的算法, 见 [DiffieHellman-密钥交换](Security/密码学/公钥密码/DiffieHellman-密钥交换.md)
+Diffie-Hellman 密钥交换, 两实体在非安全信道交换秘密的算法, 见 [DiffieHellman 协议](Security/密码学/公钥密码/DiffieHellman%20协议.md)
 
 ### DAG
 
@@ -234,7 +234,7 @@ Exploit Database. 公开发布一些漏洞的详细信息和利用代码, 每个
 
 ### ElGamal
 
-一种基于 DLP 困难性的公钥密码算法, 包括加密和签名. 见 [ElGamal-协议](Security/密码学/公钥密码/ElGamal-协议.md)
+一种基于 DLP 困难性的公钥密码算法, 包括加密和签名. 见 [ElGamal 协议](Security/密码学/公钥密码/ElGamal%20协议.md)
 
 ### EOL
 
@@ -391,6 +391,10 @@ JavaScript Object Notation, 轻量级数据交换格式, 易于解析和阅读.
 ### KMS 
 
 Key Management Service, 密钥管理服务, 用于管理加密密钥的创建和存储. 
+
+### KDF
+
+密钥派生函数
 
 ---
 

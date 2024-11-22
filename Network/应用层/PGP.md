@@ -5,7 +5,7 @@ PGP (Pretty Good Privacy) 是一种流行加密协议, 用于电子邮件和文�
 
 | 服务         | 功能     | 算法          | 描述               |
 | ------------ | -------- | ------------- | ------------------ |
-| **认证**     | 数字签名 | [DSS](Security/密码学/公钥密码/数字签名.md#3%20DSA%20数字签名)/[RSA](Security/密码学/公钥密码/RSA/RSA.md) + [SHA](Security/密码学/消息摘要/ReadMe.md) | 哈希和数字签名套件 |
+| **认证**     | 数字签名 | [DSS](Security/密码学/公钥密码/数字签名/数字签名.md#3%20DSA%20数字签名)/[RSA](Security/密码学/公钥密码/RSA/RSA.md) + [SHA](Security/密码学/消息摘要/ReadMe.md) | 哈希和数字签名套件 |
 | **保密**     | 消息加密 | CAST5, [AES](Security/密码学/分组密码/SP-结构/AES.md), [IDEA](Security/密码学/分组密码/SP-结构/IDEA.md), [3DES](Security/密码学/分组密码/Feistel-结构/EDE.md), Blowfish    | 内容对称加密       |
 | **压缩**     |          | ZIP           |                    |
 | **邮件兼容** | 兼容 MIME 标准         | [Base64](Network/应用层/Char%20Encoding/Base%20编码.md)        | 将加密消息转化为 [ACSII](Network/应用层/Char%20Encoding/字符编码.md) 串                 |
@@ -37,7 +37,7 @@ PGP 工作流程采用混合加密 (hybrid encryption), 混合使用公钥和对
 1. 发送方首先生成一个随机的**[对称密钥](Security/密码学/分组密码/ReadMe.md)** $K$ 作为本次[会话密钥](Security/密码学/安全协议/密钥分发与管理.md).
 2. 使用会话密钥 $K$ 对消息内容 $M$ 加密: $$C_{M}=\{ M \}_{K}$$
 3. 发送方会提前获知接收者的公钥 $PK$, 对会话密钥进行加密: $$C_{K}=\{ K \}_{PK}$$
-4. (可选) 对原始消息 $M$ 进行[数字签名](Security/密码学/公钥密码/数字签名.md), 供接收方确认消息真实性和完整性: $$S=\{ Hash(M)\}_{SK'}$$
+4. (可选) 对原始消息 $M$ 进行[数字签名](Security/密码学/公钥密码/数字签名/数字签名.md), 供接收方确认消息真实性和完整性: $$S=\{ Hash(M)\}_{SK'}$$
 5. 将消息打包发送给接收方: $$\{ C_{M},C_{K}, (S) \}$$
 
 ### 2. 接收方

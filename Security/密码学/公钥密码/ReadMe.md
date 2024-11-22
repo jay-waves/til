@@ -12,8 +12,8 @@
 
 ### 公钥密码算法
 
-- [DH](DiffieHellman-密钥交换.md), 基于有限域离散对数困难问题.
+- [DH](Security/密码学/公钥密码/DiffieHellman%20协议.md), 基于有限域离散对数困难问题.
 - [RSA](RSA/RSA.md), 基于大整数分解困难问题.
-- [ElGamal](ElGamal-协议.md), 基于有限域离散对数困难问题.
+- [ElGamal](Security/密码学/公钥密码/ElGamal%20协议.md), 基于有限域离散对数困难问题.
 - [ECC](ECC/ECC.md), 基于椭圆曲线上有限域离散对数困难问题.
 - Lattice
