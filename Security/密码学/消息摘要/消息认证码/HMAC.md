@@ -1,6 +1,11 @@
-# HMAC
+---
+src: https://datatracker.ietf.org/doc/html/rfc2104
+code: [src/cryptography/hmac.py,]
+---
 
-HMAC 是一种基于杂凑算法的 MAC 实现方式. 是 Keyed-hashing for MAC 的简写. 其设计目标为: 直接调用现有散列函数, 且镶嵌的散列函数可不断更新替换; 保留散列函数原始性能, 并以简单方式处理和使用密钥; 在对镶嵌散列函数合理假设的基础上, 易于分析 HMAC 用于认证时的密码强度. 基于不同杂凑算法, 有 `HMAC-MD5`, `HMAC-SHA1`, `HMAC-SHA256`
+# HMAC
+  
+HMAC (Keyed-Hashing for MAC) 是一种基于杂凑算法的 MAC 实现方式, 定义于 [(RFC2104, 1997)](https://datatracker.ietf.org/doc/html/rfc2104) . 其设计目标为: 直接调用现有散列函数, 且镶嵌的散列函数可不断更新替换; 保留散列函数原始性能, 并以简单方式处理和使用密钥; 在对镶嵌散列函数合理假设的基础上, 易于分析 HMAC 用于认证时的密码强度. 基于不同杂凑算法, 有 `HMAC-MD5`, `HMAC-SHA1`, `HMAC-SHA256`
 
 HMAC 在哈希函数的**完整性**安全需求之上, 通过共享密钥保证了**真实性**安全需求.
 
@@ -56,38 +61,3 @@ HMAC 用于用户身份验证:
 5. 比对 $HMAC_{server}\equiv HMAC_{user}$, 若结果一致则用户合法.
 
 敌手截获*随机值*与*用户发送 hmac*结果, 无法获得用户密码. 引入随机值, 仅在当前会话有效, 避免*重放*攻击.
-
-### `HMAC-SHA1` python 实现
-
-```python
-hash = sha1
-digest_size = 20 # sha1
-
-block_size = 64
-opad = b'\x5c' * block_size 
-ipad = b'\x36' * block_size 
-
-
-def _xor(x: bytes, y: bytes)->bytes:
-    return bytes(x^y for x, y in zip(x, y))
-
-def hmac(k: bytes, msg: bytes)->bytes:
-    # test length of k, then padding
-    if len(k) > block_size:
-        k = hash_funct(k)
-    while len(k) != block_size:
-        k += b'\x00'
-    
-    # inside hash
-    inside = hash(_xor(k, ipad) + msg)
-    
-    # outside hash
-    outside = hash(_xor(k, opad) + inside)
-
-    return outside
-```
-
-## 参考
-
-> [HMAC算法及其应用 - 知乎](https://zhuanlan.zhihu.com/p/136590049)  
-> HMAC 白皮书 [RFC 2104 - HMAC Keyed-Hashing for Message Authentication](https://datatracker.ietf.org/doc/html/rfc2104)   
