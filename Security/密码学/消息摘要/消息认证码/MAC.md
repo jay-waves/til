@@ -26,7 +26,3 @@ MAC **优势和特点**:
 1. 认证算法对消息某部分不应比其他部分更弱  
 $M'=f(M)$, 比如对M局部插入几比特, 保证 $Pr[C_{K}(M)=C_{K}(M')]=2^{-n}$
 
-## 参考
-> 北航网安密码学课件22  
-> [HMAC算法及其应用 - 知乎](https://zhuanlan.zhihu.com/p/136590049)  
-> [现代密码学简介](https://github.com/Evian-Zhang/Introduction-to-modern-cryptography)

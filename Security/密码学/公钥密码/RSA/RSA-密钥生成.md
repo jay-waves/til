@@ -22,7 +22,7 @@
 ### 私钥 $d$
 
 什么 $d$ 不行?
-- $d$ 过小, 存在 [RSA-Wiener攻击](RSA-攻击/RSA-Wiener攻击.md), 在多项式时间破解 $d$. 一般要求 $d\geq \sqrt[4]{n}$
+- $d$ 过小, 存在 [RSA-维纳攻击](Security/密码学/公钥密码/RSA/RSA-攻击/RSA-维纳攻击.md), 在多项式时间破解 $d$. 一般要求 $d\geq \sqrt[4]{n}$
 
 ### 模数 $N$
 
