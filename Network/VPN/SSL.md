@@ -1,6 +1,6 @@
 SSL (Secure Sockets Layer, 安全套接层)[^1], 及其继任者 [TLS (Transport Lyayer Security, 传输安全)](https://datatracker.ietf.org/doc/html/rfc4346) 提供了 TCP/IP 协议与应用层协议之间的透明安全协议, 实现服务器和客户端之间的机密通信和对等认证 . 现在 SSL 多代指 TLS.
 
-[^1] 最初由 Netscape Communications Inc. 开发, 后发布多个改进版本.
+[^1]: 最初由 Netscape Communications Inc. 开发, 后发布多个改进版本.
 
 | 网络层级 | 协议             |
 | -------- | ---------------- |
@@ -89,3 +89,24 @@ Auth | {CertificateVerify*}
        {App Data}         <----->  {App Data}
 ```
 
+### TLS v1.3
+
+#### 安全性改进
+
+TLS 1.3 移除了一些不安全的加密算法:
+- [RC4](Security/密码学/流密码与伪随机数/流密码算法/RC4.md)
+- [DES](Security/密码学/分组密码/Feistel-结构/DES.md), [3DES](Security/密码学/分组密码/Feistel-结构/EDE.md) 
+- [MD5](Security/密码学/消息摘要/MD%20迭代结构/MD-5.md)
+- [RSA](Security/密码学/公钥密码/RSA/RSA.md)
+
+TLS1.3 使用了更强的密码套件: AEAD (Authenticated Encryption with Associated Data) 算法, 包括 AES-GCM, ChaCha20-Poly1305, 来同时实现加密和认证.
+
+强制前向安全性. 不支持基于 RSA 的密钥交换, 而仅支持 DH 和 ECDH 密钥交换. RSA 需要用服务器长期持有的密钥对 $PK,SK$ 来加密会话密钥, 一旦服务器的私钥泄露将导致之前的加密的所有会话密钥皆不安全. 而 DH 协议中参数都是临时生成的.
+
+使用 HKDF (HMAC-based Extract-and-Expand Key Derivation Function) 作为密钥派生函数.
+
+#### 协议改进
+
+简化握手流程, 从往返延迟 2RRT 降为 1RTT, 还允许一定条件下重用会话密钥, 称为 *0RTT* 握手.
+
+完全移除压缩功能, 防止压缩攻击 (如 CRIME)
