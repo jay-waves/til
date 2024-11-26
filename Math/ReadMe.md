@@ -80,3 +80,5 @@ Linear Algebra for Everyone. Gilbert Strang.
 Mathematical Merthods in the Physical Sciences. Mary L Boas.
 
 陶哲轩实分析.
+
+[An Infinite Descent into Pure Mathematics](https://infinitedescent.xyz/). Clive Newstead. 2022. v0.5.

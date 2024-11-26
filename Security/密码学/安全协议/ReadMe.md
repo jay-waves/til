@@ -20,17 +20,47 @@
 
 ### 功能分类
 
-前三个为最重要协议类型:
-1. 密钥建立协议, Key Establishment Protocol.
-	- 密钥传输协议
-	- 密钥协商协议
-1. [认证协议](认证协议.md), Authentication Protocol.
+基础协议功能分类:
+1. [密钥建立协议](Security/密码学/安全协议/密钥分发与管理.md), Key Establishment/Exchange Protocol.
+	1. 密钥传输协议
+	2. 密钥协商协议
+1. [认证协议](认证协议.md), Authentication Protocol. 
 1. 认证的密钥建立协议, 即与已被认证的实体间建立共享秘密.
-	- [基于单钥的认证密钥协商](认证的密钥协商协议/基于单钥的认证密钥协商.md)
-	- [基于公钥的认证密钥协商](认证的密钥协商协议/基于公钥的认证密钥协商.md)
-4. 安全电子支付和安全电子交易协议
-5. 安全通信协议
-6. 安全多方计算协议
+	1. [基于单钥的认证密钥协商](认证的密钥协商协议/基于单钥的认证密钥协商.md)
+	2. [基于公钥的认证密钥协商](认证的密钥协商协议/基于公钥的认证密钥协商.md)
+
+常见的认证协议有:
+- Kerberos, 基于单钥
+- [SAML](Network/应用层/Authentication/SAML.md)
+- [OAuth](Network/应用层/Authentication/OAuth.md), 开放认证协议.
+
+常见的密钥协议协议有:
+- [DiffieHellman 协议](Security/密码学/公钥密码/DiffieHellman%20协议.md)
+- [RSA 密钥交换](Security/密码学/公钥密码/RSA/RSA.md)
+- [ECDH](Security/密码学/公钥密码/ECC/ECC.md)
+- IKE, 用于 [IPSec](Network/VPN/IPSec.md)
+
+其他安全协议功能: 
+1. [数字签名, 通信加密, 完整性保护协议](Security/密码学/安全协议/混合加密.md). 提供最基础安全目标, 不再赘述.
+2. 分布式系统安全协议, 用于区块链和分布式系统达成信任和共识.
+	- BFT, 拜占庭容错协议.
+	- 区块链共识协议, 如 PoW (工作量证明), PoS (权益证明)
+	- 时间同步安全协议 (Time Synchronization). 如 NTPsec, PTP.
+2. 电子支付和电子商务安全协议, 保证在线支付和数字货币的安全性.
+	- SET (Secure Eletronic Transaction), 用于信用卡
+	- 3D Secure.
+1. 匿名路由协议. 保护流量隐私.
+	- [Tor, 洋葱路由协议](Network/VPN/VPN.md)
+	- I2P
+	- Mixnets, 混合网络
+1. 安全多方计算协议 (Secure Multi-Party Computation, MPC). 保护数据隐私.
+	- 混淆电路. 如 Yao's Garbled Circuits, 也叫不经意传输.
+	- 差分隐私.
+	- [秘密共享和分拆协议](Security/密码学/安全协议/其他安全协议功能/秘密分拆协议.md). 如 Shamir 方案, SPDZ 协议, GMW 协议.
+	- 同态加密 (Homomorphic Encryption), 分为全同态 (FHE) 和部分同态 (PHE) 两种类型.
+	- 零知识证明 (Zero-Knowledge Proof, ZKP). 
+		- 交互式零知识证明 (IZKP) 如[比特承诺](Security/密码学/安全协议/其他安全协议功能/比特承诺.md), 
+		- 非交互式零知识证明 (NIZK), 如 zk-SNARK, zk-STARK, 
 
 ### 安全性分析
 
