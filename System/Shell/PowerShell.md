@@ -43,7 +43,7 @@ powershell 为 bash 和 cmd 用户准备了对应命令的别名.
 
 Powershell 中想要直接使用 CMD 中命令, 而不是别名, 请加上 `.exe` 后缀.
 
-## Invoke-WebRequest
+### Invoke-WebRequest
 
 Powershell 中 `curl` 实际是 `Invoke-WebRequest` 的别名 (不是[原来的工具](网络调试.md#`curl`)), **参数**有变化 (真的坑):
 
@@ -52,7 +52,7 @@ Powershell 中 `curl` 实际是 `Invoke-WebRequest` 的别名 (不是[原来的�
 - `-Headers` --> `-H`
 - `-ContentType` --> `-X`
 
-## 变量
+### 变量
 
 pwsl 其实不区分大小写, 别被命令吓到了 (🖤)
 
@@ -66,10 +66,15 @@ Get-Type $MyVar
 $homeDir = $env:USERPROFILE
 ```
 
-## 遍历
+### 遍历
 
 ```powershell
 Get-ChildItem -Filter *.png | ForEach-Object {
+	...
+}
+
+# 等价于:
+gci -Filter *.png | % {
 	...
 }
 ```
@@ -84,7 +89,11 @@ Get-ChildItem -Filter *.png | ForEach-Object {
 
 注意, 使用 ForEach 管道时, 不能使用 `.` 或 `..`. 如果需要字符串命令替换, 请使用 `"$($_.FullName)\....."`
 
-## 命令补全模块
+另外, 字符串插值 `"$Var"` 只支持简单变量. 复杂解析应使用子表达式 `$()`, 如 `"$($_.Name)xxxx"`. 
+
+如果子表达式 `$()` 返回多个结果, 将会自动展开为数组 (而不是空格隔开的字符串). 这导致子表达式很难直接嵌入到批处理命令中, 比如 `mv $(fd xxx.*)` 很可能报错, 此时仍需要使用 `ForEach-Object` 遍历列表.
+
+### 命令补全模块
 
 (powershell7)
 
@@ -94,7 +103,7 @@ Set-PSReadLineOption -ShowToolTips
 Set-PSReadLineOption -PredictionViewStyle ListView
 ```
 
-## 命令编辑模块
+### 命令编辑模块
 
 在外部编辑器中编辑命令行当前键入的命令: 
 
@@ -106,3 +115,15 @@ $env:VISUAL = 'nvim' # 指定编辑器, 需要 nvim 在 PATH 中.
 # 建立键绑定: alt+x
 Set-PSReadLineKeyHandler -Chord Alt+x -Function ViEditVisually
 ```
+
+## Q&A
+
+管道和重定向编码问题: Powershell7 默认支持 [UTF-8](../../Network/应用层/Char%20Encoding/字符编码.md), 但是不同平台上的一些功能又依赖于平台本身的语言设置. 在 Windows 上, 默认中文编码使用了非 UTf-8 编码, 导致使用管道出现乱码.
+
+<https://github.com/PowerShell/PowerShell/issues/17523> 解决办法如下:
+
+```powershell
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+```
+
+<https://stackoverflow.com/questions/40098771/changing-powershells-default-output-encoding-to-utf-8>
