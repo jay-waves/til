@@ -9,7 +9,9 @@ HMAC (Keyed-Hashing for MAC) 是一种基于杂凑算法的 MAC 实现方式, �
 
 HMAC 在哈希函数的**完整性**安全需求之上, 通过共享密钥保证了**真实性**安全需求.
 
-$HMAC=Hash((K^{+}\oplus opad)\ \Vert\ Hash((K^{+}\oplus ipad)\ \Vert\ Msg))$
+<br>
+
+$$HMAC=Hash[\quad(K^{+}\oplus opad)\ \Vert\ Hash[\quad(K^{+}\oplus ipad)\ \Vert\ Msg\quad]\quad]$$
 
 其中 
 - Hash: 杂凑算法, 比如 (MD5, SHA-1, SHA-256)
@@ -19,6 +21,37 @@ $HMAC=Hash((K^{+}\oplus opad)\ \Vert\ Hash((K^{+}\oplus ipad)\ \Vert\ Msg))$
 - Msg: 要认证的消息 
 - opad：外部填充常量, 是 0x5C 重复 B 次
 - ipad: 内部填充常量, 是 0x36 重复 B 次
+
+```
+
+		       +--------------------------------+
+		       |    k  (padding if needed)      |
+		       +--------------------------------+
+		                     |
+	    +--------------------+----------------------+
+		|                                           |
+		|      ipad                      opad       |
+		|        |                         |        |
+		|        V                         V        |
+		+-----> XOR                       XOR <-----+
+		         |        msg              |         
+		         |         |               |
+		         V         V               V
+		   +-----------+-------+      +-----------+ 
+		   |   inner   |  msg  |      |   outer   |
+		   +-----------+-------+      +-----------+
+		             |                     |   
+		             V                     |
+		            HASH                   |
+		             |                     |
+		             +----------+----------+
+		                        |
+		                        V
+		                       HASH
+		                        |
+			                    V
+		                       HMAC
+```
 
 *加速方式*: 预先计算 $f(IV, (K^{+}\oplus ipad))$ 和 $f(IV, (K^{+}\oplus opad))$ 两个值. 其中 $f(cv, block)$ 是散列函数的迭代压缩函数, 此二值视为新 $IV'$, 替代原哈希函数 $IV$. 该法缺点是增加了 HMAC 算法和哈希算法的耦合度. 该法也揭示出迭代型压缩函数的一些弱点, 见 [长度扩展攻击](Security/密码学/消息摘要/MD%20迭代结构/长度扩展攻击.md).
 
