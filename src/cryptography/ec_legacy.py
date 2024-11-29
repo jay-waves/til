@@ -2,7 +2,7 @@ from typing import Tuple, NewType, Iterator
 
 Point = NewType('Point', Tuple[int, int])
 
-class EC:
+class ec:
     inf: Point = (0, 0) # 无穷远点
 
     def __init__(self, a, b, p, G: Point=None, n=None, h=None):
@@ -163,20 +163,3 @@ class EC:
                 k >>= 1
         naf_k.reverse()
         return tuple(naf_k)    
-
-""""""
-
-class EllipticCurve:
-    def __init__(self, a, b, field):
-        """
-        y^2 = x^3 + ax + b
-        """
-        if not field.is_valid(a) or not field.is_valid(b):
-            raise ValueError
-        if 4 * a * a * a + 27 * b * b == 0:
-            raise ValueError
-        self.a = a
-        self.b = b
-        self.field = field
-
-

@@ -22,7 +22,7 @@
 ### 私钥 $d$
 
 什么 $d$ 不行?
-- $d$ 过小, 存在 [RSA-维纳攻击](Security/密码学/公钥密码/RSA/RSA-攻击/RSA-维纳攻击.md), 在多项式时间破解 $d$. 一般要求 $d\geq \sqrt[4]{n}$
+- $d$ 过小, 存在 [RSA Wiener 攻击](RSA-攻击/RSA%20Wiener%20攻击.md), 在多项式时间破解 $d$. 一般要求 $d\geq \sqrt[4]{n}$
 
 ### 模数 $N$
 
@@ -57,14 +57,6 @@
 
 *<应用密码学>* 2017.P156-157  
 
-[超重点 RSA 参数选择](http://www.waveshare.net/study/article-700-1.html)    
- 
-[RSA 算法中几种可能泄密的参数选择](https://wenku.baidu.com/view/1743d7a6284ac850ad024289.html)    
-
-[RSA 填充方法](https://zhidao.baidu.com/question/1303282736275569219.html)  
-
-[强素数生成方法](https://wenku.baidu.com/view/ac764f573c1ec5da50e27078.html?re=view)  
-
-[Why RSA Decryption takes longer time than Encryption - SO](https://stackoverflow.com/questions/2316241/why-rsa-decryption-process-takes-longer-time-than-the-encryption-process)
-
 https://en.wikipedia.org/wiki/RSA_(cryptosystem)
+ 
+[Why RSA Decryption takes longer time than Encryption - SO](https://stackoverflow.com/questions/2316241/why-rsa-decryption-process-takes-longer-time-than-the-encryption-process)
