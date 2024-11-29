@@ -1,9 +1,11 @@
 
 ## Wiener Attack
 
+也叫低加密指数攻击.
+
 ### 原理
 
-当私钥 $d$ 过小且满足: $3d<n^{\frac{1}{4}}$, 且 $q < p < 2q$，使用 **[连分数理论](../../../../../Math/数论/连分数理论.md)** 在多项式时间内破解 $d$.
+当私钥 $d$ 过小且满足: $3d<n^{\frac{1}{4}}$, 且 $q < p < 2q$，使用 **[连分数理论](/Math/数论/连分数理论.md)** 在多项式时间内破解 $d$.
 
 由前提条件可证明不等式:
 1. $n\ =\ p*q\ >\ q^2$, 即$q\ <\ \sqrt{ n }$
@@ -88,4 +90,4 @@ def wiener_attack(e,n):
 
 ```
 
-> 参考: [Quebrando RSA con fracciones continuas](../../../../paper/crypto/RSA连分数攻击.pdf)
+> 参考: [Quebrando RSA con fracciones continuas](/paper/Crypto/RSA连分数攻击.pdf)
