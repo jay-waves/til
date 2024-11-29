@@ -24,6 +24,10 @@ Google 的 C/C++ 运行时内存错误检测工具, 基于 LLVM IR 实现.
 
 目前广泛使用的对称加密标准, 见 [AES](Security/密码学/分组密码/SP-结构/AES.md)
 
+### Avalanche Effect
+
+雪崩效应 (avalanche effect) 指现代加密算法的一种理想属性. 当明文输入产生微小变化 (如一比特翻转) 时, 会引起算法输出的大面积无规律改变.
+
 ### ACL 
 
 [Access Control List, 访问控制列表](Network/防火墙/Firewall.md), 用于定义哪些用户或系统进程可以访问系统资源以及权限级别.  
