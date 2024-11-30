@@ -205,7 +205,7 @@ Rijndal( State, Key ){
 
 `Nk=4`时密钥扩展步骤如下, `Nk`增长时, 会有些许变化, 详见[AES标准](../../../paper/crypto/AES-standard.pdf). 每轮密钥长度皆为 $N_{b}$, 那么共需要 $N_{b}(N_{r}+1)$ 长度的密钥.
 
-![|550](../../../../attach/Pasted%20image%2020230608165056.png)
+![|550](../../../../attach/密码学_AES密钥扩展.png)
 
 变换 $g$ 详情如:
 1. 循环左移一字节
