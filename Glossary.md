@@ -634,7 +634,7 @@ Platform as a Service. 同见 IaaS, SaaS.
 
 ### PRNG
 
-Pseudo-Random Number Generator, 伪随机数生成器, 见 [流密码](Security/密码学/流密码与伪随机数/ReadMe.md)
+Pseudo-Random Number Generator, 伪随机数生成器, 见 [流密码](Security/密码学/流密码与伪随机数/流密码与伪随机数.md)
 
 ### PKI
 
