@@ -8,7 +8,7 @@
 其他重要安全目标如下.
 - 不可否认性 (也叫不可抵赖性, Non-Repudiation): 发送者或接收者不能否认曾经的收发信息行为.
 - 可控性 (也叫可追溯性, Accountability): 确保对系统或信息的访问和修改行为可以被审计和追踪.
-- 真实性 (Authenticity): 确保信息的来源是可信的, 并且传输过程未被篡改.
+- 真实性 (Authenticity): 确保信息的来源是可信的, 并且传输过程未被篡改. 
 - 新鲜性 (Freshness): 保证数据是新的, 而不是重放的历史消息.
 - 隐私 (Privacy): 关注个人信息的合法地, 受控地和透明地使用.
 - 透明性 (Transparency)
@@ -16,14 +16,15 @@
 - 合规性 (Compliance)
 
 其他安全属性:
-- 授权 (Authorization)
+- 身份认证 (Authentication): 验证主体是其声称的身份. 更关注*真实性*中的信息来源真实性部分.
+- 授权 (Authorization): 身份认证后, 赋予请求者适当权限, 使其访问对应权限的服务.
 - 审计性 (Accountablility)
 - 可追溯性 (Traceability)
 - 最小化特权 (Least Privilege)
 - 权责分离 (Separation of Duties)
 - 数据最小化 (Data Minimization)
-- 抗篡改 (Anti-tampering)
-- 抗碰撞 (Tamper Resistance)
+- 抗篡改 (Tamper Resistance)
+- 抗碰撞 (Collision Resistance)
 
 > 安全目标是系统希望实现的最终状态或保护需求, 是一种外部需求.  
 > 安全属性是系统设计和实现中所具备的特征, 是一种内部特性.
@@ -33,7 +34,7 @@
 
 [X.800, 1991] 对 OSI (Open Systems Interconnection Refernce Model) 安全框架进行了系统定义, 包括:
 
-- 安全攻击: 任何危及信息系统安全的行为
+- [安全攻击](安全攻击.md): 任何危及信息系统安全的行为
 - 安全机制: 用来检测攻击, 阻止攻击或从攻击状态恢复到正常状态的过程.
 - 安全服务: 加强数据处理系统和信息传输的安全性的一种处理过程或通信的服务, 目的在于利用一种或多种**安全机制**进行反攻击.
 
@@ -75,6 +76,8 @@
 
 ### 安全威胁
 
+安全威胁是从防守方角度考虑安全漏洞; 安全攻击是从攻击者角度考虑安全漏洞.
+
 [RFC 4949, 2007, P251] 对 **Risk** 的定义为:
 
 > An expectation of loss expressed as the probability that a
@@ -90,25 +93,12 @@
 从经济和技术的角度看, 完全避免和转义风险都是不可行的. 即使部署了所有可用对策, 仍会有参与风险, 因此, 分析风险时会将风险按成本和关键性顺序列出, 针对性应用对策. 完整和定量的风险分析很难, 机构会避免列出可能的安全威胁, 而只制定具体的安全手段.
 
 基本安全威胁: (和基本安全目标相对应)
-1. 信息泄露 (Disclosure)
+1. 信息泄露 (Disclosure): 窃听, 内部人员操作不慎导致的泄露, 媒体废弃物导致的泄露.
 2. 完整性破坏 
 3. 拒绝服务   
 4. 非法使用 
 
-主要的可实现威胁:
-- 渗入类威胁:
-	1. 假冒
-	2. 旁路控制
-	3. 授权侵犯, 即内部攻击.
-- 植入类型威胁:
-	1. 特洛伊木马 (Trojan Horse)
-	2. 缺陷和后门 (Flaws & Trap Door)
-
-潜在威胁:
-1. 窃听, Eavesdropping
-2. 流量分析, Traffic Analysis
-3. 人员操作不慎导致的信息泄露
-4. 媒体废弃物导致的信息泄露
+从形式上看, 有渗入类威胁, 如假冒, 旁路控制和授权侵犯; 植入类威胁, 如木马和后门; 潜在威胁, 对应被动攻击. 
 
 ### 安全服务及安全机制
 
@@ -252,7 +242,7 @@
 
 ## 安全, 可靠, 可信
 
-- 可信 (Trustworthy) 系统: 行为是正确且可预期的, 即按照设计意图和预期功能工作.
+- 可信 (Trustworthy) 系统: 行为是正确且可预期的, 即按照设计意图和预期功能工作. (可能是某种特定功能, 而非普遍安全需求)
 - 安全 (Secure Systems) 系统: 能够防止未授权的访问和修改, 确保数据的机密性, 完整性和可用性.
 - 可靠 (Reliable Systems) 系统: 能够持续执行预期功能, 故障率较低, 恢复能力强.
 
@@ -271,10 +261,6 @@
 >   not fail or (b) that the system meets its specifications (i.e.,
 >   the system does what it claims to do and does not perform unwanted
 >   functions). 
-> 
->   2. (I) /PKI/ A relationship between a certificate user and a CA in
->   which the user acts according to the assumption that the CA
->   creates only valid digital certificates.
 > 
 >   Tutorial: "Generally, an entity is said to 'trust' a second entity
 >   when the first entity makes the assumption that the second entity
@@ -299,7 +285,7 @@
 >   b. (I) A system condition in which system resources are free from
 >   unauthorized access and from unauthorized or accidental change,
 >   destruction, or loss. (Compare: safety.)
-> 
+ 
 
 ## 参考
 

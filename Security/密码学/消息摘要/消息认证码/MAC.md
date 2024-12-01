@@ -13,7 +13,7 @@ MAC **优势和特点**:
 
 ### MAC 实现方式
 
-- 基于[消息摘要](../ReadMe.md), 比如 [HMAC](HMAC.md) / [KMAC](KMAC.md) / [UMAC](UMAC.md)
+- 基于[消息摘要](../消息摘要.md), 比如 [HMAC](HMAC.md) / [KMAC](KMAC.md) / [UMAC](UMAC.md)
 - 基于分组密码, 比如  CMAC / CBC-MAC / PMAC
 - 基于伪随函数
 
