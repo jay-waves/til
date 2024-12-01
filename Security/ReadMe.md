@@ -14,7 +14,6 @@
 - 透明性 (Transparency)
 - 可靠性 (Reliability)
 - 合规性 (Compliance)
-- 抗篡改性 (Tamper Resistance)
 
 其他安全属性:
 - 授权 (Authorization)
@@ -24,7 +23,7 @@
 - 权责分离 (Separation of Duties)
 - 数据最小化 (Data Minimization)
 - 抗篡改 (Anti-tampering)
-- 抗碰撞 (Collision Resistance)
+- 抗碰撞 (Tamper Resistance)
 
 > 安全目标是系统希望实现的最终状态或保护需求, 是一种外部需求.  
 > 安全属性是系统设计和实现中所具备的特征, 是一种内部特性.
@@ -254,8 +253,8 @@
 ## 安全, 可靠, 可信
 
 - 可信 (Trustworthy) 系统: 行为是正确且可预期的, 即按照设计意图和预期功能工作.
-- 安全 (Reliable Systems) 系统: 能够防止未授权的访问和修改, 确保数据的机密性, 完整性和可用性.
-- 可靠 (Secure Systems) 系统: 能够持续执行预期功能, 故障率较低, 恢复能力强.
+- 安全 (Secure Systems) 系统: 能够防止未授权的访问和修改, 确保数据的机密性, 完整性和可用性.
+- 可靠 (Reliable Systems) 系统: 能够持续执行预期功能, 故障率较低, 恢复能力强.
 
 > [RFC 4949, 2007] 对安全的定义为:
 > 
@@ -272,20 +271,6 @@
 >   not fail or (b) that the system meets its specifications (i.e.,
 >   the system does what it claims to do and does not perform unwanted
 >   functions). 
-> 
->   Tutorial: Components of a system can be grouped into three classes
->   of trust [[Gass](https://datatracker.ietf.org/doc/html/rfc4949#ref-Gass)]:
->   -  "Trusted": The component is responsible for enforcing security
-> 	 policy on other components; the system's security depends on
-> 	 flawless operation of the component. (See: trusted process.)
->   -  "Benign": The component is not responsible for enforcing
-> 	 security policy, but it has sensitive authorizations. It must
-> 	 be trusted not to intentionally violate security policy, butR
-> 	 security violations are assumed to be accidental and not likely
-> 	 to affect overall system security.
->   -  "Untrusted": The component is of unknown or suspicious
-> 	 provenance and must be treated as deliberately malicious. (See:
-> 	 malicious logic.)
 > 
 >   2. (I) /PKI/ A relationship between a certificate user and a CA in
 >   which the user acts according to the assumption that the CA
@@ -308,39 +293,13 @@
 > 
 > **security** 
 > 
->   1a. (I) A system condition that results from the establishment and
+>   a. (I) A system condition that results from the establishment and
 >   maintenance of measures to protect the system.
 > 
->   1b. (I) A system condition in which system resources are free from
+>   b. (I) A system condition in which system resources are free from
 >   unauthorized access and from unauthorized or accidental change,
 >   destruction, or loss. (Compare: safety.)
 > 
->   2. (I) Measures taken to protect a system.
-> 
->   Tutorial: Parker [^1]] suggests that providing a condition of
->   system security may involve the following six basic functions,
->   which overlap to some extent:
->   -  "Deterrence": Reducing an intelligent threat by discouraging
-> 	 action, such as by fear or doubt. (See: attack, threat action.)
->   -  "Avoidance": Reducing a risk by either reducing the value of
-> 	 the potential loss or reducing the probability that the loss
-> 	 will occur. (See: risk analysis. Compare: "risk avoidance"
-> 	 under "risk".)
->   -  "Prevention": Impeding or thwarting a potential security
-> 	 violation by deploying a countermeasure.
->   -  "Detection": Determining that a security violation is
-> 	 impending, is in progress, or has recently occurred, and thus
-> 	 make it possible to reduce the potential loss. (See: intrusion
-> 	 detection.)
->   -  "Recovery": Restoring a normal state of system operation by
-> 	 compensating for a security violation, possibly by eliminating
-> 	 or repairing its effects. (See: contingency plan, main entry
-> 	 for "recovery".)
->   -  "Correction": Changing a security architecture to eliminate or
-> 	 reduce the risk of reoccurrence of a security violation or
-> 	 threat consequence, such as by eliminating a vulnerability.
-> 
-> [^1]: Parker, D., "Computer Security Management", ISBN 0-8359- 0905-0, 1981
 
 ## 参考
 
