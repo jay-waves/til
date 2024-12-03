@@ -1,13 +1,8 @@
-SSL (Secure Sockets Layer, 安全套接层)[^1], 及其继任者 [TLS (Transport Lyayer Security, 传输安全)](https://datatracker.ietf.org/doc/html/rfc4346) 提供了 TCP/IP 协议与应用层协议之间的透明安全协议, 实现服务器和客户端之间的机密通信和对等认证 . 现在 SSL 多代指 TLS.
+SSL (Secure Sockets Layer, 安全套接层)[^1], 及其继任者 TLS (Transport Lyayer Security, 传输安全)[^2] 提供了 TCP/IP 协议与应用层协议之间的透明安全协议, 实现服务器和客户端之间的机密通信和对等认证 . 现在 SSL 多代指 TLS. TLS/SSL 被认为是传输层和应用层之间的协议, 可以称为安全层, 也可以认为是横跨了 OSI 表示层与会话层.
 
 [^1]: 最初由 Netscape Communications Inc. 开发, 后发布多个改进版本.
 
-| 网络层级 | 协议             |
-| -------- | ---------------- |
-| 应用层   | smtp, http, nntp |
-| 安全层, 应用层, 表示层   | TLS              |
-| 传输层   | TCP          |
-| 网络层   | IP                 |
+[^2]: . [TLSv1.1, (RFC4346, 2006)](https://datatracker.ietf.org/doc/html/rfc4346). [TLSv1.2, (RFC5246, 2008)](https://datatracker.ietf.org/doc/html/rfc5246). [TLSv1.3 (RFC8446, 2018)](https://datatracker.ietf.org/doc/html/rfc8446)
 
 TLS/SSL协议步骤:
 - 认证
@@ -15,8 +10,8 @@ TLS/SSL协议步骤:
 - 数据加密: 保密性和完整性
 
 TLS/SSL协议分为上下两层:
-1. (上层) 握手层协议 (handshake layer protocal, SSL Change Cipher Spec Protocol, SSL Alert Protocol)
-2. (下层) 记录层协议 (record layer protocal)
+1. (上层) 握手层协议 (handshake layer protocal, SSL Change Cipher Spec Protocol, SSL Alert Protocol): 建立在记录层协议之上, 在数据传输之前进行身份认证和密钥协商.
+2. (下层) 记录层协议 (record layer protocal): 建立在 [TCP](../传输层/TCP.md) 之上, 提供数据封装/压缩/加密等功能支持.
 
 ### 记录层协议
 
