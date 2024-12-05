@@ -206,7 +206,7 @@ Discrete Logarithm Problem, 离散对数问题, 见 [欧拉定理](Math/数论/�
 
 ### DH
 
-Diffie-Hellman 密钥交换, 两实体在非安全信道交换秘密的算法, 见 [DiffieHellman 协议](Security/密码学/公钥密码/DiffieHellman%20协议.md)
+Diffie-Hellman 密钥交换, 两实体在非安全信道交换秘密的算法, 见 [DiffieHellman](Security/密码学/公钥密码/密钥协商/DiffieHellman.md)
 
 ### DAG
 
@@ -238,7 +238,7 @@ Exploit Database. 公开发布一些漏洞的详细信息和利用代码, 每个
 
 ### ElGamal
 
-一种基于 DLP 困难性的公钥密码算法, 包括加密和签名. 见 [ElGamal 协议](Security/密码学/公钥密码/ElGamal%20协议.md)
+一种基于 DLP 困难性的公钥密码算法, 包括加密和签名. 见 [ElGamal](Security/密码学/公钥密码/ElGamal.md)
 
 ### EOL
 
@@ -250,7 +250,7 @@ End of Life, 软件或硬件停止维护的状态.
 
 ### Fuzzing
 
-高效软件模糊测试框架, 见 [Fuzzing Survey](Security/软件安全测试/相关研究/Fuzzing%20Survey.md)
+高效软件模糊测试框架, 见 [模糊测试技术](Security/软件安全测试/并发漏洞/模糊测试.md)
 
 ### FHS
 
@@ -454,7 +454,7 @@ Message Authentication Code, 消息认证码, 用于验证消息的完整性和�
 
 ### MD5
 
-Message Digest Algorithm 5, 广泛使用的散列函数, 由于安全问题已被淘汰, 见 [MD-5](Security/密码学/消息摘要/MD%20迭代结构/MD-5.md)
+Message Digest Algorithm 5, 广泛使用的散列函数, 由于安全问题已被淘汰, 见 [MD5](Security/密码学/消息摘要/MD%20迭代结构/MD5.md)
 
 ### MITM
 

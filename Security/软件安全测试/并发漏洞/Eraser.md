@@ -1,6 +1,10 @@
-> Stefan Savage, Michael Burrows, Greg Nelson, Patrick Sobalvarro, and Thomas Anderson. 1997. Eraser: a dynamic data race detector for multithreaded programs. ACM Trans. Comput. Syst. 15, 4 (Nov. 1997), 391–411. https://doi.org/10.1145/265924.265927
-> 
-> [Stefan Savage, 1997, pdf](paper/Eraser,%20A%20Dynamic%20Data%20Race%20Detector%20for%20Multithreaded%20Programs.%201997.%20Stefan%20Savage.pdf)
+---
+tags: [Paper, ]
+source: https://doi.org/10.1145/265924.265927
+copyright: [Stefan Savage (1997), Michael Burrows (1997), Greg Nelson (1997), ]
+---
+
+## Eraser: a dynamic data race detector for multithreaded programs
 
 - 检查是否存在免于数据竞争的充分条件
 - 提出 Consistent Locking Discipline
