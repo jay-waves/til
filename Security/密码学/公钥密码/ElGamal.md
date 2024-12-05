@@ -1,4 +1,4 @@
-基于离散对数困难问题, 可以用于加密和签名. 比较古早的基于离散对数的加密算法, 在椭圆曲线群上构造的 ElGamal 算法称为 [ECElGamal](ECC/ECElGamal.md); ElGamal 签名算法则衍生出 [Schnorr 协议](数字签名/Schnorr%20协议.md) 和 [DSA](数字签名/DSA%20协议.md) 等经典协议.
+基于离散对数困难问题, 可以用于加密和签名. 比较古早的基于离散对数的加密算法, 在椭圆曲线群上构造的 ElGamal 算法称为 [ECElGamal](ECC/ECElGamal.md); ElGamal 签名算法则衍生出 [Schnorr](数字签名/Schnorr.md) 和 [DSA](数字签名/DSA.md) 等经典协议.
 
 ## ElGamal 加密
 

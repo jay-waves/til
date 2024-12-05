@@ -5,11 +5,11 @@
 
 ### ECC 公钥加密
 
-常见 ECC 加密算法为 [ECElGamal](ECElGamal.md), 基于 [ElGamal 协议](Security/密码学/公钥密码/ElGamal%20协议.md), 两者同属于循环群上的离散对数困难问题.
+常见 ECC 加密算法为 [ECElGamal](ECElGamal.md), 基于 [ElGamal](../ElGamal.md), 两者同属于循环群上的离散对数困难问题.
 
 ### ECC 密钥交换
 
-ECDH (Elliptic Curve Diffie-Hellman Protocol) 基于 ECC 实现的 [DH 密钥交换](../DiffieHellman%20协议.md)体系.  
+ECDH (Elliptic Curve Diffie-Hellman Protocol) 基于 ECC 实现的 [DH 密钥交换](../密钥协商/DiffieHellman.md)体系.  
 
 公开信道获取 $[d_{B}]G$, 私钥 $d_{A}$, 获得共享密钥 $[d_{B}\ d_{A}]G$
 

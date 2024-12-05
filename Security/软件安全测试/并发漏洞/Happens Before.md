@@ -1,6 +1,13 @@
-> [Lamport '78](../../../paper/Time,%20Clocks,%20and%20the%20Ordering%20of%20Events%20in%20a%20Distributed%20System.pdf)
+---
+tags: [Paper, ]
+copyright: [Leslie Lamport (1978), ]
+---
 
-## Happens-Before
+## Time, Clocks, and the Ordering of Events in a Distributed System
+
+> [Lamport '78](/paper/Time,%20Clocks,%20and%20the%20Ordering%20of%20Events%20in%20a%20Distributed%20System.pdf)
+
+### Happens-Before
 
 - **并发执行是受通信事件决定的偏序关系, 而程序无法观察无通信事件的并发事件顺序**
 - 如果所有互斥访问可以被线性排序 -> 无数据竞争执行
@@ -8,7 +15,7 @@
 
 ![|300](../../../attach/Pasted%20image%2020240407153656.png)
 
-## Algorithm
+### Algorithm
 
 事件偏序关系检测算法: 通过节点通信维护全局时钟
 ```go
@@ -96,4 +103,4 @@ func on_read_end(x, clock R) {
 
 - Slowdown > 50x
 - Memory Overhead!
-- Improved in [FastTrack](FastTrack,%20Efficient%20and%20Precise%20Dynamic%20Race%20Detection.md)
+- Improved in [FastTrack](../并发漏洞/FastTrack.md)
