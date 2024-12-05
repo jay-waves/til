@@ -12,7 +12,6 @@
 | System        | 操作系统 | Linux, Windows, Container, Shell                   |
 | Security      | 网络安全 | 调试, 漏洞攻击, 软件测试, 密码学                   |
 | Math          | 数学     | 微积分, 线性代数, 数论, 抽象代数, 概率论, 计算理论 |
-| Miscellaneous | 杂项     | 数据交换格式,                                                    |
 | Tools         | 工具     | Git, Vim, Latex, IDE, Wolfram                      |
 | attach        | 图片附件 |                                                    |
 | appx          | 附录     | 技术标准, 参考信息, 对照表, 杂项                               |
