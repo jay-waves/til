@@ -10,7 +10,7 @@
 1. 包过滤防火墙 (Packet Filtering Firewall):  检查报头信息 (网络地址, 端口号, 协议类型), 通过访问控制列表 (ACL) 进行静态过滤.
 	- 也称*静态包过滤 (Static Packet Filtering)*, 工作在 OSI 网络层, 成本较低.
 1. 状态检测防火墙 (Stateful Insepction Firewall): 记录和跟踪会话状态, 检测数据包是否来源于 "历史的, 已建立的, 已批准" 的会话连接, 区分新建连接与已建连接. 
-	- 也称*动态包过滤 (Dynamic Packet Filtering)*, 工作在 OSI 传输层, 
+	- 也称*动态包过滤 (Dynamic Packet Filtering)*, 工作在 OSI 传输层和网络层. 
 1. 代理防火墙 (Proxy Firewall / Application Gateway): 位于应用层, [充当内部网络和外部通信的代理](Network/网络设备及拓扑.md#安全设备), 深度检测应用层协议 (HTTP, FTP) 的数据内容. 
 	- *电路级网关 (Circuirt-Level Gateway)*, 工作于会话层, 重点关注会话建立和维护, 包括对握手信息和序列号合法性的各类检查. 会在内外网主机间建立透明代理 (和 NAT 不同, 原本一个连接变为两个), 由于工作在会话层, 不能检测应用层载荷 (因为 SSL 工作在表示层, 所以会话层无法读取其上信息).
 	- *应用层网关 (Application-Level Gateway)*. 也是代理, 但工作在 OSI 应用层, 因此可以过滤整个应用层的数据载荷. 针对每个服务运行独立的代理, 并逐个检查过滤.
