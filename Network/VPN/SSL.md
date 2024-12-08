@@ -1,4 +1,4 @@
-SSL (Secure Sockets Layer, 安全套接层)[^1], 及其继任者 TLS (Transport Lyayer Security, 传输安全)[^2] 提供了 TCP/IP 协议与应用层协议之间的透明安全协议, 实现服务器和客户端之间的机密通信和对等认证 . 现在 SSL 多代指 TLS. TLS/SSL 被认为是传输层和应用层之间的协议, 可以称为安全层, 也可以认为是横跨了 OSI 表示层与会话层.
+SSL (Secure Sockets Layer, 安全套接层)[^1], 及其继任者 TLS (Transport Lyayer Security, 传输安全)[^2] 提供了 TCP/IP 协议与应用层协议之间的透明安全协议, 实现服务器和客户端之间的机密通信和对等认证 . 现在 SSL 多代指 TLS. TLS/SSL 被认为是传输层和应用层之间的协议.
 
 [^1]: 最初由 Netscape Communications Inc. 开发, 后发布多个改进版本.
 
