@@ -7,13 +7,13 @@
 | Compiler      | 编译     | LLVM, 链接过程, 汇编                               |
 | Information   | 信息     | 数据库, 信息论, 数字信号     |
 | HardWare      | 硬件     | 计算机组成, 字符串编码                                                   |
-| Language      | 编程语言 | C, C++, Go, Haskell, Python                        |
+| Language      | 编程语言 | C, C++, Go, Python, Wolfram, 设计模式                        |
 | Network       | 网络     | 网络分层模型, 防火墙, 网络代理                     |
 | System        | 操作系统 | Linux, Windows, Container, Shell                   |
-| Security      | 网络安全 | 调试, 漏洞攻击, 软件测试, 密码学                   |
+| Security      | 网络安全 | 网络安全, 软件安全, 密码学                   |
 | Math          | 数学     | 微积分, 线性代数, 数论, 抽象代数, 概率论, 计算理论 |
-| Tools         | 工具     | Git, Vim, Latex, IDE, Wolfram                      |
-| attach        | 图片附件 |                                                    |
+| Tools         | 工具     | Git, Vim, Latex, IDE, ...                     |
+| attach        | 图片附件 |  去透明通道压缩后图片, 无第三方版权                                                  |
 | appx          | 附录     | 技术标准, 参考信息, 对照表, 杂项                               |
 | paper         | 论文     |                                                    |
 | src           | 代码     |                                                    |
@@ -22,17 +22,18 @@
 
 如未明确说明, 原创内容一律使用 CC-BY 4.0 许可. 您可以自由使用, 但需要保留署名.
 
-### Workflow Tags
+### Workflow
 
 分为内容标签和进度标签两类, 进度标签不会出现在正文中.
 
-| tags                      | descrp                      |
+| tags                      |                      |
 | ------------------------- | --------------------------- |
-| #LGTM #KeyPoints          | 有兴趣, 重点, 值得二刷      |
-| #Trouble #TroubleShooting | 遇到的难题, 故障处理        |
+| #LGTM #KeyPoints          | 有兴趣, 重点      |
+| #Trouble #TroubleShooting | 遇到的难题, 故障处理经验        |
+| #Doubtful    | 存疑  |
 | #FAQ                      | 提问, 一些好奇心            |
 | #NSFW                     | 奇怪内容, 加入 `.gitignore` |
-| #Code                     | 笔记内容为源码              |
+| #Code                     | 笔记内容为大段源码分析              |
 | #Docs                     | 笔记内容为复述文档或定义    |
 | #Repost                   | 笔记内容为转载              |
 | #Paper                                  | 笔记内容为文献                    |
@@ -42,6 +43,17 @@
 | #WIP                      | 进度标签, 正在              |
 | #Recall                   | 进度标签, 需要回忆复习      |
 | #TypeSet                  | 进度标签, 需要调整排版      |
+
+文件内属性:
+
+| properties |                                                                 | type |
+| ---------- | --------------------------------------------------------------- | ---- |
+| source     | 来源统一资源定位符, 包括网址和源码路径                          | 列表 |
+| revised    | 最后大幅修改日期                                                | 日期 |
+| copyright  | 作者与出版日期                                                  | 列表 |
+| license    | 文内有非 CC-BY 许可证授权下的内容引用时, 单个文件许可证可能变化 | 文本 |
+| code       | 指文内内容在 `/src` 目录下有对应的源码                          | 列表 |
+| tags       | 内容标签, 见上                                                  | 列表     |
 
 ### Writing Guidelines
 

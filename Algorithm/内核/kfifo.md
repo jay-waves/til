@@ -1,5 +1,7 @@
 ---
-library: include/linux/kfifo.h, lib/kfifo.c
+source: include/linux/kfifo.h, lib/kfifo.c
+tags:
+  - Code
 ---
 
 `kfifo` 是内核对[循环队列](../../链表/queue.md)的实现, 队列含义是: first data in is the first data out, fifo. `kfifo` 内部数据是一段缓冲 `buffer`, 输入输出数据也是指定长度的缓冲.

@@ -1,5 +1,7 @@
 ---
-src: [src/cryptography/gf.py, src/cryptography/rsa_classic.py]
+code:
+  - src/cryptography/gf.py
+  - src/cryptography/rsa_classic.py
 ---
 
 ## RSA 密码体系

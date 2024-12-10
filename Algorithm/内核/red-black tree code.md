@@ -1,5 +1,5 @@
 ---
-library: lib/btree.c
+source: lib/btree.c
 copyright: Andrea Arcangeli (1999), David Woodhouse (2001), Michel Lespinasse (2012)
 ---
 

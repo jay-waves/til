@@ -3,7 +3,7 @@ copyright:
   - Joern Engel
   - Peter Zijlstra
 license: GPL2
-library: lib/btree.c
+source: lib/btree.c
 ---
 ## Simple In-memory B+Tree
 

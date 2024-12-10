@@ -1,5 +1,5 @@
 ---
-library: <stddef.h>, <stdint.h>, <signal.h>, <errno.h>
+source: <stddef.h>, <stdint.h>, <signal.h>, <errno.h>
 revised: 24-06-03
 ---
 
