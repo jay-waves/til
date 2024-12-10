@@ -1,6 +1,5 @@
 ---
-src: https://datatracker.ietf.org/doc/html/rfc2104
-code: [src/cryptography/hmac.py,]
+code: https://datatracker.ietf.org/doc/html/rfc2104
 ---
 
 # HMAC

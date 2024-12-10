@@ -1,6 +1,6 @@
 ---
 revised: 2024-04-09
-library: <stdlib.h>
+source: <stdlib.h>
 ---
 
 ## Random
