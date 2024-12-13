@@ -22,7 +22,7 @@ Google 的 C/C++ 运行时内存错误检测工具, 基于 LLVM IR 实现.
 
 ### AES
 
-目前广泛使用的对称加密标准, 见 [AES](Security/密码学/分组密码/SP-结构/AES.md)
+目前广泛使用的对称加密标准, 见 [AES](Security/密码学/分组密码/SP%20结构/AES.md)
 
 ### Avalanche Effect
 
@@ -194,7 +194,7 @@ dynamic shared object, 动态共享对象.
 
 ### DES
 
-早期对称加密标准, 现由于安全性已被 AES 取代. 见 [DES](Security/密码学/分组密码/Feistel-结构/DES.md)
+早期对称加密标准, 现由于安全性已被 AES 取代. 见 [DES](Security/密码学/分组密码/Feistel%20结构/DES.md)
 
 ### Digital Certificate
 
@@ -454,7 +454,7 @@ Message Authentication Code, 消息认证码, 用于验证消息的完整性和�
 
 ### MD5
 
-Message Digest Algorithm 5, 广泛使用的散列函数, 由于安全问题已被淘汰, 见 [MD5](Security/密码学/消息摘要/MD%20迭代结构/MD5.md)
+Message Digest Algorithm 5, 广泛使用的散列函数, 由于安全问题已被淘汰, 见 [MD5](Security/密码学/消息摘要/MD%20结构/MD5.md)
 
 ### MITM
 
@@ -748,7 +748,7 @@ Secure Hash Algorithm, 密码学哈希函数 (消息摘要函数, 杂凑函数, 
 
 ### SM4
 
-中国标准对称密码算法, 见 [SM4](Security/密码学/分组密码/Feistel-结构/SM4.md).
+中国标准对称密码算法, 见 [SM4](Security/密码学/分组密码/Feistel%20结构/SM4.md).
 
 ### SM2
 
