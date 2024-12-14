@@ -1,6 +1,6 @@
 ## DSA 数字签名
 
-DSA 数字签名算法, 是一种基于公钥密码的*带附录数字签名方式*. 用于 [NIST](appx/各类互联网国际标准组织.md) 提出的美国国家标准 [DSS (Digital Signature Standard) 数字签名标准](https://csrc.nist.gov/pubs/fips/186-5/final), DSS 还包括 ECDSA 和 RSA.
+DSA 数字签名算法, 是一种基于公钥密码的*带附录数字签名方式*. 用于 [NIST](../../../../appx/各类国际标准组织.md) 提出的美国国家标准 [DSS (Digital Signature Standard) 数字签名标准](https://csrc.nist.gov/pubs/fips/186-5/final), DSS 还包括 ECDSA 和 RSA.
 
 DSA 算法是 Elgamal 签名的变种, 同样基于有限域上离散对数问题. 但它比 ElGamal 的效率更高, 签名更短. DSA 和 [ElGamal 签名](../ElGamal.md) 有一样的安全问题, 即随机数 k 不能重复使用.
 

@@ -6,10 +6,10 @@
 | Intelligence  | 人工智能 |                                                    |
 | Compiler      | 编译     | LLVM, 链接过程, 汇编                               |
 | Information   | 信息     | 数据库, 信息论, 数字信号     |
-| HardWare      | 硬件     | 计算机组成, 字符串编码                                                   |
+| HardWare      | 硬件     | 计算机组成                                                   |
 | Language      | 编程语言 | C, C++, Go, Python, Wolfram, 设计模式                        |
 | Network       | 网络     | 网络分层模型, 防火墙, 网络代理                     |
-| System        | 操作系统 | Linux, Windows, Container, Shell                   |
+| System        | 操作系统 | Linux, Windows, Shell                   |
 | Security      | 网络安全 | 网络安全, 软件安全, 密码学                   |
 | Math          | 数学     | 微积分, 线性代数, 数论, 抽象代数, 概率论, 计算理论 |
 | Tools         | 工具     | Git, Vim, Latex, IDE, ...                     |

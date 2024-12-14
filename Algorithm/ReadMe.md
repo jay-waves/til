@@ -29,11 +29,11 @@
 
 ### 数据结构列表
 
-- `stack` 栈
-- `queue` 队列, `circular queue` [循环队列](链表/queue.md), `deque` [双端队列](链表/deque.md), [优先队列](树/binary%20heap.md)
-- `linked list` 链表. `circular linked list` [循环链表](链表/circular%20linked%20list.md), `doubly linked list` [双向链表](链表/doubly%20linked%20list.md) 
-- `list` [列表](链表/list.md), 变长有序集合. 在 linux kernel 语境下仍指链表.
-- `Hash Table` [哈希表](哈希表/hash%20table.md), 也被称为 `Map`, `Dictionary`, `Symbol Table`.
+- 栈 (Stack)
+- 队列 (Queue), [循环队列](链表/queue.md), [双端队列](链表/deque.md), [优先队列](树/binary%20heap.md)
+- 链表 (Linked List). [循环链表](链表/circular%20linked%20list.md), [双向链表](链表/doubly%20linked%20list.md), 十字链表, 跳表, 邻接表. 
+- [列表 (List)](链表/list.md), 变长有序集合. 在 linux kernel 语境下仍指链表.
+- [哈希表](哈希表/hash%20table.md), (Hash Table, Map, Dictionary, Symbol Table)
 
 ### 算法列表
 
@@ -46,38 +46,26 @@
 	- [希尔排序](排序/希尔排序.md), 
 	- [选择排序](排序/选择排序.md)
 - 图和搜索算法: 
-	- [A*](最短路径/A%20star.md), 
-	- [对分查找](排序/对分查找.md), 
-	- [Dijkstra](最短路径/Dijkstra.md), 
-	- [Floyd-Warshall](最短路径/Floyd-Warshall.md), 
-	- Bellman-Ford, Krushkal, Prim
-	- 收缩层级算法 (CH), 调用 OpenStreetMap
+	- [对分查找](排序/对分查找.md)
 	- [BFS](图/BFS.md), 
 	- [DFS](图/DFS.md)
-- 图算法: 
-
-- 数值优化:
-	- 梯度下降
-	- 共轭梯度
-	- 拉格朗日乘子
+	- 最小生成树
+		- Prim 
+		- Kruskal
+		- Bellman-Ford
+	- 最短路径
+		- [A*](最短路径/A%20star.md), 
+		- [Dijkstra](最短路径/Dijkstra.md), 
+		- [Floyd-Warshall](最短路径/Floyd-Warshall.md), 
+	- 收缩层级算法 (CH), 如地图调用 OpenStreetMap
+	- 拓扑排序 (AOV)
+	- 关键路径 (AOE)
 - 字符串算法
 	- KMP
 	- Rabin-Karp
 	- Boyer-Morre
 	- 最长公共子串
-- 随机化和近似
-	- 蒙特卡洛算法 Monte Carlo
-	- Las Vegas Algorithms
-	- 随机森林
-	- 遗传算法
-- 线性机器学习算法
-	- 线性回归
-	- 逻辑回归
-	- 支持向量机
-	- K均值聚类
-	- 决策树
-	- 神经网络
-	- 退火算法
+
 
 ### 错误码
 
