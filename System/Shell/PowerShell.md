@@ -118,7 +118,7 @@ Set-PSReadLineKeyHandler -Chord Alt+x -Function ViEditVisually
 
 ## Q&A
 
-管道和重定向编码问题: Powershell7 默认支持 [UTF-8](../../Network/应用层/Char%20Encoding/字符编码.md), 但是不同平台上的一些功能又依赖于平台本身的语言设置. 在 Windows 上, 默认中文编码使用了非 UTf-8 编码, 导致使用管道出现乱码.
+管道和重定向编码问题: Powershell7 默认支持 [UTF-8](../../Network/应用层/字符编码/字符编码.md), 但是不同平台上的一些功能又依赖于平台本身的语言设置. 在 Windows 上, 默认中文编码使用了非 UTf-8 编码, 导致使用管道出现乱码.
 
 <https://github.com/PowerShell/PowerShell/issues/17523> 解决办法如下:
 
