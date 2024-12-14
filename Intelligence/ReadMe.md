@@ -8,6 +8,26 @@
 
 人工智能的应用主要集中在 多模态内容生成 (NLP, AIGC), CV (Computer Vision), Robotics (感知与控制算法, 自动驾驶). 
 
+### 算法
+
+- 数值优化:
+	- 梯度下降
+	- 共轭梯度
+	- 拉格朗日乘子
+- 随机化和近似
+	- 蒙特卡洛算法 Monte Carlo
+	- Las Vegas Algorithms
+	- 随机森林
+	- 遗传算法
+- 线性机器学习算法
+	- 线性回归
+	- 逻辑回归
+	- 支持向量机
+	- K均值聚类
+	- 决策树
+	- 神经网络
+	- 退火算法
+
 ### 发展路径
 
 - [LeNet, 1998](../paper/Gradient-Based%20Learning%20Applied%20to%20Document%20Recognition,%201998.pdf)
