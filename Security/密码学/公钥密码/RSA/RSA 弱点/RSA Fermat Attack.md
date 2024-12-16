@@ -6,11 +6,12 @@
 
 需要注意该方法只对奇合数有用, 因为偶合数分解后相加无法整除 2, 因此不能验证平方数. **算法复杂度为 $\mathbb{O}(\vert p-q\vert)$**. 
 
-### 程序实现
+### in python
+
 ```python
 import math
 
-deffermat(n):
+def fermat(n):
     a = math.ceil(math.sqrt(n))
     b2 = a * a - n
     b =round(math.sqrt(b2))
@@ -20,7 +21,7 @@ deffermat(n):
         b =round(math.sqrt(b2))
     return a - b, a + b
 
-deffactorization(n):
+def factorization(n):
     factors =[]
     stack =[n]
     while len(stack)>0:
@@ -28,11 +29,13 @@ deffactorization(n):
         if x ==2:
             factors.insert(0, x)
             continue
-        p, q = fermat(x) if x &1==1 else (2, x //2) 
+        p, q = fermat(x) if x & 1 == 1 else (2, x //2) 
         if p ==1:
-            factors.insert(0, q)else:
+            factors.insert(0, q)
+        else:
             stack.append(p)
-            stack.append(q)return factors
+            stack.append(q)
+    return factors
 
 if __name__ =='__main__':
 	print(factorization(200))
