@@ -1,6 +1,6 @@
 ## Feistel 结构
 
-![|400](../../../../attach/密码学_Feistel结构.png)
+![|400](../../../../attach/密码学_Feistel结构.avif)
 
 对于每次迭代:  
 $L_{i+1}=R_{i}$  

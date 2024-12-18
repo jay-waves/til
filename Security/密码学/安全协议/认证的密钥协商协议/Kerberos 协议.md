@@ -14,7 +14,7 @@ Kerberos v5 (地狱三头犬) 通信协议, 基于对称密码, 目前广泛应�
 - $K_{A,B}$ 指实体 A 和 B 间共享的对称密钥.
 
 ***
-![|450](../../../../attach/密码学-Kerboeros协议.png)
+![|450](../../../../attach/密码学-Kerboeros协议.avif)
 
 Kerberos的完整过程分三部分:
 
