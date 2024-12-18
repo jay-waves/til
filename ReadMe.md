@@ -100,4 +100,4 @@
 
 > 免责:   
 > 标准在不断迭代, 部分笔记可能不符合上述标准, 也不会修改.   
-> 包含部分 Obsidian 扩展 Markdown 语法. 可能不兼容 GFM 语法.
+> 包含部分 Obsidian 扩展 Markdown 语法. 可能不兼容 [GFM 语法](https://github.github.com/gfm/).

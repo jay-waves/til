@@ -19,11 +19,11 @@
 
 由欧拉函数: 
 
-$$\begin{split}\phi(n)\ &=\ \phi(p\times q)\\&=\phi(p)\times\phi(q)\\&=(p-1)\times (q-1)\\&=p\times q-q-p+1\end{split}$$
+$$\begin{align}\phi(n)\ &=\ \phi(p\times q)\\&=\phi(p)\times\phi(q)\\&=(p-1)\times (q-1)\\&=p\times q-q-p+1\end{align}$$
 
 于是: $n-(p+q)+1=\phi(n)$ 
 
-故由韦达定理知, $p$ 和 $q$ 为方程 $x^2-(p+q)*x+pq=0$ 的两个解, 其中: $p*q=n$ , $p+q=n-\phi(n)+1$.
+故由韦达定理知, $p$ 和 $q$ 为方程 $x^{2}-(p+q)*x+pq=0$ 的两个解, 其中: $p*q=n$ , $p+q=n-\phi(n)+1$.
 
 又因为: $d\ \times\ e\ \equiv\ 1\pmod{\phi(n)}$ ,有: $d\ \times\ e\ -1 =\ k*\phi(n)$
 
