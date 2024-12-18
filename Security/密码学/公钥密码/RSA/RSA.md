@@ -2,6 +2,7 @@
 code:
   - src/cryptography/gf.py
   - src/cryptography/rsa_classic.py
+revised: 24-12-17
 ---
 
 ## RSA 密码体系
@@ -37,7 +38,9 @@ c^{d}\pmod{N} &\iff  \begin{cases}V_{p}\equiv c^{d}\pmod{p}\\ \\ V_{q}\equiv c^{
 
 2. 利用[中国剩余定理](../../../../Math/数论/中国剩余定理.md)计算上述方程组
 
-定义: $$\begin{align}
+定义: 
+
+$$\begin{align}
 X_{p} & =q*(q^{-1}\pmod p) \\
 X_{q} & =p*(p^{-1}\pmod q)
 \end{align}$$ 
