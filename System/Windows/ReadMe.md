@@ -1,5 +1,5 @@
 
-![](../../attach/Pasted%20image%2020240711165318.png)
+![](../../attach/Pasted%20image%2020240711165318.avif)
 
 `C:` 系统分区
 - `C:\Windows` 操作系统的核心文件和库文件.

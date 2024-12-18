@@ -196,7 +196,7 @@ MutationDispatcher::MutationDispatcher(Random &Rand,const FuzzingOptions &Option
 }
 ```
 
-![](../../../attach/Pasted%20image%2020240307154740.png)
+![](../../../attach/Pasted%20image%2020240307154740.avif)
 
 > source: 
 > - [Source-and-Fuzzing](https://github.com/lcatro/Source-and-Fuzzing)

@@ -51,4 +51,4 @@ https://en.wikipedia.org/wiki/Space_(mathematics)
 - 度量空间
 - 希尔伯特空间
 
-![|500](../../attach/Pasted%20image%2020240927234012.png)
+![|500](../../attach/Pasted%20image%2020240927234012.avif)

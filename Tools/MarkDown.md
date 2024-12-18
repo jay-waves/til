@@ -63,7 +63,7 @@ Markdown 针对的是**文本文件**, 而不是**富文本二进制文件**. �
 
 [我是链接](https://uknowho.com)
 
-[我是图片](https://mypics.com/123), 我也可以在本地: [我是图片](./mypic.png)
+[我是图片](https://mypics.com/123), 我也可以在本地: [我是图片](./mypic.avif)
 
 [引用本地其他笔记](./mynote.md), 组织笔记网络.
 

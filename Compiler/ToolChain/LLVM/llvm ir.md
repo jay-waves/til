@@ -30,7 +30,7 @@ define i32 @main() {
 
 ### 编译目标平台信息
 
-![|500](../../../attach/Pasted%20image%2020240229161828.png)
+![|500](../../../attach/Pasted%20image%2020240229161828.avif)
 
 目标的数据布局. 具体而言:
 
@@ -290,7 +290,7 @@ LLVM 的函数由一系列基本块 (Basic Block) 组成, 形成一个 CFG (Cont
 
 ```shell
 opt -p dot-cfg test.ll
-dot .main.dot -Tpng -o test.png
+dot .main.dot -Tpng -o test.avif
 ```
 
 ### for 语句

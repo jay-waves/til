@@ -1,5 +1,5 @@
 
-![|400](../../attach/P_NP_NPC_NPH.png)
+![|400](../../attach/P_NP_NPC_NPH.avif)
 
 P和NP指两种复杂类  
 - 问题 $L\in P$ , 指能够在多项式时间内找到问题 $L$ 的解.  

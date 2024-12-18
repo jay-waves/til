@@ -1,6 +1,6 @@
 ## CPU架构
 
-![](../attach/CPU%20内部架构.png)
+![](../attach/CPU%20内部架构.avif)
 
 - ALU, Arithmetic Logic Unit, 算术逻辑单元
 - FPU, Floating Point Unit, 浮点运算单元

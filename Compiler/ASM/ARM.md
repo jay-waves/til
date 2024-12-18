@@ -102,7 +102,7 @@ ARM 有 16 个 32 位通用寄存器 (R0-R15)
 专用寄存器:
 - CPSR, Current Program Status Register, 程序状态寄存器.
 
-![|500](../../attach/ARM_CPSR_状态寄存器.png)
+![|500](../../attach/ARM_CPSR_状态寄存器.avif)
 
 ARM **调用约定**中规定:
 - `R0` 传递返回值
