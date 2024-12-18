@@ -1,4 +1,4 @@
-![|400](../../../attach/Pasted%20image%2020240527115840.png)
+![|400](../../../attach/Pasted%20image%2020240527115840.avif)
 
 # Binary Search Tree
 
@@ -473,7 +473,7 @@ deleteElement( ELEMENTTYPE X, SEARCHTREE_ T ){
 
 ## 如何支持区间查找?
 
-![|500](../../../attach/Pasted%20image%2020240527120240.png)
+![|500](../../../attach/Pasted%20image%2020240527120240.avif)
 
 
 ```zig

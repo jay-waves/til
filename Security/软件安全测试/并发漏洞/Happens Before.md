@@ -13,7 +13,7 @@ copyright: [Leslie Lamport (1978), ]
 - 如果所有互斥访问可以被线性排序 -> 无数据竞争执行
 - 如果存在互斥访问不能被排序 -> 可能存在数据竞争
 
-![|300](../../../attach/Pasted%20image%2020240407153656.png)
+![|300](../../../attach/Pasted%20image%2020240407153656.avif)
 
 ### Algorithm
 

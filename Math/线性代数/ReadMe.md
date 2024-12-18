@@ -6,7 +6,7 @@
 | [相似](矩阵相似.md)        | $R_{n\times n}\sim R_{n\times n}$ | 存在可逆矩阵 $P$, 有 $B=P^{-1}AP$                              | 相似对角矩阵 $\Lambda=diag(\lambda_{1},\cdots,\lambda_{k})$ | 特征值, 秩 |    
 |[合同](矩阵相合.md)  (相合) | $R_{n\times n}\simeq R_{n\times n}$ | 存在可逆矩阵 $P$, 有 $B=P^{\top}AP$                            | 合同标准型 $\Lambda=diag(1,\cdots,1,-1,\cdots,-1,0,\cdots)$ | 惯性指数, 秩           |    
 
-![|400](../../attach/线性代数_三种实数矩阵关系.png)
+![|400](../../attach/线性代数_三种实数矩阵关系.avif)
 
 ## 参考
 

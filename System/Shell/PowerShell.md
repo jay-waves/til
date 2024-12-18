@@ -69,12 +69,12 @@ $homeDir = $env:USERPROFILE
 ### 遍历
 
 ```powershell
-Get-ChildItem -Filter *.png | ForEach-Object {
+Get-ChildItem -Filter *.avif | ForEach-Object {
 	...
 }
 
 # 等价于:
-gci -Filter *.png | % {
+gci -Filter *.avif | % {
 	...
 }
 ```

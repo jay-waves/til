@@ -4,7 +4,7 @@ OpenMP (Open Multi-Processing) 是一套支持跨平台共享内存方式的多�
 
 OpenMP 基本指令格式为 `#pragma omp directives [clause ...]`
 
-![|500](../../../attach/Pasted%20image%2020240311161748.png)
+![|500](../../../attach/Pasted%20image%2020240311161748.avif)
 
 ## OpenMP Directives (指令)
 

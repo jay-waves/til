@@ -143,7 +143,7 @@ chapter title style:　`plain, kao, bar, lines`
 \labch{title} % 标签
 
 % 风格2
-\setchapterimage[7cm]{path/to/img.png} % 会自动将风格应用为 bar
+\setchapterimage[7cm]{path/to/img.avif} % 会自动将风格应用为 bar
 \setchapterpreamble[u]{\margintoc}
 \chapter{Catchy Title} % No need to set a chapter style
 \labch{catchy}
