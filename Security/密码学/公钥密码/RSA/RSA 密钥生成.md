@@ -30,7 +30,9 @@
 什么 $d$ 不行?
 - $d$ 过小, 存在 [RSA Wiener Attack](RSA%20弱点/RSA%20Wiener%20Attack.md), 在多项式时间破解 $d$. 一般要求 $d\geq \sqrt[4]{n}$
 
-### 避免特殊情况
+### 避免不动点问题
+
+$$x^{e}\equiv x\pmod{N}$$
 
 当明文等于密文时, 程序应有提示. 如 $e\equiv log_{m}(\ k*N\ +\ m\ )$ 时??
 

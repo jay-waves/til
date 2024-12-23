@@ -11,7 +11,7 @@
 | Network       | 网络     | 网络分层模型, 防火墙, 网络代理                     |
 | System        | 操作系统 | Linux, Windows, Shell                   |
 | Security      | 网络安全 | 网络安全, 软件安全, 密码学                   |
-| Math          | 数学     | 微积分, 线性代数, 数论, 抽象代数, 概率论, 计算理论 |
+| Math          | 数学     | 数学就是数学 |
 | Tools         | 工具     | Git, Vim, Latex, IDE, ...                     |
 | attach        | 图片附件 |  去透明通道压缩后图片, 无第三方版权                                                  |
 | appx          | 附录     | 技术标准, 参考信息, 对照表, 杂项                               |

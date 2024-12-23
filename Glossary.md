@@ -206,7 +206,7 @@ Discrete Logarithm Problem, 离散对数问题, 见 [欧拉定理](Math/数论/�
 
 ### DH
 
-Diffie-Hellman 密钥交换, 两实体在非安全信道交换秘密的算法, 见 [DiffieHellman](Security/密码学/公钥密码/密钥协商/DiffieHellman.md)
+Diffie-Hellman 密钥交换, 两实体在非安全信道交换秘密的算法, 见 [DiffieHellman](Security/密码学/公钥密码/DiffieHellman.md)
 
 ### DAG
 

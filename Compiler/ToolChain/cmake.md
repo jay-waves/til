@@ -27,8 +27,11 @@ include_directories(include)
 
 链接外部依赖库:
 ```cmake
+find_package(... CONFIG REQUIRED)
 target_link_libraries(my_app my_library)
 ```
+
+- `REQUIRED` 指必须找到某个库, 否则会报错
 
 ### 添加动态链接库
 
@@ -44,6 +47,8 @@ add_executable(a a.cc)
 
 target_link_libraries(a b c)
 ```
+
+- `PRIVATE` 指 b 只被 c 需要, 不应该影响其他独立包.
 
 ### 构建
 

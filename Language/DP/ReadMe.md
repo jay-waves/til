@@ -49,3 +49,12 @@
 流式处理
 
 响应式编程
+
+### 设计模式原则
+
+1. 开闭原则 (Open Close Principle): 对扩展开放, 对修改关闭, 实现热插拔.
+2. 里氏代换原则 (Liskov Substituition Principle, LSP): 任何基类可出现的地方, 子类一定可以出现.
+3. 依赖倒转原则 (Dependence Inversion Principle): 面向接口编程, 依赖于抽象而不依赖于具体.
+4. 接口隔离原则 (Interface Segregation Principle): 降低耦合度. 使用多个隔离的接口, 优于使用单个巨型接口.
+5. 迪米特法则 (Demeter Principle): 少与其他实体发生相互作用, 保持独立性.
+6. 合成复用原则 (Composite Reuse Principle): 使用组合, 而不使用继承.
