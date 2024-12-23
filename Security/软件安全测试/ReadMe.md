@@ -28,3 +28,22 @@
 	- run-time slowdown
 	- memory footprint
 - Programmer Overhead
+
+
+## 内存安全策略
+
+研究表明[^1], 现存漏洞的数量随着代码生命周期指数下降. 假设平均漏洞生命周期为 $\lambda$, 于是漏洞的时间密度满足[指数分布](../../Math/概率论与随机过程/随机变量分布/指数分布.md): $$\mathrm{density}(x)=\frac{1}{\lambda}e^{-\frac{1}{\lambda} x}$$
+
+![|400](../../attach/漏洞之生命周期.avif)
+
+谷歌[^2]认为处理内存安全的策略共有四代:
+1. reactive patching. 漏洞和风险曝光后再解决, 软件需要经常打安全补丁.
+2. proactive mitigating. 针对漏洞类型, 设计相应的防御技术, 如: stack canaries, control-flow integrity. 由于新型漏洞利用技术不断发展, 软件需要不断加码防御措施, 和攻击者搞军备竞赛, 导致资源消耗和性能瓶颈.
+3. proactive vulnerability discovery. 厂商通过测试技术主动寻找漏洞, 如 sanitizers, afl 等模糊测试技术. 这类技术找漏洞效率高, 但没有健壮性, 即没办法证明所有漏洞皆被发现. 并且会加重维护人员负担.
+4. high-assurance prevention. 指有内生安全性的**安全编程**. 过往通过 GC 保证内存安全的虚拟机语言被认为是低效的, 但随着编译器技术(静态分析)发展, Rust 这类编译时安全语言的性能逐渐接近系统级语言. 
+
+谷歌认为因为内存漏洞在旧代码中指数级减少, 而更常见于新引入的代码. 只要新代码皆使用内生安全性语言 (Rust), 就可以显著降低总体漏洞数量.
+
+[^1]: Alexopoulos et al. ["How Long Do Vulnerabilities Live in the Code? A Large-Scale Empirical Measurement Study on FOSS Vulnerability Lifetimes"](https://www.usenix.org/conference/usenixsecurity22/presentation/alexopoulos). USENIX Security 22.
+
+[^2]: https://security.googleblog.com/2024/09/eliminating-memory-safety-vulnerabilities-Android.html

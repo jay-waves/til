@@ -17,8 +17,6 @@ copyright:
 
 > 微软是不是写代码也只想在 GUI 上点点点, 不敢想这是21世纪的编程工具.... 
 
-[^1]: 参见 [C ReadMe](../../Compiler/Runtime%20Library/C%20标准库.md))andard.md)rd.md), UCRT 为微软 MSVCrt 标准库的升级版. 在 Windows 平台上, 默认的 C 标准为 UCRT, C++ 标准为 MSVC++. 皆在 Visual Studio 套件中.
-
 ### 配置语言服务器
 
 VSCode 安装 Microsoft C/C++ 插件. VSCode 的用户工作区配置文件放在 `.vscode` 文件夹下, 包括:
@@ -43,7 +41,8 @@ VSCode 安装 Microsoft C/C++ 插件. VSCode 的用户工作区配置文件放�
 
 配置位于 `Settings > Extension > C/C++ > Formatting` 以及 `Settings > Text Editor > Formatting`. C/C++ 插件支持自带的 vcFormat 以及 Clang-Format. 尽量轻量化配置, 配置自动插入空格和换行即可, 培养代码习惯, 保持对多种 Coding Style 的兼容[^4].
 
-[^4]: [Google C++ Style](../../Language/C++/Google%20C++%20Style.md) Style](../../Language/C/Kernel%20C%20Style.md)in settings.json
+```
+// in settings.json
 "editor.formatOnPaste": true,
 "editor.formatOnType": true,
 "editor.renderWhitespace": "none",
@@ -57,8 +56,6 @@ VSCode 安装 Microsoft C/C++ 插件. VSCode 的用户工作区配置文件放�
 ### 配置编译
 
 命令面板 (ctrl+shift+p) 输入 `tasks:configure default build task`, 自动生成针对 `cl.exe` 编译器[^6]的 `task.json`, 下面是自定义的一些编译参数.
-
-[^6]: cl.exe 编译器详见 [msvc](../../Compiler/ToolChain/msvc.md).md)l.md)
 
 ```json
 // in tasks.json
@@ -85,7 +82,6 @@ VSCode 安装 Microsoft C/C++ 插件. VSCode 的用户工作区配置文件放�
 
 命令面板输入 `C/C++:edit configuration`, 打开 `c_cpp_properties.json`, 修改 C/C++ 配置. 包括头文件目录, windows sdk 目录, C/C++ 标准等. 着重注意, Windows 下的 libc 库为 `ucrt`, 编译器 `cl.exe` 的头文件目录则在 VS 目录下 [^3].
 
-[^3]: 显然, MSVC 可以安装在其他目录下, 所以 `cl.exe` 和 `MSVC/14/Include` 也可能随之在不同路径下. 这里的路径仅供参考. 
 
 ```json
 // in c_cpp_properties.json
@@ -138,8 +134,6 @@ VSCode 安装 Microsoft C/C++ 插件. VSCode 的用户工作区配置文件放�
 },
 ```
 
-[^2]: https://code.visualstudio.com/docs/cpp/config-msvc
-
 ### 配置调试
 
 使用 Developer Command Prompt for VS 打开 VSCode, 完成上述编译配置后, 理论上可直接开始调试. VS 编译套件对代码安全性和现代性要求较高, 所以部分检查和报错比较苛刻.
@@ -188,7 +182,7 @@ clangd 内置了 clang-tidy, 并默认在 `PATH` 中寻找 `gcc.exe`. 请确保 
 - 头文件版本和编译器版本匹配 (错误使用 mingw-get 可能导致该问题)
 
 ### 配置编译
-
+	
 Clangd 本身无编译功能, 需要调用外部编译器环境 (如 `gcc.exe`) 来执行语言服务器功能. 
 
 配置 `.clangd`.  `CompileFlags` 是 Clangd 调用 `gcc.exe `时输入的参数. 这里手动将 `C_INCLUDE_PATH` 和 `CPLUS_INCLUDE_PATH` 路径传入, 避免语言服务器找不到引用的头文件 (注意, 自己项目文件夹的目录, 如 `.\include` 可能也需要加进去).
@@ -222,4 +216,14 @@ Clangd 不内置 clang-format, 但是有格式化功能??. clang-format 使用 `
 "clang-format.fallbackStyle": "Google",
 ```
 
+[^1]: 参见 [C ReadMe](../../Compiler/Runtime%20Library/C%20标准库.md), UCRT 为微软 MSVCrt 标准库的升级版. 在 Windows 平台上, 默认的 C 标准为 UCRT, C++ 标准为 MSVC++. 皆在 Visual Studio 套件中.
+
+[^2]: https://code.visualstudio.com/docs/cpp/config-msvc
+
+[^3]: 显然, MSVC 可以安装在其他目录下, 所以 `cl.exe` 和 `MSVC/14/Include` 也可能随之在不同路径下. 这里的路径仅供参考. 
+
+[^4]: [Google C++ Style](../../Language/C++/Google%20C++%20Style.md)
+
 [^5]: https://llvm.org/builds/ 页面底部有独立的 clang-format. 当然也可以使用 Visual Studio 内建的 clang-format.
+
+[^6]: cl.exe 编译器详见 [msvc](../../Compiler/ToolChain/msvc.md).md)l.md)
