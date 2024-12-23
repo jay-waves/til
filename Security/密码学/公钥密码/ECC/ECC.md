@@ -9,7 +9,7 @@
 
 ### ECC 密钥交换
 
-ECDH (Elliptic Curve Diffie-Hellman Protocol) 基于 ECC 实现的 [DH 密钥交换](../密钥协商/DiffieHellman.md)体系.  
+ECDH (Elliptic Curve Diffie-Hellman Protocol) 基于 ECC 实现的 [DH 密钥交换](../DiffieHellman.md)体系.  
 
 公开信道获取 $[d_{B}]G$, 私钥 $d_{A}$, 获得共享密钥 $[d_{B}\ d_{A}]G$
 
