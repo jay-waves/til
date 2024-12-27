@@ -1,9 +1,9 @@
 ---
 revised: 2024-04-09
-source: <string.h>, <ctype.h>
+code: [<string.h>, <crypt.h>, <memory.h>, <wchar.h>]
 ---
 
-字符串类型形如 `"whatever\0"`, 用法简单:
+字符串类型形如 `"whatever\0"`, 用法简单. 但要注意, 字符串长度应加上最后的 `\0` 字符, 用于标识字符串结尾.
 
 ```c
 char *str1 = "HELLO";
@@ -13,6 +13,8 @@ int length;
 length = strlen("HELLO"); /* length = 5 */
 (void) strcpy(str2,str1);
 ```
+
+## string.h
 
 所有函数原型于 `string.h` 头文件中定义.
 
@@ -62,6 +64,8 @@ size_t strcspn(const char *s1, const char *s2) // not match
 strtok...
 ```
 
+## ctype.h
+
 字符, 定义在 `ctype.h`
 
 ```c
@@ -83,6 +87,8 @@ int toascii(int c)
 int tolower(int c)
 int toupper(int c)
 ```
+
+## memory.h
 
 和字符串相关的内存操作, 定义在 `memory.h`
 ```c
@@ -106,4 +112,29 @@ void *memset(void *s, int c, size_t n)
 ```c
 int src[SIZE], idest[SIZE]
 memcpy(dest, src, SIZE*sizeof(int));
+```
+
+## wchar.h
+
+`wchar_t` 宽字符类型, 用于表示多字节字符集 (如 Unicode), 在 C95 标准被正式引入. 
+
+```c
+#include <wchar.h>
+
+wchar_t str[] = L'你好, 世界'; // L 标识宽字符字面量
+wprintf(L"%ls\n", str);       // 宽字符格式化输出
+```
+
+**`wchar_t` 长度不是固定的, 和平台有关**.
+
+```c
+#include <wchar.h>
+#define WCHAR_SIZE (sizeof(wchar_t))
+#if WCHAR_SIZE == 2
+	// Windows, UTF-16
+#elif WCHAR_SIZE == 4
+	// Unix, UTF-32
+#else
+	// 
+#endif
 ```
