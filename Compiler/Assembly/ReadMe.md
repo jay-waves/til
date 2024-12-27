@@ -1,4 +1,4 @@
-汇编语言 (Assembly Language) 是机器码指令的助记符, 与机器语言直接对应. 随着*平台, 架构*演进而不断变化.
+汇编语言 (Assembly Language) 是机器码指令的助记符, 与机器语言直接对应. 随着*平台, 架构*演进而不断变化. 一条汇编指令由两部分组成: 助记符 (mnemonic), 操作数 (operands).
 
 按指令集架构分类, 可以分为:
 - CISC, 复杂指令集, 指令复杂长度不固定, 功能强大. 如 x86.
@@ -25,3 +25,11 @@
 |      | RISC-V |             |                             |
 
 Linux 较早有对 32 位 `ARMv7` 指令集的支持, 而 Windows 和 macOS 则从 `x86` 直接转向 64 位的 `ARMv8`. macOS 的架构称为 `ARM64`, 而 Windows 的架构称为 `AArch64`.
+
+## 参考
+
+Intel 和 AT&T 语法区别. https://imada.sdu.dk/u/kslarsen/dm546/Material/IntelnATT.htm.
+
+Intel® 64 and IA-32 Architectures Software Developer Manuals. https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html
+
+A friendly introduction to assembly for high-level programmers. https://shikaan.github.io/assembly/x86/guide/2024/09/16/x86-64-conditionals.html.
