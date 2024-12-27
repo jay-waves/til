@@ -1,19 +1,18 @@
-STL (Standard Template Library) 是 C++ 标准库的一部分, 提供一系列模板化的数据结构和算法. 支持泛型, 高度性能优化. 1980s 诞生于惠普实验室, 创始人为 AAlexander Stepanov, 在 1998 年定稿入 ANSI/ISO C++ 标准.
+STL (Standard Template Library) 是 C++ 标准库的一部分, 提供一系列模板化的数据结构和算法. 支持泛型, 高度性能优化. 1980s 诞生于惠普实验室, 创始人为 AAlexander Stepanov, 在 1998 年定稿入 ANSI/ISO C++ 标准. 目前， C++ 标准库中有 70% 以上代码隶属于 STL.
 
 由于标准确立较晚, C++ STL 有较多的流行版本. 最初版本是 HP STL, 创始人离开惠普加入 SGI 后, 创建 SGI STL, 是 Linux/GCC 平台下比较流行的版本, 开源并且代码优秀. 
 
 主要部分为:
 1. 容器, Containers
 	- [顺序容器](sequences.md): 存储序列, 允许双向遍历. `vector`, `list`, `deque`, `array`, `forward_list`
-	- [关联容器](associative%20array.md): 存储键值对. `map`, `multimap`, `set`, `multiset`
+	- [关联容器](associative%20array.md): 存储键值对, 根据键排序. `map`, `multimap`, `set`, `multiset`
 	- 散列容器: 即无序关联容器 `unordered_map`, `unordered_set`, `unordered_multimap`, `unordered_multiset`
 	- [容器适配器](adapters.md): `queue`, `priority_queue`, `stack`, `bitset`
 3. 算法, Alogirithms
-4. 迭代器, Iterators
-5. 函数对象, Funciton Objects
+4. 迭代器, Iterators. 重载了 `*, ->, ++, -` 等指针相关操作.
+5. 函数对象, Funciton Objects. 重载了 `()` 操作的类或类模板.
 6. 适配器, Adapters, 将某种容器的接口适配成另一种容器.
-
-pair, span, optional, variant, any
+7. 空间分配器, Allocator. 内存空间动态管理.
 
 |          | 关联容器           | 散列容器                              | 顺序容器 |
 | -------- | ------------------ | ------------------------------------- | -------- |
@@ -58,6 +57,20 @@ pair, span, optional, variant, any
 | map            | associative array | `<map>`    | 升序存储唯一键值对             |
 
 
+pair, span, optional, variant, any???
+
+## 迭代器
+
+通过迭代器, 能够依序寻找某个容器所包含的各个元素, 同时又无须暴露该容器的内部表示方式. STL 的核心思想是**算法和容器**独立设计实现, 再用迭代器将两者联系在一起. 迭代器有如下种类:
+
+| 名称           | 功能                                       | 支持功能                |
+| -------------- | ------------------------------------------ | ----------------------- |
+| 输入迭代器     | 提供对数据的只读访问                       | 只读, 支持 `++, ==, !=` |
+| 输出迭代器     | 提供对数据的只写访问                       | 只写, 支持 `++`         |
+| 前向迭代器     | 提供读写操作, 并能向前推进迭代器           | 读写, 支持 `++, ==, !=` |
+| 双向迭代器     | 提供读写操作, 并能向前或向后推进迭代器     | 读写, 支持 `++, -`      |
+| 随机访问迭代器 | 提供读写操作, 并以跳跃方式访问容器任意元素 | 读写, 支持 `++, -, [n], -n, <, <=, >, >=`                        |
+
 ## 常见操作方法
 
 | 所属容器类型 | 原型                                                                                                | 作用                                   |                                            |
@@ -89,3 +102,8 @@ pair, span, optional, variant, any
 | 无序容器     | `size_type bucket_count() const`                                                                    | 返回容器中桶的数量                     | 用于无序关联容器                           |
 |              |                                                                                                     |                                        |                                            |
 
+## 参考
+
+https://www.cnblogs.com/Gou-Hailong/p/14293766.html
+
+https://blog.csdn.net/qq_42322103/article/details/99685797

@@ -116,6 +116,13 @@ $env:VISUAL = 'nvim' # 指定编辑器, 需要 nvim 在 PATH 中.
 Set-PSReadLineKeyHandler -Chord Alt+x -Function ViEditVisually
 ```
 
+### 命令历史模块
+
+直接编辑历史:
+```powershell
+nvim (Get-PSReadlineOption).HistorySavePath
+```
+
 ## Q&A
 
 管道和重定向编码问题: Powershell7 默认支持 [UTF-8](../../Network/应用层/字符编码/字符编码.md), 但是不同平台上的一些功能又依赖于平台本身的语言设置. 在 Windows 上, 默认中文编码使用了非 UTf-8 编码, 导致使用管道出现乱码.
