@@ -4,10 +4,10 @@ STL (Standard Template Library) 是 C++ 标准库的一部分, 提供一系列�
 
 主要部分为:
 1. 容器, Containers
-	- [顺序容器](sequences.md): 存储序列, 允许双向遍历. `vector`, `list`, `deque`, `array`, `forward_list`
-	- [关联容器](associative%20array.md): 存储键值对, 根据键排序. `map`, `multimap`, `set`, `multiset`
-	- 散列容器: 即无序关联容器 `unordered_map`, `unordered_set`, `unordered_multimap`, `unordered_multiset`
-	- [容器适配器](adapters.md): `queue`, `priority_queue`, `stack`, `bitset`
+	- [顺序容器](顺序容器.md): 存储序列, 允许双向遍历. `vector`, `list`, `deque`, `array`, `forward_list`
+	- [关联容器](关联容器.md): 存储键值对, 根据键排序. `map`, `multimap`, `set`, `multiset`
+	- [散列容器](散列容器.md): 即无序关联容器 `unordered_map`, `unordered_set`, `unordered_multimap`, `unordered_multiset`
+	- [容器适配器](容器适配器.md): `queue`, `priority_queue`, `stack`, `bitset`
 3. 算法, Alogirithms
 4. 迭代器, Iterators. 重载了 `*, ->, ++, -` 等指针相关操作.
 5. 函数对象, Funciton Objects. 重载了 `()` 操作的类或类模板.
@@ -35,9 +35,10 @@ STL (Standard Template Library) 是 C++ 标准库的一部分, 提供一系列�
 #include <set>
 #include <map>
 
-#inlcude <algorithm>   // sort, swap, merge, search
+#inlcude <algorithm>   // sort, swap, compare, merge, search, reverse
 #include <numeric>     // math operations
 #include <funcitonal>  // functor, reload () as class method 
+
 #include <iterator>
 #include <memory>      // memory allocator for containers and auto_ptr
 #include <utility>     // pair, operations reload
@@ -70,6 +71,22 @@ pair, span, optional, variant, any???
 | 前向迭代器     | 提供读写操作, 并能向前推进迭代器           | 读写, 支持 `++, ==, !=` |
 | 双向迭代器     | 提供读写操作, 并能向前或向后推进迭代器     | 读写, 支持 `++, -`      |
 | 随机访问迭代器 | 提供读写操作, 并以跳跃方式访问容器任意元素 | 读写, 支持 `++, -, [n], -n, <, <=, >, >=`                        |
+
+```cpp
+for_each(iterator beg, iterator end, _callback); // 返回一个函数对象.
+/*
+
+template<class _InIt,class _Fn1> inline
+void for_each(_InIt _First, _InIt _Last, _Fn1 _Func)
+{
+	for (; _First != _Last; ++_First)
+		_Func(*_First);
+}
+
+*/
+
+transform(iterator beg1, iterator end1, iterator beg2, _callback);  // 将指定容器区间搬运到另一个容器. 不会自动分配目标容器内存.
+```
 
 ## 常见操作方法
 
