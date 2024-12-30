@@ -6,17 +6,7 @@
 - 数据类型安全: 类型检查, 类型转换检查 (如不同时间格式), 
 - 系统资源安全: 权限隔离, 资源控制, Profiling, Sandbox
 
-## 软件分析与漏洞检测
-
-|                   | Error exists   | No Error Exists |
-| ----------------- | -------------- | --------------- |
-| Error Reported    | True Positive  | False Positive  |
-| No Error Reported | False Negative | True Negative                |
-
-- Soundness: report all defects (no false negatives)
-- Completeness: every reported defect is an actual defect (no flase positives)
-
-### Static vs Dynamic Tradeoffs
+## 动态检测 vs 静态检测
 
 - Coverage
 	- generalize to addtional traces?
@@ -29,6 +19,15 @@
 	- memory footprint
 - Programmer Overhead
 
+## 检测结果分析
+
+|                   | Error exists   | No Error Exists |
+| ----------------- | -------------- | --------------- |
+| Error Reported    | True Positive  | False Positive  |
+| No Error Reported | False Negative | True Negative                |
+
+- Soundness: report all defects (no false negatives)
+- Completeness: every reported defect is an actual defect (no flase positives)
 
 ## 内存安全策略
 

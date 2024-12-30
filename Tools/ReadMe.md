@@ -129,6 +129,7 @@
 - Graphviz + Doxygen. 代码可视化工具.
 - sl, genact 摸鱼用
 - neofetch, Figlet 装逼用.
+- glow, 终端 markdown 渲染器
 
 ## Browser Plugins
 

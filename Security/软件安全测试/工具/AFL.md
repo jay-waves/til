@@ -24,9 +24,9 @@ D  B
 C
 ```
 
-wiki上说, branch coverage 是 edge coverage 的一个子集. 网上信息很少, 姑且认为 br cov 和 1edge cov 等价, llvm 使用的是 1edge cov, llvm bb cov 指的是 node cov. 多边缘覆盖检测, 其实有点像路径覆盖检测了.
+wiki 上说, branch coverage 是 edge coverage 的一个子集. branch cov 统计 `if, while` 等分支语句的出现次数, edge cov 指两个基本块间的可能路径数, 两者统计方式不同. AFL 使用 edge cov, llvm bb cov 使用 edge cov.
 
-**AFL 采用边缘覆盖率检测, 为每个 bb (基本块) 用编译时随机数编号, 然后用哈希函数 `hash=(bb1>>1)^bb2` 的结果表示两个基本块之间的 edge, 记录在 bitmap 中.**
+**AFL 为每个 bb (基本块) 用编译时随机数编号, 然后用哈希函数 `hash=(bb1>>1)^bb2` 的结果表示两个基本块之间的 edge, 记录在 bitmap 中.**
 
 ## Fork Server
 
