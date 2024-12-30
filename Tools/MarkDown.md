@@ -92,7 +92,7 @@ $$
 J(\theta) = \frac 1 2 \sum_{i=1}^m (h_\theta(x^{(i)})-y^{(i)})^2
 $$
 
-MathJax 语法详见 [Latex/Mathjax](Tools/Latex/Mathjax.md)
+MathJax 语法详见 [Latex/Mathjax](Latex/数学公式.md)
 
 ### 代码
 

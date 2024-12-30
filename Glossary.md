@@ -789,6 +789,22 @@ Time-based One-Time Password, 基于时间的动态密码, 通常用于双因素
 
 见 [O-OTP](#OTP).
 
+### TCP
+
+计算机网络传输层的[传输控制协议 (TCP)](Network/传输层/TCP.md), 提供可靠点对点连接.
+
+## TPM
+
+国际可信计算组织 (TCG, Trusted Computing Group) 通过在硬件平台中引入可信平台模块 (Trusted Platform Module, TPM) 来提高计算机系统的可信性.
+
+## TCM
+
+可信密码模块 (trusted Cryptographic Modeul, TCM). 见 TPM.
+
+## TCB 
+
+可信计算基 (Trusted Computing Base, TCB). 见 TPM.
+
 ---
 
 # U

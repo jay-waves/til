@@ -52,7 +52,7 @@ Subjects:
 	- scipy
 	- [pandas](../Language/Python/数学/pandas.md)
 	- [3b1b/manim](../Language/Python/数学/manim.md)
-- [Latex/Mathjax](../Tools/Latex/Mathjax.md)
+- [Latex/Mathjax](../Tools/Latex/数学公式.md)
 
 
 ## 参考
