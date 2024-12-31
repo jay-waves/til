@@ -44,7 +44,7 @@ Subjects:
 
 ## 数学工具
 
-- [Wolfram Mathematica](../Language/Wolfram/Wolfram%20TLDR.md)
+- [Wolfram Mathematica](../Language/Wolfram.md)
 - Python: 
 	- [numpy](../Language/Python/数学/numpy.md)
 	- [sympy](../Language/Python/数学/sympy.md)
