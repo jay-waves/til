@@ -117,7 +117,7 @@ def skipUnlessAttr(obj, attr):
 
 [^1]: 注, 几乎所有断言都支持指定错误信息 msg
 
-检查异常, 警告或[日志](../logging.md):
+检查异常, 警告或[日志](logging.md):
 
 | `assertRaises(exception, func, *args, **kwds)` | `func(*args, **kwds)` 引发了异常 `exception` |        |
 | ---------------------------------------------- | -------------------------------------------- | ------ |

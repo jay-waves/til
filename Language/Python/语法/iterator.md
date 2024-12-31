@@ -176,4 +176,4 @@ normalize_defensive(it)
 TypeError: Must supply a container
 ```
 
-[itertools](../数据结构/itertools.md)
+[itertools](../数据类型/itertools.md)

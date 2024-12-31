@@ -1,4 +1,6 @@
-## 设计模式
+## Patterns and Paradigms
+
+### 设计模式
 
 设计模式 (Design Pattern)
 

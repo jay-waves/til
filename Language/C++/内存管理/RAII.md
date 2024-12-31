@@ -44,7 +44,7 @@ handle->performInvalidOperation(); // 作用域结束即释放
 
 PS: 不要依赖 C++ 编译器的任何默认/隐式行为. C++ 的细节复杂度极逆天, 脑子是记不住的 (也不要试图把脑子训练成人肉编译器), 应确保所有行为都是准确和明确定义的. 如果不确定编译器是否会自动初始化或自动释放资源, 最*简单*的方式就是手动定义初始化和释放方法.
 
-在带 GC 语言中, 常见错误是不习惯手动释放底层对象, 导致资源泄露. python 用[上下文管理器](../../Python/标准库/contextlib.md)解决这个问题. 
+在带 GC 语言中, 常见错误是不习惯手动释放底层对象, 导致资源泄露. python 用[上下文管理器](../../Python/语法/contextlib.md)解决这个问题. 
 
 > [What is meant by Resource Acquisition is Initialization (RAII)? Stack Overflow](https://stackoverflow.com/questions/2321511/what-is-meant-by-resource-acquisition-is-initialization-raii)
 >
