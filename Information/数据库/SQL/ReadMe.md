@@ -1,4 +1,4 @@
-SQL (Structured Query Language) 是结构化查询语言, 专用于与数据库交互和通信. 语言类型为[声明式语言](../../../Language/DP/编程范式.md), 其功能:
+SQL (Structured Query Language) 是结构化查询语言, 专用于与数据库交互和通信. 语言类型为[声明式语言](../../../Language/Coding%20Patterns/编程范式.md), 其功能:
 - 数据定义语言 (Data Definition Lanuguage): 数据库结构定义, 用于创建, 修改和删除数据库对象 (表, 列, 索引, 视图, 存储过程)
 - 数据操纵语言 (Data Manipulation Language): 管理数据库数据, 查询, 修改, 插入与删除数据对象.
 - 数据控制语言 (Data Control Language): 权限控制
