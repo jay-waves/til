@@ -5,4 +5,4 @@
 | 数据压缩         | 包含信源编码, 通过编码去除数据冗余                                                 | 信息论, [图像处理](图像处理/ReadMe.md)                         | [UTF-8](../Network/网络数据处理/字符编码.md), JPEG (DCT), PNG, ZIP (Huffman), MP3, MPEG                |
 | 数据安全         | 加密, 保护数据的机密性和完整性                                                     | [密码学](../Security/密码学/README.md)                         | [AES](../Security/密码学/分组密码/SP%20结构/AES.md), [RSA](../Security/密码学/公钥密码/RSA/RSA.md), [SSL/TLS](../Network/VPN/SSL.md)        |
 | 数据传输和分发   | 包含信道编码和网络同步, 添加编码冗余来对有噪声传输过程检错和纠错, 并分发给网络中用户               | 信息论, [计算机网络](../Network/网络体系结构.md), 通信原理   | TCP/IP, LDPC, CRC, [Hamming](信息论与编码/汉明编码.md)           |
-| 数据存储与结构化 | 梳理数据间关系, 并将其结构化或半结构化存储 | [关系型数据库](数据库/关系型数据库/ReadMe.md), [数据结构](../Algorithm/ReadMe.md)             | SQL (行列/关系型), XML (嵌套/树形关系), JSON (键值对关系) |
+| 数据存储与结构化 | 梳理数据间关系, 并将其结构化或半结构化存储 | [关系型数据库](数据库/关系数据库理论/ReadMe.md), [数据结构](../Algorithm/ReadMe.md)             | SQL (行列/关系型), XML (嵌套/树形关系), JSON (键值对关系) |
