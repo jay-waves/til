@@ -1,8 +1,172 @@
+Address Sanitizer 是漏洞检查器, 性能损耗最高小于 2.60x, 只写检测平均为 1.26x, 读写检测平均为 1.5x. 内存损耗平均为 3.37x, 最坏为 20x.
+
+主要参数如下:
+- depth of stack unwinding: (default 30) 指 `malloc/free` 操作时记录此刻的栈信息, 对调试非常重用. 此操作不额外消耗内存, 但会拖慢速度. 
+- quaratine size: (default 256MB) 指 `free` 后的内存隔离区, 大隔离区利于检测 UAF 漏洞.
+- size of the heap redzone: (default 128B) 堆内存的红区大小, 红区越大, 对 OOB 检测范围越广, 但性能也会显著降低, 尤其是内存分配比较碎片化的程序.
+
 ## 实现原理
 
-### 优化
+### 阴影内存
 
-[AddressSanitizerCompileTimeOptimizations](https://github.com/google/sanitizers/wiki/AddressSanitizerCompileTimeOptimizations)
+为了兼容 `double` 等长数据类型, 大多数平台的 ABI 规定 `malloc` 应返回至少 8 字节对齐的地址, 以满足最大数据类型对齐需求. 因此, ASAN 将内存每 8 字节映射到阴影内存 (Shadow Memory) 的一字节. 给定内存地址 `Addr`, 其对应的阴影内存地址是 `( Addr >> 3 ) + Offset`. 
+
+在逻辑地址中, 假设最大地址空间为 `Max-1`, 那么阴影内存的最大可能体积为 `Max/8`. 因此 `Offset` 选取时, 应至少保证 `Offset ~ Offset+Max/8` 地址部分不被进程占用. 在 32b Unix 平台上, ASAN 使用 `Offset = 0x20000000` $(2^{29})$. 在 64b 平台上, ASAN 使用 `Offset = 0x0000100000000000` $(2^{44})$. 
+
+| 32b                        | 64b                                 | MemoryType |
+| -------------------------- | ----------------------------------- | ---------- |
+| `[0x40000000, 0xffffffff]` | `[0x10007fff8000, 0x7fffffffffff]`  | HighMem    |
+| `[0x28000000, 0x3fffffff]` | `[0x02008fff7000, 0x10007fff7fff]`  | HighShadow |
+| `[0x24000000, 0x27ffffff]` | `[0x00008fff7000, 0x02008fff6fff]` | ShadowGap  |
+| `[0x20000000, 0x23ffffff]` | `[0x00007fff8000, 0x00008fff6fff]`                                   | LowShadow  |
+| `[0x00000000, 0x1fffffff]` | `[00000000000000, 0x00007fff7fff]`                                    | LowMem     |
+
+阴影内存字节的意义如下:
+- $k\ (1\leq k\leq 7)$ 指被映射内存前 $k$ 个字节是可用的 (addressable)
+- $0$ 指所有 $8$ 个字节都是可用的
+- 负值 指所有字节都是不可用的. 不同负值对应不同类型的不可用地址:
+	- heap readzones
+	- stack redzones
+	- global redzones
+	- freed memory
+
+```
++--------+
+| Memory | -----+
++--------+      |
+| Shadow | <----+
++--------+
+|  Gap   |
++--------+
+| Shadow |
++--------+
+| Memory |
++--------+
+```
+
+### 插桩逻辑
+
+ASan 修改被测程序, 每当有内存访问时, 先检查对应阴影内存的状态.
+
+```c
+//Before:
+*address = ...;
+
+//After:
+if (SlowPathCheck(address, kAccessSize)) {
+	ReportError(address, kAccessSize, kIsWrite);
+}
+*address = ...;
+
+bool SlowPathCheck(Addr, AccessSize) { // slowpath 指发生内存错误
+	ShadowAddr = (Addr >> 3) + Offset;
+	k = *ShadowAddr;
+	if (k) 
+		return ((Addr & 7) + AccessSize > k);
+	return False;
+}
+```
+
+### 运行时
+
+ASAN 运行时部分职责:
+- 在程序启动时, ASAN 会初始化阴影内存. 此步的正确性可能会收到 ASLR 的干扰. 
+- 拦截动态内存分配函数 `malloc/free` 和栈分配.
+- 实时监控内存访问, 非法访问时生成崩溃报告
+
+ASAN 在运行时, 将替换 `malloc, free` 等内存相关调用. 
+
+对于 `malloc` 调用, ASAN 将在正常内存两侧分配隐蔽的红区 (redzone, poinsoned memory), 这部分是被测程序不可访问的, 否则将是 Underflow/Overflow 漏洞. 
+
+对于 `free` 调用, ASan 不会立即将该内存释放, 而是将整个区域标记为已毒化, 防止再次访问 (UAF). 这部分内存会加入一个隔离区 (quarantine), 暂时不允许 malloc 重新分配. 隔离区是一个 FIFO 队列, 队列满时, 才会开始真地释放最早的内存.
+
+红区越大, 可检测范围越广. 在左红区处, 还会存储内存块相关的元数据 (大小, 线程 ID 等). 在调用 `malloc, free` 时, ASan 也会记录"此时的" (将来出错可能是"历史的") 调用栈, `malloc` 调用栈存储在左红区中, 而 `free` 调用栈存储在堆栈上.
+
+```
++-----+------+------+------+-----+------+-----+
+| rz1 | mem1 | rez2 | mem2 | rz3 | mem3 | rz4 |
++-----+------+------+------+-----+------+-----+
+```
+
+
+### 栈和全局变量
+
+除了堆内存, ASAn 也支持检测栈和全局变量的内存缺陷. 对于全局变量, 红区将在编译时被创建, 其地址在运行起始时被递送到运行时库; 运行时库函数负责监控这些红区. 对于栈对象, 红区在运行时被创建, 每个红区占 32B 大小. 
+
+```c
+void foo() {
+	char a[10];
+	...
+}
+
+void foo() { // poisoned
+	char rz1[32];     // 32-bytes aligned
+	char arr[10];   
+	char rz2[32-10];  // 32-bytes aligned
+	char rz3[32];     // 32-bytes aligned
+	unsigned *shadow = (unsigned*) (((long)rz1 >> 8) + Offset);
+	// poison redzones around arr
+	shadow[0] = 0xffffffff; // rz1
+	shadow[1] = 0xffff0200; // rz2, unpoison arr
+	shadow[2] = 0xffffffff; // rz3
+	...
+	// un-poison all.
+	shadow[0] = shadow[1] = shadow[2] = 0;
+}
+```
+
+### 错误报告
+
+可以通过函数实现, 也可以用硬件指令. 如 `ud2` 是 x86 中的未定义指令, 会触发 `SIGILL` 信号使程序崩溃. 难点是如何传递尽可能多的信息, 同时保证体积尽可能小, 避免导致程序体积膨胀或受干扰.
+
+```assembly
+mov %rax, [addres]
+ud2
+db error_info
+```
+
+程序崩溃时, 可能只能获得一个指令地址及少量信息. 如代码详细位置和调用栈等, 需要用到*地址到符号解析技术*. 编译时使用 `-g` 保留调试符号信息 (DWARF), 然后结合反汇编程序解析符号表. ASan 将执行下列步骤:
+1. 捕获崩溃地址
+2. 通过影子内存查找该地址, 确定其内存不可访问类型.
+3. 通过地址反解析符号.
+4. 获取完整调用栈, 并打印.
+
+一般通过 glibc execinfo.h 中的 `backtrace` 接口获取调用栈, 其会逐层遍历栈帧从而解析整个调用栈. 也可以用 libunwind 库.
+
+### 健全性和完整性
+
+ASAN 没有假阳漏洞, 即不会有误报, 当然有一些低价值漏洞. 可能由假阴漏洞, 即遗漏漏洞. ASAN 的插桩操作应该在编译时的最后步骤进行, 避免一些编译器优化行为的干扰.
+
+ASAN 插桩可能会遗漏一种漏洞: 越界的未对齐的地址访问. 这种漏洞比较罕见, 纳入检测会拖慢效率, ASAN 忽略了该漏洞. 这种非对齐访问可以用静态检测检查.
+
+```cpp
+int *a = new int[2]; // 8-aligned
+int *u = (int*)((char*)a + 6);
+*u = 1; // Access to rang [6-9]
+```
+
+当错误访问的地址过远, 恰好越过了红区, 命中了另一个有效内存, 也可能导致 OOB 漏报.
+
+```cpp
+char *a = new char[100];
+char *b = new char[1000];
+a[500] = 0; // 会访问 b 的某处
+```
+
+被释放的内存会被 ASAN 标记为红区, 但如果其被重新分配给其他变量, 可能导致 UAF 漏报.
+
+```cpp
+char *a = new char[1 << 20]; // 1MB
+delete []a;                  // free
+char *b = new char[1 << 28]; // 256MB
+delete []b;                  // drains the quaratine queue
+char *c = new char[1 << 20]; // 1MB
+a[0] = 0;                    // "use after free", may land in c
+```
+
+在理论上, ASAN 是线程安全的. 魔改的运行时 `malloc/free` 函数会使用线程本地缓存, 来避免每次调用时的锁问题. ASan 可能检测到 DataRace, 比如删除和读取操作的竞争被识别为 UAF, 但并不保证.
+
+## in cpp
 
 ### 插桩阶段 (Instrumentation Pass)
 
@@ -414,3 +578,13 @@ static void AsanInitInternal() {
   InitializeCoverage(common_flags()->coverage, common_flags()->coverage_dir);
 }
 ```
+
+### 参考
+
+[AddressSanitizerCompileTimeOptimizations](https://github.com/google/sanitizers/wiki/AddressSanitizerCompileTimeOptimizations)
+
+Source and Fuzzing. Icatro. [深入解析 libfuzzer 与 asan 原理](https://github.com/lcatro/Source-and-Fuzzing/blob/35f45172497519cf4306f2649f0e4679cf8cee0a/12.%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90libfuzzer%E4%B8%8Easan.md#asan%E5%8E%9F%E7%90%86).
+
+AddressSanitizer: A Fast Address Sanity Checker. Knostantin Serebryany, Derek Bruening, Alexander Potapenko, Dmitry Vyukov, Google. USENIX ATC 2012.
+
+[Address Sanitizer Algorithm -- Github Wiki](https://github.com/google/sanitizers/wiki/AddressSanitizerAlgorithm)

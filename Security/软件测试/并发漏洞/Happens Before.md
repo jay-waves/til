@@ -103,4 +103,4 @@ func on_read_end(x, clock R) {
 
 - Slowdown > 50x
 - Memory Overhead!
-- Improved in [FastTrack](../并发漏洞/FastTrack.md)
+- Improved in [FastTrack](FastTrack.md)
