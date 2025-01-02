@@ -6,7 +6,7 @@ copyright: [Cormac Flanagan (2009), Stephen N. Freund (2009) ]
 
 ## FastTrack: efficient and precise dynamic race detection
 
-- [Eraser](../并发漏洞/Eraser.md): low cost, low precision
+- [Eraser](Eraser.md): low cost, low precision
 - [Happens Before](Happens%20Before.md): high cost, high precision
 - FastTrack: low cost, high precision
 

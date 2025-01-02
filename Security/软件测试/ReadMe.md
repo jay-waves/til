@@ -6,7 +6,20 @@
 - 数据类型安全: 类型检查, 类型转换检查 (如不同时间格式), 
 - 系统资源安全: 权限隔离, 资源控制, Profiling, Sandbox
 
-## 动态检测 vs 静态检测
+## 软件测试
+
+- 功能测试:
+	- 单元测试 (unit test): 单个模块测试
+	- 集成测试 (integration teat): 测试模块间的接口和交互
+- 非功能测试:
+	- 性能测试: 压力测试, 负载测试, 速度测试
+	- 安全性测试: 如渗透测试, 模糊测试
+	- 兼容性测试
+- 维护性测试:
+	- 回归测试 (Regression Test): 修改是否引入新的问题
+	- ...
+
+### 动态检测 vs 静态检测
 
 - Coverage
 	- generalize to addtional traces?
@@ -18,6 +31,16 @@
 	- run-time slowdown
 	- memory footprint
 - Programmer Overhead
+
+### 动态检测插桩方式
+
+编译时插桩: 对源代码或代码中间体 (汇编, IR) 修改. 效率高, 更灵活; 但侵入式更强, 需要改动编译流程.
+- [Sanitizers 系列](工具/Sanitizer.md)
+
+运行时插桩: 在程序执行期间, 通过动态二进制翻译或动态重写指令, 拦截指令. 无需源码, 但性能损耗大.
+- Valgrind (Memcheck)
+- DynamoRIO
+- Intel Pin
 
 ## 检测结果分析
 
