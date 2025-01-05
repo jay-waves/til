@@ -505,6 +505,7 @@ Network Interface Card, 网络接口卡, 用于设备与网络的连接.
 
 Network Time Protocol, 网络时间协议, 用于同步计算机系统的时钟. 
 
+
 ---
 
 # O

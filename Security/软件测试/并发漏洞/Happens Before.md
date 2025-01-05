@@ -3,11 +3,9 @@ tags: [Paper, ]
 copyright: [Leslie Lamport (1978), ]
 ---
 
-## Time, Clocks, and the Ordering of Events in a Distributed System
+## Happens-Before
 
-> [Lamport '78](/paper/Time,%20Clocks,%20and%20the%20Ordering%20of%20Events%20in%20a%20Distributed%20System.pdf)
-
-### Happens-Before
+Time, Clocks, and the Ordering of Events in a Distributed System. Lamport. 1978.
 
 - **并发执行是受通信事件决定的偏序关系, 而程序无法观察无通信事件的并发事件顺序**
 - 如果所有互斥访问可以被线性排序 -> 无数据竞争执行
@@ -17,7 +15,7 @@ copyright: [Leslie Lamport (1978), ]
 
 ### Algorithm
 
-事件偏序关系检测算法: 通过节点通信维护全局时钟
+事件偏序关系检测算法: 通过节点通信维护全局时钟.
 ```go
 // assume N processes in system
 const int N = ...;
