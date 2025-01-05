@@ -64,6 +64,11 @@
 
 `init` initialization code from kernel 
 
+1. 主板加电, 硬件自检
+2. 引导加载程序 (BootLoader): UEFI/BIOS
+3. 加载内核: 启动内存管理, 驱动, CPU 调度
+4. 执行内核的初始化进程 (init): 搭载根文件系统, 配置网络和其他资源
+
 ## Memory Management
 
 page fault hadling in `mm/memory.c`, memory mapping and page cache in `mm/filema.c`, buffer cache in `mm/buffer.c`, swap cache inn `mm/swap_stat.c, mm/swapfile.c`

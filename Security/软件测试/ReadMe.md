@@ -32,6 +32,12 @@
 	- memory footprint
 - Programmer Overhead
 
+### 模糊测试
+
+模糊测试发展路径:[^3]
+
+![|1000](../../attach/Fuzzing%20技术演变.avif)
+
 ### 动态检测插桩方式
 
 编译时插桩: 对源代码或代码中间体 (汇编, IR) 修改. 效率高, 更灵活; 但侵入式更强, 需要改动编译流程.
@@ -39,6 +45,7 @@
 
 运行时插桩: 在程序执行期间, 通过动态二进制翻译或动态重写指令, 拦截指令. 无需源码, 但性能损耗大.
 - Valgrind (Memcheck)
+- Dyninst
 - DynamoRIO
 - Intel Pin
 
@@ -69,3 +76,5 @@
 [^1]: Alexopoulos et al. ["How Long Do Vulnerabilities Live in the Code? A Large-Scale Empirical Measurement Study on FOSS Vulnerability Lifetimes"](https://www.usenix.org/conference/usenixsecurity22/presentation/alexopoulos). USENIX Security 22.
 
 [^2]: https://security.googleblog.com/2024/09/eliminating-memory-safety-vulnerabilities-Android.html
+
+[^3]: A systematic review of fuzzing techniques. Chen Chen, Baojiang Cui. 2018.
