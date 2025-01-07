@@ -28,9 +28,8 @@ libceres.so.2.0.0: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynam
 
 ## 目标文件内容
 
-以源码[^1]为例, 说明链接过程ELF文件内容的变化. 可参考 [Linux 内存空间分布](../../System/Memory/Linux%20内存空间分布.md) 查看.
+以源码[^1]为例, 说明链接过程 ELF 文件内容的变化. 可参考 [Linux 内存空间分布](../../System/Memory/Linux%20内存空间分布.md) 查看.
 
-[^1]: 程序员的自我修养--链接, 装载与库. 俞甲子等. P61.
 
 ```c
 int printf( const char* format, ...);
@@ -299,4 +298,6 @@ Contents of section .bss:
 
 ### 调试信息
 
-调试信息需要单独指定编译器参数 `-g` 来生成, 位于 `.debug` 字段. 调试信息有独立的标准 DWARF3 (Debug With Arbitrary Record Format), 包括源代码行和目标代码地址的对应, 函数和变量类型, 结构体定义. 
+调试信息需要单独指定编译器参数 `-g` 来生成, 位于 `.debug` 字段. [调试信息](调试信息.md)有独立的标准 DWARF3 (Debug With Arbitrary Record Format), 包括源代码行和目标代码地址的对应, 函数和变量类型, 结构体定义. 
+
+[^1]: 程序员的自我修养--链接, 装载与库. 俞甲子等. P61.

@@ -7,7 +7,7 @@ C 语言诞生于 AT&T 的贝尔实验室, 但功能不完善. 1983 年美国国
 | 操作系统                   | 编译环境   | C 标准实现    | C++ 标准实现 | 解释                                                                      |
 | ------------------------------| ---------- | ------------- | ------------ | ------------------------------------------------------------------------- |
 | GNU/Linux                   | GCC        | glibc         | libstdc++    |                                                                           |
-| GNU/Linux                         | Clang/LLVM | llvm-libc[^2] | libc++       | 较旧版本的 LLVM 仍使用 glibc, 而 libc++ 是 LLVM 独立实现的现代 C++ 标准库 |
+| GNU/Linux                         | Clang/LLVM | <nobr>llvm-libc[^2]</nobr> | libc++       | 较旧版本的 LLVM 仍使用 glibc, 而 libc++ 是 LLVM 独立实现的现代 C++ 标准库 |
 | Alpine Linux                   |              | musl libc     |              | Alpine 发行版使用 musl libc                                               |
 | BSD (FreeBSD, NetBSD, OpenBSD) |              | BSD libc      |              |                                                                           |
 | macOS, iOS                     |   Clang/LLVM | apple libc    | libc++       | macOS 前身基于 BSD, 因而 Apple libc 基于 BSD libc                         |
@@ -16,7 +16,7 @@ C 语言诞生于 AT&T 的贝尔实验室, 但功能不完善. 1983 年美国国
 | Windows                        |  MSVC[^6]       | MSVCrt        | MSVC++       | Microsoft Visual C, 原生库和集成环境                                      |
 | 嵌入式系统                     |               | newlib        |              |                                                                           |
 
-### 系统调用
+## 系统调用
 
 因为 C 语言是系统级语言, 除了通用标准库 libc 外, 编译器还需要实现大量系统调用. 如在类 Unix 系统上 (BSD, Linux, MacOS), 常使用 POSIX 标准定义的 API; 在 Windows 上, 则使用 Windows API.
 
@@ -34,6 +34,53 @@ C 语言诞生于 AT&T 的贝尔实验室, 但功能不完善. 1983 年美国国
 例子: llvm 预编译安装包命名为: `llvm-18.1.8-x86_64-pc-windows-msvc.tar.xz`, 软件名及版本为 `llvm-18.1.8`, CPU指令集及字长为 `x86_64`, 平台为 `pc`, 系统为 `windows`, 编译工具链为 `msvc`.
 
 其他, `llvm-18.1.8-aarch64-linux-gnu`, `llvm-18.1.8-armv7a-linux-gnueabihf`, `llvm-18.1.1-powerpc64le-linux-rhel-8.8`. powerpc64le -> PowerPC 64-bit Little Endian, linux-rhel -> Red Hat Enterprise Linux 8.8
+
+### 系统调用头文件
+
+SVID 系统调用头文件: Unix 系统最早由 AT&T 开发, 后续分支有 BSD 和 System V. System V 接口标准为 SVID, 也有其他不同接口标准.
+
+```c
+#include <sys/ipc.h>   // 进程间通信
+#include <sys/shm.h>   // 共享内存
+#include <sys/sem.h>   // 信号量
+#include <sys/msg.h>   // 消息队列
+```
+
+POSIX 系统调用头文件: IEEE 在 1988 年制定了 POSIX 标准用于统一 UNIX 系统的接口, 主要是基于 System V 和 BSD 接口.
+
+```c
+#include <unistd.h>    // 系统调用, 进程管理, 文件输入输出
+#include <fcntl.h>     // 文件控制
+#include <sys/types.h>
+#include <sys/stat.h>  // 文件类型
+#include <pthread.h>   // 线程
+#include <signal.h>    // 错误处理
+#include <errno.h>     // 错误码
+```
+
+LSB 系统调用头文件: Linux 参考 POSIX 标准, 同时也为了兼容性, 大量引入 System V 接口.
+
+```c
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <sys/syscall.h> // 直接系统调用
+```
+
+Windows API:
+
+```c
+#include <windows.h>    // 核心系统调用
+#include <process.h>    // 进程管理
+#include <io.h>         // 低级文件 I/O
+#include <direct.h>     // 目录操作
+#include <winsock2.h>   // 网络编程
+#include <synchapi.h>   // 线程同步
+#include <errhandlingapi.h> // 错误处理
+```
+
+如果想在 Windows 上使用 POSIX 系统调用, 可以使用 Cygwin 或 MinGW 等提供 POSIX 接口的兼容层; 或者使用 Boost, Qt 等上层库. 对于文件, 线程管理等功能性接口, 使用 C/C++ 语言标准库也可以屏蔽平台的差异.
 
 ## 参考
 
