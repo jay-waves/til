@@ -353,6 +353,10 @@ I/O 密集型.
 
 interrupt service routine, 中断处理程序.
 
+### ISA
+
+Instruction Set Architecture (ISA) 定义了处理器的 指令集, 寄存器, 内存结构. 包括指令集如何被执行, 如何影响内存和寄存器.
+
 ### Internet Standards
 
 互联网标准, 为全球互联网互操作性和统一性提供规范和指南. 内容包括各层网络协议, 密码学和安全, 数据交换格式 (JSON) 及标记语言 (HTML).
@@ -553,6 +557,10 @@ physical address extension. 物理地址扩展.
 ### P-Code
 
 P 码, 一种编译器中间码.
+
+### PC
+
+Program Counter. 存储处理器当前正在执行的指令的内存地址.
 
 ### PE
 
