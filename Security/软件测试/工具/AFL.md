@@ -26,7 +26,23 @@ C
 
 wiki 上说, branch coverage 是 edge coverage 的一个子集. branch cov 统计 `if, while` 等分支语句的出现次数, edge cov 指两个基本块间的可能路径数, 两者统计方式不同. AFL 使用 edge cov, llvm bb cov 使用 edge cov.
 
-**AFL 为每个 bb (基本块) 用编译时随机数编号, 然后用哈希函数 `hash=(bb1>>1)^bb2` 的结果表示两个基本块之间的 edge, 记录在 bitmap 中.**
+**AFL 为每个 bb (基本块) 用编译时随机数编号, 然后用哈希函数 `hash=(bb1>>1)^bb2` 的结果表示两个基本块之间的 edge, 记录在全局 bitmap 中.**
+
+```cpp
+/*
+	MAP_SIZE - 1 = 0xffff = 0x1111_1111_1111_1111
+*/
+#define MAP_SIZE 65536
+extern unsigned char coverage_map[MAP_SIZE];
+static unsigned char prev_location = 0;
+
+void record_coverage(unsigned int pc) {
+	unsigned int cur_location = (pc >> 4) ^ (pc << 8); // 混淆 PC, 防止地址频繁碰撞
+	unsigned int edge = cur_location ^ prev_location;  // 计算边缘 A->B
+	coverage_map[edge & (MAP_SIZE - 1)]++;
+	pre_location = cur_location >> 1; // 防止 A->B 和 B->A 被统计为同一边
+}
+```
 
 ## Fork Server
 
