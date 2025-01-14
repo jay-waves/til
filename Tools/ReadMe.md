@@ -55,11 +55,11 @@
 	- ebook-veiwer
 	- calibredb
 - CPU-Z 又一个硬件信息收集器
-
+- GPU-Z 
+- Little Registry Cleaner
 
 ### Medai
 
-- 
 - ffmpeg, 终端音视频编解码器
 - GIMP2, 开源界的 Photoshop
 - ImageMagick, 命令行的 Photoshop
