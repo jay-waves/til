@@ -7,6 +7,7 @@
 # 代码相关文件
 build/
 tags
+paper
 
 # 不相关文件
 /Language/Haskell/Haskell LLVM JIT Compiler/**
