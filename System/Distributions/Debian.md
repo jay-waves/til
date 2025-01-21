@@ -6,7 +6,7 @@
 
 ## 配置网络
 
-将 WSL 网络模式设置为镜像模式, 此时虚拟机同步主机的 LocalHost, 也就同步了 Clash 代理. 在 `~/.bashrc` 中添加:
+[将 WSL 网络模式设置为镜像模式](配置%20-%20从此开始.md), 此时虚拟机同步主机的 LocalHost, 也就同步了 Clash 代理. 在 `~/.bashrc` 中添加:
 
 ```bash
 # global proxy
@@ -42,7 +42,7 @@ sudo apt install git make build-essential llvm
 sudo apt install net-tools curl traceroute wget
 
 # 其他
-sudo apt install jq vim nvim
+sudo apt install jq vim
 ```
 
 ## 软件配置
