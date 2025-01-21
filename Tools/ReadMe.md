@@ -12,16 +12,16 @@
 - **Mail Master** 网易邮箱大师
 - **Zotero7**, 文献管理
 - SumatraPDF, Adobe Acrobat DC.
-- GoldenDict, EuDic, 本地词典 (不太喜欢, 现在只用网页谷歌翻译)
+- ~~GoldenDict, EuDic, 本地词典~~
 - Jane Reader, windows 下 EUPB 阅读器
 - XnViewMP, XnConvert, 图片库查看器
 - Obsidian, 主力笔记软件
-- AFFiNE, 笔记软件, 非主力
+- ~~AFFiNE, 笔记软件, 非主力~~
 - VSCode
 - DrawIO, 绘制流程图和框架图. 我更喜欢 ppt.
 - VirtualBox, WSL, WMare Player, Docker Desktop. 容器/虚拟机软件
 - Datagrip, DBeaver, 数据库软件.
-- Terminal, Alacritty, 命令行终端模拟器.
+- Terminal, ~~Alacritty~~, 命令行终端模拟器.
 - Jupyter Lab (kernel: ipython, ihaskell, wolfram14)
 - GVim90, Nvim
 - SimpleNotePad
@@ -30,7 +30,7 @@
 - [Files](https://github.com/files-community/Files)
 - CrystallDiskInfo, 用于检查存储硬盘状态
 - DiskGenius
-- **OpenHardwareMonitor**, 用于监控硬件, UI挺好看也挺全.
+- ~~OpenHardwareMonitor~~, 用于监控硬件, UI挺好看也挺全. LibreHardwareMonitor 支持得更好.
 - **Traffic Monitor**, 任务栏网速/硬件状态监控, 小巧.
 - **ExplorerPatcher**, windows选项集合(看不惯自带设置可以用, 选项密度更高).
 - **ContextMenuManager4.0**, 右键管理
@@ -41,9 +41,10 @@
 - cleanmgr+ 硬盘清理工具
 - autoruns, 微软家的管理启动项工具
 - process explorer, 微软的进程工具
-- **Luna**, 自动切换 Windows 亮暗主题
+- **Luna**, 自动切换 Windows10 亮暗主题. Win11 可以用 **Auto Dark Mode**,
+- G-Helper. 华硕电脑管家, 开源精简版.
 - StartKiller, 删掉任务栏 windows 图标
-- BitDock, 给 windows 加上 dockhub
+- ~~BitDock, 给 windows 加上 dockhub~~
 - **PowerToys**, 微软的小工具集
 - **Snipaste** 截图与贴图
 - 7zip, winRaR 压缩软件.
@@ -57,6 +58,8 @@
 - CPU-Z 又一个硬件信息收集器
 - GPU-Z 
 - Little Registry Cleaner
+- SyncThing 电脑文件夹同步工具
+- RustDesk 远程桌面 (RDP) 软件
 
 ### Medai
 
@@ -130,7 +133,11 @@
 - sl, genact 摸鱼用
 - neofetch, Figlet 装逼用.
 - glow, 终端 markdown 渲染器
+- hl, lnav, 日志浏览器
 
+Windows 上一些 GNU 工具移植, 见 [GNUwin32](https://gnuwin32.sourceforge.net/packages.html)
+- file
+- 
 ## Browser Plugins
 
 - Dark Reader
