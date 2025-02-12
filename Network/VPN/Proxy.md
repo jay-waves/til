@@ -3,6 +3,8 @@ copyright: JayWaves (2023)
 revised: 24-07-12
 ---
 
+## Proxy
+
 Clash 是一个代理工具, 负责将流量中继到代理节点, 需要搭配外部代理节点 (俗称机场, 有独立的服务提供商) 来绕过 GFW. 传统 VPN 协议则主动建立一个加密隧道来保护网络流量. 常见的 ClashN, ClashForWindows, ClashX 都是对命令行工具 clash 的UI 封装.
 
 Clash 的主要协议是 Socks5, 它是一种代理协议, 负责中转和转发流量, **并不对数据加密**. 代理服务提供商则主要使用 Shadowsocks, 即加密的 Socks 协议, 来对流量加密. 还有其他可用的加密协议, 如: [Shadowsocks](Shadowsocks.md), VMess, Trojan, TLS/SSL.
@@ -84,6 +86,12 @@ git config --list
 # go get 会先尝试使用自己的服务器, 通常被指定为坑爹的 goproxy.cn 实际上访问不了
 # go get 使用 direct 时, 才会使用系统 proxy 访问 github 原仓库.
 go env -w GOPROXY=https://goproxy.io,direct
+
+# apt 有时不使用系统代理 http_proxy, 单独设置 /etc/apt/apt.conf
+Acquire::http::proxy "http://127.0.0.1:8000/";
+Acquire::ftp::proxy "ftp://127.0.0.1:8000/";
+Acquire::https::proxy "https://127.0.0.1:8000/";
+
 ```
 
 > 参考 [机场+VPN](https://playbeasts.com/question/2691)

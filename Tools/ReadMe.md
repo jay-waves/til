@@ -47,7 +47,7 @@
 - ~~BitDock, 给 windows 加上 dockhub~~
 - **PowerToys**, 微软的小工具集
 - **Snipaste** 截图与贴图
-- 7zip, winRaR 压缩软件.
+- 7zip, winRaR 压缩软件. 推荐 PeaZip.
 - [Carnac](https://github.com/Code52/carnac) 键盘可视化
 - [keyviz](https://github.com/mulaRahul/keyviz) 键盘可视化
 - Calibre, 管理电子书库
@@ -106,7 +106,7 @@
 <br>
 
 - **pandoc**
-- helix. 终端编辑器, 键位反人类, 已弃用.
+- ~~helix. 终端编辑器, 键位反人类, 已弃用.~~
 - nivm, neovide, ctags
 - **mpv**, 终端音视频播放器.
 - httpie
@@ -134,9 +134,11 @@
 - neofetch, Figlet 装逼用.
 - glow, 终端 markdown 渲染器
 - hl, lnav, 日志浏览器
+- nexttrace
+- llm
 
 Windows 上一些 GNU 工具移植, 见 [GNUwin32](https://gnuwin32.sourceforge.net/packages.html)
-- file
+- file. 类似的还有 trid, 
 - 
 ## Browser Plugins
 

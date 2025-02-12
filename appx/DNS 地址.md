@@ -9,3 +9,5 @@
 - Cloudflare DNS: `1.1.1.1` (US)
 - OpenDNS: `208.67.222.222` (GL)
 - DNS.SB: `45.11.45.11` (GE)
+
+参考: https://adguard-dns.io/kb/general/dns-providers/

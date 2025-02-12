@@ -27,3 +27,6 @@ dumpbin /ALL hello.obj > hello.txt
 dumpbin /SUMMARY hello.obj
 ```
 
+### 修改 VS 语言
+
+Visual Studio Installer 里 "修改", "语言", 即可修改语言. 
