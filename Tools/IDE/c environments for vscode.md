@@ -10,7 +10,7 @@ copyright:
 
 ## 方案一
 
-使用微软自带编译器提供 C 环境, **需要通过 Visual Studio Installer 下载完整的桌面开发 C/C++ 环境**. 该方案配置复杂, 小白推荐直接用完整的 Visual Studio, 开箱即用.
+使用微软自带编译器提供 C 环境, **需要通过 Visual Studio Installer 下载完整的桌面开发 C/C++ 环境**. 该方案配置复杂, 更推荐直接用完整的 Visual Studio, 开箱即用.
 - 编译器: MSVC
 - 插件: (Miscosoft) C/C++
 - C/C++ 标准库: ucrt/MSVC++ [^1]
@@ -136,7 +136,39 @@ VSCode 安装 Microsoft C/C++ 插件. VSCode 的用户工作区配置文件放�
 
 ### 配置调试
 
-使用 Developer Command Prompt for VS 打开 VSCode, 完成上述编译配置后, 理论上可直接开始调试. VS 编译套件对代码安全性和现代性要求较高, 所以部分检查和报错比较苛刻.
+使用 Developer Command Prompt for VS 打开 VSCode, 完成上述编译配置后, 理论上可直接开始调试. VS 编译套件对代码安全性和现代性要求较高, 所以部分检查和报错比较苛刻. 
+
+这里介绍一种将调试过程和编译过程分离的方案: 不需要生成 `tasks.json`, 直接用已经编译好的可执行文件作为 `program`, 然后使用 VS Debugger 进行调试. 这种方式甚至不需要用 Developer Command Prompt for VS 打开 VSCode, 因为不需要前置编译链.
+
+在使用外置的一些编译系统时, (如 CMake) 不需要借助 C/C++ 插件生成活动文件, 提供了更高的灵活性.
+
+```json
+// launch.json
+{
+  "version": "0.2.0",
+  "configurations": [
+      {
+          "name": "Debug Executable",
+          "type": "cppvsdbg",
+          "request": "launch",
+          "program": "${workspaceFolder}/build/main.exe", 
+          "args": [ "-f", "xxxxx"], 
+          "stopAtEntry": true,
+          "cwd": "${workspaceFolder}",
+          "environment": [],
+          "console": "externalTerminal",
+          "preLaunchTask": "", 
+          "postDebugTask": "", 
+          "logging": {
+              "trace": true,
+              "engineLogging": true,
+              "programOutput": true,
+              "exceptions": true
+          }
+      }
+  ]
+}
+```
 
 ### 配置静态检查
 

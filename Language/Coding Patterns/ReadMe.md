@@ -1,6 +1,11 @@
+---
+revised: 25-01-24 
+language: [c++, java]
+---
+
 ## Patterns and Paradigms
 
-### 设计模式
+## 设计模式
 
 设计模式 (Design Pattern)
 
@@ -60,3 +65,4 @@
 4. 接口隔离原则 (Interface Segregation Principle): 降低耦合度. 使用多个隔离的接口, 优于使用单个巨型接口.
 5. 迪米特法则 (Demeter Principle): 少与其他实体发生相互作用, 保持独立性.
 6. 合成复用原则 (Composite Reuse Principle): 使用组合, 而不使用继承.
+

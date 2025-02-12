@@ -1,3 +1,7 @@
+---
+code: [/src/settings/unix.bashrc, /src/settings/unix.zshrc]
+---
+
 适用于:
 - 主机 Windows10
 - 虚拟机代理软件 WSL (Hyper-V)
@@ -6,7 +10,7 @@
 
 ## 配置网络
 
-[将 WSL 网络模式设置为镜像模式](配置%20-%20从此开始.md), 此时虚拟机同步主机的 LocalHost, 也就同步了 Clash 代理. 在 `~/.bashrc` 中添加:
+[将 WSL 网络模式设置为镜像模式](../Container/WSL/配置%20-%20从此开始.md), 此时虚拟机同步主机的 LocalHost, 也就同步了 Clash 代理. 在 `~/.bashrc` 中添加:
 
 ```bash
 # global proxy
@@ -17,10 +21,6 @@ export http_proxy="http://$host_ip:7890"
 export ALL_PROXY="http://$host_ip:7890"
 export HTTPS_PROXY="http://$host_ip:7890"
 export HTTP_PROXY="http://$host_ip:7890"
-
-# software proxy
-git config --global http.proxy "socks5://$host_ip:7890"
-git config --global http.proxy "socks5://$host_ip:7890"
 ```
 
 ## 更新软件包
@@ -43,6 +43,14 @@ sudo apt install net-tools curl traceroute wget
 
 # 其他
 sudo apt install jq vim
+```
+
+配置部分软件的代理
+
+```bash
+# software proxy
+git config --global http.proxy "socks5://$host_ip:7890"
+git config --global http.proxy "socks5://$host_ip:7890"
 ```
 
 ## 软件配置
@@ -69,9 +77,9 @@ when="true"
 EOF
 ```
 
-修改 zsh 配置 `~/.zshrc`, 详见 [gist: .zshrc](https://gist.github.com/jay-waves/a7aef5ac34215e41f6c24dc7e883e7c1)
+修改 zsh 配置 `~/.zshrc`, 详见 [.zshrc](../../src/settings/unix.zshrc)
 
-安装 oh-my-zsh
+安装 oh-my-zsh. 安装后 oh-my-zsh 会新建一个 `.zshrc`, 原文件被命名为 `.zshrc.pre-oh-my-zsh`, 改回来即可.
 
 ```sh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -89,11 +97,11 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 sudo apt install zoxide -y
 ```
 
-**上述各个插件以及软件, 皆需要在 `.zshrc` 中启用, 详见 [gist: .zshrc](https://gist.github.com/jay-waves/a7aef5ac34215e41f6c24dc7e883e7c1)**
+**上述各个插件以及软件, 皆需要在 `.zshrc` 中启用, 详见 [.zshrc](../../src/settings/unix.zshrc)**
 
 ### 安装 nvim
 
-nvim 配置文件及配置方法详见 [gist: init.vim](https://gist.github.com/jay-waves/21aa03ae7c05d0500c470c14706d0397). 
+nvim 配置文件及配置方法详见 [init.vim](../../src/settings/unix.init.vim).
 
 ```sh
 # 添加官方 PPA
