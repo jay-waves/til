@@ -856,7 +856,7 @@ Virtual LAN, 虚拟局域网, 通过逻辑隔离实现不同网络设备间的�
 
 ### WSL
 
-Windows Subsystem for Linux, 见 [OS/Linux Distribution/WSL](System/Distributions/WSL/配置%20-%20从此开始.md).
+Windows Subsystem for Linux, 见 [OS/Linux Distribution/WSL](System/Container/WSL/配置%20-%20从此开始.md).
 
 ### Whitening
 

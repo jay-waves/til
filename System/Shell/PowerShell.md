@@ -123,7 +123,7 @@ Set-PSReadLineKeyHandler -Chord Alt+x -Function ViEditVisually
 nvim (Get-PSReadlineOption).HistorySavePath
 ```
 
-## Q&A
+## Q&A 1
 
 管道和重定向编码问题: Powershell7 默认支持 [UTF-8](../../Network/网络数据处理/字符编码.md), 但是不同平台上的一些功能又依赖于平台本身的语言设置. 在 Windows 上, 默认中文编码使用了非 UTf-8 编码, 导致使用管道出现乱码.
 
@@ -134,3 +134,15 @@ nvim (Get-PSReadlineOption).HistorySavePath
 ```
 
 <https://stackoverflow.com/questions/40098771/changing-powershells-default-output-encoding-to-utf-8>
+
+## Q&A 2
+
+执行 `.ps1` 脚本遇到策略问题, 使用管理员模式执行:
+
+```powershell
+# 允许本地脚本, 禁止远程脚本
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
+
+# 或, 完全绕过验证
+Set-ExecutionPolicy -ExecutionPolicy ByPass -Scope LocalMachine
+```

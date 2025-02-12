@@ -58,6 +58,7 @@ public:
 	...
 	int num_entries() const { return num_entries_; }
 	void set_num_entries(int num_entries) { num_entries_ = num_entries;}
+	int otherMethod() {}
 
 private:
 	int num_entries_;	

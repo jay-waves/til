@@ -45,7 +45,7 @@ target_link_libraries(b private c)
 
 add_executable(a a.cc)
 
-target_link_libraries(a b c)
+target_link_libraries(a b c) # 必须放在目标文件产生之后
 ```
 
 - `PRIVATE` 指 b 只被 c 需要, 不应该影响其他独立包.

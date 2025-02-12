@@ -1,6 +1,6 @@
-RAII, Resource Acquisition is Initialization, 资源获取即初始化.
+RAII, Resource Acquisition is Initialization, 资源获取即初始化. 
 
-Resource 是指用来管理程序功能的对象. 如内存块, 文件句柄, 未释放的锁, 网络套接字, 数据库句柄等. **RAII 意味着, 对象的生命周期应在该变量的作用范围之内, 一旦 C++ 变量超出作用范围, 析构器 (destructor) 就会自动释放其资源.** 从这一点来说, RAII 更应该叫 "Scope-Bound Resource Management".
+Resource 是指用来管理程序功能的对象, 如内存块, 文件句柄, 未释放的锁, 网络套接字, 数据库句柄等. RAII 用于避免裸露的资源句柄操作. **RAII 意味着, 对象的生命周期应在该变量的作用范围之内, 一旦 C++ 变量超出作用范围, 析构器 (destructor) 就会自动释放其资源.** 从这一点来说, RAII 更应该叫 "Scope-Bound Resource Management".
 
 对于本地变量:
 ```cpp
