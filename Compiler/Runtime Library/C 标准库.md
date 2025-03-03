@@ -4,17 +4,18 @@ C 语言诞生于 AT&T 的贝尔实验室, 但功能不完善. 1983 年美国国
 成立 C 语言标准委员会, 于 1989 年建立第一个完整的 C 语言标准, 称为 ANSI C89, 
 其中包括了标准函数库[^7].
 
-| 操作系统                   | 编译环境   | C 标准实现    | C++ 标准实现 | 解释                                                                      |
-| ------------------------------| ---------- | ------------- | ------------ | ------------------------------------------------------------------------- |
-| GNU/Linux                   | GCC        | glibc         | libstdc++    |                                                                           |
-| GNU/Linux                         | Clang/LLVM | <nobr>llvm-libc[^2]</nobr> | libc++       | 较旧版本的 LLVM 仍使用 glibc, 而 libc++ 是 LLVM 独立实现的现代 C++ 标准库 |
-| Alpine Linux                   |              | musl libc     |              | Alpine 发行版使用 musl libc                                               |
-| BSD (FreeBSD, NetBSD, OpenBSD) |              | BSD libc      |              |                                                                           |
-| macOS, iOS                     |   Clang/LLVM | apple libc    | libc++       | macOS 前身基于 BSD, 因而 Apple libc 基于 BSD libc                         |
-| Windows                        |   Clang/LLVM | MSCVrt [^3]   | MSVC++       | 一套标准实现就支持*多平台*是 LLVM 的设计目标                              |
-| Windows                        |    GCC/MinGW  | MSVCrt        | MSVC++       | 借助 MinGW 模拟 GNU[^1]                                                   |
-| Windows                        |  MSVC[^6]       | MSVCrt        | MSVC++       | Microsoft Visual C, 原生库和集成环境                                      |
-| 嵌入式系统                     |               | newlib        |              |                                                                           |
+| 操作系统                       | 编译环境   | C 标准实现                 | C++ 标准实现 | 解释                                                                      |
+| ------------------------------ | ---------- | -------------------------- | ------------ | ------------------------------------------------------------------------- |
+| GNU/Linux                      | GCC        | glibc                      | libstdc++    |                                                                           |
+| GNU/Linux                      | Clang/LLVM | <nobr>llvm-libc[^2]</nobr> | libc++       | 较旧版本的 LLVM 仍使用 glibc, 而 libc++ 是 LLVM 独立实现的现代 C++ 标准库 |
+| Alpine Linux                   |            | musl libc                  |              | Alpine 发行版使用 musl libc                                               |
+| BSD (FreeBSD, NetBSD, OpenBSD) |            | BSD libc                   |              |                                                                           |
+| macOS, iOS                     | Clang/LLVM | apple libc                 | libc++       | macOS 前身基于 BSD, 因而 Apple libc 基于 BSD libc                         |
+| Windows                        | Clang/LLVM | MSCVrt [^3]                | MSVC++       | 一套标准实现就支持*多平台*是 LLVM 的设计目标                              |
+| Windows                        | GCC/MinGW  | MSVCrt                     | MSVC++       | 借助 MinGW 模拟 GNU[^1]                                                   |
+| Windows                        | MSVC[^6]   | MSVCrt                     | MSVC++       | Microsoft Visual C, 原生库和集成环境                                      |
+| Embedded System, Bare Metal    |            | newlib                     |              |                                                                           |
+| Embeeded System, Linux         |            | eglibc                           |              |                                                                           |
 
 ## 系统调用
 

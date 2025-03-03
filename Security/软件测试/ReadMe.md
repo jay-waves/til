@@ -10,13 +10,14 @@
 
 - 功能测试:
 	- 单元测试 (unit test): 单个模块测试
-	- 集成测试 (integration teat): 测试模块间的接口和交互
+	- 集成/系统测试 (integration teat): 测试模块间的接口和交互
+	- 验收测试: 由客户确认软件是否满足需求. 分为 Alpha 测试 (内部) 和 Beta 测试 (外部).
 - 非功能测试:
 	- 性能测试: 压力测试, 负载测试, 速度测试
 	- 安全性测试: 如渗透测试, 模糊测试
 	- 兼容性测试
 - 维护性测试:
-	- 回归测试 (Regression Test): 修改是否引入新的问题
+	- 回归测试 (Regression Test): 新版本的修改是否引入缺陷. (Beizer, 1990)
 	- ...
 
 ### 动态检测 vs 静态检测
@@ -38,16 +39,18 @@
 
 ![|1000](../../attach/Fuzzing%20技术演变.avif)
 
-### 动态检测插桩方式
+### 动态插桩方式
 
 编译时插桩: 对源代码或代码中间体 (汇编, IR) 修改. 效率高, 更灵活; 但侵入式更强, 需要改动编译流程.
 - [Sanitizers 系列](工具/Sanitizer.md)
 
-运行时插桩: 在程序执行期间, 通过动态二进制翻译或动态重写指令, 拦截指令. 无需源码, 但性能损耗大.
-- Valgrind (Memcheck)
+运行时插桩技术 (DBI, Dynamic Binary Instruction): 在程序执行期间, 通过动态二进制翻译或动态重写指令, 拦截指令. 无需源码, 但性能损耗大.
+- Valgrind (Memcheck). 动态翻译为 VEX IR.
 - Dyninst
 - DynamoRIO
 - Intel Pin
+- Dr.Memory. 基于 DynamoRIO.
+
 
 ## 检测结果分析
 

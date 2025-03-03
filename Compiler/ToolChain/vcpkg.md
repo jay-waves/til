@@ -2,6 +2,13 @@
 source: https://github.com/microsoft/vcpkg
 ---
 
+vcpkg 安装包时, 要对其平台 (triplets) 进行区分. 举例: `spdlog:x86-windows-static-md`
+1. 指令集 (VCPKG_TARGET_ARCHITECTURE): x86, x64, amr, arm64, 
+2. 平台 (VCPKG_CMAKE_SYSTEM_NAME): windows, linux, macOS, android, MinGW ...
+3. 链接方式 (VCPKG_LIBRARY_LINKAGE): static, dynamic
+4. 标准库类型 (VCPKG_CRT_LINKAGE): md, mt. 仅适用于 MSVC, mt 使用静态 CRT (`/MD, /MDd`), md 使用动态 CRT (`/MT, /MTd`).
+
+
 ## 与 VS 集成
 
 编译并添加到环境变量中.
