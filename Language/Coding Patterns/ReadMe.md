@@ -3,7 +3,7 @@ revised: 25-01-24
 language: [c++, java]
 ---
 
-## Patterns and Paradigms
+Patterns and Paradigms
 
 ## 设计模式
 
@@ -57,6 +57,12 @@ language: [c++, java]
 
 响应式编程
 
+Front Controller
+
+MVC (Model-View-Controller)
+
+Publish-Subscribe
+
 ### 设计模式原则
 
 1. 开闭原则 (Open Close Principle): 对扩展开放, 对修改关闭, 实现热插拔.
@@ -66,3 +72,31 @@ language: [c++, java]
 5. 迪米特法则 (Demeter Principle): 少与其他实体发生相互作用, 保持独立性.
 6. 合成复用原则 (Composite Reuse Principle): 使用组合, 而不使用继承.
 
+## 编程范式
+
+### 面向对象
+
+(Object-Oriented Programming)
+
+- Java
+- Python
+
+### 命令式
+
+(Impreative Programming)
+
+- C, Pascal: 过程式 (Procedural)
+- Bash, MMA, Fortran: 命令式
+- JS, Go: 并发式 (Concurrent)
+
+### 声明式
+
+(Declarative Programming)
+
+- Html, SQL: 声明式
+- Hashkell: 函数式
+- Prolog: 逻辑式
+
+## Reference
+
+https://en.wikipedia.org/wiki/Software_design_pattern

@@ -48,7 +48,7 @@ my_logger.addHandler(handler)
 
 ### 为什么日志没有输出?
 
-#TroubleShooting 
+#Debug 
 
 1. 日志级别设置错误
 2. 日志路径或输出方式设置错误
