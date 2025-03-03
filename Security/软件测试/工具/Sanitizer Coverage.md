@@ -74,7 +74,7 @@ void __sanitizer_cov_trace_pc_guard(uint32_t *guard) {
 插桩粒度, 需要和 trace-pc 插桩功能搭配使用:
 - `func`, 函数调用插桩. 如 `-fsan...=func,trace-pc`
 - `edge`, IR基本块分支插桩
-- `bb`, IR基本块插桩
+- `bb`, 基本块插桩. 注意基本块可能包含多个函数, 因为基本块的定义是一个入口一个出口的顺序执行指令序列.
 - `indirect-calls` -> `__sanitizer_cov_trace_pc_indirect(void *callee)` 对非直接函数调用进行插桩, 即函数指针. 如 `-fsan...=trace-pc,indirect-calls`. 似乎部分情况下, 实际插入的是 `__sanitizer_cov_trace_pc_indir()?`, 文档没说过
 
 trace-pc 插桩功能: 

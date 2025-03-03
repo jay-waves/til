@@ -21,6 +21,15 @@ __pycache__/
 ./__pycache__/
 ```
 
-## 处理已提交后, 又想 ignore 的文件
+### 处理已提交后, 又想 ignore 的文件
 
-删除已commit文件: `git rm --cached desktop.ini`
+1. 删除已提交文件: `git rm --cached desktop.ini`
+2. 在 `.gitignore` 中添加要忽略的目标文件, 重新提交.
+
+### 本地停止追踪
+
+不修改远程, 不修改 `.gitignore`, 忽略所有在本地的修改.
+
+```bash
+git update-index --assume-unchanged xxx\xxx\xxx.file
+```

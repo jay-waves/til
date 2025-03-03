@@ -29,7 +29,7 @@
 | tags                      |                      |
 | ------------------------- | --------------------------- |
 | #LGTM #KeyPoints          | 有兴趣, 重点      |
-| #Trouble #TroubleShooting | 遇到的难题, 故障处理经验        |
+| #Debug #Debug | 遇到的难题, 故障处理经验        |
 | #Doubtful    | 存疑  |
 | #FAQ                      | 提问, 一些好奇心            |
 | #NSFW                     | 奇怪内容, 加入 `.gitignore` |
