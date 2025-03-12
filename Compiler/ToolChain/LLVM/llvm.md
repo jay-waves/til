@@ -7,7 +7,7 @@ LLVM IR 中间代码表示有三种格式:
 - `.bc` 不可读二进制 IR, 称为*位码 bitcode*. `.ll` 和 `.bc` 其实是等价的, 称为.
 - 内存格式,  非持久化保存, 可以加速编译过程.
 
-### Three-Phase Compiler Design
+## Three-Phase Compiler Design
 
 传统三阶段编译器架构包括: 前端, 优化器, 后端. 通过使用同一中间层, 方便了编译器支持更多高级语言和目标架构, 架构分离带来更多可能性 (如激进优化), 降低整体开发难度, 让社区更加繁荣. 
 
@@ -39,7 +39,7 @@ LLVM IR 是独立完备的, 相比之下, GCC 的 GIMPLE 中间表示并不是�
 >  and the entire compiler depends on global data structures 
 >  set up by the command line interface.
 
-### Pass
+## Pass
 
 llvm Optimizer 是由不同 Pass 构成的管道, 每个 Pass 读入 llvm IR 后对其进行某种优化. Pass 写在 cpp 文件的匿名 namespace 中, 并提供一个导出函数.
 
@@ -91,6 +91,48 @@ llvm 仅链接入所需要的 Pass.o, 无关 Pass.o 不会产生开销. 这也�
 ![](../../../attach/PassLinkage.avif)
 
 ![](../../../attach/LTO.avif)
+
+## 源码路径说明
+
+`llvm/cmake`: generates system build files
+
+`llvm/examples`
+
+`llvm/include`: llvm 导出的公共头文件库
+- `llvm/include/llvm`: all llvm-specific header files 
+- `llvm/include/llvm/Support`: generic support libraries, like c++ stl utilities
+- `llvm/include/llvm/Config`: header files configured by Cmake
+
+`llvm/lib`: 源代码主体
+- `llvm/lib/IR`: core classes like Instruction and BasicBlock
+- `llvm/lib/AsmParser`: llvm assembly lanuguage parser lib
+- `llvm/lib/Bitcode`: llvm ir bitcode
+- `llvm/lib/Analysis`: analyser liek Call Graphs, Induction Variables, Natural Loop Id, etc.
+- `llvm/lib/Transforms`: ir-to-ir transformations, such as Inlining, Aggressive Dead Code Elimination, etc.
+- `llvm/lib/Target`: describes target architectures, like `Target/X86`
+- `llvm/lib/CodeGen`: Code Generator: Instruction Selector, Instructoin Scheduling and Register Allocation.
+- `llvm/lib/MC`: process code at machine code level
+- `llvm/lib/ExecutionEngine`: directly executes bitcode at runtime as JIT 
+- `llvm/lib/Support`:  ...
+
+`llvm/bindings`: llvm 框架的接口和绑定, 用于方便其他非 C 类语言使用 LLVM 架构, 如: Python, Ocaml
+
+`llvm/projects`: ...
+
+`llvm/test` & llvm-test-suite
+
+`llvm/tools`: 命令行工具套件
+- bugpoint: 用于定位出错的 Pass
+- llvm-ar: archiver
+- llvm-as: `.ll` -> `.bc`
+- llvm-dis: `.bc` -> `.ll`
+- llvm-link: link ir
+- lli: llvm JIT  解释器, 直接执行 bitcode
+- llc: `.bc` -> `.s`
+- opt: IR 优化器/分析器
+- llvm-objdump: `.o` -> `.ll`
+
+`llvm/utils`: 写 llvm 的工具
 
 ## 参考
 
