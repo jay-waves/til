@@ -46,8 +46,8 @@ const int kDaysInAWeek = 7;
 ### Function Name
 
 ```cpp
-DeleteUrl();
-AddTableEntry();
+deleteUrl();
+addTableEntry();
 ```
 
 accessors and mutator (get and set functions): match the name of variable they are getting and setting.

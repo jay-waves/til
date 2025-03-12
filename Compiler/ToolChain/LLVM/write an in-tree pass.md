@@ -6,19 +6,27 @@
 ## build your llvm
 
 ```shell
-cmake ../llvm -G "Unix Makefiles" \
-	-DLLVM_ENABLE_PROJECTS="clang;compiler-rt" \
-	-DCMAKE_BUILD_TYPE=Release \
-	-DLLVM_TARGETS_TO_BUILD="X86"
+cmake -G Ninja ../llvm \
+  -DCMAKE_BUILD_TYPE=MinSizeRel \
+  -DLLVM_ENABLE_PROJECTS="clang;compiler-rt" \
+  -DLLVM_TARGETS_TO_BUILD="X86" \
+  -DLLVM_BUILD_EXAMPLES=OFF \
+  -DLLVM_BUILD_TESTS=OFF
 
-make -j4
+ninja
 ```
+
+注意, 如果使用 IDE, 配置 `includePath` 时, 需要同时添加两个目录:
+- `llvm-project/llvm/include`
+- `llvm-project/build/include`, 其中 build 是 CMake 的构建目录. 这是因为有些头文件在构建时才产生.
 
 ## add file to cmake
 
 在 `llvm/lib/Transforms/Utils` 下活动, 修改 `.../Utils/CMakeLists.txt`
 
 ## create pass
+
+从 LLVM 9.0 版本开始, 引入了新 Pass Manager, API 有所改变, 并且注册方式也有更改.
 
 ```cpp
 //../Utils/HelloWorld.h: 
