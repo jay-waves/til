@@ -112,7 +112,7 @@
 - httpie
 - bat, cat 的增强版
 - duf, dust, du 磁盘空间查看
-- iconv, uchardet [字符编码](../Network/网络数据处理/字符编码.md)工具
+- iconv, uchardet [字符编码](../Information/字符编码/字符编码.md)工具
 - fq 类 yq, jq, 还支持各类二进制二年间查看
 - fd, find 的加强版, 使用正则表达式而不是通配符.
 - rg (ripgrep)

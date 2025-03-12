@@ -72,5 +72,6 @@ loop:
 
 ## 参考
 
-Programming Embedded Systems with C and GNU Development Tools. Michael Barr, Anthony Massa. 2nd
+[1] Programming Embedded Systems with C and GNU Development Tools. Michael Barr, Anthony Massa. 2nd
 
+[2] Linux 设备驱动开发详解: 基于最新的 Linux4.0 内核. 宋宝华. 机械工业出版社.
