@@ -20,7 +20,7 @@ $images | ForEach-Object -Parallel {
 
     # using ImageMagick
     # -abckground white: remove all alpha channel
-    magick $image.FullName -quality 75 -background white -flatten $outputFile
+    magick $image.FullName -quality 60 -background white -flatten $outputFile
 
     if (Test-Path $outputFile) {
         Write-Host "success: $outputFile, moved to .stash"

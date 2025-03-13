@@ -43,24 +43,5 @@
 - [ViT, 2020](../paper/ViT,%20An%20Image%20is%20Worth%2016x16%20Words,%20Transformers%20for%20Image%20Recognition%20at%20Scale.pdf)
 - [GPT-3, 2020](../paper/Language%20Models%20are%20Few-Shot%20Learners,%202020.pdf)
 
-## 工具
-
-ChatGPT4 / NewBing
-
-Cluade3
-
-通义千问
-
-Kimi (moonshot)
-
-Bard (Google Gemini Pro)
-
-NewBing
-
-Stable Difussion 1.5, XL, 3, Flux
-
-Dream Machine (Luma.AI)
-
-ChatTTS
 
 
