@@ -102,7 +102,10 @@ ARM 有 16 个 32 位通用寄存器 (R0-R15)
 专用寄存器:
 - CPSR, Current Program Status Register, 程序状态寄存器.
 
-![|500](../../attach/ARM_CPSR_状态寄存器.avif)
+| N        | Z    | C     | V        | Q         |     | J       |     | GE  |     | E          | A             | I           | F           | T     | M   |
+| -------- | ---- | ----- | -------- | --------- | --- | ------- | --- | --- | --- | ---------- | ------------- | ----------- | ----------- | ----- | --- |
+| negative | zero | carry | overflow | underflow |     | Jazelle |     | Greater than or Equal for SIMD    |     | Endianness | Abort disable | IRQ disable | FIQ disable | Thumb | processor mode <br> privilege mode    |
+
 
 ARM **调用约定**中规定:
 - `R0` 传递返回值

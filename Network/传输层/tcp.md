@@ -86,7 +86,7 @@ TCP (Transmission Control Protocol)
 
 ## 拥塞控制
 
-![|350](../../attach/Pasted%20image%2020230604170719.avif)
+![|350](../../attach/计算机网络_拥塞控制.avif)
 
 ![|500](../../attach/Pasted%20image%2020230604173012.avif)
 
@@ -100,7 +100,7 @@ For (each segment ACKed):
 Until (loss event OR cwnd > ssthresh):
 ```
 
-![|500](../../attach/Pasted%20image%2020230604172957.avif)
+![|500](../../attach/计算机网络_拥塞控制_自动机.avif)
 
 算法流程:
 
@@ -136,9 +136,9 @@ Loop:
 
 TCP 三次握手建立连接, 四次挥手释放连接
 
-![|400](../../attach/Pasted%20image%2020230604174627.avif)
+![|400](../../attach/计算机网络_三次握手.avif)
 
-![|400](../../attach/Pasted%20image%2020230604174640.avif)
+![|400](../../attach/计算机网络_四次挥手.avif)
 
 启用延迟确认后, 挥手的第二三个可能合并为一个.
 

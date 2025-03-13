@@ -487,7 +487,7 @@ Multi-Factor Authentication, 多因素认证, 结合多个身份验证方法以�
 
 ### Northbright
 
-北桥, 计算机硬件架构组成部分. 见 [计算机架构](HardWare/计算机架构.md)
+北桥, 计算机硬件架构组成部分. 见 [计算机架构](HardWare/计算机组成/计算机架构.md)
 
 ### NVD
 
@@ -722,7 +722,7 @@ software development kit, 软件开发工具集.
 
 ### Southbridge
 
-南桥. 见 [计算机架构](HardWare/计算机架构.md).
+南桥. 见 [计算机架构](HardWare/计算机组成/计算机架构.md).
 
 ### Stack
 
