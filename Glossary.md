@@ -259,7 +259,7 @@ End of Life, 软件或硬件停止维护的状态.
 
 ### FHS
 
-file hierarchy standard, 文件层次结构标准. 见 [Linux 系统目录](System/File%20System/Linux%20系统目录.md)
+file hierarchy standard, 文件层次结构标准. 见 [linux 文件系统目录标准](System/File%20System/linux%20文件系统目录标准.md)
 
 ### Function Signature
 
@@ -347,7 +347,7 @@ I/O 密集型.
 
 ### Interrupt
 
-操作系统中断, 见 [中断](System/Process/中断.md)
+操作系统中断, 见 [中断与时钟](System/Process/中断与时钟.md)
 
 ### ISR
 
@@ -750,7 +750,7 @@ software development kit, 软件开发工具集.
 
 ### System Call
 
-系统调用. 见 [中断](System/Process/中断.md).
+系统调用. 见 [中断与时钟](System/Process/中断与时钟.md).
 
 ### SaaS
 
