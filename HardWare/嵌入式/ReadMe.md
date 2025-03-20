@@ -70,6 +70,12 @@ loop:
 	nop
 ```
 
+## 时序分析
+
+在时钟信号的 有效边沿 到来之前, 数据输入信号必须保持稳定不变一段时间, 被称为 *建立时间 (Setup Time)*. 在时钟信号的有效边沿到来之后, 数据输入信号仍须要保持稳定不变一段时间, 被称为 *采样时间 (Hold Time)*. 只有当建立时间和采样时间满足要求, 触发器才能正确采样并锁存数据.
+
+时序图中, 会展示 *数据信号 (Data)* 和 *时钟信号 (Clock)*, 并标记 ${} t_{setup}, t_{hold} {}$
+
 ## 参考
 
 [1] Programming Embedded Systems with C and GNU Development Tools. Michael Barr, Anthony Massa. 2nd
