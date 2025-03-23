@@ -136,6 +136,7 @@
 - hl, lnav, 日志浏览器
 - nexttrace
 - llm
+- piper 文字转语音 TTS 工具
 
 Windows 上一些 GNU 工具移植, 见 [GNUwin32](https://gnuwin32.sourceforge.net/packages.html)
 - file. 类似的还有 trid, 
