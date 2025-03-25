@@ -4,7 +4,7 @@
 
 ## SMTP
 
-SMTP (Simple Mail Transfer Protocol) 专用于发送邮件.
+SMTP (Simple Mail Transfer Protocol, RFC5321) 专用于发送邮件.
 
 - 底层协议: tcp
 - 端口: 25

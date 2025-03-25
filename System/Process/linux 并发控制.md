@@ -160,6 +160,29 @@ RCU, Read-Copy Update (Paul McKenney, 2001).
 
 ## 信号量
 
+[信号量 (Semaphore)](进程同步与互斥.md) 是经典的同步与互斥工具. 可以保护临界区, 当获取不到信号量时, 进程进入休眠等待, 而不是忙等待 (自旋锁). 在内核中, 信号量多用于同步, 内核更推荐直接用 mutex 作为临界区互斥手段.
+
+```c
+struct semaphore sem;
+
+// 初始化值为 val
+void sema_init(struct semaphore *sem, int val);
+
+// 获取信号量 sem, 可能导致睡眠, 不再响应信号.
+void down(struct semaphore* sem);
+
+// 获取信号量, 可能导致睡眠, 但可以被信号打断. 可用于中断. 被打断时, 返回值非零.
+int down_interruptible(struct semaphore *sem);
+if (down_interruptible(&sem)
+	return -ERESTARTSYS;
+	
+// 获取信号量, 如果能立刻获得, 就获得并返回零. 否则返回非零.
+int down_trylock(struct semaphore *sem);
+
+// 释放信号量, 唤醒等待者.
+void up(struct semaphore *sem);
+```
+
 ## 互斥体
 
 Mutex

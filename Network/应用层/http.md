@@ -1,10 +1,12 @@
-HTTP, hyper text transfer protocol, 超文本传输协议. 端口为 80, 加密端口 (https) 为 443.
+万维网 (World Wide Web, WWW) 是最大规模的分布式超媒体系统, 通过*统一资源定位符 (URL)* 定位信息资源, 通过 *超文本标记语言 (HTML)* 描述信息资源, 通过*超文本传输协议 (HTTP)* 传递信息资源. URL, HTML, HTTP 是万维网的核心技术.
 
-软件作为客户端 (Client) 和服务器 (Server) 通信, 称为 C/S 架构, 可以使用 RPC 协议.
+- HTTP (hyper text transfer protocol, 超文本传输协议). 端口为 80, 加密端口 (https) 为 443. 是无状态协议.
+- URL: `<protocol>://<hostname>:<port>/<path>`
+- HTML: 目前主流版本是 HTML5.0. 用各类标签 `<tag>` 来表示页面元素, HTML 规定页面结构, *层叠样式表 (CSS)* 规定文档渲染方式.
 
-浏览器 (Browser) 并不是和自家服务器 (Server) 通信, 而是和各个网络公司网页进行通信, 所以在 1990s 诞生了 HTTP 协议, 用于 B/S 架构下的通信.
+浏览器 (Browser) 并不是和自家服务器 (Server) 通信, 而是和各个网络公司网页进行通信, 所以在 1990s 诞生了 HTTP 协议, 用于 B/S 架构下的通信. 软件作为客户端 (Client) 和服务器 (Server) 通信, 则称为 C/S 架构, 可以使用 RPC 协议. 目前多端开发中, B/S 和 C/S 在逐渐融合, 通信使用同一的 HTTP, 避免重复开发.
 
-目前多端开发中, B/S 和 C/S 在逐渐融合, 通信使用同一的 HTTP, 避免重复开发.
+由于 HTTP 协议没有状态, 每次请求之间是相互独立的. 因此使用 [Cookie](用户认证/SSO.md) 来存储多次请求之间的关联.
 
 ### 方法
 
@@ -18,6 +20,14 @@ HTTP 定义了多种请求方法 (http 动词), 表示对服务器资源的不�
 - `Head` 类似于Get, 但没有响应体
 
 ### 常见状态码
+
+| 状态码分类 | 含义       |
+| ---------- | ---------- |
+| 1xx        | 信息提示   |
+| 2xx        | 请求成功   |
+| 3xx        | 重定向     |
+| 4xx        | 客户端错误 |
+| 5xx           | 服务端错误           |
 
 | 状态码 | 名称                       | 描述                                                                 |
 | ------ | -------------------------- | -------------------------------------------------------------------- |
@@ -48,6 +58,10 @@ HTTP 定义了多种请求方法 (http 动词), 表示对服务器资源的不�
 
 ### 请求头
 
+在 HTTP 请求报文中,
+- 首行格式为: `<Method>\s<URL>\s<Version>\r\n`
+- 首部行格式为: `<Field>:\s<Value>\r\n`
+
 | 字段名           | 说明                       | 常见值                                                  |
 | ---------------- | -------------------------- | ------------------------------------------------------- |
 | `Host`           | 请求的主机名和端口号       | `Host: www.example.com`                                 |
@@ -66,11 +80,21 @@ User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 Accept: text/html,application/xhtml+xml
 ```
 
-```htt
-POST /submit-form HTTP/1.1
-Host: www.example.com
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-Content-Type: application/x-www-form-urlencoded
-Content-Length: 27
-name=John+Doe&age=30
+```http
+POST /submit-form HTTP/1.1\r\n
+Host: www.example.com\r\n
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)\r\n
+Content-Type: application/x-www-form-urlencoded\r\n
+Content-Length: 27\r\n
+name=John+Doe&age=30\r\n
 ```
+
+在 HTTP/1.1 版本中, 报文格式是基于文本的, HTTP/2.0 则采用了二进制格式, 并引入了流的概念, 在同一 TCP 连接上实现流的多路复用; HTTP/3.0 则是基于 UDP, 降低 TCP 握手的时延, 实际是 QUIC 协议的标准化.
+
+### 代理
+
+代理服务器也称为 *万维网缓存*. *内容分发网络 (CDN)* 也是一种万维网缓存, 其工作流程如下:
+1. 用户浏览器向 `http://xxx.com` 发起资源请求. 首先发起关于 `xxx.com` 的 DNS 请求.
+2. DNS 服务器将 `xxx.com` 重新映射到某个 CDN 上, 返回该 CDN 的网络地址.
+3. 用户后续实际在向该 CDN 发起 HTTP 请求, 由 CDN 代理.
+4. CDN 会缓存请求内容副本, 下次多用户重复查询时, 能加速查询速度.
