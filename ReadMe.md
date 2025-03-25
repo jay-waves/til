@@ -5,8 +5,8 @@
 | Algorithm     | 算法     | 数据结构, 算法                                     |
 | Intelligence  | 人工智能 |                                                    |
 | Compiler      | 编译     | LLVM, 链接过程, 汇编                               |
-| Information   | 信息     | 数据库, 信息论, 数字信号     |
-| HardWare      | 硬件     | 计算机组成                                                   |
+| Information   | 信息     | 数据库, 信息论, 通信     |
+| HardWare      | 硬件     | 计算机组成, 数字电路, 嵌入式                                                   |
 | Language      | 编程语言 | C, C++, Go, Python, Wolfram, 设计模式                        |
 | Network       | 网络     | 网络分层模型, 防火墙, 网络代理                     |
 | System        | 操作系统 | Linux, Windows, Shell                   |
