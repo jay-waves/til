@@ -616,7 +616,7 @@ Portable Operating System Interface. [IEEE P1003.1] 定义了一系列操作系�
 
 ### OSI
 
-一种安全框架, 定义了安全攻击/安全机制/安全服务, 见 [安全模型/OSI](Security/ReadMe.md)
+一种安全框架, 定义了安全攻击/安全机制/安全服务, 见 [安全模型/OSI](Security/README.md)
 
 ---
 
