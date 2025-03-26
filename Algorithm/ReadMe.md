@@ -7,7 +7,7 @@
 - `delete()`, 当不适用惰性删除时, 删除通常是最复杂的操作.
 - `insert()`, 当键已存在时, 仅更新.
 
-代码文件放在附录中, 笔记中只展示核心部分 (其实也挺完整).
+代码文件放在附录 `/src/...` 中, 笔记中只展示核心部分 (存疑).
 
 ## 名词表
 
@@ -53,10 +53,10 @@
 		- Prim 
 		- Kruskal
 		- Bellman-Ford
-	- 最短路径
-		- [A*](最短路径/A%20star.md), 
-		- [Dijkstra](最短路径/Dijkstra.md), 
-		- [Floyd-Warshall](最短路径/Floyd-Warshall.md), 
+	- [最短路径](图/最短路径算法.md)
+		- A*, 
+		- Dijkstra, 
+		- Floyd-Warshall, 
 	- 收缩层级算法 (CH), 如地图调用 OpenStreetMap
 	- 拓扑排序 (AOV)
 	- 关键路径 (AOE)

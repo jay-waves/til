@@ -1,6 +1,6 @@
-`include/linux/bitmap.h`, `lib/bitmap.c`
 
-```c
+
+// see lib/bitmap.c
 /**
  * DOC: bitmap introduction
  *
@@ -23,6 +23,3 @@
  * include/asm-ppc64/bitops.h and include/asm-s390/bitops.h
  * for the best explanations of this ordering.
  */
-
-
-```

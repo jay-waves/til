@@ -1,23 +1,21 @@
----
-copyright:
-  - Joern Engel
-  - Peter Zijlstra
-license: GPL2
-source: lib/btree.c
----
-## Simple In-memory B+Tree
-
-### Main API
-
-B+ Tree 用法和 Linux Radix Tree 类似 (注意, Linux Radix Tree 和教科书的 radix tree 完全不一样). 它们工作良好的前提是, 访问一个随机树节点的速度远快于大量节点内操作. 
-
-当键值空间稀疏时 (sparsely, 25%~50% memory occupation) 时, B+ Tree 比 Radix Tree 更高效, 因为可以减少存储非必需键来适应稀疏数据; 而当键值更密集 (densely) 时, Radix Tree 节点大部分空间皆可以被使用, 更加紧凑地存储键 (98%).
-
-一个教科书没有提及的技巧是: 最小的值被放在了**最右侧**. 节点内所有已使用的凹槽 (指针) 被放到左边, 所有未使用的右侧凹槽则设为 `NULL`. 大部分操作在遍历凹槽时, 会在第一个 `NULL` 位置停下.
-
-```c
+/*
+ * Simple In-Memory B+Tree
+ * Copyright: GPL2, Joern Engel, Peter Zijlstra
+ *
+ * B+ Tree 用法和 Linux Radix Tree 类似 (注意, Linux Radix Tree 和教科书的 radix tree 
+ * 完全不一样). 它们工作良好的前提是, 访问一个随机树节点的速度远快于大量节点内操作. 
+ *
+ * 当键值空间稀疏时 (sparsely, 25%~50% memory occupation) 时, B+ Tree 比 Radix Tree 更高效, 
+ * 因为可以减少存储非必需键来适应稀疏数据; 而当键值更密集 (densely) 时, 
+ * Radix Tree 节点大部分空间皆可以被使用, 更加紧凑地存储键 (98%).
+ *
+ * 一个教科书没有提及的技巧是: 最小的值被放在了**最右侧**. 
+ * 节点内所有已使用的凹槽 (指针) 被放到左边, 所有未使用的右侧凹槽则设为 `NULL`. 
+ * 大部分操作在遍历凹槽时, 会在第一个 `NULL` 位置停下.
+ */
 
 #include <linux/btree.h>
+
 
 #define NODESIZE 4096
 
@@ -554,5 +552,119 @@ size_t btree_grim_visitor(struct btree_head *head, struct btree_geo *geo,
 	return count;
 }
 
-```
+// for array of type `long`
+static int longcmp(const unsigned long *l1, const unsigned long *l2, size_t n)
+{
+	size_t i;
+
+	for (i = 0; i < n; i++) {
+		if (l1[i] < l2[i])
+			return -1;
+		if (l1[i] > l2[i])
+			return 1;
+	}
+	return 0;
+}
+
+static unsigned long *longcpy(unsigned long *dest, const unsigned long *src,
+		size_t n)
+{
+	size_t i;
+
+	for (i = 0; i < n; i++)
+		dest[i] = src[i];
+	return dest;
+}
+
+static unsigned long *longset(unsigned long *s, unsigned long c, size_t n)
+{
+	size_t i;
+
+	for (i = 0; i < n; i++)
+		s[i] = c;
+	return s;
+}
+
+// for btree geomotry
+static void dec_key(struct btree_geo *geo, unsigned long *key)
+{
+	unsigned long val;
+	int i;
+
+	for (i = geo->keylen - 1; i >= 0; i--) {
+		val = key[i];
+		key[i] = val - 1;
+		if (val)
+			break;
+	}
+}
+
+static unsigned long *bkey(struct btree_geo *geo, unsigned long *node, int n)
+{
+	return &node[n * geo->keylen];
+}
+
+static void *bval(struct btree_geo *geo, unsigned long *node, int n)
+{
+	return (void *)node[geo->no_longs + n];
+}
+
+static void setkey(struct btree_geo *geo, unsigned long *node, int n,
+		   unsigned long *key)
+{
+	longcpy(bkey(geo, node, n), key, geo->keylen);
+}
+
+static void setval(struct btree_geo *geo, unsigned long *node, int n,
+		   void *val)
+{
+	node[geo->no_longs + n] = (unsigned long) val;
+}
+
+static void clearpair(struct btree_geo *geo, unsigned long *node, int n)
+{
+	longset(bkey(geo, node, n), 0, geo->keylen);
+	node[geo->no_longs + n] = 0;
+}
+
+static int keycmp(struct btree_geo *geo, unsigned long *node, int pos,
+		  unsigned long *key)
+{
+	return longcmp(bkey(geo, node, pos), key, geo->keylen);
+}
+
+static int keyzero(struct btree_geo *geo, unsigned long *key)
+{
+	int i;
+
+	for (i = 0; i < geo->keylen; i++)
+		if (key[i])
+			return 0;
+
+	return 1;
+}
+
+static int getpos(struct btree_geo *geo, unsigned long *node,
+		unsigned long *key)
+{
+	int i;
+
+	for (i = 0; i < geo->no_pairs; i++) {
+		if (keycmp(geo, node, i, key) <= 0)
+			break;
+	}
+	return i;
+}
+
+static int getfill(struct btree_geo *geo, unsigned long *node, int start)
+{
+	int i;
+
+	for (i = start; i < geo->no_pairs; i++)
+		if (!bval(geo, node, i))
+			break;
+	return i;
+}
+
+
 
