@@ -116,5 +116,5 @@ static void cdll_print(cdll_head *head) {
 }
 ```
 
-linux 内核的链表就是循环双向链表, 详见 [kernel/list](../内核/list.md).
+linux 内核的链表就是循环双向链表, 详见 [kernel/include/linux/list.h](../../src/kernel/include/linux/list.h)
 

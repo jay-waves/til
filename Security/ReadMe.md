@@ -104,25 +104,25 @@
 
 
 [X.800, 1991] 定义了五类安全服务 (security services) 安全服务:
-1. 数据保密性, Data Confidentiality.
+1. *数据保密性, Data Confidentiality.*
 	- Data confidentiality, 数据内容保密性.
 		- Connection confidentiality. 有连接通信 ([TCP](../Network/传输层/TCP.md)), 对整个会话状态和数据分组进行加密. 如 [SSL/TLS](../Network/VPN/SSL.md) 技术.
 		- Connectionless confidentiality. 无连接通信 ([UDP](../Network/传输层/UDP.md)), 对单个数据包独立加密. 如 [IPSec ESP](../Network/VPN/IPSec.md) 技术.
 		- Selective field confidentiality. 只在必要字段
 	- Traffic flow confidentiality, TFC, 流量保密性.
-2. 数据完整性, Data Integrity.
+2. *数据完整性, Data Integrity.*
 	- Connection integrity, 整个连接通信中, 数据单元按顺序传输, 并且不被篡改.
 		- with recovery, 通过握手和数据确认机制, 遇到完整性错误时, 请求重传来恢复完整性.
 		- without recovery, 遇到完整性错误时, 直接丢弃. 无连接通信默认该方式.
 	- Connectionless integrity, 独立数据包的完整性. 如 [IPSec AH](../Network/VPN/IPSec.md) 技术. 
 	- Selective field integrity
-1. 认证, Authentication, 身份验证. 注意身份认证, 不能保证不可否认, 也不能保证数据完整性.
+3. *认证, Authentication, 身份验证*. 注意身份认证, 不能保证不可否认, 也不能保证数据完整性.
 	- Peer entity authentication. 对等实体身份验证.
 	- Data origin authentication. 信息源身份验证.
-2. 不可否认性, Nonrepudiation.
+4. *不可否认性, Nonrepudiation.*
 	- Non-repudiation with proof of origin. 消息发送者否认发送行为.
 	- Non-repudiation with proof of delivery (receipt). 消息接收者否认收到拥有数据.
-3. 访问控制, Access Control, 和**授权**休戚相关.
+5. *访问控制, Access Control*, 类似 *授权*.
 
 [RFC 4949, 2007] 描述道: 
 

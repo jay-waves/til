@@ -1,34 +1,18 @@
----
-copyright:
-  - Joern Engel
-  - Peter Zijlstra
-license: GPL2
-source: include/linux/btree.h
----
+/*
+ * Simple In-memory B+Tree
+ * Copyright: GPL2, Joern Engel, Peter Zijlstra
+ *
+ * 通过排序 `unsigned long` 类型键值, B+树用于将 `unsigned long` 键值映射为数据(指针), 
+ * 此处使用 `long` 存储指针. B+树包含一个头结构, 记录数据信息以及子节点. 
+ * 内部节点包含多个键和指向子节点的指针, 叶子节点还包含指向数据的指针.
+ *
+ *
+修改说明: 
+1. 删减了对更多键类型 (`u32, u64`) 的支持, 本文仅支持 `unsigned long` 类型的键.
+2. 将 mempool 相关内存管理替换为 `kmalloc` 相关函数, 不再使用内存池, 现用现申请. 原程序中在内核模块加载时申请了一块缓存 `btree_cachep`, 已删除.
+3. 将 `NODESIZE` 改为页大小 `4KB`, 原程序中其大小和 `L1 Cache` 相关. 过于底层.
+*/
 
-## Simple In-memory B+Tree
-
-### Using Example
-
-```c
-// using examples
-head->mempool = mempool_create(0, btree_alloc, btree_free, NULL);
-if (!head->mempool)
-	return ENOMEM;
-return 0;
-
-// then, destroy it manually:
-mempool_free(head->node, head->mempool);
-mempool_destroy(head->mempool);
-head->mempool = NULL;
-
-```
-
-### Header 
-
-通过排序 `unsigned long` 类型键值, B+树用于将 `unsigned long` 键值映射为数据(指针), 此处使用 `long` 存储指针. B+树包含一个头结构, 记录数据信息以及子节点. 内部节点包含多个键和指向子节点的指针, 叶子节点还包含指向数据的指针.
-
-```c
 #ifndef BTREE_H
 #define BTREE_H
 
@@ -171,131 +155,3 @@ extern struct btree_geo btree_geo32;
 	     val = btree_get_prevl(head, &key))
 
 #endif /* BTREE_H */
-```
-
-### Toolkit
-
-```c
-// static tools in lib/btree.c
-
-// for array of type `long`
-static int longcmp(const unsigned long *l1, const unsigned long *l2, size_t n)
-{
-	size_t i;
-
-	for (i = 0; i < n; i++) {
-		if (l1[i] < l2[i])
-			return -1;
-		if (l1[i] > l2[i])
-			return 1;
-	}
-	return 0;
-}
-
-static unsigned long *longcpy(unsigned long *dest, const unsigned long *src,
-		size_t n)
-{
-	size_t i;
-
-	for (i = 0; i < n; i++)
-		dest[i] = src[i];
-	return dest;
-}
-
-static unsigned long *longset(unsigned long *s, unsigned long c, size_t n)
-{
-	size_t i;
-
-	for (i = 0; i < n; i++)
-		s[i] = c;
-	return s;
-}
-
-// for btree geomotry
-static void dec_key(struct btree_geo *geo, unsigned long *key)
-{
-	unsigned long val;
-	int i;
-
-	for (i = geo->keylen - 1; i >= 0; i--) {
-		val = key[i];
-		key[i] = val - 1;
-		if (val)
-			break;
-	}
-}
-
-static unsigned long *bkey(struct btree_geo *geo, unsigned long *node, int n)
-{
-	return &node[n * geo->keylen];
-}
-
-static void *bval(struct btree_geo *geo, unsigned long *node, int n)
-{
-	return (void *)node[geo->no_longs + n];
-}
-
-static void setkey(struct btree_geo *geo, unsigned long *node, int n,
-		   unsigned long *key)
-{
-	longcpy(bkey(geo, node, n), key, geo->keylen);
-}
-
-static void setval(struct btree_geo *geo, unsigned long *node, int n,
-		   void *val)
-{
-	node[geo->no_longs + n] = (unsigned long) val;
-}
-
-static void clearpair(struct btree_geo *geo, unsigned long *node, int n)
-{
-	longset(bkey(geo, node, n), 0, geo->keylen);
-	node[geo->no_longs + n] = 0;
-}
-
-static int keycmp(struct btree_geo *geo, unsigned long *node, int pos,
-		  unsigned long *key)
-{
-	return longcmp(bkey(geo, node, pos), key, geo->keylen);
-}
-
-static int keyzero(struct btree_geo *geo, unsigned long *key)
-{
-	int i;
-
-	for (i = 0; i < geo->keylen; i++)
-		if (key[i])
-			return 0;
-
-	return 1;
-}
-
-static int getpos(struct btree_geo *geo, unsigned long *node,
-		unsigned long *key)
-{
-	int i;
-
-	for (i = 0; i < geo->no_pairs; i++) {
-		if (keycmp(geo, node, i, key) <= 0)
-			break;
-	}
-	return i;
-}
-
-static int getfill(struct btree_geo *geo, unsigned long *node, int start)
-{
-	int i;
-
-	for (i = start; i < geo->no_pairs; i++)
-		if (!bval(geo, node, i))
-			break;
-	return i;
-}
-
-```
-
-### 修改说明
-
-1. 删减了对更多键类型 (`u32, u64`) 的支持, 本文仅支持 `unsigned long` 类型的键.
-2. 将 mempool 相关内存管理替换为 `kmalloc` 相关函数, 不再使用内存池, 现用现申请. 原程序中在内核模块加载时申请了一块缓存 `btree_cachep`, 已删除.
-3. 将 `NODESIZE` 改为页大小 `4KB`, 原程序中其大小和 `L1 Cache` 相关. 过于底层.
