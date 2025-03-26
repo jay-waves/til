@@ -63,11 +63,11 @@ HMAC 算法的强度和嵌入的散列函数的强度之间的确切关系, 已�
 1. 攻击者能够计算压缩函数的一个输出, 即使 IV 是随机/秘密的。
 2. 攻击者能够找出散列函数的碰撞, 即使 IV 是随机/秘密的
 
-##### Q1 HMAC-MD5 安全吗?
+#### Q1 HMAC-MD5 安全吗?
 
 安全. 对比 [生日攻击](../生日攻击.md), HMAC 使用 MD5 时, 其 $IV$, 实际上变为了 $f(K^{+}\oplus opad, IV)$, 这导致敌手无法离线构造 HMAC, 而必须在信道截获真实 HMAC. 这样做效率极低, 且容易被发现 (导致密钥更换).
 
-##### Q2 HMAC 为什么需要使用两次 hash 函数?
+#### Q2 HMAC 为什么需要使用两次 hash 函数?
 
 这个问题等价于: **[为什么 $Hash(k\ \Vert\ x)$ 不是一个安全的MAC构造?](https://crypto.stackexchange.com/questions/1070/why-is-hk-mathbin-vert-x-not-a-secure-mac-construction)** 准确来说, 使用基于迭代结构的 $Hash$ 函数 构造的 $MAC=Hash(k\ \Vert\ x)$ 不是安全的. 存在一种 [*长度延长*攻击](../MD%20结构/长度扩展攻击.md), 使得敌手在不知道共享密钥的情况下, 可以得到 $Hash(k\ \Vert\ x\ \Vert\ pad_{x}\Vert\ x')$.
 
@@ -75,7 +75,7 @@ HMAC 算法的强度和嵌入的散列函数的强度之间的确切关系, 已�
 
 > 基于 [Keccak结构的SHA-3杂凑算法](KMAC.md), 没有 [*长度可延长*弱点](../MD%20结构/长度扩展攻击.md), 所以构造 MAC 时只需一次杂凑. 
 
-##### Q3 为什么 HMAC 比 $Hash(k_{1}\Vert m\Vert k_{2})$ 更安全?
+#### Q3 为什么 HMAC 比 $Hash(k_{1}\Vert m\Vert k_{2})$ 更安全?
 
 $Hash(k_{1}\Vert m\Vert k_{2})$ 在 $m$ 未填充时, 弱于 HMAC.  
 $m$ 正常填充时, 安全性和 HMAC 类似, 都防御前后的 [长度扩展攻击](../MD%20结构/长度扩展攻击.md)

@@ -1,6 +1,3 @@
-优先队列
-
-```c
 /* SPDX-License-Identifier: GPL-2.0 */
 #ifndef _LINUX_MIN_HEAP_H
 #define _LINUX_MIN_HEAP_H
@@ -135,4 +132,3 @@ void min_heap_push(struct min_heap *heap, const void *element,
 }
 
 #endif /* _LINUX_MIN_HEAP_H */
-```
