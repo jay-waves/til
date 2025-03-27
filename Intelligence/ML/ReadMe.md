@@ -15,6 +15,30 @@
 | T-分布和随机近邻嵌入           | T Distribution and Stochastic Neighbour Embedding (t-SNE)                                | $O(n^{2}m)$                               |                       |
 | **K-均值聚类** | K-Means Clustering                   |                                           |                       |
 | **神经网络**   | Neural Networks                      |                                           |                       |
-| **梯度下降**   | Gradient Descent                                     |                                           |                       |
+
+评估方式:
+- Accuracy/Error rate 
+- Precision and recall 
+- Squared error 
+- Likelihood 
+- Posterior probablitiy 
+- Information gain 
+- K-L divergence 
+- Cost/Utility 
+- Margin 
+
+优化方式:
+- Combinatorial optimization 
+	- Greedy search 
+	- Beam search 
+	- Branch-and-bound 
+- Continuous optimization 
+	- Unconstrained descent 
+		- Gradient descent 
+		- Conjugate gradient 
+		- Quasi-Newton methods 
+	- Contrained 
+		- Linear programming 
+		- Quadratic programming 
 
 [^1]: n: samples, m: dimensions, n_epoch: epochs, c: classes, d:tree depth,  k: clusters, n_sv: support vectors, i: iterations

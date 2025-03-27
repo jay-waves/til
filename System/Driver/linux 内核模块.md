@@ -27,8 +27,6 @@ sudo pacman -S linux-headers
 > "It is unclear what the outcomes are for those who deviate from this 
 > tradition, but is seemes prudent to adhere to it."
 
-### First Module
-
 ```c
 #include <linux/module.h> /* Needed by all modules */
 #include <linux/printk.h> /* Needed for pr_info() */
@@ -46,14 +44,14 @@ void cleanup_module(void)
     pr_info("Goodbye world 1.\n");
 }
 
-MODULE_LICENSE("MIT");
+MODULE_LICENSE("GPL v2");
 MODULE_AUTHOR("YJW");
 MODULE_DESCRIPTION("a sample driver?");
 ```
 
 调用 `insmod` 插入模块时, 需要 `init_module()`, 移除模块时则需要 `cleanup_module()` 调用. 
 
-在后期内核版本, `init_module()` 和 `cleanup_modeul()` 可以使用 `module_init` 和 `module_exit` 宏来重命名. 但具体的定义要出现在调用这些宏之前.
+在后期内核版本, `init_module()` 和 `cleanup_module()` 可以使用 `module_init` 和 `module_exit` 宏来重命名. 但具体的定义要出现在调用这些宏之前.
 
 ```c
 #include <linux/init.h>   /* Needed for the macros */
@@ -106,17 +104,20 @@ unload:
 
 编写好 `Makefile` 后, 使用 `make` 来完成编译. 当前文件夹会出现 `hello-1.ko`, 使用 `modinfo` 来查看该模块的信息. 
 
-- load the module: `sudo insmod hello-1.ko`
-- list loaded module: `sudo lsmod` 
-- then remove it: `sudo rmmod hello_1`, this name is listed in `lsmod`
+- 加载内核模块: `sudo insmod hello-1.ko`
+- 列出已加载的模块: `sudo lsmod`. 实际是读取 `/proc/modules` 文件, 部分信息也在 `/sys/module` 目录下
+- 接着, 删除模块: `sudo rmmod hello_1`
+- 当前模块的依赖关系存放在: `/lib/modules/<kernel-version>/modules.dep`
 
 > 关于内核详细机制, 查看:
 > - Documentation/kbuild/modules.rst
 > - Documentation/kbuild/makefiles.rst
 
-### Passing Command Line Arguments
+## 模块参数
 
-use `$ insmod mymodule.ko myvar=5`
+使用 `module_param(name, type, rw_permission)` 来为模块定义一个参数. 如果不传递参数, 会使用模块内置的缺省值. 如果是内置模块, 需要在 bootloader 的 bootargs 中传递参数. 
+
+用 insmod/kmodprobe 插入模块时, 可以传递参数: `$ insmod mymodule.ko myvar=5`
 
 ```c
 #include <linux/moduleparam.h>
@@ -138,11 +139,38 @@ module_param_arrya(myshortarray, short, &count, 0);
 // module_param_string();
 ```
 
-### Multipe Files
+模块加载后, `/sys/module/` 目录下会出现一个相关目录.
 
-makefile:
+## 模块加载和卸载
 
-```makefile
-obj-m += startstop.o
-startstop-objs := start.o stop.o
+加载其他内核模块:
+
+```c
+request_module(module_name);
 ```
+
+在内核中, 标识为 `__init` 的函数如果直接编译入内核, 成为内核镜像的一部分, 在链接时都会放在 `.init.text` 区段里. 同时, 所有函数的函数指针都保存在 `.initcall.init`, 初始化内核时会依次调用, 然后释放这些部分 (`.init.text, .initcall.init`) 的内存.
+
+```c
+#define __init __attribute__ ((__section__(".init.text")))
+```
+
+宏 `__initdata` 定义只有初始化时使用的数据, 初始化结束后即释放内存.
+
+## 模块导出符号
+
+`/proc/kallsysm` 文件中包含了*内核符号表*. 模块使用如下宏, 来导出符号到内核符号表中:
+
+```c
+EXPORT_SYMBOL(sym_name);
+EXPORT_SYMBOL_GPL(sym_name); // GPL License
+```
+
+如果一个符号是用 `EXPORT_SYMBOL_GPL()` 导出, 就不可以被非 GPL 发布的模块使用. 注意, 有相当多内核模块符号都是用 GPL 导出的.
+
+模块计数管理接口:
+```c
+int try_module_get(struct module *mod); // 
+void module_put(struct module*);        // 增加模块的使用计数, 若返回 0 则表示调用失败.
+```
+
