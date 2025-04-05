@@ -5,7 +5,11 @@ copyright: [Leslie Lamport (1978), ]
 
 ## Happens-Before
 
-Time, Clocks, and the Ordering of Events in a Distributed System. Lamport. 1978.
+How to Make a Multiprocessor Computer That Correctly Executes Multiprocess Programs. (Lamport, 1979) 引入了事件偏序关系 (sequential consistency):
+
+> The customary approach to designing and proving the correctness of multiprocess algorithms for such a computer assumes that the following condition is satisfied: the result of any execution is the same as if the operations of all the processors were executed in some sequential order, and the operations of each individual processor appear in this sequence in the order specified by its program. A multiprocessor satisfying this condition will be called _sequentially consistent_.
+
+Time, Clocks, and the Ordering of Events in a Distributed System. Lamport. 1978. 引入了基于偏序的竞争检查算法.
 
 - **并发执行是受通信事件决定的偏序关系, 而程序无法观察无通信事件的并发事件顺序**
 - 如果所有互斥访问可以被线性排序 -> 无数据竞争执行

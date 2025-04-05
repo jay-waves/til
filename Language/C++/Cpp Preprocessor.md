@@ -65,7 +65,7 @@ static_assert(sizeof(int)==4, "unsupported int width")
 #endif
 ```
 
-同理, 应该用异常处理 exception 来代替 assert, 因为 `assert()` 通常是宏实现的, 没有上下文. 详见 [Exception](开发工具/Exception.md)
+同理, 应该用异常处理 exception 来代替 assert, 因为 `assert()` 通常是宏实现的, 没有上下文. 详见 [错误处理](开发工具/错误处理.md)
 
 ### 模块, 而不是 `#include`
 

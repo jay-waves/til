@@ -10,7 +10,7 @@ C++11
 - `thread`, `mutex`, `condition_variable`
 
 C++14
-- generic lambda `auto lambda = [](auto x) { return x + x; };
+- generic lambda `auto lambda = [](auto x) { return x + x; };`
 - `make_unique`
 
 
@@ -36,3 +36,5 @@ C++23
 ## Reference
 
 [Learn Modern C++, discover a launguage matched to today's computing needs](https://learnmoderncpp.com/) - cpptutor
+
+*A Tour of C++*. Bjarne Stroustrup.

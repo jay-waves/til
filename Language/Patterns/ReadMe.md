@@ -49,8 +49,6 @@ Patterns and Paradigms
 
 依赖注入 (DI)
 
-函数一等公民
-
 事件驱动
 
 流式处理
