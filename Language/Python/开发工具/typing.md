@@ -79,7 +79,7 @@ class Bucket(Sized, Iterable[int]):
 	def __iter__(self) -> Iterator[int]: ...
 ```
 
-PEP544 允许在类定义时不显式说明基类, 即所谓的[鸭子类型](../../Coding%20Patterns/类型系统.md), 也称为**结构子类型**.
+PEP544 允许在类定义时不显式说明基类, 即所谓的[鸭子类型](../../Patterns/类型系统.md), 也称为**结构子类型**.
 
 ```python
 class Bucket:

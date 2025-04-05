@@ -1,4 +1,4 @@
-STL (Standard Template Library) 是 C++ 标准库的一部分, 提供一系列模板化的数据结构和算法. 支持泛型, 高度性能优化. 1980s 诞生于惠普实验室, 创始人为 AAlexander Stepanov, 在 1998 年定稿入 ANSI/ISO C++ 标准. 目前， C++ 标准库中有 70% 以上代码隶属于 STL.
+STL (Standard Template Library) 是 C++ 标准库的一部分, 提供一系列模板化的数据结构和算法. 支持泛型, 高度性能优化. 1980s 诞生于惠普实验室, 创始人为 Alexander Stepanov, 在 1998 年定稿入 ANSI/ISO C++ 标准. 目前， C++ 标准库中有 70% 以上代码隶属于 STL.
 
 由于标准确立较晚, C++ STL 有较多的流行版本. 最初版本是 HP STL, 创始人离开惠普加入 SGI 后, 创建 SGI STL, 是 Linux/GCC 平台下比较流行的版本, 开源并且代码优秀. 
 
@@ -24,16 +24,18 @@ STL (Standard Template Library) 是 C++ 标准库的一部分, 提供一系列�
 | 空间     |  高                  | 高 (存储哈希表, 同时预留空间防止碰撞) |          |
 | 场景     | 有序存储, 范围查询 | 查找和更新速度                        |          |
 
-在 C++ 标准中, STL 被定义为 13 个头文件:
+在 C++98 标准中, 传统 STL 头文件包括:
 
 ```cpp
 #include <vector>
 #include <deque>
 #include <queue> // queue + priority_queue
-#include <stack> // 
-#include <list> 
-#include <set>
-#include <map>
+#include <stack> 
+#include <list>
+#include <set>   // set + multiset 
+#include <map>   // map + multimap
+
+#include <bitset>
 
 #inlcude <algorithm>   // sort, swap, compare, merge, search, reverse
 #include <numeric>     // math operations
@@ -41,7 +43,27 @@ STL (Standard Template Library) 是 C++ 标准库的一部分, 提供一系列�
 
 #include <iterator>
 #include <memory>      // memory allocator for containers and auto_ptr
-#include <utility>     // pair, operations reload
+#include <utility>     // *pair*, operations reload
+```
+
+随着 C++ 标准发展, 加入了新容器和特性:
+
+```cpp
+// C++11
+#include <forward_list>  
+#include <array>
+#include <unordered_map>
+#include <unordered_set>
+#include <tuple>
+
+// C++17
+
+// C++20
+#include <ranges>
+
+// C++23
+#include <flat_map> // C++23
+#include <flat_set> // C++23
 ```
 
 ## 容器
@@ -57,8 +79,16 @@ STL (Standard Template Library) 是 C++ 标准库的一部分, 提供一系列�
 | set            | associative array | `<set>`    | 升序存储唯一值                 |
 | map            | associative array | `<map>`    | 升序存储唯一键值对             |
 
+### Almost Containers
 
-pair, span, optional, variant, any???
+| 名称              | 头文件      | 特性                                  |
+| ----------------- | ----------- | ------------------------------------- |
+| `array<T, N>`     | `<array>`   | 固定大小顺序容器, 支持常量化          |
+| `bitset<N>`       | `<bitset>`  | 位图                                  |
+| `vector<bool>`    |             | 位图, 比普通 `vector` 更紧凑. 不建议. |
+| `pair<T, U>`      | `<utility>` |                                       |
+| `tuple<T...>`     |             |                                       |
+| `basic_string<C>` |             |                                       |
 
 ## 迭代器
 
