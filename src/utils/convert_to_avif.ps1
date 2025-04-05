@@ -19,8 +19,14 @@ $images | ForEach-Object -Parallel {
     Write-Host "convert: $($image.Name) -> $outputFile"
 
     # using ImageMagick
-    # -abckground white: remove all alpha channel
-    magick $image.FullName -quality 60 -background white -flatten $outputFile
+    # -flatten: 去除透明通道
+	magick $image.FullName -resize 75% -quality 50 -background white -flatten $outputFile
+	# -chop 0x1 裁掉底部一个像素宽度, 避免绿边. 
+	# AVIF 编码器使用 YUV420 二次采样时, 图像高度为奇数, 底部可能出现一像素绿边.
+	$imgHeight = (magick identify -format "%h" $outputFile)
+	if ($imgHeight % 2 -ne 0) {
+		magick $outputFile  -chop 0x1 $outputFile
+	}
 
     if (Test-Path $outputFile) {
         Write-Host "success: $outputFile, moved to .stash"

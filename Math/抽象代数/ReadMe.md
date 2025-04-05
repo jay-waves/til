@@ -44,9 +44,9 @@ https://en.wikipedia.org/wiki/Algebraic_structure
 
 域一定是整环, 整环不一定是域 (即, 无零因子, 不意味着一定有逆元)
 
-![|800](../../attach/Pasted%20image%2020250326092410.png)
+![|700](../../attach/Pasted%20image%2020250326092410.avif)
 
-![|800](../../attach/Pasted%20image%2020250326094259.png)
+![|700](../../attach/Pasted%20image%2020250326094259.avif)
 
 #### 抽象空间
 
