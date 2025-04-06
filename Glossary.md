@@ -774,7 +774,7 @@ Secure Hash Algorithm, 密码学哈希函数 (消息摘要函数, 杂凑函数, 
 
 ### TagDispatch
 
-一种函数反射方法, 见 [Runtime Function Choice](Language/C++/Runtime%20Function%20Choice.md#函数体).
+一种函数反射方法, 见 [运行时函数多态](Language/C++/类型系统/运行时函数多态.md#函数体).
 
 ### Time-Sharing System
 

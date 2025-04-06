@@ -9,7 +9,7 @@ Resource 是指用来管理程序功能的对象, 如内存块, 文件句柄, �
 } // call fp's destructor automatically
 ```
 
-对于类成员: 使用 RAII 后, 资源显式声明, 在超出作用域时隐式释放.
+对于类成员: 使用 RAII 后, 资源显式声明, 在超出作用域时隐式释放. 比如, 循环的每次迭代都是一个新的作用域 (scope).
 ```cpp
 // without RAII
 RawResourceHandle* handle=createNewResource();
