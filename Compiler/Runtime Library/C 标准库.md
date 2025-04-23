@@ -101,3 +101,5 @@ https://users.cs.cf.ac.uk/Dave.Marshall/C/. Dave Marshall. 1999-03.
 [^3]: MSVCrt (microsoft visual c runtime) 指 `msvcrt.dll`, 是 Windwos 系统对 libc 的实现. 在 Windows10 之后, 引入了 UCRT 的现代版本 libc 实现, 提供了对现代 C 标准更好的支持. 都不开源...
 
 [^7]: 具体函数库内容详见 [C/StandardLib/ReadMe](../../Language/C/标准库/ReadMe.md) 语言标准库, libc++ 指 C++ 标准库. 语言委员会提供一套标准库函数标准, 但不规定底层究竟如何实现 (比如在 linux 和 windows 上, `printf()` 可能会调用不同的系统调用来达成功能), 所以不同编译器和操作系统都会有独立的实现.
+
+https://learn.microsoft.com/en-us/cpp/c-runtime-library/crt-library-features?view=msvc-170

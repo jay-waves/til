@@ -8,6 +8,12 @@
 
 由于 HTTP 协议没有状态, 每次请求之间是相互独立的. 因此使用 [Cookie](用户认证/SSO.md) 来存储多次请求之间的关联.
 
+### URL
+
+|     | sheme     | domain name       | port  | path                 | query             | anchor        |
+| --- | --------- | ----------------- | ----- | -------------------- | ----------------- | ------------- |
+| URL | `http://` | `www.xxxsite.com` | `:80` | `/path/to/page.html` | `?product=camera` | `#somewhrere` |
+
 ### 方法
 
 HTTP 定义了多种请求方法 (http 动词), 表示对服务器资源的不同操作. 常见请求方法是 `GET` 和 `POST`.
@@ -98,3 +104,14 @@ name=John+Doe&age=30\r\n
 2. DNS 服务器将 `xxx.com` 重新映射到某个 CDN 上, 返回该 CDN 的网络地址.
 3. 用户后续实际在向该 CDN 发起 HTTP 请求, 由 CDN 代理.
 4. CDN 会缓存请求内容副本, 下次多用户重复查询时, 能加速查询速度.
+
+### HTTP 版本
+
+1. HTTP 1.0, 1996. 每个请求都需要独立的 TCP 连接.
+2. HTTP 1.1, 1997. TCP 连接可以持久建立, 便于复用. 但没解决 HOL 问题.
+3. HTTP 2.0, 2015. 通过请求多路复用 (Request Multiplexing) 来解决应用层 HOL 问题, 但没解决传输层 HOL 问题. HTTP 2.0 引入了 *HTTP 流* 的概念, 
+	允许多个 HTTP 请求乱序使用同一个 TCP 连接.
+4. HTTP 3.0, 2020. 使用 QUIC 而非 TCP 协议, 解决了传输层 HOL 问题. QUIC 基于*流*而非*链接*, 因此是属于 UDP 一类, 允许多个流共享同一个连接.
+
+*HOL, Head-of-Line* 问题. 最大并发数有限, 后续请求需要等待前面的请求完成, 即使前面的请求并不活跃.
+
