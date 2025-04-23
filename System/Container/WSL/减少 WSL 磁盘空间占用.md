@@ -46,7 +46,14 @@ exit
 
 ## 镜像文件挪窝
 
-可以用 synbolink 软链接把 vhdx 移动到别的盘.
+可以用 synbolink 软链接把 vhdx 移动到别的盘. 
+
+发现了一个好用的工具 [LxRunOffline](https://github.com/DDoSolitary/LxRunOffline):
+```powershell
+lxrunoffline get-dir -n Arch 
+
+lxrunoffline move -n Arch -d C:\WSL\Arch
+```
 
 ### 参考
 

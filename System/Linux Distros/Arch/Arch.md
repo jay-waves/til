@@ -24,11 +24,8 @@ Virtual Box 默认在 Windows 上的以太网接口为 192.168.56.1. NAT 模式�
 
 > 详见 [Proxy](../../../Network/VPN/Proxy.md)
 
-**测试连接状态:**
-
-别使用 ping 了, 大部分服务器都不会响应 icmp 报文. 可以使用 curl, 直接用 http 协议请求网站响应.
-
 ==一定要确保能连接到网络, 才继续下一步安装操作==
+
 
 ### 安装
 
@@ -87,6 +84,8 @@ Enable DHCP client daemon:  启动 dhcp 守护进程. `systemctl` 配置系统�
 
 Set root password:  
 `passwd`  
+
+见 ??? linux 初始化及用户
 
 Install GRUB: 启动引导程序, 64位版需要 efi, 否则只能用32位 bios启动 (启动速度慢点, 别的没差).
 

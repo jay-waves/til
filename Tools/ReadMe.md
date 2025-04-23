@@ -8,13 +8,11 @@
 
 ***
 
-- **PotPlayer**
 - **Mail Master** 网易邮箱大师
 - **Zotero7**, 文献管理
 - SumatraPDF, Adobe Acrobat DC.
 - ~~GoldenDict, EuDic, 本地词典~~
 - Jane Reader, windows 下 EUPB 阅读器
-- XnViewMP, XnConvert, 图片库查看器
 - Obsidian, 主力笔记软件
 - ~~AFFiNE, 笔记软件, 非主力~~
 - VSCode
@@ -63,6 +61,7 @@
 
 ### Medai
 
+- **PotPlayer**
 - ffmpeg, 终端音视频编解码器
 - GIMP2, 开源界的 Photoshop
 - ImageMagick, 命令行的 Photoshop
@@ -72,6 +71,7 @@
 - LosslessCut 快速裁切视频, 无转码导出
 - Microsoft ClipChamp, 傻瓜式轻量剪辑, 对我够用了.
 - Captura, 便携录屏软件, 依赖 ffmpeg
+- XnViewMP, XnConvert, 图片库查看器
 
 ### Network
 
@@ -99,6 +99,8 @@
 ## Cli
 
 - PowerShell7. Windows 下使用的命令行.
+	- PSReadline 插件
+	- posh-git 插件
 - Zsh. Debian 下使用的命令行.
 - Clink. cmd prompt 加强工具, 已弃用 cmd.
 - Starship. zsh prompt 加强工具

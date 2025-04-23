@@ -11,6 +11,27 @@
 
 - 搜索未知包: `pacman -Ss <pkg>`
 
+### 初始化
+
+初始化 Pacman 密钥环
+
+```bash
+pacman-key --init 
+pacman-key --populate archlinux
+```
+
+更新系统
+
+```bash
+pacman -Syu --noconfirm
+```
+
+基础包安装:
+
+```bash
+pacman -S --noconfirm base base-devel sudo git vim
+```
+
 ### 更新系统
 
 `pacman -Syu`, then reboot.

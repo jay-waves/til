@@ -10,24 +10,28 @@ cmake 通过统一构建规则, 在不同平台上 (CentOS, Ubuntu, Android) 上
 
 ```cmake
 cmake_minimum_required(VERSION 3.10) # 最低兼容 CMake 版本.
-project(ProjectName) # 项目名称
+project(ProjectName LANGUAGES CXX) # 项目名称, 后续可通过 PROJECT_NAME 引用
 ```
 
 ### 设置变量
 
-```cmake
-set(MKL_POSSIBLE_PATHS
-	"/opt/intel/mkl"
-	"C:\\Program Files (x86)\\Intel\\onAPI\\mkl\\latest"
-	"usr/local/mkl"
-)
+设置全局编译期 (前端) 选项:
 
-unset(MKL_POSSIBLE_PATHS)
+```cmake
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+	add_compile_options(/MTd)
+else()
+	add_compile_options(/MT)
+endif()
 ```
 
-### 添加外部依赖
+### 添加和查找外部依赖
 
-链接外部依赖库:
+链接外部依赖库. 注意, 如果使用 cmake 工具链 (如 vcpkg), 需要在这之前指定.
 ```cmake
 find_package(fmt CONFIG REQUIRED)
 target_link_libraries(my_app my_library)
@@ -37,9 +41,9 @@ target_link_options(my_lib PRIVATE -Wl)
 
 - `REQUIRED` 未找到时报错
 
-### 添加源文件
+### 定义目标
 
-使用 `add_executable` 和 `add_library` 添加源文件:
+使用 `add_executable` (定义可执行文件) 和 `add_library` (定义库) 添加源文件:
 
 ```cmake
 add_executable(my_app main.cpp helper.cpp) # 定义可执行文件
@@ -54,7 +58,7 @@ target_compile_options(my_lib PRIVATE -Wall -Wextra) # 添加编译选项
 include_directories(include)
 ```
 
-### 添加动态链接库
+### 链接到目标
 
 假设 `a.cc` 为主文件, 依赖为: `a.cc -> b.cc -> c.cc`
 
@@ -66,7 +70,12 @@ target_link_libraries(b private c)
 
 add_executable(a a.cc)
 
-target_link_libraries(a b c) # 必须放在目标文件产生之后
+target_link_libraries(a PRIVATE b c) # 必须放在目标文件产生之后
+
+# 目标属性
+target_include_directorie(setup PRIVATE include)
+target_compile_definitions(setup PRIVATE ...) # 如设置 NDEBUG 
+
 ```
 
 - `PRIVATE` 指 b 只被 c 需要, 不应该影响其他独立包.

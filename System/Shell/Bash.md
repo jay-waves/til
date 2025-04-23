@@ -76,7 +76,7 @@ Bash 作为编程语言的语法和细节请见: [BashScript](BashScript/ReadMe.
 
 ## Bash 工具列表
 
-[用户权限及隐私](用户权限及隐私.md)
+[文件权限](文件权限.md)
 
 | `chmod` | `chown` |
 | ------- | ------- |
