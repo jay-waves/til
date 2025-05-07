@@ -17,25 +17,25 @@
 |                      | readline                                                                                     | GNU readline 接口              |     |
 |                      | pprint                                                                                       | 数据美化                       |     |
 | 二进制数据服务       | struct                                                                                       | 将字节串解读为打包的二进制数据 |     |
-| 数据类型             | [datetime](../数据类型/datetime%20&%20time.md)                                               | 基本日期和事件                 |     |
+| 数据类型             | [datetime](./操作系统服务/datetime%20&%20time.md)                                               | 基本日期和事件                 |     |
 |                      | calendar                                                                                     | 通用日历                       |     |
-|                      | [collections](../数据类型/collections.md), [collections.abc](../数据类型/collections.abc.md) | 容器                           |     |
-|                      | [heapq](../数据类型/heapq.md)                                                                | 堆队列算法                     |     |
-|                      | [bisect](../数据类型/bisect.md)                                                              | 数组二分算法                   |     |
-|                      | [array](../数据类型/array.md)                                                                | 高效的数字值数组               |     |
+|                      | [collections](./数据类型/collections.md), [collections.abc](./数据类型/collections.abc.md) | 容器                           |     |
+|                      | [heapq](./数据类型/heapq.md)                                                                | 堆队列算法                     |     |
+|                      | [bisect](./数据类型/bisect.md)                                                              | 数组二分算法                   |     |
+|                      | [array](./数据类型/array.md)                                                                | 高效的数字值数组               |     |
 |                      | weakref                                                                                      | 弱引用                         |     |
 |                      | types                                                                                        |                                |     |
 |                      | copy                                                                                         | 浅层及深层拷贝                 |     |
 |                      | enum                                                                                         | 枚举类型                       |     |
 | 数学                 | numbers                                                                                      | 数字抽象基类                   |     |
-|                      | [math](../数学/math.md)                                                                                        | 基础数学函数                   |     |
+|                      | [math](./数学/math.md)                                                                                        | 基础数学函数                   |     |
 |                      | cmath                                                                                        | 复数的数学函数                 |     |
-|                      |  [decimal](../数学/decimal.md)                                                                                   | 十进制定点和浮点算术           |     |
-|                      | [fractions](../数学/fractions.md)                                                                                   | 有理数                         |     |
+|                      |  [decimal](./数学/decimal.md)                                                                                   | 十进制定点和浮点算术           |     |
+|                      | [fractions](./数学/fractions.md)                                                                                   | 有理数                         |     |
 |                      | random                                                                                       | 伪随机数                       |     |
 |                      | statistics                                                                                   | 统计函数                       |     |
-| 函数式编程           | [itertools](../数据类型/itertools.md)                                                        |                                |     |
-|                      | [reduce](../数据类型/reduce.md)                                                              |                                |     |
+| 函数式编程           | [itertools](./数据类型/itertools.md)                                                        |                                |     |
+|                      | [reduce](./数据类型/reduce.md)                                                              |                                |     |
 |                      | functools                                                                                    |                                |     |
 |                      | operator                                                                                     |                                |     |
 | 文件系统             | pathlib                                                                                      | 面向对象的文件系统路径         |     |
@@ -61,13 +61,13 @@
 |                      | curses                                                                                       | 字符终端显示                   |     |
 |                      | errno                                                                                        |                                |     |
 |                      | ctypes                                                                                       | Python 的外部函数库            |     |
-| 并发执行             |  [threading](../并发执行/threading.md)                                                                                | 线程并行                       |     |
+| 并发执行             |  [threading](./并发与并行/threading.md)                                                                                | 线程并行                       |     |
 |                      | multiprocessing                                                                              | 进程并行                       |     |
 |                      | concurrent                                                                                   |                                |     |
-|                      | [subprocess](../并发执行/subprocess.md)                                                                                 | 子进程管理                     |     |
+|                      | [subprocess](./并发与并行/subprocess.md)                                                                                 | 子进程管理                     |     |
 |                      | sched                                                                                        | 事件调度                       |     |
-|                      | [queue](../并发执行/queue.md)                                                                                       | 同步队列类                     |     |
-| 进程间通信           |   [asyncio](../并发执行/asyncio.md)                                                                                  | 异步 I/O                       |     |
+|                      | [queue](./并发与并行/queue.md)                                                                                       | 同步队列类                     |     |
+| 进程间通信           |   [asyncio](./并发与并行/asyncio.md)                                                                                  | 异步 I/O                       |     |
 |                      | socket                                                                                       | 低层次网络接口                 |     |
 |                      | ssl                                                                                          | 套接字的 TLS/SSL 包装          |     |
 |                      | select, selectors                                                                            | 等待 I/O 完成                  |     |
@@ -81,15 +81,15 @@
 |                      | binascii                                                                                     | 二进制与 ASCII 间转换          |     |
 | 结构化标记工具       | html                                                                                         |                                |     |
 |                      | xml                                                                                          |                                |     |
-| 开发工具             | [typing](../开发工具/typing.md)                                                                                      | 类型提示加强                   |     |
+| 开发工具             | [typing](./开发工具/typing.md)                                                                                      | 类型提示加强                   |     |
 |                      | doctest                                                                                      |                                |     |
-|                      |  [unittest](../开发工具/unittest.md)                                                                                   | 单元测试                       |     |
-|                      | [unittest.mock](../开发工具/unittest.mock.md)                                                                                |                                |     |
+|                      |  [unittest](./开发工具/测试/unittest.md)                                                                                   | 单元测试                       |     |
+|                      | [unittest.mock](./开发工具/测试/unittest.mock.md)                                                                                |                                |     |
 |                      | test                                                                                         | 回归测试                       |     |
 | 调试分析             | bdb, pdb                                                                                     | 调试器                         |     |
-|                      | [profile](../开发工具/profile.md)                                                                   | 性能分析器                     |     |
+|                      | [profile](./开发工具/测试/profile.md)                                                                   | 性能分析器                     |     |
 |                      | timeit                                                                                       | 测试小段代码的执行时间         |     |
-|                      |  [trace](../开发工具/trace.md)                                                                                      | 追踪语句执行                   |     |
+|                      |  [trace](./开发工具/测试/trace.md)                                                                                      | 追踪语句执行                   |     |
 |                      | tracemalloc                                                                                  | 追踪内存分配                   |     |
 
 

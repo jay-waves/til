@@ -60,4 +60,4 @@ IMAP (网际报文存取协议, Internet Message Access Protocol) 比 POP3 更�
 
 ## PGP
 
-pgp (pretty good privacy) 用于邮件加密. 详见 [PGP](Network/应用层/PGP.md)
+pgp (pretty good privacy) 用于邮件加密. 详见 [PGP](PGP.md)

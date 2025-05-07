@@ -44,8 +44,107 @@ handle->performInvalidOperation(); // 作用域结束即释放
 
 PS: 不要依赖 C++ 编译器的任何默认/隐式行为. C++ 的细节复杂度极逆天, 脑子是记不住的 (也不要试图把脑子训练成人肉编译器), 应确保所有行为都是准确和明确定义的. 如果不确定编译器是否会自动初始化或自动释放资源, 最*简单*的方式就是手动定义初始化和释放方法.
 
-在带 GC 语言中, 常见错误是不习惯手动释放底层对象, 导致资源泄露. python 用[上下文管理器](../../Python/语法/contextlib.md)解决这个问题. 
+在带 GC 语言中, 常见错误是不习惯手动释放底层对象, 导致资源泄露. python 用[上下文管理器](../../Python/开发工具/contextlib.md)解决这个问题. 
 
-> [What is meant by Resource Acquisition is Initialization (RAII)? Stack Overflow](https://stackoverflow.com/questions/2321511/what-is-meant-by-resource-acquisition-is-initialization-raii)
->
->  [Resource acquisition is initialization Wikipedia .](https://en.wikipedia.org/wiki/Resource_acquisition_is_initialization)
+## 例子
+
+考虑文件句柄的使用. 首先假定一切顺利进行:
+
+```cpp
+void doSomethingWithAFile(const char* filename) {
+
+    FILE* fh = fopen(filename, "r"); // 以只读模式打开文件
+
+    doSomethingWithTheFile(fh);
+    doSomethingElseWithIt(fh);
+
+    fclose(fh); // 关闭文件句柄
+}
+```
+
+但是各个函数都可能执行失败, 并返回错误代码. 所以引入了很多和业务逻辑无关的代码:
+
+```cpp
+bool doSomethingWithAFile(const char* filename){
+    FILE* fh = fopen(filename, "r"); // 以只读模式打开文件
+    if (fh == nullptr) // 执行失败, 返回的指针是 nullptr
+        return false; 
+
+    // 假设每个函数会在执行失败时返回false
+    if (!doSomethingWithTheFile(fh)) {
+        fclose(fh); // 关闭文件句柄, 避免造成内存泄漏
+        return false;
+    }
+    if (!doSomethingElseWithIt(fh)) {
+        fclose(fh); // 关闭文件句柄
+        return false; // 反馈错误
+    }
+
+    fclose(fh); // 关闭文件句柄
+    return true; // 指示函数已成功执行
+}
+```
+
+返回错误代码是 C 常用的错误处理方式. 除此之外, C 程序员还会用 `goto` 来简化错误处理:
+
+```cpp
+bool doSomethingWithAFile(const char* filename) {
+    FILE* fh = fopen(filename, "r");
+    if (fh == nullptr)
+        return false;
+
+    if (!doSomethingWithTheFile(fh))
+        goto failure;
+
+    if (!doSomethingElseWithIt(fh))
+        goto failure;
+
+    fclose(fh); // 关闭文件
+    return true; // 执行成功
+
+failure:
+    fclose(fh);
+    return false; // 反馈错误
+}
+```
+
+C++ 推荐的错误处理方式是*异常*, 尽管很多底层程序员不喜欢用它, 因为复杂程序无法有效控制报错在哪一层触发, 又在哪一层被处理.
+
+```cpp
+void doSomethingWithAFile(const char* filename){
+    FILE* fh = fopen(filename, "r"); // 以只读模式打开文件
+    if (fh == nullptr)
+        throw std::exception("Could not open the file.");
+
+    try {
+        doSomethingWithTheFile(fh);
+        doSomethingElseWithIt(fh);
+    }
+    catch (...) {
+        fclose(fh); // 保证出错的时候文件被正确关闭
+        throw; // 然后, 重新抛出这个异常, 交给上层.
+    }
+
+    fclose(fh); // 关闭文件
+    // 所有工作顺利完成
+}
+```
+
+但 C++ 的 fstream 有 RAII 机制, 在退出作用域时, 自动调用析构函数来关闭句柄.
+```cpp
+void doSomethingWithAFile(const std::string& filename){
+    // ifstream == input file stream
+    std::ifstream fh(filename); // 打开一个文件
+
+    // 对文件进行一些操作
+    doSomethingWithTheFile(fh);
+    doSomethingElseWithIt(fh);
+
+} // 文件已经被析构器自动关闭
+```
+
+## 参考
+
+[What is meant by Resource Acquisition is Initialization (RAII)? Stack Overflow](https://stackoverflow.com/questions/2321511/what-is-meant-by-resource-acquisition-is-initialization-raii)
+
+[Resource acquisition is initialization Wikipedia .](https://en.wikipedia.org/wiki/Resource_acquisition_is_initialization)

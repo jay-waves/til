@@ -38,3 +38,5 @@ C++23
 [Learn Modern C++, discover a launguage matched to today's computing needs](https://learnmoderncpp.com/) - cpptutor
 
 *A Tour of C++*. Bjarne Stroustrup.
+
+https://github.com/andreasfertig/cppinsights/
