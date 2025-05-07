@@ -3,7 +3,23 @@ revised: 25-01-24
 language: [c++, java]
 ---
 
-Patterns and Paradigms
+> -- Robert Kowalski. **Algotirhm = Logic + Conrtol**. 1979
+> 
+> An algorithm can be regarded as consisting of a logic component, which specifies the
+knowledge to be used in solving problems, and a control component, which determines
+the problem-solving strategies by means of which that knowledge is used. The logic
+component determines the meaning of the algorithm whereas the control component
+only affects its efficiency. The efficiency of an algorithm can often be improved by
+improving the control component without changing the logic of the algorithm. We argue
+that computer programs would be more often correct and more easily improved and
+modified if their logic and control aspects were identified and separated in the program
+text.
+
+> -- Niklaus Emil Wirth. 1976.
+>
+> **Algorithms + Data Structures = Programs**
+
+通过泛型来标准化*数据结构*, 从而标准化*控制*, 从而适应任意的*业务逻辑*. 代码的实际复杂度是业务逻辑, 其他两者应与其解耦.
 
 ## 设计模式
 
@@ -49,29 +65,39 @@ Patterns and Paradigms
 
 ## 编程范式
 
+|          | C                       | C++              | Go         | Java | Python | JavaScript | Rust              | Haskell |
+| -------- | ----------------------- | ---------------- | ---------- | ---- | ------ | ---------- | ----------------- | ------- |
+| 类型声明 | 静态                    | 静态             | 静态       | 静态 | 动态   | 动态       | 静态              |         |
+| 类型转换 | 弱类型                  |                  |            |      |        |            |                   |         |
+| 算法泛型 | 宏, `void*`             | 类多态, 函数重载 |            |      |        |            |                   |         |
+| 类型泛型 | `void*`                 | 模板,            |            |      |        |            |                   |         |
+| 范式     | 过程式                  |                  | 过程式     |      |        |            |                   | 函数式  |
+| 面向对象 |                         | 类               | 结构体方法 | 类   | 类     | 基于原型   |                   |         |
+| 资源管理 | 手动管理堆 + 局部作用域 | RAII             |            |      |        |            | 生命周期 + 所有权 |         |
+
+图灵完备的编程语言中, 编程范式大概分为:
+- 命令式 (Impreative Programming)
+	- 过程式 (Procedural), C 
+	- 命令式, Matlab
+- 声明式 (Declarative Programming)
+	- 函数式, Hashkell 
+	- 逻辑式, Prolog
+- 面向对象, Java 
+
+![|800](../../attach/Pasted%20image%2020250507215501.avif)
+
 ### 面向对象
 
-(Object-Oriented Programming)
+> -- Design Patterns
+> 
+> Program to an 'Interface', not an 'Implementation'
+> 
+> Favor 'Object Composition' over "Class Inheritance"
 
-- Java
-- Python
-
-### 命令式
-
-(Impreative Programming)
-
-- C, Pascal: 过程式 (Procedural)
-- Bash, MMA, Fortran: 命令式
-- JS, Go: 并发式 (Concurrent)
-
-### 声明式
-
-(Declarative Programming)
-
-- Html, SQL: 声明式
-- Hashkell: 函数式
-- Prolog: 逻辑式
+原型编程: 不要求子对象有相似的内存结构, 方法和数据皆可以修改 (slots)
 
 ## Reference
 
-https://en.wikipedia.org/wiki/Software_design_pattern
+https://en.wikipedia.org/wiki/Software_design_pattern 
+
+编程范式游记. 左耳朵耗子. 

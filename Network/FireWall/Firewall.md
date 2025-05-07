@@ -16,7 +16,7 @@
 	- *应用层网关 (Application-Level Gateway)*. 也是代理, 但工作在 OSI 应用层, 因此可以过滤整个应用层的数据载荷. 针对每个服务运行独立的代理, 并逐个检查过滤.
 	- *深度包检测防火墙 (Deep Packet Insepction, DPI)*, 分析数据包载荷.
 	- *应用防火墙 (Web Application Firewall, WAF)*, 用于分析数据包内的 [SQL 注入, XSS 攻击等 WEB 安全威胁](Security/安全攻击.md#1.3%20注入攻击).
-2. 混合型防火墙 (Hybrid Firewall): 综合前三种防火墙功能, 并且包括一些入侵检测防御 ([IDS/IPS](Network/防火墙/IDPS.md)) 和应用控制 (恶意软件, 病毒木马, 垃圾邮件, DDoS) 功能.
+2. 混合型防火墙 (Hybrid Firewall): 综合前三种防火墙功能, 并且包括一些入侵检测防御 ([IDS/IPS](IDPS.md)) 和应用控制 (恶意软件, 病毒木马, 垃圾邮件, DDoS) 功能.
 	- *下一代防火墙 (Next-Generation Firewall, NGFW)*
 	- *统一威胁管理 (Unified Threat Management, UTM)*, 类似大杂烩.
 

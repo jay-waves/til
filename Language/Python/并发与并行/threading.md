@@ -33,7 +33,7 @@ varA2 = varA + 1               # from A
 setattr(counter, 'cnt', varA2) # from A
 ```
 
-借助[上下文管理](../语法/contextlib.md), 使用锁的方式很简单:
+借助[上下文管理](../开发工具/contextlib.md), 使用锁的方式很简单:
 
 ```python
 class Counter:

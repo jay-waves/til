@@ -21,3 +21,7 @@
 - 依赖管理, 版本管理, 包配置文件
 - 虚拟环境
 
+
+> -- Jeff Atwood 
+> 
+> Code Tells You How, Comments Tell You Why.

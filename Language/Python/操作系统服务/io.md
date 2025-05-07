@@ -59,7 +59,7 @@ f = open("me.jpg", "rb")
 f = io.BytesIO(b"initial binary data: \x00\x01")
 ```
 
-`IOBase` 实际是一个[上下文管理器](../语法/contextlib.md):
+`IOBase` 实际是一个[上下文管理器](../开发工具/contextlib.md):
 
 ```python
 with open(...) as f:

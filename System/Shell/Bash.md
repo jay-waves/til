@@ -1,5 +1,7 @@
 > It has always been the spirit of Unix to have separate programs 
 > that do their job well, and work together to perform a bigger task.
+> 
+> "Do one thing and do ti well"  -- philosophy of Unix
 
 ## 获取帮助
 
