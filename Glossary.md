@@ -532,7 +532,7 @@ One-Time Password, 用于单次登录的临时密码. TOTP (Time-based OTP) 基�
 
 ### OAuth
 
-[OAuth](Network/Backend/用户认证/OAuth.md), 一种开放标准授权协议, 允许用户授权第三方访问其资源而无需暴露凭据. 
+[OAuth](Network/Web%20Backend/用户认证/OAuth.md), 一种开放标准授权协议, 允许用户授权第三方访问其资源而无需暴露凭据. 
 
 ---
 
@@ -690,7 +690,7 @@ Remote Code Execution, 远程代码执行漏洞, 允许攻击者在目标系统�
 
 ### SAML
 
-[SAML](Network/Backend/用户认证/SAML.md), Security Assertion Markup Language, 用于单点登录 (SSO) 和身份联合的标准. 
+[SAML](Network/Web%20Backend/用户认证/SAML.md), Security Assertion Markup Language, 用于单点登录 (SSO) 和身份联合的标准. 
 
 ### SQL
 

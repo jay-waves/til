@@ -3,9 +3,9 @@
 | ---------------- | ---------------------------------- | ---------------------------------- | -------------------------------------------------------- |
 | 启动程序         | python -m pdb script.py            | gdb ./executable                   | lldb ./executable                                        |
 | 继续执行         | c (continue)                       | c (continue)                       | c (continue)                                             |
-| 单步执行         | n (next)                           | n (next)                           | n (next) / thread step-over                              |
-| 进入函数         | s (step)                           | s (step)                           | s (step in) / thread step-in                             |
-| 执行直到返回     | r (return)                         | finish                             | finish / thread step-out                                 |
+| 单步跳过         | n (next)                           | n (next)                           | n (next) / thread step-over                              |
+| 单步进入         | s (step)                           | s (step)                           | s (step in) / thread step-in                             |
+| 单步跳出     | r (return)                         | finish                             | finish / thread step-out                                 |
 | 打印变量值       | p [变量名]                         | print [变量名]                     | p / frame variable [变量名]                              |
 | 列出源代码       | l                                  | list                               | l / list                                                 |
 | 查看执行位置     | l (list)                           | info line                          | frame info                                               |

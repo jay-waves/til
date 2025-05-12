@@ -1,6 +1,6 @@
 ## Cookie
 
-[HTTP](../../Application%20Layer/HTTP.md) 是无状态协议, 使用 Cookie 记录用户会话登录状态, 以及其他信息 (用户喜好, 追踪分析行为). 用户登录后, 由服务端下发响应 Cookie, 内含 Session ID, 用来记录用户登录状态. 用户存储 Cookie, 再次请求时, 将其中信息一并上传.
+[HTTP](../../../Application%20Layer/HTTP.md) 是无状态协议, 使用 Cookie 记录用户会话登录状态, 以及其他信息 (用户喜好, 追踪分析行为). 用户登录后, 由服务端下发响应 Cookie, 内含 Session ID, 用来记录用户登录状态. 用户存储 Cookie, 再次请求时, 将其中信息一并上传.
 
 Session 是服务器端的数据, 也用于存储用户数据. 当用户通过 Cookie 上传 Session ID, 服务器用此 ID 在数据库寻找对应 Session, 从而获取到该用户的数据. 
 
