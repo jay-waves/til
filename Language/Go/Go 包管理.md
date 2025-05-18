@@ -7,6 +7,10 @@ $GOPATH
 $GOPROXY
 ```
 
+`GOPATH` 存储了用户的 Go 信息:
+- 第三方库和
+- 执行文件安装地址, `$GOPATH/bin`.
+
 ## 项目组织
 
 使用包:

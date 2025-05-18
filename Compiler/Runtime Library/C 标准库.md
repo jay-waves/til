@@ -4,18 +4,82 @@ C 语言诞生于 AT&T 的贝尔实验室, 但功能不完善. 1983 年美国国
 成立 C 语言标准委员会, 于 1989 年建立第一个完整的 C 语言标准, 称为 ANSI C89, 
 其中包括了标准函数库[^7].
 
+C/C++ 语言标准运行库 (CRT) 主要包含以下功能:
+- 启动和退出: 入口函数和退出函数.
+- 标准函数: 由 C 语言标准规定的函数实现.
+- 扩展函数, 如编译器的内置函数.
+- 系统调用接口.
+- 线程和并发支持.
+- I/O: IO 功能的封装和实现
+- 堆: 堆的封装和实现
+- 调试
+
+编译器实现的运行时库, 一般是 语言标准 的超集, 提供了各种扩展和平台相关支持.
+
 | 操作系统                       | 编译环境   | C 标准实现                 | C++ 标准实现 | 解释                                                                      |
 | ------------------------------ | ---------- | -------------------------- | ------------ | ------------------------------------------------------------------------- |
-| GNU/Linux                      | GCC        | glibc                      | libstdc++    |                                                                           |
+| GNU/Linux                      | GCC        | glibc                      | libstdc++    | Linux libc 目前使用 glibc2.x                                                                        |
 | GNU/Linux                      | Clang/LLVM | <nobr>llvm-libc[^2]</nobr> | libc++       | 较旧版本的 LLVM 仍使用 glibc, 而 libc++ 是 LLVM 独立实现的现代 C++ 标准库 |
 | Alpine Linux                   |            | musl libc                  |              | Alpine 发行版使用 musl libc                                               |
 | BSD (FreeBSD, NetBSD, OpenBSD) |            | BSD libc                   |              |                                                                           |
 | macOS, iOS                     | Clang/LLVM | apple libc                 | libc++       | macOS 前身基于 BSD, 因而 Apple libc 基于 BSD libc                         |
 | Windows                        | Clang/LLVM | MSCVrt [^3]                | MSVC++       | 一套标准实现就支持*多平台*是 LLVM 的设计目标                              |
-| Windows                        | GCC/MinGW  | MSVCrt                     | MSVC++       | 借助 MinGW 模拟 GNU[^1]                                                   |
+| Windows                        | GCC/MinGW  | MSVCrt                     | MSVC++       | 借助 MinGW 模拟 GNU[^1]                                                 |
 | Windows                        | MSVC[^6]   | MSVCrt                     | MSVC++       | Microsoft Visual C, 原生库和集成环境                                      |
 | Embedded System, Bare Metal    |            | newlib                     |              |                                                                           |
 | Embeeded System, Linux         |            | eglibc                           |              |                                                                           |
+
+### MSVC CRT 
+
+以 Visual C++ 2005 为例, 标准库实现如下. 
+
+| 文件名      | DLL              | 属性                   | 编译选项 | 预编译宏            |
+| ----------- | ---------------- | ---------------------- | -------- | ------------------- |
+| libcmt.lib  |                  | 多线程[^9], 静态链接       | /MT      | `_MT`               |
+| msvcrt.lib  | msvcrt80.dll[^8] | 多线程, 动态链接       | /MD      | `_MT, _DLL`         |
+| libcmtd.lib |                  | 多线程, 静态链接, 调试 | /MTd     | `_DEBUG,_MT`        |
+| msvcrtd.lib | msvcr90.dll      | 多线程, 动态链接, 调试 | /MDd     | `_DEBUG, _MT, _DLL` |
+
+MSVC 也提供的 C++ 标准库, 称为 C++ CRT. 这里的 C++ 运行时只能支持 C++98, 无法支持 C++11 以后的高级功能.
+
+| 文件名       | DLL          | 属性                   | 编译选项 | 预编译宏     |
+| ------------ | ------------ | ---------------------- | -------- | ---------- |
+| libcpmt.lib  |              | C++, 多线程, 静态链接       | /MT      | `_MT`        |
+| msvcprt.lib  | msvcp90.dll  | C++, 多线程, 动态链接       | /MD      | `_MT, _DLL`  |
+| libcpmtd.lib |              | C++, 多线程, 静态链接, 调试 | /MTd     | `_DEBUG, _MT` |
+| msvcprtd.lib | msvcp90d.dll | C++, 多线程, 动态链接, 调试 | /MDd     | `_DEBUG, _MT, _DLL`           |
+
+在 Windows10 较新版本中, 引入了新的标准库 UCRT (Universe C Runtime) 和 C++ 运行时库. C++ 运行时库包括了异常处理 / RAII / 内存分配等语言内置功能, 而 C++ STL 则是标准库头文件的实现. C++ STL 依赖于 C++ 运行时, C++ 运行时依赖于 C 运行时, 但动态链接时它们都是并行导入的.
+
+| 文件                         | 线程属性 | 链接属性 | 外部依赖                                           |
+| ---------------------------- | -------- | -------- | -------------------------------------------------- |
+| `libucrt.lib`                | 多线程   | 静态     |                                                    |
+| `ucrt.lib`                   | 多线程   | 动态     | `ucrtbase.dll`                                     |
+| `vcruntime.lib` (C++ 运行时) | 多线程   | 动态     | `ucrtbase.dll`, `vcruntime140.dll`                 |
+| `msvcp.lib` (C++ STL)        | 多线程   | 动态     | `msvcp140_x.dll`, `vcruntime140_x.dll`, `ucrtbase.dll`                                                   |
+| `libcpp.lib` (C++ STL)       | 多线程   | 静态     | `libvcruntime.lib` (C++ 静态运行时), `libucrt.lib` |
+
+Windows 的运行库版本和属性不一致时, 会出现莫名其妙的链接问题. 解决办法是尽量使用同一版本的 CRT, 并在发布时将对应版本的 CRT DLL 同程序一起分发给用户.
+
+### 多线程支持
+
+C 标准以及 C++ 标准的较久版本 (C98, C++03, C++98) 都不提供多线程功能. 多线程/网络/图形等基础库的接口, 都是系统提供的, 即平台相关的. C/C++ 运行时, 虽然不提供多线程函数接口, 但要保证程序在多线程环境下可以正常运行.
+
+早期的 C/C++ 运行时在多线程下并不安全, 换言之, 这些函数是不能重入的.
+- 错误代码都放在全局的 `errno` 全局变量里.
+- `malloc/new, free/delete`, 不是线程安全的, 分配的内存可能混叠.
+- 异常处理: 早期 C++ 抛出的异常, 在不同线程中抛出的异常可能彼此冲突.
+- `printf` 不是线程安全的, 多个线程同时输出时, 信息会混杂在同一控制台.
+
+在线程安全的 C/C++ 版本中, 不可重入的的函数会在函数起始和结束时加锁, 全局状态变量则放在 TLS (线程局部存储, Thread Local Storage) 中. 要将一个全局变量定义为 TLS 变量, 需要用编译器提供的宏, 此后每个线程都会有该全局变量的独立副本.
+
+```c
+__thread int number; // GCC 
+
+__declspec(thread) int number; // MSVC 2008+
+```
+
+操作系统提供的线程库是比较陈旧的, 为了跨平台和封装更高层的语义, 推荐使用新版本 C/C++, 或者流行的开源库 (libuv, asio 这类).
 
 ## 系统调用
 
@@ -87,6 +151,7 @@ Windows API:
 
 https://users.cs.cf.ac.uk/Dave.Marshall/C/. Dave Marshall. 1999-03.
 
+https://learn.microsoft.com/en-us/cpp/c-runtime-library/crt-library-features?view=msvc-170
 
 [^4]: SUS 和 XPG 都是针对**正式 UNIX** 系统的, 而不是类 Unix 系统. 
 
@@ -102,4 +167,6 @@ https://users.cs.cf.ac.uk/Dave.Marshall/C/. Dave Marshall. 1999-03.
 
 [^7]: 具体函数库内容详见 [C/StandardLib/ReadMe](../../Language/C/标准库/ReadMe.md) 语言标准库, libc++ 指 C++ 标准库. 语言委员会提供一套标准库函数标准, 但不规定底层究竟如何实现 (比如在 linux 和 windows 上, `printf()` 可能会调用不同的系统调用来达成功能), 所以不同编译器和操作系统都会有独立的实现.
 
-https://learn.microsoft.com/en-us/cpp/c-runtime-library/crt-library-features?view=msvc-170
+[^8]: 运行库的命名办法: `libcpmtd.lib`, `p` 指 C++, `mt` 指 Multi-Thread 支持多线程, `d` 支持调试. 动态链接库命名前缀为 `msvc`, 还会加上版本号, 如 Visual C++ 2005 内部版本号为 8.0, 其多线程动态链接版的 DLL 命名为 `msvcrt80.dll`.
+
+[^9]: 自 MSVC8.0 (Visual C++ 2005) 之后, MSVC 不再提供静态链接单线程版的运行库. 微软认为改进后的多线程运行库, 在单线程模式下运行速度已经接近单线程版本. 此后默认版本为 libcmt.lib

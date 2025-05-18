@@ -63,3 +63,34 @@ latex多个连续空格会被视为一个, 如下命令可输入多空格:
 - latex 加 `\\`. 否则默认编译后不换行.
 
 换段: 一个空行, 或 `\par`
+
+### Latex 如何设置中文字体
+
+```latex 
+\usepackage{ctex}
+
+\setCJKmainfont{SimSun} % 宋体, 一般系统自带
+\setmainfont{Times New Roman} % 英文用 Times New Romain
+
+```
+
+## 伪代码
+
+```latex
+\usepackage[ruled,linesnumbered]{algorithm2e} %% ruled 标题在上方, boxed 在盒子里
+
+\begin{algorithm}
+\;                       %% 行末分号并换行
+\caption{}               %% 标题
+\KwData{xxx}             %% Data: xxx
+\KwIn{xxx}               %% In: xxx
+\KwOut{xxx}              %% Out: xxxx
+\KwResult{xxxx}          %% Result: xxxx
+\For {cond}{xxx}         %% for <cond> do <xxx> endo
+\If {cond}{xxx}          %% if <cond> then <xxx> end
+\While {cond} {xxx}      %% while <cond> then <xxx> end 
+\tcc{comments}           %% /*commnets*/
+\tcp{comments}           %% // comments
+\eIf {cond} {xxx} {yyy}  %% if <cond> then <xxx> else <xxx> end
+\end{algorithm}
+```
