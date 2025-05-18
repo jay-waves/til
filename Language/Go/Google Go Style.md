@@ -2,7 +2,7 @@
 > 
 > [Overview](https://google.github.io/styleguide/go/index) | [Guide](https://google.github.io/styleguide/go/guide) | [Decisions](https://google.github.io/styleguide/go/decisions) | [Best practices](https://google.github.io/styleguide/go/best-practices)
 
-## Style principles[](https://google.github.io/styleguide/go/guide#style-principles)
+## Style principles
 
 There are a few overarching principles that summarize how to think about writing readable Go code. The following are attributes of readable code, in order of importance:
 
