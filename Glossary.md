@@ -104,6 +104,10 @@ common object file format, ELF 格式前身. 见 [Unix-ELF](Compiler/Linking/Uni
 
 component object model, 组件对象模型.
 
+### COW
+
+Copy-on-Write, 写时复制.
+
 ### Complilation
 
 编译. 见 [编译过程](Compiler/编译过程.md)
@@ -216,6 +220,10 @@ Diffie-Hellman 密钥交换, 两实体在非安全信道交换秘密的算法, �
 ### DAG
 
 Directed Acyclic Graph, 有向无环图数据结构.
+
+### DWARF 
+
+Debug With Arbitrary Record Format. 通用调试记录格式. 详见 [调试信息](Compiler/Linking/调试信息.md)
 
 ---
 
@@ -532,7 +540,7 @@ One-Time Password, 用于单次登录的临时密码. TOTP (Time-based OTP) 基�
 
 ### OAuth
 
-[OAuth](Network/Web%20Backend/用户认证/OAuth.md), 一种开放标准授权协议, 允许用户授权第三方访问其资源而无需暴露凭据. 
+[OAuth](Network/Application%20Layer/Auth/OAuth.md), 一种开放标准授权协议, 允许用户授权第三方访问其资源而无需暴露凭据. 
 
 ---
 
@@ -690,7 +698,7 @@ Remote Code Execution, 远程代码执行漏洞, 允许攻击者在目标系统�
 
 ### SAML
 
-[SAML](Network/Web%20Backend/用户认证/SAML.md), Security Assertion Markup Language, 用于单点登录 (SSO) 和身份联合的标准. 
+[SAML](Network/Application%20Layer/Auth/SAML.md), Security Assertion Markup Language, 用于单点登录 (SSO) 和身份联合的标准. 
 
 ### SQL
 

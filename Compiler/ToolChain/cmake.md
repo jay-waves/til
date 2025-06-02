@@ -117,6 +117,8 @@ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g -o3")
 ## CMake 预定义变量
 
 - `CMAKE_SOURCE_DIR` 顶级源码目录, 指向顶层 CMakeLists.txt
+- `CMAKE_CURRENT_SOURCE_DIR` 当前处理的 CMakeLists.txt 所在目录.
+- `CMAKE_CURRENT_BINARY_DIR` 当前构建的输出目录.
 - `PROJECT_SOURCE_DIR` 子项目的源码目录
 - `CMAKE_BINARY_DIR` 顶级构建目录, 即运行 CMake 配置命令的目录.
 - `PROJECT_BINARY_DIR` 
