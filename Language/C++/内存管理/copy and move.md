@@ -147,6 +147,29 @@ constexpr std::remove_reference_t<T> &&move(T &&ref) noexcept {
 ```
 
 
+对比:
+
+```cpp
+MyObj pass() {
+	MyObj obj;
+	return obj; // RVO 
+}
+
+MyObj pass() {
+	return MyObj(); // RVO
+}
+
+MyObj pass() {
+	MyObj obj;
+	return move(obj); // not RVO, only moving
+}
+
+MyObj pass(obj) {
+	return obj; // not RVO
+}
+```
+
+
 ## 参考
 
 https://www.zhihu.com/question/428340896/answer/2913419725

@@ -45,8 +45,11 @@ const int kDaysInAWeek = 7;
 
 ### Function Name
 
+lower camel case:
+
 ```cpp
 deleteUrl();
+startRpc(); 
 addTableEntry();
 ```
 

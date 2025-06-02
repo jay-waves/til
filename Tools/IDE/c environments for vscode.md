@@ -248,7 +248,7 @@ Clangd 不内置 clang-format, 但是有格式化功能??. clang-format 使用 `
 "clang-format.fallbackStyle": "Google",
 ```
 
-[^1]: 参见 [C ReadMe](../../Compiler/Runtime%20Library/C%20标准库.md), UCRT 为微软 MSVCrt 标准库的升级版. 在 Windows 平台上, 默认的 C 标准为 UCRT, C++ 标准为 MSVC++. 皆在 Visual Studio 套件中.
+[^1]: 参见 [C ReadMe](../../Compiler/Runtime/C%20标准库.md), UCRT 为微软 MSVCrt 标准库的升级版. 在 Windows 平台上, 默认的 C 标准为 UCRT, C++ 标准为 MSVC++. 皆在 Visual Studio 套件中.
 
 [^2]: https://code.visualstudio.com/docs/cpp/config-msvc
 
