@@ -32,7 +32,7 @@ n.value = 18;
 // s is dropped and invalid
 ```
 
-### 1.4, Borrowing
+#### Borrowing
 
 C++ 的引用 `T&` 在初始化时静态检查是否绑定了一个有效对象, 但不保证后续的有效性, 可能悬垂. 
 
@@ -51,7 +51,7 @@ fn main() {
 
 一个变量在同一时间, **只能存在一个可变引用, 或者存在多个只读引用**. 编译期可以避免*数据竞争*.
 
-### 1.5, Lifetimes Annotation 
+#### Lifetimes Annotation 
 
 **生命周期标注的作用是保证引用的安全性**. Rust 用泛型来实现生命周期标注, 短生命周期是长生命周期的基类. 编译器可以进行部分生命周期推导, 但是整个程序的运行时时序 (调用链和变量生命传递) 是一个停机问题, 编译器没办法控制复杂度.
 
@@ -92,7 +92,7 @@ let s: &'static str = "hello world"; // 字符串字面量
 static NAME: &str = "global"; // Rust 中全局变量要不是 static, 要不就是 unsafe 
 ```
 
-### 1.6, Copy & Move
+### 1.4, Copy & Move
 
 处理堆数据时 (函数传参, 赋值等), 默认资源移动, 而不是值拷贝 (Move); 处理栈数据时, 会进行值拷贝 (Copy). 
 
@@ -131,7 +131,7 @@ struct Number {
 }
 ```
 
-### 1.6, Owned or Reference 
+### 1.5, Owned or Reference 
 
 | type        | owned     | reference |
 | ----------- | --------- | --------- |
