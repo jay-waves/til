@@ -15,10 +15,6 @@ ARM 支持三种处理器模式:
 - 系统模式, System Mode
 - 中断模式, Interrupt Mode
 
-
-> https://chan-shaw.github.io/2020/03/20/arm%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/
-> https://github.com/JnuSimba/AndroidSecNotes/blob/master/Android%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/ARM%20%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4%E7%AE%80%E4%BB%8B.md
-
 ## 版本
 
 - ARMv7, 2009. 32b, ARMv7-A 架构, 支持 Thumb-2 指令集, 以及 NEON SIMD / VFPv3 浮点单元
@@ -130,3 +126,7 @@ ARM **调用约定**中规定:
 - `R13 (SP)` 存储栈顶
 - `R14 (LR)` 存储函数的返回值
 - `R15 (PC)` 当前指令地址 (自动增加)
+
+
+> https://chan-shaw.github.io/2020/03/20/arm%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/
+> https://github.com/JnuSimba/AndroidSecNotes/blob/master/Android%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/ARM%20%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4%E7%AE%80%E4%BB%8B.md
