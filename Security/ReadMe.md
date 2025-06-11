@@ -106,8 +106,8 @@
 [X.800, 1991] 定义了五类安全服务 (security services) 安全服务:
 1. *数据保密性, Data Confidentiality.*
 	- Data confidentiality, 数据内容保密性.
-		- Connection confidentiality. 有连接通信 ([TCP](../Network/Transport%20Layer/TCP.md)), 对整个会话状态和数据分组进行加密. 如 [SSL/TLS](../Network/VPN/SSL.md) 技术.
-		- Connectionless confidentiality. 无连接通信 ([UDP](../Network/Transport%20Layer/UDP.md)), 对单个数据包独立加密. 如 [IPSec ESP](../Network/VPN/IPSec.md) 技术.
+		- Connection confidentiality. 有连接通信 ([TCP](../Network/TransportL3/TCP.md)), 对整个会话状态和数据分组进行加密. 如 [SSL/TLS](../Network/VPN/SSL.md) 技术.
+		- Connectionless confidentiality. 无连接通信 ([UDP](../Network/TransportL3/UDP.md)), 对单个数据包独立加密. 如 [IPSec ESP](../Network/VPN/IPSec.md) 技术.
 		- Selective field confidentiality. 只在必要字段
 	- Traffic flow confidentiality, TFC, 流量保密性.
 2. *数据完整性, Data Integrity.*

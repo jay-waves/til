@@ -38,7 +38,7 @@ AES-[Galois Counter Mode](Security/密码学/分组密码/链接模式.md), 一�
 
 ### ARP
 
-[Address Resolution Protocol, 地址解析协议](Network/Network%20Layer/ARP.md), 用于将 IP 地址解析为物理地址 (MAC).  
+[Address Resolution Protocol, 地址解析协议](Network/NetworkL2/ARP.md), 用于将 IP 地址解析为物理地址 (MAC).  
 
 ### ASLR
 
@@ -540,7 +540,7 @@ One-Time Password, 用于单次登录的临时密码. TOTP (Time-based OTP) 基�
 
 ### OAuth
 
-[OAuth](Network/Application%20Layer/Auth/OAuth.md), 一种开放标准授权协议, 允许用户授权第三方访问其资源而无需暴露凭据. 
+[OAuth](Network/ApplicationL4/Auth/OAuth.md), 一种开放标准授权协议, 允许用户授权第三方访问其资源而无需暴露凭据. 
 
 ---
 
@@ -616,7 +616,7 @@ Portable Operating System Interface. [IEEE P1003.1] 定义了一系列操作系�
 
 ### PGP
 
-[PGP](Network/Application%20Layer/PGP.md), Pretty Good Privacy, 用于加密和签名的公钥加密程序. 
+[PGP](Network/ApplicationL4/PGP.md), Pretty Good Privacy, 用于加密和签名的公钥加密程序. 
 
 ---
 
@@ -678,7 +678,7 @@ Robot Operating System, 开源机器人操作系统.
 
 ### Reflection
 
-反射, 在**运行时**操作和配置对象及其属性, 在编写代码时这些类和方法可能不是已知的, 常用于实现框架和库. 如 Python 的 [元编程](Language/Python/面向对象/元编程.md).
+反射, 在**运行时**操作和配置对象及其属性, 在编写代码时这些类和方法可能不是已知的, 常用于实现框架和库. 如 Python 的 [元编程](Coding/Python/面向对象/元编程.md).
 
 ### RTT
 
@@ -698,7 +698,7 @@ Remote Code Execution, 远程代码执行漏洞, 允许攻击者在目标系统�
 
 ### SAML
 
-[SAML](Network/Application%20Layer/Auth/SAML.md), Security Assertion Markup Language, 用于单点登录 (SSO) 和身份联合的标准. 
+[SAML](Network/ApplicationL4/Auth/SAML.md), Security Assertion Markup Language, 用于单点登录 (SSO) 和身份联合的标准. 
 
 ### SQL
 
@@ -782,7 +782,7 @@ Secure Hash Algorithm, 密码学哈希函数 (消息摘要函数, 杂凑函数, 
 
 ### TagDispatch
 
-一种函数反射方法, 见 [运行时函数多态](Language/C++/类型系统/运行时函数多态.md#函数体).
+一种函数反射方法, 见 [运行时函数多态](Coding/C++/数据类型/运行时函数多态.md#函数体).
 
 ### Time-Sharing System
 
@@ -808,7 +808,7 @@ Time-based One-Time Password, 基于时间的动态密码, 通常用于双因素
 
 ### TCP
 
-计算机网络传输层的[传输控制协议 (TCP)](Network/Transport%20Layer/TCP.md), 提供可靠点对点连接.
+计算机网络传输层的[传输控制协议 (TCP)](Network/TransportL3/TCP.md), 提供可靠点对点连接.
 
 ## TPM
 

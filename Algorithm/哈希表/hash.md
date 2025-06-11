@@ -102,4 +102,5 @@ hash_table[index] = new_entry;
 
 1. 线性探测 (linear probe): `i, i+1, i+2, ...`
 3. 平方探测 (quadratic probe): `i, i+1, i+4, i+9, ...` 
-4. 链式哈希 (linked hashing): `hash(k), hash(hash(k)), ...`
+4. 链式哈希 (chaining): `hash(k), hash(hash(k)), ...`
+5. Robin Hood 

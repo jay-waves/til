@@ -3,7 +3,9 @@ ARM 指令集执行效率高, 即每条指令占用的 CPU 周期较少, 但代�
 
 ARM 指令集合可以分为三类: ARM, Thumb, ARM64. 
 - ARM 为 32 位
-- Thumb 为 16 或 32 位. 
+- Thumb 为 16 或 32 位. 用于嵌入式, 更紧凑.
+- Jazelle 为 32 位. 用于加速执行 Java bytecode 
+- A64 指令集为 64 位, 和 Arm32 区别较大, 又被称为 [AArch64](AArch64.md).
 
 ARM 指令格式:
 ```asm

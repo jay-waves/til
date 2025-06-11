@@ -18,57 +18,32 @@ Redis 的很多类型虽然类似 Python, 但是并不支持复杂的多层嵌�
 - Bitmap: 可在字符串上使用比特操作
 - Bitfields: 以字节序列组织的多个计数器
 
-### Redis Cli 
+### IntSet 
 
-connect to redis server :
-```bash
-redis-cli -h 127.0.0.1 -p 6379
-
-redis-cli flushdb
-
-redis-cli Keys '*'
-
-# 获取所有键值
-redis-cli KEYS '*' | xargs -n 1 redis-cli GET
-
-redis-cli Info keyspace
+```cpp
+typedef struct intset {
+	int32_t encoding; // 16, 32, 64
+	int32_t length;  
+	int<T>  contents;
+};
 ```
 
-### Others
+### String 
 
-`Watch` 监控 mykey 状态, 如果 `Wacth` 期间键被修改, 后续 `EXEC` 会直接退出.
+Redis 字符串称为 SDS (Simple Dynamic String), 内部维护了一个内存池 (块大小为 1MB).
 
-```bash
-# 使用 watch 实现 ZPop
-WATCH zset
-element = ZRANGE zset 0 0
-MULTI
-ZREM zset element
-EXEC
+```cpp
+struct sdshdr {
+	int len;  // 已占用空间
+	int free; 
+	char buf[];
+}
 ```
 
-Redis `Pub/Sub` 实现了一种发布/订阅通信机制. 该机制和 Redis 存储机制是完全隔离的.
+### ZipList 
 
-```bash
-> Subscribe channel1 channel2
-> Publish channel1 "hello, boy!"
-```
 
-## config
 
-`sudo vim /etc/redis/redis.conf`
+### quicklist 
 
-开启 json 模块:
-
-1. 先编译模块:
-```bash
-git clone --recursive https://github.com/RedisJSON/RedisJSON.git
-cd RedisJSON
-./sbin/setup
-make build
-```
-
-2. 配置模块:
-```conf
-loadmodule /usr/lib/redis/modules/rejson.so
-```
+元素较少时, 使用 `ziplist`; 元素较多时, 使用 `linkedlist`
