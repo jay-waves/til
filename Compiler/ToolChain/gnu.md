@@ -27,9 +27,14 @@ gcc 是驱动 ld, as, cc 等编译链工具的前端.
 
 ## 其他 GNU 工具
 
+- `flex` : 词法分析器
+- `bison` : 语法分析器
+- `m4, cpp` 预处理器
 - `lld`: list dynamic dependencies, 检测可执行程序依赖哪些库.
 - `as` 汇编器, 一般由 gcc 控制.
 - `ld` 链接器, 一般由 gcc 控制.
+- `ar` 创建和管理静态库
+- `nm` 查看符号
 
 `objump` [可执行文件](../Linking/Unix-ELF.md)查看器:
 - `-a` 列出所有包含的目标文件

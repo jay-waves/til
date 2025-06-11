@@ -56,3 +56,4 @@
 
 *Operating System Concept*. Abraham Silberschatz.
 
+The Kernel in the mind 

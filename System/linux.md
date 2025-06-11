@@ -16,6 +16,80 @@ Linux 内核组成: (五个子系统)
 - NET 网络接口
 - IPC 进程间通信.
 
+## Kernel 
+
+Kernel 工作在三个情景下:
+- system calls from user processes 
+- interrupt handlers triggered by hardware 
+- long-lived kernel threads (wakeup)
+
+- 第一个内核线程是 `init` (`systemd`), `pid = 1`, 启动 Userland
+- 第二个内核线程是: `kthreadd`, `pid = 2`, 创建所有其他内核线程. 
+- 其他内核线程:
+	- 每个 CPU 核有独立的: IRQs, watchdog, migration helper, worker queue 
+	- 视需求有: I/O, memory management, filesystem, device drivers. 
+
+> "Kernel is system's core, always resident, always privileged, and always in control".
+
+### System Calls Execution Flow 
+
+1. User Space Process 
+	- issue a syscall (`read(), write(), execve()`)
+	- use architectur-specific instruction (e.g. `syscall` on x64)
+	- switch from ring n to ring 0
+2. Syscall Entry (Architecture-Specific)
+	- enter via syscall handler (e.g. `entr_SYSCALL_64` on x64)
+	- save user registers, set up kernel stack 
+	- check syscall number and dispatch to syscall table 
+3. Syscall Dispatch Table 
+	- Indexed by syscall number 
+	- points to implementation function in kernel (e.g. `sys_read(), sys_execve(), sys_open()`)
+4. Device / File Backend 
+	- Filesystem (e.g. `ext4`)
+	- Device driver (e.g. `block, pipe, char`)
+	- Socket/NIC (e.g. `net`)
+5. Return To Userspace (Exit Path)
+	- copy result to userspace buffer 
+	- restore registers
+	- switch from ring 0 to ring n
+
+### Internal Kernel Thread & System Maintenance 
+
+1. Kernel Thread Creation (Boot, or Runtime)
+	- `kthread_create()`
+	- associated with a `stack_struct`
+2. Kernel Thread Main Event Loop 
+
+### Hardware Interrupt Handling 
+
+1. Hardware Device (NIC, Disk)
+	- Device completes an operation (I/O done, packet received )
+	- Raised an interrupt line (IRQ)
+	- Interrupt Controller (APIC/IOAPIC) signals the CPU 
+2. CPU Interrupt Handler (Low-Level) 
+	- CPU is interrupted (preemption of running_task)
+	- Enters arch-level IRQ entry (some vector table)
+	- Disables local IRQs, saves context, acknowledges interrupt 
+	- Calls the registered high-level IRQ 
+3. TOP-HALF IRQ Handler 
+	- Minimal, non-blocking, fast-path logic 
+	- Reads device status / clears flags 
+	- Schedules deferred work via softirq, tasklet, or workqueue 
+4. Deferred Work: Bottom-Half
+	- Allow sleeping / locking / shceduling if needed 
+	- performs bulk work outside hard IRQ context
+5. Kernel Subssytems Handle Final Processing 
+6. Return to Previous Context 
+	- restore task that war interrupted 
+	- resume normal kernel or user-space execution 
+
+E.G. Network Stack (NIC):  
+packet received --> IRQ (Top-Half) --> SoftIRQ (Bottom-Half) --> NAPI Polling --> build `sk_buff`, deliver to socket buffer --> idle 
+
+E.G. Disk:  
+I/O done --> IRQ (Top-Half) --> Workqueue (Bottom-Half) --> Workqueue --> complete I/O req, update page cache --> idle 
+
+
 ## Linux 内核源码目录组织
 
 - `arch` 硬件架构
@@ -35,6 +109,7 @@ Linux 内核组成: (五个子系统)
 - `include` 内核 API 级头文件. 系统相关头文件放在 `include/linux`
 - `init` 内核初始化代码. 如 `init/main.c`
 - `ipc` 进程间通信代码
+- `irq` 中断服务
 - `kernel` 内核核心代码. 平台相关的则放在各个 `arch/*/kernel` 下
 	- system call 
 	- scheduler: `kernel/sched.c`
@@ -53,5 +128,4 @@ Linux 内核组成: (五个子系统)
 - `scripts` 用于配置内核的脚本
 - `sound` 音视频驱动
 - `usr`
-
 

@@ -45,14 +45,14 @@ Subjects:
 
 ## 数学工具
 
-- [Wolfram Mathematica](../Language/Wolfram.md)
+- [Wolfram Mathematica](../Coding/Wolfram.md)
 - Python: 
-	- [numpy](../Language/Python/数学/numpy.md)
+	- [numpy](../Coding/Python/数学/numpy.md)
 	- [sympy](../Language/Python/数学/sympy.md)
 	- seaborn/matplotlib
 	- scipy
 	- [pandas](../Language/Python/数学/pandas.md)
-	- [3b1b/manim](../Language/Python/数学/manim.md)
+	- [3b1b/manim](../Coding/Python/数学/manim.md)
 - [Latex/Mathjax](../Tools/Latex/数学公式.md)
 
 

@@ -5,6 +5,8 @@
 | ISA  | Thumb-2             | Thumb2                 |
 |      |                     | TrustZone, MVE (向量扩展)              |
 
+具体硬件型号见 [Cortex-M](../../HardWare/嵌入式/Cortex-M.md)
+
 ## 寄存器
 
 寄存器均为 32b, 建议使用小端序.
