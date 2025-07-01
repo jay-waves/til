@@ -28,7 +28,7 @@ libceres.so.2.0.0: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynam
 
 ## 目标文件内容
 
-以源码[^1]为例, 说明链接过程 ELF 文件内容的变化. 可参考 [Linux 内存空间分布](../../System/Memory/Linux%20内存空间分布.md) 查看.
+以源码[^1]为例, 说明链接过程 ELF 文件内容的变化. 可参考 [linux 内存空间分布](../../System/Memory/linux%20内存空间分布.md) 查看.
 
 
 ```c

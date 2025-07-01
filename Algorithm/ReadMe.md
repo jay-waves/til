@@ -1,6 +1,6 @@
 ## 指南
 
-使用 kernel 风格 [Kernel C Style](../Coding/C/Kernel%20C%20Style.md), 内容为组合优化.
+使用 kernel 风格 [Kernel C Style](../CodeGlyph/C/Kernel%20C%20Style.md), 内容为组合优化.
 
 大部分数据结构有三个核心接口:
 - `search()`, 最基础的遍历, 用于一窥核心结构.
@@ -25,7 +25,7 @@
 - sort, 排序
 - swap, 交换两元素在内存中的位置.
 
-[^1]: 详见 [ReadMe](../Coding/C++/数据类型/STL/ReadMe.md)d)
+[^1]: 详见 [ReadMe](../CodeGlyph/C++/数据类型/STL/ReadMe.md)d)
 
 ### 数据结构列表
 

@@ -21,3 +21,21 @@
 虽然 *字符设备* 和 *块设备* 的驱动设计有很大差异, 但对于而言, 都是使用虚拟文件系统 (VFS) 接口进行访问. (`open, close, read, write`). 
 
 ![|700](../../attach/Snipaste_2025-03-03_20-13-41.avif)
+
+## 外设分类
+
+linux/drivers/
+- char/ 字符设备
+	- char/dev/null, char/dev/zero 
+	- char/dev/ttyS* 串口 (legacy), 后迁移到专属的子系统
+- block/ 块设备
+	- block/dev/sdX 
+- net/ 网络设备 
+- spi/
+- i2c/
+- gpio/
+- pwm/ PWM 输出设备
+- iio/ 工业 IO 子系统, 如 ADC/DAC/LIDAR/IMU 
+- input 
+- gpu/ 
+- virtio/ 虚拟化 IO

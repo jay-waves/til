@@ -98,9 +98,9 @@ typedef void qemu_plugin_vcpu_udata_cb_t(unsigned int vcpu_index, void *userdata
 */
 void qemu_plugin_uninstall(qemu_plugin_id_t, qemu_plugin_simple_cb_t cb);
 
-void qemu_plugin_reset(qemu_plugin_id_t qemu_plugin_simplke_cb_t cb);
+void qemu_plugin_reset(qemu_plugin_id_t qemu_plugin_simple_cb_t cb);
 
-void qemu_plugin-register_atexit_cb(qemu_plugin_id_t id, qemu_plugin_udata_cb_t cb, void *userdata);
+void qemu_plugin_register_atexit_cb(qemu_plugin_id_t id, qemu_plugin_udata_cb_t cb, void *userdata);
 
 // vCPU state callback 
 void qemu_plugin_register_vcpu_init_cb(qemu_plugin_id_t, qemu_plugin_vcpu_simple_cb_t);
@@ -179,3 +179,5 @@ void qemu_plugin_register_vcpu_mem_cb(
 )
 
 ```
+
+寄存器读取能力见: https://patchew.org/QEMU/20230803112551.14803-1-m.tyutin@yadro.com/

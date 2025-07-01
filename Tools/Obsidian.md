@@ -42,7 +42,7 @@
 
 - Ninja Cursor, 光标闪烁. 模仿 Ninja (Vim in Rust) 的鼠标闪烁样式.
 - Cursor Location, 状态栏查看当前光标的位置 (行列), 搭配 Vim 使用的.
-- [Vim IM Select](Tools/Vim/FAQ/多语言输入.md) / Vimrc Support
+- [Vim IM Select](Vim/FAQ/多语言输入.md) / Vimrc Support
 - Vim IM Control
 - Word Splitting for Simplified Chinese in Edit Mode and Vim Mode
 
