@@ -7,7 +7,7 @@
 | Compiler      | 编译     | LLVM, 链接过程, 汇编                               |
 | Information   | 信息     | 数据库, 信息论, 通信     |
 | HardWare      | 硬件     | 计算机组成, 数字电路, 嵌入式                                                   |
-| Language      | 编程语言 | C, C++, Go, Python, Wolfram, 设计模式                        |
+| CodeGlyph          | 编程开发 | C, C++, Go, Python, Wolfram, 设计模式                        |
 | Network       | 网络     | 网络分层模型, 防火墙, 网络代理                     |
 | System        | 操作系统 | Linux, Windows, Shell                   |
 | Security      | 网络安全 | 网络安全, 软件安全, 密码学                   |
@@ -72,9 +72,9 @@
 
 #### Coding Style
 
-- 嵌入 C 代码使用 [Kernel 风格](Coding/C/Kernel%20C%20Style.md).
-- 嵌入 C++ 和 Go 代码使用 [Google 风格](Coding/C++/Google%20C++%20Style.md).
-- 嵌入 Python 使用 [PEP8 Style](Coding/Python/PEP8%20Style.md) 风格.
+- 嵌入 C 代码使用 [Kernel 风格](CodeGlyph/C/Kernel%20C%20Style.md).
+- 嵌入 C++ 和 Go 代码使用 [Google 风格](CodeGlyph/C++/Google%20C++%20Style.md).
+- 嵌入 Python 使用 [PEP8 Style](CodeGlyph/Python/PEP8%20Style.md) 风格.
 - 不要求控制行长度, 建议代码行长度不超过 100 字符, 全角占两字符.
 - `/src` 文件夹中, 默认使用原文件格式, 如 C 语言使用 `.c` 文件; 
 - `/src` 文件夹中, 需要记录笔记的, 使用类 Jupter 格式, 如 Python Notebook 使用 `.py.md` 文件, 其中 `.py` 仅起到标注语言类型作用.

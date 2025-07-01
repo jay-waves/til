@@ -33,7 +33,7 @@ SMTP (Simple Mail Transfer Protocol, RFC5321) 专用于发送邮件.
 
 ### MIME
 
-SMTP 仅可以传输 7 位 ASCII 码表示的英文文本, 并且有长度限制. MIME (通用因特网邮件扩充协议) 对 SMTP 协议进行了扩展. 具体而言, MIME 将非 ACSII 码数据 (如其他语言, 音视频, 图片等) 通过 [Base64 编码](../../System/Programming/字符编码/Base%20编码.md)转换为 ASCII 码数据, 然后调用 SMTP 协议进行传输.
+SMTP 仅可以传输 7 位 ASCII 码表示的英文文本, 并且有长度限制. MIME (通用因特网邮件扩充协议) 对 SMTP 协议进行了扩展. 具体而言, MIME 将非 ACSII 码数据 (如其他语言, 音视频, 图片等) 通过 [Base64 编码](../../System/Development/字符编码/Base%20编码.md)转换为 ASCII 码数据, 然后调用 SMTP 协议进行传输.
 
 ## POP3 & IMAP
 

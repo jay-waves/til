@@ -1,5 +1,5 @@
 
-[Linux 组成](Linux.md):
+[Linux 组成](linux.md):
 1. 内核
 2. Shell
 3. 文件系统

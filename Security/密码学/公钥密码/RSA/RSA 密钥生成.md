@@ -14,7 +14,7 @@
 
 ### 模数 $N$
 
-由[算术基本定理](/Math/数论/质数.md), 一个合法 RSA 模数 $N$ 只有唯一一种分解 $p\cdot q$.
+由[算术基本定理](../../../../Math/数论/质数.md), 一个合法 RSA 模数 $N$ 只有唯一一种分解 $p\cdot q$.
 
 什么 $p, q$ 不行?
 - $p,q$ 差值过小不行, 存在 [RSA Fermat Attack](RSA%20弱点/RSA%20Fermat%20Attack.md). 当 N 取 `1024b` 时, pq 可分别取 `516b, 508b`
