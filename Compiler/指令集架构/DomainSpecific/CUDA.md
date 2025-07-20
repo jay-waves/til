@@ -44,7 +44,7 @@ col = blockIdx.x * blockDim.x + threadIdx.x;
 
 ## GPU硬件结构
 
-一个区块中的线程, 放在同一个**流式多处理器 (SM, streaming multiprocessor)**, 现代 GPU 单区块支持的线程数一般为 1024. SM 包括 CUDA 核心, 共享内存和寄存器等结构. SM 采用 SIMT (single-instruciton, multiple-thread) 架构, 基本执行单元是线程束 (warps, 应和区块做区分, 区块大小应尽量为线程束线程数的倍数), 包含 32 个线程, 同时执行相同指令, 而每个线程有独立的PC, 寄存器和执行路径. 
+一个区块中的线程, 放在同一个**流式多处理器 (SM, streaming multiprocessor)**, 现代 GPU 单区块支持的线程数一般为 1024. SM 包括 CUDA 核心, 共享内存和寄存器等结构. SM 采用 SIMT (single-instruciton, multiple-thread) 架构, 基本执行单元是线程束 (warps, 应和区块做区分, 区块大小应尽量为线程束线程数的倍数), 包含 32 个线程 (lane), 同时执行相同指令, 而每个线程有独立的PC, 寄存器和执行路径. 
 
 由于线程束内的线程同时执行相同指令, 但可能遇到不同的程序分支(因为参数不同), 导致一些线程需要等待另一部分线程. 同时, 由于资源限制, 线程分配也有限. **所以 kernel 中定义的线程结构 `<<<grid, block>>>` 和物理层并不相同, 并发性能和逻辑也有差异**.
 

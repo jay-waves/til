@@ -19,4 +19,4 @@
 **基础知识**
 - [形式语言](../../Math/计算理论/形式语言.md)
 - [概率论](../../Math/概率与随机/贝叶斯定理.md)
-- [信息论](../../Information/Information%20Theory/熵.md)
+- [信息论](../../Information/信息论/熵.md)

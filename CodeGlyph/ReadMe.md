@@ -1,3 +1,8 @@
+- 1960-1980 早期编程语言: Fortran, Lisp (垃圾回收), ALFO --> BCPL --> C --> C++, Basic --> Smalltalk (面向对象) --> Object C Rust
+- 1980-2000 跨平台的, 自动内存管理, 动态类型: Python, Perl --> Ruby, Java, C#, Lua, JavaScript 
+- 2000-2010 异步和并发, 内存和类型安全: Rust, ObjectC --> Swift, Java --> Kotlin, Golang, JavaScript --> TypeScript 
+
+
 ## 标准库
 
 标准库定义了一系列开箱即用的模块和工具, 加快开发效率, 屏蔽跨平台的复杂性, 关注的内容有:
