@@ -19,7 +19,7 @@ Visual Studio 包含了整个微软的配套编程环境, 从中下载 Visual C/
 - `/O2, /O1` 优化级别
 - `/I` 指定头文件包含路径
 
-- `/MD, /MDd, /MT, /MTd` 指定不同版本的 [Windows C 标准库](../Runtime/C%20标准库.md)
+- `/MD, /MDd, /MT, /MTd` 指定不同版本的 [Windows C 标准库](../运行时/C%20标准库.md)
 
 ### link
 

@@ -1,4 +1,4 @@
-C 标准介绍详见 [Compiler/RuntimeLibrary/C 标准库](../../../Compiler/Runtime/C%20标准库.md). 这里主要列出*标准库头文件*:
+C 标准介绍详见 [Compiler/RuntimeLibrary/C 标准库](../../../Compiler/运行时/C%20标准库.md). 这里主要列出*标准库头文件*:
 
 C 语言标准函数库主要头文件有:
 - `stdio.h` 标准输入输出

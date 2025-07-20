@@ -70,7 +70,7 @@ binary file descriptor library, 二进制文件描述符库.
 
 ### BSS
 
-block started by symbol, ELF 文件中存储未初始化全局变量和局部静态变量的段. 见 [Unix-ELF](Compiler/Linking/Unix-ELF.md)
+block started by symbol, ELF 文件中存储未初始化全局变量和局部静态变量的段. 见 [Unix-ELF](Compiler/链接过程/Unix-ELF.md)
 
 ### Brain-damaged, Brain-dead
 
@@ -82,7 +82,7 @@ block started by symbol, ELF 文件中存储未初始化全局变量和局部静
 
 ### Clang
 
-基于 LLVM 的 C/C++/Objective-C 编译器前端. 见 [Comiler/LLVM/clang](Compiler/ToolChain/LLVM/clang.md)
+基于 LLVM 的 C/C++/Objective-C 编译器前端. 见 [Comiler/LLVM/clang](Compiler/编译工具链/LLVM/clang.md)
 
 ### CI/CD
 
@@ -98,7 +98,7 @@ continuous integration/continuous deployment, 用于自动化测试/集成/部�
 
 ### COFF
 
-common object file format, ELF 格式前身. 见 [Unix-ELF](Compiler/Linking/Unix-ELF.md)
+common object file format, ELF 格式前身. 见 [Unix-ELF](Compiler/链接过程/Unix-ELF.md)
 
 ### COM
 
@@ -223,7 +223,7 @@ Directed Acyclic Graph, 有向无环图数据结构.
 
 ### DWARF 
 
-Debug With Arbitrary Record Format. 通用调试记录格式. 详见 [调试信息](Compiler/Linking/调试信息.md)
+Debug With Arbitrary Record Format. 通用调试记录格式. 详见 [调试信息](Compiler/链接过程/调试信息.md)
 
 ---
 
@@ -231,7 +231,7 @@ Debug With Arbitrary Record Format. 通用调试记录格式. 详见 [调试信�
 
 ### ELF
 
-executable linkable format, 可执行可连接格式. 见 [Unix-ELF](Compiler/Linking/Unix-ELF.md)
+executable linkable format, 可执行可连接格式. 见 [Unix-ELF](Compiler/链接过程/Unix-ELF.md)
 
 ### Environment Variables
 
@@ -271,7 +271,7 @@ file hierarchy standard, 文件层次结构标准. 见 [linux 文件系统目录
 
 ### Function Signature
 
-函数签名. 见 [compiler/linking/符号](Compiler/Linking/符号.md)
+函数签名. 见 [compiler/linking/符号](Compiler/链接过程/符号.md)
 
 ### Finite State Machine
 
@@ -431,7 +431,7 @@ low level virtual machine, 编译器框架.
 
 ### Linking
 
-链接, 程序编译的步骤. 见 [静态链接](Compiler/Linking/静态链接.md)
+链接, 程序编译的步骤. 见 [静态链接](Compiler/链接过程/静态链接.md)
 
 ### LSB
 
@@ -524,7 +524,7 @@ Network Time Protocol, 网络时间协议, 用于同步计算机系统的时钟.
 
 ### Object File
 
-目标文件, 编译过程中中间文件. 见 [Unix-ELF](Compiler/Linking/Unix-ELF.md)
+目标文件, 编译过程中中间文件. 见 [Unix-ELF](Compiler/链接过程/Unix-ELF.md)
 
 ### ORM
 
@@ -584,7 +584,7 @@ Privacy-Enhanced Mail, 一种文件格式, 通常用于存储加密密钥和证�
 
 ### PIC
 
-position-independent code, 地址无关代码. 见 [动态链接](Compiler/Linking/动态链接.md)
+position-independent code, 地址无关代码. 见 [动态链接](Compiler/链接过程/动态链接.md)
 
 ### PIE
 
@@ -592,7 +592,7 @@ position-independent executable, 地址无关可执行文件.
 
 ### PLT
 
-procedure linkage table. 过程链接表. 见 [动态链接](Compiler/Linking/动态链接.md)
+procedure linkage table. 过程链接表. 见 [动态链接](Compiler/链接过程/动态链接.md)
 
 ### Preemption
 
@@ -702,7 +702,7 @@ Remote Code Execution, 远程代码执行漏洞, 允许攻击者在目标系统�
 
 ### SQL
 
-数据库结构化查询语言, 见 [Data Storage/SQL](Information/Database/SQL/ReadMe.md).
+数据库结构化查询语言, 见 [Data Storage/SQL](Information/数据库/SQL/ReadMe.md).
 
 ### SQL Injection 
 

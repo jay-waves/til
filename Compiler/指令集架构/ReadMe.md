@@ -2,7 +2,7 @@
 
 按指令集架构 (ISA, Instruction Set Architecture) 分类, 可以分为:
 - CISC, 复杂指令集, 指令复杂长度不固定, 功能强大. 如 x86.
-- RISC, 精简指令集, 指令集精简, 效率高功耗低. 如 ARM, MIPS, RISC-V, SPARC.
+- RISC (Reduced IS Computer), 精简指令集, 指令集精简, 效率高功耗低. 如 ARM, MIPS, RISC-V, SPARC.
 - DSL (Domain Specific Language): 特定领域的语言, 更好地暴露硬件能力.
 
 按汇编语法分类, 不同平台和公司的开发者会设计不同的汇编语言语法. 
@@ -26,6 +26,10 @@
 |      | RISC-V |             |                             |
 
 Linux 较早有对 32 位 `ARMv7` 指令集的支持, 而 Windows 和 macOS 则从 `x86` 直接转向 64 位的 `ARMv8`. macOS 的架构称为 `ARM64`, 而 Windows 的架构称为 `AArch64`.
+
+### Load-Store 
+
+RISC 架构常见的内容模型, 指大部分指令都用于操作寄存器, 只通过 LOAD/STORE 指令和内存交互. 好处是指令集极大简化, 减少隐式访存行为, 便于流水线设计和编译优化.
 
 ## 参考
 
