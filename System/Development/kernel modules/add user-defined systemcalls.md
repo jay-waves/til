@@ -1,0 +1,67 @@
+**操作系统实验ch06, 拦截并修改某一系统调用**,   
+模块替代法在WSL2中不可用 (WSL共享部分Windows系统调用, Windows不允许替代系统调用),   
+变通使用内核编译法直接添加一个系统调用.
+
+### 内核编译法
+
+源码使用的是`linux-5.15.110`, 自己从官网下.
+
+#### 1 Add System Call:
+
+修改`/linux-5.15.110/kernel/sys.c`, 添加:  
+
+```c
+SYSCALL_DEFINE0(helloyjw){
+        printk("Hello YuJiaWei *__*");
+        return 1;
+}
+#endif /* CONFIG_COMPACT */
+```
+
+#### 2 Add Function Declaration
+
+修改`/linux-5.15.110/include/linux/syscalls.h`, 并在 `#ifndef CONFIG_ARCH_HAS_SYSCALL_WRAPPER`开头添加:  
+
+```c
+/* adding for OS lab */
+asmlinkage int sys_helloyjw(void);
+```
+
+
+#### 3 Add System Call Number
+
+修改 sys_call_table, 位于`/linux-5.15.110/arch/x86/entry/syscalls/syscall_64.tbl`, 添加一行:
+
+```tbl
+439  64  helloyjw  sys-helloyjw
+```
+
+*注意system call number不能使用 387 - 423, 也不能使用512以后的(为了兼容32位系统), 找一个没用过的就行*
+
+#### 4 Compile and Update Kernel
+
+编译方法详见 [wsl 更新内核](../../Linux%20Distros/Container/wsl%20更新内核.md)
+
+#### 5 Test
+
+测试程序:
+
+```c
+#include <stdio.h>
+#include <linux/kernel.h>
+#include <sys/syscall.h>
+#include <unistd.h>
+
+int main(){
+	long ret = syscall(439);
+	printf("return code is: %ld\n", ret);
+	return 0;
+}
+```
+
+执行测试程序, 然后使用`dmesg`查看执行结果.
+
+
+### 参考
+
+> [Add a new Linux (5.7.9) system call under WSL2 (Ubuntu) - Code World](https://www.codetd.com/en/article/12278884)

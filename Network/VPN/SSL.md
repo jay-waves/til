@@ -11,7 +11,7 @@ TLS/SSL协议步骤:
 
 TLS/SSL协议分为上下两层:
 1. (上层) 握手层协议 (handshake layer protocal, SSL Change Cipher Spec Protocol, SSL Alert Protocol): 建立在记录层协议之上, 在数据传输之前进行身份认证和密钥协商.
-2. (下层) 记录层协议 (record layer protocal): 建立在 [TCP](../TransportL3/TCP.md) 之上, 提供数据封装/压缩/加密等功能支持.
+2. (下层) 记录层协议 (record layer protocal): 建立在 [TCP](../TransportL4/TCP.md) 之上, 提供数据封装/压缩/加密等功能支持.
 
 ### 记录层协议
 

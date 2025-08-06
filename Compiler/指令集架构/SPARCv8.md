@@ -175,15 +175,18 @@ SPARC 提供很多底层的缺陷 (trap) 分类, 用户需要编写 缺陷向量
 | trap_instruction               |        |                       |
 | ...                            |        |                       |
 
-SPARC V8 中断处理
-Processor Interrupt Level (PIL), Trap Enable (ET) of PSR
+SPARC V8 中断处理机制, 涉及 PSR 寄存器的两个字段:
+1. Processor Interrupt Level (PIL)
+2. Trap Enable (ET)
+
 et = 1 时, 中断使能. 在指向下一指令前, 挑选优先级最高的中断执行. 
-	- bp_IRL > PIL, (IRL 0~15 由外部传递到处理器)
-	- bp_IRL = 15 (unmaskable), 
-	- PIL 不是优先级, Priority 定义在 Table 7-1 
+- bp_IRL > PIL, (IRL 0~15 由外部传递到处理器)
+- bp_IRL = 15 (unmaskable), 
+- PIL 不是优先级, Priority 定义在 Table 7-1 
+
 et = 0 时, 
-	- 任何 Interrupting Traps 都会被忽略. 
-	- 其他硬件 Trap 将导致错误模式 (error_code), 可能直接硬件复位 Reset (依赖于实现)
+- 任何 Interrupting Traps 都会被忽略. 
+- 其他硬件 Trap 将导致错误模式 (error_code), 可能直接硬件复位 Reset (依赖于实现)
 
 TBR: tt (8b) | tba (20b) | 0 (4b)
 - tt 0~0x7f, hardware traps

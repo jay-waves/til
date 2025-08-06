@@ -45,3 +45,36 @@
 #include <semaphore>
 #include <stop_token>
 ```
+
+###
+
+C++ 倾向于依赖作用域嵌套来管理对象生命周期, 但异步就像 `goto` 一样, 能轻易地改变作用域的嵌套关系. 基于链式回调的异步函数的执行环境并不是"本地的" (non-local), 连异常都没办法正常使用.
+
+```cpp
+boost::future<void> computeResult(State & s);
+ 
+boost::future<int> doThing() {
+  State s;
+  auto fut = computeResult(s); // future 只确保 then() 在 computeResult() 结束后执行. 
+  return fut.then(
+    [&](auto&&) { return s.result; }); // future 不确保 then() 在 return 之前执行.
+}
+```
+
+用协程重写上述函数, 能确保 `computeResult` 在 `doThing()` 退出前执行. 协程的主要目的不是并发, 而是协调各个回调的执行顺序.
+
+```
+task<> computeResult(State &s);
+
+task<int> doThing() {
+	State s;
+	co_await computeResult(s);
+	co_return s.result;
+}
+```
+
+## 参考
+
+https://ericniebler.com/2020/11/08/structured-concurrency/
+
+https://vorpus.org/blog/notes-on-structured-concurrency-or-go-statement-considered-harmful/

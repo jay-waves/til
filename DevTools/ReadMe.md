@@ -1,18 +1,18 @@
 品味如下:
-- 界面不能太丑, 并且保持简洁和现代. 最好有黑色主题. 特别丑的, 宁愿用命令行.
-- 开源, 免费, 有社区版优先. 不喜欢自行编译 (我懒), 除非性能和移植需要.
-- 多平台, 跨平台功能不阉割. 起码支持 Windows + Debian, 不需要跨平台重新适应软件.
-- 不能占用太多资源. 不喜欢 Web 应用和 Java 应用, 尤其烦没好好打包的 NPM.
-- 使用配置方式可以复杂, 但不能繁琐丑陋, 不能绕圈子解决问题. 比如 CMD, 伪装成命令行的💩.
-- 专注于某个功能领域, 不搞大杂烩.
+- 命令行优先, GUI 不丑
+- 可以复杂, 但不能繁琐丑陋, 不能绕圈子解决问题 (点名 lua, cmd). 
+- 开源优先. 一般不自行编译.
+- 多平台, 跨平台功能不过分阉割. 优先支持 Windows + Debian. 
+- 控制资源占用. 不喜欢 Web 套壳和 Java. 
+- 功能不搞大杂烩.
 
 ***
 
-- **Mail Master** 网易邮箱大师
-- **Zotero7**, 文献管理
+- ~~Mail Master 网易邮箱大师~~ 已换为 Thunderbird
+- ~~**Zotero7**, 文献管理~~ 不常用, 一般用文件夹 + obsidian 管理.
 - SumatraPDF, Adobe Acrobat DC.
 - ~~GoldenDict, EuDic, 本地词典~~
-- Jane Reader, windows 下 EUPB 阅读器
+- ~~Jane Reader, windows 下 EUPB 阅读器~~ 改为其分支版本 Readest
 - Obsidian, 主力笔记软件
 - ~~AFFiNE, 笔记软件, 非主力~~
 - VSCode
@@ -101,9 +101,8 @@
 - PowerShell7. Windows 下使用的命令行.
 	- PSReadline 插件
 	- posh-git 插件
-- Zsh. Debian 下使用的命令行.
 - Clink. cmd prompt 加强工具, 已弃用 cmd.
-- Starship. zsh prompt 加强工具
+- Bash 相关见 [/System/Shell](../System/Shell/Bash.md)
 
 <br>
 
@@ -115,30 +114,27 @@
 - bat, cat 的增强版
 - duf, dust, du 磁盘空间查看
 - iconv, uchardet [字符编码](../System/Development/字符编码/字符编码.md)工具
-- fq 类 yq, jq, 还支持各类二进制二年间查看
+- fq 类 yq, jq, 还支持各类二进制文件查看
 - fd, find 的加强版, 使用正则表达式而不是通配符.
 - rg (ripgrep)
 - fzf, 模糊查找工具, 将 fd, find, rg 用管道传给它, 来进一步查找.
 - tokei, 统计代码行数. cloc 替代品.
-- viu, 终端查看图片 (模糊版)
 - yazi, 终端文件浏览器
 - zoxide
 - imagicMagick, 终端图片批处理工具
 - mdv, 终端 Markdown 文件渲染器
-- wolframscript, 数学引擎.
-- gopass, 密码管理器
-- age, 加密工具 (不能自定义密码套件, 封装 [PGP](../Network/ApplicationL4/PGP.md), 开箱即用)
+- ~~wolframscript, 数学引擎.~~ 不常用
+- ~~gopass, 密码管理器~~
+- ~~age, 加密工具 (不能自定义密码套件, 封装 [PGP](../Network/ApplicationL5/PGP.md), 开箱即用)~~
 - bandwhich, 查看当前占用宽带的应用和IP
 - [when-changed](https://github.com/joh/when-changed)
 - [repren](https://github.com/jlevy/repren)
 - Graphviz + Doxygen. 代码可视化工具.
 - sl, genact 摸鱼用
 - neofetch, Figlet 装逼用.
-- glow, 终端 markdown 渲染器
 - hl, lnav, 日志浏览器
-- nexttrace
-- llm
 - piper 文字转语音 TTS 工具
+- hyperfine: `time` 的替代品, 命令行 Benchmarking.
 
 Windows 上一些 GNU 工具移植, 见 [GNUwin32](https://gnuwin32.sourceforge.net/packages.html)
 - file. 类似的还有 trid, 
