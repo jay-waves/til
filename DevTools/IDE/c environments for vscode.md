@@ -258,4 +258,4 @@ Clangd 不内置 clang-format, 但是有格式化功能??. clang-format 使用 `
 
 [^5]: https://llvm.org/builds/ 页面底部有独立的 clang-format. 当然也可以使用 Visual Studio 内建的 clang-format.
 
-[^6]: cl.exe 编译器详见 [msvc](../../Compiler/编译工具链/msvc.md).md)l.md)
+[^6]: cl.exe 编译器详见 [msvc](../../Compiler/工具链/msvc.md).md)l.md)

@@ -38,7 +38,7 @@ AES-[Galois Counter Mode](Security/密码学/分组密码/链接模式.md), 一�
 
 ### ARP
 
-[Address Resolution Protocol, 地址解析协议](Network/NetworkL2/ARP.md), 用于将 IP 地址解析为物理地址 (MAC).  
+[Address Resolution Protocol, 地址解析协议](Network/NetworkL3/ARP.md), 用于将 IP 地址解析为物理地址 (MAC).  
 
 ### ASLR
 
@@ -82,7 +82,7 @@ block started by symbol, ELF 文件中存储未初始化全局变量和局部静
 
 ### Clang
 
-基于 LLVM 的 C/C++/Objective-C 编译器前端. 见 [Comiler/LLVM/clang](Compiler/编译工具链/LLVM/clang.md)
+基于 LLVM 的 C/C++/Objective-C 编译器前端. 见 [Comiler/LLVM/clang](Compiler/工具链/LLVM/clang.md)
 
 ### CI/CD
 
@@ -540,7 +540,7 @@ One-Time Password, 用于单次登录的临时密码. TOTP (Time-based OTP) 基�
 
 ### OAuth
 
-[OAuth](Network/ApplicationL4/Auth/OAuth.md), 一种开放标准授权协议, 允许用户授权第三方访问其资源而无需暴露凭据. 
+[OAuth](Network/ApplicationL5/Auth/OAuth.md), 一种开放标准授权协议, 允许用户授权第三方访问其资源而无需暴露凭据. 
 
 ---
 
@@ -616,7 +616,7 @@ Portable Operating System Interface. [IEEE P1003.1] 定义了一系列操作系�
 
 ### PGP
 
-[PGP](Network/ApplicationL4/PGP.md), Pretty Good Privacy, 用于加密和签名的公钥加密程序. 
+[PGP](Network/ApplicationL5/PGP.md), Pretty Good Privacy, 用于加密和签名的公钥加密程序. 
 
 ---
 
@@ -698,7 +698,7 @@ Remote Code Execution, 远程代码执行漏洞, 允许攻击者在目标系统�
 
 ### SAML
 
-[SAML](Network/ApplicationL4/Auth/SAML.md), Security Assertion Markup Language, 用于单点登录 (SSO) 和身份联合的标准. 
+[SAML](Network/ApplicationL5/Auth/SAML.md), Security Assertion Markup Language, 用于单点登录 (SSO) 和身份联合的标准. 
 
 ### SQL
 
@@ -808,7 +808,7 @@ Time-based One-Time Password, 基于时间的动态密码, 通常用于双因素
 
 ### TCP
 
-计算机网络传输层的[传输控制协议 (TCP)](Network/TransportL3/TCP.md), 提供可靠点对点连接.
+计算机网络传输层的[传输控制协议 (TCP)](Network/TransportL4/TCP.md), 提供可靠点对点连接.
 
 ## TPM
 
@@ -864,7 +864,7 @@ Virtual LAN, 虚拟局域网, 通过逻辑隔离实现不同网络设备间的�
 
 ### WSL
 
-Windows Subsystem for Linux, 见 [OS/Linux Distribution/WSL](System/Container/WSL/配置%20-%20从此开始.md).
+Windows Subsystem for Linux, 见 [OS/Linux Distribution/WSL](System/Linux%20Distros/Container/wsl%20配置.md).
 
 ### Whitening
 

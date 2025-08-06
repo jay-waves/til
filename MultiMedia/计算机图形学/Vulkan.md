@@ -1,1 +1,0 @@
-Vulkan 是 OpenGL 的下一代, 为了并行硬件优化的图形接口. Vulkan 特点是自由度比 OpenGL 更大, 但是开发难度也更高.

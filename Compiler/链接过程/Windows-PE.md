@@ -72,7 +72,7 @@ typedef struct _IMAGE_SECTION_HEADER {
 
 ### Directve 
 
-`.drectve` 是传递给链接器的指令. 该段是信息段, 并非程序数据, 在链接时被抛弃. 链接指令详见 [msvc/link](../编译工具链/msvc.md).
+`.drectve` 是传递给链接器的指令. 该段是信息段, 并非程序数据, 在链接时被抛弃. 链接指令详见 [msvc/link](../工具链/msvc.md).
 
 ## PE 
 
