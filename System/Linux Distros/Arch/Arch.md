@@ -1,8 +1,10 @@
-   Arch 系统比较轻量和灵活, 需要用户自行配置决定.
+Arch 系统比较轻量和灵活, 需要用户自行配置决定. 下面是使用 Windows + VirtualBox + Arch 环境的配置过程.
+
 
 ## 初始化 Arch
 
-使用 Virtual Box 临时启动 iso, 此时是内存中的一个最小化**临时**系统. 此时, 关闭就会丢失所有数据. 我们要手动将系统从 iso 正式安装到硬盘上 (Ubuntu 这里会有安装引导, Arch 自己搞, 能学到很多).
+使用 Virtual Box 临时启动 iso, 此时是内存中的一个最小化**临时**系统. 此时, 关闭就会丢失所有数据. Arch 不提供引导程序, 我们手动将其安装到硬盘上.
+这种安装方式是 Arch 官方推荐的方式, 当然社区也提供了打包好的 [Arch 镜像](https://gitlab.archlinux.org/archlinux/arch-boxes) (需要图形界面).
 
 ### 网络
 
