@@ -52,9 +52,17 @@ nbd0      43:0    0   50G  0 disk
 
 直接看原文: https://www.linuxfromscratch.org/lfs/view/stable/chapter03/introduction.html
 
-下文不会描述一些需要技巧的细节, 详见[原文](https://www.linuxfromscratch.org/lfs/view/)
+下文不会描述一些需要技巧的细节, 详见[原文](https://www.linuxfromscratch.org/lfs/view/). 注意, 不要漏掉任何一个细节.
 
 ## 3. 构建
+
+LFS 要构建一个最小的独立于宿主机的 Linux 系统, 系统中编译器和 C 库都是自行构建, 而不信任或使用宿主机的相关编译工具链. 这要求编译过程需要逐步自举.
+
+在 Pass1, 构建一个交叉编译器 `x86_64-lfs-linux-gnu-gcc`, 不依赖 glibc. 用它编译安装临时的 glibc. 这个工具 (3.1) 安装在 `$LFS/tools` 下
+
+在 Pass2, 用 Pass1 中 cross-compiler gcc 和 glibc 来构建一个完整的 GCC. 这个 gcc 也是临时的, 用来编译一众临时工具. 这些工具 (包括 gcc) 都临时安装 `$LFS` 中, 但是最终会被替换, 因为它们不能保证独立于宿主环境.
+
+chroot 后, 我们才构建最终的 glibc 与 gcc, 安装在新系统的标准目录下.
 
 ### 3.1 构建交叉编译工具链
 
@@ -100,13 +108,32 @@ make headers
 cp -rv usr/include /mnt/lfs/usr
 ```
 
-#### glibc 
+#### glibc & libstdc++
 
+使用已经安装在 `/mnt/lfs/tools` 中的交叉编译器来编译 glibc, 配置其支持的平台为 5.4 及更新的 Linux Kernel, 并且使用 `/mnt/lfs/usr/include` 中的头文件.
+```bash
+cd build
+../confgiure      \
+		--prefix=/usr \
+		--host=$LFS_TGT \
+		--enable-kernel=5.4 \
+		--with-headers=/mnt/lfs/usr/include \
+		--disbale-nscd \
+		libc_cv_slibdir=/usr/lib
+```
 
+### 3.2 构建交叉编译用的临时工具
 
-### 3.2 构建工具
+用 3.1 中编译出的交叉编译器, 编译一些临时工具, 这些工具被链接到 3.1 中安装的 glibc 动态库. 由于我们没有 `chroot`,  所以事实上这些临时工具还不能使用.
 
+```
+m4 ncurses bash corutils(+hostname) diffutils file findutils gawk grep gzip 
+make patch sed tar xz binutils gcc
+```
 
+这里的 binutils, gcc 在 3.1 中用宿主机环境编译过一次, 放在 `$LFS/tools` 中, 其交叉编译的 Triplets 是 x86_64-lfs-linux-gnu. 这里编译第二次 (记得把原本 `./build` 删除), 用 3.1 中编译出的交叉编译器编译, 安装在我们的新系统根目录 `$LFS` 下.
+
+由于编译这个 gcc 过程中, 用到的 gawk, make 等仍是宿主机的软件, 因此不能说是完成了自举, 这仍是一个临时的 gcc. (比如宿主机工具的版本等无法控制, 软件可能有内嵌的宿主机绝对路径)
 
 ### 3.3 
 

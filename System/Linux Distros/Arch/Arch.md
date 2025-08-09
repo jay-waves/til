@@ -33,7 +33,7 @@ Virtual Box 默认在 Windows 上的以太网接口为 192.168.56.1. NAT 模式�
 
 **文件系统:**
 
-硬盘分区: fdisk 是分区工具.
+硬盘分区: fdisk 是分区工具. 注意区分 `/dev/sda, /dev/vda, /dve/nvme` 三种类型磁盘.
 1.  `fdisk /dev/sda`
 2.  `n` -- new partition
 3.  (enter) (`p` -- primary disk)
@@ -94,6 +94,8 @@ Install GRUB: 启动引导程序, 64位版需要 efi, 否则只能用32位 bios�
 1.  `pacman -S grub`
 2.  `grub-install --target=i386-pc /dev/sda`
 3.  `grub-mkconfig -o /boot/grub/grub.cfg`
+
+生成 initramfs: `mkinitcpio -P`
 
 Reboot:
 
