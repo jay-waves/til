@@ -47,12 +47,12 @@ Subjects:
 
 - [Wolfram Mathematica](../CodeGlyph/Wolfram.md)
 - Python: 
-	- [numpy](../CodeGlyph/Python/数学/numpy.md)
+	- [numpy](../Language/Python/数学/numpy.md)
 	- [sympy](../Language/Python/数学/sympy.md)
 	- seaborn/matplotlib
 	- scipy
 	- [pandas](../Language/Python/数学/pandas.md)
-	- [3b1b/manim](../CodeGlyph/Python/数学/manim.md)
+	- [3b1b/manim](../Language/Python/数学/manim.md)
 - [Latex/Mathjax](../DevTools/Latex/数学公式.md)
 
 
