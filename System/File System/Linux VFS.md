@@ -138,4 +138,4 @@ struct gendisk {
 FILE *fopen(const char *path, const char *mode);
 ```
 
-详见 [stdio.h](../../CodeGlyph/C/标准库/stdio.md).
+详见 [stdio.h](../../Language/C/标准库/stdio.md).

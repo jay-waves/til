@@ -678,7 +678,7 @@ Robot Operating System, 开源机器人操作系统.
 
 ### Reflection
 
-反射, 在**运行时**操作和配置对象及其属性, 在编写代码时这些类和方法可能不是已知的, 常用于实现框架和库. 如 Python 的 [元编程](CodeGlyph/Python/面向对象/元编程.md).
+反射, 在**运行时**操作和配置对象及其属性, 在编写代码时这些类和方法可能不是已知的, 常用于实现框架和库. 如 Python 的 [元编程](Language/Python/面向对象/元编程.md).
 
 ### RTT
 
@@ -782,7 +782,7 @@ Secure Hash Algorithm, 密码学哈希函数 (消息摘要函数, 杂凑函数, 
 
 ### TagDispatch
 
-一种函数反射方法, 见 [运行时函数多态](CodeGlyph/C++/数据类型/运行时函数多态.md#函数体).
+一种函数反射方法, 见 [运行时函数多态](Language/C++/数据类型/运行时函数多态.md#函数体).
 
 ### Time-Sharing System
 
