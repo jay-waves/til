@@ -1,7 +1,7 @@
 蓝牙标准由 **Bluetooth SIG (Special Interest Group)** 维护. 主要版本如下:
-- 2.0 + EDR, 2004. 引入增强数据率 (EDR), 传输速度最高达 3Mbps
+- 2.0 + EDR, 2004. 引入增强数据率 (EDR, Enhanced Data Rate), 传输速度最高达 3Mbps
 - 3.0 + HS, 2009. 引入高速传输 (HS)
-- 4.0, 2010. 引入低功耗蓝牙 (BLE)
+- 4.0, 2010. 引入低功耗蓝牙 (BLE, Bluetooth Low Energy)
 - 4.2, 2014. 支持 IPv6.
 - 5.0, 2016. 
 

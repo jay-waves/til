@@ -54,7 +54,7 @@ nbd0      43:0    0   50G  0 disk
 
 下文不会描述一些需要技巧的细节, 详见[原文](https://www.linuxfromscratch.org/lfs/view/). 注意, 不要漏掉任何一个细节.
 
-## 3. 构建
+## 3. 构建临时工具
 
 LFS 要构建一个最小的独立于宿主机的 Linux 系统, 系统中编译器和 C 库都是自行构建, 而不信任或使用宿主机的相关编译工具链. 这要求编译过程需要逐步自举.
 
@@ -135,5 +135,53 @@ make patch sed tar xz binutils gcc
 
 由于编译这个 gcc 过程中, 用到的 gawk, make 等仍是宿主机的软件, 因此不能说是完成了自举, 这仍是一个临时的 gcc. (比如宿主机工具的版本等无法控制, 软件可能有内嵌的宿主机绝对路径)
 
-### 3.3 
+### 3.3 Chroot
+
+```bash
+chroot "$LFS" /usr/bin/env -i \
+		HOME=/root            \
+		TERM="$TERM"          \
+		PS1='(lfs chroot) \u:\w\$' \
+		PATH=/usr/bin:/usr/sbin    \
+		/bin/bash --login
+```
+
+LFS 中需要遵循 [FHS 标准](https://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html)创建文件目录结构, 然后创建一些文件. 用户和属组配置通常是为了兼容 Unix 传统, 实际上访问受限硬件和系统服务有更通用的做法. 修改 /root 之后, 可以将 `$LFS/tools` 删除.
+
+```bash
+cat > /etc/hosts << EOF
+127.0.0.1 localhost $(hostname)
+::1       localhost
+EOF
+
+cat > /etc/passwd << "EOF"
+root:x:0:0:root:/root:/bin/bash 
+bin:x:1:1:bin:/dev/null:/usr/bin/false 
+daemon:x:6:6:Daemon User:/dev/null:/usr/bin/false 
+messagebus:x:18:18:D-Bus Message Daemon User:/run/dbus:/usr/bin/false uuidd:x:80:80:UUID Generation Daemon User:/dev/null:/usr/bin/false nobody:x:65534:65534:Unprivileged User:/dev/null:/usr/bin/false
+EOF
+
+cat > /etc/group << "EOF"
+root:x:0: 
+tty:x:5: 
+disk:x:8: 
+lp:x:9: 
+dialout:x:10: 
+audio:x:11: 
+video:x:12: 
+utmp:x:13: 
+cdrom:x:15: 
+adm:x:16: 
+messagebus:x:18: 
+input:x:24: 
+mail:x:34: 
+kvm:x:61: 
+uuidd:x:80: 
+wheel:x:97: 
+users:x:999: 
+nogroup:x:65534:
+EOF
+```
+
+## 构建完整 LFS 系统
 
