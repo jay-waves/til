@@ -1,0 +1,48 @@
+## Linux 内核源码目录
+
+- `arch` 硬件架构
+	- `i386` interrupt: (早期 intel cpu)
+		- `arch/i386/kernel/irq.c`
+		- `include/asm-i386/irq.h`
+	- `x86`
+		- `arch/x86/entry`
+	- `arm`
+- `block` 块设备驱动程序 IO 调度
+- `crypto` 密码算法, 压缩算法等
+- `documentation`
+- `drivers` 设备驱动程序, 如 `char, block, net, mtd`
+	- PCI Pseudo Driver: `drivers/pci/pci.c`, `include/linux/pci.h`
+- `fs` 各文件系统
+	- `ext4`
+	- `vfat`
+	- `fs/*`, `include/linux/fs.h`: vfs
+- `include` 内核 API 级头文件. 
+	- `include/linux/syscalls.h`
+	- `include/linux/cred.h`: credentials like UID/GID, keyrings, capability sets
+	- `include/linux/sched.h`
+- `init` 内核初始化代码. 如 `init/main.c`
+- `ipc` 进程间通信代码
+- `irq` 中断服务
+- `kernel` 内核核心代码. 平台相关的则放在各个 `arch/*/kernel` 下
+	- `kernel/sys.c`: system calls
+	- `kernel/sched.c`: scheduler
+	- `kernel/fork.c`
+	- `kernel/nsproxy.c`
+	- `kernel/cgroup`: cpu, memory, io constraints and accounting
+- `lib` 库文件代码. 平台相关在 `arch/*/lib`
+- `mm` 内存管理. 平台相关放在 `arch/*/mm`
+	- `mm/memory.c`: 缺页错误处理
+	- `mm/page_alloc.c`
+	- `mm/filema.c`: 内存映射和页缓存
+	- `mm/buffer.c`: buffer cache
+	- `mm/swap_stat.c, mm/swapfile.c`: swap cache
+	- `mm/mmap.c`
+- `net` 网络
+	- BSD Socket: `net/socket.c`
+	- IPv4: `net/ipv4/af_inet.c`
+	- TCP/IP: `net/ipv4`
+	- Net Drivers: `dirvers/net`
+- `scripts` 用于配置内核的脚本
+- `sound` 音视频驱动
+- `security`: LSM & seccomp, like AppArmor / SELinux
+- `usr`
