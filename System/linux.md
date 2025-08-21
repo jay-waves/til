@@ -37,28 +37,12 @@ Kernel 工作在三个情景下:
 
 - Process Context: 用户态, 通过系统调用陷入内核. 拥有完整虚拟地址空间.
 - Kernel Thread: 内核态, 本质是调度实体 `task_struct`, 但没有独立的用户态虚拟地址空间. 不能直接访问用户空间的数据.
-- SoftIRQ / Tasklet: 延迟执行的中断处理程序, 禁止睡眠或阻塞. Tasklet 是对 SoftIRQ 的封装, 但调度方式不同.
-- IRQ Handler: 硬件中断处理函数, 不参与调度, 直接抢占 CPU. 不允许睡眠或阻塞, 也禁止使用可能触发调度的函数 (mutex, kmalloc) 等. 复杂逻辑应推迟到 SoftIRQ.
+- SoftIRQ / Tasklet: 延迟执行的中断处理程序. 取代原本的中断上下半区机制.
+- IRQ Handler: 硬件中断处理函数, 不参与调度, 直接抢占 CPU. 中断, 以及延迟处理的中断上下文中, 均不允许睡眠或阻塞, 也禁止使用可能触发调度的函数. 
 
-内核延迟执行的流水线:
-
-IRQ Handler -> SoftIRQ -> Workqueue -> Kernel Tread
-
-| 执行器  | 上下文         | 是否可睡眠 | 调度         | 内存                   |
-| ------- | -------------- | ---------- | ------------ | ---------------------- |
-| Process | 用户/内核态    | 是         | 内核调度     | 独立用户态虚拟地址空间 |
-| KThread | 内核态         | 是         | 内核调度     | 仅内核地址空间         |
-| IRQ     | 中断上下文     | 禁止       | 抢占执行     | GFP_ATOMIC             |
-| SoftIRQ | 软中断上下文   | 禁止       | 内核触发     | GFP_ATOMIC             |
-| Tasklet | SoftIRQ 上下文 | 禁止       | 串行化软中断 | GFP_ATOMIC                       |
-
-在 IRQ, SoftIRQ, Tasklet 执行, **禁止调用可能触发调度的函数**, 防止当前 CPU 放弃执行切换到其他 task. 比如阻塞等待类 `wait_*(), down(), mutex_lock()`, 可能导致睡眠的内存分配 `kmalloc(GFP_KERNEL), vmalloc()`, 可能触发缺页中断的 `copy_to_usr(), vfs_write()` 等. **如果导致内核调度到其他上下文, IRQ 等上下文是无法再恢复的, 导致系统栈状态损坏, 进而崩溃.**
-
-明确不会触发调度的函数有:
-- 原子内存分配 `kmalloc(GFP_ATOMIC)`
-- 自旋锁 `spin_xxx()`
-- 原子操作 `atomic_inc()`, ...
-- 延迟执行: `tasklet_shcedule(), raise_softirq()`
+内核执行模型详见:
+- [linux 中断模型](Process/linux%20中断模型.md)
+- [linux 进程模型](Process/linux%20进程模型.md)
 
 ### System Calls Execution Flow 
 
@@ -113,7 +97,38 @@ packet received --> IRQ (Top-Half) --> SoftIRQ (Bottom-Half) --> NAPI Polling --
 E.G. Disk:  
 I/O done --> IRQ (Top-Half) --> Workqueue (Bottom-Half) --> Workqueue --> complete I/O req, update page cache --> idle 
 
-## Kernel Objects 
+## 内核初始化
+
+1. 主板加电, 硬件自检.
+2. Soc 核心执行其内嵌的固件 (BIOS, UEFI, BootRom)
+3. 只有 CPU0 核心的 bootrom 会加载 *引导程序 (BootLoader)*, 如: GRUB, U-Boot.
+4. 其他 CPU 核心进入等待状态.
+5. CPU0 上的 BootLoader 加载内核镜像 (附带一些启动参数). 
+6. 内核镜像的启动点, 是和架构相关的汇编代码, 其将构建一个执行 C ABI 的环境. (如清空 .bss, 初始化栈, 禁用中断等).
+7. 接着, CPU 0 执行第一个 C 函数: `x86_64_start_kernel()`. 该函数在执行完架构相关代码后, 调用 `start_kernel()`. 这是通用的内核启动点.
+8. 由 `start_kernel()` 依次唤醒 (按严格顺序): allocator, scheduler, timer, interrupts, per-CPU areas, RCU, workqueue 等内核基础工具.
+9. CPU0 继续执行, 启动更高层次子系统: blcok I/O, fs, drivers, net.
+10. 最后, 执行 `rest_init()`, 由其创建第一个内核线程 `kthreadd`, 以及用户空间初始化程序 `/sbin/init`. 并挂载根文件系统.
+
+```
+firware (BIOS, UEFI, BootRom)
+	--> BootLoader (GRUB, U-Boot)
+		--> architecture-dependent kernel entry (arch/x86/head.S)
+			--> x86_64_start_kernel() (arch/x86/kernel/head64.c)
+				--> start_kernel() (init/main.c)
+					--> parse boot params
+					--> allocators, schedulers, interrupts, timers, SMP
+					--> initcalls by level (core, arch, subsys)
+					--> subsystems: driver, ent, fs
+					--> rest_init()
+						--> create kthreadd (PID2)
+						--> kernel_init() 
+							--> kernel_init_freeable()
+								--> mount root filesystem (rootfs, initramfs)
+								--> /sbin/init 
+```
+
+## 内核对象
 
 这里按子系统列出一些常见内核对象. 具体细节和成员含义, 请参见具体的场景.
 

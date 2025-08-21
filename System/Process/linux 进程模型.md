@@ -23,7 +23,7 @@ struct task_struct {
 
 linux 中线程和进程本质都是 task, 区别在于共享的资源不同. 在陷入内核时, 通过 `current` 宏来获取当前进程的 `task_struct`, 复杂度为 `O(1)`. 
 
-在大部分架构 (x86, arm, risc-v) 中, 每个进程都有*内核栈*, 内核栈中存放 `thread_info`, 其中存放 `task_struct`. 该数据结构压在内核栈底, 通过栈基地址即可获取.
+在大部分架构 (x86, arm, risc-v) 中, 每个进程都有一个私有*内核栈*, 内核栈中存放 `thread_info`, 其中存放 `task_struct`. 该数据结构压在内核栈底, 通过栈基地址即可获取.
 
 ```c
 syscall() 
@@ -32,6 +32,5 @@ syscall()
 			--> current = get_current() // 获取当前 task_struct 
 				--> xxx() // 执行具体系统调用
 ```
-
 
 

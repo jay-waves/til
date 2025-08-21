@@ -355,7 +355,7 @@ I/O 密集型.
 
 ### Interrupt
 
-操作系统中断, 见 [中断与时钟](System/Process/中断与时钟.md)
+操作系统中断, 见 [中断与异常](System/Process/中断与异常.md)
 
 ### ISR
 
@@ -758,7 +758,7 @@ software development kit, 软件开发工具集.
 
 ### System Call
 
-系统调用. 见 [中断与时钟](System/Process/中断与时钟.md).
+系统调用. 见 [中断与异常](System/Process/中断与异常.md).
 
 ### SaaS
 
