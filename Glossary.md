@@ -267,7 +267,7 @@ End of Life, 软件或硬件停止维护的状态.
 
 ### FHS
 
-file hierarchy standard, 文件层次结构标准. 见 [linux 文件系统目录标准](System/File%20System/linux%20文件系统目录标准.md)
+file hierarchy standard, 文件层次结构标准. 见 [linux FHS](System/File%20System/linux%20FHS.md)
 
 ### Function Signature
 

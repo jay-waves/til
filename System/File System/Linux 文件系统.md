@@ -14,7 +14,7 @@ linux 支持很多文件系统:
 | iso9660         | 光盘标准文件系统                                                         |
 | [FAT](fat.md)   | windows 下文件系统. vFAT 也叫 FAT32.                                     |
 | NTFS            | windows NT 文件系统, 更安全高效, linux 默认驱动无法识别. 无文件大小限制, 支持高级安全功能, 支持稀疏文件和动态扩展体积                      |
-| [proc](proc.md) | linux 用于记录系统调试信息的 VFS, 基于内存                               |
+| [linux proc](linux%20proc.md) | linux 用于记录系统调试信息的 VFS, 基于内存                               |
 | ufs             | Sun 公司的 Solaris, SunOS 操作系统所用文件系统                           |
 | sysfs           | linux 用于管理内存存储的 VFS, 基于内存                                   |
 | tmpfs           | linux 用于管理临时文件的 VFS, 基于内存. 可用 swap 替代.                  |
