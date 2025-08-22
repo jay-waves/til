@@ -30,39 +30,6 @@ curl cht.sh/python/what+is+venv
 <command> /h       # CMD 命令参数
 ```
 
-### `type`
-
-`type command` 显示某个命令的类型, linux中命令有四种类型:
-- /bin文件夹中的可执行程序
-- shell builtins内置程序
-- shell function即scripts
-- alias 别名
-
-<pre>
-$ type cd
-cd is a shell builtin
-</pre>
-
-### `whatis`
-
-显示单行, 非常简短的命令介绍
-
-<pre>
-$ whatis bash
-bash (1)             - GNU Bourne-Again SHell
-</pre>
-
-### `whereis`
-
-whereis searches for executables, source files, and manual pages using a database built by system automatically.
-
-Example:
-
-```bash
-$ whereis php
-/usr/bin/php
-```
-
 ### `which`
 
 模拟搜索 PATH 查询可执行文件的过程, 若成功, 显示完整路径. (不能检查其他类型命令!) 可用于检查当多个重名程序存在于 PATH 中时, bash 究竟执行了哪一个.
@@ -74,24 +41,24 @@ $ which php
 
 ### BashScript
 
-Bash 作为编程语言的语法和细节请见: [BashScript](BashScript/ReadMe.md)
+Bash 作为编程语言的语法和细节请见: [BashScript](BashScript/ReadMe.md).
 
 ## Bash 工具列表
 
-[文件权限](文件权限.md)
+Linux 下有四种命令类型 (用 `type` 查看)
+- `/bin` 文件夹下的可执行程序, 一般用 PATH 索引
+- shell builtins 
+- shell functions (scripts)
+- alias
 
-| `chmod` | `chown` |
-| ------- | ------- |
-| `getfacl`        |         |
-
-[进程及程序调试](进程及程序调试.md)
+[进程调试](进程调试.md)
 
 | `ldd`    |  | `dmesg` | `strace, ltrace` |
 | -------- | ------ | ------- | ---------------- |
 | `nm`     | `stap` | `stap`  | `perf`           |
 | `sysdig` | `time` | `hyperfine`        |                  |
 
-[进程任务管理](进程任务管理.md)
+[进程任务控制](进程任务控制.md)
 
 | `pkill`  | `pgrep`   | `pstree` | `lsof`          | `(h)top`    |
 | -------- | --------- | -------- | --------------- | --- |
@@ -126,7 +93,7 @@ Bash 作为编程语言的语法和细节请见: [BashScript](BashScript/ReadMe.
 | `uniq`             | `sort`               | `nl`            | `iconv, uconv` | `expand` |
 | `cat, bat`         | `diff`               | `tail, head`    | `more, less`   |          |
 
-[文件系统管理](文件系统管理.md)
+[文件系统](文件系统.md)
 
 |            | `mount`        | `fdisk`  | `mkfs`   | `lsblk` |
 | ---------- | -------------- | -------- | -------- | ------- |
