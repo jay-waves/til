@@ -8,6 +8,7 @@ C++11
 - `nullptr`
 - rvalue reference `&&`, `move()`
 - `thread`, `mutex`, `condition_variable`
+- `valarray`
 
 C++14
 - generic lambda `auto lambda = [](auto x) { return x + x; };`
@@ -61,6 +62,11 @@ GUI:
 - gRPC: google 系列工具, 和 protobuf 搭配
 - asio 
 - libuv: 比 libevent 更新.
+
+数学:
+- gmp 
+- Eigen
+- SIMD (Vc)
 
 ## Reference
 

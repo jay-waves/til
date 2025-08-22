@@ -1,3 +1,5 @@
+### 继承内置类型
+
 ```python
 class FrequencyList(list):
 	def __init__(self, members):
