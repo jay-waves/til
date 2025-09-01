@@ -166,11 +166,12 @@ EXPORT_SYMBOL(sym_name);
 EXPORT_SYMBOL_GPL(sym_name); // GPL License
 ```
 
-如果一个符号是用 `EXPORT_SYMBOL_GPL()` 导出, 就不可以被非 GPL 发布的模块使用. 注意, 有相当多内核模块符号都是用 GPL 导出的.
+如果一个符号是用 `EXPORT_SYMBOL_GPL()` 导出, 就不可以被非 GPL 发布的模块使用. 注意, 有相当多内核模块符号都是用 GPL 导出的. Linux 不保证模块导出的符号的稳定性.
 
 模块计数管理接口:
 ```c
 int try_module_get(struct module *mod); // 
 void module_put(struct module*);        // 增加模块的使用计数, 若返回 0 则表示调用失败.
 ```
+
 

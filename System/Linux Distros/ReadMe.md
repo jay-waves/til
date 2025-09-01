@@ -4,7 +4,7 @@
 软件安装:
 ```bash
 sudo apt install zsh sudo vim git \
-	net-tools curl traceroute wget nfs-utils \
+	net-tools curl iproute2 traceroute wget nfs-utils \
 	openssl-devel openssh-server \
 
 # 编译工具

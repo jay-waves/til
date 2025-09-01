@@ -8,7 +8,7 @@ PGP (Pretty Good Privacy) 是一种流行加密协议, 用于电子邮件和文�
 | **认证**     | 数字签名 | [DSS](../../Security/密码学/公钥密码/数字签名/数字签名.md#3%20DSA%20数字签名)/[RSA](../../Security/密码学/公钥密码/RSA/RSA.md) + [SHA](../../Security/密码学/消息摘要/消息摘要.md) | 哈希和数字签名套件 |
 | **保密**     | 消息加密 | CAST5, [AES](../../Security/密码学/分组密码/SP%20结构/AES.md), [IDEA](../../Security/密码学/分组密码/SP%20结构/IDEA.md), [3DES](../../Security/密码学/分组密码/Feistel%20结构/EDE.md), Blowfish    | 内容对称加密       |
 | **压缩**     |          | ZIP           |                    |
-| **邮件兼容** | 兼容 MIME 标准         | [Base64](../../System/Development/base-N%20encoding.md)        | 将加密消息转化为 [ACSII](../../System/Development/character%20encoding.md) 串                 |
+| **邮件兼容** | 兼容 MIME 标准         | [Base64](../../System/Development/base-N%20encoding.md)        | 将加密消息转化为 [ACSII](../../System/Development/字符编码.md) 串                 |
 
 PGP 加密电子邮件时, 与 [MIME](E-Mail.md) (Multipurpose Internet Mail Extension) 结合在一起形成 PGP/MIME 标准.
 

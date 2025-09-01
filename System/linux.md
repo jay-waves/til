@@ -33,7 +33,7 @@ Kernel 工作在三个情景下:
 
 > "Kernel is system's core, always resident, always privileged, and always in control".
 
-## Execution Model 
+## 内核执行模型
 
 - Process Context: 用户态, 通过系统调用陷入内核. 拥有完整虚拟地址空间.
 - Kernel Thread: 内核态, 本质是调度实体 `task_struct`, 但没有独立的用户态虚拟地址空间. 不能直接访问用户空间的数据.
@@ -127,6 +127,7 @@ firware (BIOS, UEFI, BootRom)
 								--> mount root filesystem (rootfs, initramfs)
 								--> /sbin/init 
 ```
+
 
 ## 内核对象
 

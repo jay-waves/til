@@ -1,4 +1,9 @@
 ## Linux
+
+除系统调用外, 内核对外的接口还有:
+- VFS: `/proc, /sys`
+- eBPF
+
 ### x86
 
 | eax | name    | C prototype                                              | description  | args description                                                              |
@@ -16,10 +21,20 @@
 
 `x86_64` 中, Linux 的系统调用号被重新分配.
 
+### ioctl 
+
+### netlink 
+
+### ptrace 
+
+### mmap
 
 ## POSIX
 
 `/usr/include/unistd.h` 包含 Unix 系统调用标准库, 扩展 POSIX API 定义的标准系统调用. 是 POSIX 标准库的一部分, 如 `unistd.h, fcntl.h, sys/types.h`.
+
+Linux 内核的系统调用需要从用户态切换到用户态, 因此需要专用的系统调用指令: `int 0x80, sysenter, syscall`. 通过调用号来派发到具体内核函数. POSIX 系统调用实际由 libc 实现并提供, libc 对内联汇编进行封装.
+
 
 | 分类       | 函数                                         | 作用                           |
 | ---------- | -------------------------------------------- | ------------------------------ |
