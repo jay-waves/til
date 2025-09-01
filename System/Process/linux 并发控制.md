@@ -1,6 +1,14 @@
 ## 竞态发生场景
 
-在 *对称多处理器 (SMP)* 场景下, 竞态 (Race Condition) 可能发生在 CPU0 进程和 CPU1 进程之间, CPU0 进程和 CPU1 中断之间, CPU0 中断和 CPU1 中断之间, CPU0 进程和 CPU0 中断之间. 对于 Linux 内核 (2.6 之后), 内核支持进程被高优先级进程打断, 称为内核抢占调度. 内核 2.6.35 版本以后, 不再支持单核中断的嵌套.
+在 *对称多处理器 (SMP)* 场景下, 竞态 (Race Condition) 可能发生在 CPU0 进程和 CPU1 进程之间, CPU0 进程和 CPU1 中断之间, CPU0 中断和 CPU1 中断之间, CPU0 进程和 CPU0 中断之间. 对于 Linux 内核 (2.6 之后), 内核支持进程被高优先级进程打断, 即内核抢占调度. 竞态还可能发生在线程意外终止时, 即对象生命周期相关错误.
+
+数据竞争问题的来源:
+1. SMP 
+2. 抢占调度
+3. 中断
+4. [内存模型的一致性问题](../../HardWare/计算机组成/内存模型.md)
+5. 对象生命周期: 退出及释放安全
+6. 死锁 (阻塞等待问题)
 
 内核提供的互斥保护机制包括: *中断屏蔽, 原子操作, 自旋锁, 信号量, 互斥体*. 可参考 [进程同步与互斥](进程同步与互斥.md), 以及[硬件内存模型](../../HardWare/计算机组成/内存模型.md)
 
@@ -102,6 +110,7 @@ static int xxx_release(struct inode *inode, struct file *filp)
 }
 ```
 
+
 ## 自旋锁
 
 
@@ -150,13 +159,37 @@ spin_unlock(&lock); // 释放自旋锁
 
 ### 读写自旋锁
 
+rwlock
+
 ### 顺序锁
 
 顺序锁 (seq lock)
 
 ### 读-复制-更新
 
-RCU, Read-Copy Update (Paul McKenney, 2001). 
+RCU, Read-Copy Update (Paul McKenney, 2001). 用于**读非常频繁, 写相对少**的场景, 支持无锁的并发读取.
+
+RCU 数据结构, 在 *读 (Read)* 时实际不需要加锁; 写时, 先 *复制 (Copy)* 一份副本, 修改副本而不修改正在被读取的对象; 修改彻底完成后, 再用指针替换的方式原子地 *更新 (Update)* 数据. 老版本数据, 在所有读引用计数清空后, 被释放.
+
+对于老版本数据, 当所有在写时已经开始的读操作皆结束, 就释放. 这段过程被称为 *宽限期 (Grace Period)*. 在内核中,宽限期的追踪原理是: 每个 CPU 都经历过一次上下文切换, 就认为读临界区结束; 在用户态 RCU 中, 可能需要为每个线程维护计数 + 内存屏障.
+
+```c
+// 读
+rcu_read_lock();
+p = rcu_dereference(global_ptr);
+...
+rcu_read_unlock();
+
+// 写
+p = kmalloc(...);
+...
+rcu_assign_pointer(global_ptr, p); // 交换新指针
+synchronize_rcu();                 // 等待所有读完成
+kfree(old_p);                      // 安全释放
+
+// 写, 另一种异步方式
+call_rcu(&old_p->rcu_head, free_func);
+```
 
 ## 信号量
 
@@ -193,4 +226,4 @@ Mutex
 
 Completion
 
-## 
+

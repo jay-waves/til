@@ -37,18 +37,6 @@ linux 每个文件有两个结构:
 
 用户一般以字节为单位处理文件数据, 而操作系统以数据块为单位处理. 文件系统负责屏蔽这种差异.
 
-## 文件类型
-
-常见文件类型有:
-1. file (f)
-2. directory (d)
-3. symlink (l)
-4. executable (x)
-5. empty (e)
-6. scket (s)
-7. pipe (p)
-8. char-device (c)
-9. block-device (b)
 
 ## 空闲空间管理
 

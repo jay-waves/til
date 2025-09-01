@@ -1,12 +1,13 @@
-Linux 内核中使用 `task_struct` 结构体来描述进程, 包含如下资源:
-- 内存 `mm_struct`
-- 文件系统和文件 `files_struct`
-- tty 资源
-- 信号处理
-- 鉴权 `cred`
+Linux 内核的进程上下文包括:
+- `task_struct`: 大部分进程资源
+	- `mm_struct` 虚拟内存
+	- `fs_struct` 目录
+	- `files_struct` 文件描述符表
+	- `signal_xxx` 信号处理
+	- `cred` 鉴权
+	- `thread_struct`: 保存和硬件相关的信息, 如 CPU 状态 / 内核栈指针等.
 
-Linux 线程采用 轻量级进程模型 实现, 调用 `pthread_create()` 创建线程时, 实际创建了新的 `task_struct`, 同时共享其父 `task_struct` 的部分资源指针. 
-
+Linux 线程采用 轻量级进程模型 实现, 调用 `pthread_create()` 创建线程时, 实际创建了新的 `task_struct`, 同时共享其父 `task_struct` 的部分资源指针.
 
 ## task_struct
 
@@ -33,4 +34,10 @@ syscall()
 				--> xxx() // 执行具体系统调用
 ```
 
+## fork()
 
+Linux 创建新进程时, 并不完整复制原进程, 而是和原进程共享一个*写时复制 (Copy on Write, COW)* 的内存空间. 
+
+新进程有新的 `task_struct`, 大部分原信息是复制过来的, 但内存是浅拷贝的: 虚拟内存 VMA 复制给子进程, 但不会立刻复制物理页. 所有共享的物理页 PTE 立刻被标记为只读, 清空"可写"标志, 然后更新 `struct page` 中的 `refcount`.
+
+一旦某进程对某个只读 PTE 进行修改, 就会触发*缺页异常 (Page Fault)*, 会分配一个新的物理页, 然后把旧页复制到新页. 
