@@ -106,3 +106,9 @@ func on_read_end(x, clock R) {
 - Slowdown > 50x
 - Memory Overhead!
 - Improved in [FastTrack](FastTrack.md)
+
+## Vector Clocks
+
+ Virtual time and global states of distributed systems -- Mattern 1998
+
+...

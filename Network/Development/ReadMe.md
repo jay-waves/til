@@ -1,5 +1,13 @@
 ## 网络编程
 
+IO 模型:
+- asio 
+- zmq
+
+并发模型: (见 C/C++)
+- libuv, libevent 
+- libcoro 
+- libexecution
 
 
 ## 网络编程性能优化
