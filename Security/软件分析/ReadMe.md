@@ -33,6 +33,8 @@
 	- memory footprint
 - Programmer Overhead
 
+>  Dijkstra, "Program testing can be used to show the presence of bugs, but never to show their absence."
+
 ### 模糊测试
 
 模糊测试发展路径:[^3]
