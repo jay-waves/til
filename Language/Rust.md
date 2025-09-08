@@ -485,7 +485,7 @@ fn print_number(n : Number) {
 trait Signed {
 	fn is_strictly_negative(self) -> bool;
 }
-```k
+```
 
 **Orphan rules**:
 - one of your traits on anyone's type 
