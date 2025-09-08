@@ -22,6 +22,17 @@ void foo() {
 
 C++20 Ranges. 函数式迭代器.
 
+## std::literals 
+
+用户自定义字面量 (UDL, User-Defined Literal): 允许重载 `operator""xxx`, 比如重载 `"xxx"json`
+- `std::literals::string_literals`
+	- `"abc"s` --> string 
+	- `"abc"sv` --> string_view 
+- `std::literals::chrono_literals`
+	- `"xxx"h`, `"xxx"min`, `"xxx"s`, `"xxx"ms`, `"xxx"us`
+- `std::literals::complex_literals`
+	- `1.0 + 2.0i` --> `complex<double>{1.0, 2.0}`
+
 ## 序列化
 
 - JSON: jsoncpp, nlohmann/json 

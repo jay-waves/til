@@ -141,7 +141,7 @@ mtx.lock(); // 已锁定
 unique_lock<mutex> lock(mtx, std::adopt_lock); // 接管
 ```
 
-## 事件
+## ConditionVariable
 
 *条件变量 (condition variable)* 使线程等待某一条件 (事件, 由其他线程引发).
 
@@ -175,3 +175,17 @@ void producer() {
 	} // release lock implicitly
 }
 ```
+
+## StopToken 
+
+C++20 引入 `stop_token`, 标准化: 异步任务的取消模型. 
+- `request_stop()` 发出取消请求
+- 线程中有两种取消方式:
+	- 轮询 `stop_token.stop_requested()` 检查是否退出
+	- 注册退出回调 `stop_token.register_callback(fn)`
+
+比自己写 `atomic<bool>` 标志位更标准和简单.
+
+## JThread 
+
+`std::jthread` 在 `std::thread` 基础上, 添加了 `stop_token` 与 RAII 自动 `join()` 的封装. 
