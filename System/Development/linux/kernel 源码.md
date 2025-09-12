@@ -46,3 +46,30 @@
 - `sound` 音视频驱动
 - `security`: LSM & seccomp, like AppArmor / SELinux
 - `usr`
+
+## Linux 编译结构
+
+- `Makefile`: 顶层 Makefile, 
+	1. 读取和配置 .config 
+	2. 读取内核版本 `/Linux/version.h`
+	3. 读取 `arch/$(ARCH)/Makefile$` 中的架构相关配置
+	4. 递归进各个子目录, 执行编译
+	5. 执行 `scripts/head-object-list.txt, link-vmlinux.sh`, 链接最终镜像 vmlinux 
+- `.config`: 配置文件
+- `arch/$(SRCARCH)/Makefile$`: 架构相关 Makefile
+- `scripts/Makefile.*` 
+- `Kbuild + Makefiles` 每个子目录的 makefile. 注意 KBuild Makefile 的语法和普通 Makefile 不同, 并且和 KConfig 集成. 
+
+```kbuild 
+obj-$(CONFIG_FOO) += foo.o
+
+obj-y += subdir/
+
+ccflags-$(CONFIG_XXX_DEBUG) += -XXX_DEBUG -Od
+```
+
+`CONFIG_FOO` 在 `.config` 中配置, 有 `y/m/n` 三种选项. 
+
+- 对象 `obj-y` 会被脚本链接入最终镜像 `vmlinux`.
+- 对象 `obj-m` 会被编译为独立的内核模块.
+- Makefile 只负责同目录下的文件, 所有子文件要显式添加. 

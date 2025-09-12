@@ -83,28 +83,31 @@ RISC-V 没有寄存器上下文管理指令 (如 [SPARC](SPARCv8.md) save/store)
 
 没有条件码寄存器, 而是直接比较两个寄存器.
 
-## 算术运算
-
-加法, 减法, 位移, 位操作, 比较分支. 声称其他都可以用软件模拟. 
-
-遇到 overflow / underflow / subnormal / divide by zero 时, 不会抛出异常, 而是产生一个合理的默认数值. 
-
 ## RV32I
 
 ### 算术运算
 
 加法 / 减法 / 位移 / 位操作 / 比较分支. 其他都可以用基础指令来模拟.
 
-- ADD rd, rs1, rs2
-- SUB rd, rs1, rs2
-- SLL rd, rs1, rs2
-- SLT rd, rs1, rs2
-- SLTU rd, rs1, rs2
+- `ADD rd, rs1, rs2` / `ADDI rd, rs1, imm`
+- `SUB rd, rs1, rs2` :  rs1 - rs2
+- `SLL rd, rs1, rs2`: : shift left logical. rs2 的最小 5b 决定移位值.
 - XOR rd, rs1, rs2
-- SRL rd, rs1, rs2
-- SRA rd, rs1, rs2
-- OR rd, rs1, rs2
-- AND rd, rs1, rs2
+- `SRL rd, rs1, rs2`: shift right logical. 填充零.
+- `SRA rd, rs1, rs2`: shift right arithmetic. 填充符号位.
+- `OR rd, rs1, rs2`. 注意, `ORI rd, rs1, imm` 中立即数会被符号扩展, 并非"按位或"行为.
+- `AND rd, rs1, rs2`: 
+- `SLT rd, rs1, rs2`: Set if Less Than. 如果 rs1 < rs2, 设置 `rd=1`, 否则 `rd=0`
+- `SLTU rd, rs1, rs2`: Set if Less Than, Unsigned
+
+Alias:
+- `NEG rd, rs`  : 实际是 `SUB rd, x0, rs`
+- `NOP` : 实际是 `ADDI x0, x0, 0`
+- `MV rd, rs` : 实际是 `ADDI rd, rs, 0`
+- `NOT rd, rs` : 实际是 `XORI rd, rs, -1`
+- `SGTZ rd, rs` : (set if greater than zero) `SLT rd, x0, rs`
+- `SNEZ rd, rs` : (set if not equal to zero) `SLTU rd, x0, rs`
+
 
 ### 内存指令
 

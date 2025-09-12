@@ -1,60 +1,3 @@
-模板是编译时泛型技术, 运行时开销比较小. 但是模板对每种类型都生成独立的代码, 会导致程序体积膨胀和编译变慢.
-
-模板不仅接受类型参数, 也能接受值参数:
-
-```cpp
-template<typename T, int N>
-struct Buffer {
-	constexpr int size() { return N; }
-	T[N]; // 可以在栈上.
-};
-```
-
-模板函数:
-
-```cpp
-template<typename Container, typename Value>
-Value sum(const Contianer&c, Value v) {
-	for (auto x: c)
-		v += x;
-	return v;
-}
-```
-
-## functor
-
-通过重载 `()` 符号, 类可以像函数一样被调用. 函数对象的优点是可以存储局部状态, 而不是通过静态 / 全局变量的方式.
-
-```cpp
-template<typename T>
-class Less_than {
-	const T val; // value to compare against 
-public:
-	Less_than(const T& v) : val(v) {}
-	bool operator()(const T& x) const {return x < val; } // call operator 
-};
-```
-
-## variadic template
-
-*variadic template* 指可以接受**任意数量的任意类型参数**的模板.
-
-```cpp
-void f() {} // 用于处理递归结束
-
-template<typename T, typename...Tail>
-void f(T head, Tail... tail) {
-	g(head); // 处理第一个参数
-	f(tail...); // 继续处理接下来参数
-}
-````
-
-如果是齐次参数列表 (类型相同的任意数量参数), 考虑使用*初始化列表*.
-
-### SFINAE 
-
-https://jguegant.github.io/blogs/tech/sfinae-introduction.html
-
 ## concept 
 
 传统模板是对一组类型的抽象描述, 它通常对所定义的类型有隐式要求. 比如 `swap` 要求类型 `T` 必须支持拷贝构造和赋值, 否则会报错. 但是传统模板的报错非常抽象, 编译器输出非常冗长并且难以理解.
@@ -147,3 +90,36 @@ std::default_initializable<T> // T t 合法
 ```
 
 `<type_traits>` 是 C++11 引入的, 基于模板偏特化 (SFINAE), `<concepts>` 是其升级版, 更易用.
+
+### 配合 `if constexpr`
+
+编译时常量表达式判断, 可以让编译器激进地优化分支.
+
+```cpp
+template <typename T>
+void process(T value){
+	if constexpr (std::is_integral_v<T>){ // c++17
+		// int
+	} else if constexpr (std::is_floating_point_v<T>){
+		// float
+	} else {
+		static_assert(std::is_same_v<T, std::string>, "unsupported type");
+		// String
+	}
+} // only one branch will appear in compiled code
+
+std::enable_if_t<std::is_integral_v<T>, T> processIntegral(T value) {
+	
+} // on or off.
+```
+
+cpp 最后会和 python 越长越像...
+```cpp
+template <typename... Args>
+void print(Args&&... args){
+	((std::cout << args << " "), ...);
+}
+
+// in c
+#define print(format, ...) printf(format, __VA_ARGS__)
+```

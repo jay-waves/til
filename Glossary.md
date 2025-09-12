@@ -82,7 +82,7 @@ block started by symbol, ELF 文件中存储未初始化全局变量和局部静
 
 ### Clang
 
-基于 LLVM 的 C/C++/Objective-C 编译器前端. 见 [Comiler/LLVM/clang](Compiler/工具链/LLVM/clang.md)
+基于 LLVM 的 C/C++/Objective-C 编译器前端. 见 [Comiler/LLVM/clang](Compiler/工具链/LLVM/Clang.md)
 
 ### CI/CD
 
@@ -782,7 +782,7 @@ Secure Hash Algorithm, 密码学哈希函数 (消息摘要函数, 杂凑函数, 
 
 ### TagDispatch
 
-一种函数反射方法, 见 [运行时函数多态](Language/C++/数据类型/运行时函数多态.md#函数体).
+一种函数反射方法, 见 [运行时函数多态](Language/C++/面向对象/运行时函数多态.md#函数体).
 
 ### Time-Sharing System
 
