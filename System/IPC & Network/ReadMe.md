@@ -9,6 +9,29 @@ IO 模型:
 - libcoro 
 - libexecution
 
+### Reactor 
+
+Reactor 模型中, **应用主动响应 IO 事件**.
+
+1. Reactor 后台运行, 检测到某个 IO 事件就绪
+2. 将事件通知给应用
+3. 应用层自行执行具体 IO 动作
+
+### Proactor 
+
+Proactor 模型中, **应用提交操作, 操作完成后被动接受结果**. 
+
+1. 应用将动作 (read/write) 提交给 Proactor 
+2. Proactor后台执行, 并自动完成 IO 动作
+3. Proactor 将动作结果直接通知应用.
+
+|           | Actor    |
+| --------- | -------- |
+| libevent  | Reactor  |
+| Netty (Java)     | Reactor  |
+| IOCP      | Proactor |
+| POSIX AIO | Proactor |
+| ASIO      | Proactor | 
 
 ## 网络编程性能优化
 

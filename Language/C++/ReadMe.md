@@ -68,6 +68,16 @@ GUI:
 - Eigen
 - SIMD (Vc)
 
+## Zero Cost Abstraction
+
+> C++ obey the zero-verhead principle: You don't pay what you don't use. And further: you couldn't hand code any better what you do use. --Bjarne
+
+**零开销抽象**意味着, 添加一个高级编程概念或语法时, 额外的开销会在编译期被消化, 不会带来额外的运行时开销, 即:
+- no overhead in space
+- no overhead in runtime
+
+运行时的零开销抽象很难(几乎不可能)实现, 参考 [Cppcon 2019](https://www.youtube.com/watch?v=rHIkrotSwcc). C++ 只是保证, 未使用的功能不会造成实际开销, 被使用的功能的大部分额外(隐式的)开销不发生在运行时, 副作用是更长的编译时间. 
+
 ## Reference
 
 [Learn Modern C++, discover a launguage matched to today's computing needs](https://learnmoderncpp.com/) - cpptutor

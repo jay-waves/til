@@ -1,9 +1,9 @@
 
-# Pass in Src Tree
+## Pass in Src Tree
 
 **[using new pass manager](use%20new%20pass%20manager.md)**
 
-## build your llvm
+### build your llvm
 
 ```shell
 cmake -G Ninja ../llvm \
@@ -20,11 +20,11 @@ ninja
 - `llvm-project/llvm/include`
 - `llvm-project/build/include`, 其中 build 是 CMake 的构建目录. 这是因为有些头文件在构建时才产生.
 
-## add file to cmake
+### add file to cmake
 
 在 `llvm/lib/Transforms/Utils` 下活动, 修改 `.../Utils/CMakeLists.txt`
 
-## create pass
+### create pass
 
 从 LLVM 9.0 版本开始, 引入了新 Pass Manager, API 有所改变, 并且注册方式也有更改.
 
@@ -61,13 +61,13 @@ PreservedAnalyses HelloWorldPass::run(Function &F,
 }
 ```
 
-## register pass
+### register pass
 
 在 `llvm/lib/Passes/PassRegistry.def` 添加: `FUNCTION_PASS("helloworld", HelloWorldPass())`
 
 在 `llvm/lib/Passes/PassBuilder.cpp` 添加: `#include "llvm/Transforms/Utils/Helloworld.h"`
 
-## run our pass with opt
+### run our pass with opt
 
 ```shell 
 cmake --build build/ --target opt
@@ -75,7 +75,7 @@ cmake --build build/ --target opt
 build/bin/opt -disable-output /tmp/a.ll -passes=helloworld
 ```
 
-# register pass as plugins
+## register pass as plugins
 
 在 llvm-project 目录创建一个 CMake 项目, CMakeLists.txt 如下:
 
