@@ -99,6 +99,9 @@ RISC-V 没有寄存器上下文管理指令 (如 [SPARC](SPARCv8.md) save/store)
 - `AND rd, rs1, rs2`: 
 - `SLT rd, rs1, rs2`: Set if Less Than. 如果 rs1 < rs2, 设置 `rd=1`, 否则 `rd=0`
 - `SLTU rd, rs1, rs2`: Set if Less Than, Unsigned
+- `SLTI rd, rs1, imm`: Set if Less Tahn Immediate, Signed
+- `AUIPC rd, imm` : Add Upper Immediate to PC, then storing result in `rd`. 
+- `LUI rd, imm` : Load Upper Immediate. `imm` 只有高 20b 有效, 低 12b 为零. 低 12b 一般用 `ADDI` 修改, 但需要注意其中 `imm` 的符号扩展行为. 
 
 Alias:
 - `NEG rd, rs`  : 实际是 `SUB rd, x0, rs`
@@ -107,6 +110,9 @@ Alias:
 - `NOT rd, rs` : 实际是 `XORI rd, rs, -1`
 - `SGTZ rd, rs` : (set if greater than zero) `SLT rd, x0, rs`
 - `SNEZ rd, rs` : (set if not equal to zero) `SLTU rd, x0, rs`
+- `SEQZ rd, rs` : (set if equal to zero): `SLTIU rd, rs, 1`
+- `LI rd, imm` 直接装载一个 32b 常量, 实际由 `LUI rd, imm[31:12]`, `ADDI rd, x0, imm[11:0]` 构成.
+- `LA rd, symbol` Load Address. 实际由 `AUIPC rd, imm[31:12]` `ADDI rd, x0, imm[11:0]`. 
 
 
 ### 内存指令
@@ -121,6 +127,12 @@ Alias:
 - SW rs2, offset(rs1)
 
 ### 分支指令
+
+#### 无条件分支
+
+
+
+#### 条件分支
 
 - BEQ rs1, rs2, offset 
 - BNE 

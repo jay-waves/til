@@ -26,24 +26,65 @@
 - [SVF](https://svf-tools.github.io/SVF/): 别名分析, 流分析
 - 
 
+## 编译优化的基本问题
 
+- 公共子表达式化简 (common subexpression elimination, CSE)
+	- 参数访问
+	- 结构体字段访问
+	- 数组字段访问
+- 常量传播 (constant propagation)
+- 死代码消除 (dead code elimination)
+
+循环优化:
+- 减少循环代码执行长度
+- 减少代码体积
+
+### DAG vs. Value Numbering
+
+将代码化简为三地址码, 然后通过 DAG 表示. 通过模式匹配和变换, 化简 DAG 中的公共子表达式. 
+
+另一种更有效的方式为 Value Numbering, 通过哈希的方法, 为公共子表达式分配唯一编号, 有效地识别等价表达式. 
+
+### SSA 
+
+DU (Definition-Use) Chains: 变量 X 的定义可见, 如何找到所有对 X 的访问.
+
+UD (Use-Definition) Chains: 变量 X 的某个访问可见, 如何找到所有对 X 的可达定义?
+
+如果允许对变量 X 的重复定义 (赋值), DU 和 UD 关系都会很复杂. 引入 SSA (Static Single Assignment), 以及 PSSA (Partial SSA). 
+
+PSSA 中, 大部分操作使用虚拟寄存器表达, 少部分复杂操作仍保留内存操作. 如果变量 X 的定义来自不同的控制流, 用 $\phi$ 来显式表达. 
+
+## 数据流分析
+
+[数据流分析](数据流分析.md)
+
+## 别名分析
+
+基于包含, 基于合并
+
+## 过程间分析
+
+基于摘要的过程间分析
+
+## 类型状态分析
+
+状态机形式描述
 
 ## Lattice (Order)
 
 指某种*偏序集合* (partially ordered set, poset), 其中任意一对元素有唯一的*上确界* (supremum, least upper bound, join) 和*下确界* (infimum, greatest lower bound, meet). 
 
-格 $(L,\leq)$ 的任意元素对 $\set{a, b}\subseteq L$, 皆有一个上确界 $a\vee b$ 和下确界 $a\wedge b$. 
+表达了一种信息精确性的约束关系, 见 https://en.wikipedia.org/wiki/Lattice_(order).
 
-抽象来讲, 偏序表示了一种信息包含关系, $a\leq b$ 表示 $a$ 的信息更加精确. 上确界表示两个状态的最小上界, 表示合并信息; 下确界表示两个状态的最大下界, 表示交叉约束.
+![](../../../attach/Snipaste_2025-09-18_14-18-49.png)
 
-### 子集关系
+$x\leq y$ iff $x\wedge y =x$. 
 
-子集关系是一种偏序: $U=\set{1, 2, 3}$, 它的子集 $\set{1}\leq \set{1, 2}$; 但是 $\set{1,2}$ 和 $\set{2,3}$ 不可比, 因为无子集关系. 
-
-### 区间包含关系
-
-$[a_{1},b_{1}]\leq [a_{2},b_{2}]$ 等价于 $a_{2}\leq a_{1}$ 且 $b_{1}\leq b_{2}$.
+${} x\wedge y\leq x {}$
 
 ## 参考
 
 将内核编译为 vmlinux.bc : wllvm https://github.com/travitch/whole-program-llvm
+
+CMU15-745. Optimizing Compilers for Moedern Architectures, [Spring 2019](https://www.cs.cmu.edu/afs/cs/academic/class/15745-s19/www/), [Fall 2025](https://www.cs.cmu.edu/~15745/www/)

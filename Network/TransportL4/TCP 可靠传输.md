@@ -29,9 +29,9 @@
 
 ## 拥塞控制
 
-![|350](../../attach/计算机网络_拥塞控制.avif)
+![|350](../../../attach/计算机网络_拥塞控制.avif)
 
-![|500](../../attach/Pasted%20image%2020230604173012.avif)
+![|500](../../../attach/Pasted%20image%2020230604173012.avif)
 
 **慢启动算法**:
 
@@ -43,7 +43,7 @@ For (each segment ACKed):
 Until (loss event OR cwnd > ssthresh):
 ```
 
-![|500](../../attach/计算机网络_拥塞控制_自动机.avif)
+![|500](../../../attach/计算机网络_拥塞控制_自动机.avif)
 
 算法流程:
 
