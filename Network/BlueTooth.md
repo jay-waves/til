@@ -11,7 +11,7 @@
 
 蓝牙是一种多层次协议, 以 Linux 内核的视角来看: 大部分应用层和连接管理放在用户态 BlueZ 中, Socket (L2CAP, RFCOMM, SCO, BNEP) 和 HCI 逻辑放在内核中. 
 
-![](../attach/Snipaste_2025-08-26_16-54-36.png)
+![](../../attach/Snipaste_2025-08-26_16-54-36.png)
 
 - 应用层:
 	- A2DP: 音频传输, 用于蓝牙耳机
