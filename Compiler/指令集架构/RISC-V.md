@@ -73,15 +73,9 @@ RV32I:
 | x18-27 | s2-11    | saved registers                    | callee |
 | x28-31 | t3-6     | temporaries                        | caller        |
 
-一般指令只能操作寄存器, 只有 `load/store` 才能操作内存. 
+没有标准状态寄存器. 
 
 RISC-V 没有寄存器上下文管理指令 (如 [SPARC](SPARCv8.md) save/store), 必须手动操作寄存器管理上下文 (中断, 函数调用等).
-
-### 分支
-
-函数调用使用 `JAL` (Jump and Link) 指令, 寄存器必须一个一个用指令放到栈中或取出.
-
-没有条件码寄存器, 而是直接比较两个寄存器.
 
 ## RV32I
 
@@ -100,7 +94,7 @@ RISC-V 没有寄存器上下文管理指令 (如 [SPARC](SPARCv8.md) save/store)
 - `SLT rd, rs1, rs2`: Set if Less Than. 如果 rs1 < rs2, 设置 `rd=1`, 否则 `rd=0`
 - `SLTU rd, rs1, rs2`: Set if Less Than, Unsigned
 - `SLTI rd, rs1, imm`: Set if Less Tahn Immediate, Signed
-- `AUIPC rd, imm` : Add Upper Immediate to PC, then storing result in `rd`. 
+- `AUIPC rd, imm` : Add Upper Immediate to PC. $rd=PC+(imm20 \ll 12)$
 - `LUI rd, imm` : Load Upper Immediate. `imm` 只有高 20b 有效, 低 12b 为零. 低 12b 一般用 `ADDI` 修改, 但需要注意其中 `imm` 的符号扩展行为. 
 
 Alias:
@@ -117,29 +111,64 @@ Alias:
 
 ### 内存指令
 
-- LB rd, offset(rs1)
-- LH rd, offset(rs1)
-- LW rd, offset(rs1)
-- LBU rd, offset(rs1)
-- LHU rd, offset(rs1)
-- SB rs2, offset(rs1)
-- SH rs2, offset(rs1)
-- SW rs2, offset(rs1)
+一般指令只能操作寄存器, 只有 `load/store` 才能操作内存. 
+
+$addr = rs_{1}+sign\_ext(imm12)$
+
+- `LB rd, rs1, imm12`: 将字节装载到 `rd` 的最低字节, 然后将其符号扩展为 32b. 
+- `LH rd, rs, imm`: load halfword
+- `LW rd, rs, imm`: load word
+- `LBU ...`: load byte, unsigned. 将字节装载到 `rd` 最低字节, 高位全部填充为0.
+- `LHU ...`
+- `SB rs2, rs1, imm`: 将 `rs2` 寄存器的最低字节放入内存.
+- `SH rs2, rs1, imm`: 
+- `SW ...`
+
+内存屏障:
+- `FENCE fm, pred, succ` 
+- `FENCE.I` Instruction Fence
 
 ### 分支指令
 
+分支指令主要采用 PC 相对寻址. 长跳转使用 JAL (20b).
+
 #### 无条件分支
 
+`JAL rd, imm20`: Jump and Link. 将 offset 加到 PC, 同时将顺序下一条指令的 PC 写入 rd.  imm 位宽为 20b, 被符号扩展后, 再左移一位 (保证地址两字节对齐). 
 
+`JALR rd, rs, imm12`: $PC=(rs+offset)\&~1$, $offset=sign\_ext(imm)$. imm 只有 12b, 并且最终 PC 强制将最后一位清零. 
+
+Alias:
+- `J offset`: `JAL x0, offset`, no return address.
+- `JAL offset`: `JAL x1, offset`. 函数调用时, 惯例将返回地址放在 `x1` 寄存器
+- `JR rs`: `JALR x0, rs, 0`
+- `RET`: `JALR x0, x1, 0`
+- `CALL rd, symbol`: 函数调用. `AUIPC r, imm[31:12]`, `JALR x1, r, imm[11:0]`, 惯例采用 `x6` 作为 `r`. 
+- `TAIL rs, symbol`: 尾调用. `AUIPC r, imm[31:12]`, `JALR x0, r, imm[11:0]`, 惯例采用 `x6` 作为 `r`. 用 `x0` 存储返回地址, 即, 不进行实际压栈行为.
 
 #### 条件分支
 
-- BEQ rs1, rs2, offset 
-- BNE 
-- BLT
-- BGE 
-- BLTU 
-- BGEU 
+$offset = sign\_ext(imm12)\ll 1$
+
+- `BEQ rs1, rs2, imm12`: Branch if Equal 
+- `BNE rs1, rs2, imm12`
+- `BLT ...`
+- `BGE ...`: Branch if Greater Than or Equal
+- `BLTU ...`: (unsigned)
+- `BGEU ...` 
+
+Alias:
+- `BGT rs, rt, imm` == `BLT rt, rs, imm`
+- `BLE rs, rt, imm` == `BGE rt, rs, offset`
+- `BEQZ rs, imm` == `BEQ rs, x0, imm`
+- ...
+
+## 内存模型
+
+
+### 栈管理
+
+寄存器必须一个一个用指令放到栈中或取出.
 
 ## C
 
