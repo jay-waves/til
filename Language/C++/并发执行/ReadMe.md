@@ -18,7 +18,7 @@
 
 协程相关: 线程阻塞时让出 CPU, 是交由操作系统调度器处理的; 而协程是**用户态调度**的, 通过关键字 `yield, await` 主动让出 CPU. 协程也称为用户态线程. 协程本质是单线程的并发协调技术, 不同实现方式间有较大区别.
 - Promise/Future 模型, Async/Await 模型. 都是 事件+回调 的同步方式.
-- [Python](../../Python/并发与并行/并发.md) 使用生成器来模拟协程, 生成器每次 `yield` 后会暂停, 和协程等待的概念很类似. 虽然但是 pyhton 也提供了原生的 [asyncio](../../Python/并发与并行/asyncio.md)
+- [Python](../../Python/python%20并发.md) 使用生成器来模拟协程, 生成器每次 `yield` 后会暂停, 和协程等待的概念很类似. 虽然但是 pyhton 也提供了原生的 [asyncio](../../Python/并发与并行/asyncio.md)
 - [Go](../../Go/Go%20并发.md) 使用 Goroutine 轻量协程概念, 并提供了 `channel` 来进行阻塞/非阻塞通信.
 - 异步I/O
 
