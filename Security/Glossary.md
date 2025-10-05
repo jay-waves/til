@@ -1,21 +1,5 @@
 # A
 
-### API
-
-application programming interface, 应用程序编程接口
-
-### ABI
-
-application binary interface, 应用程序二进制接口.
-
-### Assembly
-
-汇编
-
-### Arch
-
-轻量和简约的 Linux 发行版, 滚动更新.
-
 ### Address Sanitizer
 
 Google 的 C/C++ 运行时内存错误检测工具, 基于 LLVM IR 实现.
@@ -36,10 +20,6 @@ Google 的 C/C++ 运行时内存错误检测工具, 基于 LLVM IR 实现.
 
 AES-[Galois Counter Mode](Security/密码学/分组密码/链接模式.md), 一种结合分组加密和认证的模式, 广泛应用于现代加密协议如 TLS.  
 
-### ARP
-
-[Address Resolution Protocol, 地址解析协议](Network/NetworkL3/ARP.md), 用于将 IP 地址解析为物理地址 (MAC).  
-
 ### ASLR
 
 Address Space Layout Randomization, 地址空间布局随机化, 用于防止缓冲区溢出攻击. 
@@ -48,69 +28,14 @@ Address Space Layout Randomization, 地址空间布局随机化, 用于防止缓
 
 # B
 
-### BFD
-
-binary file descriptor library, 二进制文件描述符库.
-
-### Big-endian
-
-大端字节序. 见 [端序](HardWare/端序.md)
-
-### Bus
-
-总线
-
-### Bootstrap
-
-自举
-
-### Silver Bullet
-
-银弹. 西方传说中只有银弹才能杀死狼人, 巨人和巫师. 人们把在软件体系结构中添加抽象层以解决兼容性问题的做法也叫做 " 银弹 ", 用以形容其是能解决各种问题的万灵药.
-
-### BSS
-
-block started by symbol, ELF 文件中存储未初始化全局变量和局部静态变量的段. 见 [Unix-ELF](Compiler/链接过程/Unix-ELF.md)
-
-### Brain-damaged, Brain-dead
-
-错误和傻逼的产品设计, 无法使用和接受, 对大脑产生损害.
-
 ---
 
 # C
 
-### Clang
-
-基于 LLVM 的 C/C++/Objective-C 编译器前端. 见 [Comiler/LLVM/clang](Compiler/工具链/LLVM/Clang.md)
-
-### CI/CD
-
-continuous integration/continuous deployment, 用于自动化测试/集成/部署, 来加快软件交互速度.
 
 ### Completeness
 
 完备性. 逻辑系统是完备的, 如果它能证明该逻辑下的**所有**真命题. 见 [可靠性与完备性](Math/计算理论/可靠性与完备性.md)
-
-### Casting/Coercion
-
-显式类型转换/隐式类型转换
-
-### COFF
-
-common object file format, ELF 格式前身. 见 [Unix-ELF](Compiler/链接过程/Unix-ELF.md)
-
-### COM
-
-component object model, 组件对象模型.
-
-### COW
-
-Copy-on-Write, 写时复制.
-
-### Complilation
-
-编译. 见 [编译过程](Compiler/编译过程.md)
 
 ### CVE
 
@@ -164,42 +89,9 @@ Content Security Policy, 内容安全策略, 用于防止跨站脚本 (XSS) 攻�
 
 [Cross-Site Request Forgery, 跨站请求伪造攻击](Security/安全攻击.md), 利用用户的身份对受信网站发送恶意请求. 
 
-### CDN
-
-Content Delivery Network, 内容分发网络, 通过分布式缓存加速内容传输. 
-
-### CTI 
-
-Control Transfer Instructions (CTI) 指汇编语言中跳转类型指令, 打破指令顺序执行.
-
-
 ---
 
 # D
-
-### DOM
-
-文档对象模型, 指网页文档的编程接口, 允许脚本语言 (JS) 修改网页内容结构.
-
-### DNS
-
-域名系统, 用于将域名 (example.com) 变为关联 IP 地址.
-
-### Docker
-
-轻量容器化平台
-
-### Device Driver
-
-硬件驱动.
-
-### DDL
-
-dynamic linking library, 动态链接库.
-
-### DSO
-
-dynamic shared object, 动态共享对象.
 
 ### DES
 
@@ -217,33 +109,9 @@ Discrete Logarithm Problem, 离散对数问题, 见 [欧拉定理](Math/数论/�
 
 Diffie-Hellman 密钥交换, 两实体在非安全信道交换秘密的算法, 见 [DiffieHellman](Security/密码学/公钥密码/DiffieHellman.md)
 
-### DAG
-
-Directed Acyclic Graph, 有向无环图数据结构.
-
-### DWARF 
-
-Debug With Arbitrary Record Format. 通用调试记录格式. 详见 [调试信息](Compiler/链接过程/调试信息.md)
-
 ---
 
 # E
-
-### ELF
-
-executable linkable format, 可执行可连接格式. 见 [Unix-ELF](Compiler/链接过程/Unix-ELF.md)
-
-### Environment Variables
-
-环境变量, 指 SHELL 运行的关键共享变量.
-
-### Exit Code
-
-程序退出码.
-
-### EAT
-
-export address table, 导出地址表.
 
 ### EDB
 
@@ -253,25 +121,13 @@ Exploit Database. 公开发布一些漏洞的详细信息和利用代码, 每个
 
 一种基于 DLP 困难性的公钥密码算法, 包括加密和签名. 见 [ElGamal](Security/密码学/公钥密码/ElGamal.md)
 
-### EOL
-
-End of Life, 软件或硬件停止维护的状态. 
-
 ---
 
 # F
 
 ### Fuzzing
 
-高效软件模糊测试框架, 见 [模糊测试技术](Security/软件分析/模糊测试.md)
-
-### FHS
-
-file hierarchy standard, 文件层次结构标准. 见 [linux FHS](System/File%20System/linux%20FHS.md)
-
-### Function Signature
-
-函数签名. 见 [compiler/linking/符号](Compiler/链接过程/符号.md)
+高效软件模糊测试框架, 见 [模糊测试技术](模糊测试/模糊测试.md)
 
 ### Finite State Machine
 
@@ -289,49 +145,9 @@ Factorization, 因数分解. 通常指 RSA 基于的大整数分解困难问题.
 
 # G
 
-### GUI
-
-计算机的用户图形界面
-
-### Git
-
-分布式版本控制系统, 用于跟踪文件更改和人员间协作. 和常见远程托管平台进行交互, 如: Github, GitLab
-
-### Generics
-
-泛型, 即允许接口同时复用于多种数据类型, 使用类型参数化实现, 在编译时确定具体数据类型 (即编译器为不同数据类型的调用生成不同代码, 而不是真的动态类型). 如 CPP 模板.
-
-### GOT
-
-global offset table, 全局偏移表
-
-### Grammar Parser
-
-语法分析器. 见 [编译过程](Compiler/编译过程.md)
-
 ---
 
 # H
-
-### HTTP
-
-Hypertext Transfer Protocol, 应用层无状态网络协议, 基于传输层 TCP 协议, 端口为 80.
-
-### HTTPs
-
-HTTP+SSL/TLS, 对 HTTP 协议提供安全加密.
-
-### Handle
-
-句柄
-
-### Heap
-
-堆, 数据结构. 见 [binary heap](Algorithm/树/binary%20heap.md). 也指进程内存空间的一种结构.
-
-### Hook
-
-钩子.
 
 ### HMAC
 
@@ -340,30 +156,6 @@ HTTP+SSL/TLS, 对 HTTP 协议提供安全加密.
 ---
 
 # I
-
-### Image File
-
-映像文件.
-
-### IDE
-
-集成开发环境
-
-### I/O Bound
-
-I/O 密集型.
-
-### Interrupt
-
-操作系统中断, 见 [中断与异常](System/Process/中断与异常.md)
-
-### ISR
-
-interrupt service routine, 中断处理程序.
-
-### ISA
-
-Instruction Set Architecture (ISA) 定义了处理器的 指令集, 寄存器, 内存结构. 包括指令集如何被执行, 如何影响内存和寄存器.
 
 ### Internet Standards
 
@@ -393,21 +185,9 @@ Internet of Things, 物联网, 通过互联网将设备连接起来实现智能�
 
 # J
 
-### JSON
-
-JavaScript Object Notation, 轻量级数据交换格式, 易于解析和阅读.
-
 ---
 
 # K
-
-### Kernel Mode
-
-操作系统内核模式.
-
-### Kali
-
-基于 Debian 的 Linux 发行版, 提供了内置网络安全工具.
 
 ### KMS 
 
@@ -421,49 +201,9 @@ Key Management Service, 密钥管理服务, 用于管理加密密钥的创建和
 
 # L
 
-### LLVM
-
-low level virtual machine, 编译器框架.
-
-### Lazy Binding
-
-延迟绑定.
-
-### Linking
-
-链接, 程序编译的步骤. 见 [静态链接](Compiler/链接过程/静态链接.md)
-
-### LSB
-
-linux standard base.
-
-### Little-endian
-
-小端字节序, 见 [端序](HardWare/端序.md)
-
 ---
 
 # M
-
-### MIPS
-
-Million Instructions Per Second, 用于衡量 CPU 每秒执行指令的速度.
-
-### MMU
-
-memory management unit, 内存管理单元.
-
-### MSB
-
-most significant bit/byte, 最大影响位.
-
-### Multiprogramming
-
-多道程序技术.
-
-### Mutex
-
-多线程互斥量. 见 [进程与线程](System/Process/进程与线程.md)
 
 ### MAC
 
@@ -484,18 +224,6 @@ Multi-Factor Authentication, 多因素认证, 结合多个身份验证方法以�
 ---
 
 # N
-
-### Name Mangling
-
-符号改编.
-
-### Namespace
-
-命名空间.
-
-### Northbright
-
-北桥, 计算机硬件架构组成部分. 见 [计算机架构](HardWare/计算机组成/计算机架构.md)
 
 ### NVD
 
@@ -522,18 +250,6 @@ Network Time Protocol, 网络时间协议, 用于同步计算机系统的时钟.
 
 # O
 
-### Object File
-
-目标文件, 编译过程中中间文件. 见 [Unix-ELF](Compiler/链接过程/Unix-ELF.md)
-
-### ORM
-
-Object-Relational Mapping, 软件开发概念, 将面向对象的类资源/方法和一个关系型数据库绑定起来, 对类操作即等价于对数据表操作. 类的元类等价于数据库表, 一个类实例等价于表中的一行.
-
-### OO
-
-object-orientation, 面向对象编程.
-
 ### OTP
 
 One-Time Password, 用于单次登录的临时密码. TOTP (Time-based OTP) 基于当前时间戳生成密码, 常用于服务器的双因素认证 (2FA) 中, 使服务器和客户端共享可不断更新的密码. HOTP (HMAC-based OTP) 指基于加密的哈希认证码的单次密钥.
@@ -546,26 +262,6 @@ One-Time Password, 用于单次登录的临时密码. TOTP (Time-based OTP) 基�
 
 # P
 
-### Package
-
-程序打包.
-
-### PAE
-
-physical address extension. 物理地址扩展.
-
-### Page Fault
-
-内存缺页段错误.
-
-### Paging
-
-分页技术, 见 [分页技术](System/Memory/分页技术.md)
-
-### P-Code
-
-P 码, 一种编译器中间码.
-
 ### PC
 
 Program Counter. 存储处理器当前正在执行的指令的内存地址.
@@ -577,42 +273,6 @@ portable executable, Windows 可执行文件格式. 源于 COFF.
 ### PEM
 
 Privacy-Enhanced Mail, 一种文件格式, 通常用于存储加密密钥和证书. 
-
-### Physical Page
-
-物理内存页, 也叫页框 Frame.
-
-### PIC
-
-position-independent code, 地址无关代码. 见 [动态链接](Compiler/链接过程/动态链接.md)
-
-### PIE
-
-position-independent executable, 地址无关可执行文件.
-
-### PLT
-
-procedure linkage table. 过程链接表. 见 [动态链接](Compiler/链接过程/动态链接.md)
-
-### Preemption
-
-抢占式调度. 见 [进程调度](System/Process/进程调度.md)
-
-### Poll
-
-轮询结构. 并发程序模型中, 某个线程阻塞等待其他资源, 线程将不时主动查询资源是否可用来结束轮询状态.
-
-### Process
-
-计算机进程. 见 [进程与线程](System/Process/进程与线程.md)
-
-### Priority Schedule
-
-进程优先级调度. 见 [进程调度](System/Process/进程调度.md)
-
-### POSIX
-
-Portable Operating System Interface. [IEEE P1003.1] 定义了一系列操作系统的标准接口, 被广泛应用于各类 Unix 系统.
 
 ### PGP
 
@@ -629,26 +289,6 @@ Portable Operating System Interface. [IEEE P1003.1] 定义了一系列操作系�
 ---
 
 # R
-
-### Round Robin
-
-时间片轮转法调度. 见 [进程调度](System/Process/进程调度.md)
-
-### Read-Write Lock
-
-读写锁. 见 [进程同步与互斥](System/Process/进程同步与互斥.md)
-
-### Reentrant
-
-可重入.
-
-### Relocation
-
-地址重定位.
-
-### Runtime
-
-程序运行时.
 
 ### PaaS
 
@@ -671,14 +311,6 @@ Public-Key Cryptography Standards, 公钥密码学标准. 由原 RSA Data Securi
   - v2.0 (1998): [OAEP (Optimal Asymmetric Encryption Padding)](Security/密码学/公钥密码/RSA/PKCS1.md) 加密填充算法, 推荐.
   - v2.1 (2002): PSS (Probabilistic Signature Scheme) 签名填充算法, 推荐.
 - PKCS #7: 定义加密和签名消息的语法 (Syntax).
-
-### ROS
-
-Robot Operating System, 开源机器人操作系统.
-
-### Reflection
-
-反射, 在**运行时**操作和配置对象及其属性, 在编写代码时这些类和方法可能不是已知的, 常用于实现框架和库. 如 Python 的 [python 元编程](Language/Python/python%20元编程.md).
 
 ### RTT
 
@@ -712,53 +344,9 @@ Remote Code Execution, 远程代码执行漏洞, 允许攻击者在目标系统�
 
 健全性, 一个逻辑系统是健全的, 当它所有推导都仅产生真实结论; 即不会错误地证明假命题为真. 见 [可靠性与完备性](Math/计算理论/可靠性与完备性.md).
 
-### Semantic Analyzer
-
-语义分析器. 见 [编译过程](Compiler/编译过程.md).
-
-### Semaphore
-
-信号量. 见 [进程同步与互斥](System/Process/进程同步与互斥.md).
-
-### Shared Library
-
-共享库.
-
-### SDK
-
-software development kit, 软件开发工具集.
-
-### Southbridge
-
-南桥. 见 [计算机架构](HardWare/计算机组成/计算机架构.md).
-
 ### Stack
 
 先入后出的栈数据结构, 见 [binary heap](Algorithm/内核/list.md). 也指进程内存空间的一种结构, 见 [linux 内存空间分布](System/Memory/linux%20内存空间分布.md).
-
-### Static Shared Library
-
-静态共享库.
-
-### Symbol Link
-
-软链接.
-
-### Symbol Resolution
-
-符号决议.
-
-### Synchronization
-
-进程间同步, 见 [进程同步与互斥](System/Process/进程同步与互斥.md).
-
-### Syntax Tree
-
-语法树, 编译前端的中间产物, 见 [编译过程](Compiler/编译过程.md).
-
-### System Call
-
-系统调用. 见 [中断与异常](System/Process/中断与异常.md).
 
 ### SaaS
 
@@ -779,26 +367,6 @@ Secure Hash Algorithm, 密码学哈希函数 (消息摘要函数, 杂凑函数, 
 ---
 
 # T
-
-### TagDispatch
-
-一种函数反射方法, 见 [运行时函数多态](Language/C++/面向对象/运行时函数多态.md#函数体).
-
-### Time-Sharing System
-
-分时系统.
-
-### Time Slice
-
-时间片.
-
-### Thread
-
-线程, 一种更轻量进程, 见 [System/进程与线程](System/Process/进程与线程.md).
-
-### Token
-
-词元.
 
 ### TOTP
 
@@ -838,9 +406,6 @@ Time-based One-Time Password, 基于时间的动态密码, 通常用于双因素
 
 操作系统用户空间.
 
-### UEFI
-
-Unified Extensible Firmware Interface, 统一可扩展固件接口, 替代传统 BIOS 的启动系统. 
 
 ---
 
@@ -850,10 +415,6 @@ Unified Extensible Firmware Interface, 统一可扩展固件接口, 替代传统
 
 虚拟地址空间. 一种管理内存的方式.
 
-### VMA
-
-virtual Memory Area, 代指进程拥有的某片连续虚拟内存区域. 见 [Linux 进程与内存管理数据结构](System/Process/Linux%20进程内存管理结构.canvas) 的 `vm_area_struct` 结构.
-
 ### VLAN 
 
 Virtual LAN, 虚拟局域网, 通过逻辑隔离实现不同网络设备间的隔离. 
@@ -861,10 +422,6 @@ Virtual LAN, 虚拟局域网, 通过逻辑隔离实现不同网络设备间的�
 ---
 
 # W
-
-### WSL
-
-Windows Subsystem for Linux, 见 [OS/Linux Distribution/WSL](System/Linux%20Distros/Container/wsl%20配置.md).
 
 ### Whitening
 
@@ -885,10 +442,6 @@ Cross-Site Scripting, [跨站脚本攻击](Security/安全攻击.md), 通过在�
 ---
 
 # Y
-
-### YAML
-
-类似 JSON 的数据交换格式, 但语法更复杂, 由多层嵌套键值对等组成.
 
 ---
 

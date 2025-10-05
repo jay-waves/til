@@ -128,6 +128,7 @@ firware (BIOS, UEFI, BootRom)
 								--> /sbin/init 
 ```
 
+> UEFI. Unified Extensible Firmware Interface, 统一可扩展固件接口, 替代传统 BIOS 的启动系统. 
 
 ## 内核对象
 

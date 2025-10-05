@@ -7,7 +7,7 @@ output" 的缩写. 编译器默认输出文件名也叫 `a.out`. 文件结构相
 ## ELF
 
 现代可执行文件格式包括 windows 下的 PE (Portable Executable) 和 Linux 下的 ELF 
-(Executable and Linkable Foramt), 它们都是 COFF (Common File Format) 格式的变种.
+(Executable and Linkable Foramt), 它们都是 COFF (Common Object File Format) 格式的变种.
 
 目标文件, 动态链接库以及静态链接库*都*是可执行文件格式.
 
@@ -87,7 +87,7 @@ Idx Name               Size     VMA              Type
 | .text           | 代码段                        | 可执行代码                                                                           | `SHT_PROGBITS` | `SHF_ALLOC, SHF_EXECINSTR` |
 | .rela.text      | 重定位表 (relocation table)   | 记录代码和数据段中需要地址重定位的位置                                               | `SHT_REL`      |                            |
 | .data           | 数据段                        | 记录初始化的全局变量或局部静态变量                                                   | `SHT_PROGBITS` | `SHF_ALLOC, SHF_WRITE`     |
-| .bss            | BSS段                         | 记录未初始化的全局变量或局部静态变量. 由于默认值为 0, 所以实际没有内容.              | `SHT_NOBITS`   | `SHF_ALLOC, SHF_WRITE`     |
+| .bss            | BSS段 (Block Started by Symbol)                         | 记录未初始化的全局变量或局部静态变量. 由于默认值为 0, 所以实际没有内容.              | `SHT_NOBITS`   | `SHF_ALLOC, SHF_WRITE`     |
 | .rodata         | 只读数据段                    | 存放字符串常量, 全局常量变量.                                                        | `SHT_PROGBITS` | `SHF_ALLOC`                |
 | .comment        | 注释信息段                    | 编译器版本信息等, 如 `GCC:(Ubuntu-22.04)11.4.0`/ `.note` 字段还会存储更多编译器信息. | `SHT_PROGBITS` |                            |
 | .note.GNU-stack | 堆栈提示段                    |                                                                                      | `SHT_NOTE`     |                            |

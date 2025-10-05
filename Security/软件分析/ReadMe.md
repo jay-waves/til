@@ -1,85 +1,99 @@
-## 软件安全分类
+数据流分析: 
+- 常量, 范围传播 --> 基于格的
+- 别名/指针分析
+- 污点分析
+- 后向数据流分析
 
-- 控制流安全: 控制流完整性 (Control FLow Integrity, CFI)-->CFG
-- 信息流安全: 机密性, 完整性
-- 内存安全: 内存泄漏(生命周期管理), 堆栈溢出保护, 空指针解引用(UAF), 双重释放
-- 数据类型安全: 类型检查, 类型转换检查 (如不同时间格式), 
-- 系统资源安全: 权限隔离, 资源控制, Profiling, Sandbox
+约束求解 (SMT) 及符号执行
 
-## 软件测试
+类型分析
 
-- 功能测试:
-	- 单元测试 (unit test): 单个模块测试
-	- 集成/系统测试 (integration teat): 测试模块间的接口和交互
-	- 验收测试: 由客户确认软件是否满足需求. 分为 Alpha 测试 (内部) 和 Beta 测试 (外部).
-- 非功能测试:
-	- 性能测试: 压力测试, 负载测试, 速度测试
-	- 安全性测试: 如渗透测试, 模糊测试
-	- 兼容性测试
-- 维护性测试:
-	- 回归测试 (Regression Test): 新版本的修改是否引入缺陷. (Beizer, 1990)
-	- ...
+控制流分析:
+- CFG 
+- 可达性分析
+- 支配性分析
 
-### 动态检测 vs 静态检测
+粒度:
+- 上下文敏感 (context)
+- 流敏感 (flow-sensitvie): 考虑语句执行顺序
+- 路径敏感 (path): 区分分支条件 (一般配合 SMT)
+- 字段敏感: 细化结构体字段
+- 线程敏感: 并发语义, 发生序关系, 锁集
 
-- Coverage
-	- generalize to addtional traces?
-- Soundness
-	- every actual data race it reported
-- Completeness
-	- all reported warnings are actually races
-- Overhead
-	- run-time slowdown
-	- memory footprint
-- Programmer Overhead
+## 现有框架
 
->  Dijkstra, "Program testing can be used to show the presence of bugs, but never to show their absence."
+- LLVM Builtins: `mem2reg, scalar-evolution, aa`
+- [SVF](https://svf-tools.github.io/SVF/): 别名分析, 流分析
+- 
 
-### 模糊测试
+## 编译优化的基本问题
 
-模糊测试发展路径:[^3]
+- 公共子表达式化简 (common subexpression elimination, CSE)
+	- 参数访问
+	- 结构体字段访问
+	- 数组字段访问
+- 常量传播 (constant propagation)
+- 死代码消除 (dead code elimination)
 
-![|1000](../../attach/Fuzzing%20技术演变.avif)
+循环优化:
+- 减少循环代码执行长度
+- 减少代码体积
 
-### 动态插桩方式
+### DAG vs. Value Numbering
 
-编译时插桩: 对源代码或代码中间体 (汇编, IR) 修改. 效率高, 更灵活; 但侵入式更强, 需要改动编译流程.
-- [Sanitizers 系列](工具/Sanitizer.md)
+代码中的表达式 $T$, 一般被表示为 AST 树形结构. 但树形内部存在结构性冗余, 被称为*公共子表达式*, 在对 AST 树变换时将导致复杂度指数膨胀, 不利于代码复用和代码分析.[^1]
 
-运行时插桩技术 (DBI, Dynamic Binary Instruction): 在程序执行期间, 通过动态二进制翻译或动态重写指令, 拦截指令. 无需源码, 但性能损耗大.
-- Valgrind (Memcheck). 动态翻译为 VEX IR.
-- Dyninst
-- DynamoRIO
-- Intel Pin
-- Dr.Memory. 基于 DynamoRIO.
+为了消除 CSE, 使用*有向无环图 (DAG)* 来表达 $T$. 每个节点是一个子表达式, 用边表达表达式间的依赖关系. 和树形结构相比, DAG 中的节点可以有多个父节点. DAG 的等价文本形式是 *SLP (Straight-Line Program)*, 在汇编中进一步化简为*三地址码*.
+
+SLP 是一个有限的指令序列 $\mathcal{P}=(I_{1},I_{2},\dots,I_{m})$, 其中每个指令 $I_{k}$ 形式为 $v_{k}\leftarrow \phi_{k}(v_{1},v_{2},\dots,v_{n})$. 也就是定义了变量间的依赖关系. 
 
 
-## 检测结果分析
 
-|                   | Error exists   | No Error Exists |
-| ----------------- | -------------- | --------------- |
-| Error Reported    | True Positive  | False Positive  |
-| No Error Reported | False Negative | True Negative                |
+另一种更有效的方式为 Value Numbering, 通过哈希的方法, 为公共子表达式分配唯一编号, 有效地识别等价表达式. 
 
-- Soundness: report all defects (no false negatives)
-- Completeness: every reported defect is an actual defect (no flase positives)
+### SSA 
 
-## 内存安全策略
+DU (Definition-Use) Chains: 变量 X 的定义可见, 如何找到所有对 X 的访问.
 
-研究表明[^1], 现存漏洞的数量随着代码生命周期指数下降. 假设平均漏洞生命周期为 $\lambda$, 于是漏洞的时间密度满足[指数分布](../../Math/概率与随机/随机变量分布/指数分布.md): $$\mathrm{density}(x)=\frac{1}{\lambda}e^{-\frac{1}{\lambda} x}$$
+UD (Use-Definition) Chains: 变量 X 的某个访问可见, 如何找到所有对 X 的可达定义?
 
-![|400](../../attach/漏洞之生命周期.avif)
+如果允许对变量 X 的重复定义 (赋值), DU 和 UD 关系都会很复杂. 引入 SSA (Static Single Assignment), 以及 PSSA (Partial SSA). 
 
-谷歌[^2]认为处理内存安全的策略共有四代:
-1. reactive patching. 漏洞和风险曝光后再解决, 软件需要经常打安全补丁.
-2. proactive mitigating. 针对漏洞类型, 设计相应的防御技术, 如: stack canaries, control-flow integrity. 由于新型漏洞利用技术不断发展, 软件需要不断加码防御措施, 和攻击者搞军备竞赛, 导致资源消耗和性能瓶颈.
-3. proactive vulnerability discovery. 厂商通过测试技术主动寻找漏洞, 如 sanitizers, afl 等模糊测试技术. 这类技术找漏洞效率高, 但没有健壮性, 即没办法证明所有漏洞皆被发现. 并且会加重维护人员负担.
-4. high-assurance prevention. 指有内生安全性的**安全编程**. 过往通过 GC 保证内存安全的虚拟机语言被认为是低效的, 但随着编译器技术(静态分析)发展, Rust 这类编译时安全语言的性能逐渐接近系统级语言. 
+PSSA 中, 大部分操作使用虚拟寄存器表达, 少部分复杂操作仍保留内存操作. 如果变量 X 的定义来自不同的控制流, 用 $\phi$ 来显式表达. 
 
-谷歌认为因为内存漏洞在旧代码中指数级减少, 而更常见于新引入的代码. 只要新代码皆使用内生安全性语言 (Rust), 就可以显著降低总体漏洞数量.
+## 数据流分析
 
-[^1]: Alexopoulos et al. ["How Long Do Vulnerabilities Live in the Code? A Large-Scale Empirical Measurement Study on FOSS Vulnerability Lifetimes"](https://www.usenix.org/conference/usenixsecurity22/presentation/alexopoulos). USENIX Security 22.
+[数据流分析](../../软件分析/数据流分析.md)
 
-[^2]: https://security.googleblog.com/2024/09/eliminating-memory-safety-vulnerabilities-Android.html
+## 别名分析
 
-[^3]: A systematic review of fuzzing techniques. Chen Chen, Baojiang Cui. 2018.
+基于包含, 基于合并
+
+## 过程间分析
+
+考虑函数间的调用关系, 也称为*链接时分析 LinkTime Analysis*. 
+
+## 类型状态分析
+
+状态机形式描述
+
+## Lattice (Order)
+
+指某种*偏序集合* (partially ordered set, poset), 其中任意一对元素有唯一的*上确界* (supremum, least upper bound, join) 和*下确界* (infimum, greatest lower bound, meet). 
+
+表达了一种信息精确性的约束关系, 见 https://en.wikipedia.org/wiki/Lattice_(order).
+
+![](../../../attach/Snipaste_2025-09-18_14-18-49.png)
+
+$x\leq y$ iff $x\wedge y =x$. 
+
+$x\wedge y\leq x$
+
+
+## 参考
+
+将内核编译为 vmlinux.bc : wllvm https://github.com/travitch/whole-program-llvm
+
+CMU15-745. Optimizing Compilers for Moedern Architectures, [Spring 2019](https://www.cs.cmu.edu/afs/cs/academic/class/15745-s19/www/), [Fall 2025](https://www.cs.cmu.edu/~15745/www/)
+
+[^1]: 这个现象被称为 Expression Swell. 参考 [为什么函数求导后, 表达式长度会指数增加?](https://www.zhihu.com/question/609058716/answer/1954152484693058426)
