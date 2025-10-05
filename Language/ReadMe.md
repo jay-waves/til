@@ -28,7 +28,7 @@
 - 密码库, 见 [Security/密码学](../Security/密码学/README.md)
 - 网络与事件异步编程, 见 [Network/Programming](../System/IPC%20&%20Network/ReadMe.md)
 
-> 和功能强相关的部分, 不区分具体语言.
+注意. 和功能强相关的部分, 不区分具体语言.
 
 ## 包管理
 
@@ -43,3 +43,123 @@
 > -- Jeff Atwood 
 > 
 > Code Tells You How, Comments Tell You Why.
+
+## 名词表
+
+### 1. 编程范式
+
+#### TagDispatch
+
+一种函数反射方法, 见 [运行时函数多态](Language/C++/面向对象/运行时函数多态.md#函数体).
+
+#### System Call
+
+系统调用. 见 [中断与异常](System/Process/中断与异常.md).
+
+#### Reflection
+
+反射, 在**运行时**操作和配置对象及其属性, 在编写代码时这些类和方法可能不是已知的, 常用于实现框架和库. 如 Python 的 [python 元编程](Language/Python/python%20元编程.md).
+
+### Poll
+
+轮询结构. 并发程序模型中, 某个线程阻塞等待其他资源, 线程将不时主动查询资源是否可用来结束轮询状态.
+
+##### ORM
+
+Object-Relational Mapping, 软件开发概念, 将面向对象的类资源/方法和一个关系型数据库绑定起来, 对类操作即等价于对数据表操作. 类的元类等价于数据库表, 一个类实例等价于表中的一行.
+
+#### OO
+
+object-orientation, 面向对象编程.
+
+#### Lazy Binding
+
+延迟绑定.
+
+#### Generics
+
+泛型, 即允许接口同时复用于多种数据类型, 使用类型参数化实现, 在编译时确定具体数据类型 (即编译器为不同数据类型的调用生成不同代码, 而不是真的动态类型). 如 CPP 模板.
+
+#### Function Signature
+
+函数签名. 见 [compiler/linking/符号](Compiler/链接过程/符号.md)
+
+#### Casting/Coercion
+
+显式类型转换/隐式类型转换
+
+### 2. 并发相关
+
+#### Semaphore
+
+信号量. 见 [进程同步与互斥](System/Process/进程同步与互斥.md).
+
+#### Synchronization
+
+进程间同步, 见 [进程同步与互斥](System/Process/进程同步与互斥.md).
+
+#### Read-Write Lock
+
+读写锁. 见 [进程同步与互斥](System/Process/进程同步与互斥.md)
+
+#### Reentrant
+
+可重入.
+
+#### Preemption
+
+抢占式调度. 见 [进程调度](System/Process/进程调度.md)
+
+#### Interrupt
+
+操作系统中断, 见 [中断与异常](System/Process/中断与异常.md)
+
+#### ISR
+
+interrupt service routine, 中断处理程序.
+
+#### Mutex
+
+多线程互斥量. 见 [进程与线程](System/Process/进程与线程.md)
+
+### 3. 软件工程
+
+### IaaS
+
+Infrastructure as a Service, 一种云服务交付模型.
+
+### SaaS
+
+Software as a Service, 一种云服务交付模型.
+
+#### SDK
+
+software development kit, 软件开发工具集.
+
+#### EOL
+
+End of Life, 软件或硬件停止维护的状态.
+
+#### DOM
+
+文档对象模型, 指网页文档的编程接口, 允许脚本语言 (JS) 修改网页内容结构.
+
+#### Brain-damaged, Brain-dead
+
+错误和傻逼的产品设计, 无法使用和接受, 对大脑产生损害.
+
+#### CI/CD 
+
+持续部署, 持续集成? donnot push your production on friday.
+
+#### Silver Bullet
+
+银弹. 西方传说中只有银弹才能杀死狼人, 巨人和巫师. 人们把在软件体系结构中添加抽象层以解决兼容性问题的做法也叫做 " 银弹 ", 用以形容其是能解决各种问题的万灵药.
+
+#### API
+
+application programming interface, 应用程序编程接口
+
+#### ABI
+
+application binary interface, 应用程序二进制接口.

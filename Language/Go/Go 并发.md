@@ -1,4 +1,11 @@
->If a package `p` imports package `q`, the completion of `q`'s `init` functions
+
+## Go CSP
+
+GO 践行*消息传递风格 (CSP, Communicating Sequential Processes)* 的并发模型. **不通过共享内存来通信, 而是通过通信来共享内存**. 
+
+## goroutine
+
+> If a package `p` imports package `q`, the completion of `q`'s `init` functions
 > happens before the start of any of `p`'s.  
 > The completion of all `init` functions is synchronized before the start of 
 > the function `main.main`.
@@ -17,7 +24,7 @@ Golang 使用 `go` 来开启 `goroutine` 协程, 由于协程是协作式的, �
 > The `go` statement that starts a new goroutine is synchronized before 
 > the start of the goroutine's execution
 
-### Channel
+## Channel 通道
 
 用来传递数据数据结构, 使两个 goroutine 通信.
 
@@ -54,6 +61,8 @@ func main() {
 	select{}
 }
 ```
+
+## Select 多路复用
 
 ### Locks
 
