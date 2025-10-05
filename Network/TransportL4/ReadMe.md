@@ -23,13 +23,24 @@
 | 传输方式 | 面向报文   | 面向字节流           |
 | 首部开销 | 8字节      | 至少20字节, 至多60字节                     |
 
-## 通信模式
+### QOS
 
-### Pair 
+QoS (Quality of Service) 除了常见[网络性能指标](../网络体系结构.md)外, 还强调可靠性:
+- 消息持久化
+- 死信队列
+- 消息投递保证 (Delivery guarantee)
+	- At Most Once: 可能丢失或重复
+	- At Least Once: 可能重复, 不丢失
+	- Execatly Once: 既不重复, 也不丢失.
 
-### Publish/Subscribe 
+## 消息模式
 
-### Request/Reply
+|                   | 模型                             | 应用         | 常见拓扑 |
+| ----------------- | -------------------------------- | ------------ | ---- |
+| BUS               | 多对多广播 | Gossip |  Mesh [^1]    |
+| PAIR              | 一对一通信                       | P2P          |      |
+| Publish/Subscirbe | PUB 广播, SUB 订阅过滤           | MQTT         | Broker     |
+| Request/Reply     | REQ 请求, REP 应答, 严格对应     | RPC          |      |
+| Push/Pull         | PUSH 分发给 PULL, 按某种调度方式 | 负载均衡     |      |
 
-### Push/Pull 
-
+[^1]: Mesh 指去中心化的网络拓扑, Broker 则指有中心的星型拓扑. 有例外, 比如 DDS 的消息模式是 PUB/SUB, 但是使用 Mesh 的分布式网络拓扑.

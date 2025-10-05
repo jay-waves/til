@@ -19,3 +19,29 @@
 | `MappingView` | `Sized`                      |                                      | `__len__`                                                                             |
 | `ItemsView`   | `MappingView`, `Set`         |                                      | `__contains__`, `__iter__`                                                            |
 | `KeysView`    | `MappingView`, `Set`         |                                      | `__contains__`, `__iter__`                                                                                      |
+
+自行实现所有*协议*可能会有遗漏, `collections.abc` 提供了模板.
+
+```python
+from collections.abc import Sequence
+
+class BadType(Sequence):
+	pass
+
+foo = BadType()
+>>> TypeError: can't instantiate abstract class with abstract methods __getitem__, __len__, ...
+```
+
+也可以直接继承内置类型:
+
+```python
+class FrequencyList(list):
+	def __init__(self, members):
+		super().__init__(members)
+	def frequency(self):
+		counts = {}
+		for item in self:
+			counts.setdefault(item, 0)
+			counts[item] += 1
+		return counts
+```

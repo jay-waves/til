@@ -387,6 +387,10 @@ K 有序映射表, `BTreeMap<K, V>`
 
 `std::string::String`
 
+![|400](../attach/Snipaste_2025-10-04_17-51-54.jpeg)
+
+抽象, 比 C++ 的字符串还复杂. 要不咱们还是用 `GC<str>` 吧.
+
 ### 3.8 thread/sync
 
 #### Rc 
