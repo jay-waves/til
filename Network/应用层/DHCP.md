@@ -1,4 +1,4 @@
-动态主机设置协议 (Dynamic Host Configuration Protocol, DHCP) 用于动态分配 IP 地址的应用层协议, 定义于 [RFC 2131](https://datatracker.ietf.org/doc/html/rfc2131). 基于传输层的 [UDP](../TransportL4/UDP.md) 协议, 客户端使用 68 端口, 服务端使用 67 端口.
+动态主机设置协议 (Dynamic Host Configuration Protocol, DHCP) 用于动态分配 IP 地址的应用层协议, 定义于 [RFC 2131](https://datatracker.ietf.org/doc/html/rfc2131). 基于传输层的 [UDP](../传输层/UDP.md) 协议, 客户端使用 68 端口, 服务端使用 67 端口.
 
 DHCP 通常用局域网内的一组 DHCP 服务器来管理网络参数的分配, 这些参数包括 *IP 地址, 子网掩码, 网关和 DNS*. 
 

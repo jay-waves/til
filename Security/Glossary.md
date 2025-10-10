@@ -14,7 +14,7 @@ Google 的 C/C++ 运行时内存错误检测工具, 基于 LLVM IR 实现.
 
 ### ACL 
 
-[Access Control List, 访问控制列表](Network/FireWall/Firewall.md), 用于定义哪些用户或系统进程可以访问系统资源以及权限级别.  
+[Access Control List, 访问控制列表](../Network/防火墙/Firewall.md), 用于定义哪些用户或系统进程可以访问系统资源以及权限级别.  
 
 ### AES-GCM 
 
@@ -171,11 +171,11 @@ Infrastructure as a Service, 一种云服务交付模型.
 
 ### IDS 
 
-Intrusion Detection System, [入侵检测系统](Network/FireWall/IDPS.md), 用于检测网络或系统中的恶意活动.  
+Intrusion Detection System, [入侵检测系统](../Network/防火墙/IDPS.md), 用于检测网络或系统中的恶意活动.  
 
 ### IPS
 
-Intrusion Prevention System, [入侵防御系统](Network/FireWall/IDPS.md), 与 IDS 类似, 但同时具有阻止威胁的能力. 
+Intrusion Prevention System, [入侵防御系统](../Network/防火墙/IDPS.md), 与 IDS 类似, 但同时具有阻止威胁的能力. 
 
 ### IoT
 
@@ -235,7 +235,7 @@ Number Once, 用于密码算法和安全协议的一次性数字, 用于防范�
 
 ### NAT 
 
-[Network Address Translation, 网络地址转换](Network/FireWall/NAT.md), 用于在局域网和公网之间转换 IP 地址. 
+[Network Address Translation, 网络地址转换](../Network/防火墙/NAT.md), 用于在局域网和公网之间转换 IP 地址. 
 
 ### NIC
 
@@ -256,7 +256,7 @@ One-Time Password, 用于单次登录的临时密码. TOTP (Time-based OTP) 基�
 
 ### OAuth
 
-[OAuth](Network/ApplicationL5/Auth/OAuth.md), 一种开放标准授权协议, 允许用户授权第三方访问其资源而无需暴露凭据. 
+[OAuth](../Network/应用层/Auth/OAuth.md), 一种开放标准授权协议, 允许用户授权第三方访问其资源而无需暴露凭据. 
 
 ---
 
@@ -276,7 +276,7 @@ Privacy-Enhanced Mail, 一种文件格式, 通常用于存储加密密钥和证�
 
 ### PGP
 
-[PGP](Network/ApplicationL5/PGP.md), Pretty Good Privacy, 用于加密和签名的公钥加密程序. 
+[PGP](../Network/应用层/PGP.md), Pretty Good Privacy, 用于加密和签名的公钥加密程序. 
 
 ---
 
@@ -330,7 +330,7 @@ Remote Code Execution, 远程代码执行漏洞, 允许攻击者在目标系统�
 
 ### SAML
 
-[SAML](Network/ApplicationL5/Auth/SAML.md), Security Assertion Markup Language, 用于单点登录 (SSO) 和身份联合的标准. 
+[SAML](../Network/应用层/Auth/SAML.md), Security Assertion Markup Language, 用于单点登录 (SSO) 和身份联合的标准. 
 
 ### SQL
 
@@ -376,7 +376,7 @@ Time-based One-Time Password, 基于时间的动态密码, 通常用于双因素
 
 ### TCP
 
-计算机网络传输层的[传输控制协议 (TCP)](Network/TransportL4/TCP.md), 提供可靠点对点连接.
+计算机网络传输层的[传输控制协议 (TCP)](../Network/传输层/TCP.md), 提供可靠点对点连接.
 
 ## TPM
 

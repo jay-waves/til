@@ -26,7 +26,7 @@
 	- 进程管理: 主要是 POSIX 系列系统调用, 以及进程间通信.
 	- 编码转换, 序列化, 解压缩 (先放在这)
 - 密码库, 见 [Security/密码学](../Security/密码学/README.md)
-- 网络与事件异步编程, 见 [Network/Programming](../System/IPC%20&%20Network/ReadMe.md)
+- 网络与事件异步编程, 见 [Network/Programming](../System/IO%20&%20IPC/ReadMe.md)
 
 注意. 和功能强相关的部分, 不区分具体语言.
 
