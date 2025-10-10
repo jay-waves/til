@@ -74,7 +74,7 @@
 
 #### Coding Style
 
-- 嵌入 C 代码使用 [Kernel 风格](Language/C/Kernel%20C%20Style.md).
+- 嵌入 C 代码使用 [Kernel 风格](Language/C/kernel%20c%20style.md).
 - 嵌入 C++ 和 Go 代码使用 [Google 风格](Language/C++/Google%20C++%20Style.md).
 - 嵌入 Python 使用 [pep8 style](Language/Python/pep8%20style.md) 风格.
 - 不要求控制行长度, 建议代码行长度不超过 100 字符, 全角占两字符.

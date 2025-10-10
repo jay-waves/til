@@ -589,3 +589,33 @@ println!("{}", type_name::<i32>());
 ## Reference 
 
 https://fasterthanli.me/articles/a-half-hour-to-learn-rust#function-types-closures
+
+***
+
+用 C++ 写 Rust:
+
+```cpp
+using Str = std::string;
+
+template <typename T>
+using Opt = std::optional<T>;
+
+template <typename... Ts>
+using Var = std::variant<Ts...>;
+
+// 这里写法是错的
+using Vec = std::vector<T>;
+using List = std::list<T>;
+using Deque = std::deque<T>;
+using Set = std::set<T>;
+using HashSet = std::unordered_set<T>;
+using HashMap = std::unordered_map<K, V>;
+
+using Box = std::unique_ptr<T>;
+
+using Arc = std::shared_ptr<T>;
+
+using Weak = std::weak_ptr<T>;
+
+
+```

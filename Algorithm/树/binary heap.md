@@ -1,6 +1,6 @@
 堆有两个应用:
 1. 优先队列 (最小堆)
-2. [堆排序](../排序/堆排序.md)
+2. [heap sort](../排序/heap%20sort.md)
 
 https://en.wikipedia.org/wiki/Binary_heap
 
