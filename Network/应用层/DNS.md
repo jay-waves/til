@@ -37,9 +37,9 @@ host 8.8.8.8
 
 ## DNS
 
-The Domain Name System (DNS) translates human-readable domain names, like `www.example.com`, into machine-readable [IP](../NetworkL3/IP.md) address, such as `192.0.2.1`. 
+The Domain Name System (DNS) translates human-readable domain names, like `www.example.com`, into machine-readable [IP](../网络层/IP.md) address, such as `192.0.2.1`. 
 
-DNS 使用 [UDP](../TransportL4/UDP.md) 协议 53 端口.
+DNS 使用 [UDP](../传输层/UDP.md) 协议 53 端口.
 
 ### Key Components
 

@@ -112,4 +112,4 @@ ipv6 和 ipv4 是不兼容的, 由于侵犯了 ipv4 提供商 (国内 ISP 和云
 
 ## DHCP
 
-动态分配主机地址, 见 [DHCP](../ApplicationL5/DHCP.md).
+动态分配主机地址, 见 [DHCP](../应用层/DHCP.md).

@@ -113,7 +113,7 @@
 - httpie
 - bat, cat 的增强版
 - duf, dust, du 磁盘空间查看
-- iconv, uchardet [字符编码](../System/Development/字符编码.md)工具
+- iconv, uchardet [字符编码](../System/SSS/字符编码.md)工具
 - fq 类 yq, jq, 还支持各类二进制文件查看
 - fd, find 的加强版, 使用正则表达式而不是通配符.
 - rg (ripgrep)
@@ -125,7 +125,7 @@
 - mdv, 终端 Markdown 文件渲染器
 - ~~wolframscript, 数学引擎.~~ 不常用
 - ~~gopass, 密码管理器~~
-- ~~age, 加密工具 (不能自定义密码套件, 封装 [PGP](../Network/ApplicationL5/PGP.md), 开箱即用)~~
+- ~~age, 加密工具 (不能自定义密码套件, 封装 [PGP](../Network/应用层/PGP.md), 开箱即用)~~
 - bandwhich, 查看当前占用宽带的应用和IP
 - [when-changed](https://github.com/joh/when-changed)
 - [repren](https://github.com/jlevy/repren)

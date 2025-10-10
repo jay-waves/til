@@ -4,15 +4,14 @@
 | ------------ | -------- | ------------------------------------- |
 | Algorithm    | 算法     | 数据结构, 算法                        |
 | Intelligence | 人工智能 |                                       |
-| Compiler     | 编译     | LLVM, 链接过程, 汇编                  |
-| Information  | 信息     | 数据库, 信息论, 通信                  |
+| Compiler     | 编译     | LLVM, 编译链接, 汇编                  |
+| Information  | 信息     | 数据库, 信息论, 音视频                  |
 | HardWare     | 硬件     | 计算机组成, 数字电路, 嵌入式          |
-| CodeGlyph    | 编程开发 | C, C++, Go, Python, Wolfram, 设计模式 |
-| Network      | 网络     | 网络分层模型, 防火墙, 网络代理        |
-| System       | 操作系统 | Linux, Windows, Shell                 |
+| Language    | 编程开发 | C, C++, Go, Python, 设计模式 |
+| Network      | 网络     |         |
+| System       | 操作系统 |                |
 | Security     | 网络安全 | 网络安全, 软件安全, 密码学            |
 | Math         | 数学     | 数学就是数学                          |
-| MultiMedia   | 多媒体   | 音频, 视频, 图片                      |
 | DevTool      | 工具     | Git, Vim, Latex, IDE, ...             |
 | attach       | 图片附件 | 去透明通道压缩后图片, 无第三方版权    |
 | appx         | 附录     | 技术标准, 参考信息, 对照表, 杂项      |

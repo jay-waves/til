@@ -57,7 +57,7 @@ git config --global http.proxy "socks5://$host_ip:7890"
 git config --global https.proxy "socks5://$host_ip:7890"
 ```
 
-**完整的配置见 [.zshrc](../../src/settings/unix.zshrc)**
+**完整的配置见 [.zshrc](../../../src/settings/unix.zshrc)**
 
 ## Reference
 
