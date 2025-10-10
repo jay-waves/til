@@ -52,7 +52,7 @@ void heap_sort(void *base, size_t size, int num,
 }
 ```
 
-使用面向对象和泛型:
+用 C++ 泛型:
 
 ```cpp
 using std::vector; // in vector
@@ -63,7 +63,7 @@ class Heap {
 public:
     Heap(vector<T> &data, Compare cmp) : data(data), cmp(cmp) {}
 
-    void Heapify(size_t start, size_t end) {
+    void heapify(size_t start, size_t end) {
         size_t dad = start;
         size_t son = dad * 2 + 1;
         while (son <= end) {
@@ -79,7 +79,7 @@ public:
         }
     }
 
-    void Sort() {
+    void sort() {
         size_t len = data.size();
         for (size_t i = len / 2 - 1; i < len; i--) {
             heapify(i, len - 1);
@@ -98,7 +98,7 @@ private:
 template <typename T, typename Compare>
 void heap_sort(vector<T> &arr, Compare cmp) {
     Heap<T, Compare> heap(arr, cmp);
-    heap.Sort();
+    heap.sort();
 }
 
 
