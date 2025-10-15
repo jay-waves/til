@@ -21,6 +21,7 @@ $images | ForEach-Object -Parallel {
     # using ImageMagick
     # -flatten: 去除透明通道
 	magick $image.FullName -resize 75% -quality 50 -background white -flatten $outputFile
+
 	# -chop 0x1 裁掉底部一个像素宽度, 避免绿边. 
 	# AVIF 编码器使用 YUV420 二次采样时, 图像高度为奇数, 底部可能出现一像素绿边.
 	$imgHeight = (magick identify -format "%h" $outputFile)

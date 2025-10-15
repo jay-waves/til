@@ -93,7 +93,7 @@ Linux 下有四种命令类型 (用 `type` 查看)
 | `uniq`             | `sort`               | `nl`            | `iconv, uconv` | `expand` |
 | `cat, bat`         | `diff`               | `tail, head`    | `more, less`   |          |
 
-[文件系统](文件系统.md)
+[文件系统管理](文件系统管理.md)
 
 |            | `mount`        | `fdisk`  | `mkfs`   | `lsblk` |
 | ---------- | -------------- | -------- | -------- | ------- |
@@ -105,7 +105,7 @@ Linux 下有四种命令类型 (用 `type` 查看)
 | `stat`     | `file`         | `chattr` | `wc`     |         |
 | `xz`       | `7zip`         | `tar`    | `gzip`         |         |
 
-[系统硬件信息](../SSS/系统硬件信息.md)
+[系统信息](../SSS/系统信息.md)
 
 | `/proc`    | | `w`      | `uname` | `sysstat, dstat` |
 | ---------- | -------- | -------- | ------- | ---------------- |
