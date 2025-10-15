@@ -29,17 +29,12 @@
 
 | tags                      |                      |
 | ------------------------- | --------------------------- |
-| #LGTM #KeyPoints          | 有兴趣, 重点      |
-| #Debug #Debug | 遇到的难题, 故障处理经验        |
-| #Doubtful    | 存疑  |
+| #LGTM          | 有兴趣      |
+| #Debug | 遇到的难题, 故障处理经验        |
 | #FAQ                      | 提问, 一些好奇心            |
 | #NSFW                     | 奇怪内容, 加入 `.gitignore` |
-| #Code                     | 笔记内容为大段源码分析              |
-| #Docs                     | 笔记内容为复述文档或定义    |
-| #Repost                   | 笔记内容为转载              |
-| #Paper                                  | 笔记内容为文献. 文末会列出来源及文献类型.                    |
 | #Recipes                  | 最佳实践                    |
-| #ToDo                     | 进度标签, 未来会投入精力    |
+| #TODO                     | 进度标签, 未来会投入精力    |
 | #NoPlan                   | 进度标签, 未来不会投入精力  |
 | #WIP                      | 进度标签, 正在              |
 | #Recall                   | 进度标签, 需要回忆复习      |
@@ -53,7 +48,6 @@
 | copyright  | 作者与出版日期                                                  | 列表 |
 | license    | 文内有非 CC-BY 许可证授权下的内容引用时, 单个文件许可证可能变化 | 文本 |
 | code       | 指文内内容在 `/src` 目录下有对应的源码                          | 列表 |
-| tags       | 内容标签, 见上                                                  | 列表     |
 
 
 ### Writing Guidelines
@@ -73,12 +67,7 @@
 
 #### Coding Style
 
-- 嵌入 C 代码使用 [Kernel 风格](Language/C/kernel%20c%20style.md).
-- 嵌入 C++ 和 Go 代码使用 [Google 风格](Language/C++/Google%20C++%20Style.md).
-- 嵌入 Python 使用 [pep8 style](Language/Python/pep8%20style.md) 风格.
-- 不要求控制行长度, 建议代码行长度不超过 100 字符, 全角占两字符.
-- `/src` 文件夹中, 默认使用原文件格式, 如 C 语言使用 `.c` 文件; 
-- `/src` 文件夹中, 需要记录笔记的, 使用类 Jupter 格式, 如 Python Notebook 使用 `.py.md` 文件, 其中 `.py` 仅起到标注语言类型作用.
+详见 [自用代码规范](appx/自用代码规范.md)
 
 #### Reference Style
 
