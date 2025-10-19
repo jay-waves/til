@@ -340,3 +340,7 @@ struct address_space {
 	struct address_space_operations *a_ops;
 };
 ```
+
+### 内核计时器
+
+`jiffies_64, jiffies` 全局变量. 通过定时器中断, 维护的一种全局时钟. 
