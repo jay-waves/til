@@ -5,7 +5,7 @@
 
 DSP 一般使用*哈弗架构*, 将数据总线和指令总线分开. 在 DSP 核心附近会有紧耦合内存 (TCM), 用于缓存预取数据.
 
-## MAC 
+### MAC 
 
 Multiply-Accumulate / MAC (dsp) / FMA (gpu), 乘加指令: `mac r1, r2, r2` --> `r1 = r2 * r3 + r1`.  用于向量和矩阵乘加.
 

@@ -8,6 +8,10 @@
 
 ![|400](../../attach/线性代数_三种实数矩阵关系.avif)
 
+## 矩阵的分解
+
+...
+
 ## 参考
 
 | TITLE | AUTHORS | PUBL / CONF / JOUR | YEAR | VOLUME | URL / DOI / ISBN |

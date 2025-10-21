@@ -104,6 +104,7 @@ write()
 /*
 	读取数据, 最多读取 sz 大小. 没有数据时, 可能提前返回.
 	
+	如果返回值大于 0, 代表成功读取的字节数.
 	如果返回值是 0, 代表 read EOF. 在 TCP 下, 意味着对端发送了 FIN. 
 	如果返回值是 -1, 表示出错. 
 */
@@ -154,9 +155,28 @@ int close(int sockfd);
 int shutdown(int sockfd, int howto);
 ```
 
-### 心跳检测
+### 错误处理
 
+当 Socket 已经被关闭, 向其 `write()` 后是不合法的操作, 将直接触发 `SIGPIPE` 信号. 是一种比返回码更强的处理机制. 而 `read()` 通过返回码来返回异常, 因为其
 
+- `write()` 异常时, 直接触发 `SIGPIPE` 信号. 因为用户主动执行了一个非法操作
+- `read()` 异常时, 返回负值错误码. 一般由于外部问题导致的异常, 需要用户处理.
+
+#### 网络中断
+
+网络中断时, 如果有路由器回送 ICMP 不可达报文, `read(), write()` 都会退出, 返回 `Unreachable`. 在没有 ICMP 报文时, TCP Socket 无法主动感知到异常. 此时, 只能通过设置 `read()` 超时, 来避免持续阻塞.
+
+例外情况是, 如果 TCP Socket 仍有数据要发送, 但由于网络中断, 多次重传后仍失败, 就会标记该连接异常. 此时, `read()` 调用会自动返回 `TIMEOUT`, 后续 `write()` 会返回 `SIGPIPE` 信号.
+
+#### 系统崩溃
+
+如果对端系统崩溃, 来不及发出 `FIN` 正常关闭连接, 也需要超时机制来处理. 
+
+如果对端崩溃后又重启, 收到了旧连接的报文, 会返回 `RST` 重置报文. 也会让本机的 `read()` 返回 `Connection Reset` 错误, `write()` 返回 `SIGPIPE` 信号.
+
+#### 对端显式关闭连接
+
+#### 数据有效性
 
 ## AF_LOCAL 
 
@@ -200,7 +220,11 @@ addr.sin_port = htons(SERV_PORT);
 // could use connect() and bind(), but accept() and listen() are not used
 bind(fd, &addr, sizeof(addr));
 // UDP 未连接到服务器时, 会持续阻塞; 而 TCP 会返回错误.
-connect()
+/* 
+	推荐将 UDP 也绑定到地址 (包含一些上下文), 便于操作系统追踪该链接的上下文.
+	否则难以调试, 性能也不高 (每次收发都连接/断开套接字).
+*/
+connect(...);
 ```
 
 ### 发送数据
@@ -224,6 +248,8 @@ ssize_t sendto(int sockfd, const void* buff, size_t nbytes, int flags,
 recvmsg()
 recv()
 ```
+
+使用 `sendto(), recvfrom()` 时, 推荐将地址相关值置零. 因为该函数有兼容性问题, Linux 上的 to 和 from 地址信息被默认忽略. 
 
 
 
