@@ -35,12 +35,17 @@ task<int> foo() {
 auto awaiter = expr.operator co_await();
 if (!awaiter.await_ready()) { 
 	awaiter.await_suspend(handle);
+	... // suspend current coroutine...
 	return; 
 }
 result = awaiter.await_resume();
 ```
 
 `co_await` 是一个挂起点, awaiter (类似调度器) 将协程帧注册到异步 网络IO / 定时器 / CPU任务队列 (或优先队列) 中, 等待任务事件触发.
+
+
+
+
 
 ### generator 
 

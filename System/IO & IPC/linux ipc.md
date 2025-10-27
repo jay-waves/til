@@ -13,7 +13,7 @@
 Unix BSD 进程通信方法:
 - [管道, Pipe](pipe.md) 与命名管道 (named pipe)
 - 软中断信号 (signal), 由系统提前定义
-- [套接字, Socket](Network/socket.md)
+- [套接字, Socket](socket.md)
 - RPC
 
 Unix BSD 域内的通信方式比 System V IPC 更加流行.

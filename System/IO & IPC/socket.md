@@ -168,13 +168,24 @@ int shutdown(int sockfd, int howto);
 
 例外情况是, 如果 TCP Socket 仍有数据要发送, 但由于网络中断, 多次重传后仍失败, 就会标记该连接异常. 此时, `read()` 调用会自动返回 `TIMEOUT`, 后续 `write()` 会返回 `SIGPIPE` 信号.
 
-#### 系统崩溃
+```c
+// 设置 TCP 超时
+// 此后, 如连接超时, recv, read 会从阻塞中返回错误码 EAGAIN / EWOULDBLOCK
+
+struct timeval tv;
+tv.tv_sec = 5;
+tv.tv_usec = 0;
+
+setsockopt(connfd, SOL_SOCKET, SO_REVTIMEO, (const char*)&tv, sizeof(tv));
+
+// 另外一种方案是, 利用多路复用技术.
+```
+
+#### 对端系统崩溃
 
 如果对端系统崩溃, 来不及发出 `FIN` 正常关闭连接, 也需要超时机制来处理. 
 
 如果对端崩溃后又重启, 收到了旧连接的报文, 会返回 `RST` 重置报文. 也会让本机的 `read()` 返回 `Connection Reset` 错误, `write()` 返回 `SIGPIPE` 信号.
-
-#### 对端显式关闭连接
 
 #### 数据有效性
 
