@@ -14,7 +14,11 @@
 
 进入安全模式后, 搜索 MsConfig, 进行系统级设置.
 
-## 显示器设置
+## 刷新显卡驱动
+
+`win + ctrl + shift + B`
+
+## 驱动设置
 
 搜索 `dxdiag`, 使用 DirectX 诊断工具
 

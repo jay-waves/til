@@ -148,6 +148,10 @@ End of Life, 软件或硬件停止维护的状态.
 
 错误和傻逼的产品设计, 无法使用和接受, 对大脑产生损害.
 
+#### Boilerplate 
+
+"样板文件", "陈词滥调". 指无需修改, 可以重复使用的固定陈述.
+
 #### CI/CD 
 
 持续部署, 持续集成? donnot push your production on friday.
