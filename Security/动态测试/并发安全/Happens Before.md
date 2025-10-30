@@ -1,7 +1,5 @@
----
-tags: [Paper, ]
-copyright: [Leslie Lamport (1978), ]
----
+
+@lamport1978
 
 ## Happens-Before
 

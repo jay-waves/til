@@ -62,7 +62,7 @@ PSSA 中, 大部分操作使用虚拟寄存器表达, 少部分复杂操作仍�
 
 ## 数据流分析
 
-[数据流分析](../../软件分析/数据流分析.md)
+[Data Flow Analysis](Data%20Flow%20Analysis.md)
 
 ## 别名分析
 
