@@ -1,8 +1,5 @@
----
-tags: [Paper, ]
-source: https://doi.org/10.1145/1543135.1542490
-copyright: [Cormac Flanagan (2009), Stephen N. Freund (2009) ]
----
+
+@flanagan2009
 
 ## FastTrack: efficient and precise dynamic race detection
 

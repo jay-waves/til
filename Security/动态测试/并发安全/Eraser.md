@@ -1,8 +1,5 @@
----
-tags: [Paper, ]
-source: https://doi.org/10.1145/265924.265927
-copyright: [Stefan Savage (1997), Michael Burrows (1997), Greg Nelson (1997), ]
----
+
+@Savage1997
 
 ## Eraser: a dynamic data race detector for multithreaded programs
 

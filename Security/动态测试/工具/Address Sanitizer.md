@@ -585,6 +585,6 @@ static void AsanInitInternal() {
 
 Source and Fuzzing. Icatro. [深入解析 libfuzzer 与 asan 原理](https://github.com/lcatro/Source-and-Fuzzing/blob/35f45172497519cf4306f2649f0e4679cf8cee0a/12.%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90libfuzzer%E4%B8%8Easan.md#asan%E5%8E%9F%E7%90%86).
 
-AddressSanitizer: A Fast Address Sanity Checker. Knostantin Serebryany, Derek Bruening, Alexander Potapenko, Dmitry Vyukov, Google. USENIX ATC 2012.
+AddressSanitizer: A Fast Address Sanity Checker. Knostantin Serebryany, Derek Bruening, Alexander Potapenko, Dmitry Vyukov, Google. USENIX ATC 2012. @konstantin2012
 
 [Address Sanitizer Algorithm -- Github Wiki](https://github.com/google/sanitizers/wiki/AddressSanitizerAlgorithm)
