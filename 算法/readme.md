@@ -7,7 +7,10 @@
 - `delete()`, 当不适用惰性删除时, 删除通常是最复杂的操作.
 - `insert()`, 当键已存在时, 仅更新.
 
-代码文件放在附录 `/src/...` 中, 笔记中只展示核心部分 (存疑).
+可能会有多个版本的实现:
+- 不同编程语言: C, C++, Go, Python
+- 不同复杂度: 并发版本, 元编程版本
+- 不同接口
 
 ## 名词表
 
@@ -30,7 +33,7 @@
 ### 数据结构列表
 
 - 栈 (Stack)
-- 队列 (Queue), [循环队列](链表/queue.md), [双端队列](链表/deque.md), [优先队列](树/binary%20heap.md)
+- 队列 (Queue), [循环队列](queue.md), [双端队列](链表/deque.md), [优先队列](树/binary%20heap.md)
 - 链表 (Linked List). [循环链表](链表/circular%20linked%20list.md), [双向链表](链表/doubly%20linked%20list.md), 十字链表, 跳表, 邻接表. 
 - [列表 (List)](链表/list.md), 变长有序集合. 在 linux kernel 语境下仍指链表.
 - [哈希表](哈希表/hash%20table.md), (Hash Table, Map, Dictionary, Symbol Table)

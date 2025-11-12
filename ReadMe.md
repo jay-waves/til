@@ -1,22 +1,24 @@
 ### TOC 🚀
 
-| 英文标题     | 中文标题 | 描述                                  |
-| ------------ | -------- | ------------------------------------- |
-| algorithm    | 算法     | 数据结构, 算法                        |
-| intelligence | 人工智能 |                                       |
-| compiler     | 编译     | LLVM, 编译链接, 汇编                  |
-| information  | 信息     | 数据库, 信息论, 音视频                  |
-| hardware     | 硬件     | 计算机组成, 数字电路, 嵌入式          |
-| language    | 编程开发 | C, C++, Go, Python, 设计模式 |
-| network      | 网络     |         |
-| system       | 操作系统 |                |
-| security     | 网络安全 | 网络安全, 软件安全, 密码学            |
-| math         | 数学     | 数学就是数学                          |
-| devtool      | 工具     | Git, Vim, Latex, IDE, ...             |
-| attach       | 图片附件 | 去透明通道压缩后图片, 无第三方版权    |
-| appx         | 附录     | 技术标准, 参考信息, 对照表, 杂项      |
-| paper        | 论文     |                                       |
-| src          | 代码     |                                       |
+| 英文标题     | 中文标题     | 描述                               |
+| ------------ | ------------ | ---------------------------------- |
+| algorithm    | 算法         | 数据结构, 算法                     |
+| intelligence | 人工智能     |                                    |
+| compiler     | 编译原理     | LLVM, 编译链接, 汇编               |
+| database     | 数据库       |                                    |
+| hardware     | 体系架构     | 计算机组成, 数字电路, 嵌入式       |
+| language     | 编程语言     | C, C++, Go, Python, 设计模式       |
+| network      | 网络通信     |                                    |
+| system       | 操作系统     |                                    |
+| security     | 网络安全     | 网络安全, 软件安全, 密码学         |
+| graphic      | 计算机图形学  |                            |
+| math         | 数学         | 数学就是数学                       |
+| devtool      | 开发工具         | Git, Vim, Latex, IDE, ...          |
+| attach       | 图片附件     | 去透明通道压缩后图片, 无版权 |
+| appx         | 附录         | 技术标准, 参考信息, 杂项   |
+| paper        | 论文         |                                    |
+| src          | 代码         |                                    |
+
 
 
 ### License
