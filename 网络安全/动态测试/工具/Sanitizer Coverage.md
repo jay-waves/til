@@ -125,7 +125,7 @@ __sanitizer_cov_trace_pc_guard(){
 
 ## SanCov 实现
 
-Sanitizer Coverage 使用 [LLVM Pass](../../../编译器/工具链/LLVM/IR%20Pass.md) 实现. 代码在 `llvm-project/llvm/lib/Transforms/Instrumentation/SanitizerCoverage.cpp` 下, 基于 Module Pass 实现子类. Module Pass 入口点是 `runOnModule()`, 这里主要将参数传递给 `instrumentModule()`
+Sanitizer Coverage 使用 [LLVM Pass](../../../编译原理/工具链/LLVM/IR%20Pass.md) 实现. 代码在 `llvm-project/llvm/lib/Transforms/Instrumentation/SanitizerCoverage.cpp` 下, 基于 Module Pass 实现子类. Module Pass 入口点是 `runOnModule()`, 这里主要将参数传递给 `instrumentModule()`
 
 ```cpp
 class ModuleSanitizerCoverageLegacyPass : public ModulePass {

@@ -1,13 +1,16 @@
 
-[Linux 组成](linux.md):
+[Linux 系统组成](linux.md):
 1. 内核
 2. Shell
 3. 文件系统
 4. 应用程序
 
-| Linux 系统架构 | 安卓系统架构 |
+![|400](../../attach/Pasted%20image%2020240429171126.avif)   
+
+| Linux 内核架构 | 安卓内核架构 |
 | -------------- | ------------ |
-|    ![\|500](../../attach/Pasted%20image%2020240429171126.avif)            |  ![安卓系统五层架构\|500](../../attach/Pasted%20image%2020230620164006.avif)            |
+|  ![\|300](../../appx/linux%20kernel%20map.svg)       |  ![安卓系统五层架构\|300](../../attach/Pasted%20image%2020230620164006.avif)            |
+
 
 Linux 内核组成: (五个子系统)
 - SCHED 进程调度. 

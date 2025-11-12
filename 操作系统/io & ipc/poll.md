@@ -1,6 +1,6 @@
 ## poll
 
-`poll()` 是另一种 [I/O 复用方式](select.md). `poll()` 解决了 `select()` 的文件描述符有限的缺点.
+`poll()` 是另一种 [I/O 复用方式](select.md). `poll()` 解决了 `select()` 的文件描述符有限的缺点. 但是 `poll()` 和 `select` 性能几乎一致, `epoll()` 性能最佳.
 
 ```c
 struct pollfd {
@@ -95,3 +95,44 @@ for(;;) {
 
 ## epoll 
 
+```c
+/*
+	返回 -1 表示出错.
+	返回 n 表示 epoll 实例: epfd
+	
+	当前版本, size 参数实际无意义.
+*/
+int epoll_create(int size);
+int epoll_create1(int flags);
+
+/*
+	通过 epoll_ctl 配置 epoll 实例. 
+	
+	op:
+	* EPOLL_CTL_ADD 注册 fd 对应的事件
+	* EPOLL_CTL_DEL: 删除 fd 对应的事件
+	* EPOLL_CTL_MOD: 修改 fd 对应的事件
+*/
+int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event);
+```
+
+常见实践:
+
+```c
+typedef union epoll_data {
+	void    *ptr;
+	int      fd;
+	uint32_t u32;
+	uint64_t u64;
+} epoll_data_t;
+
+struct epoll_event {
+	uint32_t events;    /* epoll events */
+	epoll_data_t data;  /* user data variable */
+};
+```
+
+```diff
+- aaa
++ aaa
+```

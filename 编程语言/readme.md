@@ -82,7 +82,7 @@ object-orientation, 面向对象编程.
 
 #### Function Signature
 
-函数签名. 见 [compiler/linking/符号](../编译器/链接过程/符号.md)
+函数签名. 见 [compiler/linking/符号](../编译原理/链接过程/符号.md)
 
 #### Casting/Coercion
 

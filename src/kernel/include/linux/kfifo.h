@@ -3,9 +3,9 @@
  * kfifo 内部数据是一段缓冲 buffer, 输入输出数据也是指定长度的缓冲.
  */
 
-// size of kfifo is often set 2^n, in order to use bitwise 
-// instead of modulus to update index `in` and `out`. 
-// if `in=out`, buffer is empty; if `(in - out)>mask`, buffer is fullfilled.
+// 计算余数的成本比较高. 所以将大小规定为 2^n, 通过 (in - out) & mask 直接计算标的.
+// 如果 `in = out`, 队列是空的.
+// 如果 `(in - out) > mask`, 队列已满
 struct kfifo {
     void *buffer;    
     unsigned int esize;  /* element size */
