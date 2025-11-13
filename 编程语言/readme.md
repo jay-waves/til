@@ -122,6 +122,12 @@ interrupt service routine, 中断处理程序.
 
 多线程互斥量. 见 [进程与线程](../操作系统/process/进程与线程.md)
 
+#### C10K
+
+如何让一台服务器同时处理 10K 个并发连接, 同时保持高性能.
+
+> 1999. Dan Kegel. The C10K Problem.
+
 ### 3. 软件工程
 
 ### IaaS

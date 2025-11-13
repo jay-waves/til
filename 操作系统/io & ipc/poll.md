@@ -95,6 +95,8 @@ for(;;) {
 
 ## epoll 
 
+epoll 是 Linux 对 POSIX select/poll 调用的改进版.
+
 ```c
 /*
 	返回 -1 表示出错.
