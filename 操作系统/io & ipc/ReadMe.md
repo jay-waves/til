@@ -25,13 +25,15 @@ Proactor 模型中, **应用提交操作, 操作完成后被动接受结果**.
 2. Proactor后台执行, 并自动完成 IO 动作
 3. Proactor 将动作结果直接通知应用.
 
-|           | Actor    |
-| --------- | -------- |
-| libevent  | Reactor  |
-| Netty (Java)     | Reactor  |
-| IOCP      | Proactor |
-| POSIX AIO | Proactor |
-| ASIO      | Proactor | 
+|              | Actor    |
+| ------------ | -------- |
+| libevent     | Reactor  |
+| Netty (Java) | Reactor  |
+| Windows IOCP         | Proactor |
+| Linux epoll  | Reactor  |
+| Linux io_uring | Proactor |
+| POSIX AIO    | Proactor |
+| ASIO         | Proactor |
 
 ## 网络编程性能优化
 
