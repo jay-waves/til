@@ -44,8 +44,8 @@ Kernel 工作在三个情景下:
 - IRQ Handler: 硬件中断处理函数, 不参与调度, 直接抢占 CPU. 中断, 以及延迟处理的中断上下文中, 均不允许睡眠或阻塞, 也禁止使用可能触发调度的函数. 
 
 内核执行模型详见:
-- [linux 中断模型](../process/linux%20中断模型.md)
-- [linux 进程模型](../process/linux%20进程模型.md)
+- [linux 中断模型](../进程调度/linux%20中断模型.md)
+- [linux 进程模型](../进程调度/linux%20进程模型.md)
 
 ### System Calls Execution Flow 
 

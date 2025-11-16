@@ -18,6 +18,10 @@ void foo() {
 
 ## StackTrace 
 
+提供异常中捕获调用栈的能力, 类似 Python 的报错:
+- https://github.com/jeremy-rifkin/cpptrace
+- `boost::stacktrace`
+
 ## range-v3
 
 C++20 Ranges. 函数式迭代器.

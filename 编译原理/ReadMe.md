@@ -10,7 +10,7 @@
 
 #### Stack
 
-先入后出的栈数据结构, 见 [binary heap](Algorithm/内核/list.md). 也指进程内存空间的一种结构, 见 [linux 内存空间分布](../操作系统/memory/linux%20内存空间分布.md).
+先入后出的栈数据结构, 见 [binary heap](Algorithm/内核/list.md). 也指进程内存空间的一种结构, 见 [linux 内存空间分布](../操作系统/内存管理/linux%20内存空间分布.md).
 
 #### BSS
 

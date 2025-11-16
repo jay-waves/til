@@ -78,6 +78,12 @@
 
 谷歌认为因为内存漏洞在旧代码中指数级减少, 而更常见于新引入的代码. 只要新代码皆使用内生安全性语言 (Rust), 就可以显著降低总体漏洞数量.
 
+***
+
+> "How long do bugs live?" in os, the median around 1.25y.
+> 
+> An empirical study of operating systems errors. @chou2001. 
+
 [^1]: Alexopoulos et al. ["How Long Do Vulnerabilities Live in the Code? A Large-Scale Empirical Measurement Study on FOSS Vulnerability Lifetimes"](https://www.usenix.org/conference/usenixsecurity22/presentation/alexopoulos). USENIX Security 22.
 
 [^2]: https://security.googleblog.com/2024/09/eliminating-memory-safety-vulnerabilities-Android.html

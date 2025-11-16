@@ -139,19 +139,9 @@ LSB 系统调用头文件: Linux 参考 POSIX 标准, 同时也为了兼容性, 
 #include <sys/syscall.h> // 直接系统调用
 ```
 
-Windows API:
+[Windows API](windows%20api.md)
 
-```c
-#include <windows.h>    // 核心系统调用
-#include <process.h>    // 进程管理
-#include <io.h>         // 低级文件 I/O
-#include <direct.h>     // 目录操作
-#include <winsock2.h>   // 网络编程
-#include <synchapi.h>   // 线程同步
-#include <errhandlingapi.h> // 错误处理
-```
-
-如果想在 Windows 上使用 POSIX 系统调用, 可以使用 Cygwin 或 MinGW 等提供 POSIX 接口的兼容层; 或者使用 Boost, Qt 等上层库. 对于文件, 线程管理等功能性接口, 使用 C/C++ 语言标准库也可以屏蔽平台的差异.
+当然, 如果想在 Windows 上使用 POSIX 系统调用, 可以使用 Cygwin 或 MinGW 等提供 POSIX 接口的兼容层; 或者使用 Boost, Qt 等上层库. 对于文件, 线程管理等功能性接口, 使用 C/C++ 语言标准库也可以屏蔽平台的差异.
 
 ## 参考
 
