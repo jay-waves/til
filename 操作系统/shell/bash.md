@@ -58,7 +58,7 @@ Linux 下有四种命令类型 (用 `type` 查看)
 | `nm`     | `stap` | `stap`  | `perf`           |
 | `sysdig` | `time` | `hyperfine`        |                  |
 
-[进程任务控制](进程任务控制.md)
+[多任务控制](多任务控制.md)
 
 | `pkill`  | `pgrep`   | `pstree` | `lsof`          | `(h)top`    |
 | -------- | --------- | -------- | --------------- | --- |
@@ -83,7 +83,7 @@ Linux 下有四种命令类型 (用 `type` 查看)
 | `curl`              | `wget`      |         |                 |
 | `unshare`           | `firejail`  |         |                 |
 
-[文件内容](文件内容.md)
+[文本文件处理](文本文件处理.md)
 
 | `pandoc`           | `jq`                 | `shyaml`        | `xmlstarlet`   | `csvkit` |
 | ------------------ | -------------------- | --------------- | -------------- | -------- |
@@ -93,7 +93,7 @@ Linux 下有四种命令类型 (用 `type` 查看)
 | `uniq`             | `sort`               | `nl`            | `iconv, uconv` | `expand` |
 | `cat, bat`         | `diff`               | `tail, head`    | `more, less`   |          |
 
-[文件系统管理](文件系统管理.md)
+[文件系统](文件系统.md)
 
 |            | `mount`        | `fdisk`  | `mkfs`   | `lsblk` |
 | ---------- | -------------- | -------- | -------- | ------- |
