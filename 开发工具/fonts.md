@@ -104,3 +104,5 @@
 - [霞鹜文楷](https://github.com/lxgw/LxgwWenKai) (LXWG WenKai /Mono), 霞鹜文楷GB
 - [霞鹜新晰黑](https://github.com/lxgw/LxgwNeoXiHei), 挺喜欢这个作者的字体的.
 - [SarasaMono](https://github.com/be5invis/Sarasa-Gothic) 等距更纱黑体, **特色为保持全角字符为半角字符的两倍宽度**.
+- Maple Mono NF CN. 连体等宽字体
+- Cambria (微软的公式字体)

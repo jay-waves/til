@@ -107,7 +107,7 @@
 
 <br>
 
-- **pandoc**
+- **[`pandoc`](http://pandoc.org/)** 用于 Mardown, HTML 和其他任意文本格式的转化. 基于 Texive, 也可以渲染出 PDF.
 - ~~helix. 终端编辑器, 键位反人类, 已弃用.~~
 - nivm, neovide, ctags
 - **mpv**, 终端音视频播放器.
