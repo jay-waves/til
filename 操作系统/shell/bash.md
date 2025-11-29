@@ -39,92 +39,13 @@ $ which php
 /c/xampp/php/php
 ```
 
-### BashScript
+### `tldr`
 
-Bash 作为编程语言的语法和细节请见: [BashScript](bash%20script/ReadMe.md).
+`tldr`, `cheat.sh` 等都是在线的查询手册, 比 man 手册更简洁.
 
-## Bash 工具列表
+## BashScript
 
-Linux 下有四种命令类型 (用 `type` 查看)
-- `/bin` 文件夹下的可执行程序, 一般用 PATH 索引
-- shell builtins 
-- shell functions (scripts)
-- alias
-
-[进程调试](../可观测性/进程调试.md)
-
-| `ldd`    |  | `dmesg` | `strace, ltrace` |
-| -------- | ------ | ------- | ---------------- |
-| `nm`     | `stap` | `stap`  | `perf`           |
-| `sysdig` | `time` | `hyperfine`        |                  |
-
-[多任务控制](多任务控制.md)
-
-| `pkill`  | `pgrep`   | `pstree` | `lsof`          | `(h)top`    |
-| -------- | --------- | -------- | --------------- | --- |
-| `fg, bg` | `jobs`    | `ps`     | `kill, killall` | `&` |
-| `nohup`  | `timeout` |     |                 |     |
-| `watch`  | `inotifywait`          |          |                 |     |
-
-配置及帮助
-
-| `man`     | `type`  | `whatis` |
-| --------- | ------- | -------- |
-| `whereis` | `which` |          |
-
-[网络调试](../可观测性/网络调试.md)
-
-| `ip`                | `ping`      | `mtr`   | `netcat, socat` |
-| ------------------- | ----------- | ------- | --------------- |
-| `nslookup`          | `dig, host` | `whois` |                 |
-| `netstat, ss`           | `slurm`        | `iftop` | `nethogs`                |
-| `wireshark, tshark` |             |         |                 |
-| `scp`               | `rsync`     | `ssh`   |                 |
-| `curl`              | `wget`      |         |                 |
-| `unshare`           | `firejail`  |         |                 |
-
-[文本文件处理](文本文件处理.md)
-
-| `pandoc`           | `jq`                 | `shyaml`        | `xmlstarlet`   | `csvkit` |
-| ------------------ | -------------------- | --------------- | -------------- | -------- |
-| `hd, hexdump, xxd` | `hexedit, biew, bvi` | `(c)split`      | `strings`      |          |
-| `awk`              | `sed`                | `grep, ripgrep` | `tokei`               |          |
-| `cut, paste, join` | `echo, printf`       | `fmt`           |  `wc`             |          |
-| `uniq`             | `sort`               | `nl`            | `iconv, uconv` | `expand` |
-| `cat, bat`         | `diff`               | `tail, head`    | `more, less`   |          |
-
-[文件系统](文件系统.md)
-
-|            | `mount`        | `fdisk`  | `mkfs`   | `lsblk` |
-| ---------- | -------------- | -------- | -------- | ------- |
-| `cd`       | `ls, tree`     | `mkdir`  | `pwd`    | `ln`    |
-| `df`       | `du`           | `quota`  | `ldparm` |         |
-| `find, fd`     | `locate`       |  `zoxide`        |          |         |
-| `mv`       | `cp`           | `repren` | `rm`     | `touch` |
-| `truncate` | `when changed` |          |          |         |
-| `stat`     | `file`         | `chattr` | `wc`     |         |
-| `xz`       | `7zip`         | `tar`    | `gzip`         |         |
-
-[系统信息](../sss/系统信息.md)
-
-| `/proc`    | | `w`      | `uname` | `sysstat, dstat` |
-| ---------- | -------- | -------- | ------- | ---------------- |
-| `free`     | `lsxxx`  |          |         |                  |
-| `screen`   | `tmux`   |          |         |                  |
-| `shutdown` | `halt`   | `reboot` |         |                  |
-| `uptime`   | `dateutils`         |          |         |                  |
-
-用户管理
-
-| `finger`   | `whoami`  | `last` | `passwd` | `id` |
-| ---------- | --------- | ------ | -------- | ---- |
-| `sudo, su` | `usermod` | `exit` | `groupmod`         |      |
-
-[Bash 脚本编程](bash%20script/变量.md)
-
-| `export` | `env`   |     |     |     |
-| -------- | ------- | --- | --- | --- |
-| `tee`    | `xargs` | `history`    |     |     |
+Bash 作为编程语言的语法和细节请见: [BashScript](bash%20脚本化.md).
 
 ## Bash 热键
 

@@ -194,7 +194,7 @@ struct gendisk {
 
 ## STDC 文件系统调用
 
-标准库的优点就是**跨平台一致性**, 不会在不同平台 (Linux, Windows, VxWorks) 之间有所区别.
+标准库的优点就是**跨平台一致性**, 语义在不同平台 (Linux, Windows, VxWorks) 之间保持一致.
 
 ```c
 FILE *fopen(const char *path, const char *mode);
