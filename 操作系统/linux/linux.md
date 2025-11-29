@@ -100,38 +100,6 @@ packet received --> IRQ (Top-Half) --> SoftIRQ (Bottom-Half) --> NAPI Polling --
 E.G. Disk:  
 I/O done --> IRQ (Top-Half) --> Workqueue (Bottom-Half) --> Workqueue --> complete I/O req, update page cache --> idle 
 
-## 内核初始化
-
-1. 主板加电, 硬件自检.
-2. Soc 核心执行其内嵌的固件 (BIOS, UEFI, BootRom)
-3. 只有 CPU0 核心的 bootrom 会加载 *引导程序 (BootLoader)*, 如: GRUB, U-Boot.
-4. 其他 CPU 核心进入等待状态.
-5. CPU0 上的 BootLoader 加载内核镜像 (附带一些启动参数). 
-6. 内核镜像的启动点, 是和架构相关的汇编代码, 其将构建一个执行 C ABI 的环境. (如清空 .bss, 初始化栈, 禁用中断等).
-7. 接着, CPU 0 执行第一个 C 函数: `x86_64_start_kernel()`. 该函数在执行完架构相关代码后, 调用 `start_kernel()`. 这是通用的内核启动点.
-8. 由 `start_kernel()` 依次唤醒 (按严格顺序): allocator, scheduler, timer, interrupts, per-CPU areas, RCU, workqueue 等内核基础工具.
-9. CPU0 继续执行, 启动更高层次子系统: blcok I/O, fs, drivers, net.
-10. 最后, 执行 `rest_init()`, 由其创建第一个内核线程 `kthreadd`, 以及用户空间初始化程序 `/sbin/init`. 并挂载根文件系统.
-
-```
-firware (BIOS, UEFI, BootRom)
-	--> BootLoader (GRUB, U-Boot)
-		--> architecture-dependent kernel entry (arch/x86/head.S)
-			--> x86_64_start_kernel() (arch/x86/kernel/head64.c)
-				--> start_kernel() (init/main.c)
-					--> parse boot params
-					--> allocators, schedulers, interrupts, timers, SMP
-					--> initcalls by level (core, arch, subsys)
-					--> subsystems: driver, ent, fs
-					--> rest_init()
-						--> create kthreadd (PID2)
-						--> kernel_init() 
-							--> kernel_init_freeable()
-								--> mount root filesystem (rootfs, initramfs)
-								--> /sbin/init 
-```
-
-> UEFI. Unified Extensible Firmware Interface, 统一可扩展固件接口, 替代传统 BIOS 的启动系统. 
 
 ## 内核对象
 

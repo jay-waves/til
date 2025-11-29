@@ -61,6 +61,11 @@ https://aosabook.org/en/posa/secrets-of-mobile-network-performance.html
 
 https://aosabook.org/en/posa/warp.html
 
+### 大规模并发
+
+1. 文件句柄数量限制. 默认为 `ulimit -n` --> 1024
+2. 
+
 ## 参考
 
 https://aosabook.org/en/v2/zeromq.html

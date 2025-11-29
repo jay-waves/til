@@ -15,7 +15,9 @@ RTOS 的任务通常不假设自身有原子性, 可能会重入和被抢占. �
 ## 外设抽象
 
 RTOS 强制依赖 **定时器中断 (systick)**, 但是不强制抽象外设. RTOS 提供一些驱动更上层的 API, 比如 ISR 注册接口 / IO 接口.
+
 - FreeRTOS: 不包含硬件驱动, 硬件应直接访问厂商的 HAL 库 (STM HAL, Nordic SDK)
 - RT-Thread: 只抽象片上串口 (UART, I2C, SPI 等), 提供 API 而不必访问控制寄存器
 - Zephyr: Linux 基金会的项目. 有完整 *设备树 (Device Tree)* 和驱动模型.
 - VxWorks: 商业 RTOS, 有较完整的驱动.
+- Nuttx
