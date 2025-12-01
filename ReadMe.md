@@ -14,7 +14,7 @@
 | graphic      | 计算机图形学  |                            |
 | math         | 数学         | 数学就是数学                       |
 | devtool      | 开发工具         | Git, Vim, Latex, IDE, ...          |
-| attach       | 图片附件     | 去透明通道压缩后图片, 无版权 |
+| attach       | 图片附件     | 去透明通道压缩后图片 |
 | appx         | 附录         | 技术标准, 参考信息, 杂项   |
 | paper        | 论文         |                                    |
 | src          | 代码         |                                    |
@@ -94,4 +94,3 @@
 - 数学证明中, 用 *证明:* 和 $\blacksquare$ 标识开始与结束.
 - 数学公式符号 `$$` 和左右文字间隔一个半角空格, 避免渲染问题.
 
-![黑](https://jay-waves.oss-cn-beijing.aliyuncs.com/%E9%BB%911.png)

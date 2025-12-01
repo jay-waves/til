@@ -1,3 +1,5 @@
+![](../../../attach/AFL%20架构图.avif)
+
 ## bitmap
 
 AFL 中, 统计edge的覆盖率信息. 考虑如下基本块路径:
