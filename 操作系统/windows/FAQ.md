@@ -40,11 +40,11 @@
 
 在 本地组策略 -> Windows 设置 -> 本地策略 -> 审核策略 中, 开启 "审核对象访问", 来开启对文件的审计功能.
 
-![|700](https://jay-waves.oss-cn-beijing.aliyuncs.com/til/本地策略组编辑器.avif)
+![|700](http://oss.jay-waves.cn/til/本地策略组编辑器.avif)
 
 开启 文件属性 -> 安全 -> 高级 -> 审核, 新建审核, 为该文件选择对应的审计属性.
 
-![|700](https://jay-waves.oss-cn-beijing.aliyuncs.com/til/开启文件夹审核.avif)
+![|700](http://oss.jay-waves.cn/til/开启文件夹审核.avif)
 
 在事件查看器 `eventvwr` 查看 Windows 日志 -> 安全, 相关事件 ID 包括:
 - 4663: 对文件或文件夹尝试访问
