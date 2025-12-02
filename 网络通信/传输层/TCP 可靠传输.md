@@ -48,9 +48,9 @@ setsockopt(sock, IPPROTO_TCP, TCP_NODELAY, (void *)&on, sizeof(on));
 
 TCP 协议中, 拥塞控制通过拥塞窗口来完成.  在启动时, TCP 通过"慢启动"来逐步增加发送速度, 直到某个阈值. "慢启动"后, 通过"拥塞避免", 动态地调整拥塞窗口的大小. 在任意时刻, TCP 发送速度, 取决于拥塞窗口和发送窗口的最小值: 当发送的字节数显然大于拥塞窗口, 数据包就不会被发送. 
 
-![|350](../../../attach/计算机网络_拥塞控制.avif)
+![|350](http://oss.jay-waves.cn/til/计算机网络_拥塞控制.avif)
 
-![|500](../../../attach/Pasted%20image%2020230604173012.avif)
+![|500](http://oss.jay-waves.cn/til/计算机网络_拥塞控制_慢启动算法.avif)
 
 **慢启动算法**: TCP 会慢慢地提高网络发送速度, 直到某个阈值. 
 
@@ -62,7 +62,7 @@ For (each segment ACKed):
 Until (loss event OR cwnd > ssthresh):
 ```
 
-![|500](../../../attach/计算机网络_拥塞控制_自动机.avif)
+![|500](http://oss.jay-waves.cn/til/计算机网络_拥塞控制_自动机.avif)
 
 算法流程:
 

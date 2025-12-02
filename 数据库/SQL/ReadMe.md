@@ -88,7 +88,7 @@ from <表名> [, <其他表名>] [as] <别名>
 
 **嵌套查询:**
 
-![|500](../../../attach/数据库_JOIN语法.avif)
+![|500](http://oss.jay-waves.cn/til/%E6%95%B0%E6%8D%AE%E5%BA%93_JOIN%E8%AF%AD%E6%B3%95.avif)
 
 嵌套集合关系:
 
@@ -102,7 +102,8 @@ from <表名> [, <其他表名>] [as] <别名>
 ### 查询优化
 
 数据库 SQL 处理过程: 
-![|350](../../../../attach/Pasted%20image%2020240104222337.avif)
+
+![|350](http://oss.jay-waves.cn/til/数据库SQL处理过程.avif)
 
 查询优化分类
 - 代数优化: 关系代数表达式优化
