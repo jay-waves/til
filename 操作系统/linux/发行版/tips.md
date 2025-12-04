@@ -1,15 +1,18 @@
 
-## Linux 分发版配置
+## 常见开发软件
 
-软件安装:
 ```bash
 sudo apt install zsh sudo vim git \
 	net-tools curl iproute2 traceroute wget nfs-utils \
 	openssl-devel openssh-server \
 
 # 编译工具
-sudo apt install llvm build-essential gcc cmake ninja 
+sudo apt install llvm build-essential gcc cmake ninja
 ```
+
+## 增强 shell 
+
+### zsh
 
 加强 Shell: zsh + oh-my-zsh + [StarShip](https://starship.rs)
 ```bash
@@ -41,12 +44,39 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 
 ```
 
+### bash
+
+必备 fzf, 增强 Ctrl+R 功能.
+
+```
+sudo apt install fzf
+source /usr/share/fzf/shell/key-bindings.bash
+```
+
+推荐使用 fish. 
+
+## 键映射
+
 配置键映射: 
 ```bash
 # in .zshrc
 # 将 CapsLock 和 Escape 互换
 xmodmap -e "keycode 9 = Caps_Lock"
 xmodmap -e "keycode 66 = Escape"
+```
+
+## 配置网路代理
+
+`~/.bashrc`:
+
+```bash
+proxy="http://127.0.0.1:7890" 
+export all_proxy=$proxy
+export https_proxy=$proxy
+export http_proxy=$proxy
+export ALL_PROXY=$proxy
+export HTTPS_PROXY=$proxy
+export HTTP_PROXY=$proxy
 ```
 
 配置部分软件的代理

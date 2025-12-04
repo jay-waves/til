@@ -229,5 +229,5 @@ func (e *MyError) Error() string {
 err := fmt.Errorf("An error occurred: %w", originalErr)
 ```
 
-
+注意, Go 并不强制处理 `err`, 可以用 `_` 匿名变量来忽略掉. GO 的 `return result, err` 实际有四种组合状态, 而 Rust `Result<T, E>` 只有 `Ok(T)` 和 `Err(E)` 两种, 并且 Rust 强制处理错误.
 
