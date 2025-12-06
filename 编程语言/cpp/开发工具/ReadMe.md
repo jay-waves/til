@@ -22,10 +22,6 @@ void foo() {
 - https://github.com/jeremy-rifkin/cpptrace
 - `boost::stacktrace`
 
-## range-v3
-
-C++20 Ranges. 函数式迭代器.
-
 ## std::literals 
 
 用户自定义字面量 (UDL, User-Defined Literal): 允许重载 `operator""xxx`, 比如重载 `"xxx"json`
@@ -49,6 +45,37 @@ C++20 Ranges. 函数式迭代器.
 - benchmark 
 - Catch2 
 - doctest 
+
+### Catch2 
+
+```cpp
+TEST_CASE("xxxx test") {
+	INFO("....");
+	CHECK(1 + 1 == 2);
+	CHECK_NOTHROW(xxx_func());
+}
+```
+
+catch2 是一个纯头文件库, 为了加速编译, 应把 Catch2 主程序部分单独分离开:
+
+```cpp
+// single_file.cpp
+#define CATCH_CONFIG_MAIN 
+#include "catch.hpp"
+```
+
+Catch2 支持 BDD 测试风格:
+
+```cpp
+SCENARIO("xxxxx") {
+	GIVEN("condition") {
+		...
+		WHEN("...") {
+			THEN(".....)
+		}
+	}
+}
+```
 
 ## 其他开发工具库:
 
