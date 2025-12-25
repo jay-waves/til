@@ -2,8 +2,6 @@
 code: <time>, <chrono>
 ---
 
-
-
 标准库 `chrono` 来自于古希腊语 χρόνος, 意为时间.
 
 ## c time

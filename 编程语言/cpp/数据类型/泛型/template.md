@@ -59,4 +59,4 @@ Substitution Failure Is Not An Error: 一般指模板特化.
 
 ## CRTP 
 
-Curiously Recurring Template Pattern. 一种 MixIn 的实现方法. 通过对派生类的类型推导, 实现静态多态.
+详见 [设计模式/MixIn](../../面向对象/设计模式/MixIn.md)
