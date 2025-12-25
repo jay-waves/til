@@ -81,3 +81,9 @@ SCENARIO("xxxxx") {
 
 - cxxopts: 命令行参数解析
 - spdlog: 日志
+
+## DI 
+
+依赖注入库: [Google Fruit](https://github.com/google/fruit), [boost/dil](https://github.com/boost-ext/di)
+
+但是, 小项目可手写工厂函数替代.
