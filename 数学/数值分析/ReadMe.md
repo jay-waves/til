@@ -26,12 +26,14 @@
 
 ### 范数
 
+#### 向量范数
+
 **向量范数**是在 $\mathbb{R}^{n}$ 上的实值函数, 用于定义向量的大小:
 1. 正定性: $\Vert x\Vert \geq 0$, 当且仅当 $x=0$ 时, $\Vert x\Vert =0$
 2. 齐次性: 任意数 $k\in \mathbb{R}$, 有 $\Vert kx\Vert =|k|\cdot \Vert x\Vert$
 3. 三角不等式: $\Vert x+y\Vert \leq \Vert x\Vert + \Vert y\Vert$.
 
-对于 $x\in \mathbb{R}^n$, 有:
+对于 $x\in \mathbb{R}^n$, 有一范数:
 
 $$\Vert x\Vert_{1}=\sum^{n}_{i=1}|x_{i}|$$
 
@@ -41,13 +43,40 @@ $$\Vert x\Vert_{2}=\sqrt{ \sum^{n}_{i=1}x^{2}_{i} }$$
 无穷范数:
 $$\Vert x\Vert_{\infty}=\max_{1\leq i\leq n}|x_{i}|$$
 
+#### 矩阵范数
+
 **矩阵范数**: 
 1. 正定性
 2. 齐次性
 3. $\Vert A+B\Vert \leq \Vert A\Vert+\Vert B\Vert$
 4. $\Vert AB\Vert \leq \Vert A\Vert \Vert B\Vert$
 
-**矩阵范数需要与某种向量范数相容**, 即: ${} \Vert Ax\Vert \leq \Vert A\Vert\cdot \Vert x\Vert {}$.
+**矩阵范数需要与某种向量范数相容**, 即: $\Vert Ax\Vert \leq \Vert A\Vert\cdot \Vert x\Vert$.
+
+一范数: 即矩阵各**列元素**的绝对值之和的最大值, 称为**列范数**: 
+
+$$
+||\mathbf{A}||_1=\max_j\Sigma_i|a_{ij}|
+$$
+
+二范数: 即矩阵$A^TA$的最大特征值, 称为**谱范数**: 
+
+$$
+||\mathbf{A}||_2=\sqrt{\lambda_{\text{max}}(A^TA)}
+$$
+
+无穷范数: 即矩阵各**行元素**的绝对值之和的最大值, 称为**行范数**:
+
+$$
+||\mathbf{A}||_\infty=\max_i\Sigma_j|a_{ij}|
+$$
+
+F范数: 类似地对应了向量的二范数, 矩阵的每个元素开方后求和: 
+
+$$
+||\mathbf{A}||_\text{F}=\sqrt{\Sigma \Sigma a_{ij}^2}
+$$
+
 
 ### 数值稳定性
 
@@ -72,6 +101,12 @@ $\delta (x-y)=\frac{\epsilon_{0}-\epsilon_{1}}{a-b}$
 可以采取 代数变换 或者 泰勒级数展开 的方式, 避免相近数的减法. 
 
 #### 4. 避免除数远小于被除数
+
+#### 5. 迭代问题
+
+迭代问题需要平衡舍入误差与截断误差
+* 当迭代步长过小, 计算机浮点数舍入误差会积累, 并且迭代速度过慢
+* 当迭代步长过大, 算法的截断误差会导致数值稳定性下降
 
 ## 方程组求解
 
