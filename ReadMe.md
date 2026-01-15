@@ -1,24 +1,25 @@
 ## TOC 🚀
 
-| 英文标题     | 中文标题     | 描述                               |
-| ------------ | ------------ | ---------------------------------- |
-| algorithm    | 算法         | 数据结构, 算法                     |
-| intelligence | 人工智能     |                                    |
-| compiler     | 编译原理     | LLVM, 编译链接, 汇编               |
-| database     | 数据库       |                                    |
-| hardware     | 体系架构     | 计算机组成, 数字电路, 嵌入式       |
-| language     | 编程语言     | C, C++, Go, Python, 设计模式       |
-| network      | 网络通信     |                                    |
-| system       | 操作系统     |                                    |
-| security     | 网络安全     | 网络安全, 软件安全, 密码学         |
-| graphic      | 计算机图形学  |                            |
-| math         | 数学         | 数学就是数学                       |
-| devtool      | 开发工具         | Git, Vim, Latex, IDE, ...          |
-| attach       | 图片附件     | 去透明通道压缩后图片 |
-| appx         | 附录         | 技术标准, 参考信息, 杂项   |
-| paper        | 论文         |                                    |
-| src          | 代码         |                                    |
-
+| toc         | en                      | zh           |
+| ----------- | ----------------------- | ------------ |
+| algo        | algorithm               | 算法         |
+| ai          | artificial intelligence | 人工智能     |
+| arch        | architectures           | 体系架构     |
+| compilers   | compilers               | 编译原理     |
+| db          | databases               | 数据库       |
+| distributed | distributed system      | 分布式系统   |
+| econ        | economics               | 经济学       |
+|             | graphic                 | 计算机图形学 |
+| langs       | languages               | 编程语言     |
+| math        | mathematica             | 数学         |
+| networks    | networks                | 网络通信     |
+| netsec      | security                | 网络安全     |
+| os          | operating system        | 操作系统     |
+| tools       | devtool                 | 开发工具     |
+| attach      | attachments             | 图片附件     |
+| appx        | appendices              | 附录         |
+|             | paper                   | 论文         |
+| src         | source code             | 代码         |
 
 
 ## License
@@ -53,20 +54,29 @@
 
 ## Writing Guidelines
 
-- 全部**使用英文标点**, 半角标点前或后添加一个半角空格.
+- 语言简洁, 严谨, 准确. 体现逻辑性, 减少冗余.
+- 强调句使用粗体, 新名词使用斜体.
+
+- 全部*使用英文标点*, 半角标点前或后添加一个半角空格.
 - 中文 (全角) 和任意半角符号间应隔一个半角空格, 括号内侧除外.
-- 文件名可以包含空格. 英文大小写皆支持.
 - 标题级别从二级开始, 最低四级标题.
 - 标题中可以有空格, 编号和题目间应有空格, 次级编号用 `.` 分隔.
 - 文章篇幅不宜过长, 5个以内三级标题为宜.
 - 所有流程类内容 (非事实, 非概念), 均用 Q&A 形式记录. 
 - 自绘图片保存在 `./attach` 中, 其余放置于阿里云 OSS.
 
-- 语言简洁, 严谨, 准确. 体现逻辑性, 减少冗余.
-- 强调句使用粗体 `**`, 新名词使用斜体 `*`. 
+
+### Markdown
+
 - Markdown 开启严格断行.
 - Markdown 链接使用 `[]()` 形式, 关闭 wikilink.
-- 允许部分 Obsidian Markdown 扩展语法, 如 Properties, 用于记录文章 Copyright, 时间 等.
+- 允许的 Obsidian Markdown 语法: Properties, ...
+
+### Naming
+
+- 普通目录及文件: 用 `-` 作为连字符, *减少空格, 全小写*. 
+- 源码目录及文件: 遵循语言规范, 通常使用 `_` 作为连字符. 
+- 无空格
 
 ### Appearance
 
