@@ -32,3 +32,35 @@ void selection_sort(void *base, size_t num, size_t size,
             swap(arr + i * size, arr + min_idx * size, size);
     }
 }
+
+static void quick_sort(void *base, size_t size, int low, int high, 
+										int (*cmp)(const void *, const void *))
+{
+	char *arr = (char *)base;
+    if (low < high) {
+        char *pivot = arr + high * size;
+        int i = low - 1;
+        int j;
+
+        for (j = low; j < high; j++) {
+            if (cmp(arr + j * size, pivot) < 0) {
+                ++i;
+                swap(arr + i * size, arr + j * size, size);
+            }
+        }
+        swap(arr + (i + 1) * size, arr + high * size, size);
+        int pi = i + 1;
+
+        quick_sort(base, size, low, pi - 1, cmp);
+        quick_sort(base, size, pi + 1, high, cmp);
+    }
+}
+
+void qsort(void *base, size_t num, size_t size, 
+						int (*cmp)(const void *, const void *))
+{
+    if (num < 2) 
+	    return;
+    
+    quick_sort(base, size, 0, num - 1, cmp);
+}

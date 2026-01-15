@@ -120,4 +120,4 @@ void dll_remove(int val, dll_node **list)
 - 添加独立头节点, 规避链表首节点就是要删除的节点的情况. 缺点是尾元素仍是边界条件.
 - 惰性删除, 即不实际删除, 仅用 `flag` 或特殊值标记.
 - 值替换. 当需要删除首个节点时, 为避免外部对链表的引用失效, 将第二个节点的值拷贝到首节点, 同时删除第二个节点. 缺点是, 无法处理仅剩一个节点的情况.
-- [circular linked list](circular%20linked%20list.md). 缺点是每次访问都需要判断节点是否为空.
+- [circular-linked-list](circular-linked-list.md). 缺点是每次访问都需要判断节点是否为空.
