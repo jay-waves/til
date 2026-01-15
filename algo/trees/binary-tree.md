@@ -11,9 +11,9 @@
 **树高度**: 最深的节点深度.
 
 **平衡二叉树**: 叶子节点的深度差至多为一. 平衡树有多种实现:
-- [red-black tree](red-black%20tree.md)
-- [avl tree](avl%20tree.md)
-- [b tree](b%20tree.md)
+- [red-black-tree](red-black-tree.md)
+- [avl-tree](avl-tree.md)
+- [b-tree](b-tree.md)
 
 **完全二叉树**: 所有叶节点的深度相同, 内部节点的出度 (子节点数) 相同.
 

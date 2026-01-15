@@ -18,7 +18,7 @@ block started by symbol, ELF 文件中存储未初始化全局变量和局部静
 
 #### Heap
 
-堆, 数据结构. 见 [binary heap](../algo/树/binary%20heap.md). 也指进程内存空间的一种结构.
+堆, 数据结构. 见 [binary-heap](../algo/trees/binary-heap.md). 也指进程内存空间的一种结构.
 
 #### Static Shared Library
 

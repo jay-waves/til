@@ -1,4 +1,4 @@
-栈有两种常见实现方法: 基于数组和基于链表, 两种区别详见 [Array vs Linked List](链表/linked%20list%20vs.%20array.md)
+栈有两种常见实现方法: 基于数组和基于链表, 两种区别详见 [Array vs Linked List](linked-list/prefer-array-to-linked-list.md)
 
 ## 数组实现
 
