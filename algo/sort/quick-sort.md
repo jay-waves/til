@@ -1,11 +1,11 @@
 ## 快速排序
 
-已知最快排序算法. 通过一趟排序, 将元素分为两部分, 其中一部分的最小元素大于另一部分的最大元素, 然后将两部分递归处理下去.
-1. 选基准: 从数列中取出一个基准数 (pivot). 随机选择基准数可以减少最差时间情况.
-2. 分区: 将所有比基准数大的数移动到其右侧, 其他数移动到基准数左侧.
-3. 递归: 对左右侧区间重复步骤2, 递归至区间大小为1.
+已知最快排序算法。通过一趟排序，将元素分为两部分，其中一部分的最小元素大于另一部分的最大元素，然后将两部分递归处理下去。
+1. 选基准：从数列中取出一个基准数（pivot）。 随机选择基准数可以减少最差时间情况。
+2. 分区：将所有比基准数大的数移动到其右侧，其他数移动到基准数左侧。
+3. 递归：对左右侧区间重复步骤2，递归至区间大小为 1。
 
-快速排序思想是[分而治之](../algo.md). 不具有稳定性, 因为选择基准数算法被认为是随机的. 空间复杂度为 `O(log n)`, 主要消耗为递归调用栈深度.
+快速排序思想是[分而治之](../algorithm.md)。不具有稳定性，因为选择基准数算法被认为是随机的。空间复杂度为 `O(log n)`，主要消耗为递归调用栈深度。
 
 ### lomuto partition
 
@@ -41,19 +41,13 @@ It lomuto_partition(It first, It last, Comp comp = {}) {
 
 ### hoare partition 
 
-Hoare 分区方法, 优势是交换次数少.
+Hoare 分区方法，优势是交换次数少。
 
 ```cpp
-
-// Hoare partition scheme
-// - Range: [first, last)
-// - Returns: iterator p such that every element in [first, p] is <= pivot
-//            and every element in (p, last) is >= pivot (w.r.t. comp)
-// - Note: pivot is not guaranteed to end up at its final sorted position.
 template <std::random_access_iterator It, class Comp = std::less<>>
 requires std::sortable<It, Comp>
 It hoare_partition(It first, It last, Comp comp = {}) {
-    // Choose pivot (common simple choice: middle element)
+    // Choose pivot
     const auto pivot = *(first + (last - first) / 2);
 
     It i = first - 1;
@@ -63,10 +57,10 @@ It hoare_partition(It first, It last, Comp comp = {}) {
         // move i right until *i is NOT < pivot
         do { ++i; } while (comp(*i, pivot));
 
-        // move j left until *j is NOT > pivot  <=> pivot is NOT < *j
+        // move j left until *j is NOT > pivot
         do { --j; } while (comp(pivot, *j));
 
-        if (i >= j) return j;          // split point
+        if (i >= j) return j;          // 
         std::iter_swap(i, j);
     }
 }
@@ -80,3 +74,48 @@ void quick_sort_hoare(It first, It last, Comp comp = {}) {
     quick_sort_hoare(p + 1, last, comp);  // [p+1, last)
 }
 ```
+
+？ 我不太明白这里的界划分
+
+### 三向分区
+
+```cpp
+template <std::random_access_iterator It, class Comp = std::less<>>
+requires std::sortable<It, Comp>
+std::pair<It, It> three_way_partition(It first, It last, Comp comp = {}) {
+    const auto pivot = *(first + (last - first) / 2);
+
+    It lt = first;   
+    It i  = first; 
+    It gt = last;    
+
+    while (i < gt) {
+        if (comp(*i, pivot)) { // *i < pivot
+            std::iter_swap(lt, i);
+            ++lt;
+            ++i;
+        } else if (comp(pivot, *i)) { // *i > pivot
+            --gt;
+            std::iter_swap(i, gt);
+            // 注意这里 i 不自增
+        } else { // *i == pivot
+            ++i;
+        }
+    }
+
+    // [lt, gt), *lt = p, *(lt-1) < p, *gt > p, *(gt-1) = p
+    return {lt, gt};
+}
+
+template <std::random_access_iterator It, class Comp = std::less<>>
+requires std::sortable<It, Comp>
+void quick_sort_three_way(It first, It last, Comp comp = {}) {
+    if (last - first < 2) return;
+
+    auto [lt, gt] = three_way_partition(first, last, comp);
+    quick_sort_three_way(first, lt, comp);  // < pivot
+    quick_sort_three_way(gt, last, comp);   // > pivot
+}
+```
+
+因为等于 `pivot` 的部分不再参与后续递归，因此收敛会更快。在有大量重复元素的场景中，速度可以接近 $O(n)$。

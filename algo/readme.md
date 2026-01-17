@@ -47,7 +47,7 @@
 	- [快速排序](sort/quick-sort.md), 
 	- [冒泡排序](sort/bubble-sort.md#冒泡排序), 
 	- [希尔排序](sort/shell-sort.md), 
-	- [选择排序](sort/selection%20-sort.md)
+	- [选择排序](sort/selection-sort.md)
 - 图和搜索算法: 
 	- [二分查找](sort/binary-search.md)
 	- [广度优先搜索](图论/广度优先搜索.md), 

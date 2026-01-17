@@ -64,3 +64,27 @@ void qsort(void *base, size_t num, size_t size,
     
     quick_sort(base, size, 0, num - 1, cmp);
 }
+
+#define get(base, size, index) \
+	((void *)((char *)(base) + (index) * (size)))
+#define copy(dest, src, size) \
+	memcpy((dest), (src), (size))
+
+void shell_sort(void *base, size_t num, size_t size,
+								int (*cmp)(const void*, const void*))
+{
+	char *arr = base, temp[size];
+	size_t i, j, gap = num;
+	while (gap > 1) {
+		gap = gap / 2;
+		for (i = gap; i < num; ++i) {
+			memcpy(temp, arr + i * size, size);
+			for (j = i; (j >= gap); j -= gap) {
+				if (cmp(arr + (j - gap) * size, temp) <= 0)
+					 break;
+				memcpy(arr + j * size, arr + (j-gap) * size, size);
+			}
+			memcpy(arr + j * size, temp, size);
+		}
+	}
+}

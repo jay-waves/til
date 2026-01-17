@@ -36,7 +36,7 @@ Esc::CapsLock
 ; 是否使用中文标点
 Global chinesePunctuationActive := false
 
-^.:: {
+!.:: {
     Global chinesePunctuationActive
     chinesePunctuationActive := !chinesePunctuationActive ;切换状态
 
@@ -55,14 +55,15 @@ Global chinesePunctuationActive := false
 ,::SendInput "，"         
 .::SendInput "。"        
 ;::SendInput "；"         
-'::SendInput "‘"         
+'::SendInput "‘’"         
 [::SendInput "【"          ; 左方括号
 ]::SendInput "】"          ; 右方括号
 \::SendInput "、"          ; 顿号 
 !::SendInput "！"         
 ?::SendInput "？"        
 :::SendInput "："       
-"::SendInput "“"       
+`;::SendInput "；"
+"::SendInput "“”"       
 (::SendInput "（"          
 )::SendInput "）"         
 ~::SendInput "～"        
@@ -73,3 +74,39 @@ $::SendInput "￥"
 >::SendInput "》"      
 
 #HotIf
+
+; VirtualDesktopAccessor
+; 必须使用 64b 编译.
+VDA_PATH := "D:\bin\VirtualDesktopAccessor.dll"
+hVirtualDesktopAccessor := DllCall("LoadLibrary", "Str", VDA_PATH, "Ptr")
+
+GoToDesktopNumberProc := DllCall("GetProcAddress", "Ptr", hVirtualDesktopAccessor, "AStr", "GoToDesktopNumber", "Ptr")
+GetCurrentDesktopNumberProc := DllCall("GetProcAddress", "Ptr", hVirtualDesktopAccessor, "AStr", "GetCurrentDesktopNumber", "Ptr")
+MoveWindowToDesktopNumberProc := DllCall("GetProcAddress", "Ptr", hVirtualDesktopAccessor, "AStr", "MoveWindowToDesktopNumber", "Ptr")
+
+MoveCurrentWindowToDesktop(number) {
+    global MoveWindowToDesktopNumberProc, GoToDesktopNumberProc
+    activeHwnd := WinGetID("A")
+    DllCall(MoveWindowToDesktopNumberProc, "Ptr", activeHwnd, "Int", number, "Int")
+    DllCall(GoToDesktopNumberProc, "Int", number, "Int")
+}
+
+GoToDesktopNumber(num) {
+    global GoToDesktopNumberProc
+    DllCall(GoToDesktopNumberProc, "Int", num, "Int")
+    return
+}
+MoveOrGotoDesktopNumber(num) {
+    ; If user is holding down Mouse left button, move the current window also
+    if (GetKeyState("LButton")) {
+        MoveCurrentWindowToDesktop(num)
+    } else {
+        GoToDesktopNumber(num)
+    }
+    return
+}
+
+!1::MoveOrGotoDesktopNumber(0)
+!2::MoveOrGotoDesktopNumber(1)
+!3::MoveOrGotoDesktopNumber(2)
+!4::MoveOrGotoDesktopNumber(3)
