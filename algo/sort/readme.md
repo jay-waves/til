@@ -3,20 +3,22 @@
 | -------------------------------- | -------------------- | ------------------ | ------------------ | -------------- | ---------- | ---- |
 | [插入排序](insertion-sort.md) | $O(n^{2})$           | $O(n)$             | $O(n^{2})$         | $O(1)$         | 稳定       | 插入     |
 | [希尔排序](shell-sort.md)          | $\approx O(n^{1.5})$ | $O(n)$             | $O(n^{2})$         | $O(1)$         | 不稳定     | 插入/分治      |
-| [选择排序](selection%20-sort.md) | $O(n^2)$             | $O(n^2)$           | $O(n^2)$           | $O(1)$         | 不稳定     |  选择    |
-| [堆排序](heap-sort.md)              | $O(n\cdot \log n)$   | $O(n\cdot \log n)$ | $O(n\cdot \log n)$ | $O(1)$         | 不稳定     |   选择   |
-| [冒泡排序](bubble-sort.md#冒泡排序) | $O(n^2)$             | $O(n)$             | $O(n^2)$           | $O(1)$         | 稳定       | 交换     |
-| [快速排序](quick-sort.md)          | $O(n\cdot \log n)$   | $O(n\cdot \log n)$ | $O(n^2)$           | $O( \log n)$   | 不稳定     |  交换/分治    |
-| [归并排序](merge-sort.md)          | $O(n\cdot \log n)$   | $O(n\cdot \log n)$ | $O(n\cdot \log n)$ | $O(n)$         | 稳定       |   分治   |
+| [选择排序](selection-sort.md) | $O(n^2)$             | $O(n^2)$           | $O(n^2)$           | $O(1)$         | 不稳定     |  选择    |
+| [**堆排序**](heap-sort.md)              | $O(n\cdot \log n)$   | $O(n\cdot \log n)$ | $O(n\cdot \log n)$ | $O(1)$         | 不稳定     |   选择   |
+| [**冒泡排序**](bubble-sort.md#冒泡排序) | $O(n^2)$             | $O(n)$             | $O(n^2)$           | $O(1)$         | 稳定       | 交换     |
+| [**快速排序**](quick-sort.md)          | $O(n\cdot \log n)$   | $O(n\cdot \log n)$ | $O(n^2)$           | $O( \log n)$   | 不稳定     |  交换/分治    |
+| [**归并排序**](merge-sort.md)          | $O(n\cdot \log n)$   | $O(n\cdot \log n)$ | $O(n\cdot \log n)$ | $O(n)$         | 稳定       |   分治   |
 
-[^1]: 排序稳定性指: 排序操作前后, 关键字相同的元素的前后相对位置不变. 多关键字排序时, 保持结果稳定性非常重要. 稳定性仅是约定俗称而不是必然, 糟糕的代码会破坏理论上的稳定性, 反之亦然. 在谈论稳定时, 约定当元素键值相同时不交换, 优先使用有最佳性能的局部算法, 在此基础上才进一步讨论.
+[^1]: 排序稳定性指：排序操作前后，关键字相同的元素的前后相对位置不变。排序算法中，元素局部交换 多关键字排序时, 保持结果稳定性非常重要. 稳定性仅是约定俗称而不是必然, 糟糕的代码会破坏理论上的稳定性, 反之亦然. 在谈论稳定时, 约定当元素键值相同时不交换, 优先使用有最佳性能的局部算法, 在此基础上才进一步讨论.
 
 特殊排序方法: 
 
 |                             | 时间复杂度 (平均) | 空间复杂度 | 稳定性 |
 | --------------------------- | ----------------- | ---------- | ------ |
-| [基数排序](radix-sort.md) |   $O(n*k)$                | $O(n+k)$           | 稳定       |
-| 桶排序                      |   $O(n+k)$                | $O(n+k)$           | 稳定       |
+| [基数排序](bucket-sort.md) |   $O(n*k)$                | $O(n+k)$           | 稳定       |
+| [桶排序](bucket-sort.md)                      |   $O(n+k)$                | $O(n+k)$           | 稳定       |
+
+**实际排序算法实现中，小规模数据，使用插入排序；大规模数据，使用快速排序；递归过深时，使用堆排序。在 `n * sizeof(T) > L3 cache` 时，可以尝试基数排序。**
 
 ## 实现细节约定
 
@@ -69,16 +71,8 @@ struct val {
 
 
 // 示例 sort 接口
-void xxx_sort(void *base, size_t num, size_t size, 
+void xxx_sort(void *base, size_t len, size_t size, 
 							int (*cmp) (const void*, const void*);
-
-struct sort_params {
-	void *base,
-	size_t size,
-	size_t num.
-	int (*cmp)(const void*, const void*),
-};
-void xxx_sort(struct sort_params *params);
 
 
 /* 示例 cmp 接口

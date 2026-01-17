@@ -1,133 +1,107 @@
+---
+date: 2026-01-17
+---
+
 品味如下:
-- 命令行优先, GUI 不丑
-- 可以复杂, 但不能繁琐丑陋, 不能绕圈子解决问题 (点名 lua, cmd). 
-- 开源优先. 一般不自行编译.
-- 多平台, 跨平台功能不过分阉割. 优先支持 Windows + Debian. 
-- 控制资源占用. 不喜欢 Web 套壳和 Java. 
-- 功能不搞大杂烩.
+- 命令行优先，GUI 不丑
+- 可以复杂，但不能繁琐丑陋，不能绕圈子解决问题。
+- 开源优先。
+- 多平台，跨平台功能不过分阉割。
+- 控制资源占用。不喜欢 Java。不喜欢 Chome 套壳，可以直接运行在浏览器 
+- 功能不搞大杂烩
 
 ***
 
-- ~~Mail Master 网易邮箱大师~~ 已换为 Thunderbird
-- ~~**Zotero7**, 文献管理~~ 不常用, 一般用文件夹 + obsidian 管理.
-- SumatraPDF, Adobe Acrobat DC.
-- ~~GoldenDict, EuDic, 本地词典~~
-- ~~Jane Reader, windows 下 EUPB 阅读器~~ 改为其分支版本 Readest
-- Obsidian, 主力笔记软件
-- ~~AFFiNE, 笔记软件, 非主力~~
-- VSCode
-- DrawIO, 绘制流程图和框架图. 我更喜欢 ppt.
-- VirtualBox, WSL, WMare Player, Docker Desktop. 容器/虚拟机软件
-- Datagrip, DBeaver, 数据库软件.
-- Terminal, ~~Alacritty~~, 命令行终端模拟器.
-- Jupyter Lab (kernel: ipython, ihaskell, wolfram14)
-- GVim90, Nvim
-- SimpleNotePad
-- NeatConverter 电子书格式转换
-- FileConverter 右键菜单中的格式转换工具
-- [Files](https://github.com/files-community/Files)
-- CrystallDiskInfo, 用于检查存储硬盘状态
-- DiskGenius
-- ~~OpenHardwareMonitor~~, 用于监控硬件, UI挺好看也挺全. LibreHardwareMonitor 支持得更好.
-- **Traffic Monitor**, 任务栏网速/硬件状态监控, 小巧.
-- **ExplorerPatcher**, windows选项集合(看不惯自带设置可以用, 选项密度更高).
-- **ContextMenuManager4.0**, 右键管理
-- FileTypesMan 文件关联管理器, 不太好用但无竞品
-- **Geek**, 删除程序用
-- rufus, 刷盘工具
-- Display Driver Uninstaller (DDU), 显卡驱动彻底删除
-- cleanmgr+ 硬盘清理工具
-- autoruns, 微软家的管理启动项工具
-- process explorer, 微软的进程工具
-- **Luna**, 自动切换 Windows10 亮暗主题. Win11 可以用 **Auto Dark Mode**, 不过系统自带的已经足够强.
-- G-Helper. 华硕电脑管家, 开源精简版.
-- StartKiller, 删掉任务栏 windows 图标
-- ~~BitDock, 给 windows 加上 dockhub~~
-- ~~PowerToys, 微软的小工具集~~ 
-	由于过于臃肿, 我切换了一些小的替代品: Fancyzone Standalone, Grab-Text Standalone, Hotkeys (替代 Always on Top, keyborad Manager).
-- **Snipaste** 截图与贴图
-- 7zip, winRaR 压缩软件. 推荐 PeaZip.
-- [Carnac](https://github.com/Code52/carnac) 键盘可视化
-- [keyviz](https://github.com/mulaRahul/keyviz) 键盘可视化
-- Calibre, 管理电子书库
-	- ebook-convert, 书籍格式转换
-	- ebook-meta, 编辑查看元信息
-	- ebook-veiwer
-	- calibredb
-- CPU-Z 又一个硬件信息收集器
-- GPU-Z 
-- Little Registry Cleaner
-- SyncThing 电脑文件夹同步工具
-- RustDesk 远程桌面 (RDP) 软件
+### 应用程序
 
-### Medai
+* 邮箱：Thunderbird 
+* PDF 阅读与编辑：SumatraPDF、Adobe Acrobat DC
+* EPUB 阅读：Readest（Jane Reader 分支）
+* 正式笔记：Obsidian 
+* 简单笔记：NVim
+* 代码：VSCode 
+* 流程与框架图绘制：DrawIO、PPT 
+* 虚拟机：WSL 
+* 终端：Windows Terminal，Alacritty（Linux 平台）
+* 截图与贴图：Snipaste
+* 压缩：7Zip
+* 电子书库管理：Calbibre
+* 远程桌面：向日葵、RustDesk 
+* 硬盘加密：VeryCrypt
+* 一般加密：GnuPG
 
-- **PotPlayer**
-- ffmpeg, 终端音视频编解码器
-- GIMP2, 开源界的 Photoshop
-- ImageMagick, 命令行的 Photoshop
-- mpv, 终端视频播放器
-- imagicMagick, 终端图片批处理工具
-- **HandBrake**, 视频编码压缩和转换
-- LosslessCut 快速裁切视频, 无转码导出
-- Microsoft ClipChamp, 傻瓜式轻量剪辑, 对我够用了.
-- Captura, 便携录屏软件, 依赖 ffmpeg
-- XnViewMP, XnConvert, 图片库查看器
+### Windows 系统工具
+
+* 管理右键菜单：ContextMenuManager 
+* 文件格式转换：FileConverter 
+* 流量和硬件监控：Traffic Monitor 
+* 硬件监控：LibreHardwareMonitor 
+* CPU 性能测试：CPU-Z
+* 硬盘管理：CrystallDiskInfo、DiskGenius 
+* 文件关联管理：FileTypesMan 
+* 删除程序：Geek
+* 刷盘：refus 
+* 电脑管家：G-Helper（华硕）
+* PowerToys：有点臃肿，用况如下：
+	* 键盘管理：替换为 AutoHotkeys 
+	* 桌面切换、窗口置顶：替换为 AutoHotkeys 
+	* Fancyzone 
+	* Grab-Text 
+* Little Registry Cleaner
+
+### 媒体
+
+* Potplayer 
+* mpv 
+* ffmpeg 
+* ImageMagick 
+* GIMP3 
+* HandBrake：视频编码与压缩
+* LosslessCut：无损快速裁切视频
+* ClipChamp：轻剪辑，仅支持 MP4 导出
+* OBS-Studio：录屏
+* OnePhoto：图片库欣赏
 
 ### Network
 
-- V2ray, V2rayN
-- Clash Verge, Clash for Windows
-- hiddify
-- shadowcocks
-- UsbEAm Hosts Editor
-- WinSCP, 远程 ftp
-- tcpview, 微软的网络工具
+- Clash Verge Rev 
+- WinSCP、sshfs 
+- V2rayN
 
 ### Hack & Security
 
-- **CyberChefs, 加密/编码/压缩/数据分析工具**
-- Wireshark (tShark), 抓包工具.
-- imhex, 原始数据查看器
-- BurpSuite, ZAP (free)
-- CryptoMator, 硬盘加密工具
-- VeraCrypt, 也是硬盘加密工具, 可以自己选择算法
-- SET, 社工库
-- sqlmap, sql 注入工具
+- **CyberChefs**
+- Wireshark，抓包工具
+- imhex，二进制查看
+- SET，社工库
 - Sandboxie Pro 沙盒
-- Chidra, 逆向工具
+- Chidra，逆向工具
+- binwalk，二进制分析工具
 
 ## Cli
 
 - PowerShell7. Windows 下使用的命令行.
 	- PSReadline 插件
 	- posh-git 插件
-- Clink. cmd prompt 加强工具, 已弃用 cmd.
 - Bash 相关见 [/System/Shell](../os/shell/bash.md)
 
 <br>
 
-- **[`pandoc`](http://pandoc.org/)** 用于 Mardown, HTML 和其他任意文本格式的转化. 基于 Texive, 也可以渲染出 PDF.
+- **[`pandoc`](http://pandoc.org/)** 
 - ~~helix. 终端编辑器, 键位反人类, 已弃用.~~
 - nivm, neovide, ctags
 - **mpv**, 终端音视频播放器.
 - httpie
-- bat, cat 的增强版
+- **bat**, cat 的增强版
 - duf, dust, du 磁盘空间查看
 - iconv, uchardet [字符编码](../os/sss/字符编码.md)工具
 - fq 类 yq, jq, 还支持各类二进制文件查看
 - fd, find 的加强版, 使用正则表达式而不是通配符.
-- rg (ripgrep)
-- fzf, 模糊查找工具, 将 fd, find, rg 用管道传给它, 来进一步查找.
+- **rg** (ripgrep)
+- **fzf**, 模糊查找工具, 将 fd, find, rg 用管道传给它, 来进一步查找.
 - tokei, 统计代码行数. cloc 替代品.
 - yazi, 终端文件浏览器
 - zoxide
-- imagicMagick, 终端图片批处理工具
-- mdv, 终端 Markdown 文件渲染器
-- ~~wolframscript, 数学引擎.~~ 不常用
-- ~~gopass, 密码管理器~~
-- ~~age, 加密工具 (不能自定义密码套件, 封装 [PGP](../networks/应用层/PGP.md), 开箱即用)~~
-- bandwhich, 查看当前占用宽带的应用和IP
 - [when-changed](https://github.com/joh/when-changed)
 - [repren](https://github.com/jlevy/repren)
 - Graphviz + Doxygen. 代码可视化工具.
@@ -138,25 +112,24 @@
 - hyperfine: `time` 的替代品, 命令行 Benchmarking.
 
 Windows 上一些 GNU 工具移植, 见 [GNUwin32](https://gnuwin32.sourceforge.net/packages.html)
-- file. 类似的还有 trid, 
-- 
+- file.
+- trid，类似 file 
+
 ## Browser Plugins
 
-- Dark Reader
-- pic in pic
-- gobal speed (edge)
-- markdownload
-- scroll to top button
-- shiny picture in picture 画中画
-- timetab (edge), Tabliss (firefox)
+- BewlyCat 
+- Google Scholar Button 
+- Markdownload、Obsidian Web Extracter 
+- TimeTab（edge 浏览器）
+- uBlock Origin、WebRTC Leak Shield 
 - vimium C
-- Ublock Origin, WebRTC Leak Shield (edge)
-- 隐形滚动条 (edge)
 - TemperMonkey
 	- Github 增强 - 高速下载
 	- m3u8-downloader
 	- CSDN Greener
 	- 知乎增强, 知乎美化, 知乎下载器
 	- 网盘直链下载助手
-- Tab Stash (firefox)
+- SuperSimple Highlighter 
+- Picture in Picture
+
 
