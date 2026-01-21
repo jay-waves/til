@@ -6,7 +6,7 @@
 out <- node <- node <- node <- node <- in
 ```
 
-linux 的队列实现称为 kfifo, 详见 [kernel/kfifo](../src/kernel/include/linux/kfifo.h). kfifo 是一个 Ring Buffer, 这也是流行做法, 被 Disruptor 等库采用.
+linux 的队列实现称为 kfifo, 详见 [kernel/kfifo](../../src/kernel/include/linux/kfifo.h). kfifo 是一个 Ring Buffer, 这也是流行做法, 被 Disruptor 等库采用.
 
 ### 循环队列
 
@@ -78,15 +78,4 @@ bool peek(struct circular_queue *q, int *value)
 ```
 
 代码详见 [queue.c](../../../src/queue.c)
-
-## 排队问题
-
-1. 队列需要显式维护 `size` 
-2. 使用时, 队列通常接近爆满或接近空集. 因为消费者和生产者的节奏通常不一致.
-
-### 多线程版本
-
-- 使用 CAS 保护 `tail` (写入端)
-- 使用 CAS 保护 `size`
-- 使用 spinlock 保护 `head` (读取端)
 

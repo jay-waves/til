@@ -1,4 +1,0 @@
-## segment tree
-
-
-## fenwick tree
