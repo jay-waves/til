@@ -12,7 +12,7 @@
 
 ### Triplets 
 
-Triplets 就是指编译过程的"环境", 也称为"[平台](../../os/系统调用接口/libc.md)". 执行当前编译过程的称为*宿主机平台*, 编译产物的实际运行环境称为*目标平台*, 两者可以不同. 比如我在 x86-windows 上编译可以跑在 arm-linux 上的程序. Triplets 直译为三元组, 但实际上现代编译系统需要四元组来区分不同的平台. 比如, 同样使用 Arm [芯片指令集架构](../指令集架构/ReadMe.md) 和 Linux 内核的 安卓系统 `aarch64-unknown-linux-android` 与 Ubuntu 系统 `aarch64-unknown-linux-gnu` 的程序就不能互通.
+Triplets 就是指编译过程的"环境", 也称为"[平台](../../os/syscalls/libc.md)". 执行当前编译过程的称为*宿主机平台*, 编译产物的实际运行环境称为*目标平台*, 两者可以不同. 比如我在 x86-windows 上编译可以跑在 arm-linux 上的程序. Triplets 直译为三元组, 但实际上现代编译系统需要四元组来区分不同的平台. 比如, 同样使用 Arm [芯片指令集架构](../指令集架构/ReadMe.md) 和 Linux 内核的 安卓系统 `aarch64-unknown-linux-android` 与 Ubuntu 系统 `aarch64-unknown-linux-gnu` 的程序就不能互通.
 
 Triplets 由以下部分构成
 - CPU: x86 (i686, i386), amd64 (x86_64), arm, aarch64 (arm64), riscv64, wasm32

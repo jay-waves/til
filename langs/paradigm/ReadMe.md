@@ -1,6 +1,5 @@
 ---
 revised: 25-01-24 
-language: [c++, java]
 ---
 
 > -- Robert Kowalski. **Algotirhm = Logic + Conrtol**. 1979

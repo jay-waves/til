@@ -24,7 +24,7 @@
 	- 进程管理: 主要是 POSIX 系列系统调用, 以及进程间通信.
 	- 编码转换, 序列化, 解压缩 (先放在这)
 - 密码库, 见 [Security/密码学](../netsec/密码学/README.md)
-- 网络与事件异步编程, 见 [Network/Programming](../distributed/网络编程.md)
+- 网络与事件异步编程, 见 [Network/Programming](../algo/concurrency/io-multiplexing.md)
 
 注意. 和功能强相关的部分, 不区分具体语言.
 
@@ -48,7 +48,7 @@
 
 #### TagDispatch
 
-一种函数反射方法, 见 [运行时函数多态](cpp/面向对象/运行时函数多态.md#函数体).
+一种函数反射方法, 见 [runtime-poly](cpp/oop/runtime-poly.md#函数体).
 
 #### System Call
 
@@ -56,7 +56,7 @@
 
 #### Reflection
 
-反射, 在**运行时**操作和配置对象及其属性, 在编写代码时这些类和方法可能不是已知的, 常用于实现框架和库. 如 Python 的 [python 元编程](python/python%20元编程.md).
+反射, 在**运行时**操作和配置对象及其属性, 在编写代码时这些类和方法可能不是已知的, 常用于实现框架和库. 如 Python 的 [python-metaprogramming](python/python-metaprogramming.md).
 
 ### Poll
 

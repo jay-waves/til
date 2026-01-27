@@ -1,5 +1,11 @@
 CUDA 的硬件架构指令集有: Tesla, Pascal, Volta, Turing, Ampere, Hopper, Blackwell 等
 
+
+GPU 的分类：
+* GPGPU (General Purpose GPU). 图形处理、高精度浮点数运算（64b）。
+* NPU. 张量（矩阵）计算，低精度数值计算（INT8，BF16）。
+
+
 ## Ampere 
 
 CUDA 是用户可编程语言, 通过一系列步骤翻译为 GPU 指令:

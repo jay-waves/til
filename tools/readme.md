@@ -1,5 +1,5 @@
 ---
-date: 2026-01-17
+revised: 2026-01-27
 ---
 
 品味如下:
@@ -25,7 +25,8 @@ date: 2026-01-17
 * 终端：Windows Terminal，Alacritty（Linux 平台）
 * 截图与贴图：Snipaste
 * 压缩：7Zip
-* 电子书库管理：Calbibre
+* ~~电子书库管理：Calbibre~~
+* 媒体库管理：Jellyfin
 * 远程桌面：向日葵、RustDesk 
 * 硬盘加密：VeryCrypt
 * 一般加密：GnuPG
