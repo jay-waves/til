@@ -1,0 +1,220 @@
+
+| `std::funciton`       | `virtual`      | `override` |
+| --------------------- | -------------- | ---------- |
+| `[]()->type{}` | `operator()()` |            |
+
+
+在运行时选择具体调用哪个函数[^1], 也称为*函数动态多态*. 最传统的方法是使用 `if-else, switch` 分支语句:
+
+```cpp
+if (...)
+	return f(...);
+else
+	return g(...);
+```
+
+
+### 函数指针
+
+注意用 `(*)` 免于受运算符优先级影响.
+```cpp
+int(*pf1)(double, double) = &floor_divide; // c-style funciton pointer
+
+using PFType = int(*)(double, double);     // modern c++ using-declaration
+PFType pf2 = &floor_divide;
+
+(*pf1)(7.0, 3.3)
+(*pf2)(7.0, 3.3)
+```
+
+### 虚函数/动态分发
+
+ABC (Abstract Base Class) 纯虚类型定义虚函数, 支持运行时多态, 称为 *动态分发 (dynamic dispatch)*[^2].
+- early binding / static dispatch ==> direct function call overload resolution 
+- late binding ==> indirect function call resolution 
+- dynamic dispatch ==> virtual function override resolution 
+
+```cpp
+class Base {
+public:
+	struct VTable* vptr; // hidden
+	virtual void func1() {};
+	virtual void func2() {};
+};
+/*
+	vptr --> Base::VTable : {&Base::func1, &Base::func2}
+*/
+
+class D1 : public Base {
+public:
+	void func1() override {};
+};
+/*
+	vptr --> D1::VTable : {&D1::func1, &Base::func2}
+*/
+
+class D2 : public Base {
+public:
+	void func2() override {};
+}
+/*
+	vptr --> D2::VTable : {&Base::func1, &D2::func2}
+*/
+
+{
+	D1 d1{};
+	Base* d_ptr = &d1;
+	d_ptr->func1(); // d_ptr->vptr-->func1();
+}
+```
+
+![vtable|400](../../../attach/vtable.avif)
+
+vtable 由编译器生成, 放在 `.rodata` 段供链接器使用. 含有虚函数的类都会有一个静态的*虚函数表 (vtable)*, 而每个对象实例中会有隐藏的*虚表指针 (vptr)*, 指向 vtable.
+
+### 函数体
+
+[functor](../data-types/stl/functor.md)指重载了 `()` 操作符的类. 下面的代码基于 cpp 函数重载, 用虚参数 (但类型确定) 决定触发的具体方法, 这种技术称为标签派发(tag-dispatch), 实际是利用了 C++ 符号重载的特点.
+
+```cpp
+class DivideCeiling {};
+class DivideFloor {};
+
+class DivideToInt {
+	double divisor_, dividend_;
+public:
+	DivideToInt(double divisor, double dividend)
+		: divisor_( divisor ), dividend_( dividend ) {}
+	int operator() (const DivideCeiling&) {
+		return ceil(divisor_ / dividend_);
+	int operator() (const DivideFloor&) {
+		return floor(divisor_ / dividend_);
+	}
+};
+
+int main() {
+	DivideToInt division(7.0, 3.3);
+	division(DivideCeiling{})
+}
+```
+
+### 匿名函数
+
+C++11
+
+```cpp
+[捕获列表] (参数列表) -> 返回类型 {
+	函数体
+}
+```
+
+- 捕获列表: 定义该 Lambda 表达式可以从本地作用域捕获哪些变量. 
+	- `[]` 无捕获
+	- `[&]` 捕获所有闭包内局部变量
+	- `[&x]` 捕获局部变量 x
+	- `[=x]` 拷贝捕获局部变量 x
+- 参数列表: Lambda 表达式接受的参数
+- 返回类型
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int main() {
+    std::vector<int> numbers = {1, 2, 3, 4, 5};
+
+    // 打印每个元素
+    std::for_each(numbers.begin(), numbers.end(), [](int number) {
+        std::cout << number << std::endl;
+    });
+
+    // 计算所有元素的和
+    int sum = 0;
+    std::for_each(numbers.begin(), numbers.end(), [&sum](int number) {
+        sum += number;
+    });
+    std::cout << "Sum: " << sum << std::endl;
+
+    return 0;
+}
+```
+
+#### 将匿名函数用于延迟求值
+
+lazy evaluation 概念源于函数式编程, 含义为当结果被明确要求时, 求值行为才进行.
+
+```cpp
+int x;
+y = x * 2 + 1; // just a number
+auto y = [&x]{ return x * 2 + 1; }; // a caller
+```
+
+通过传入引用的方式, y 的结果实时依赖于 x.
+
+#### 匿名函数签名
+
+lambda 表达式定义局部函数, **支持闭包**, 便于自定义函数与 STL 交互 (如 `sort(), search()` 传入的 `cmp` ). 但实际上 C/C++ 并不支持定义**局部函数**, 即在函数内部定义子函数, lambda 表达式技术上是通过定义匿名体来实现的:
+
+```cpp
+auto add = [](int a, int b) { return a + b; };
+
+// convert to:
+class __lambda_unique_class {
+public:
+    int operator()(int a, int b) const { return a + b; }
+} add;
+```
+
+> c++ 真是和 python 狼狈为奸, 快长成亲兄弟了. 
+> 
+> lambda 实际是先在闭包函数里定义结构体, 把闭包里局部变量的引用定义为结构体成员; 然后结构体上定义方法, 伪装成类; 然后再把类的 `()` 操作符重载, 让它支持调用; 然后再伪装成匿名函数. 这事整的....
+
+这导致匿名函数的真实函数签名非常复杂 (取决于闭包函数, 以及捕获的局部变量), 所以存储匿名函数的变量类型一般使用 `auto`.  
+
+C++ 也提供了 `std::function` 来简化对匿名函数的签名定义.
+
+```cpp
+#include <functional>
+#include <initializer_list>
+enum class DivisionPolicy { Ceiling, Floor };
+
+int main(){
+	std::function<int(double, double)> df;
+	for (auto p: {DivisionPolicy::Ceiling, DivisionPolicy::Floor}):
+		switch (p) {
+			case DivisionPolicy::Ceiling:
+				df = [](double a, double b)-> int { return ceil(a/b); };
+				break;
+			case DivisionPolicy::Floor:
+				df = [](double a, double b)-> int { return floor(a/b); };
+				break;
+		}
+		df(7.0, 3.3);
+}
+```
+
+### 字典查询
+
+借用 STL 的 `unordered_map` 数据结构, 实现类似 python 的效果.
+
+```cpp
+#include <funcitonal>
+#include <unordered_map>
+#include <initializer_list>
+#include <math.h>
+
+using namespace std;
+
+unordered_map<string, function<int(double, double)>> DivisionPolicy {
+	{"ceiling", [](double a, double b)-> int { return ceil(a/b); }},
+	{"floor", [](double a, double b)-> int { return floor(a/b); }},
+};
+
+DivisionPolicy["ceiling"](7.0, 3.3);
+```
+
+
+[^1]: https://learnmoderncpp.com/2023/11/22/selecting-functions-at-runtime/#more-2406
+
+[^2]: https://www.learncpp.com/cpp-tutorial/the-virtual-table/

@@ -1,3 +1,8 @@
+---
+revised: 26-01-23
+---
+
+
 ## 快速排序
 
 已知最快排序算法。通过一趟排序，将元素分为两部分，其中一部分的最小元素大于另一部分的最大元素，然后将两部分递归处理下去。
@@ -38,44 +43,6 @@ It lomuto_partition(It first, It last, Comp comp = {}) {
     return i;                           
 }
 ```
-
-### hoare partition 
-
-Hoare 分区方法，优势是交换次数少。
-
-```cpp
-template <std::random_access_iterator It, class Comp = std::less<>>
-requires std::sortable<It, Comp>
-It hoare_partition(It first, It last, Comp comp = {}) {
-    // Choose pivot
-    const auto pivot = *(first + (last - first) / 2);
-
-    It i = first - 1;
-    It j = last;
-
-    while (true) {
-        // move i right until *i is NOT < pivot
-        do { ++i; } while (comp(*i, pivot));
-
-        // move j left until *j is NOT > pivot
-        do { --j; } while (comp(pivot, *j));
-
-        if (i >= j) return j;          // 
-        std::iter_swap(i, j);
-    }
-}
-
-template <std::random_access_iterator It, class Comp = std::less<>>
-requires std::sortable<It, Comp>
-void quick_sort_hoare(It first, It last, Comp comp = {}) {
-    if (last - first < 2) return;
-    It p = hoare_partition(first, last, comp);
-    quick_sort_hoare(first, p + 1, comp); // [first, p+1)
-    quick_sort_hoare(p + 1, last, comp);  // [p+1, last)
-}
-```
-
-？ 我不太明白这里的界划分
 
 ### 三向分区
 

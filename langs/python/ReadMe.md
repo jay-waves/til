@@ -19,9 +19,9 @@
 | 二进制数据服务       | struct                                                                                       | 将字节串解读为打包的二进制数据 |     |
 | 数据类型             | [datetime](../../os/sss/本地化.md)                                               | 基本日期和事件                 |     |
 |                      | calendar                                                                                     | 通用日历                       |     |
-|                      | [collections](数据类型/collections.md), [collections.abc](数据类型/collections.abc.md) | 容器                           |     |
-|                      | [heapq](数据类型/heapq.md)                                                                | 堆队列算法                     |     |
-|                      | [bisect](数据类型/bisect.md)                                                              | 数组二分算法                   |     |
+|                      | [collections](data-types/collections.md), [collections.abc](data-types/collections.abc.md) | 容器                           |     |
+|                      | [heapq](data-types/heapq.md)                                                                | 堆队列算法                     |     |
+|                      | [bisect](data-types/bisect.md)                                                              | 数组二分算法                   |     |
 |                      | [array](数据类型/array.md)                                                                | 高效的数字值数组               |     |
 |                      | weakref                                                                                      | 弱引用                         |     |
 |                      | types                                                                                        |                                |     |
@@ -57,7 +57,7 @@
 |                      | time                                                                                         | 时间的访问和转换               |     |
 |                      | argparse, getopt                                                                             | 命令行参数解析                 |     |
 |                      | getpass                                                                                      | 密码输入                       |     |
-|                      | [logging](开发工具/logging.md)                                                                                   | 日志                           |     |
+|                      | [logging](dev-tools/logging.md)                                                                                   | 日志                           |     |
 |                      | curses                                                                                       | 字符终端显示                   |     |
 |                      | errno                                                                                        |                                |     |
 |                      | ctypes                                                                                       | Python 的外部函数库            |     |
@@ -81,7 +81,7 @@
 |                      | binascii                                                                                     | 二进制与 ASCII 间转换          |     |
 | 结构化标记工具       | html                                                                                         |                                |     |
 |                      | xml                                                                                          |                                |     |
-| 开发工具             | [typing](开发工具/typing.md)                                                                                      | 类型提示加强                   |     |
+| 开发工具             | [typing](dev-tools/typing.md)                                                                                      | 类型提示加强                   |     |
 |                      | doctest                                                                                      |                                |     |
 |                      |  [unittest](开发工具/测试/unittest.md)                                                                                   | 单元测试                       |     |
 |                      | [unittest.mock](开发工具/测试/unittest.mock.md)                                                                                |                                |     |
