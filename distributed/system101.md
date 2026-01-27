@@ -103,27 +103,3 @@ User -> View <------notify--------  Presenter  <-----notify------ Interactor
                                                                    Entity
 ```
 
-## CAP 理论
-
-CAP theorem states that a distributed system can't provide more than two of these three guarantees simultaneously.
-
-**Consistency**: consistency means all clients see the same data at the same time no matter which node they connect to.
-
-**Availability**: availability means any client that requests data gets a response even if some of the nodes are down.
-
-**Partition Tolerance**: a partition indicates a communication break between two nodes. Partition tolerance means the system continues to operate despite network partitions.
-
-ooooooooooooooooooooooooooo
-
-依赖注入 (DI)
-
-事件驱动
-
-流式处理
-
-响应式编程
-
-## 参考
-
-1. https://github.com/ByteByteGoHq/system-design-101
-2. [The Architecture of Open Source Applications](https://aosabook.org/en/index.html). 

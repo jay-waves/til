@@ -13,7 +13,7 @@ ring-buffer 的单线程版本可以参考 [kfifo](../linked-list/queue.md)。
 
 ## MPSC
 
-Vyukov MPMC 思路，给每个槽位一个序号
+Vyukov MPMC 思路，用额外的 seq 空间，来规避在 `head, tail` 上的全局竞争。
 
 ```cpp
 
@@ -31,13 +31,22 @@ struct ring {
 
     std::atomic<size_t> tail{0}; // producers
     std::size_t head{0};              // 1consumer
+};
+```
 
-    ring(cell* storage, size_t capacity_pow2)
+初始时，`seq = i`
+
+```cpp
+ring(cell* storage, size_t capacity_pow2)
         : buf(storage), cap(capacity_pow2), mask(capacity_pow2 - 1) {
         for (std::size_t i = 0; i < cap; ++i)
             buf[i].seq.store(i, std::memory_order_relaxed);
     }
+```
 
+不断递增全局 `pos`，用 `i = pos & mask` 定位到某个槽。当看到 `seq == pos` 时，通过 `seq++` 来将其标记为可读。同时屏蔽其他写者。
+
+```cpp
     // producer: try push once; false means full/contended
     bool try_push(const T& v) noexcept {
         const size_t pos = tail.fetch_add(1, std::memory_order_relaxed);
@@ -53,7 +62,12 @@ struct ring {
         return true;
     }
 
-    // consumer (single): try pop once
+```
+
+消费者看到 `seq == pos + 1` 时，读取数据。然后将 `seq = pos + N`，允许下一轮回绕到这个槽的生产者写入。
+
+```cpp
+    // consumer: try pop once
     bool try_pop(T& out) noexcept {
         const std::size_t pos = head;
         cell& c = buf[pos & mask];
@@ -69,7 +83,6 @@ struct ring {
         head = pos + 1;
         return true;
     }
-};
 
 ```
 
