@@ -9,7 +9,7 @@ AES (Advanced Encryption Standard) 是 NIST 于2001年选定的, 用于替代 DE
 
 AES 以 **Rijndael 迭代型密码算法**为基础, 但**分组长度固定为 `128bits`**, 仅允许密钥长度可变 (`128bits`, `192bits`, `256bits`). 和 DES 以比特为处理单位不同, AES 处理单位是字节, 用 $GF(2^{8})$ 上元素表示.
 
-![|250](../../../../attach/crypto-aes.avif)
+![|250](/attach/crypto-aes.avif)
 
 ## AES 构造
 
@@ -204,7 +204,7 @@ Rijndal( State, Key ){
 
 ### 3 密钥扩展
 
-`Nk=4`时密钥扩展步骤如下, `Nk`增长时, 会有些许变化, 详见[AES标准](../../../paper/crypto/AES-standard.pdf). 每轮密钥长度皆为 $N_{b}$, 那么共需要 $N_{b}(N_{r}+1)$ 长度的密钥.
+`Nk=4`时密钥扩展步骤如下, `Nk`增长时, 会有些许变化, 详见 AES 标准. 每轮密钥长度皆为 $N_{b}$, 那么共需要 $N_{b}(N_{r}+1)$ 长度的密钥.
 
 ![|550](../../../../attach/密码学_AES密钥扩展.avif)
 

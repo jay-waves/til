@@ -67,7 +67,7 @@ example.com.    3600    IN    SOA    ns1.example.com. admin.example.com. 2023101
 34.216.184.93.in-addr.arpa.    3600    IN    PTR    example.com.
 ```
 
-![](../../../attach/Pasted%20image%2020240802105050.avif)
+![](../../attach/net-dns.avif)
 
 | 根域名服务器   | Root DNS Server          |
 | -------------- | ------------------------ |

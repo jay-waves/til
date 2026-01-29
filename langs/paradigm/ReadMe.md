@@ -41,7 +41,7 @@ text.
 	- 逻辑式, Prolog
 - 面向对象, Java 
 
-![|800](../../attach/Pasted%20image%2020250507215501.avif)
+![|800](../../attach/programming-paradigms.avif)
 
 ### 面向对象
 

@@ -1,4 +1,3 @@
-> 详见 [国密文档-SM2公钥密码体制](../../../paper/crypto/SM2-ecc-zh.pdf)
 
 ## SM2 公钥加密
 
