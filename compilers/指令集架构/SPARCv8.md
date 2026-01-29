@@ -31,7 +31,7 @@ FPU 的控制寄存器:
 
 当前窗口的寄存器地址由 CWP (Current Windows Pointer) 给出, CWP 是 PSR 状态寄存器中的五位, 其值由 `RESTORE, SAVE` 两个指令控制. 某个窗口的有效性由 WIM 记录.
 
-![|500](../../attach/Snipaste_2025-02-06_20-02-10.png)
+![|500](../../attach/sparc-reg-windows.png)
 
 FPU 包含 32 个浮点数寄存器 (f), 但没有窗口机制, 即某时刻可以访问所有 32 个浮点数寄存器. 双精度浮点数需要近邻并地址对齐的一对浮点数寄存器....
 

@@ -55,35 +55,3 @@ struct sdshdr {
 
 Redis 5.0 后, Pub/Sub 机制默认使用 Stream 来实现.
 
-## 常见缓存管理策略
-
-### **Cache Aside Pattern, 旁路缓存**
-
-应用程序直接管理 DB 和 Cache.
-
-应用写操作:
-1. 更新 DB
-2. 直接删除 Cache 中对应数据. (懒删除)
-
-应用读操作:
-1. 从 Cache 读取数据
-2. 命中 (Hit), 直接返回
-3. 未命中 (Miss), 从 DB 读取数据. 将读取的数据写回 Cache, 然后返回.
-
-工程上, 删除 Cache 后, 等待几百毫秒, 再次删除一次 Cache. 避免并发导致的 Cache 与 DB 不一致:
-* A 读, 未命中缓存
-* A 从 DB 读取数据, 还未写回 Cache 
-* B 更新 DB, 删除 Cache 
-* A 写回旧 Cache, 和最新 DB 不一致.
-
-### Write Through
-
-将 Cache 视为主要存储, 所有读写请求只和 Cache 交互. DB 对应用程序透明. 
-
-该模式并不常见. 因为每次写操作都要同时更新 DB + Cache.
-
-### Write Back
-
-将 Cache 视为主要存储. Write Through 会同时更新 Cache + DB, 而 Write Back 只更新 Cache, 异步地批量更新 DB.
-
-Write_Back 应用场景有限, 因为如果 Cache 挂了就可能丢失数据.
