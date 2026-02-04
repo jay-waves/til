@@ -20,6 +20,14 @@ Redis 的很多类型虽然类似 Python, 但是并不支持复杂的多层嵌�
 - Bitmap: 可在字符串上使用比特操作
 - Bitfields: 以字节序列组织的多个计数器
 
+| 数据结构   | 底层数据结构         |
+| ---------- | -------------------- |
+| String     | SDS                  |
+| List       | LinkedList + ZipList |
+| Hash       | HashTable + ZipList  |
+| Set        | HashTable + IntSet   |
+| Sorted Set | SkipList + ZipList                     |
+
 ### IntSet 
 
 ```cpp
