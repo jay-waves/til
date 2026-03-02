@@ -14,10 +14,13 @@
 
 复杂度为 $O(n\log k)$
 
+
 ### 分治法
 
 1. 找到第 $k$ 大的元素
 2. 做一次[分区](quick-sort.md)，此后左半区就是前 $k$ 个数。
+
+复杂度为 $O(n)$
 
 ```
 int random_select(arr, low, high, k) {
@@ -31,5 +34,7 @@ int random_select(arr, low, high, k) {
 		return random_select(arr, i+1, high, k-i)
 }
 ```
+
+在超大数据的分布式场景下，可以分块选取 TopK，然后所有块的 TopK 合并后再执行一次 TopK。
 
 ## 第 K 大的元素

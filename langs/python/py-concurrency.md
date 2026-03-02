@@ -52,7 +52,7 @@ for thread in threads:
 
 ### Lock
 
-尽管由于 Python [GIL](python-concurrency.md) 限制, 线程总是并发而不是并行, 但仍需要使用互斥锁 (Mutual-Exclusion Locks, mutex) 来保证其线程安全. 因为 GIL 并不保证对数据结构的操作都是原子的. 同样由于 GIL, Python 会平均每个线程的占用处理器时长.
+尽管由于 Python [GIL](py-concurrency.md) 限制, 线程总是并发而不是并行, 但仍需要使用互斥锁 (Mutual-Exclusion Locks, mutex) 来保证其线程安全. 因为 GIL 并不保证对数据结构的操作都是原子的. 同样由于 GIL, Python 会平均每个线程的占用处理器时长.
 
 ```python
 counter.cnt += 1
