@@ -16,7 +16,7 @@
 
 ## flat_hash 
 
-`std::unordered_map` 的桶是链表, 链式处理哈希冲突; flat_hash 的桶则是平坦数组, 探测法处理哈希冲突. flat_hash 装载比率较高时 (负载因子超过 0.7), 会动态增长数组 (rehash), 短时间要重新计算哈希并复制数据, 有性能抖动, 详见 [Algorithm/哈希表](../../../../algo/hash-based/hash-table.md).
+`std::unordered_map` 的桶仅存储指针, 每个数据必须分配内存, 链式处理哈希冲突; flat_hash 的桶则是平坦数组, 探测法处理哈希冲突, 数据可以存储在桶内. flat_hash 装载比率较高时 (负载因子超过 0.7), 会动态增长数组 (rehash), 短时间要重新计算哈希并复制数据, 有性能抖动, 详见 [Algorithm/哈希表](../../../../algo/hash-based/hash-table.md).
 
 不是 STL, 一般由第三方库 abseil, folly, Tessil/robin-map, ska/flat_hash_map 提供.
 

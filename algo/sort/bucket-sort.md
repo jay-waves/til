@@ -2,6 +2,31 @@
 
 把数据按值域的区间分配到若干桶内，然后桶内独立排序，再依次合并。须要数据分布比较均匀，或者说，桶映射函数的结果分布均匀，且值域已知；在极端集中的数据场景中，复杂度退化为 $O(n^{2})$ 。
 
+用桶排序实现 topK ：
+
+```cpp
+class Solution {
+public:
+    int findKthLargest(vector<int>& nums, int k) {
+        int mn = nums[0], mx = nums[0];
+        for (int x : nums) {
+            mn = min(mn, x);
+            mx = max(mx, x);
+        }
+
+        int R = mx - mn + 1;
+        vector<int> cnt(R, 0);
+        for (int x : nums) cnt[x - mn]++;
+
+        int remain = k;
+        for (int v = R - 1; v >= 0; --v) { // 从大到小
+            remain -= cnt[v];
+            if (remain <= 0) return v + mn; // 第 K 大的数
+        }
+        return -1;
+    }
+};
+```
 
 ## 基数排序（radix sort）
 

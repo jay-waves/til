@@ -2,9 +2,118 @@
 
 ### 组合问题
 
+从 1...n 中选取无序的 k 个数
+
+```cpp
+vector<vector<int>> res;
+vector<int> path;
+
+void dfs(int n, int k, int start) {
+    if (path.size() == k) {
+        res.push_back(path);
+        return;
+    }
+
+    for (int i = start; i <= n; i++) {
+        path.push_back(i);       // 选择
+        dfs(n, k, i + 1);        // 递归
+        path.pop_back();         // 撤销
+    }
+}
+```
+
 ### 子集问题
 
+给定数组，返回所有子集
+
+```cpp 
+vector<vector<int>> res;
+vector<int> path;
+
+void dfs(vector<int>& nums, int start) {
+    res.push_back(path);   // 每个节点都是解
+
+    for (int i = start; i < nums.size(); i++) {
+        path.push_back(nums[i]);
+        dfs(nums, i + 1);
+        path.pop_back();
+    }
+}
+```
+
 ### 排列问题
+
+全排列 n 个数。注意，排列是有序的，用于组合问题会重复。
+
+```cpp
+vector<vector<int>> res;
+vector<int> path;
+vector<bool> used;
+
+void dfs(vector<int>& nums) {
+    if (path.size() == nums.size()) {
+        res.push_back(path);
+        return;
+    }
+
+    for (int i = 0; i < nums.size(); i++) {
+        if (used[i]) continue;
+
+        used[i] = true;
+        path.push_back(nums[i]);
+
+        dfs(nums);
+
+        path.pop_back();
+        used[i] = false;
+    }
+}
+```
+
+### N-Queens 
+
+在 $N\times N$ 棋盘上放置 N 个皇后，使任意两个皇后不在同一行、同一列、同一对角线的情况。
+
+转化为三个约束条件：
+* 行列冲突
+* 主对角线冲突，row-col 相同
+* 副对角线冲突，row+col 相同
+
+```cpp 
+vector<vector<string>> res;
+vector<string> board;
+vector<bool> col, diag1, diag2;
+
+void dfs(int row, int n) {
+    if (row == n) {
+        res.push_back(board);
+        return;
+    }
+
+    for (int c = 0; c < n; c++) {
+        if (col[c] || diag1[row - c + n] || diag2[row + c])
+            continue;
+
+        col[c] = diag1[row - c + n] = diag2[row + c] = true;
+        board[row][c] = 'Q';
+
+        dfs(row + 1, n);
+
+        board[row][c] = '.';
+        col[c] = diag1[row - c + n] = diag2[row + c] = false;
+    }
+}
+
+vector<vector<string>> solve_n_queens(int n) {
+    board = vector<string>(n, string(n, '.'));
+    col = vector<bool>(n, false);
+    diag1 = vector<bool>(2*n, false);
+    diag2 = vector<bool>(2*n, false);
+
+    dfs(0, n);
+    return res;
+}
+```
 
 ### 分支限界
 
@@ -35,6 +144,14 @@
 ## 动态规划
 
 ### 背包问题
+
+背包问题，是指在资源受限的条件下，选择一组物品使目标最优。背包问题（Knapsack Problem）通常是 NP-Complete 问题。常见目标为：
+* 价值最大
+* 能否凑出某个值
+
+$n$ 个物品，第 $i$ 个物品的重量和价值分别为 $w[i],v[i]$ ，背包容量 $C$。
+* 如果每个物品仅可选择一次，称为 *01 背包*
+* 如果每个物品可以无限次选择，称为*完全背包*
 
 ### 
 

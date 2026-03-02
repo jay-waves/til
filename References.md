@@ -5,7 +5,7 @@
 ## papers 
 
 * clarke2004 -- 
-A Tool for Checking ANSI-C ProgramsA Tool for Checking ANSI-C Programs 、
+A Tool for Checking ANSI-C ProgramsA Tool for Checking ANSI-C Programs
 
 * lamport1978 -- 
 Time, clocks, and the ordering of events in a distributed systemTime, clocks, and the ordering of events in a distributed system

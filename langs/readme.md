@@ -56,7 +56,7 @@
 
 #### Reflection
 
-反射, 在**运行时**操作和配置对象及其属性, 在编写代码时这些类和方法可能不是已知的, 常用于实现框架和库. 如 Python 的 [python-metaprogramming](python/python-metaprogramming.md).
+反射, 在**运行时**操作和配置对象及其属性, 在编写代码时这些类和方法可能不是已知的, 常用于实现框架和库. 如 Python 的 [py-metaprogramming](python/py-metaprogramming.md).
 
 ### Poll
 
