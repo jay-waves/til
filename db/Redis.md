@@ -127,3 +127,8 @@ Redis 官方支持的插件，如：
 * JSON 支持
 * [Bloom 过滤器支持](../algo/hash-based/bloom-filter.md)
 * RedisSearch 索引引擎
+
+### 批量操作
+
+* 原生批量操作命令：原子的
+* pipeline：将多个命令打包，非原子

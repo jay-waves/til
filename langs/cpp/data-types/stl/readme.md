@@ -1,4 +1,4 @@
-STL (Standard Template Library) 是 C++ 标准库的一部分, 提供一系列模板化的数据结构和算法. 支持泛型, 高度性能优化. 1980s 诞生于惠普实验室, 创始人为 Alexander Stepanov, 在 1998 年定稿入 ANSI/ISO C++ 标准. 目前， C++ 标准库中有 70% 以上代码隶属于 STL.
+STL (Standard Template Library) 是 C++ 标准库的一部分, 提供一系列模板化的数据结构和算法.
 
 由于标准确立较晚, C++ STL 有较多的流行版本. 最初版本是 HP STL, 创始人离开惠普加入 SGI 后, 创建 SGI STL, 是 Linux/GCC 平台下比较流行的版本, 开源并且代码优秀. 
 
