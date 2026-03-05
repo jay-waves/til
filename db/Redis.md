@@ -50,23 +50,23 @@ Redis 5.0 后, Pub/Sub 机制默认使用 Stream 来实现.
 
 ## 2. Redis 顶层数据结构
 
-- Strings: 表示字节序列
-- Lists: 有序列表
-- Sets: 无序无重复字符串集合, Redis 集合的插入/删除/访问操作为 $O(1)$ 时间.
-- Hashes: 类字典的键值格式
-- Sorted Sets: 有序无重复字符串集合, 每个元素有权重参数 `score` 用于排序
+- Strings: 表示字节序列 `"xxxx"`
+- Lists: 有序列表 `[v1,v2]`
+- Sets: 无序无重复字符串集合, Redis 集合的插入/删除/访问操作为 $O(1)$ 时间. `(k1,k2)`
+- Hashes: 类字典的键值格式 `{k:v}`
+- Sorted Sets: 有序无重复字符串集合, 每个元素有权重参数 `score` 用于排序 `(<k,score>)`
 - Streams: 类似仅追加日志, 记录时间顺序并交付处理.
 - Geospatial indexes: 空间索引
 - Bitmap: 可在字符串上使用比特操作
 - Bitfields: 以字节序列组织的多个计数器
 
-| 数据结构   | 底层数据结构         |
-| ---------- | -------------------- |
-| String     | SDS                  |
-| List       | LinkedList + ZipList |
-| Hash       | HashTable + ZipList  |
-| Set        | HashTable + IntSet   |
-| Sorted Set (ZSet) | SkipList + ZipList                     |
+| 数据结构          | 底层数据结构         | 命令前缀 |
+| ----------------- | -------------------- | ---- |
+| String            | SDS                  |  无, 默认    |
+| List              | LinkedList + ZipList |  L    |
+| Hash              | HashTable + ZipList  |  H   |
+| Set               | HashTable + IntSet   |  S   |
+| Sorted Set (ZSet) | SkipList + ZipList   |  Z   |
 
 ### Set 
 
@@ -98,6 +98,54 @@ setbit 20260301 1333 1
 ### HyperLogLog 
 
 一种概率性结构，用极小的内存估算元素数量。主要用于可忍受一定误差的统计。
+
+## Redis 的对象模型
+
+Redis 是扁平的 KV 数据库，顶层是一个哈希表。没有类似 JSON 那样的对象嵌套结构，而是将不同子对象拆分到独立的键下，将路径直接编码为字符串键。
+
+==注意，Redis 顶层是 KV 结构，顶层 V 可以是 string、hash、list、set 等类型，但是 V 内部不会再存储 Redis 对象，只能是普通数据。因此嵌套结构是不存在的。==
+
+```json
+User {
+  id: 1001
+  name: "Alice"
+  profile: {
+      city: "Tokyo",
+  }
+  orders: [
+      { id: 501, price: 99 },
+      { id: 502, price: 120 }
+  ]
+}
+```
+
+写入数据：
+
+```bash
+# 写入数据
+# k="user:1001" type=Hash
+HSET user:1001 name "Alice" age 25
+
+# k="user:1001:profile" type=Hash
+HSET user:1001:profile city "Tokyo"
+
+# k="order:501" type=Hash 
+HSET order:501 price 99
+
+# k="order:502" type=Hash
+HSET order:502 price 120 
+
+# 用列表构建索引，由 user:1001:orders --> order
+RPUSH user:1001:orders 501 502
+```
+
+读取数据：
+
+```bash
+HGETALL user:1001
+HGETALL user:1001:profile 
+LRANGE user:1001:orders 0 -1 # 读取完整订单 ID 列表
+```
 
 ## 3. Redis 部署
 

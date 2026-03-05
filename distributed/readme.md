@@ -17,7 +17,7 @@
 	- queueing delays. 避免*护航效应（head-of-line blocking）*。
 
 评价指标：
-* QPS (Query per Second)
+* QPS (Query per Second) 
 * Latency 
 
 ### Batching 

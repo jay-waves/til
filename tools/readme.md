@@ -33,22 +33,29 @@ revised: 2026-01-27
 
 ### Windows 系统工具
 
-* 管理右键菜单：ContextMenuManager 
-* 文件格式转换：FileConverter 
-* 流量和硬件监控：Traffic Monitor 
-* 硬件监控：LibreHardwareMonitor 
-* CPU 性能测试：CPU-Z
-* 硬盘管理：CrystallDiskInfo、DiskGenius 
-* 文件关联管理：FileTypesMan 
-* 删除程序：Geek
-* 刷盘：refus 
 * 电脑管家：G-Helper（华硕）
+* 删除程序：Geek
+- 文件格式转换：FileConverter
 * PowerToys：有点臃肿，用况如下：
 	* 键盘管理：替换为 AutoHotkeys 
 	* 桌面切换、窗口置顶：替换为 AutoHotkeys 
 	* Fancyzone 
 	* Grab-Text 
 * Little Registry Cleaner
+
+#### 硬件
+
+* 刷盘：refus 
+* 流量和硬件监控：Traffic Monitor 
+* 硬件监控：LibreHardwareMonitor 
+* CPU 性能测试：CPU-Z
+* 硬盘管理：CrystallDiskInfo、DiskGenius 
+
+#### 文件系统增强
+
+- 管理右键菜单：ContextMenuManager
+- 文件关联管理：FileTypesMan* 文件关联管理：FileTypesMan 
+* 网络文件系统 [sshfs-win](https://github.com/winfsp/sshfs-win)
 
 ### 媒体
 

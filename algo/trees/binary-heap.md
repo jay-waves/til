@@ -86,7 +86,9 @@ static void heap_sift_down(struct min_heap *heap, size_t index)
     }
 }
 
-/* 插入元素到堆 */
+/* 插入元素到堆:
+	将元素放到队尾, 然后上滤到正确位置
+ */
 int heap_insert(struct min_heap *heap, int value)
 {
     if (heap->size == heap->capacity) {
@@ -105,7 +107,9 @@ int heap_insert(struct min_heap *heap, int value)
     return 0;
 }
 
-/* 删除并返回堆的最小元素 */
+/* 删除并返回堆的最小元素:
+	将队尾挪到开头, 然后下滤到正确位置
+ */
 int heap_extract_min(struct min_heap *heap, int *min_value)
 {
     if (heap->size == 0)

@@ -19,9 +19,9 @@
 | L2 cache reference                    | 7             |               |               | 14x L1 cache                |
 | Mutex lock/unlock                     | 25            |               |               |                             |
 | Main memory reference                 | 100           |               |               | 20x L2 cache, 200x L1 cache |
-| Compress 1K bytes with Zippy          | 3,000         | 3             |               |                             |
-| Send 1K bytes over 1Gbps network      | 10,000        | 10            |               |                             |
-| Read 4K randomly from SSD             | 150,000       | 150           |               | ~1GB/sec SDD                |
+| Compress 1KB with Zippy          | 3,000         | 3             |               |                             |
+| Send 1KB over 1Gbps network      | 10,000        | 10            |               |                             |
+| Read 4KB randomly from SSD             | 150,000       | 150           |               | ~1GB/sec SDD                |
 | Read 1MB sequentially from memory     | 250,000       | 250           |               |                             |
 | Round trip within same datacenter[^2]     | 5000,000      | 500           |               |                             |
 | Read 1MB sequentially from SSD        | 1,000,000     | 1,000         | 1             | ~1GB/sec SSD, 4x memory     |
@@ -65,7 +65,7 @@ for (i = 0; i < N; i++)
 // 另外, 使用分块法计算大矩阵乘法, 也能充分利用缓存.
 ```
 
-Bjarne Stroustrup 建议使用 `vector` 而不是 `linked list`, 也是因为链表对数据缓存的利用很差. 详见 [链表 vs 数组](../../algo/linked-list/prefer-array-to-linked-list.md)
+Bjarne Stroustrup 建议使用 `vector` 而不是 `linked list`, 也是因为链表对数据缓存的利用很差. 详见 [链表 vs 数组](../../algo/linear/prefer-array-to-linked-list.md)
 
 ### 提高指令缓存命中率
 

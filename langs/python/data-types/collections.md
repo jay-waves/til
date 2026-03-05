@@ -66,7 +66,7 @@ new_dict = dict(new_dfltdict)
 
 ### deque
 
-[双端队列](../../../algo/linked-list/deque.md)
+[双端队列](../../../algo/linear/deque.md)
 
 ```python
 from collections import deque
