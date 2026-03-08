@@ -14,10 +14,10 @@ std::fs::create_directories(u8"这是一个目录")
 
 ## character literals
 
-单引号标注*字符字面量 (character literal)*, 双引号标注*字符串字面量 (string literal)*. 
+单引号标注*字符字面量 (character literal)*, 双引号标注*字符串字面量 (string literal)*. 在 C++ 中，与 C 语言不同，字符串字面量的类型是 `const char*`
 
 ```cpp
-char c = 'A'; // 实际等价于一个整数常量
+char c = 'A'; // 实际等价于一个整数常量. C 语言中总用 int 存储
 
 int x = 'AB';
 int y = '你'; // 多字符字面量, 使用 int 来存储, 将编码拼接在同一个 int 中, 超过 4 字符就是未定义行为.
