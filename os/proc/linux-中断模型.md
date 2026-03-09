@@ -1,6 +1,6 @@
 ## 系统调用
 
-系统调用过程详见 [linux-syscalls](../syscalls/linux-syscalls.md), 用于从用户态切换为内核态, 执行内核功能.
+系统调用过程详见 [linux-syscalls](../libc/linux-syscalls.md), 用于从用户态切换为内核态, 执行内核功能.
 
 ## 硬中断
 

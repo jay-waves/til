@@ -1,6 +1,6 @@
-## 1. 常见缓存管理策略
+## 常见缓存管理策略
 
-### Cache Aside Pattern
+#### Cache Aside Pattern
 
 *旁路缓存（Cache Aside Pattern）*，指应用程序直接管理 DB 和 Cache。
 
@@ -19,57 +19,74 @@
 * B 更新 DB，删除 Cache 
 * A 写回旧 Cache，和最新 DB 不一致.
 
-### Write Through
+#### Write Through
 
 将 Cache 视为主要存储，所有读写请求只和 Cache 交互。DB 对应用程序透明。
 
 该模式并不常见。因为每次写操作都要同时更新 DB + Cache。
 
-### Write Back
+#### Write Back
 
 将 Cache 视为主要存储。Write Through 会同时更新 Cache + DB；而 Write Back 只更新 Cache，异步地批量更新 DB。
 
 Write_Back 应用场景有限，因为如果 Cache 挂了就可能丢失数据。
 
-## 2. HotKey 处理策略
+## HotKey 处理策略
 
-#BP
+#BP #DEBUG
 
 Redis 缓存中某个键被频繁访问。
 
-### 检测方法
+#### 检测方法
 
 开启 `--hotkeys` 参数，同时配置 `maxmemory-policy` 参数为 LFU 算法（剔除最不常使用键）。
 
-### 解决方案
+#### 解决方案
 
 解决方案：
 1. 读写分离：主节点处理写，从节点处理读
 2. 集群：将数据分散存储在多个 Redis 节点
 
-## 3. 分布式锁实现
+## 缓存击穿问题
 
+问题描述：对于某个 HotKey，其对应的 Redis 缓存突然过期，导致大量请求直接落到数据库上。
 
-## 4. Redis 能否作为消息队列？
+解决办法：
+1. **数据预热**：针对可能的热点数据，提前（异步地）存入缓存，并设置较长的过期时间
+2. 加锁：重复请求只有一个落在数据库上
 
-一般不能，无法保证“至少投递一次”的语义，需要手动处理消息丢失和消息堆积。
+## BigKey 问题
 
-## 5. Redis 实现延时任务处理
+#DEBUG 
 
-基于 DeleyedQueue 实现延时任务。DelayedQueue 在宕机时能够持久化，同时消息不会重复。
+是指某个 K 对应的单个 V 占用内存过大，如 MB 级别的 `String`，或是元素个数超过 5000 的符合类型。BigKey 可能是未及时清理垃圾，或程序规模考虑不足导致的。
 
-## 6. 设计一个排行榜
-
-```bash 
-ZADD leaderboard:game1 score user_id 
-ZADD leaderboard:game1 100 userA
-
-# 查询前10
-ZREVRANGE leaderboard:game1 0 9 withscores # REVRANGE 从高到低，RANGE 是从低到高
-
-# 查询排行
-ZREVRANK leaderboard:game1 userA
-ZSCORE leaderboard:game1 userA
+```bash
+redis-cli -p 6379 --bigkeys
 ```
 
-## 7. 设计一个延时任务
+## 慢查询问题
+
+#DEBUG 
+
+Redis 中部分命令时 `O(n)` 复杂度：
+* `KEYS *` 返回所有匹配的 keys
+* `HGETALL`
+* `LRANGE` 
+* `SINTER` 计算多个 SET 的交集……
+
+执行这些命令前，需要知晓 `N` 的数量级，否则采用 `SCAN` 命令批次遍历。
+
+#### 慢查询日志
+
+在 `redis.conf` 中配置 `slowlog-log-slower-than ...` 以及 `slowlog-max-len` 
+
+所有执行时间超出 `slower-than` 的命令，都会被记录在 slowlog 中。
+
+## 缓存穿透问题
+
+问题描述：客户端请求大量不存在的 Key，既不在 Redis 缓存中，也不在数据库中。导致性能下降。
+
+#BP 
+
+解决办法：加无效 Key 过滤，考虑使用 [布隆过滤器](../algo/hash-based/bloom-filter.md) 以及用于验证格式的正则表达式。

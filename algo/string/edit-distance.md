@@ -36,13 +36,13 @@ levensh (a : s') (b : t') =  -- head : tail
 
 ## Wagner Fischer Algorithm
 
-上述的[动态规划算法](../algorithm.md)是直观的, 但并不高效. 因为它重复多次计算了相同字串的距离. 更高效的办法是用矩阵 `M[i][j]` 缓存已计算的结果, 来避免重复计算. `M[i][j]` 是字符串 `a[i..n]` 和 `b[j..n]` 之间的距离, 最终结果就是矩阵的最右下角元素. 这称为 [Wagner Fischer Algorithm](https://en.wikipedia.org/wiki/Wagner%E2%80%93Fischer_algorithm)
+在[动态规划算法](../algorithm.md)中，高效的算法需要缓存计算中间结果。Wagner Fischer Algorithm 算法就是针对这一点对 Levenshtein Distance 的改进。
 
 ```javascript
 // pseudocode
 function LevenshteinDistance(char a[1..m], char b[1..n]):
   // for all i and j, d[i,j] will hold the Levenshtein distance between
-  // the first i characters of s and the first j characters of t
+  // the first i characters of a and the first j characters of b
   declare int d[0..m, 0..n]
  
   set each element in d to zero

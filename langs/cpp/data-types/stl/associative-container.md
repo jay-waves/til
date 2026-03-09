@@ -20,7 +20,7 @@ set& operator=(const set &st);
 swap(st);
 ```
 
-### 数据存取
+#### 数据存取
 
 set 的迭代器是 `const_iterator`, 因为 set 中直接用元素值进行排序, 所以不能直接修改元素的值.
 
@@ -32,14 +32,45 @@ erase(beg, end);
 erase(elem);
 ```
 
-### 数据查找
+#### 数据查找
 
 ```cpp
 find(key);        // 若存在, 则返回该键的迭代器(位置); 若不存在, 返回 set.end()
 count(key);       // multiset only
+contains(k);      // C++20
 lower_bound(elem); // 返回第一个 >= elem 的迭代器
 upper_bound(elem); // 返回第一个 > elem 的迭代器
 equal_range(elem); // 返回 == elem 的上下限的迭代器
+```
+
+#### 集合操作
+
+```cpp
+#include <algorithm>
+
+bool is_subset = std::include(
+	a.begin(), a.end(),
+	b.begin(), b.end()
+);
+
+std::set_union(
+	a.begin(), a.end(),
+	b.begin(), b.end(),
+	std::inserter(result, result.begin();
+);
+
+std::set_intersection(
+	a.begin(), a.end(), 
+	a.begin(), b.end(),
+	std::inserter(result, result.begin())
+);
+
+// A-B
+std::set_difference(
+	a.beign(), a.end(),
+	b.begin(), b.end(),
+	std::inserter(result, result.begin())
+);
 ```
 
 ## multiset

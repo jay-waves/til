@@ -4,7 +4,7 @@ Fedora 更新比 Debian 系更快, 是 RHEL 的上游版本.
 
 ## 访问控制
 
-Fedora 默认开启 [Selinux](../../可观测性/访问控制.md)
+Fedora 默认开启 [Selinux](../../tracing/访问控制.md)
 
 ## 网络服务
 

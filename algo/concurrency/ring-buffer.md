@@ -5,7 +5,7 @@ revised: 26-01-27
 
 ## SPSC (1producer1consumer)
 
-ring-buffer 的单线程版本可以参考 [kfifo](../linear/queue.md)。
+ring-buffer 的单线程版本可以参考 [kfifo](../linked-list/queue.md)。
 
 为什么 Producer-Consumer 问题不适宜使用队列？
 * 显式维护 `size`
