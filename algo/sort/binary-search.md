@@ -53,46 +53,74 @@ int binary_search(int arr[], int left, int right, int target)
 }
 ```
 
-### 扩展
+### first great or equal search 
 
-```c
-/* more or equal searc, >= */
-int binary_ge_search(const int arr[], int size, int target)
-{
-	int left = 0;
-	int right = size - 1;
+`std::lower_bound(arr, trg)` 要求 `arr` 是非降序的，返回第一个 `arr[i]>=trg` 的坐标 `i`。
 
-	while (left <= right ) {
-		int mid = left + (right - left) / 2; 
+`std::upper_bound(arr, trg)` 要求 `arr` 是非降序的，返回第一个 `arr[i]>trg` 的坐标 `i`。
 
-		if (arr[mid] >= target)
-			right = mid - 1;
-		else 
-			left = mid + 1;
-	}
-
-	if (low == size + 1)
+```cpp
+int ge_search(const vector<int>& arr, int target) {
+	auto it = std::lower_bound(arr.begin(), arr.end(), target);
+	if (it == arr.end())
 		return -1;
-	return left;
+	return static_cast<int>(it - arr.begin());
 }
 
-/* more search, > */
-int binary_gt_search(const int arr[], int size, int target)
-{
-	int left = 0;
-	int right = size - 1;
-
-	while (left <= right ) {
-		int mid = left + (right - left) / 2; 
-
-		if (arr[mid] > target)
-			right = mid - 1;
+int first_ge(const vector<int>& arr, int trg) {
+	int l = 0, r = arr.size();
+	
+	while (l < r) {
+		int m = l + (r - l) / 2;
+		
+		if (arr[m] >= trg)
+			r = m;
 		else 
-			left = mid + 1;
+			l = m + 1;
 	}
-
-	if (low == size + 1)
+	
+	if (l == arr.size())
 		return -1;
-	return left;
+	return l;
+}
+
+int first_gt(const vector<int>& arr, int trg) {
+	int l = 0, r = arr.size();
+	
+	while (l < r) {
+		int m = l + (r - l) / 2;
+		
+		if (arr[m] > trg)
+			r = m;
+		else 
+			l = m + 1;
+	}
+	
+	if (l == arr.size())
+		return -1;
+	return l;
+
+}
+```
+
+### last lower or equal than search
+
+`lt` 等价于 `ge - 1`
+
+```cpp
+int last_lt(const vector<int>& a, int trg) {
+	int l = 0, r = a.size(); // [l, r)
+	
+	while (l < r) {
+		int m = l + (r - l) / 2;
+		if (a[m] >= trg)
+			r = m;
+		else 
+			l = m + 1;
+	}
+	
+	if (l == 0)
+		return -1;
+	return l - 1;
 }
 ```

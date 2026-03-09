@@ -1,4 +1,4 @@
-C 标准介绍详见 [Compiler/RuntimeLibrary/C 标准库](../../os/syscalls/libc.md). 这里主要列出*标准库头文件*:
+C 标准库详细介绍见 [OS/RuntimeLibrary/C 标准库](/os/libc/libc.md). 这里仅有语言标准, 以及标准库函数签名.
 
 C 语言标准函数库主要头文件有:
 - `stdio.h` 标准输入输出
