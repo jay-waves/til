@@ -24,7 +24,7 @@ void dfs(int n, int k, int start) {
 
 ### 子集问题
 
-给定数组，返回所有子集
+给定数组，返回所有子集（Subset，Power Set)
 
 ```cpp 
 vector<vector<int>> res;

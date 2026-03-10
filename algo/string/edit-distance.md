@@ -70,3 +70,5 @@ function LevenshteinDistance(char a[1..m], char b[1..n]):
  
   return d[m, n]
 ```
+
+注意易错点：空前缀也要占用一个 dp 状态
