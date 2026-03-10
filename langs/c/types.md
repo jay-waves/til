@@ -91,6 +91,24 @@ struct {
 if (flags.is_a) ...
 ```
 
+注意, 不同数据类型的位域并不会被压缩存储, 各自有同类型的存储单元. 并且不能跨 `struct` 单元压缩, 如果没有占满或没有对齐, 后面会被填充零.
+
+```c
+struct A {
+	unsigned a:3; // total 4B
+	char b; // 1B
+	unsigned c:3; // 4B 
+	// padding 3B
+}; // total 12B
+
+struct B {
+	unsigned a:4;
+	unsigned b:4; 
+	double d;
+	// padding 4B
+}; // total 16B
+```
+
 #### Designated initialization
 
 命名初始化 (Designated Initializtion, C99) 允许对"数组, 结构体, 联合体"以非固定元素顺序来初始化.

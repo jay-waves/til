@@ -88,7 +88,7 @@ void user() {
 
 ### unique_lock
 
-`unique_lock` 负责调用和管理 `m.lock() / m.unlock()`, 类似 `unique_ptr` 对内存的管理. 比 `lock_guard` 功能更多, 性能开销稍高.
+`unique_lock` 负责调用和管理 `m.lock() / m.unlock()`, 类似 `unique_ptr` 对内存的管理. 比 `lock_guard` 功能更多, 支持手动 `unlock()`, 性能开销稍高.
 
 ```cpp
 #include <mutex>

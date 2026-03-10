@@ -49,6 +49,7 @@ resize(int num);       // 重新指定容器 size, 变长则用默认值补充. 
 resize(int num, elem); // 重新指定容器 size, 变长则用 elem 补充. 小于当前 size 时, 多余元素移除, 而 capacity 保持不变.
 reserve(int len);      // 预分配 capacity=n 的内存, 但不改变 size
 shrink_to_fit();       // 将 capacity 减小到等于 size
+clear();               // 清空内容, 但不释放内存
 ```
 
 ```cpp
