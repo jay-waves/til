@@ -11,7 +11,7 @@
 ## BSD IPC
 
 Unix BSD 进程通信方法:
-- [管道, Pipe](管道.md) 与命名管道 (named pipe)
+- [管道, Pipe](pipe.md) 与命名管道 (named pipe)
 - 软中断信号 (signal), 由系统提前定义
 - [套接字, Socket](../socket.md)
 - RPC
@@ -22,8 +22,8 @@ Unix BSD 域内的通信方式比 System V IPC 更加流行.
 
 Unix SystemV 进程通信方法:
 - 消息, Message
-- [共享内存, Shared Memory](共享内存.md)
-- [信号量, Semaphore](信号量.md)
+- [共享内存, Shared Memory](shm.md)
+- [信号量, Semaphore](sem.md)
 - TLI (也是网络通信工具, 已经被淘汰)
 
 > jweyrich -- [System V IPC vs POSIX IPC - Stack Overflow](https://stackoverflow.com/questions/4582968/system-v-ipc-vs-posix-ipc)
