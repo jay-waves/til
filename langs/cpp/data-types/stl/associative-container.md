@@ -20,28 +20,28 @@ set& operator=(const set &st);
 swap(st);
 ```
 
-#### 数据存取
-
 set 的迭代器是 `const_iterator`, 因为 set 中直接用元素值进行排序, 所以不能直接修改元素的值.
-
-```cpp
-insert(elem);
-clear();
-erase(pos);
-erase(beg, end);
-erase(elem);
-```
-
-#### 数据查找
 
 ```cpp
 find(key);        // 若存在, 则返回该键的迭代器(位置); 若不存在, 返回 set.end()
 count(key);       // multiset only
 contains(k);      // C++20
-lower_bound(elem); // 返回第一个 >= elem 的迭代器
-upper_bound(elem); // 返回第一个 > elem 的迭代器
+lower_bound(elem); // 返回第一个 >= elem 的迭代器，O(logN)
+upper_bound(elem); // 返回第一个 > elem 的迭代器，O(logN)
 equal_range(elem); // 返回 == elem 的上下限的迭代器
+
+
+// 最小值
+*s.begin();
+
+// 最大值
+*prev(s.end());
+
+// 按顺序遍历，注意复杂度是 O(n)，因为是红黑树的中序遍历
+for (auto x : s) {}
 ```
+
+默认的比较器是 *字典序（lexicographical order）* ，比如传入 `pair<M, N>` ，会先比较 `M` 再比较 `N` ，默认升序。
 
 #### 集合操作
 
@@ -79,6 +79,11 @@ std::set_difference(
 
 ```cpp
 multiset<T> mst;
+```
+
+```cpp
+mst.erase(K); // 删除所有 K 
+mst.erase(msg.find(K)); // 删除一个 K （仅传入 Iterator）
 ```
 
 ## pair

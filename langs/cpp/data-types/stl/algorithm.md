@@ -37,6 +37,21 @@
 | `transform`        |               |         |          |
 | `unique`           |               |         |          |
 
+### sort 
+
+```cpp
+// 从大到小排序
+sort(v.begin(), v.end(), [](int a, int b){
+	return a > b;
+});
+```
+
+自定义比较器时，需要回答：a 是否应该排序在 b 前面。同时，必须满足自反性 `comp(a, a) == false` （没理解为啥）
+
+### stable_sort 
+
+`stable_sort` 默认是归并排序，因此需要额外内存。
+
 ### unique_copy 
 
 ```cpp
@@ -86,3 +101,9 @@ struct GreaterThan {
 // or
 auto p = find_if(m.begin(), m.end(), [](const pair<string, int>& r) { return r.second > 42; });
 ```
+
+#### bound
+
+`std::lower_bound(arr, trg)` 要求 `arr` 是非降序的，返回第一个 `arr[i]>=trg` 的坐标 `i`。
+
+`std::upper_bound(arr, trg)` 要求 `arr` 是非降序的，返回第一个 `arr[i]>trg` 的坐标 `i`。

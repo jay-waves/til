@@ -56,6 +56,15 @@ M2-M1增加, 就说明居民储蓄意愿增加, 投资和消费意愿减少, 经
 本金 $P$ ，年利率 $r$ ，时间（年） $t$ 
 
 * 单利率： $$FV=P\times(1+rt)$$
-* 复利率： $$FV=P\times(1+r)^{t}$$
+* 复利率： $$FV=P\times(1+r)^{t}$$ 
 * 月复利率： $$FV=P\times \left( 1+\frac{r}{n} \right)^{t/n},\quad n=12$$
-* 连续利率：$$FV=P\times e^{rt},\quad n\to \infty$$
+* 连续利率：当 $r$ 足够小时，复利也可以视为连续利率
+	$$FV=P\times e^{rt},\quad n\to \infty$$
+
+当 $r$ 足够小时，有估算复利方法： 
+
+$$FV=P\times(1+r)^{t}\approx Pe^{rt}\approx P\times\left( 1+tr + \frac{t(t-1)}{2}r^{2} \right)$$
+
+设资金翻倍时间为 $T$ ，其满足： $$2P=P(1+r)^{T}$$ 
+
+说明翻倍时间 $T$ 和本金没有关系，是固定的： $$T=\frac{\ln{2}}{\ln(1+r)}$$ 
