@@ -236,7 +236,7 @@ if (timer_expired(&timer, period, s_ticks)) {
 
 ## 串口调试
 
-uart 知识详见 [外设与总线驱动](外设与总线驱动.md)
+uart 知识详见 [外设与总线](外设与总线.md)
 
 ```c
 struct uart {

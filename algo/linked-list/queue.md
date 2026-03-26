@@ -6,7 +6,7 @@
 out <- node <- node <- node <- node <- in
 ```
 
-linux 的队列实现称为 kfifo, 详见 [kernel/kfifo](../../src/kernel/include/linux/kfifo.h). kfifo 是一个 Ring Buffer, 这也是流行做法, 被 Disruptor 等库采用.
+linux 的队列实现称为 kfifo, 详见 [kernel/kfifo](../../src/kernel/include/linux/kfifo.h). kfifo 是一个 Ring Buffer.
 
 ### 循环队列
 

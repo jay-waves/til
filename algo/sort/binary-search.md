@@ -10,9 +10,9 @@
 int binary_search(int arr[], int size, int target) 
 {
     int left = 0;
-    int right = size - 1;
+    int right = size; // [left, right)
     
-    while (left <= right) {
+    while (left < right) {
         int mid = left + (right - left) / 2; 
         
         if (arr[mid] == target) {
@@ -22,7 +22,7 @@ int binary_search(int arr[], int size, int target)
         if (arr[mid] < target) {
             left = mid + 1;  // on the right
         } else {
-            right = mid - 1; // on the left
+            right = mid; // on the left
         }
     }
     
@@ -81,7 +81,7 @@ int first_ge(const vector<int>& arr, int trg) {
 	
 	if (l == arr.size())
 		return -1;
-	return l;
+	return l; // m 不能保证稳定，必须返回 l 或 r
 }
 
 int first_gt(const vector<int>& arr, int trg) {

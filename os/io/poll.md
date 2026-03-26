@@ -1,6 +1,6 @@
 ## poll
 
-`poll()` 是另一种 [I/O 复用方式](select.md). `poll()` 解决了 `select()` 的文件描述符有限的缺点. 但是 `poll()` 和 `select` 性能几乎一致, `epoll()` 性能最佳.
+`poll()` 是另一种 [I/O 复用方式](select.md). `poll()` 解决了 `select()` 的文件描述符有限的缺点. 但是 `poll()` 和 `select` 性能几乎一致, 注意到每次返回后必须要线性扫描 `pollfd[]` 来检查 `revents`, 性能随监听数线性下降.
 
 ```c
 struct pollfd {
@@ -93,9 +93,37 @@ for(;;) {
 }
 ```
 
+```mermaid 
+flowchart TD
+    A[Main Loop] --> B["pollfds[]"]
+    B --> C["pollfd[0]: listen_fd"]
+    B --> D["pollfd[1]: client_fd1"]
+    B --> E["pollfd[2]: client_fd2"]
+    
+    G[poll] --> H{Check revents}
+    C --> G
+    D --> G
+    E --> G
+    
+    H -->|POLLIN on listen_fd| I[Accept new connection]
+    H -->|POLLIN on client_fd| J[Read data]
+    H -->|POLLOUT on client_fd| K[Write data]
+    H -->|POLLHUP/POLLERR| L[Close connection]
+    
+    I --> M["Add to pollfd[]"]
+    J --> A
+    K --> A
+    L --> N["Remove from pollfds[]"]
+    M --> A
+    N --> A
+    
+    style B fill:#e8f5e8
+    style G fill:#fff3e0
+```
+
 ## epoll 
 
-epoll 是 Linux 对 POSIX select/poll 调用的改进版.
+epoll 是 Linux 对 POSIX select/poll 调用的改进版. `epoll` 从阻塞返回时, 只返回就绪的文件描述符, 调用者不必线性扫描. 
 
 ```c
 /*
@@ -134,7 +162,30 @@ struct epoll_event {
 };
 ```
 
-```diff
-- aaa
-+ aaa
+epoll 支持两种触发模式
+* 水平触发 (LT), 每次条件满足时, `epoll_wait` 都会返回
+* 边缘触发 (ET), 只在状态变化时, 触发一次. 要求一次性将 IO 操作完成. 
+
+```mermaid 
+flowchart TD
+    D[Main Loop] --> E[epoll_wait]
+    E --> F{Ready Events?}
+    
+    F -->|listen_fd EPOLLIN| G[Accept connection]
+    F -->|client_fd EPOLLIN| H[Read data]
+    F -->|client_fd EPOLLOUT| I[Write data]
+    F -->|client_fd EPOLLHUP| J[Close connection]
+    
+    G --> K[epoll_ctl ADD client_fd]
+    H --> L[Process request]
+    I --> M[Send response]
+    J --> N[epoll_ctl DEL client_fd]
+    
+    K --> D
+    L --> D
+    M --> D
+    N --> D
+    
+    style E fill:#e8f5e8
+    style F fill:#f3e5f5
 ```

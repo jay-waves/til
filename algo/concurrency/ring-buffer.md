@@ -10,6 +10,8 @@ ring-buffer 的单线程版本可以参考 [kfifo](../linked-list/queue.md)。
 为什么 Producer-Consumer 问题不适宜使用队列？
 * 显式维护 `size`
 * 由于消费者和生产者节奏不一致，队列常接近爆满或空。
+* 多线程在 `head, tail` 上的频繁竞争
+* 队列常使用链式结构，对缓存不友好
 
 ## MPSC
 
@@ -92,3 +94,8 @@ ring(cell* storage, size_t capacity_pow2)
 - 使用 CAS 保护 `tail` (写入端)
 - 使用 CAS 保护 `size`
 - 使用 spinlock 保护 `head` (读取端)
+- `size` 使用 power_of_2 , 来减少取余操作的开销
+
+## 参考
+
+2011 -- Thompson, M. -- Disruptor, High performance alternative to bounded queues for exchanging data between concurrent threads

@@ -82,14 +82,34 @@ for (;;) {
 		...
 	}
 	
-	if (FD_ISSET(STDIN_FILENO, &readmsk)) {
+	if (FD_ISSET(STDIN_FILENO, &readmask)) {
 		...
 	}
 }
 ```
 
+```mermaid
+flowchart TD
+    A[Main Loop] --> B[fd_set readmask]
+    B --> C[Add socket_fd]
+    B --> D[Add STDIN_FILENO]
+    
+    G[select] --> H{Any FD Set?}
+    C --> G
+    D --> G
+    
+    H -->|socket_fd ready| I[Accept new connection]
+    H -->|timeout| K[Continue loop]
+    
+    I --> A
+    K --> A
+    
+    style B fill:#e1f5fe
+    style G fill:#fff3e0
+```
+
 ### fd 数量限制
 
-每个进程的最大 `fd` 数量有限制, 可以用 `ulimit -n` 查看. 当 `fd` 耗尽时, 相关系统调用会返回错误码 `errno = EMFILE` 或 `errno = ENFILE`. 
+每个进程的最大 `fd` 数量有限制, 可以用 `ulimit -n` 查看, 或者查看 `FD_SETSIZE`. 当 `fd` 耗尽时, 相关系统调用会返回错误码 `errno = EMFILE` 或 `errno = ENFILE`. 
 
 详见 [linux VFS](../fs/linux%20VFS.md). `fd` 数目确实不够时, 推荐用 [poll/epoll](poll.md) 替代 select.
