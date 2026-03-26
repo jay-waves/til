@@ -140,4 +140,8 @@ Windows 上一些 GNU 工具移植, 见 [GNUwin32](https://gnuwin32.sourceforge.
 - SuperSimple Highlighter 
 - Picture in Picture
 
+## AI 
 
+* [OpenRouter](https://openrouter.ai/models)
+* copilot-cli
+* grok, chatgpt 
