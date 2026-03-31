@@ -1,5 +1,6 @@
 * 260214 不再整理一个超大的 bibtex，而是直接在此记录我的所有阅读，按类来划分。
 
+
 ---
 
 ## papers 
@@ -145,6 +146,8 @@ CoNEXT
 * @Advanced Engineeringg Mathematics -- Erwin Keryszig -- 10th -- 2011
 
 * @The Calculus of Selfishness -- Hossein Salehfar -- 2010
+
+### robotics
 
 
 ### med 

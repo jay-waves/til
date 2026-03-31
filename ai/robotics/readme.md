@@ -1,3 +1,4 @@
+感知、认识交互、运动控制
 
 ## pipeline 
 
@@ -25,6 +26,12 @@
 ### 5. 控制执行 
 
 执行器 controller 执行路径轨迹，同时以固定循环频率，读取关节状态，计算控制量（位置、速度、力矩）
+
+#### 速度
+
+`geometry_msgs/Twist /cmd_vel` 
+* `linear.x` 前进速度
+* `angular.z` 角速度
 
 ### 6. 底层驱动 
 
@@ -54,10 +61,14 @@ map
 * y 左
 * z 上
 
+![pnd-botics|400](http://oss.jay-waves.cn/til/adam-lite.avif)
+
 
 #### odometry 里程计坐标系
 
 局部连续坐标系，不会跳变，会漂移 （drift）
+
+`nav_msgs/Odometry /odom` 
 
 
 #### 传感器坐标系 
