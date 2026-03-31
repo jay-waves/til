@@ -6,7 +6,7 @@ code: <future>
 
 ## future 
 
-一个任务想要向另一个任务传递值, 它会做出一个 `promise`. 在未来某时刻, 该值会生效, 在对应的 `future` 内部. `promise` 可以传递值, 也可以传递一个[异常](../dev-tools/error-handling.md)
+一个任务想要向另一个任务传递值, 它会做出一个 `promise`. 在未来某时刻, 该值会生效, 在对应的 `future` 内部. `promise` 可以传递值, 也可以传递一个[异常](../error-handling.md)
 
 ```cpp
 void f(promise<X>& px) {

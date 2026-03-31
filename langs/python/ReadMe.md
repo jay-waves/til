@@ -57,7 +57,7 @@
 |                      | time                                                                                         | 时间的访问和转换               |     |
 |                      | argparse, getopt                                                                             | 命令行参数解析                 |     |
 |                      | getpass                                                                                      | 密码输入                       |     |
-|                      | [logging](dev-tools/logging.md)                                                                                   | 日志                           |     |
+|                      | [logging](logging.md)                                                                                   | 日志                           |     |
 |                      | curses                                                                                       | 字符终端显示                   |     |
 |                      | errno                                                                                        |                                |     |
 |                      | ctypes                                                                                       | Python 的外部函数库            |     |
@@ -81,7 +81,7 @@
 |                      | binascii                                                                                     | 二进制与 ASCII 间转换          |     |
 | 结构化标记工具       | html                                                                                         |                                |     |
 |                      | xml                                                                                          |                                |     |
-| 开发工具             | [typing](dev-tools/typing.md)                                                                                      | 类型提示加强                   |     |
+| 开发工具             | [typing](typing.md)                                                                                      | 类型提示加强                   |     |
 |                      | doctest                                                                                      |                                |     |
 |                      |  [unittest](开发工具/测试/unittest.md)                                                                                   | 单元测试                       |     |
 |                      | [unittest.mock](开发工具/测试/unittest.mock.md)                                                                                |                                |     |

@@ -79,6 +79,11 @@ see [Latex 空格与换行](Latex%20空格与换行.md) for details.
     *    &emsp;&emsp;&emsp;into$\left\{\frac{(x+y)}{[\alpha+\beta]}\right\}$,you can make it on the left. \left&\right can change the format only on the left of sth.
 * express ! `\not` $\not=$ 
 * sqrt $\sqrt[3]{x}$
+* overbrackets and underbrackets:
+
+$$\newcommand{\bm}{}\begin{equation}
+    \min_{\bm{w} \in \mathbb{R}^d} \mathcal{L}(w) \triangleq \min_{\bm{w} \in \mathbb{R}^d} \underbracket[.25pt][12pt]{\sum_{k=1}^K \frac{n_k}{n} \overbracket[.25pt][12pt]{\frac{1}{n_k} \sum_{i \in \mathcal{P}_k}  \underbracket[.25pt][10pt]{\ell(\bm{x}_i, y_i, \bm{w})}_{\text{sample}\,i\,\text{loss}}}^{\text{client average loss}}}_{\text{population average loss}}
+\end{equation}$$
 
 ### 8. operator
 #### A.arithmetical operator
@@ -228,4 +233,10 @@ y &= (a + b)^2 \\&= a^2 + b^2 + 2ab\\
   &= 0
 \end {split}
 $$
-``` 
+```  
+
+## References
+
+https://blog.martisak.se/2023/08/11/top-latex-commands/
+
+

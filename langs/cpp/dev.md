@@ -1,6 +1,3 @@
-- 代码应保持同一编程风格, 如 [google-cpp-style](../google-cpp-style.md)
-- C语言预编译规则: [preprocessor](../../c/preprocessor.md)
-- C++预编译规则: [预处理器](预处理器.md)
 
 ## 头文件
 

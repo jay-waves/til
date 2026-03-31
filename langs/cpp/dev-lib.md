@@ -87,3 +87,35 @@ SCENARIO("xxxxx") {
 依赖注入库: [Google Fruit](https://github.com/google/fruit), [boost/dil](https://github.com/boost-ext/di)
 
 但是, 小项目可手写工厂函数替代.
+
+## linalg & BLAS
+
+BLAS (Basic Linear Algebra Subprograms) 是指线性代数接口的事实标准，[linalg](../../math/linalg/ReadMe.md) 将于 C++26 加入标准库，实现这一系列接口。
+
+#### level 1 BLAS 
+
+复杂度一般为 $O(n)$ 
+
+axpy (a x plus y): $$y\leftarrow \alpha x+y$$
+
+#### level 2 BLAS 
+
+gemv (generalized matrix-vector multiplication): 
+
+$$y\leftarrow \alpha Ax+\beta y$$
+
+solver ($T$ is triangular):  
+
+$$Tx=y$$
+
+#### level 3 BLAS 
+
+gemm (general matrix multiplication): 
+
+$$C\leftarrow \alpha AB+\beta C$$
+
+$$B\leftarrow \alpha T^{-1}B$$
+
+$\beta$ 的目的是累加上一步的结果，一并纳入性能优化。
+
+batched: $$C[k]=\alpha A[k]B[k]+\beta C[k]$$
