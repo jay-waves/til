@@ -25,7 +25,7 @@
 
 ### QOS
 
-QoS (Quality of Service) 除了常见[网络性能指标](../网络体系结构.md)外, 还强调可靠性:
+QoS (Quality of Service) 除了常见[网络性能指标](../internet.md)外, 还强调可靠性:
 - 消息持久化
 - 死信队列
 - 消息投递保证 (Delivery guarantee)

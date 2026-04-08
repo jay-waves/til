@@ -91,8 +91,38 @@ void MyClass::member_func() {
 }
 ```
 
+## 程序入口
+
 一个 C/C++ 程序实例只有唯一的源码级入口: `main()` 函数. 所有测试文件也应包括 `main()` 函数, 用于独立运行测试.
 
 ```
 int main(int arg, char* argv[]);
+```
+
+## 程序出口
+
+程序正常退出路径：`int main() {....; return 0;}` 
+
+异常中止路径：
+* `std::eixt()` 来自 `<cstdlib>`
+* `std::abort()` 来自 `<cstdlib>`
+* `std::terminate()` 异常抛出未被处理时，触发。记得 `catch (...)`
+* `_exit()`  操作系统级退出进程
+* 外部信号
+* SEGV 
+
+**所有异常路径，都不能保证栈正常展开，换言之 RAII 可能失效**。
+
+## 命名空间
+
+不要在其他 Namespace 中引入头文件，否则命名空间会嵌套。
+
+```cpp
+namespace my {
+	
+	#include <iostream> 
+	
+	using cout = std::cout; // error, no my::std::cout
+
+}
 ```

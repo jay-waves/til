@@ -107,15 +107,15 @@
 [X.800, 1991] 定义了五类安全服务 (security services) 安全服务:
 1. *数据保密性, Data Confidentiality.*
 	- Data confidentiality, 数据内容保密性.
-		- Connection confidentiality. 有连接通信 ([TCP](../networks/传输层/TCP.md)), 对整个会话状态和数据分组进行加密. 如 [SSL/TLS](../networks/VPN/SSL.md) 技术.
-		- Connectionless confidentiality. 无连接通信 ([UDP](../networks/传输层/UDP.md)), 对单个数据包独立加密. 如 [IPSec ESP](../networks/VPN/IPSec.md) 技术.
+		- Connection confidentiality. 有连接通信 ([TCP](../networks/transport-l4/TCP.md)), 对整个会话状态和数据分组进行加密. 如 [SSL/TLS](../networks/firewalls&vpn/ssl&tls.md) 技术.
+		- Connectionless confidentiality. 无连接通信 ([UDP](../networks/transport-l4/UDP.md)), 对单个数据包独立加密. 如 [IPSec ESP](../networks/firewalls&vpn/ipsec.md) 技术.
 		- Selective field confidentiality. 只在必要字段
 	- Traffic flow confidentiality, TFC, 流量保密性.
 2. *数据完整性, Data Integrity.*
 	- Connection integrity, 整个连接通信中, 数据单元按顺序传输, 并且不被篡改.
 		- with recovery, 通过握手和数据确认机制, 遇到完整性错误时, 请求重传来恢复完整性.
 		- without recovery, 遇到完整性错误时, 直接丢弃. 无连接通信默认该方式.
-	- Connectionless integrity, 独立数据包的完整性. 如 [IPSec AH](../networks/VPN/IPSec.md) 技术. 
+	- Connectionless integrity, 独立数据包的完整性. 如 [IPSec AH](../networks/firewalls&vpn/ipsec.md) 技术. 
 	- Selective field integrity
 3. *认证, Authentication, 身份验证*. 注意身份认证, 不能保证不可否认, 也不能保证数据完整性.
 	- Peer entity authentication. 对等实体身份验证.
@@ -162,7 +162,7 @@
 
 [X.800, 1991] 还列有一些不属于特定安全服务的安全机制, 如*事件检测*, *安全审计 (Security Audit Trail)*, *灾难恢复 (Security Recovery)*. 这些安全机制的重要性和所需的安全等级相关, 有的则普遍存在.
 
-[X.800, 1991] 和 [RFC 4949, 2007] 都定义了安全服务所处的[网络层次](../networks/网络体系结构.md), 不过随着技术进步和定义变化, 下表在不同标准间区别较大, 仅作参考.
+[X.800, 1991] 和 [RFC 4949, 2007] 都定义了安全服务所处的[网络层次](../networks/internet.md), 不过随着技术进步和定义变化, 下表在不同标准间区别较大, 仅作参考.
 
 <table border="1" cellspacing="0" cellpadding="5">
     <caption><strong>the relationship of security services and layers</strong></caption>

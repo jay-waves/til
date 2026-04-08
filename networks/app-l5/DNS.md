@@ -37,9 +37,9 @@ host 8.8.8.8
 
 ## DNS
 
-The Domain Name System (DNS) translates human-readable domain names, like `www.example.com`, into machine-readable [IP](../网络层/IP.md) address, such as `192.0.2.1`. 
+The Domain Name System (DNS) translates human-readable domain names, like `www.example.com`, into machine-readable [IPv4](../network-l3/IPv4.md) address, such as `192.0.2.1`. 
 
-DNS 使用 [UDP](../传输层/UDP.md) 协议 53 端口.
+DNS 使用 [UDP](../transport-l4/UDP.md) 协议 53 端口.
 
 ### Key Components
 
@@ -49,9 +49,9 @@ Domain Names: In `blog.csdn.cn`, `.cn` is the top-level domain (TLD), `csdn` is 
 - **A**: 将一个域名映射为 IPv4 地址
 - **AAAA**: 将一个域名映射为 IPv6 地址
 - **CNAME**: 将一个域名映射到另一个域名, 类似域名的别名. 比如 `www` 映射到根域名.
-- **MX**: 指定某个权限域名服务器下的邮件服务器的地址.
-- **TXT**: 存储文本信息, 一般用于安全性配置. 
-- **NS**: 指定负责解析的 DNS 服务器 (DNS 委派).
+- MX: 指定某个权限域名服务器下的邮件服务器的地址.
+- TXT: 存储文本信息, 一般用于安全性配置. 
+- NS: 指定负责解析的 DNS 服务器 (DNS 委派).
 - **PTR** (Pointer Record): 反向 DNS 解析. 当来源 IP 的 PTR 和对应的 A 记录不一致时, 可能被归类为恶意活动 (如垃圾邮件).
 
 ```dns
