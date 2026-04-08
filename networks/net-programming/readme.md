@@ -57,6 +57,10 @@ flowchart TD
 
 核心优点：减少线程间调度竞争，避免惊群效应。
 
+### corotines 
+
+见 C++ [Coroutines](../../langs/cpp/concurrency/coroutine.md)
+
 ### pipeline 
 
 

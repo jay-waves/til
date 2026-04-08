@@ -6,6 +6,8 @@
 - [numpy](数学/numpy.md)
 - [pyarmor](https://github.com/dashingsoft/pyarmor), Python 源码混淆工具
 
+推荐使用 `uv` 进行包管理，替代 `setuptools` 及传统 Python 工具。
+
 ## Standard library
 
 | 类型                 | 库                                                                                           | 描述                           |     |

@@ -83,4 +83,4 @@ export PATH=/opt/rust/bin:$CARGO_HOME/bin:$PATH
 
 ## 配置网络
 
-详见 [代理配置](../../networks/VPN/Proxy.md).
+详见 [代理配置](../../networks/firewalls&vpn/proxy.md).
