@@ -15,6 +15,7 @@
 | networks    | networks                | 网络通信     |
 | netsec      | security                | 网络安全     |
 | os          | operating system        | 操作系统     |
+| robotics    |                         | 机器人系统   |
 | tools       | devtool                 | 开发工具     |
 | attach      | attachments             | 图片附件     |
 | appx        | appendices              | 附录         |

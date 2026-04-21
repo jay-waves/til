@@ -111,6 +111,7 @@ revised: 2026-01-27
 - sl, genact 摸鱼用
 - hl, lnav, 日志浏览器
 - tldr
+- rclone 云存储工具
 
 <br>
 

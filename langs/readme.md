@@ -23,7 +23,7 @@
 	- 文件系统: 文件夹管理和遍历等, 文件元信息处理. 
 	- 进程管理: 主要是 POSIX 系列系统调用, 以及进程间通信.
 	- 编码转换, 序列化, 解压缩 (先放在这)
-- 密码库, 见 [Security/密码学](../netsec/密码学/README.md)
+- 密码库, 见 [Security/密码学](../netsec/cryptography/README.md)
 - 网络与事件异步编程, 见 [Network/Programming](../networks/net-programming/io-multiplexing.md)
 
 注意. 和功能强相关的部分, 不区分具体语言.
