@@ -16,5 +16,22 @@ at its most basic level a robot consists of rigid bodies connected by joints, wi
 
 ![|400](http://oss.jay-waves.cn/til/robot-joints.avif)
 
+* F: fixed joint. 完全刚性连接。0DoF
+* R: revolute joint, hinge joint. 铰链关节。1DoF
+* P: prismatic joint, linear, sliding joint. 滑动关节。1DoF
+* H: helical joint, screw joint. 螺旋关节。1DoF
+* C: cylindrical joint. 2DoF. 圆柱接头。
+* U: universal joint, 2DoF. 万向接头，有两个正交的铰链接头组成。
+* S: spherical joint, 3DoF. 球形接头。
+
+设 $N$ 个用关节连接在一起的刚体，刚体自由度为 $m$ （如空间中刚体无约束自由度为 $m=6$ ），关节的自由度为 $f$ ，那么总体的自由度：
+
+$$\begin{align}
+dof&=m(N-1)-\sum^{J}_{i=1}(m-f_{i}) \\
+&=m(N-1-J)+\sum^{J}_{i=1}(f_{i})
+\end{align}$$
+
+
+
 ## motion 
 

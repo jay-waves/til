@@ -22,47 +22,34 @@ Set-PSReadLineKeyHandler -Chord Alt+x -Function ViEditVisually
 
 # prompt
 function prompt {
-    $lastExitCode = $?
+    $ok = $?
+    $exitCode = $LASTEXITCODE
+    $time = Get-Date -Format "HH:mm:ss"
+
+    $checkIcon = [char]::ConvertFromUtf32(0xe63f)
     $errorIcon = [char]::ConvertFromUtf32(0xf071)
-    $currentTime = Get-Date -Format "MM-dd HH:mm"
-    $timeIcon = [char]::ConvertFromUtf32(0xf0109)
-    $branch = & git rev-parse --abbrev-ref HEAD 2>$null
-    $repoInfo = $null
-    if ($branch -and $branch -ne 'HEAD') {
-        $remoteName = & git config --get branch.$branch.remote 2>$null
-        if ($remoteName) {
-            $remoteUrl = & git remote get-url $remoteName 2>$null
-            if ($remoteUrl) {
-                $repoName = $remoteUrl -replace '^.+github\.com[:\/](.+?)(\.git)?$', '$1'
-                $repoInfo = "$branch -> $repoName"
-            }
-        }
-    }
-    $gitIcon = [char]::ConvertFromUtf32(0xf418)
-    $gitInfo = if ($repoInfo) { "`n $gitIcon $repoInfo`n" } elseif ($branch) { "`n $gitIcon $branch`n" } else { "`n" }
-    # output:
-    Write-Host $gitInfo -ForegroundColor DarkBlue -NoNewline
-    Write-Host " $timeIcon $currentTime " -NoNewline
-    if (-not $lastExitCode) {
-        Write-Host " $errorIcon " -ForegroundColor Red -NoNewline
+
+    # ===== 分隔线 =====
+    Write-Host ""
+    Write-Host ("─" * 80) -ForegroundColor DarkGray
+
+    # ===== 时间 + 状态 =====
+    Write-Host " $time" -ForegroundColor DarkGray -NoNewline
+
+    if ($ok) {
+        Write-Host " $checkIcon" -ForegroundColor Green -NoNewline
     } else {
-        $checkIcon = [char]::ConvertFromUtf32(0xe63f)
-        Write-Host " $checkIcon " -ForegroundColor Green -NoNewline
+        Write-Host " $errorIcon($exitCode)" -ForegroundColor Red -NoNewline
     }
-    " " + $(Get-Location) + " >> "
-}
 
-# yazi wrapper
-function yy {
-    $tmp = [System.IO.Path]::GetTempFileName()
-    yazi $args --cwd-file="$tmp"
-    $cwd = Get-Content -Path $tmp
-    if (-not [String]::IsNullOrEmpty($cwd) -and $cwd -ne $PWD.Path) {
-        Set-Location -LiteralPath $cwd
-    }
-    Remove-Item -Path $tmp
-}
+    Write-Host ""
 
+    # ===== 路径 =====
+    Write-Host " $(Get-Location)" -ForegroundColor Blue -NoNewline
+
+    # ===== 输入区 =====
+    return "`n ❯❯ "
+}
 
 
 # =============================================================================

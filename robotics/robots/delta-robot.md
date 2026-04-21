@@ -1,0 +1,11 @@
+![|800](http://oss.jay-waves.cn/til/delta-robot.jpg)
+
+designed for lightweight pick-and-place. It used 3 identical kinematic chains connected to a common end-effector playform.
+
+底部移动平台和顶部平台始终保持平行。
+
+## DoF
+
+![|400](http://oss.jay-waves.cn/til/delta-robot-dof.avif)
+
+只有 3DoF 

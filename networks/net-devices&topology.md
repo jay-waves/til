@@ -28,7 +28,7 @@
 | 数据链路层 | RLC (Radio Link Control)                | 分段, 重组, 错误检测, 和重传 (可靠传输)  | 3GPP UMTS |
 | 数据链路层 | PDCP (Packet Data Convergence Protocol) | 压缩,加密, 完整性保护. 数据包排序和去重  | 3GPP LTE  |
 | 数据链路层 | SDAP (Service Data Adptation Protocol)  | 处理不同应用的 [QoS](网络层/QoS.md) 需求 | 3GPP NR   |
-| 网络层     | [AKA](../netsec/密码学/安全协议/认证的密钥协商协议/AKA%20协议.md) (Authentication and Key Agreement)  | 用户身份安全性认证                                         | 3GPP UMTS |
+| 网络层     | [AKA](../netsec/cryptography/security-protocols/认证的密钥协商协议/AKA%20协议.md) (Authentication and Key Agreement)  | 用户身份安全性认证                                         | 3GPP UMTS |
 | 网络层     | IP (VoIP)                                     | 从此开始接入计算机网络上层结构           |           |
 
 #### 电视电话网络
