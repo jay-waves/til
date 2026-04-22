@@ -20,32 +20,14 @@ revised: 2026-01-27
 * 正式笔记：Obsidian 
 * 简单笔记：NVim
 * 代码：VSCode 
-* 流程与框架图绘制：DrawIO、PPT 
-* 虚拟机：WSL 
+* 流程与框架图绘制：DrawIO、PPT、reveal.js
 * 终端：Windows Terminal，Alacritty（Linux 平台）
 * 截图与贴图：Snipaste
 * 压缩：[7-Zip-zstd](https://github.com/mcmilk/7-Zip-zstd)
 * ~~电子书库管理：Calbibre~~
 * 媒体库管理：Jellyfin
 * 远程桌面：向日葵、RustDesk 
-* 硬盘加密：VeryCrypt
-
-
-### Windows 系统工具
-
-* 电脑管家：G-Helper（华硕）
-* 删除程序：Geek
-- 文件格式转换：FileConverter
-* PowerToys：有点臃肿，用况如下：
-	* 键盘管理：替换为 AutoHotkeys 
-	* 桌面切换、窗口置顶：替换为 AutoHotkeys 
-	* Fancyzone 
-	* Grab-Text 
-* Little Registry Cleaner
-* [WinXcorners](https://github.com/vhanla/winxcorners) Hot corner for Windows11
-- 管理右键菜单：ContextMenuManager
-- 文件关联管理：FileTypesMan
-- 网络文件系统 [sshfs-win](https://github.com/winfsp/sshfs-win)
+* 表格：Excel、Google Sheet 
 
 #### 硬件
 
@@ -54,7 +36,6 @@ revised: 2026-01-27
 * 硬件监控：LibreHardwareMonitor 
 * CPU 性能测试：CPU-Z
 * 硬盘管理：CrystallDiskInfo、DiskGenius 
-
 
 ### 媒体
 
@@ -81,14 +62,8 @@ revised: 2026-01-27
 - Wireshark，抓包工具
 - imhex，二进制查看
 - SET，社工库
-- Sandboxie Pro 沙盒
 - Chidra，逆向工具
 - binwalk，二进制分析工具
-
-### Editor 
-
-* VSCode 
-* nvim 
 
 ## Cli
 
@@ -128,7 +103,7 @@ Windows 上一些 GNU 工具移植, 见 [GNUwin32](https://gnuwin32.sourceforge.
 
 ## Browser Plugins
 
-- BewlyCat 
+- BewlyCat、BewlyBewly 
 - Google Scholar Button 
 - Markdownload、Obsidian Web Extracter 
 - TimeTab（edge 浏览器）
@@ -142,6 +117,9 @@ Windows 上一些 GNU 工具移植, 见 [GNUwin32](https://gnuwin32.sourceforge.
 	- 网盘直链下载助手
 - SuperSimple Highlighter 
 - Picture in Picture
+- Obsidian Web Clipper 
+- Read Aloud 
+- [chatgpt long conversation optimization](https://github.com/bujue3709/chatgpt-Long-conversation-optimization)
 
 ## AI 
 
@@ -150,7 +128,7 @@ Windows 上一些 GNU 工具移植, 见 [GNUwin32](https://gnuwin32.sourceforge.
 * grok, chatgpt 
 * piper 文字转语音 TTS 工具
 
-## Linux 特化
+## on Linux
 
 * flameshot 截图贴图工具
 * Alacritty 命令行
