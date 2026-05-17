@@ -4,7 +4,7 @@
 $$\mathcal{F}(\omega)=\mathcal{F}\{f(t)\}=\int f(t)e^{-j\omega t}\,dt$$  
 $$\mathcal{L}(s)=\mathcal{L}\{f(t)\}=\int_{0}^{\infty} f(t)e^{-st}\,dt, \quad s=\sigma+j\omega$$
 
-[傅里叶变换](傅里叶变换.md)和拉普拉斯变换的关系是： $$\mathcal{F}\{f(t)u(t)\}=F(s)\vert_{s=j\omega}$$
+[fourier-transform](fourier-transform.md)和拉普拉斯变换的关系是： $$\mathcal{F}\{f(t)u(t)\}=F(s)\vert_{s=j\omega}$$
 
 
 拉普拉斯变换一般仅研究单边 $\Re(s)>0$ ，因为现实中研究的系统必须是：
@@ -32,7 +32,7 @@ $$
 \mathcal{L}\{f^{(n)}(t)\}=s^nF(s)-\sum_{k=0}^{n-1}s^{n-1-k}f^{(k)}(0^+)
 $$
 
-将 *[时域卷积](卷积.md)* 变换为 *频域乘法*：
+将 *[时域卷积](convolution.md)* 变换为 *频域乘法*：
 
 $$
 \mathcal{L}\{(f*g)(t)\}=F(s)G(s)
@@ -72,4 +72,4 @@ $$f(t)=\sum(a_{0}+a_{1}t+\dots+a_{k}t^{k})e^{pt}$$
 
 ### 例子
 
-例子见[傅里叶变换](傅里叶变换.md)
+例子见[fourier-transform](fourier-transform.md)

@@ -2,7 +2,7 @@
 
 $$y(t)=x(t)*h(t)=\sum^{+\infty}_{m= -\infty} x(m)\cdot h(t-m)=\sum x(t-m)\cdot h(m)$$
 
-$h(t)$ 表示某 [LSI 系统](信号.md), **卷积**代表 $x(t)$ 经过 ${} h(t) {}$ 得到的结果. 
+$h(t)$ 表示某 [LSI 系统](signals.md), **卷积**代表 $x(t)$ 经过 ${} h(t) {}$ 得到的结果. 
 
 
 ## 相关

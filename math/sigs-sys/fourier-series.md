@@ -116,7 +116,7 @@ $$c_{k}=\frac{1}{T}\int^{T}_{0}f(x)e^{-ik\omega_{0}x}  \, dx $$
 
 > 求傅里叶级数部分和时, 必须采用级数的对称形式, 否则收敛结果可能不成立.
 
-$f(x)$ 的傅里叶级数的部分求和, 可以用 $f(x)$ 与狄利克雷核 $D_{n}(x)$ 的[卷积](../sigs-sys/卷积.md)来表示:
+$f(x)$ 的傅里叶级数的部分求和, 可以用 $f(x)$ 与狄利克雷核 $D_{n}(x)$ 的[convolution](convolution.md)来表示:
 
 $$\begin{align}
 S_{N}(f)&=\sum^{N}_{n=-N}c_{n}e^{inx} \\

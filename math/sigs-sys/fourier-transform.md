@@ -44,7 +44,7 @@ $$\mathcal{F}\{f(at)\}=\frac{1}{|a|}F\left( \frac{\omega}{a} \right)$$
 
 ## 常见傅里叶变换
 
-| 时域 $$f(t)$$                  | 傅里叶变换 $$F(\omega)$$                                                          | [拉普拉斯变换](拉普拉斯变换.md) $$F(s),\quad s=\sigma+j\omega$$ |
+| 时域 $$f(t)$$                  | 傅里叶变换 $$F(\omega)$$                                                          | [laplace-transform](laplace-transform.md) $$F(s),\quad s=\sigma+j\omega$$ |
 | ------------------------- | ---------------------------------------------------------------------- | ---- |
 | $$\delta(t)$$             | $$1$$                                                                  |  $$1$$    |
 | $$1$$                     | $$2\pi\delta(\omega)$$                                                 |  $$\frac{1}{s}$$    |
