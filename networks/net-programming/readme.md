@@ -26,7 +26,7 @@ thread-per-connection，类似 fork-per-connection，但可以共享一些内存
 
 ### 线程池模型
 
-预先创建一定数量工作线程，有 socket 连接时进行负载分配。参考 [algorithm/conc/thread-pool](../../algo/concurrency/thread-pool.md) 中实现。
+预先创建一定数量工作线程，有 socket 连接时进行负载分配。参考 [algorithm/conc/thread-pool](../../algo/concurrency/thread-pool-work-stealing.md) 中实现。
 
 ```mermaid 
 flowchart TD

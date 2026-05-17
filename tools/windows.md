@@ -23,6 +23,15 @@ Windows11 瘦身：
 * 移除硬盘索引
 * [禁用 Web SearchHost](https://github.com/shoober420/windows11-scripts/blob/main/DisableSearchHost.bat)
 
+这些 UWP 服务，禁用方法都是：修改权限后，直接替换掉 `exe` 文件。否则仅关掉服务不生效。
+* CrossDeviceResume
+* StartMenuExperienceHost
+* WindowsSearchHost
+
+删除 MS-Edge：
+* [ShadowWinsperer/Remove-Ms-Edge](https://github.com/ShadowWhisperer/Remove-MS-Edge)
+* 删除 WebView2 后，安装绿色版的 Evegreen 使用即可。作为用户安装在 `%APPDATA%`
+
 ## 文件系统优化
 
 [winfsp, FUSE for Windows](https://github.com/winfsp/winfsp)

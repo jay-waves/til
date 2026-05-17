@@ -53,11 +53,11 @@ Control Transfer Instructions (CTI) 指汇编语言中跳转类型指令, 打破
 
 #### Northbright
 
-北桥, 计算机硬件架构组成部分. 见 [计算机架构](计算机组成/计算机架构.md)
+北桥, 计算机硬件架构组成部分. 见 [计算机架构](computer/计算机架构.md)
 
 #### Southbridge
 
-南桥. 见 [计算机架构](计算机组成/计算机架构.md).
+南桥. 见 [计算机架构](computer/计算机架构.md).
 
 #### ISA
 

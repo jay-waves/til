@@ -1,79 +1,134 @@
 ﻿#SingleInstance Force  ; 仍然有效，确保脚本只运行一个实例
 
+SendMode "Event" 
+SetKeyDelay -1, -1
+
 ; 设置工作目录为脚本所在目录（v2 语法）
 SetWorkingDir A_ScriptDir
 
-; 将 CapsLock 映射为 Esc
-CapsLock::Esc
-
-; 将 Esc 映射为 CapsLock
-Esc::CapsLock
-
-; Ctrl + Win + T 切换当前窗口的置顶状态
-^#t:: {
+; Alt + T 切换当前窗口的置顶状态
+!t:: {
     hwnd := WinExist("A")  ; 获取当前活动窗口句柄
     WinSetAlwaysOnTop(-1, hwnd)
 }
 
-; 音量控制
+; 音量控制 Alt 是功能键
 !c::Send "{Volume_Up}"    ; Alt + C -> 音量增加
 !x::Send "{Volume_Down}"  ; Alt + X -> 音量减少
 !z::Send "{Volume_Mute}"  ; Alt + Z -> 静音
 
-; 方向键
-!h::Send "{Left}"         ; Alt + H -> 左
-!j::Send "{Down}"         ; Alt + J -> 下
-!k::Send "{Up}"           ; Alt + K -> 上
-!l::Send "{Right}"        ; Alt + L -> 右
+SetCapsLockState "AlwaysOff"
 
-; 导航键
-!u::Send "{Home}"         ; Alt + U -> Home
-!i::Send "{End}"          ; Alt + I -> End
-!n::Send "{PgUp}"         ; Alt + N -> Page Up
-!m::Send "{PgDn}"         ; Alt + M -> Page Down
+global VisualMode := false
 
+; 单击 Caps -> Esc
+CapsLock::
+{
+    global VisualMode
 
-; 是否使用中文标点
-Global chinesePunctuationActive := false
+    VisualMode := false
 
-!.:: {
-    Global chinesePunctuationActive
-    chinesePunctuationActive := !chinesePunctuationActive ;切换状态
+    KeyWait "CapsLock"
 
-    If chinesePunctuationActive {
-        ToolTip("中文标点已启用")
-    } Else {
-        ToolTip("中文标点已禁用")
-    }
-    ; 2秒后自动隐藏提示信息
-    SetTimer () => ToolTip(), -2000
+    ; 如果没有组合键触发，则发送 Esc
+    if (A_PriorKey = "CapsLock")
+        Send "{Esc}"
 }
 
-; -------- 中文标点符号热键定义 -----------
-#HotIf chinesePunctuationActive
+; 松开 Caps 自动退出 Visual
+CapsLock Up::
+{
+    global VisualMode
+    VisualMode := false
+}
 
-,::SendInput "，"         
-.::SendInput "。"        
-;::SendInput "；"         
-'::SendInput "‘’"         
-[::SendInput "【"          ; 左方括号
-]::SendInput "】"          ; 右方括号
-\::SendInput "、"          ; 顿号 
-!::SendInput "！"         
-?::SendInput "？"        
-:::SendInput "："       
-`;::SendInput "；"
-"::SendInput "“”"       
-(::SendInput "（"          
-)::SendInput "）"         
-~::SendInput "～"        
-^::SendInput "……"       
-_::SendInput "——"      
-$::SendInput "￥"         
-<::SendInput "《"       
->::SendInput "》"      
+#HotIf GetKeyState("CapsLock", "P")
+
+; movement
+*h::Send VisualMode ? "+{Left}"  : "{Left}"
+*j::Send VisualMode ? "+{Down}"  : "{Down}"
+*k::Send VisualMode ? "+{Up}"    : "{Up}"
+*l::Send VisualMode ? "+{Right}" : "{Right}"
+
+; word movement
+*w::Send VisualMode ? "^+{Right}" : "^{Right}"
+*b::Send VisualMode ? "^+{Left}"  : "^{Left}"
+
+; line
+*u::Send VisualMode ? "+{Home}" : "{Home}"
+*i::Send VisualMode ? "+{End}"  : "{End}"
+
+; page
+*n::Send VisualMode ? "+{PgUp}" : "{PgUp}"
+*m::Send VisualMode ? "+{PgDn}" : "{PgDn}"
+
+; visual mode
+*v::
+{
+    global VisualMode
+    VisualMode := true
+}
+
+; copy / cut / paste
+*y::
+{
+    global VisualMode
+    Send "^c"
+    VisualMode := false
+}
+
+*x::
+{
+    global VisualMode
+    Send "^x"
+    VisualMode := false
+}
+
+*p::Send "^v"
 
 #HotIf
+
+; 是否使用中文标点
+; Global chinesePunctuationActive := false
+; 
+; !.:: {
+;     Global chinesePunctuationActive
+;     chinesePunctuationActive := !chinesePunctuationActive ;切换状态
+; 
+;     If chinesePunctuationActive {
+;         ToolTip("中文标点已启用")
+;     } Else {
+;         ToolTip("中文标点已禁用")
+;     }
+;     ; 2秒后自动隐藏提示信息
+;     SetTimer () => ToolTip(), -2000
+; }
+; 
+; ; -------- 中文标点符号热键定义 -----------
+; #HotIf chinesePunctuationActive
+; 
+; ,::SendInput "，"         
+; .::SendInput "。"        
+; ;::SendInput "；"         
+; '::SendInput "‘’"         
+; [::SendInput "【"          ; 左方括号
+; ]::SendInput "】"          ; 右方括号
+; \::SendInput "、"          ; 顿号 
+; !::SendInput "！"         
+; ?::SendInput "？"        
+; :::SendInput "："       
+; `;::SendInput "；"
+; "::SendInput "“”"       
+; (::SendInput "（"          
+; )::SendInput "）"         
+; ~::SendInput "～"        
+; ^::SendInput "……"       
+; _::SendInput "——"      
+; $::SendInput "￥"         
+; <::SendInput "《"       
+; >::SendInput "》"      
+; 
+; #HotIf
 
 ; VirtualDesktopAccessor
 ; 必须使用 64b 编译.

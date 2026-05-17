@@ -36,7 +36,7 @@
 
 ### 多核扩展性差？核增加没有提升
 
-参考我设计的[线程池](../../algo/concurrency/thread-pool.md)，可能的原因：
+参考我设计的[线程池](../../algo/concurrency/thread-pool-work-stealing.md)，可能的原因：
 
 * 频繁的锁竞争
 * 内存瓶颈
