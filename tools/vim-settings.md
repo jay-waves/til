@@ -1,5 +1,8 @@
-" windows 下放在 ~/AppData/Local/nvim/init.vim
+### nvim on windows 
 
+配置放在 `~/AppData/Local/nvim/init.vim` 
+
+```vim
 set number                                      " 行号
 set tabstop=4                                   " tab 宽度 
 set shiftwidth=4                                " 缩进宽度
@@ -26,16 +29,9 @@ Plug 'honza/vim-snippets'
 "Plug 'arcticicestudio/nord-vim'               " 主题
 Plug 'projekt0n/github-nvim-theme'
 "Plug 'hzchirs/vim-material'                   " 主题
-" Plug 'vim-syntastic/syntastic'               " 语法检查插件, 太慢
 Plug 'vim-airline/vim-airline'                 " taskbar美化插件
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ctrlpvim/ctrlp.vim'                      " 模糊查找文件
-Plug 'davidhalter/jedi-vim'                    " python 自动补全
-Plug 'preservim/tagbar'                        " 符号边栏
-Plug 'ludovicchabant/vim-gutentags'            " ctags 管理 https://github.com/universal-ctags/ctags-win32/releases
-"ycm
-"Plug 'fatih/vim-go'
-"Plug 'neovimhaskell/haskell-vim'
 call plug#end()
 
 " keyboard
@@ -114,35 +110,62 @@ let g:airline_section_c = ''                    " 禁用文件名
 
 " font, not for terminal
 " set guifont=等距更纱黑体\ SC:h13
+```
 
-" 配置 ultisnips 代码补全
-" pip install neovim
-" let g:UltiSnipsExpandTrigger="<tab>"        " TAB 展开
-" let g:UltiSnipsListSnippets="<c-l>"         " TAB 展开
-" let g:UltiSnipsJumpForwardTrigger="<c-j>"   
-" let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+### nvim on wsl debian 
 
-" Symbols Outline, TagBar + CTags + Gutentags
-let g:gutentags_project_root = ['.git', '.hg', '.svn'] " 递归向上寻找项目根
-let g:gutentags_ctags_executable = 'E:\tools\cli\ctags.exe'
-let g:tagbar_left = 1
+放在 `~/.config/nvim/init.vim` 
 
-" 代码补全
-filetype plugin indent on
-set completeopt=menuone,noinsert,noselect
-set wildmenu                                " 自动补全命令时使用菜单式匹配列表  
-set omnifunc=syntaxcomplete#Complete        " <C-x><C-o> 触发 Omni 补全
-autocmd FileType python set omnifunc=python3complete#Complete
+```vim
+set number                                      
+set tabstop=2                                   
+set shiftwidth=2                                
+set expandtab                                   
+set cursorline                                 
+set smartindent  
+set showcmd
+" set wrap                                        
 
-" 如果前方是空白字符, 使用制表符
-" 如果前方有内容, 触发自动补全 <C-N>
- function! CleverTab()
-     if strpart( getline('.') ,0,col('.')-1) =~'^\s*$'
-         return "\<Tab>"
-     else    
-         return "\<C-N>"
-     endif   
- endfunction
- inoremap <Tab> <C-R>=CleverTab()<CR>
+" search
+set ignorecase                                  
+set hlsearch
+set smartcase                                  
 
+set mouse=a
 
+" clipboard
+set clipboard=unnamedplus
+
+" encoding
+set encoding=utf-8
+set fileencoding=utf-8
+
+" plugins
+call plug#begin('~/.local/share/nvim/plugged')
+Plug 'catppuccin/nvim', {'as': 'catppuccin'}
+Plug 'vim-syntastic/syntastic'                  " 语法检查插件
+Plug 'vim-airline/vim-airline'                  " taskbar美化插件
+Plug 'vim-airline/vim-airline-themes'
+Plug 'ctrlpvim/ctrlp.vim'                       " 模糊查找文件
+call plug#end()
+
+" theme
+syntax on
+set termguicolors
+colorscheme catppuccin-macchiato 
+let g:airline_theme="catppuccin" "latte, frappe, macchiato, mocha
+" 背景透明
+hi Normal ctermbg=none guibg=none
+hi NonText ctermbg=none guibg=none
+
+" keyboard
+nmap j gj
+nmap k gk
+
+" taskbar
+set t_Co=256                                    "色域设置
+set laststatus=2                                 
+let g:airline_powerline_fonts = 1   
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_section_c = ''                    " 禁用文件名
+```

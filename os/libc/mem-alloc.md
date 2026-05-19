@@ -187,7 +187,7 @@ static chunk_t* g_top = NULL; // = g_heap_tail
 
 在单线程 glibc ptmalloc 实现中，内存块链表尾，就是程序堆顶。每次申请小块堆内存时，增长堆顶。在多线程程序中，堆顶 `brk` 是共享状态资源，需要控制线程间数据竞争。
 
-但是，如果用锁来管理会严重拖慢 `malloc` 速度。因此，一些第三方 `malloc` 实现已经全部使用 `mmap()` 来申请内存。
+但是，如果用锁来管理会严重拖慢 `malloc` 速度。因此，glibc 使用多个并行的 `arena allocator`，而一些第三方 `malloc` 实现已经全部使用 `mmap()` 来申请内存。
 
 ```c
 // insert into the head of  free list 
