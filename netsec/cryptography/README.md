@@ -10,7 +10,7 @@
 - [非对称密码 (公钥密码)](public-key-crypto/pk-crypto.md)
 	- [数字签名](public-key-crypto/digital-signature/digital-signature.md)
 	- [密钥协商](public-key-crypto/DiffieHellman.md)
-- [消息摘要](msg-digests/消息摘要.md) (密码学哈希算法)
+- [msg-digest](msg-digests/msg-digest.md) (密码学哈希算法)
 - [安全协议](security-protocols/安全协议.md)
 
 ## 密码性能对比
@@ -26,10 +26,10 @@
 | [AES](block-ciphers/sp/AES.md)-256-GCM | 块密码   |          | 131,518                                                         |              |                                         |
 | SHA256                                                 | 哈希     |          | 31,903                                                          |              |                                         |
 | SHA512                                                 | 哈希     |          | 9,919                                                           |              |                                         |
-| ChaCha20-[Poly1305](msg-digests/消息认证码/UMAC.md)                                      | 流密码   |          | 41,961                                                          |              |                                         |
+| ChaCha20-[Poly1305](msg-digests/MAC/UMAC.md)                                      | 流密码   |          | 41,961                                                          |              |                                         |
 | RSA4096                                                | 公钥密码 |          | <nobr>331,528 (verify/s)</nobr>[^3] <nobr>5,144 (sign/s)</nobr> |              |                                         |
 | [单机单核测试](https://openwrt.org/docs/guide-user/perf_and_log/benchmark.openssl)                                                       |          |          |                                                                 |              |                                         |
-| [MD5](msg-digests/MD%20结构/MD5.md)                                                    | 哈希     | 2013     | 501                                                             | 1.1.x        | Intel Core i7 4960X, 3.6GHz, 4c, 8t|
+| [MD5](msg-digests/merkel-damgard/MD5.md)                                                    | 哈希     | 2013     | 501                                                             | 1.1.x        | Intel Core i7 4960X, 3.6GHz, 4c, 8t|
 | SHA1                                                   | 哈希     |          | 541                                                             |              |                                         |
 | SHA256                                                 | 哈希     |          | 217                                                             |              |                                         |
 | SHA512                                                 | 哈希     |          | 317                                                             |              |                                         |

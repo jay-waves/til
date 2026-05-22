@@ -48,39 +48,41 @@ type Locker interface {
 }
 func (l *Mutex) Lock()
 func (l *Mutex) UnLock()
-
-// RWMutex 采用写优先策略, 读操作中, 如果有写请求, 不再处理读请求.
-type RWMutex struct {
-	w Mutex
-	writerSem uint32
-	readerSem uint32
-	readerCount int32 // 有 writer 时, count 首位翻转为 1
-	readerWait int32
-}
-func (rw *RWMutex) RLock()
-func (rw *RWMutex) RUnLock()
-func (rw *RWMutex) Lock()
-func (rw *RWMutex) UnLock()
 ```
+
+### RWLock 
+
+详见 [rwlock](../../algo/concurrency/rwlock.md)
 
 ### Once
 
-> The completion of a single call of `f()` from `once.Do(f)` is 
-> synchronized before the return of any call of `once.Do(f)`.
+多次对同一函数 `f()` 调用 `Once.Do(f)` ，只有第一次会被执行；其他次调用时，会阻塞直到第一次 `f()` 被执行完。
 
 ```go
-var once sync.Once
-func a() {
-	print("hello, world")
+// sync 
+type Once struct {
+	done uint32
+	m    Mutex 
 }
-func b() {
-	once.Do(a)
+
+func (o *Once) Do(f func()) {
+	if atomic.LoadUint32(&o.done) == 0 {
+		o.doSlow(f)
+	}
 }
-func main() {
-	go b()
-	go b()
+
+func (o *Once) doSlow(f func()) {
+	o.m.Lock()
+	defer o.m.Unlock() 
+	
+	if o.done == 0 {
+		defer atomi.StoreUint32(&o.done, 1)
+		f()
+	}
 }
 ```
+
+注意，`f()` 中不能调用同一个 `sync.Once()` ，否则会递归死锁。另外，如果 `f()` 执行失败（返回 Err 或者 panic），Once 仍会认为已经执行完毕，不会再次执行。
 
 ### WaitGroup
 
@@ -96,4 +98,124 @@ for i := 0; i < 10; i++ {
 }
 
 wg.Wait() // wait for all goroutines
+```
+
+### Cond 
+
+类似条件变量，详见 [c++/condition_variable](../cpp/concurrency/condition_variable.md)。实际上，`Cond` 使用不多，简单场景多用 `WaitGroup`，而复杂场景会用 `Go Channel`。
+
+```go
+
+func NewCond(l Locker) *Cond 
+
+func(c *Cond) Broadcast()
+
+func(c *Cond) Signal() 
+
+func(c *Cond) Wait() // need c.L
+```
+
+### Pool 
+
+对象池化。仅适用于对象高频初始化和失效的情景。
+* `Pool` 作为缓存并不可靠，因为 Go GC 会无通知地回收对象。
+* 对于很小的对象，不如不用缓存
+* 对于很大的对象（比如容量变得很大的切片），再放回 Pool 会浪费内存。由于 Go GC 清理的不确定性，这部分内存可能迟迟无法释放。
+
+```go
+var bufPool = sync.Pool{
+	New: func() any {
+		b := make([]byte, 0, 1024)
+		return &b
+	},
+}
+
+func work() {
+	bp := bufPool.Get().(*[]bytes)
+	b := (*bp)[:0]
+	
+	// use b...
+	
+	*bp = b
+	bufPool.Put(bp)
+}
+
+```
+
+
+### Context 
+
+同时管理协程的取消（Cancel）、超时（Deadline）、值传递（Value）。是一种级联（链式）结构，事件传播非常自然。但是不建议滥用，因为可能让生命周期不明确或资源滞留（泄露）
+
+```go
+type Context interface {
+	Deadline() (deadlin time.Time, ok bool) 
+	Done() <- chan struct{}            
+	Err() error                         // Context 被取消时，返回原因，否则返回 nil
+	Value(key interface{}) interface{}  // 沿着 Context 链向上查找 key 对应值
+}
+```
+
+构造函数（工厂）：
+
+```go
+ctx := context.Background()  // 空 
+ctx, cancel = context.WithCancel(ctx) 
+defer cancel()  // 记得使用后调用 cancal 
+
+ctx, cancel = context.WithTimeout(ctx, 2 * time.Second)
+defer cancel()
+
+ctx = contxt.WithValue(ctx, "UserID", 42) // 放一些配置或不可变值
+```
+
+`WithCancel` 构造如下结构，`Done()` 返回后，取消会沿着子 Context 链传播。用于手动取消。
+```go
+// context.WithCancel return:
+type cancelCtx struct {
+	Context                        // parent context 
+	done      chan struct{}
+	mu        sync.Mutex
+	err       error
+	children  map[canceler]struct{} // children contex
+}
+```
+
+`WithValue` 构造如下结构，`Value()` 先检查自身 `key` 如果不匹配就沿着父 Context 链向上查找。
+
+```go
+type valueCtx struct {
+	Context   // parent 
+	key, val any
+}
+```
+
+`WithTimeout, WithDeadline` 返回如下结构，其中 `WithTimeout` 就是用 `time.Now() + duration` 来调用 `WithDeadline`。
+
+```go
+type timerCtx struct {
+	cancelCtx  // 组合 cancelCtx 功能
+	deadline time.Time 
+	timer    *time.Timer 
+}
+```
+
+用 `Context` 取消 goroutine：
+
+```go
+ctx, cancel := context.WithCancel(context.Background())
+defer cancel()
+
+go func() {
+	for {
+		select {
+		case <- ctx.Done():
+			return 
+		default:
+			// do something
+		}
+	}
+}()
+
+// cancel() here 
 ```

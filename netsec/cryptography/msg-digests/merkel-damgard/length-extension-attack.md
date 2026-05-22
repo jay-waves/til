@@ -1,6 +1,6 @@
 使用基于迭代结构的杂凑函数构造的 $MAC=Hash(k\ \Vert\ x)$ 不安全. *长度延长*攻击 (hash length-extension attack), 可以在不知道共享密钥的情况下, 得到 $Hash(k\ \Vert\ x\ \Vert\ pad_{x}\Vert\ x')$. 
 
-原理是: 初期迭代结构的杂凑函数没有"[输出变换](MD%20结构.md)"这一步骤, 而直接将最后一轮迭代函数 $f$ 输出的链接变量(状态) $CV_{n-1}$ 作为杂凑函数最终输出. 敌手可以从这一状态继续向后迭代, 从而将更多消息附加在原消息后.
+原理是: 初期迭代结构的杂凑函数没有"[输出变换](md-hash.md)"这一步骤, 而直接将最后一轮迭代函数 $f$ 输出的链接变量(状态) $CV_{n-1}$ 作为杂凑函数最终输出. 敌手可以从这一状态继续向后迭代, 从而将更多消息附加在原消息后.
 
 即, 将原本 $IV,\ CV_{1},\ \dots,\ CV_{n-1}$ 迭代, 扩展为 $IV,\ CV_{1},\ \dots,\ CV_{n-1},\ CV_{1}',\ \dots,\ CV_{m}'$ 后面的状态都是新增的, 输入为敌手附加的消息, 其他消息不变.
 
@@ -8,7 +8,7 @@
 
 ...
 
-$\mathrm{hash}(k_{1}\Vert M\Vert k_{2})$, 类似 [HMAC](../消息认证码/HMAC.md)
+$\mathrm{hash}(k_{1}\Vert M\Vert k_{2})$, 类似 [HMAC](../MAC/HMAC.md)
 
 ## 参考
 > 长度填充攻击原理及实现 [hash length extension attack - Github](https://github.com/iagox86/hash_extender)

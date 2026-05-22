@@ -17,7 +17,7 @@ Schnorr 签名选择了模 $\varphi(p)=p-1$ 的一个循环子群 $\mathbb{Z}_{q
 ### 签名
 
 1. 选随机数 $k$, 计算 $r=g^{k}\pmod p$
-2. $e=Hash(m\ \Vert\ r)$, m 为待加密消息. 添加后置 $r$ 可以防止 [长度扩展攻击](../../msg-digests/MD%20结构/长度扩展攻击.md).
+2. $e=Hash(m\ \Vert\ r)$, m 为待加密消息. 添加后置 $r$ 可以防止 [length-extension-attack](../../msg-digests/merkel-damgard/length-extension-attack.md).
 3. $s=k+xe\pmod q$
 
 签名为 $(e,\ s)$

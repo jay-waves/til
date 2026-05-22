@@ -1,5 +1,5 @@
 填充在密码学中有广泛应用:
-- 迭代散列函数需要结尾填充, 防御[长度扩展攻击](../msg-digests/MD%20结构/长度扩展攻击.md)
+- 迭代散列函数需要结尾填充, 防御[length-extension-attack](../msg-digests/merkel-damgard/length-extension-attack.md)
 - 分组密码及其工作模式需要填充, 使数据和分组长度整数倍对齐.
 - 公钥密码需要随机化填充, 以达到 CPA 安全性. 如 RSA 中常见的 [PKCS#1](../public-key-crypto/RSA/PKCS1.md) v1.5 标准和 OAEP 标准.
 

@@ -86,14 +86,16 @@ type slice struct {
 
 ### Map 
 
-字典类型属于引用类型, 并且字典的键类型只能是值类型.
+字典类型属于引用类型, 并且字典的键类型只能是值类型(不可变类型).
 
 ```go
-mmap := map[string]int{
+map := map[string]int{
 	"one": 1,
 	"two": 2,
 }
 ```
+
+内置 map 不是并发安全的. 并且需要初始化, 默认是 `nil`
 
 ### String
 
@@ -154,7 +156,7 @@ type Notifier interface {
 }
 ```
 
-### 指针
+### Pointer 
 
 获取地址 `&var`. 不可取地址类型:
 - 常量
@@ -164,6 +166,13 @@ type Notifier interface {
 引用内容 `*var`
 
 空指针为 `nil`
+
+### Interface 
+
+```go
+type any = interface{}
+
+```
 
 ### 类型判断
 
@@ -179,7 +188,7 @@ type MyString = string // 别名
 type MyString string // 类型重定义, 两者是不同类型
 ```
 
-## 变量初始化
+### 数据初始化
 
 未指定初始值时, 变量初始化为*零值*:
 
@@ -247,8 +256,6 @@ func MyFunc( [parameter list] ) [return_types | (return_type1, return_type2, ...
    函数体
 }
 ```
-
-
 
 ### select 
 

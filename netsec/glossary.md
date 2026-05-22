@@ -151,7 +151,7 @@ Factorization, 因数分解. 通常指 RSA 基于的大整数分解困难问题.
 
 ### HMAC
 
-基于密码学杂凑函数的消息认证码 (MAC), 是消息认证码最常见形式, 见 [HMAC](cryptography/msg-digests/消息认证码/HMAC.md)
+基于密码学杂凑函数的消息认证码 (MAC), 是消息认证码最常见形式, 见 [HMAC](cryptography/msg-digests/MAC/HMAC.md)
 
 ---
 
@@ -207,11 +207,11 @@ Key Management Service, 密钥管理服务, 用于管理加密密钥的创建和
 
 ### MAC
 
-Message Authentication Code, 消息认证码, 用于验证消息的完整性和来源真实性, 见 [MAC](cryptography/msg-digests/消息认证码/MAC.md)
+Message Authentication Code, 消息认证码, 用于验证消息的完整性和来源真实性, 见 [MAC](cryptography/msg-digests/MAC/MAC.md)
 
 ### MD5
 
-Message Digest Algorithm 5, 广泛使用的散列函数, 由于安全问题已被淘汰, 见 [MD5](cryptography/msg-digests/MD%20结构/MD5.md)
+Message Digest Algorithm 5, 广泛使用的散列函数, 由于安全问题已被淘汰, 见 [MD5](cryptography/msg-digests/merkel-damgard/MD5.md)
 
 ### MITM
 

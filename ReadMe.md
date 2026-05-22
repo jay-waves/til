@@ -85,7 +85,9 @@
 	* 文泉驿等宽微米黑
 	* 等距更纱黑体 SC
 	* 霞鹜文楷
-- 代码字体：FiraMono Nerd Font Mono
+- 代码字体：
+	- FiraMono Nerd Font Mono
+	- MonaSpace Argon
 - Obsidian 主题：
 	* Github Theme
 	* Things Theme 
@@ -102,7 +104,7 @@
 - 图片应在 `[]` 括号中列明来源，尽量自行绘制，并压缩空间。通常情况下，有版权的图片会放在远程 OSS 中，不会直接在 `./attach` 中分发。
 - 仓库整体使用 [CC-BY](license.md) 许可证，部分摘录文章或原创文章使用不同版权许可的，在文章开头标明
 - 引用人名或组织名：@google、@github/jay-waves
-- **文内引用学术论文时，简写为 `@yu2021`，其中 `yu` 为作者姓，`2021` 为发表年份。 详细信息应记录在 `./References.md` 中，不强制要求脚注。**
+- **文内引用学术论文时，简写为 `@yu2021`，其中 `yu` 为作者姓，`2021` 为发表年份。 详细信息应记录在 `./references.md` 中，不强制要求脚注。**
 - 如果文内引用需要其他元信息，统一写在括号里：`[ITU-T x.800, 2002, p22]`
 
 ### Math
