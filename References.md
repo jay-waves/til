@@ -15,11 +15,6 @@
 * #manual (api, docs, tutorial...) how to 
 
 
-
-
-
-
-
 ## ai & ds
 
 the Little Book of Deep Learning. #book 
@@ -60,6 +55,8 @@ Linux Device Drivers -- Jonathan Corbet -- 3rd #book
 #### data-structure 
 
 fan2014 -- Cuckoo Filter: Practically Better Than Bloom -- CoNEXT #paper
+
+michael1996 -- Non-Blokcing and Blocking Concurrent Queue Algorithms
 
 #### software-security 
 

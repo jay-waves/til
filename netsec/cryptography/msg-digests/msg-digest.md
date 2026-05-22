@@ -20,9 +20,9 @@ code:
 | 输入长度可变                |                                                            |
 | 输出长度固定                |                                                            |
 | 效率高                      | 性能高. 总体复杂性较高, 但单个组件实现简易           |
-| [单向性 (抗原像攻击)](生日攻击.md)         | 给定 $\mathrm{hash}(X)$, 找到原像 $X$ 计算上不可行                  |
-| [弱碰撞抗性 (抗第二原像攻击)](生日攻击.md) | 任意给定 $X$, 找到 $Y$, 使得 $\mathrm{hash}(X)=\mathrm{hash}(Y)$ 计算上不可行 |
-| [强碰撞抗性](生日攻击.md)   | 找出任意 $(X,Y)$, $X\neq Y$, 使得 $\mathrm{hash}(X)=\mathrm{hash}(Y)$ 在计算上不可行       |
+| [单向性 (抗原像攻击)](birthday-attack.md)         | 给定 $\mathrm{hash}(X)$, 找到原像 $X$ 计算上不可行                  |
+| [弱碰撞抗性 (抗第二原像攻击)](birthday-attack.md) | 任意给定 $X$, 找到 $Y$, 使得 $\mathrm{hash}(X)=\mathrm{hash}(Y)$ 计算上不可行 |
+| [强碰撞抗性](birthday-attack.md)   | 找出任意 $(X,Y)$, $X\neq Y$, 使得 $\mathrm{hash}(X)=\mathrm{hash}(Y)$ 在计算上不可行       |
 | 伪随机性                    |  任意给定 $X$, 输出 $\mathrm{hash}(X)$ 是值域上任一值的可能性相同.                                                        |
 
 ![|350](/attach/密码学_哈希三种攻击类型.avif)  
@@ -31,7 +31,7 @@ code:
 
 1. 便于存储和管理, 有一致性和兼容性
 2. 固定长度安全性较高. 如果输出长度可变, 一是敌手可能通过输出长度预测输入; 二是敌手会针对较短的输出进行攻击, 增加了碰撞攻击威胁. 统一长度, 也便于对其安全性进行分析.
-3. 传统杂凑函数使用 [Merkel-Damgard 结构](MD%20结构/MD%20结构.md), 每轮压缩函数 $f$ 是定长的, 方便进行迭代.
+3. 传统杂凑函数使用 [Merkel-Damgard 结构](merkel-damgard/md-hash.md), 每轮压缩函数 $f$ 是定长的, 方便进行迭代.
 
 事实上, 基于海绵结构的SHA3可实现输出长度的改变, 但那是另一种密码学原语: [Extendable Output Function](https://crypto.stackexchange.com/questions/54248/what-is-an-extendable-output-function). 要改变输出长度, 还可以使用[不同链接模式](../block-ciphers/modes-of-operation.md).
 
@@ -49,8 +49,8 @@ code:
 | **[SHA1](SHA-1.md)**        | $<2^{64}$  | 512                  | 32       | 160                  | Merkle-Damgard 迭代结构, 已淘汰         |
 | **SHA2-256**                | $<2^{64}$  | 512                  | 32       | 256                  | SHA2 套件                               |
 | SHA2-384, 512               | $<2^{128}$ | 1024                 | 64       | 384, 512             | SHA2 套件                               |
-| **[MD5](MD%20结构/MD5.md)**         | 无限制     | 512                  | 32       | 128                  | Merkle-Damgard 迭代结构, 已淘汰         |
-| **[SM3](MD%20结构/SM3.md)**         | $<2^{64}$  | 512                  | 32       | 256                  | 仿 SHA256, 中国国密标准                 |
+| **[MD5](merkel-damgard/MD5.md)**         | 无限制     | 512                  | 32       | 128                  | Merkle-Damgard 迭代结构, 已淘汰         |
+| **[SM3](merkel-damgard/SM3.md)**         | $<2^{64}$  | 512                  | 32       | 256                  | 仿 SHA256, 中国国密标准                 |
 | SHA3-224, **256**, 384, 512 | 无限制     | 1152, 1088, 832, 576 | 64       | 224, 256, 384, 512   | Sponge 结构, 安全性推荐.                |
 | BLAKE2                      | 无限制     | 512 或 1024          | 32 或 64 | 可变 (常用 256, 512) |HAIFA 架构和 ChaCha/Salsa20 流加密函数.                                         |
 | BLAKE3                      | 无限制     | 512                  | 32 或 64 | 可变 (常用 256)      | 额外引入树形哈希 (类似 Merkle Tree), 支持并行计算加速 |
@@ -62,7 +62,7 @@ code:
 
 ### 1 基于经典迭代结构
 
-基于[迭代型散列函数结构](MD%20结构/MD%20结构.md), 将数据分为大小固定的块, 分块进行处理压缩.
+基于[迭代型散列函数结构](merkel-damgard/md-hash.md), 将数据分为大小固定的块, 分块进行处理压缩.
 
 SHA1, MD5 是第一代安全散列算法的代表, 基于 Merkle-Damgard 迭代结构. 但这两个算法现在已不再安全.
 
@@ -90,7 +90,7 @@ Wide Pipe Hash
 
 ### 6 基于全域哈希
 
-[UMAC](消息认证码/UMAC.md)
+[UMAC](MAC/UMAC.md)
 
 基于有限域的数学运算. 普通迭代结构是通过伪随机置换来不断更新内部状态.
 
