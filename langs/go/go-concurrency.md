@@ -167,9 +167,24 @@ ctx, cancel = context.WithTimeout(ctx, 2 * time.Second)
 defer cancel()
 
 ctx = contxt.WithValue(ctx, "UserID", 42) // 放一些配置或不可变值
+
+go XXX(ctx) // propagates 
+
+func XXX(ctx context.Context) {
+	for {
+		select {
+		case <- ctx.Done(): // parent cancel XXX
+			return
+		default:
+			// do something 
+		}
+	}
+}
+
+cancel() // cancel everything. it's safe to cancel Context twice
 ```
 
-`WithCancel` 构造如下结构，`Done()` 返回后，取消会沿着子 Context 链传播。用于手动取消。
+`WithCancel` 构造如下结构。用户手动调用 `cancel()` 时，先关闭自身的 `Done()` channel，然后调用所有子 Context 的 `cancel()` 。`map[]` 的并发安全用一个 `Mutex` 控制。
 ```go
 // context.WithCancel return:
 type cancelCtx struct {
@@ -200,22 +215,5 @@ type timerCtx struct {
 }
 ```
 
-用 `Context` 取消 goroutine：
-
-```go
-ctx, cancel := context.WithCancel(context.Background())
-defer cancel()
-
-go func() {
-	for {
-		select {
-		case <- ctx.Done():
-			return 
-		default:
-			// do something
-		}
-	}
-}()
-
-// cancel() here 
-```
+> C++ 中不建议使用这种 Context 结构，即 `struct Context { shared_ptr<Context> parent, map<string, std::any>}` ，明显有循环引用风险。
+> Go GC mark and sweep 算法可以处理非活跃的循环引用，但是 C++ shared_ptr 没有这个功能。
