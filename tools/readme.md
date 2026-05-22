@@ -18,7 +18,7 @@ revised: 2026-01-27
 * PDF 阅读与编辑：SumatraPDF、Adobe Acrobat DC
 * EPUB 阅读：Readest（Jane Reader 分支）
 * 正式笔记：Obsidian 
-* 简单笔记：NVim
+* 简单笔记：NVim / Zed
 * 代码：VSCode 
 * 流程与框架图绘制：DrawIO、PPT、reveal.js
 * 终端：Windows Terminal，Alacritty（Linux 平台）
@@ -90,7 +90,7 @@ revised: 2026-01-27
 
 <br>
 
-Rust 神：
+Rewrite-in-Rust：
 * duf dust 磁盘空间查询
 * bat 重写了 cat 
 * ripgrep 重写了 grep 
