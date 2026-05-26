@@ -118,43 +118,7 @@ result := buffer.Bytes()
 
 ### Channel 
 
-通道类型属于引用类型, 并且其本身是并发安全的. 通道用于传递数据, 在两个 goroutine 间通信.
-
-声明一个通道: 
-- `ch := make(chan int)` 默认不带缓冲区, 必须同步收发.
-- `ch := make(chan int, 100)` 设定缓冲区大小, 允许异步. 超出缓冲区会阻塞.
-
-使用通道: 对于无缓冲通道, 接收方将阻塞同步, 直至发送动作完成.
-
-```go
-ch <- v    // 把 v 复制到通道 ch, 原 v 仍可用.
-v := <-ch  // 从 ch 移动出数据, ch 中数据被销毁.
-close(ch) //关闭通道
-```
-
-缓冲区通道: The $kth$ receive on a channel with capacity $C$ is synchronized before the completion of the $(k+C)th$ send from that channel completes.
-
-```go
-var limit = make(chn int, 3)
-func main() {
-	for _,w := range work {
-		go func(w func()){
-			limit <- 1
-			w()
-			<-limit
-		}(w)
-	}
-	select{}
-}
-```
-
-单向通道: 主要用于参数约束
-
-```go
-type Notifier interface {
-	SendInt(ch chan<- int)
-}
-```
+详见 [go-channel](go-channel.md)
 
 ### Pointer 
 

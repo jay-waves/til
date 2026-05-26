@@ -110,10 +110,39 @@
 ### Math
 
 - 重要的*定理、引理、定义*使用标题格式，并用数字编号 `x.m.n` 便于整理和引用。
-- 数学证明中，每行（段内换行）要不是完整的因果关系 “因为……所以……”，要不是上一行的直接推论 “于是……” 、“从而……” “那么……”
-- 数学证明中，用 *证明* 和 $\square$ 标识开始与结束。
+- 数学证明中，用 $\Proof{}$ 和 $\square$ 标识开始与结束。
 - 数学公式符号 `$$` 和左右文字间隔一个半角空格，避免渲染问题。
-- **需要导入 `./src/mathjax-preamble.sty`，里面有自定义的 Mathjax 数学样式**。数学公式不保证在非 Obsidian 平台正常渲染。
+- 为了增强 Markdown 的数学输入，请导入 `./src/mathjax-preamble.sty` 中自定义的数学样式。
+
+使用 [Lean 风格](https://lean-lang.org/) 关键词和陈述方式。让所有命题可引用。
+
+```
+have <name> : <conclusion> 
+	from: <previous propositions>
+	by: <definition /theorem /rule / reasons>
+	if: <side conditions>
+```
+
+其他关键字动作:
+
+| 关键字动作        | 用途                           |     |
+| ----------------- | ------------------------------ | --- |
+| therorem, example | 写命题                         |     |
+| variable          | 变量                           |     |
+| have              | 假设或中间结论                 |     |
+| show              | 证明目标                       |     |
+| intro             | 引入假设、任取对象             |     |
+| exact             | 目标已被某个结论完成           |     |
+| apply             | 使用一个证明                   |     |
+| rw                | 等式重写                       |     |
+| simp              | 化简                           |     |
+| constructor       | 拆分 `and` ，分别证明左右部分  |     |
+| left, right       | 选择  `or` 的一边              |     |
+| use               | 引入存在对象                   |     |
+| cases             | 分类讨论                       |     |
+| by_{}contra      | 反证                           |     |
+| induction         | 归纳                           |     |
+| suffices          | 改证一个充分条件。“只需证明……” |     |
 
 ### Attachments 
 
