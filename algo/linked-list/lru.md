@@ -30,3 +30,22 @@ private:
     unordered_map<Key, typename list<Key>::iterator> pos_;
 };
 ```
+
+```ascii
+LRU Cache = Hash Map + Doubly Linked List
+
+Hash Map:
++-----+----------------+
+| key | node pointer   |
++-----+----------------+
+| A   | --------------+|
+| B   | ----------+   ||
+| C   | ------+   |   ||
+| D   | --+   |   |   ||
++-----+--|---|---|---|----------------+
+         |   |   |   |                |
+         v   v   v   v                |
+      +-----+ <-> +-----+ <-> +-----+ <-> +-----+
+HEAD  |  D  |     |  C  |     |  A  |     |  B  |  TAIL
+MRU   +-----+     +-----+     +-----+     +-----+  LRU
+```

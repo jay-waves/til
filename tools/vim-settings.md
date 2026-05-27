@@ -8,7 +8,6 @@ set tabstop=4                                   " tab 宽度
 set shiftwidth=4                                " 缩进宽度
 "set expandtab                                  " 将tab解释为空格
 set cursorline                                  " 高亮当前行
-syntax on
 set smartindent  
 set showcmd
 set nowrap                                        " 自动换行
@@ -58,37 +57,6 @@ nmap k gk
 colorscheme github_dark_tritanopia
 let g:airline_theme='github_dark_tritanopia'
 
-" 设置高亮组背景透明 
-" - Normal 普通文本
-" - Comment 注释文本
-" - Constant 常量
-" - Identifier 标识符
-" - Statemnet 控制流关键词, if, for 等
-" - Error 显示错误文本
-" - PreProc 预处理关键词, define 等
-" - Type 数据类型关键词
-" - Special 特殊字符, 转义字符
-" - Underlined 下划线文本, 如链接
-" - LineNr 行号
-" - CursorLine 当前行高亮提示
-" - CusorColumn 当前列高亮提示
-" - Visual 视觉模式选择
-" - SignColumn 行号与文本之间的列, 如显示断点
-" - StatusLine 状态栏
-" - EndOfBuffer 文件末尾空行符号
-" - NoneText 非文本字符, 如空行符号和行尾符号
-highlight Normal guibg=NONE ctermbg=NONE
-highlight NonText guibg=NONE ctermbg=NONE
-highlight LineNr guibg=NONE ctermbg=NONE
-highlight SignColumn guibg=NONE ctermbg=NONE
-highlight EndOfBuffer guibg=NONE ctermbg=NONE
-" 设置高亮关键词为粗体
-" - cterm 终端效果
-" - gui 独立 GUI 软件效果
-" highlight Identifier cterm=bold gui=bold
-highlight Type cterm=bold gui=bold
-highlight Statement cterm=bold gui=bold
-
 " set background=dark
 set termguicolors
 
@@ -101,16 +69,34 @@ let g:airline_section_c = ''                    " 禁用文件名
 "let g:airline_left_sep = '|'
 "let g:airline_right_sep = '|'
 
-" activate syntastic
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-" let g:syntastic_python_checkers = ['mypy']
-
 " font, not for terminal
 " set guifont=等距更纱黑体\ SC:h13
 ```
+
+基于 Vim Syntax 的内置高亮：
+
+```vim
+"syntax on
+
+" 设置高亮组背景透明 
+highlight Normal guibg=NONE ctermbg=NONE
+highlight NonText guibg=NONE ctermbg=NONE
+highlight LineNr guibg=NONE ctermbg=NONE
+highlight SignColumn guibg=NONE ctermbg=NONE
+highlight EndOfBuffer guibg=NONE ctermbg=NONE
+" 设置高亮关键词为粗体
+" - cterm 终端效果
+" - gui 独立 GUI 软件效果
+" highlight Identifier cterm=bold gui=bold
+highlight Type cterm=bold gui=bold
+highlight Statement cterm=bold gui=bold
+```
+
+基于 Nvim Treesitter 的高亮：
+* 安装命令行 `tree-sitter`
+* 安装插件 `nvim-treesitter/nvim-treesitter` 
+* 配置 `init.lua` 并执行 `:TSUpdate`
+
 
 ### nvim on wsl debian 
 

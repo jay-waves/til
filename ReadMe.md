@@ -71,7 +71,7 @@
 - Markdown 链接使用 `[]()` 形式，关闭 wikilink.
 - 允许的扩展 Markdown 语法：Embedded HTML、Table、Mathjax、Checkbox、Footnote
 - 允许的 Obsidian Markdown 功能：Tag、Properties（Yaml Front Matter）、Mermaid
-
+- 需要高级样式（复杂表格、图片宽度等），优先使用嵌入 html
 
 ### Naming
 
@@ -146,6 +146,7 @@ have <name> : <conclusion>
 
 ### Attachments 
 
-* 重要的图片，放在 `./attach` 中。
-* 粗糙、可能侵权的图片，放于阿里云 OSS 中。
-* 
+* 优先选择 ASCII 图，非必要不引入
+* 粗糙、可能侵权、不必要的图片，都放在[阿里云 OSS](oss.jay-waves.cn) 中
+* 重要和高质量的图片，放在 `./attach` 中引用。
+

@@ -41,11 +41,11 @@ most significant bit/byte, 最大影响位.
 
 #### Little-endian
 
-小端字节序, 见 [端序](端序.md)
+小端字节序, 见 [endianness](endianness.md)
 
 #### Big-endian
 
-大端字节序. 见 [端序](端序.md)
+大端字节序. 见 [endianness](endianness.md)
 
 #### CTI 
 

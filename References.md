@@ -58,6 +58,8 @@ fan2014 -- Cuckoo Filter: Practically Better Than Bloom -- CoNEXT #paper
 
 michael1996 -- Non-Blokcing and Blocking Concurrent Queue Algorithms
 
+wang2025 -- MAPLe, A B+Tree with Multi-Access Parallel Leaves to Improve Access Concurrency and Locality
+
 #### software-security 
 
 lamport1978 -- 
