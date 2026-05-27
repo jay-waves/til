@@ -112,9 +112,21 @@ syscall()
 
 ## 进程的关系
 
-* `pid` 进程 PID
-* `tgid` 线程组 TGID，进程无线程时，PID 和 TGID 相等。
-* （略）进程可合并入进程组，进程组可合并入会话（session）
+* `pid` 进程 PID，也叫 TID。多指线程，对应某个 `task_struct`。
+* `tgid` 线程组 TGID。多指进程。
+* `ppid` 父进程 PPID。
+* `pgid` 进程组 PGID。多用于 Shell Job Control
+* `sid` 会话 SID。多指某个 终端/用户登陆 的单次会话。
+
+当进程创建多个线程时，多个线程的 `pid` 各不相同，而 `tgid` 相同，都继承自初始线程的 `pid` 。
+在用户态调用 `getpid()` 实际返回了 `tgid`，调用 `gettid()` 返回 `pid` 。`ppid` 默认指向 
+`fork()` 父进程，当父进程退出后，子进程不会退出，而是将 `ppid` 指向父进程的父进程，其他复杂行为略。
+用户态调用 `getppid()` 返回 `tgid` 而不是实际的父线程 `pid`，但内核里复杂一些。
+
+多个进程可以合并为进程组，有 `pgid`；多个进程组归入一个 Session 中，有 `sid (session id)` 。
+
+引入 PID Namespace 后，PID/TGID/SID/PGID 都只在命名空间内保持唯一，计算更复杂了。
+
 
 ```c
 // pid_namespace.h
@@ -141,3 +153,6 @@ struct upid {
 	struct hlist_node pid_chain;
 };
 ```
+
+> 这种混乱是因为历史进程控制机制叠在了一起：fork/exec/wait 一套、job control/Ctrl-C/pipeline 一套、
+> task/thread 一套、namespace/container 一套。

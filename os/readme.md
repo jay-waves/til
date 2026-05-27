@@ -56,3 +56,5 @@
 *Operating System Concept*. Abraham Silberschatz.
 
 The Kernel in the mind 
+
+Professional Linux Kernel Architecture. Wolfgang Mauerer. 

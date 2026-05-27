@@ -83,7 +83,7 @@ static inline void spin(volatile uint32_t count) {
 gpio_set_mode(pinA3, GPIO_OUTPUT)
 ```
 
-STM32 的 GPIO 口有如下控制寄存器:
+STM32 的 GPIO 口有如下控制寄存器:  
 - MODER, 模式寄存器. 控制: 输入 (00), 输出 (01), 复用 (10), 模拟 (11)
 - OTYPER, 输出类型寄存器: push-pull (0), open-drain (1)
 - OSPEEDR, 输出速度寄存器
@@ -236,7 +236,7 @@ if (timer_expired(&timer, period, s_ticks)) {
 
 ## 串口调试
 
-uart 知识详见 [外设与总线](外设与总线.md)
+uart 知识详见 [bus](bus.md)
 
 ```c
 struct uart {
