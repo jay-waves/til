@@ -67,6 +67,9 @@ VeryCrypt 硬盘加密
 * 轻量沙盒：Sandboxie Pro 
 * 虚拟机： WSL 
 
+## Nvim 使用
+
+
 
 ## 其他
 

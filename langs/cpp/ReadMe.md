@@ -34,6 +34,25 @@ C++23
 - `print`
 - `stacktrace`
 
+## Design Pattern 
+
+这里列明 C++ 最常见的使用模式、最佳实践、手搓考点：
+* `string` 
+* `vector` 
+* [`singleton`](oop/design-patterns/creational-patterns.md)
+* [p impl](oop/pimpl.md)
+* [lru cache](../../algo/linked-list/lru.md)
+* `hash table` 
+* raii, [`shared_ptr`, `unique_ptr`](memory-model/smart-pointer.md)
+* [`memcpy`, `memmove`](../../os/libc/mem-copy.md)
+* memory allocator: arena, pool, slab allocator
+* wal (append-only logs) 
+* event loop
+* [thread pool](../../algo/concurrency/thread-pool-work-stealing.md)
+* double buffering, rcu
+* ring buffer, lock-free queue, hazard pointers 
+
+
 ## Third-Party
 
 操作系统相关跨平台库:

@@ -97,6 +97,7 @@
 - 多米手写体, 品如手写体, 上首鸿志手写体, 依赖于UI软件显示效果.
 - Miscrosoft YaHei Mono 
 - 方正屏显雅宋简体
+- 
 - 悠哉字体
 - 文泉驿微米黑
 - 文泉驿正黑, 等宽正黑, 点阵正黑
@@ -106,3 +107,6 @@
 - [SarasaMono](https://github.com/be5invis/Sarasa-Gothic) 等距更纱黑体, **特色为保持全角字符为半角字符的两倍宽度**.
 - Maple Mono NF CN. 连体等宽字体
 - Cambria (微软的公式字体)
+- 手写体
+	- [辰宇落雁體](http://github.com/Chenyu-otf/chenyuluoyan_thin)
+	- 荷塘月色手写体

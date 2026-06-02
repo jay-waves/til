@@ -112,4 +112,4 @@ flowchart TD
 
 每个进程的最大 `fd` 数量有限制, 可以用 `ulimit -n` 查看, 或者查看 `FD_SETSIZE`. 当 `fd` 耗尽时, 相关系统调用会返回错误码 `errno = EMFILE` 或 `errno = ENFILE`. 
 
-详见 [linux VFS](../fs/linux%20VFS.md). `fd` 数目确实不够时, 推荐用 [poll/epoll](poll.md) 替代 select.
+详见 [linux-vfs](../fs/linux-vfs.md). `fd` 数目确实不够时, 推荐用 [poll/epoll](poll.md) 替代 select.

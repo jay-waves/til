@@ -1,15 +1,3 @@
-linux 虚拟文件系统 (VFS, virtual file system) 是接口层, 将 [linux 文件系统](linux%20文件系统.md)具体实现与操作系统服务剥离开. VFS 表示为统一的**树形**目录结构, 新文件系统通过**挂载 (mount)** 的方式装载到 VFS 的 `/mnt` 目录中. 
-
-VFS 将不同 I/O 对象的接口统一, 都通过 `struct file` 与其内部的 `struct file_operations` 虚函数表表达. VFS 负责将路径解析为对应的内部对象.
-VFS 支持的文件类型包括:
-- file (f), directory (d), symlink (l) --> fs 
-- executable (x)
-- empty (e)
-- socket (s)
-- pipe (p) 
-- char-dev (c): 字符设备, 一次性读取
-- block-dev (b): 块设备, 支持随机存取
-
 
 ## Linux 文件系统调用
 
@@ -30,6 +18,7 @@ struct file_operations {
 	ssize_t (*write) (struct file*, ...);
 	...
 	__poll_t (*poll) (struct file*, ...);
+	int (*ioctl) (struct inode*, struct file*, unsigned int, unsigned long); 
 	long (*unlocked_ioctl) (struct file*, ...);
 	int (*mmap) (struct file*, struct vm_area_struct*);
 	int (*open) (struct inode *, struct file *);
@@ -104,37 +93,6 @@ open("test", O_CREAT, 10 705);
 open("test", O_CREAT, S_IRWXU | S_IROTH | S_IXOTH | S_ISUID);
 ```
 
-#### 文件描述符
-
-文件描述符数量有上限 `RLIMIT_NOFILE` 限制. 系统能分配的最大文件描述符数由  `sizeof(int)` 限制, 记录在 `/pro/sys/fs/file-max`; 单个进程的最大文件描述符数记录在 `/proc/sys/fs/nr_open`.
-
-`Too may open files` 错误有两种:
-- `EMFILE` per-process limit : 可能是超上限, 也可能是资源泄漏 (没有关闭)
-- `ENFILE` system-wide limit 
-
-使用 `lsof -p <pid>` 查看进程的文件描述符, 用 `ulimit` 提升进程 FD 限制. 当然, 更推荐的方法, 是使用 IO 复用.
-
-```cpp
-class FD {
-	int fd_;
-
-public:
-	explicit FD(int fd = -1) noexcept : fd_(fd) {}
-	
-	// 关闭拷贝语义
-	// 允许移动语义
-	
-	~FD() { reset(); }
-	void reset(int newfd = -1) noexcept {
-		if (fd_ != -1)
-			::close(fd_);
-		fd_ = newfd;
-	}
-	int fd() const noexcept { return fd_; }
-	explicit operator bool() const noexcept { return fd_ != -1; }
-}
-```
-
 ### read/write 
 
 ```c
@@ -143,7 +101,9 @@ int read(int fd, const void *buf, size_t length);
 int write(int fd, const void *buf, size_t length);
 ```
 
-## lseek 
+从 Linux3.9+ 开始，读写路径逐渐切换到 ...
+
+### lseek 
 
 对于随机文件, 可以在随机指定位置读写. 
 
@@ -163,34 +123,25 @@ int lssek(int fd, offset_t offset, int whence);
 file_len = lseek(fd, 0, SEEK_END);
 ```
 
-### gendisk
+### mmap 
 
 ```c
-struct hd_struct {
-    long start_sect;
-    long nr_sects;
-};
-
-struct gendisk {
-    int major;               /* major number of driver */
-    const char *major_name;  /* name of major driver */
-    int minor_shift;         /* number of times minor is shifted to
-                                get real minor */
-    int max_p;               /* maximum partitions per device */
-    int max_nr;              /* maximum number of real devices */
-
-    void (*init)(struct gendisk *); 
-                             /* Initialization called before we 
-                                do our thing */
-    struct hd_struct *part;  /* partition table */
-    int *sizes;              /* device size in blocks, copied to 
-                                blk_size[] */
-    int nr_real;             /* number of real devices */
-
-    void *real_devices;      /* internal use */
-    struct gendisk *next;
-};
+mmap(...)
 ```
+
+用户空间直接映射 PageCache，不再需要从内核内存拷贝到用户内存。
+
+### poll 
+
+详见 [os/io/poll](../io/poll.md)
+
+### ioctl 
+
+详见 [os/io/drivers/ioctl](../io/drivers/ioctl.md)
+
+### splice
+
+详见 [os/io/splice](../io/splice.md)
 
 ## STDC 文件系统调用
 

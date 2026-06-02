@@ -1,5 +1,3 @@
-
-
 UBI (Unsorted Block Images) 是用于裸 Flash 的文件系统管理层, 比较适合嵌入式设备. 
 
 与 YAFFS2 和 JFFS2 相比, 它更适合大容量 NAND Flash. UBIFS 也是 [LFS](unilfs.md) 结构

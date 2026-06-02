@@ -8,14 +8,14 @@
 | compilers   | compilers               | 编译原理     |
 | db          | databases               | 数据库       |
 | distributed | distributed system      | 分布式系统   |
-| econ        | economics               | 经济学       |
-|             | graphic                 | 计算机图形学 |
+| econ        | economics               | 经济学      |
+|             | graphic                 | 计算机图形   |
 | langs       | languages               | 编程语言     |
-| math        | mathematica             | 数学         |
+| math        | mathematica             | 数学        |
 | networks    | networks                | 网络通信     |
 | netsec      | security                | 网络安全     |
 | os          | operating system        | 操作系统     |
-| robotics    |                         | 机器人系统   |
+| robotics    |                         | 机器人      |
 | tools       | devtool                 | 开发工具     |
 | attach      | attachments             | 图片附件     |
 | appx        | appendices              | 附录         |

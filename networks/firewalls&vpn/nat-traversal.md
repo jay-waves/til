@@ -27,7 +27,6 @@ rathole 协议, websocket 协议, webRTC
 ### WebRTC
 
 
-
 WebRTC 建立连接时, 首先通过STUN (Session Traversal Utilities for NAT) 服务器直接连接客户端, 如果 NAT 和 防火墙 阻止了直接连接, 就会使用 TURN (Traversal Using Relays around NAT) 服务器 来穿透 NAT, 完成中继通信.
 
 即内网穿透失败后, 两者不能之间建立点对点连接, 就会通过 TURN 中继服务器完成通信.
