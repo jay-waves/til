@@ -2,7 +2,7 @@
 | --------- | ---------------- | ---------------------------------- |
 | prob      | 概率论与随机过程 | probability and Stochastic Process |
 | algebra   | 抽象代数         | Group, Ring and Field              |
-| toc       |                  | 计算理论 (理论计算机)              |
+| toc       | 计算理论 (理论计算机)                  |              |
 | numth     | 数论             | Number Theory                      |
 | calculus  | 微积分           | Calculus                           |
 | linalg    | 线性代数         | Linear Algebra, Vector Calculus    |

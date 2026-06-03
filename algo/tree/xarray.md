@@ -31,52 +31,7 @@ struct xarray {
 }
 ```
 
-```ascii
-XArray
-+------------------+
-| xa_flags         |
-| xa_lock          |
-| xa_head ---------+-----------------------------+
-+------------------+                             |
-                                                 v
-                                      +----------------------+
-                                      | xa_node              |
-                                      | shift = 12           |
-                                      | offset = 0           |
-                                      | count                |
-                                      | slots[64]            |
-                                      +----------+-----------+
-                                                 |
-              index bits                         |
-              [ 17..12 ] choose slot             |
-                                                 |
-        +----------------+-----------------------+----------------+
-        |                |                       |                |
-        v                v                       v                v
-   slot 0           slot 1                  slot 2           ...
-   empty            internal node           internal node
-                    shift = 6               shift = 6
-                    slots[64]               slots[64]
-                       |                       |
-                       | index bits            | index bits
-                       | [11..6]               | [11..6]
-                       v                       v
-                  +---------+             +---------+
-                  | xa_node |             | xa_node |
-                  | shift=6 |             | shift=6 |
-                  +----+----+             +----+----+
-                       |                       |
-       index bits      |                       |
-       [5..0] choose final slot                |
-                       v
-              +----------------+
-              | slots[64]      |
-              +---+---+---+----+
-                  |   |   |
-                  |   |   +--> value pointer / entry
-                  |   +------> value pointer / entry
-                  +----------> empty / sibling / retry / tagged entry
-```
+![xarray](../../attach/ascii/xarray.md)
 
 `xa_node->slots` 类型是 `void**`，它能存储多种类型。要求对齐 4B，因此最低两位存储类型标签。
 * Pointer Entry 。指针的最低两位是 `0b00`

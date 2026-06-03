@@ -1,3 +1,20 @@
+## TOC 
+
+| toc        | en                 | zh                    |
+| ---------- | ------------------ | --------------------- |
+| fs         | file system        |                       |
+| io         |                    |                       |
+| io/drivers |                    | 硬件驱动              |
+| io/ipc     |                    | 进程间通信            |
+| libc       |                    |                       |
+| linux      |                    | 和 Linux 强相关的内容 |
+| windows    |                    | 和 Windows 强相关内容 |
+| mem        | memory managemnt   | 内存管理              |
+| proc       | process mamagement | 进程管理              |
+| shell      |                    | 脚本任务控制          |
+| vm         | virtual machine    | 虚拟化                |
+| tracing    |                    | 审计、追踪、调试                      |
+
 ## 操作系统的特征
 
 **操作系统是**:   

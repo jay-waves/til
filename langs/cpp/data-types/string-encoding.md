@@ -1,4 +1,4 @@
-背景知识详见 [字符编码](../../../os/sss/字符编码.md).
+背景知识详见 [char-encoding](../../../hw/char-encoding.md).
 
 ## c++20 utf-8 support
 
@@ -41,7 +41,7 @@ const char *s = "A"; // 字符串字面量, s 指向 {'A', '\0'}
 
 ### 命令行工具
 
-`iconv` 更改[字符编码](../../../os/sss/字符编码.md)方式. 
+`iconv` 更改[char-encoding](../../../hw/char-encoding.md)方式. 
 
 ```sh
 # 转换为 Windows 默认的 UTF-16LE 编码 

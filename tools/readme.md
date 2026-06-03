@@ -80,7 +80,7 @@ revised: 2026-01-27
 <br>
 
 - **[`pandoc`](http://pandoc.org/)** 
-- iconv, uchardet [字符编码](../os/sss/字符编码.md)工具
+- iconv, uchardet [char-encoding](../hw/char-encoding.md)工具
 - **fzf**, 模糊查找工具
 - zoxide
 - sl, genact 摸鱼用
