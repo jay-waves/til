@@ -6,7 +6,7 @@ code: <time>, <chrono>
 
 ## c time
 
-`time()` 获取 [UCT 时间](../../../os/sss/本地化.md).   
+`time()` 获取 [UCT 时间](../../os/linux/localization.md).   
 ```c
 time_t t = time(nullptr);
 

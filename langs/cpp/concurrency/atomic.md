@@ -9,7 +9,7 @@
 
 大部分高级语言, 原子变量默认是强 SC 语义: 提供 atomic (不可分割) + volatile (可见性) + barrier (顺序一致性) 功能.
 
-内存一致性相关见 [arch/co/内存一致性](../../../arch/computer/内存一致性.md)
+内存一致性相关见 [arch/co/内存一致性](../../../hw/computer/内存一致性.md)
 
 ## 接口
 

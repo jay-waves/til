@@ -12,6 +12,20 @@
 - 不同复杂度: 并发版本, 元编程版本
 - 不同接口
 
+## TOC 
+
+| toc         | en  | zh         |
+| ----------- | --- | ---------- |
+| btree       |     |            |
+| concurrency |     | 并发算法   |
+| graph       |     | 图论       |
+| hash-based  |     | 哈希表相关 |
+| linked-list |     | 链表结构   |
+| sort        |     | 排序算法   |
+| string      |     | 字符串算法 |
+| tree        |     | 二叉树算           |
+
+
 ## 名词表
 
 - 序列: 指顺序容器, Sequence Containers, 元素按插入顺序存储, 通过索引访问.[^1] 
@@ -37,45 +51,6 @@
 - 链表 (Linked List). [循环链表](linked-list/circular-linked-list.md), [双向链表](linked-list/doubly-linked-list.md), 十字链表, 跳表, 邻接表. 
 - [列表 (List)](链表/list.md), 变长有序集合. 在 linux kernel 语境下仍指链表.
 - [哈希表](hash-based/hash-table.md), (Hash Table, Map, Dictionary, Symbol Table)
-
-### 算法列表
-
-- 排序: 
-	- [插入排序](sort/insertion-sort.md)
-	- [堆排序](sort/heap-sort.md), 
-	- [归并排序](sort/merge-sort.md), 
-	- [快速排序](sort/quick-sort.md), 
-	- [冒泡排序](sort/bubble-sort.md#冒泡排序), 
-	- [希尔排序](sort/shell-sort.md), 
-	- [选择排序](sort/selection-sort.md)
-- 图和搜索算法: 
-	- [二分查找](sort/binary-search.md)
-	- [广度优先搜索](图论/广度优先搜索.md), 
-	- [深度优先搜索](图论/深度优先搜索.md)
-	- 最小生成树
-		- Prim 
-		- Kruskal
-		- Bellman-Ford
-	- [最短路径](graph/最短路径算法.md)
-		- A*, 
-		- Dijkstra, 
-		- Floyd-Warshall, 
-	- 收缩层级算法 (CH), 如地图调用 OpenStreetMap
-	- 拓扑排序 (AOV)
-	- 关键路径 (AOE)
-- 字符串算法
-	- 字符串搜索:
-		- Rabin-Karp 算法
-		- 后缀自动机 / 后缀字典树 ...
-		- Knuth-Morris-Pratt (KMP) 算法
-		- Boyer-Moore 算法
-	- 字符串距离 (metric)
-		- Damerau-Levenshtein 距离
-		- 汉明距离
-		- 编辑距离
-	- 正则表达式
-	- 最长公共子串
-
 
 ### 错误码
 

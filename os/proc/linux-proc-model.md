@@ -98,6 +98,10 @@ struct rlimit {
 // }
 ```
 
+### 和 VFS 的关系
+
+![task_struct](../../attach/ascii/task_struct.md)
+
 ## 内核栈
 
 在大部分架构 (x86, arm, risc-v) 中, 每个进程都有一个私有*内核栈*, 内核栈中存放 `thread_info`, 其中存放 `task_struct`. 该数据结构压在内核栈底, 通过栈基地址即可获取.

@@ -23,8 +23,8 @@
 	- 文件系统: 文件夹管理和遍历等, 文件元信息处理. 
 	- 进程管理: 主要是 POSIX 系列系统调用, 以及进程间通信.
 	- 编码转换, 序列化, 解压缩 (先放在这)
-- 密码库, 见 [Security/密码学](../netsec/cryptography/README.md)
-- 网络与事件异步编程, 见 [Network/Programming](../networks/net-programming/io-multiplexing.md)
+- 密码库, 见 [Security/密码学](../security/cryptography/README.md)
+- 网络与事件异步编程, 见 [Network/Programming](../os/io/io-multiplexing.md)
 
 注意. 和功能强相关的部分, 不区分具体语言.
 
@@ -80,7 +80,7 @@ object-orientation, 面向对象编程.
 
 #### Function Signature
 
-函数签名. 见 [compiler/linking/符号](../compilers/链接过程/符号.md)
+函数签名. 见 [compiler/linking/符号](../compiler/linking/symbols.md)
 
 #### Casting/Coercion
 

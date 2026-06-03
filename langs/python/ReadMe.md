@@ -19,7 +19,7 @@
 |                      | readline                                                                                     | GNU readline 接口              |     |
 |                      | pprint                                                                                       | 数据美化                       |     |
 | 二进制数据服务       | struct                                                                                       | 将字节串解读为打包的二进制数据 |     |
-| 数据类型             | [datetime](../../os/sss/本地化.md)                                               | 基本日期和事件                 |     |
+| 数据类型             | [datetime](../../os/linux/localization.md)                                               | 基本日期和事件                 |     |
 |                      | calendar                                                                                     | 通用日历                       |     |
 |                      | [collections](data-types/collections.md), [collections.abc](data-types/collections.abc.md) | 容器                           |     |
 |                      | [heapq](data-types/heapq.md)                                                                | 堆队列算法                     |     |

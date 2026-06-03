@@ -4,23 +4,22 @@
 | ----------- | ----------------------- | ------------ |
 | algo        | algorithm               | 算法         |
 | ai          | artificial intelligence | 人工智能     |
-| arch        | architectures           | 体系架构     |
-| compilers   | compilers               | 编译原理     |
+| *appx*      | appendices              | 附录         |
+| *attach*    | attachments             | 图片附件     |
+| compiler    | compilers               | 编译原理     |
 | db          | databases               | 数据库       |
-| distributed | distributed system      | 分布式系统   |
-| econ        | economics               | 经济学      |
-|             | graphic                 | 计算机图形   |
+| econ        | economics               | 经济学       |
+| hw          | hardware                | 体系架构     |
 | langs       | languages               | 编程语言     |
-| math        | mathematica             | 数学        |
-| networks    | networks                | 网络通信     |
-| netsec      | security                | 网络安全     |
+| math        | mathematics             | 数学         |
+| net         | networking              | 网络通信     |
 | os          | operating system        | 操作系统     |
-| robotics    |                         | 机器人      |
-| tools       | devtool                 | 开发工具     |
-| attach      | attachments             | 图片附件     |
-| appx        | appendices              | 附录         |
+| robotics    | robotics system         | 机器人       |
+| sec         | security                | 网络安全     |
+| *src*       | source code             | 代码         |
+| tools       | dev tools               | 开发工具     |
+| vision      | visual computing        | 可视计算     |
 |             | paper                   | 论文         |
-| src         | source code             | 代码         |
 
 
 ## License
