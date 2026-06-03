@@ -130,6 +130,10 @@ Windows 上一些 GNU 工具移植, 见 [GNUwin32](https://gnuwin32.sourceforge.
 
 ## on Linux
 
+also see [.bashrc](bashrc.md), here is the GUI choice:
+
+* yazi 命令行文件管理器
 * flameshot 截图贴图工具
 * Alacritty 命令行
 * chrome 比 firefox 稳定很多
+* ibus with rime engine
