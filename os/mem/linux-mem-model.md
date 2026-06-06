@@ -1,14 +1,20 @@
 
 linux 内存管理的主要作用是隔离多个进程的内存区域, 实现虚拟内存到实际物理内存的转换. 包括 物理内存管理 / 虚拟内存管理 / 内存映射 / 接口 四个层次.
 
-在*非均匀内存访问 (NUMA, Non-Uniform Memory Access,一般指多路 CPU 结构)* 系统中, 物理内存被划分为*节点 (Node)*, 每个节点又划分为*区域 (Zone)*, Zone 的种类代表了内存分配的策略. 每个 Zone 都有独立的*伙伴系统 (Buddy System)*, 用于分配物理*页 (Page)*. 
-
-- `ZONE_DMA`: 低端内存, 支持老设备 DMA.
-- `ZONE_NORMAL` 4GB 以内.
 
 虚拟内存*页 (Page)* 则由*页面分配器 (Allocator)* 管理. 用*虚拟内存区域 (VMA)* 管理虚拟内存段 (如 .data, .stack, 一段连续的内存页), VMA 已经被映射为物理内存, 可能代表磁盘上文件的一部分, 也可能是临时内存 (如 heap, stack, 被称为 *anonymous page*)
 
 虚拟内存地址和物理内存地址通过*页表 (Page Table)* 映射.
+
+物理内存被划分为*区域 (Zone)*, Zone 的种类代表了内存分配的策略. 每个 Zone 都有独立的*伙伴系统 (Buddy System)*, 用于分配物理*页 (Page)*. 
+
+- `ZONE_DMA`: 低端内存, 支持老设备 DMA.
+- `ZONE_DMA`: 32b DMA 设备可访问的内存（<4GB）
+- `ZONE_NORMAL`: 内核和用户内存
+- `ZONE_MOVABLE`: 可移动页 
+- `ZONE_DEVIE` 
+
+![LINUX-UMA架构图](../../attach/ascii/uma.md)
 
 ## 内存结构
 
@@ -81,6 +87,26 @@ struct folio {
 	*/
 };
 ```
+
+#### Watermarks 
+
+`struct zone` 中水位线系统用于标识内存阈值
+* `min` 低于它时，内存分配可能直接失败，或者触发强制回收。
+* `low` 低于它时，内核的后台线程 kswapd 会开始回收页面，尝试将空闲页恢复到 `high` 水平
+* `high` 
+
+#### 伙伴系统
+
+**伙伴系统用于分配页帧, 并管理空隙**.
+
+系统中, 空闲的同样大小的内存块被两两分组, 称为 "伙伴". 当两个伙伴都是空闲的, 就会被内核合并为更大的内存块. 伙伴按内存块大小分级: 1/2/4/8/16 页, 同级别的伙伴, 被放到同一个列表管理. 
+
+当申请内存时, 伙伴系统将大内存块拆半为小内存块; 当释放内存时, 伙伴系统检查是否有连续的内存块, 能够组建为一组空闲伙伴, 合并为更大的内存块. 
+
+
+#### 页缓存及置换
+
+内存回收器 (Reclaim)，主要靠 LRU 链表机制。
 
 ### 虚拟内存管理
 
@@ -191,9 +217,14 @@ typedef struct {
 | `_PAGE_ACCESSED`              |                                                        |
 
 
-### 页缓存及置换
+### Slab 分配器
 
-内存回收路径 (Reclaim)
+*Slab 缓存*专用于将伙伴系统的提供的页, 拆分为**比完整页帧小得多**的内存块. 
+
+- 对于频繁使用的对象, 内核定义了只包含了所需类型对象实例的缓存. 
+- 普通的小内存块的分配, 提供按大小分级的缓存.
+
+内核为不同场景提供了备选方案: slab, slub, slob 缓存.
 
 ## 内存接口
 
@@ -250,3 +281,12 @@ GFP (get free page) mask flags, `gfp_t`, 用于
 ```c
 	ptr = kmalloc(size, __GFP_WAIT | __GFP_IO | __GFP_FS);
 ```
+
+
+## NUMA 
+
+*非均匀内存访问 (NUMA, Non-Uniform Memory Access,一般指多路 CPU/MMU 结构)* 系统物理内存被按照 CPU 划分为*节点 (Node)*, 每个节点下才是 Zone. 
+
+
+
+![numa](../../attach/ascii/numa.md)

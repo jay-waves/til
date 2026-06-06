@@ -2,6 +2,8 @@
 
 C++20 `<ranges>`, 可以直接与所有 STL 算法/容器 互操作. `ranges` 支持构造一个**延迟计算的流水线**, 当且仅当对其遍历时, 才实际计算. 其生命周期依赖于原数据视图. 
 
+**尽量简洁地使用, `<ranges>` 报错信息复杂, 很难看懂和调试.**
+
 ```cpp
 #include <ranges>
 #include <algorithm> // for std::ranges::for_each 
@@ -53,4 +55,36 @@ std::ranges::copy(rng, std::back_inserter(result));
 // 或者, C++23 新增 std::ranges::to
 auto rng = v | .... | std::ranges::to<std::vector<int>>();
 
+```
+
+## 几种惯用法
+
+展开多层容器：
+
+```cpp
+vector<vector<int>> groups;
+
+for (int x : groups | std::views::join) {}
+```
+
+遍历 KV 时，比结构化绑定简洁：
+
+```cpp
+for (const auto& k : table | std::views::keys) {}
+
+for (const auto& v : table | std::views::values) {}
+```
+
+生成序列:
+
+```cpp
+for (int i : std::views::iota(0, 100)) {} 
+// 0 ... 99
+```
+
+查找、判断和聚合时：
+
+```cpp
+bool has_pending = std::ranges::any_of(tasks, 
+		[](const Task& t){ return !t.done; });
 ```

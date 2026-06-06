@@ -53,12 +53,51 @@ dof&=m(N-1)-\sum^{J}_{i=1}(m-f_{i}) \\
 
 设固定单位坐标系 $s$ ，移动刚体单位坐标系 $b$ ，以两者原点为首尾的向量 $\Vec{p}$ 。
 
-忽略位移， $s$ 中向量可通过旋转矩阵 $R$ 变为 $b$ 中向量： $$\Vec{v}_{s}=R\Vec{v}_{b}$$
-
-旋转只有三个自由度，即旋转矩阵 $R$ 满足正交性和单位性： $$R^{\top}R=I \quad \det R=1$$ 它定义了空间中的一种李群 $SO(3)$ ，也叫[旋转矩阵群](quaternion.md)。
+忽略位移， $s$ 中向量可通过单位旋转矩阵 $R$ 变为 $b$ 中向量： $$\Vec{v}_{s}=R\Vec{v}_{b}$$
 
 这里的单位坐标系都是右手系，满足： $$\Vec{x}\times \Vec{y}=\Vec{z}$$ 
 
+### Angular Velocities 
+
+设坐标系绕单位向量 $\Vec{w}$ 旋转 $\Delta \theta$ 耗时 $\Delta t$ ，记角速度为： $$w=\Vec{w}\dot\theta=\Vec{w}\frac{\Delta \theta}{\Delta t}$$
+
+三个坐标方向的角速度可以表示为： 
+
+$$\begin{align}
+\dot{\Vec x} &=w\times \Vec{x} \\
+\dot{\Vec y} &= w\times \Vec{y} \\ 
+\dot{\Vec z} & = w\times \Vec{z}
+\end{align}$$
+
+![|300](http://oss.jay-waves.cn/til/angular-velocity.avif)
+
+用固定坐标系 $s$ 表示*旋转变化量* $w$, 即 $w_{s}$ ，设从固定坐标系到刚体坐标系的旋转矩阵 $R$ ，此时角速度可表示为： $$\dot{R}=w_{s}\times R=[w_{s}]R$$
+
+向量叉乘可以写为“左乘一个斜对称矩阵”的形式，类似：
+
+$$\Vec{a}\times \Vec{b}=\begin{bmatrix}
+a_{1}\\a_{2}\\a_{3}
+\end{bmatrix}\times \Vec{b}=\begin{bmatrix}
+0 & -a_{3}  & a_{2} \\
+a_{3} & 0 & -a_{1} \\
+-a_{2} & a_{1}  & 0
+\end{bmatrix}\times b=[\Vec{a}]\Vec{b}$$
+
+因此，$w_{s}$ 可以表示 SO(3) 中的等价矩阵：$$[w_{s}]=\dot{R}R^{-1}=\dot{R}R^{\top}$$
+
+在考虑刚体坐标系下的旋转变化量 $w_{b}$ ，满足：[^2]
+
+$$w_{b}=R^{-1}w_{s}$$ 
+
+对于任意旋转矩阵 $R$ 和向量 ${} \Vec{v} {}$ ，有： $$R[\Vec{v}]R^{-1}=R[\Vec{v}]R^{\top}=[R\Vec{v}]$$
+
+因此： $$[w_{b}]=[R^{-1}w_{s}]\dot{=}R^{-1}[w_{s}]R=R^{-1}(\dot{R}R^{-1})R=R^{-1}\dot{R}$$
+
+总结： $$\begin{align}
+[w_{s}]&=\dot{R}R^{-1} \\
+[w_{b}]&=R^{-1}\dot{R}
+\end{align}$$
 
 [^1]: 这里使用 Modern Robotics 中的表示法。
 
+[^2]: 再次强调，这里 $R$ 是指从固定坐标轴到刚体坐标轴的旋转矩阵。
