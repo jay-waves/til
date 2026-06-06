@@ -8,8 +8,7 @@
 `mmap` 建立一个虚拟内存段（VMA），映射到文件或匿名页，但不会立即分配物理内存。直到第一次访问该内存时，才会触发缺页中断。分配粒度为页（4KB）
 
 ```c
-void* p = mmap(NULL, size, PROT_READ|PROT_WRITE,
-               MAP_PRIVATE|MAP_ANONYMOUS, -1, 0);
+void* mmap(NULL, size, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0);
 ```
 
 * `MAP_SHARED` 写时，回写到文件
@@ -158,7 +157,7 @@ static void* malloc_mmap(size_t want) {
 }
 ```
 
-小内存直接在 heap 按需分配。具体而言，每次申请内存，让 `heap` 向高内存增长，开辟出内存。可执行文件的内存布局可以参考 [Liunx 内存分布](../mem/linux-内存空间分布.md)
+小内存直接在 heap 按需分配。具体而言，每次申请内存，让 `heap` 向高内存增长，开辟出内存。可执行文件的内存布局可以参考 [Liunx 内存分布](../mem/linux-mem-layout.md)
 
 ```
 [heap]  

@@ -16,6 +16,8 @@ struct file_operations {
 	loff_t (*llseek) (struct file *, loff_t, int);
 	ssize_t (*read) (struct file*, char __user *, size_t, loff_t *);
 	ssize_t (*write) (struct file*, ...);
+	ssize_t (*read_iter) (struct kiocb*, struct iov_iter*); // preferred 
+	ssize_t (*write_iter) (struct kiocb*, struct iov_iter*); // perferred 
 	...
 	__poll_t (*poll) (struct file*, ...);
 	int (*ioctl) (struct inode*, struct file*, unsigned int, unsigned long); 
@@ -98,9 +100,9 @@ Linux 用五个数来表示文件权限: 比如 `10705`
 以下两个调用等价:
 
 ```c
-open("test", O_CREAT, 10 705);
+open("path/to/test", O_CREAT, 10 705);
 
-open("test", O_CREAT, S_IRWXU | S_IROTH | S_IXOTH | S_ISUID);
+open("path/to/test", O_CREAT, S_IRWXU | S_IROTH | S_IXOTH | S_ISUID);
 ```
 
 ### read/write 
@@ -109,16 +111,16 @@ open("test", O_CREAT, S_IRWXU | S_IROTH | S_IXOTH | S_ISUID);
 // 从 fd 读取 length 个字节到 buf 缓冲区, 返回实际读取的字节数.
 int read(int fd, const void *buf, size_t length);
 int write(int fd, const void *buf, size_t length);
-... readv()
-... writev()
 ```
 
-从 Linux3.9+ 开始，读写路径逐渐切换到 `struct iov_iter` 上，即，使用：
+从 Linux3.9+ 开始，读写路径逐渐切换到 `struct iov_iter` 上，即，使用以下接口以及结构体 [`iov_iter`](../io/linux-iov_iter.md)
 
 ```c
 void read_iter(struct kiocb *, struct iov_iter*);
 void write_iter(struct kiocb *, struct iov_iter*);
 ```
+
+原本的 `aio_read/aio_write/readv/writev` 接口都在新版本被删除了，事实上 `write/read`也在废除边缘。
 
 文件夹迭代器也更新为：
 
@@ -209,3 +211,4 @@ FILE *fopen(const char *path, const char *mode);
 
 [Overview of the Linux Veritual File System](https://docs.kernel.org/filesystems/vfs.html)
 
+[the file_operations structure gets smaller, lwn.net](https://lwn.net/Articles/972081/#Comments)
