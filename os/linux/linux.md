@@ -5,11 +5,11 @@
 3. 文件系统
 4. 应用程序
 
-![|400](../../attach/Pasted%20image%2020240429171126.avif)   
+![|400](../../attach/linux.avif)   
 
 | Linux 内核架构 | 安卓内核架构 |
 | -------------- | ------------ |
-|  ![\|300](../../appx/linux%20kernel%20map.svg)       |  ![安卓系统五层架构\|300](../../attach/Pasted%20image%2020230620164006.avif)            |
+|  ![\|300](../../appx/linux%20kernel%20map.svg)       |  ![安卓系统五层架构\|300](../../attach/android.avif)            |
 
 
 Linux 内核组成: (五个子系统)

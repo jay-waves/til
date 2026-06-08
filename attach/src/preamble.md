@@ -1,3 +1,4 @@
+```latex
 \newcommand{\dd}{\,\mathrm{{d}}}% 积分符号
 \newcommand{\pfrac}[2]{\frac{\partial #1}{\partial #2}} % 偏导
 \newcommand{\R}{\mathbb{R}}
@@ -46,5 +47,5 @@
     \shoveright{\square}
     \end{multline}
 } 
-
+```
 

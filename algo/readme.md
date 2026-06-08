@@ -48,8 +48,7 @@
 
 - 栈 (Stack)
 - 队列 (Queue), [循环队列](linked-list/queue.md), [双端队列](linked-list/deque.md), [优先队列](tree/binary-heap.md)
-- 链表 (Linked List). [循环链表](linked-list/circular-linked-list.md), [双向链表](linked-list/doubly-linked-list.md), 十字链表, 跳表, 邻接表. 
-- [列表 (List)](链表/list.md), 变长有序集合. 在 linux kernel 语境下仍指链表.
+- 链表 (Linked List). 循环链表, [双向链表](linked-list/doubly-linked-list.md), 十字链表, 跳表, 邻接表. 
 - [哈希表](hash-based/hash-table.md), (Hash Table, Map, Dictionary, Symbol Table)
 
 ### 错误码

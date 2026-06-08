@@ -27,7 +27,7 @@
 | 数据链路层 | MAC (Medium Access Control)             | 封装成帧 (MAC PDU), 并控制物理层传输     | 3GPP UMTS |
 | 数据链路层 | RLC (Radio Link Control)                | 分段, 重组, 错误检测, 和重传 (可靠传输)  | 3GPP UMTS |
 | 数据链路层 | PDCP (Packet Data Convergence Protocol) | 压缩,加密, 完整性保护. 数据包排序和去重  | 3GPP LTE  |
-| 数据链路层 | SDAP (Service Data Adptation Protocol)  | 处理不同应用的 [QoS](网络层/QoS.md) 需求 | 3GPP NR   |
+| 数据链路层 | SDAP (Service Data Adptation Protocol)  | 处理不同应用的 QoS 需求 | 3GPP NR   |
 | 网络层     | [AKA](../security/cryptography/security-protocols/认证的密钥协商协议/AKA%20协议.md) (Authentication and Key Agreement)  | 用户身份安全性认证                                         | 3GPP UMTS |
 | 网络层     | IP (VoIP)                                     | 从此开始接入计算机网络上层结构           |           |
 
@@ -60,7 +60,7 @@
 
 ...家庭网络层次...
 
-[**IPS/IDS:**](firewalls&vpn/IDPS.md)
+**IPS/IDS:**
 - IDS: Intrusion Detection System, 检测非法入侵, 记录日志, 并告知系统管理员.
 - IPS: Intrusion Prevention System, 通过协议和程序拦截非法入侵, 并反击(伪装).
 

@@ -1,8 +1,3 @@
-* 260214 不再整理一个超大的 bibtex，而是直接在此记录我的所有阅读，按类来划分。
-
-
----
-
 
 ## README 
 
@@ -150,4 +145,8 @@ Modern Robotics --Kevin Lynch & Frank C.Park -- 2019 #book
 ## med 
 
 ## primer
+
+## literature 
+
+压缩现代性下的韩国：转型中的家族政治经济学 -- 张庆燮 -- 2010
 

@@ -1,29 +1,7 @@
-## topic 
-
-## service 
-
-## action 
-
-## DDS
-
-## TF transform 
 
 ## Sensor Pipeline 
 
 ## Real-tiem Loop 
-
-
-新窗口, 首先执行 ROS 的配置文件.
-
-```
-source /opt/ros/humble/setup.bash
-```
-
-从包内运行某程序:
-
-```
-ros2 run <pkg_name> <exe_name>
-```
 
 ## node
 

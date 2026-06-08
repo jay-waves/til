@@ -4,15 +4,13 @@ source: https://github.com/Krasjet/quaternion
 author: Krasjet
 ---
 
-
-$$\newcommand{\zm}{\lvert z\rvert}$$
-$$\newcommand{\RM}{\begin{bmatrix}
-\cos \theta & -\sin \theta \\
-\sin \theta & \cos \theta
-\end{bmatrix}}$$
-$$
-\newcommand{\Trp}{^\mathsf{T}} % 转置矩阵
-$$
+$$\newcommand{\zm}{\lvert z\rvert}
+\newcommand{\Trp}{^\mathsf{T}}
+\newcommand{\Vec}[1]{\mathbf{#1}}
+\newcommand{\Conj}[1]{\overline{#1}}
+\newcommand{\RM}{\begin{bmatrix}\cos \theta & -\sin \theta \\ \sin \theta & \cos \theta\end{bmatrix}}
+\newcommand{\Norm}[1]{\lvert #1\rvert}
+\newcommand{\R}{\mathbb{R}}$$
 
 ## 复数
 

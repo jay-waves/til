@@ -5,11 +5,11 @@
 - `memory_order_acquire` 将当前 load 视为同步点，之后的读写不会重排到它之前。也叫*后向屏障 (backward fence)*
 - `memory_order_release` 将当前 store 视为同步点，之前的读写不会重排到它之后。也叫*前向屏障 (forward fence)* 
 - `memory_order_acq_rel` acquire + release. 适合三元操作 (read-modify-write)
-- `memroy_order_seq_cst`: sequential consistency. 最强的 SC 顺序一致，默认行为。
+- `memroy_order_seq_cst`: sequential consistency. 最强的 SC 顺序一致，默认行为。对比 `mo_acq_rel` 而言，`mo_seq_cst` 还会建立全局的偏序关系，不局限于单一原子变量。
 
 大部分高级语言, 原子变量默认是强 SC 语义: 提供 atomic (不可分割) + volatile (可见性) + barrier (顺序一致性) 功能.
 
-内存一致性相关见 [arch/co/内存一致性](../../../hw/computer/内存一致性.md)
+内存一致性相关见 [hw/computer/内存一致性](../../../hw/computer/内存一致性.md)
 
 ## 接口
 
@@ -67,9 +67,19 @@ struct atomic {
 }
 ```
 
+**内存栅栏**：同时影响所有原内存访问。不绑定到某一个具体原子量，因此内存栅栏**只影响本线程指令重排**，不影响多线程同步。
+
+```cpp
+data = 42;
+std::atomic_thread_fence(std::memory_order_release); 
+ready.store(true, std::memory_order_relaxed);
+```
+
 ## 实例
 
 #### 门卫
+
+`release` 和 `acqurie` 一般要配合使用。
 
 ```cpp
 // producer
@@ -82,6 +92,9 @@ if (ready.load(std::memory_order_acquire)) {
 }
 ```
 
+* release：生产者，设置 `ready` 之前的写入都应该完成
+* acquire: 消费者，看到 `ready` 后，后面的读写不能跑到这个观察动作之前。否则仍会看不到 `42`
+
 #### 模拟锁
 
 ```cpp
@@ -92,10 +105,11 @@ state.store(0, std::memory_order_release);
 while(!state.compare_exchange_weak(0, 1, std::memory_order_acquire)){}
 ```
 
-#### 原子读
+#### 计数器自增
 
 ```cpp
 cnt.fecth_add(1, std::memory_order_relaxed);
 ```
 
 无门卫作用，无需内存序约束。
+
