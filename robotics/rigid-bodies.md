@@ -1,5 +1,10 @@
 at its most basic level a robot consists of rigid bodies connected by joints, with the joints driven by actuators
 
+$$
+\newcommand{\Vec}[1]{\mathbf{#1}}
+\newcommand{\R}{\mathbb{R}}
+$$
+
 ## configuration space of rigid bodies 
 
 描述一个刚体的姿态的最小 $n$ 个实数，被称为*自由度（degrees of freedom）*。描述为一个向量，向量空间被称为 *configuration space (C-space)*.
@@ -49,7 +54,7 @@ dof&=m(N-1)-\sum^{J}_{i=1}(m-f_{i}) \\
 
 双铰链机械臂： $S^{1}\times S^{1}=T^{2}$
 
-## Rigid-Body Motion [^1]
+## Rigid-Body Rotation [^1]
 
 设固定单位坐标系 $s$ ，移动刚体单位坐标系 $b$ ，以两者原点为首尾的向量 $\Vec{p}$ 。
 
@@ -97,6 +102,36 @@ $$w_{b}=R^{-1}w_{s}$$
 [w_{s}]&=\dot{R}R^{-1} \\
 [w_{b}]&=R^{-1}\dot{R}
 \end{align}$$
+
+### Exponential Coordinates of Rotation
+
+![|300](http://oss.jay-waves.cn/til/rigid-body-motion.avif)
+
+再来考察线速度，参考[四元数推导过程](quaternion.md)，对于固定坐标系中的向量 $p\in\R^{3}$ ，设其旋转角速度向量为 $w=\Vec{w}\dot{\theta}$ ，其端点线速度为： 
+
+$$\dot{p}=w\times p=[w]p$$ 
+
+这是一个线性微分方程，其解是 $$p(t)=e^{[w]t}p(0)$$ 
+
+
+设 $t$ 时刻时，向量 $p$ 旋转了 $\theta$ 角度，此时将指数 $e^{[\Vec{w}]\theta}$ 泰勒展开得到：
+
+#### Rodrigues' Formula 
+
+$\newcommand{W}{[\Vec{w}]}$
+
+Given vector $\Vec{w}\theta\in \mathbb{R}^{3}$, such that $\theta$ is any scalar and $\Vec{w}\in \mathbb{R}^{3}$ is a unit vector, the matrix exponential of $\W\theta=[\Vec{w}\theta]\in SO(3)$ is 
+
+$$Rot(\Vec{w},\theta)=e^{\W\theta}=I+\sin \theta\W+(1-\cos \theta)\W^{2}\in SO(3)$$
+
+#### Matrix Logarithm of Rotations 
+
+## Rigid-Body Motion and Twist
+#### Exponential Coordinats of Motion&Twist
+
+## Wrench
+
+
 
 [^1]: 这里使用 Modern Robotics 中的表示法。
 

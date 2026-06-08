@@ -2,13 +2,13 @@
 
 设计模式 (Design Pattern)
 
-1. 创建型模式:
+1. [创建型模式:](creational-patterns.md)
 	- 工厂模式 (Factory Pattern)
 	- **抽象工厂模式 (Abstract Factory Pattern, Family Creator)**. 创建一组相关的对象.
 	- **单例模式 (Singleton Pattern, One and Only)**. 全局唯一对象.
 	- **建造者模式 (Builder Pattern, Lego Master)**. 按步骤创建对象.
 	- **原型模式 (Prototype Pattern, Cloner)**. 学习样例创建副本.
-2. 结构型模式:
+2. [结构型模式](structural-patterns.md)
 	- **适配器模式 (Adapter Pattern, Universal plug)**. 连接不同的接口.
 	- **桥接模式 (Bridge Pattern, Connector)**. Link what it is to how it works.
 	- 过滤器模式 (Filter, Criteria Pattern)
@@ -17,7 +17,7 @@
 	- **外观模式 (Facade Pattern, One-stop shop)**. 整个系统对外仅暴露简单接口.
 	- **享元模式 (Flyweight Pattern, Space Saver)**. 共享小的可复用的资源.
 	- **代理模式 (Proxy Pattern, Stand-In Actor)**. 
-3. 行为型模式:
+3. [行为型模式:](behavioral-patterns.md)
 	- **责任链模式 (Chain of Responsibility Pattern, Request Relay)**. 不断向下传递请求, 直到负责者.
 	- **命令模式 (Command Pattern, TaskWrapper)**, 将请求变为一个就绪对象
 	- 解释器模式 (interpreter Pattern)

@@ -141,5 +141,5 @@ circular doubly linked list
 
 这里的示例将使用入侵式设计, 即数据结构的管理信息 (如前驱后驱指针) 被嵌入到数据结构本身之中, 常用于无 GC 的语言. 同时, 将**内存管理**和链表结构管理分离, 不假设数据是在栈分配还是在堆分配, 交由用户自行管理内存.
 
-linux 内核的链表就是循环双向链表, 详见 [kernel/include/linux/list.h](../../src/kernel/include/linux/list.h)
+linux 内核的链表就是循环双向链表, 详见 [kernel/include/linux/list.h](../../attach/src/kernel/include/linux/list.h)
 

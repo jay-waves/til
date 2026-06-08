@@ -5,7 +5,7 @@
 | algo        | algorithm               | 算法         |
 | ai          | artificial intelligence | 人工智能     |
 | *appx*      | appendices              | 附录         |
-| *attach*    | attachments             | 图片附件     |
+| *attach*    | attachments             | 附件     |
 | compiler    | compilers               | 编译原理     |
 | db          | databases               | 数据库       |
 | econ        | economics               | 经济学       |
@@ -16,10 +16,8 @@
 | os          | operating system        | 操作系统     |
 | robotics    | robotics system         | 机器人       |
 | sec         | security                | 网络安全     |
-| *src*       | source code             | 代码         |
 | tools       | dev tools               | 开发工具     |
 | vision      | visual computing        | 可视计算     |
-|             | paper                   | 论文         |
 
 
 ## License
@@ -112,7 +110,7 @@
 - 重要的*定理、引理、定义*使用标题格式，并用数字编号 `x.m.n` 便于整理和引用。
 - 数学证明中，用 $\Proof{}$ 和 $\square$ 标识开始与结束。
 - 数学公式符号 `$$` 和左右文字间隔一个半角空格，避免渲染问题。
-- 为了增强 Markdown 的数学输入，请导入 `./src/mathjax-preamble.sty` 中自定义的数学样式。
+- 需要 `\newcommand` 和 `\DeclareMathOperator` 支持
 
 ### Attachments 
 

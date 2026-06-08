@@ -76,7 +76,18 @@ Vim 有三种操作模式用于不同目的:
 - [选中模式 (Visual Mode)](范围与区域.md), 先选中区域, 然后按操作符.
 - PS: 还有一种命令模式, 输入 `:` 后键入控制命令.
 
-![|400](../../attach/vim-mode.avif)
+```mermaid 
+flowchart TB
+    N[Normal]
+    V[Visual]
+    I[Insert]
+
+    N -- "v, V" --> V
+    V -- "ESC" --> N
+
+    N -- "i, a, o" --> I
+    I -- "ESC" --> N
+```
 
 > 比如: `d2a(` 和 `2da(` 等价, `4da(` 和 `2d2a(` 等价.
 >

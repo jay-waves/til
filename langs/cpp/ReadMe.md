@@ -39,7 +39,7 @@ C++23
 这里列明 C++ 最常见的使用模式、最佳实践、手搓考点：
 * `string` 
 * `vector` 
-* [`singleton`](oop/design-patterns/creational-patterns.md)
+* [`singleton`](oop/creational-patterns.md)
 * [p impl](oop/pimpl.md)
 * [lru cache](../../algo/linked-list/lru.md)
 * `hash table` 
