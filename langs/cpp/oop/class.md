@@ -187,3 +187,85 @@ public:
 MyClass arr = {1, 2, 3, 5, 6}; // 对于一般 C++ 是非法的
 ```
 
+## 多态
+
+### 运行时多态
+
+ABC (Abstract Base Class) 纯虚类型定义虚函数, 支持运行时多态, 称为 *动态分发 (dynamic dispatch)*[^2].
+- early binding / static dispatch ==> direct function call overload resolution 
+- late binding ==> indirect function call resolution 
+- dynamic dispatch ==> virtual function override resolution 
+
+在运行时多态中，**类指针或引用不改变对象的真实类型，只是限制调用方只能使用基类声明过的接口**。能调用什么由静态类型决定，实际执行哪个实现由对象的动态类型决定。virtual 函数让调用方依赖稳定抽象，而具体行为由派生类提供。
+
+```cpp
+class Base {
+public:
+	struct VTable* vptr; // hidden
+	virtual void func1() {};
+	virtual void func2() {};
+};
+/*
+	vptr --> Base::VTable : {&Base::func1, &Base::func2}
+*/
+
+class D1 : public Base {
+public:
+	void func1() override {};
+};
+/*
+	vptr --> D1::VTable : {&D1::func1, &Base::func2}
+*/
+
+class D2 : public Base {
+public:
+	void func2() override {};
+}
+/*
+	vptr --> D2::VTable : {&Base::func1, &D2::func2}
+*/
+
+{
+	D1 d1{};
+	Base* ptr = &d1;
+	ptr->func1(); // (*Base)ptr->(*D1)vptr-->func1();
+}
+ 
+```
+
+![vtable|400](../../../attach/vtable.avif)
+
+vtable 由编译器生成, 放在 `.rodata` 段供链接器使用. 含有虚函数的类都会有一个静态的*虚函数表 (vtable)*, 而每个对象实例中会有隐藏的*虚表指针 (vptr)*, 指向 vtable.
+
+### 基类与子类间的类型转换
+
+派生类可安全地转化为基类，即*向上转换* 。所有使用基类的地方，都可以安全使用子类。
+
+```cpp
+derived d;
+base* p = &d;
+base& r = d;
+```
+
+基类需要显式转换为子类，称为*向下转换*。可以使用子类的地方，不一定能使用基类。
+
+```cpp
+/*
+	dynamic_cast 通过运行时信息来判断此对象的实际类型，
+	该实际类型必须包含此处强制转换的目标类型 derived ，
+	也就是说，编译器不假设 p 此时是基类静态类型，而是根据多态信息判断
+	
+	检查失败时：
+	* 绑定到 auto* , 则返回 nullptr 
+	* 绑定到 auto& , 则抛出异常 std::bad_cast
+*/
+auto* d = dynamic_cast<derived*>(p);
+if (d != nullptr)  
+	d->derived_func();
+	
+/*
+	用 static_cast 也可以，但是不会自动保证类型正确，
+	此时可能会有未定义行为。
+*/
+auto* d = static_cast<derived*>(p);
+```

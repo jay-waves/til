@@ -75,7 +75,7 @@ revised: 2026-01-27
 <br>
 
 * GnuPG 加密
-* gopass 密文管理
+* ~~gopass 密文管理~~ 已切换到我自己写的
 
 <br>
 
@@ -100,6 +100,7 @@ Rewrite-in-Rust：
 Windows 上一些 GNU 工具移植, 见 [GNUwin32](https://gnuwin32.sourceforge.net/packages.html)
 - file.
 - trid，类似 file 
+- uutils/coreutils，模拟的 GNU CoreUtils 套件。先取消 Powershell7 别名，再用这个
 
 ## Browser Plugins
 
@@ -137,3 +138,17 @@ also see [.bashrc](bashrc.md), here is the GUI choice:
 * Alacritty 命令行
 * chrome 比 firefox 稳定很多
 * ibus with rime engine
+
+## Server 
+
+服务器配置：
+* 域名及DNS服务
+* 阿里云 OSS 
+* 固定 EIP 
+* WAF 
+
+服务：
+* nginx 
+* sub-store (subconverter)
+* miniflux
+* telegram-bot

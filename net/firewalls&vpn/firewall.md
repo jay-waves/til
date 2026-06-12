@@ -4,66 +4,96 @@
 
 防火墙衍生功能非常多: 会话管理, 安全区域, 安全策略, 路由交换, NAT, VPN, 入侵检测和防御 (报文攻击分析, DoS 防御, 网络扫描防御), 流量过滤, 监控和报告. 很多衍生安全设备也可以归于防火墙门下.
 
-### 防火墙类型
+## 防火墙类型
 
-根据 [Guidelines on Firewalls and Firewall Policy. NIST SO 800-41 Rev1. 2009](https://csrc.nist.gov/pubs/sp/800/41/r1/final) 划分, 防火墙主要有四大类:
-1. 包过滤防火墙 (Packet Filtering Firewall):  检查报头信息 (网络地址, 端口号, 协议类型), 通过访问控制列表 (ACL) 进行静态过滤.
-	- 也称*静态包过滤 (Static Packet Filtering)*, 工作在 OSI 网络层, 成本较低.
-1. 状态检测防火墙 (Stateful Insepction Firewall): 记录和跟踪会话状态, 检测数据包是否来源于 "历史的, 已建立的, 已批准" 的会话连接, 区分新建连接与已建连接. 
-	- 也称*动态包过滤 (Dynamic Packet Filtering)*, 工作在 OSI 传输层和网络层. 
-1. 代理防火墙 (Proxy Firewall / Application Gateway): 位于应用层, [充当内部网络和外部通信的代理](../net-topology.md#安全设备), 深度检测应用层协议 (HTTP, FTP) 的数据内容. 
-	- *电路级网关 (Circuirt-Level Gateway)*, 工作于会话层, 重点关注会话建立和维护, 包括对握手信息和序列号合法性的各类检查. 会在内外网主机间建立透明代理 (和 NAT 不同, 原本一个连接变为两个), 由于工作在会话层, 不能检测应用层载荷 (因为 SSL 工作在表示层, 所以会话层无法读取其上信息).
-	- *应用层网关 (Application-Level Gateway)*. 也是代理, 但工作在 OSI 应用层, 因此可以过滤整个应用层的数据载荷. 针对每个服务运行独立的代理, 并逐个检查过滤.
-	- *深度包检测防火墙 (Deep Packet Insepction, DPI)*, 分析数据包载荷.
-	- *应用防火墙 (Web Application Firewall, WAF)*, 用于分析数据包内的 [SQL 注入, XSS 攻击等 WEB 安全威胁](../../security/security-attack.md#1.3%20注入攻击).
-2. 混合型防火墙 (Hybrid Firewall): 综合前三种防火墙功能, 并且包括一些入侵检测防御 ([IDS/IPS](IDPS.md)) 和应用控制 (恶意软件, 病毒木马, 垃圾邮件, DDoS) 功能.
-	- *下一代防火墙 (Next-Generation Firewall, NGFW)*
-	- *统一威胁管理 (Unified Threat Management, UTM)*, 类似大杂烩.
+### 1. 包过滤防火墙
 
-按时间发展顺序: 
-- 第一代: Cisco Inc. 1988. 路由器与静态包过滤防火墙.
-- 第二代: AT&T Bell Labs. 1990. 电路级网络防火墙.
-- 第三代: Purdue University. Bell Labs. 应用级网关防火墙.
-- 第四代: USC, Checkpoint Inc. 1994. 动态包过滤防火墙.
-- 第五代: NAI Inc. 1996. 代理防火墙.
-- 最新: NGFM, UTM, WAF...
+Packet Filtering Firewall，也称静态包过滤。
+
+主要检查报头信息，例如源/目的 IP、端口号、协议类型，并通过 ACL（Access Control List) 进行过滤。
+
+### 2. 状态检测防火墙
+
+Stateful Inspection Firewall，也称动态包过滤。
+
+在包过滤基础上**增加会话状态跟踪**，能够判断数据包是否属于已建立、已批准的连接。
+
+### 3. 代理防火墙
+
+Proxy Firewall / Application Gateway。透明代理防火墙位于通信双方之间，代替客户端与外部服务通信。原本的一条端到端连接会被拆成两条连接：
+
+```text
+Client ── Firewall Proxy ── Server
+```
+
+常见形式包括：
+
+* 电路级网关：工作在会话层，关注连接建立和维护，例如握手信息、序列号等，不检查应用层载荷。
+* 应用层网关：工作在应用层，针对 HTTP、FTP、SMTP 等协议进行代理和内容过滤。
+* 深度包检测（DPI,Deep Packet Inspection Firewall) 
+* WAF Web Application Firewall ，云厂商在路由中提供，重点检测用于分析数据包内的 [SQL 注入, XSS 攻击等 WEB 安全威胁](../../security/security-attack.md#1.3%20注入攻击).
 
 > 防火墙的技术越复杂, 成本越高, 安全性越低. 反之亦然.
 
-### 访问控制列表
+## 防火墙部署 / 接口模式
 
-访问控制列表 (Access-List, ACL), Cisco 最初的路由器有访问控制控制功能, 也被视为内嵌包过滤防护墙的雏形. 访问控制表列表的表项包括三个元素: 对象, 行为和选型 (object, action and option).
+### 1. L3 路由模式 / NAT 模式
 
-如路由器访问控制列表中, 对象可以是 "地址, 协议, 端口, 历史会话" 等, 行为可以是*允许或拒绝 (permit & deny)* 二选一, 选项有 "记录日志, 表项有效时间" 等操作. 
+防火墙接口拥有 IP 地址，像路由器一样参与三层转发。
+适用于需要路由、NAT、VPN、安全区域划分的场景。
 
+```text
+Client ── Gateway Firewall ── Internet
 ```
-# 允许 172.16.1.1 服务器向 10.1.1.2 的客户端提供 telnet 服务.
-access-list 101 permit tcp host 10.1.1.2 host 172.16.1.1 eq telnet
+
+### 2. L2 透明模式
+
+防火墙像交换机一样透明转发流量，不明显改变原有 IP 网络结构。
+适用于不想大改网络拓扑、但希望在链路中插入安全检测的场景。
+
+```text
+Switch ── Transparent Firewall ── Router
 ```
 
-### 防火墙接口模式
+### 3. L1 虚拟线缆模式
 
-- L3: NAT 模式, 类似路由器接口, 拥有 IP. 开启路由, NAT, VPN 的防火墙, 必须使用该模式.
-- L2: 透传(透明)模式, 类似交换机, 对报文进行交接. 在各个 VLAN 内拥有 IP 地址.
-- L1: 虚拟线缆模式, 串联在一条线路上, 而不进行路由和桥接.
-- TAP: 与交换机镜像端口连接的模式. 仅能检测, 无法阻止.
+防火墙串联在线路中，不做路由，也不做传统二层桥接，逻辑上像一根带安全检测能力的线缆。
+适用于对网络改动极小、只希望 inline 插入安全能力的场景。
 
-L1-3 是串联在网路上, 而 TAP 是旁挂在交换机上.
+```text
+Device A ── Firewall as Cable ── Device B
+```
 
-### 防火墙功能
+### 4. TAP 旁路监听模式
+
+防火墙或检测设备连接到交换机镜像端口，只观察流量，不参与转发。
+
+适用于监控、审计、流量分析、入侵检测。它通常不能直接阻断流量。
+
+```text
+Network Link ── Switch
+                  │
+                  └── TAP / Mirror Port ── Sensor
+```
+
+## 防火墙功能
 
 **安全区域与安全策略:**
 
-- *安全区域*: 防火墙以区域为对象分配安全策略, 区域分类包括 Trust Zone, Untrust Zone, DeMilitarized Zone (DMZ). 跨安全区域通信是**默认拒绝的 (Implicit Deny)**
+*安全区域*: 防火墙以区域为对象分配安全策略, 区域分类包括 Trust Zone, Untrust Zone, DeMilitarized Zone (DMZ). 跨安全区域通信是**默认拒绝的 (Implicit Deny)**
 
-- *安全策略*: 维护访问控制列表 access list, 但是以 Zone 为单位进行控制. 内容安全策略包括: *反病毒*, *IPS*(Intrusion Prevention System)、*URL 过滤*、*DLP*(数据泄露防护) 等基于内容的安全机制.
+*安全策略*: 维护访问控制列表 access list, 但是以 Zone 为单位进行控制. 内容安全策略包括: *反病毒*, *IPS*(Intrusion Prevention System)、*URL 过滤*、*DLP*(数据泄露防护) 等基于内容的安全机制.
 
-#### 提供 NAT
+
+### 提供 NAT
 
 见 [nat](nat.md)
 
-#### 提供 VPN:
+### 提供 VPN:
 
 见 [vpn](vpn.md)
 
 
+## 参考
+
+[Guidelines on Firewalls and Firewall Policy. NIST SO 800-41 Rev1. 2009](https://csrc.nist.gov/pubs/sp/800/41/r1/final) 

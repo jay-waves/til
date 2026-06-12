@@ -29,48 +29,7 @@ PFType pf2 = &floor_divide;
 
 ### 虚函数/动态分发
 
-ABC (Abstract Base Class) 纯虚类型定义虚函数, 支持运行时多态, 称为 *动态分发 (dynamic dispatch)*[^2].
-- early binding / static dispatch ==> direct function call overload resolution 
-- late binding ==> indirect function call resolution 
-- dynamic dispatch ==> virtual function override resolution 
-
-```cpp
-class Base {
-public:
-	struct VTable* vptr; // hidden
-	virtual void func1() {};
-	virtual void func2() {};
-};
-/*
-	vptr --> Base::VTable : {&Base::func1, &Base::func2}
-*/
-
-class D1 : public Base {
-public:
-	void func1() override {};
-};
-/*
-	vptr --> D1::VTable : {&D1::func1, &Base::func2}
-*/
-
-class D2 : public Base {
-public:
-	void func2() override {};
-}
-/*
-	vptr --> D2::VTable : {&Base::func1, &D2::func2}
-*/
-
-{
-	D1 d1{};
-	Base* d_ptr = &d1;
-	d_ptr->func1(); // d_ptr->vptr-->func1();
-}
-```
-
-![vtable|400](../../../attach/vtable.avif)
-
-vtable 由编译器生成, 放在 `.rodata` 段供链接器使用. 含有虚函数的类都会有一个静态的*虚函数表 (vtable)*, 而每个对象实例中会有隐藏的*虚表指针 (vptr)*, 指向 vtable.
+详见 [C++ 面向对象](class.md)
 
 ### 函数体
 
