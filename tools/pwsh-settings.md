@@ -7,15 +7,6 @@ Powershell7 比较稳定的配置位置，应该在 `~/Documents/Powershell/Micr
 $OutputEncoding = [System.Text.Encoding]::UTF8
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 
-# proxy 
-# $env:HTTP_PROXY = "http://127.0.0.1:7890"
-# $env:HTTPS_PROXY = "https://127.0.0.1:7890"
-
-# auto completion
-# Invoke-Expression -Command $(gh completion -s powershell | Out-String)
-Get-ChildItem -Path 'D:\bin\comple' -Filter *.ps1 | ForEach-Object {
-    . $_.FullName
-}
 Set-PSReadLineOption -ShowToolTips
 Set-PSReadLineOption -PredictionViewStyle ListView
 
@@ -24,7 +15,7 @@ Set-PSReadLineOption -EditMode Vi
 $env:VISUAL = 'nvim' 
 $env:EDITOR = 'nvim'
 # using alt+x  
-Set-PSReadLineKeyHandler -Chord Alt+x -Function ViEditVisually
+Set-PSReadLineKeyHandler -Chord Alt+e -Function ViEditVisually
 
 # prompt
 function prompt {
@@ -63,19 +54,28 @@ Invoke-Expression (& { (zoxide init powershell | Out-String) })
 # posh-git
 Import-Module posh-git
 
-# Powershell Development Environment for VS2022
-# $vsDevShellModule = "C:\Program Files\Microsoft Visual Studio\18\Insiders\Common7\Tools\Microsoft.VisualStudio.DevShell.dll"
-# Import-Module -Name $vsDevShellModule -ErrorAction Stop
+Remove-Alias ls,cat,cp,mv,rm,curl,wget,sort,tee,where,clear,man -Force -ErrorAction SilentlyContinue
+```
 
-#Enter-VsDevShell -VsInstanceId 69a2bc64 `
-#                -SkipAutomaticLocation `
-#                -DevCmdArguments "-arch=x64 -host_arch=x64"
+## 开发环境*
 
-# Import-Module 'C:\Development\C\vcpkg\scripts\posh-vcpkg'
+```powershell
+Powershell Development Environment for VS2022
+$vsDevShellModule = "C:\Program Files\Microsoft Visual Studio\18\Insiders\Common7\Tools\Microsoft.VisualStudio.DevShell.dll"
+Import-Module -Name $vsDevShellModule -ErrorAction Stop
 
-# autohotkey
-# Start-Process -FilePath "D:\bin\keymap.ahk"
+Enter-VsDevShell -VsInstanceId 69a2bc64 `
+                -SkipAutomaticLocation `
+                -DevCmdArguments "-arch=x64 -host_arch=x64"
 
-# mihomo start
+Import-Module 'C:\Development\C\vcpkg\scripts\posh-vcpkg'
+```
 
+## 导入自定义脚本
+
+```powershell
+$completionDir = Join-Path (Split-Path -Parent $PROFILE) 'completions'
+Get-ChildItem -Path $completionDir -Filter *.ps1 | ForEach-Object {
+    . $_.FullName
+}
 ```
