@@ -33,39 +33,4 @@ FHS 规定共享库位置为:
 - `/user/local/lib` 第三方应用程序的库, 如 python 的共享库在 `/usr/local/lib/python` 下, python.exe 在 `/user/local/bin` 下. 
 
 
-## 开发目录结构
-
-### JS
-
-* nodejs install dir 
-* nodejs config set cache-dir 
-* pnpm config set store-dir 
-
-### C 
-
-vcpkg:
-* VCPKG_ROOT 
-
-### Rust 
-
-* CARGO_HOME 
-* RUSTUP_HOME 
-
-### Go 
-
-
-
-### Python 
-
-UV:
-* UV_TOOL_BIN_DIR `...\uv\bin` 
-* UV_TOOL_DIR `...\uv\tools`
-* UV_PYTHON_INSTALL_DIR `...\uv\python`
-
-pip: 
-* pip install dir 
-
-### Java 
-
-* JAVA_HOME 
 
