@@ -86,7 +86,7 @@ a_{1}\\a_{2}\\a_{3}
 0 & -a_{3}  & a_{2} \\
 a_{3} & 0 & -a_{1} \\
 -a_{2} & a_{1}  & 0
-\end{bmatrix}\times b=[\Vec{a}]\Vec{b}$$
+\end{bmatrix}\times b=[\Vec{a}]\Vec{b}\tag{1}\label{skew-symmetric}$$
 
 因此，$w_{s}$ 可以表示 SO(3) 中的等价矩阵：$$[w_{s}]=\dot{R}R^{-1}=\dot{R}R^{\top}$$
 
@@ -114,17 +114,19 @@ $$\dot{p}=w\times p=[w]p$$
 这是一个线性微分方程，其解是 $$p(t)=e^{[w]t}p(0)$$ 
 
 
-设 $t$ 时刻时，向量 $p$ 旋转了 $\theta$ 角度，此时将指数 $e^{[\Vec{w}]\theta}$ 泰勒展开得到：
+设 $t$ 时刻时，向量 $p$ 旋转了 $\theta$ 角度，此时将指数 $e^{[\Vec{w}]\theta}$ 泰勒展开得到 Rodrigues' Formula：
 
 #### Rodrigues' Formula 
 
-$\newcommand{W}{[\Vec{w}]}$
+${} \newcommand{W}{{[\Vec{w}]}} {}$
 
-Given vector $\Vec{w}\theta\in \mathbb{R}^{3}$, such that $\theta$ is any scalar and $\Vec{w}\in \mathbb{R}^{3}$ is a unit vector, the matrix exponential of $\W\theta=[\Vec{w}\theta]\in SO(3)$ is 
+**Given vector $\Vec{w}\theta\in \mathbb{R}^{3}$, such that $\theta$ is any scalar and $\Vec{w}\in \mathbb{R}^{3}$ is a unit vector, the matrix exponential of $\W\theta=[\Vec{w}\theta]\in SO(3)$ is**
 
-$$Rot(\Vec{w},\theta)=e^{\W\theta}=I+\sin \theta\W+(1-\cos \theta)\W^{2}\in SO(3)$$
+$$Rot(\Vec{w},\theta)=e^{\W\theta}=I+\sin \theta\W+(1-\cos \theta)\W^{2}\in SO(3)\tag{2}\label{rodrigues}$$
 
-#### Matrix Logarithm of Rotations 
+将 $\W$ 的斜对称矩阵形式 $\eqref{skew-symmetric}$ 代入 $\eqref{rodrigues}$ 式中，得到： 
+
+$$R-R^{\top}=e^{\W}-(e^\W)^{\top}=2\sin \theta\W$$
 
 ## Rigid-Body Motion and Twist
 #### Exponential Coordinats of Motion&Twist

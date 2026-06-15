@@ -12,7 +12,7 @@ revised: 2026-01-27
 
 ***
 
-### 应用程序
+## Windows GUI
 
 * 邮箱：Thunderbird 
 * PDF 阅读与编辑：SumatraPDF、Adobe Acrobat DC
@@ -29,10 +29,10 @@ revised: 2026-01-27
 * 远程桌面：向日葵、RustDesk 
 * 表格：Excel、Google Sheet 
 
-#### 硬件
+### 监控
 
 * 刷盘：refus 
-* 流量和硬件监控：Traffic Monitor 
+* 流量和硬件监控: ~~Traffic Monitor~~ 改为 [taskbar-monitor](https://github.com/leandrosa81/taskbar-monitor)
 * 硬件监控：LibreHardwareMonitor 
 * CPU 性能测试：CPU-Z
 * 硬盘管理：CrystallDiskInfo、DiskGenius 
@@ -129,7 +129,7 @@ Windows 上一些 GNU 工具移植, 见 [GNUwin32](https://gnuwin32.sourceforge.
 * grok, chatgpt 
 * piper 文字转语音 TTS 工具
 
-## on Linux
+## Linux GUI
 
 also see [.bashrc](bashrc.md), here is the GUI choice:
 
@@ -152,3 +152,44 @@ also see [.bashrc](bashrc.md), here is the GUI choice:
 * sub-store (subconverter)
 * miniflux
 * telegram-bot
+
+## DEV
+
+缓存目录放在默认位置即可，重点是其他位置配置地更加紧凑。
+
+### JS
+
+* nodejs install dir 
+* nodejs config set cache-dir 
+* pnpm config set store-dir 
+
+### C 
+
+vcpkg:
+* VCPKG_ROOT 
+
+### Rust 
+
+* CARGO_HOME 
+* RUSTUP_HOME 
+
+### Go 
+
+* GOBIN 
+* GOROOT
+* GOPATH 
+
+
+### Python 
+
+UV:
+* UV_TOOL_BIN_DIR `...\uv\bin` 
+* UV_TOOL_DIR `...\uv\tools`
+* UV_PYTHON_INSTALL_DIR `...\uv\python`
+
+pip: 
+* pip install dir 
+
+### Java 
+
+* JAVA_HOME 
