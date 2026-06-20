@@ -140,7 +140,8 @@ syntax on
 set termguicolors
 colorscheme catppuccin-macchiato 
 let g:airline_theme="catppuccin" "latte, frappe, macchiato, mocha
-" 背景透明
+
+" 背景透明，如果 terminal 带透明效果，这个非常重要
 hi Normal ctermbg=none guibg=none
 hi NonText ctermbg=none guibg=none
 

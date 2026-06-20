@@ -32,4 +32,24 @@ struct Foo : Base<Foo>
 };
 ```
 
-CRTP 常被用于 [修饰器模式](behavioral-patterns.md). 
+CRTP 也可以写出类似 *装饰器* 的效果:
+
+```cpp
+template<class Inner>
+struct Logging {
+    Inner inner;
+
+    void run() {
+        log();
+        inner.run();
+    }
+
+    void log() {}
+};
+
+struct Task {
+    void run() {}
+};
+
+auto x = Logging<Task>{Task{}};
+```

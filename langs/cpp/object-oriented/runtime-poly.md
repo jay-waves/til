@@ -173,6 +173,13 @@ unordered_map<string, function<int(double, double)>> DivisionPolicy {
 DivisionPolicy["ceiling"](7.0, 3.3);
 ```
 
+### 类型标签
+
+基于 [c++17 variant](../data-types/type-erasing.md) 
+
+### 编译期派发
+
+详见 [c++20 concept](../data-types/concept.md)
 
 [^1]: https://learnmoderncpp.com/2023/11/22/selecting-functions-at-runtime/#more-2406
 

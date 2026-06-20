@@ -2,7 +2,7 @@
 
 利用堆的性质: 父节点用于大于子节点. 从堆中取出根元素 (最大元素), 并等待堆重新平衡, 不断重复此过程, 最终得到有序序列. 堆排序中, 将堆顶和堆底互换的操作会破坏稳定性. 
 
-```c
+```cpp
 /*
  * 使用数组实现最大堆
  * 节点 i 的左子节点位置为 2 * i + 1
@@ -10,51 +10,6 @@
  * 节点 i 的父节点位置为 floor((i-1) / 2)
  */
 
-/*
- * 最大堆调整: 删除堆顶后, 使堆重新平衡. 不能用于建立最大堆.
- */
-void max_heapify(void *base, size_t size, int start, int end, 
-								 int (*cmp)(const void *, const void *)) 
-{
-    int dad = start;
-    int son = dad * 2 + 1;
-    while (son <= end) {
-        char *arr = (char *)base;
-        if (son + 1 <= end)
-			if (cmp(arr + (son + 1) * size, arr + son * size))
-				++son; // 获取节点 i 的最大子节点
-        if (cmp(arr + dad * size, arr + son * size)) {
-            return; // 假设子节点已是最大堆
-        } else {
-            swap(arr + dad * size, arr + son * size, size);
-            dad = son;
-            son = dad * 2 + + 1;
-        }
-    }
-}
-
-/*
- * 原地堆排序
- */
-void heap_sort(void *base, size_t size, int num, 
-							 int (*cmp)(const void *, const void *)) 
-{
-    int i;
-    // 建堆, 自底向上
-    for (i = num / 2 - 1; i >= 0; i--)
-        max_heapify(base, size, i, num - 1, cmp);
-    // 堆排序
-    for (i = num - 1; i >= 1; i--) {
-        char *arr = (char *)base;
-        swap(arr, arr + i * size, size);        // 首尾互换
-        max_heapify(base, size, 0, i - 1, cmp); // 堆尺寸减一
-    }
-}
-```
-
-用 C++ 泛型:
-
-```cpp
 using std::vector; // in vector
 using std::swap;   // in algorithm
 
@@ -63,6 +18,9 @@ class Heap {
 public:
     Heap(vector<T> &data, Compare cmp) : data(data), cmp(cmp) {}
 
+	/*
+	* 最大堆调整: 删除堆顶后, 使堆重新平衡. 不能用于建立最大堆.
+	*/
     void heapify(size_t start, size_t end) {
         size_t dad = start;
         size_t son = dad * 2 + 1;
@@ -79,14 +37,18 @@ public:
         }
     }
 
+	/*
+	 * 原地堆排序
+	 */
     void sort() {
         size_t len = data.size();
+        // 建堆, 自底向上
         for (size_t i = len / 2 - 1; i < len; i--) {
             heapify(i, len - 1);
         }
         for (size_t i = len - 1; i > 0; i--) {
-            swap(data[0], data[i]);
-            heapify(0, i - 1);
+            swap(data[0], data[i]); // 首尾互换
+            heapify(0, i - 1);      // 堆尺寸减一
         }
     }
 

@@ -43,3 +43,27 @@ decltype(ref) b = x; // b --> const int&
 ### any
 
 ### variant
+
+```cpp
+#include <variant>
+
+struct IntTag {}; // 1B
+struct StringTag {}; // 1B
+
+using V= std::variant<IntTag, StringTag>;
+
+template<class>
+inline constexpr bool always_false_v = false;
+
+void dispatch(const V& v) {
+	std::visit([](const auto& x) {
+		using T = std::decay_t<decltype(x)>;
+		
+		if constexpr (std::same_as<T, IntTag>) {
+			//...
+		} else if constexpr (std::same_as<T, StringTag>) {
+			//...
+		}
+	}, v);
+}
+```

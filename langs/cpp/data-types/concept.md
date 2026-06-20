@@ -145,3 +145,24 @@ void print(Args&&... args){
 // in c
 #define print(format, ...) printf(format, __VA_ARGS__)
 ```
+
+### 实现编译期派发
+
+```cpp
+
+struct IntTag {};
+struct StringTag {};
+
+template<class T>
+concept SupportedTag = std::same_as<T, IntTag> || std::same_as<T, StringTag>;
+
+template<SupportedTag Tag>
+void dispatch() {
+	if constexpr (std::same_as<Tag, IntTag>) {
+	
+	} else if constexpr (std::same_as<Tag, StringTag>) {
+	
+	}
+}
+
+```

@@ -116,7 +116,7 @@ asmlinkage int sys_helloyjw(void);
 
 #### 4 Compile and Update Kernel
 
-编译方法详见 [wsl 更新内核](../vm/wsl%20更新内核.md)
+编译方法详见 [wsl-update-kernel](../vm/wsl-update-kernel.md)
 
 #### 5 Test
 

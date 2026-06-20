@@ -27,6 +27,7 @@ export http_proxy=$proxy
 export ALL_PROXY=$proxy
 export HTTPS_PROXY=$proxy
 export HTTP_PROXY=$proxy
+export no_pxory="localhost,127.0.0.1,::1"
 ```
 
 配置部分软件的代理
@@ -86,4 +87,18 @@ $ alias lm='ls -al | more'
 export hot_path = '/xxx/xxx/xxx/very/long/and/sophisticated/path'
 
 cd $hot_path
+```
+
+## 扩展工具配置
+
+fzf 
+
+```bash
+source /usr/share/fzf/shell/key-bindings.bash
+```
+
+starship 
+
+```bash
+eval "$(starship init bash)"
 ```

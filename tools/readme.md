@@ -139,6 +139,11 @@ also see [.bashrc](bashrc.md), here is the GUI choice:
 * chrome 比 firefox 稳定很多
 * ibus with rime engine
 
+其他命令行配置见发行版：
+* [wsl](../os/vm/wsl-config.md)
+* [distros-arch](../os/linux/distros-arch.md)
+* [distros-fedora](../os/linux/distros-fedora.md)
+
 ## Server 
 
 服务器配置：
@@ -157,39 +162,9 @@ also see [.bashrc](bashrc.md), here is the GUI choice:
 
 缓存目录放在默认位置即可，重点是其他位置配置地更加紧凑。
 
-### JS
-
-* nodejs install dir 
-* nodejs config set cache-dir 
-* pnpm config set store-dir 
-
-### C 
-
-vcpkg:
-* VCPKG_ROOT 
-
-### Rust 
-
-* CARGO_HOME 
-* RUSTUP_HOME 
-
-### Go 
-
-* GOBIN 
-* GOROOT
-* GOPATH 
-
-
-### Python 
-
-UV:
-* UV_TOOL_BIN_DIR `...\uv\bin` 
-* UV_TOOL_DIR `...\uv\tools`
-* UV_PYTHON_INSTALL_DIR `...\uv\python`
-
-pip: 
-* pip install dir 
-
-### Java 
-
-* JAVA_HOME 
+* Rust: 放到 WSL 中
+* Python：放到 WSL 中
+* LLVM： 放到 WSL 中
+* JS： dir, cache-dir, store-dir 
+* C：MSBuild Tools DIR , VCPKG_ROOT 
+* GO: GOBIN, GOROOT, GOPATH 

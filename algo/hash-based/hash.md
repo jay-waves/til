@@ -67,9 +67,6 @@ uint hash_bkdr(const char *key) {
 }
 ```
 
-### 一致性哈希
-
-
 
 ## 处理哈希碰撞
 

@@ -2,7 +2,7 @@
 
 C++20 `<ranges>`, 可以直接与所有 STL 算法/容器 互操作. `ranges` 支持构造一个**延迟计算的流水线**, 当且仅当对其遍历时, 才实际计算. 其生命周期依赖于原数据视图. 
 
-**尽量简洁地使用, `<ranges>` 报错信息复杂, 很难看懂和调试.**
+**尽量简洁地使用, `<ranges>` 报错信息复杂, 很难看懂和调试.**  
 
 ```cpp
 #include <ranges>
@@ -56,6 +56,39 @@ std::ranges::copy(rng, std::back_inserter(result));
 auto rng = v | .... | std::ranges::to<std::vector<int>>();
 
 ```
+
+## Ranges 协议
+
+如果容器支持 `begin(r)/end(r)`, 那么它就满足 ranges 协议 (概念). 在此之上, ranges 实际能力由容器的 [iterator](iterator.md) 等级决定, 比如 forward_iterator 意味着 forward_range.
+
+`view` 是轻量无拥有权的 ranges 协议, 比如 `string_view, span` 就支持 `view` 协议.
+
+通过迭代器支持 `ranges`:
+
+```cpp
+struct vec {
+	struct iterator {
+		// 支持 *, ++, ==
+	};
+	iterator begin();
+	iterator end();
+}
+```
+
+裸 `ranges`:
+
+```cpp
+struct vec {
+
+	T* begin(); // begin/end 返回同类型, 满足 common_range 概念
+	T* end();
+	size_t size() const; // 满足 sized_range 概念
+	
+	T* data_; // 满足 ranges::contiguous_range 概念
+	size_t size_;
+}
+```
+
 
 ## 几种惯用法
 
