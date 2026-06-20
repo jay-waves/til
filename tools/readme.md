@@ -144,20 +144,6 @@ also see [.bashrc](bashrc.md), here is the GUI choice:
 * [distros-arch](../os/linux/distros-arch.md)
 * [distros-fedora](../os/linux/distros-fedora.md)
 
-## Server 
-
-服务器配置：
-* 域名及DNS服务
-* 阿里云 OSS 
-* 固定 EIP 
-* WAF 
-
-服务：
-* nginx 
-* sub-store (subconverter)
-* miniflux
-* telegram-bot
-
 ## DEV
 
 缓存目录放在默认位置即可，重点是其他位置配置地更加紧凑。
@@ -168,3 +154,14 @@ also see [.bashrc](bashrc.md), here is the GUI choice:
 * JS： dir, cache-dir, store-dir 
 * C：MSBuild Tools DIR , VCPKG_ROOT 
 * GO: GOBIN, GOROOT, GOPATH 
+
+## 各类配色
+
+- [snow](https://github.com/haystackandroid/snow)
+- [typewritter](https://github.com/logico/typewriter)
+- [material](https://github.com/hzchirs/vim-material)
+- nord
+- github
+- Catppuccin
+- [solarized](https://github.com/altercation/vim-colors-solarized)
+- vim-material

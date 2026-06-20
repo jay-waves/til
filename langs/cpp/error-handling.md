@@ -1,3 +1,13 @@
+## 错误处理
+
+- 基于返回值
+- 抛出异常
+- `std::optional` 
+- `tl::expected` 
+- outcome, 类似 Rust `anyhow, thiserror`
+
+
+异步程序的错误处理：
 - 调用栈如果是线性的 (入栈出栈), 异常就可以顺着栈向上回溯.
 - 调用栈如果是树状的 (异步逻辑), 就要顺着树枝向上回溯, 直到第一个分叉点.
 
@@ -93,6 +103,84 @@ no_lock_available
 not_enough_memory
 no_space_on_device
 no_buffer_space
+```
+
+### Expected 
+
+将返回值封装为两种可能: `ok(T), err(E)`. c++ 常见的库是 [`tl::expected`]((https://github.com/TartanLlama), 在 c++23 可以用 `std::expected`
+
+```cpp
+template <typename T, typename E>
+struct Expected {
+	enum Type {
+		Ok,
+		Err,
+	};
+	
+	Type type;
+	union {
+		T value;
+		E error;
+	};
+};
+```
+
+优点是天然适合链式编程 (monadic). c++ 提供了 `and_then()` 方法, 让错误 `E` 自动透传 (propagate), 在错误时立刻返回, 不执行后续调用链. 
+
+```cpp
+std::expected<V, E> f() {
+	... 
+		return std::unexpected(...);
+	
+	return xxx;
+}
+
+f().and_then(g).and_then(h);
+
+// 不需要层层检查
+auto a = f();
+if (!a) return a;
+auto b = g(*a);
+if (!b) return b;
+h(*b);
+```
+
+由于 `std::expected` 是值语义, 因此无需像 异常 一样进行栈展开. 控制流是明确的.
+
+### Option
+
+类似 Rust 的 Option 概念, 或者 Haskell 的 Maybe. 用 Option 包装一个返回值, 返回值可能正常, 也可能是错误的 (`nullopt`), 在语义上区分了正确与错误的返回值, 并且不打断控制流.
+
+```cpp
+#include <optional>
+
+std::optional<int> parseSomething(const std::string& str) noexcept {
+	size_t pos;
+	int result = std::stoi(str, &pos); 
+	if (pos == str.length())
+		return result;
+	return std::nullopt;
+}
+
+std::optional<int> opt = 1;
+
+// 直接取值, 可能失败
+*opt;
+
+// 使用 value(), 无值则抛出异常
+try {
+	opt.value();
+} catch (const std::bad_optional_access& e) { }
+
+// 使用 value_or() 提供默认值
+opt.value_or(0);
+
+// 无异常判断方法:
+if (opt.has_value()) 
+	...
+
+if (opt == std::nullopt)
+	...
 ```
 
 ## 断言
@@ -208,82 +296,9 @@ bad_typeid
 声明某函数不会抛出异常. 标准库 STL 的优化行为会参考这个关键字:
 - `std::vector<T>` 扩容时, 如果 STL 没有禁用异常, 并且 `T` 的移动构造函数没有声明 `noexcept`, 扩容函数不会调用移动构造函数, 而实用拷贝构造函数. ???
 
-### Expected 
 
-将返回值封装为两种可能: `ok(T), err(E)`. 
+### StackTrace 
 
-```cpp
-template <typename T, typename E>
-struct Expected {
-	enum Type {
-		Ok,
-		Err,
-	};
-	
-	Type type;
-	union {
-		T value;
-		E error;
-	};
-};
-```
-
-优点是天然适合链式编程 (monadic). c++ 提供了 `and_then()` 方法, 让错误 `E` 自动透传 (propagate), 在错误时立刻返回, 不执行后续调用链. 
-
-```cpp
-std::expected<V, E> f() {
-	... 
-		return std::unexpected(...);
-	
-	return xxx;
-}
-
-f().and_then(g).and_then(h);
-
-// 不需要层层检查
-auto a = f();
-if (!a) return a;
-auto b = g(*a);
-if (!b) return b;
-h(*b);
-```
-
-由于 `std::expected` 是值语义, 因此无需像 异常 一样进行栈展开. 控制流是明确的.
-
-
-
-## 条件值
-
-类似 Rust 的 Option 概念, 或者 Haskell 的 Maybe. 用 Option 包装一个返回值, 返回值可能正常, 也可能是错误的 (`nullopt`), 在语义上区分了正确与错误的返回值, 并且不打断控制流.
-
-```cpp
-#include <optional>
-
-std::optional<int> parseSomething(const std::string& str) noexcept {
-	size_t pos;
-	int result = std::stoi(str, &pos); 
-	if (pos == str.length())
-		return result;
-	return std::nullopt;
-}
-
-std::optional<int> opt = 1;
-
-// 直接取值, 可能失败
-*opt;
-
-// 使用 value(), 无值则抛出异常
-try {
-	opt.value();
-} catch (const std::bad_optional_access& e) { }
-
-// 使用 value_or() 提供默认值
-opt.value_or(0);
-
-// 无异常判断方法:
-if (opt.has_value()) 
-	...
-
-if (opt == std::nullopt)
-	...
-```
+提供异常中捕获调用栈的能力, 类似 Python 的报错:
+- https://github.com/jeremy-rifkin/cpptrace
+- `boost::stacktrace`

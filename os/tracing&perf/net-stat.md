@@ -122,7 +122,7 @@ while(true) {
 
 [`iftop`](http://www.ex-parrot.com/~pdw/iftop/), [`bandwhich`](https://github.com/imsnif/bandwhich) 或 [`nethogs`](https://github.com/raboof/nethogs) 用于查看带宽的统计情况。`iftop` 查看某个端口占用大量宽带，`ss` 查询该端口对应的进程。
 
-`sar` 也可以查看网络吞吐量 `sar -b 1`。详见 [sysstat-sar](系统信息探测.md)
+`sar` 也可以查看网络吞吐量 `sar -b 1`。详见 [sysstat-sar](sys-stat.md)
 
 
 ## 过滤网络报文
