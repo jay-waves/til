@@ -174,36 +174,6 @@ private:
 
 ```
 
-## ranges 
+## ranges
 
-C++20 Ranges, 由 ranges-v3 迭代而来. 优点是更函数式, 缺点是概念多, 编译慢.
-
-如果容器支持 `begin(r)/end(r)`, 那么它就满足 ranges 协议 (概念). 在此之上, ranges 实际能力由容器的 iterator 等级决定, 比如 forward_iterator 意味着 forward_range.
-
-`view` 是轻量无拥有权的 ranges 协议, 比如 `string_view, span` 就支持 `view` 协议.
-
-通过迭代器支持 `ranges`:
-
-```cpp
-struct vec {
-	struct iterator {
-		// 支持 *, ++, ==
-	};
-	iterator begin();
-	iterator end();
-}
-```
-
-裸 `ranges`:
-
-```cpp
-struct vec {
-
-	T* begin(); // begin/end 返回同类型, 满足 common_range 概念
-	T* end();
-	size_t size() const; // 满足 sized_range 概念
-	
-	T* data_; // 满足 ranges::contiguous_range 概念
-	size_t size_;
-}
-```
+详见 [c++20 ranges](ranges.md)

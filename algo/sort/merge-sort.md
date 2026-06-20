@@ -60,3 +60,4 @@ void merge_sort(span<T> a, Comp comp = {}) {
   merge_sort_impl(a, span<T>(temp), comp);
 }
 ```
+

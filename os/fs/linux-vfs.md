@@ -160,7 +160,7 @@ struct dentry {
 
 所有 `dentry` 挂载在一个全局缓存哈希表上，同时内部指针表达互相之间的树形目录关系。当 `dentry` 不再被用户活跃使用时，内核将其挂在 `lru` 链表上
 * 当内存紧张时，从 `lru` 上回收内存
-* `linked list` + `hash table` 是 [lru cache](../../algo/linked-list/lru.md) 最常见的形式。
+* `linked list` + `hash table` 是 [lru cache](../../algo/linked-list/lru-cache.md) 最常见的形式。
 
 ![ascii/dentry](../../attach/ascii/dentry.md)
 

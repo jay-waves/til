@@ -39,9 +39,9 @@ C++23
 这里列明 C++ 最常见的使用模式、最佳实践、手搓考点：
 * `string` 
 * `vector` 
-* [`singleton`](oop/creational-patterns.md)
-* [p impl](oop/pimpl.md)
-* [lru cache](../../algo/linked-list/lru.md)
+* [`singleton`](object-oriented/factory-pattern.md)
+* [p impl](object-oriented/pimpl.md)
+* [lru cache](../../algo/linked-list/lru-cache.md)
 * `hash table` 
 * raii, [`shared_ptr`, `unique_ptr`](memory-model/smart-pointer.md)
 * [`memcpy`, `memmove`](../../os/libc/mem-copy.md)

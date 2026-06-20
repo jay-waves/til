@@ -1,4 +1,3 @@
-> [WSL安装手册](https://learn.microsoft.com/en-us/windows/wsl/install-manual)
 
 如果 `wsl --update` 出问题, 请去[仓库](https://github.com/microsoft/WSL/releases) 手动下载最新分发版. 记得备份 `.vhdx` 镜像文件.
 
@@ -114,3 +113,101 @@ wsl --list
 
 wsl --unregister Kali-Linux
 ```
+
+## 创建多个实例 
+
+注意, WSL 和 Docker 类似, 多个 Linux 实例**实际上共用了一个底层虚拟机**. 例如不同虚拟机的 IP 地址是相同的 (仅用端口区分). 
+
+```shell
+wsl --export Ubuntu-22.04 D:\VM\backup.tar.gz
+wsl --import Ubuntu-22.04-2 <path\to\install> D:\VM\backup.tar.gz
+
+# 或直接导入 vhdx 文件 (更快)
+wsl --import-in-place <Distro> <FilePth>
+
+# login the second instance  
+wsl -d Ubuntu-22.04-2
+```
+
+## 移动 VHDX 位置
+
+核心就是移动 vhdx 文件.
+
+```shell
+wsl --export Ubuntu-22.04 D:\VM\backup.vhdx --vhd
+wsl --unregister Ubuntu-22.04
+wsl --import Ubuntu-22.04 D:\VM\Ubuntu-22.04 D:\VM\backup.vhdx --vhd
+wsl --set-default-version Ubuntu-22.04
+```
+
+最新的 WSL 增加了一个新功能 
+
+```shell
+wsl --install XXX --location D:\WSL\XXX
+```
+
+也可以用 symlink 软链接把 vhdx 移动到别的盘. 
+
+发现了一个好用的工具 [LxRunOffline](https://github.com/DDoSolitary/LxRunOffline):
+```powershell
+lxrunoffline get-dir -n Arch 
+
+lxrunoffline move -n Arch -d C:\WSL\Arch
+```
+
+
+## 压缩 VHDX 
+
+WSL 占用空间后, 如果空间在 WSL 中被释放, 被释放的空间并不会自动归还给 Windows, 造成 WSL 占用磁盘空间不断增长. 解决办法:
+1. wsl 新特性 `sparse`, 自动缩减镜像体积 (仅对未来有效)
+2. 压缩镜像文件
+
+首先确保最新版: `wsl --update [--pre-release]`
+
+### 设置 `sparse`
+
+通过命令行: `wsl --manage <distro> --set-sparse true`
+
+通过 `.wslconfig`:
+
+```toml
+[experimental]
+sparseVhd=true 
+```
+
+### 压缩镜像文件
+
+常见方法是通过 Hyper-V 提供的 Optimize-VHD 命令, 但是 Windows Home 版并没有 Hyper-V 功能, 故此处介绍基于 diskpart 的方法.
+
+以 Ubuntu 为例, 虚拟机磁盘文件存在该路径:
+```
+C:\Users\%username%\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu20.04
+onWindows_79rhkp1fndgsc\LocalState\ext4.vhdx
+```
+
+使用 diskpart
+
+```powershell
+wsl --shutdown
+# 检查是否为稀疏文件
+fsutil sparse queryflag "....\ext4.vhdx"
+# 如是, 就设置为非稀疏文件
+fsutil sparse setflag "....\ext4.vhdx" 0
+
+diskpart
+# open window Diskpart console
+select vdisk file="....\ext4.vhdx"
+# 如果 select vdisk file 报错, 可能是路径中有单引号, 去掉双引号即可.
+attach vdisk readonly
+compact vdisk
+detach vdisk
+exit
+```
+
+
+### 参考
+
+- https://github.com/microsoft/WSL/issues/4699
+- https://devblogs.microsoft.com/commandline/windows-subsystem-for-linux-september-2023-update/#automatic-disk-space-clean-up-set-sparse-vhd
+- [windows 10 - How do I get back unused disk space from Ubuntu on WSL2 - Super User](https://superuser.com/questions/1606213/how-do-i-get-back-unused-disk-space-from-ubuntu-on-wsl2)
+- [WSL Install Manual](https://learn.microsoft.com/en-us/windows/wsl/install-manual)
