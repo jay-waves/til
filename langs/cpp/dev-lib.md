@@ -1,10 +1,3 @@
-## 错误处理
-
-- 基于返回值
-- 抛出异常
-- [`tl::optional`](https://github.com/TartanLlama/optional) --> C++20 `std::optional`, 类似 Rust `Option`
-- [`tl::expected`] --> C++23 `std::expected`, 类似 Rust `Result`
-- outcome, 类似 Rust `anyhow, thiserror`
 
 ## 变量声明
 
@@ -15,12 +8,6 @@ void foo() {
 	MyClass obj2{};           // 这是一个 MyClass 对象
 }
 ```
-
-## StackTrace 
-
-提供异常中捕获调用栈的能力, 类似 Python 的报错:
-- https://github.com/jeremy-rifkin/cpptrace
-- `boost::stacktrace`
 
 ## std::literals 
 
@@ -44,7 +31,7 @@ void foo() {
 
 - benchmark 
 - Catch2 
-- doctest 
+- doctest: 比 catch2 更轻量，catch v3 很重
 
 ### Catch2 
 

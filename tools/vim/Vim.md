@@ -1,8 +1,8 @@
 ## 会话
 
-### 缓冲区
+文件被读取到内存后，vim 将其称为 *buffer* ，（而不是主流的 tab 称呼），buffer 被存储在单个进程的 buffer list 里。而 windows 则是显式一个 buffer 的区域。同一个界面可以被分屏，整体被称为 *tab* ，tab 基本不用，更多是直接用 buffer list。
 
-缓冲区 (Buffers) 是文件在内存中的表示, 文件被打开后存储到**全局的缓冲区列表**中, 所有标签页或窗口共享该列表. *不用多标签页时, VIM 最上方的栏其实是缓冲区列表.*
+### 管理全局缓冲区
 
 ```vim
 :bn           " 切换到下一个缓冲区, buffer next
@@ -14,22 +14,7 @@
 :e <file>     " 激活新 buffer, 隐藏当前 buffer
 ```
 
-### 标签页
-
-标签页 (Tab Pages) 是一组窗口的集合. VIM 会话启动时, 有一个默认标签页和一个窗口. 当标签页不分屏时, 一个标签页就只有一个窗口; 当标签页分屏时, 就有了多个窗口.
-
-```vim
-:tabnew          " 打开一个新标签页
-:tabn            " 切换到下一个标签页
-:tabp
-:tabc            " 关闭标签页
-:tabs            " 列出所有标签页
-:tabe <file>     " 在新标签页编辑文件
-```
-
-### 窗口
-
-窗口 (Windows) 是显示缓冲区的区域.
+### 管理分屏窗口
 
 ```vim
 :sp  <file>           " 分屏
@@ -46,21 +31,6 @@
 ^w <, ^w <            " 修改左右侧分屏的宽度
 ^w +, ^w -            " 修改上下分屏的高度
 ^w =                  " 让分屏大小平均
-```
-
-> 查看帮助: `:h CTRL-W_*`, 如 `:h CTRL-W_p` 查看切换窗口命令  
-> 访问 `:h windows.txt` 查看所有窗口管理命令.
-
-### 视图
-
-视图 (view) 是对当前窗口的快照, 会话 (session) 是对当前 Vim 工作区的整体快照. 存储当前窗口布局, 打开的缓冲区, 设置的命令, 按键映射等, 类似于"项目/工作区"的概念. 
-
-```vim
-:mkview my_view.vim             " 存储于当前文件夹下
-:loadview my_view.vim
-
-:mksession my_session.vim
-:source my_session.vim
 ```
 
 ## 模式与操作
@@ -93,70 +63,49 @@ flowchart TB
 >
 > `:h navigation`, `:h operator`, `:h text-objects`
 
-### 定义事件回调
+## 与 shell 的交互
 
-快速跳转到头文件:
-
-```vim
-autocmd BufLeave *.{c,cpp} mark C
-autocmd BufLeave *.h       mark H
-在离开文件事件 (BufLeave) 发生时, 自动产生标记
-```
-
-手动触发事件:
+执行 shell 命令: 结果显示在临时窗口.
 
 ```vim
-:doautocmd BufRead
+:!my_command
 ```
 
-自定义事件:
+执行命令, 并替换所选范围内的文本为命令输出: (范围也可以先用 `V` 选中, 而非指定)
 
 ```vim
-doautocmd User Chibby
-
-autocmd User Chibby call ChibbySetup()
+:.,+4!ls
+:$!ls                " 在文件末尾输出 ls 命令结果
 ```
 
-## 临时工作文件
+执行命令, 并将输出添加到光标处:
 
-根据选项的不同, Vim 最多会创建 4 种工作文件. 
-
-### 备份文件
-
-`:set writebackup` 在写入前先备份文件, 当文件新的修改被保存时, 备份立即被删除.
-
-`:set backup` 在写入前备份文件, 有修改保存时不删除备份. ( `:set nobackup` )
-
-借助备份, 查看文件历史改动: (和临时历史不同)
-
-```sh
-$ diff ~/.vim/vimrc ~/.vim/files/backup/vimrc-vimbackup
-390d389
-< command! -bar -nargs=* -complete=help H helpgrep <args>
+```vim
+:r !command
 ```
 
-> 帮助见 `:h backup`
+在普通模式, 连续输入 `!!` , 相当于执行 `:.!`
 
-### 交换文件
+## 历史
 
-编辑文件时, Vim 会创建一个临时交换文件, 里面是**当前未保存的所有修改**. 用 `:swapname` 获取交换文件路劲, 默认是在同文件夹下的隐藏文件, 以 `.file.swp` 结尾. 用 `set noswapfile` 来禁用交换文件.
+| 临时编辑历史     | 列出所有条目 | 跳转到上一历史(的位置) | 跳转到下一历史 |
+| -------- | ------------ | ---------------------- | -------------- |
+| 跳转历史 | `:jumps`     | `[cnt]<c-o>`           | `[cnt]<c-i>`   |
+| 变更历史 | `:changes`   | `[cnt]g;`              | `[cnt]g,`      |
+| 命令历史 |    | `:<c-p>`               | `:<c-n>`               |
 
-断电时, 该文件并不会被删除. 提供了一定的容灾恢复, 服务器中不建议移动 `.swp` 的默认位置, 否则多个用户同时编辑同一文件时, 不会得到警告.
+vim 的*变更历史*以行为单位，即，行内改动会被合并为同一个历史。vim 的历史是树形结构，当撤销时，有两种回退历史的方式：
+* 按分支遍历 `:redo`, `:undo` ，从 quux 回退 bar
+* 按时间遍历 `g-`, `g+` ，从 quux 回退 baz 
+* `:earlier 1f` 回退到最近一次保存时
 
-> 帮助见 `:h swap-file`, `:h usr_11`
+```
+	 foo(1)
+  	 / 
+	bar(2)
+   /    \
+baz(3)  quux(4)
+```
 
-### 撤销文件
-
-内容变更历史记录是保存在内存中的, 并且会在 Vim 退出时清空. 如果想让它持久化到磁盘中, 可以设置 `:set undofile`. 这会把文件 `~/foo.c` 的撤销文件保存在 `~/foo.c.un~`.
-
-> 帮助见 `:h 'undofile'` 和 `:h undo-persistence`
-
-### viminfo 文件
-
-备份文件, 交换文件和撤销文件都是与文本状态相关的. 而 viminfo 文件是用来保存在 Vim 退出时可能会丢失的其它辅助信息的, 包括: 历史记录 (命令历史, 搜索历史, 输入历史), 寄存器内容, 标注, 缓冲区列表, 全局变量等等.
-
-默认情况下, viminfo 保存在 `~/.viminfo`, 非易失.
-
-> 帮助见 `:h viminfo` 和 `:h 'viminfo'`
-
+注意，编辑历史和跳转历史都是临时的，退出 Vim 时清空。不会被保存在 swap 里。
 

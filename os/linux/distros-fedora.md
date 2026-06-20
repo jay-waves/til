@@ -11,7 +11,7 @@ sudo dnf upgrade --refresh -y
 sudo dnf install -y \
   vim nano less \
   git curl wget unzip tar xz \
-  gcc gcc-c++ make pkgconf-pkg-config \
+  gcc gcc-c++ cmake ninja make pkgconf-pkg-config \
   openssl-dev zlib-devel \
   ca-certificates \
   procps-ng psmisc \
@@ -42,7 +42,7 @@ sudo dnf upgrade --refresh -y
 
 ## 访问控制
 
-Fedora 默认开启 [Selinux](../../tracing/访问控制.md)
+Fedora 默认开启 [Selinux](../tracing&perf/access-control.md)
 
 ## 网络服务
 

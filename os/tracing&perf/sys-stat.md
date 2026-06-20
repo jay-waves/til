@@ -7,7 +7,7 @@
 
 `iostat`, I/O statistics, 报告 各个设备传输速率, 每次 I/O 操作平均大小, 每秒进行的 I/O 操作数.
 
-`netstat` 显示本机套接字信息, 见[网络调试](网络调试.md).
+`netstat` 显示本机套接字信息, 见[net-stat](net-stat.md).
 
 `vmstat`, virtual memory statistics, 报告关于虚拟内存/进程/CPU活动等信息:
 

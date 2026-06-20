@@ -2,7 +2,9 @@
 code: [<future>]
 ---
 
-`<future>` 是比直接控制 线程/锁 更高层的调用, 专注于异步执行任务.
+建议不要用 `std::async` 或 `std::execution`，它们只能漂亮地完成简单任务，稍微复杂就会失控。我觉得 c++ 一直试图用抽象来抹平异步编程中的各种复杂情况，事实上都失败了。
+
+`<future>` 是比直接控制 线程/锁 更高层的调用, 专注于异步执行任务. 
 
 ## future 
 
@@ -39,3 +41,30 @@ void consumer(std::future<int> f) {
 用 `future` 另一个优势是自动 RAII 管理线程，不需要手动。默认会隐式 `join()`；强制退出时，也会保证 terminated. 
 
 `std::future` 在C++11 和 C++14 引入，不过个人认为 C++20 `std::jthread` 更易用，因为支持 `std::stop_token` 取消机制。详见 [thread](thread.md#jthread)
+
+## Parallel STL 
+
+C++17 引入的 Parallel STL ，适合计算密集的并行操作，不适合共享状态（UB）
+
+```cpp
+#include <execution>
+
+std::execution::seq; // 串行
+std::execution::par; // 多线程并行
+std::execution::par_unseq; // 并行，并允许向量化重排
+std::execution::unseq;  // 仅向量化
+```
+
+### 算法支持 
+
+```cpp 
+#include <algorithm>
+
+std::sort(std::execution::par, v.begin(), v.end());
+for_each(...); // 注意不要共享状态
+transform(...);
+reduce(...);
+find(...);
+copy(...);
+count(...);
+```

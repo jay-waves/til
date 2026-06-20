@@ -82,10 +82,15 @@ GUI:
 - asio 
 - libuv: 比 libevent 更新.
 
+并发:
+- OpenMP 
+- oneTBB
+
 数学:
 - gmp 
 - Eigen
 - SIMD (Vc)
+- blas
 
 ## Zero Cost Abstraction
 
