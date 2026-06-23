@@ -116,9 +116,9 @@ $$\dot{p}=w\times p=[w]p$$
 
 设 $t$ 时刻时，向量 $p$ 旋转了 $\theta$ 角度，此时将指数 $e^{[\Vec{w}]\theta}$ 泰勒展开得到 Rodrigues' Formula：
 
-#### Rodrigues' Formula 
+### Rodrigues' Formula 
 
-${} \newcommand{W}{{[\Vec{w}]}} {}$
+$\newcommand{W}{{[\Vec{w}]}}$
 
 **Given vector $\Vec{w}\theta\in \mathbb{R}^{3}$, such that $\theta$ is any scalar and $\Vec{w}\in \mathbb{R}^{3}$ is a unit vector, the matrix exponential of $\W\theta=[\Vec{w}\theta]\in SO(3)$ is**
 

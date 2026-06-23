@@ -82,3 +82,5 @@ task<int> doThing() {
 https://ericniebler.com/2020/11/08/structured-concurrency/
 
 https://vorpus.org/blog/notes-on-structured-concurrency-or-go-statement-considered-harmful/
+
+[Trying out C++26 executors -- Mathieu Ropert](https://mropert.github.io/2025/11/21/trying_out_stdexec/)

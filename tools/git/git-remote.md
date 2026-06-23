@@ -36,6 +36,14 @@ git clone --depth 1 <url>
 
 浅克隆的历史和完整仓库的历史会出现分叉, 此时应尝试 rebase 历史.
 
+### 远程仓库改名
+
+查看远程仓库
+`git remote -v` 
+
+更新远程仓库的 url:
+`git remote set-url origin https://github.com/username/new_repo_name.git`
+
 ### 孤儿分支
 
 仓库比较大, 想要从某一个分支开辟一个新仓库, 放弃无关分支的历史. 

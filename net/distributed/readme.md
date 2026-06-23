@@ -56,8 +56,6 @@ SQL 和 NoSQL 的核心区别是：存储一个引用外部的键，还是直接
 
 https://github.com/ByteByteGoHq/system-design-101
 
-[The Architecture of Open Source Applications](https://aosabook.org/en/index.html).
-
 https://aosabook.org/en/v2/zeromq.html
 
 https://aosabook.org/en/posa/high-performance-networking-in-chrome.html
@@ -67,3 +65,6 @@ Open-MX-IOAT.pdf
 https://aosabook.org/en/posa/secrets-of-mobile-network-performance.html
 
 https://aosabook.org/en/posa/warp.html
+
+[The Architecture of Open Source Applications (Volume 2)
+Scalable Web Architecture and Distributed Systems](https://aosabook.org/en/v2/distsys.html)
