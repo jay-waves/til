@@ -35,16 +35,25 @@
 
 ## 模式与操作
 
-Vim 有三种类型操作:
-- [移动](移动.md), action, 用于移动光标, 如 `h, j, k, l, w, b`
-- [操作符](宏.md), operator, 用于对某区域执行操作, 如 `d, ~, gU, >`. 默认区域有**字符和行**, 字符操作用小写字母, 行操作用大小字母.
-- **文本对象, text-objects**, 用于选中特殊区域 (如当前光标所在的括号, 单词, 句子), 形式为 `i` (inner), `a`(around) 加上对象标识符. 如 `diw` 删除当前单词, `di"` 删除引号中内容, `da(` 删除当前括号及其中内容. 
+Vim have three operators: 
+- [motion](vim-motion.md), used to move the cursor. `h, j, k, l, w, b`
+- text-objects. like char, word, row (range), paragraph, code structure, and surroundings. 
+	- `i` inner. `xxx` in `{xxx}`
+	- `a` around. `{xxx}` in `{xxx}`
+- [operator](vim-operator.md), used to operate some text-objects. `d, x, ~, gU, >` 
+	- for **char**: `x` 
+	- for **row**: `dd` delte this line, `d5j` delete the next 5 lines. 
+	- for **word** (surrounded by spaces): `dw` delete this word 
+	- for **paragrph** (surrounded by blank line): `dp` delete the pragraph
+	- for **code structure**: `dif` delete inside function, `yac` copy around class
+	- for **surrounding**: `di"` delete the content inside quotes 
+
 
 Vim 有三种操作模式用于不同目的:
 - 普通模式 (Normal Mode), 先输入操作符, 再输入动作, 如 `>j`
 - 插入模式 (Insert Mode), 用于输入文本.
-- [选中模式 (Visual Mode)](范围与区域.md), 先选中区域, 然后按操作符.
-- PS: 还有一种命令模式, 输入 `:` 后键入控制命令.
+- 选中模式 (Visual Mode) 先选中区域, 然后按操作符.
+- 命令模式, 输入 `:` 后键入控制命令.
 
 ```mermaid 
 flowchart TB
@@ -59,9 +68,21 @@ flowchart TB
     I -- "ESC" --> N
 ```
 
-> 比如: `d2a(` 和 `2da(` 等价, `4da(` 和 `2d2a(` 等价.
->
-> `:h navigation`, `:h operator`, `:h text-objects`
+> `d2a(` 和 `2da(` 等价, `4da(` 和 `2d2a(` 等价.
+
+### Ranges 
+
+Ranges 特指 Vim 的行范围
+- `.` 当前行（默认）
+- `$` 最后一行
+- `%` 全文件
+- `1` 文件第一行
+- `n` 文件第 N 行
+- `+n` 从当前行计的第 N 行
+- `'<, '>` 选中区域的开始、结尾。`'` 是引用标记的意思，详见 [vim 标记](vim-motion.md)
+
+比如，删除从第一行开始到第五行：`:1,5d`；删除全文件 `%d`
+
 
 ## 与 shell 的交互
 
@@ -74,17 +95,12 @@ flowchart TB
 执行命令, 并替换所选范围内的文本为命令输出: (范围也可以先用 `V` 选中, 而非指定)
 
 ```vim
-:.,+4!ls
-:$!ls                " 在文件末尾输出 ls 命令结果
+:$!ls                " append the ls output in the end of file
+:%!cmd               " file content -> stdin -> shell cmd -> stdout -> replace file content
+:.!cmd               " line content -> stdin -> shell cmd -> stdout -> replace line content
+:r !cmd              " shell cmd -> stdout -> insert here
+:.!bash              " use bash to execute this line 
 ```
-
-执行命令, 并将输出添加到光标处:
-
-```vim
-:r !command
-```
-
-在普通模式, 连续输入 `!!` , 相当于执行 `:.!`
 
 ## 历史
 
@@ -108,4 +124,57 @@ baz(3)  quux(4)
 ```
 
 注意，编辑历史和跳转历史都是临时的，退出 Vim 时清空。不会被保存在 swap 里。
+
+## 搜索
+
+### 替换
+
+`:[scope]s/OLD/NEW/[g|c|i]`
+
+- `scope` 作用范围,
+- `g` 默认每行仅匹配第一个，`g` 匹配每行所有。
+- `c`: 开启二次确认
+- `i`: 大小写不敏感，默认大小写敏感。
+
+### 查找
+
+- `/{pattern}`
+- `n, N` 下一个/上一个匹配项
+- `*` 查找当前光标所在的单词
+
+```vim
+*
+:%s//hello/g        " // 表示上一次的搜索模式
+```
+
+### 全局命令
+
+在所有符号条件的行上执行某命令
+
+```vim
+:g/{regexp}/{cmd}
+```
+
+这就是 [grep 的命名由来](https://robots.thoughtbot.com/how-grep-got-its-name)：
+
+```vim
+:global/regexp/print
+```
+
+### 正则表达式
+
+Vim 支持以下正则表达式字符：
+
+| 元字符   | 说明                                                         |
+| -------- | ------------------------------------------------------------ |
+| `.`      | 匹配任意一个字符                                             |
+| `[abc]`  | 匹配方括号中的任意一个字符. 可用 `-` 表示范围, 如 `[a-z0-9]` |
+| `[^abc]` | 匹配除方括号中字符之外的任意字符                             |
+| `\t`     | 匹配 `<TAB>` 字符                                            |
+| `\s`     | 匹配空白字符                                                 |
+| `$, ^, \<, \>`      | 匹配位置                                                     |
+| `\n`     | 匹配换行符                                                   |
+| `\_`     | 匹配....                                                     |
+| `\+, \?, *, \{n,m}`     | 表示匹配数量                                                     |
+| `\*, \., \\, \[` | 转义, 匹配保留字符         |          
 

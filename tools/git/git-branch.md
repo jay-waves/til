@@ -21,14 +21,6 @@
 - 推送新分支 `git push origin <new_name>`
 - 设置上游链接 `git branch -u origin/<new_name>`
 
-### 远程仓库改名
-
-查看远程仓库
-`git remote -v` 
-
-更新远程仓库的 url:
-`git remote set-url origin https://github.com/username/new_repo_name.git`
-
 ### 打标签
 
 `git tag v1.1`
@@ -37,7 +29,7 @@
 - tag 一般不变, branch 会一直活跃
 - tag 用于标记特定时刻, branch 用于跟踪开发
 
-之后可以在github基于该 tag 创建 release
+之后可以在 github 基于该 tag 创建 release
 
 ### 从其他分支获取文件
 
@@ -58,4 +50,24 @@ git commit -m "checkout target_file from main"
 ```shell
 git checkout --theirs --path/to/file
 ```
+
+### merge
+
+fast-forward 合并: 将 `main` 分支直接推进到 `feature`, 没有用于 "合并" 的新节点. 要求 `feature` 分支和 `main` 分支历史相同.
+
+```bash
+git checkout main
+git merge feature --ff
+```
+
+merge 合并: 当两个分支都有新提交, 合并时必须创建一个新节点.
+
+```bash
+git checkout main
+git merge feature
+```
+
+`git fetch origin` 获取远程改动, 不合并
+
+`git merge origin/main` 将远程主分支和当前分支合并
 

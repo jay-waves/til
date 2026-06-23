@@ -76,21 +76,6 @@
 - 源码目录及文件：遵循编程语言规范，通常使用 `_` 作为连字符
 - 无空格
 
-### Appearance
-
-- 文本字体：保证两个半角字符的长度等于一个全角字符。备选：
-	* Noto Serif SC
-	* EB Garamond (en)
-	* 文泉驿等宽微米黑
-	* 等距更纱黑体 SC
-	* 霞鹜文楷
-- 代码字体：
-	- MonaSpace Argon
-	- FiraMono Nerd Font Mono
-- Obsidian 主题：
-	* Github Theme
-	* Things Theme 
-
 ### Coding
 
 详见 [自用代码规范](appx/自用代码规范.md)

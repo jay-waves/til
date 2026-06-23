@@ -4,31 +4,44 @@
 
 ## WAL 
 
+Write-ahead logging appends changes to a durable log before applying them to the data store to guarantee crash recovery and prevent partial writes from corrupting state.
+
 ## CheckPoint 
 
 ## Log-Structured Merge Tree 
 
-[lsm-tree](../../attach/ascii/lsm-tree.md)
+[lsm-tree ascii chart](../../attach/ascii/lsm-tree.md)
 
-https://totoro-jam.github.io/battle-tested-patterns/zh/patterns/lsm-tree/
-
-unilfs 是 LFS (Log-structured File System) 类型的. 数据写不会**原地覆盖旧数据**, 而是*追加 (append-only)* 到尾部. 
-
-* LFS 顺序写的效率高, 因为无需用 inode 查表访问, 直接追加写入
-* 崩溃一致性高. 用 Checkpoint 允许崩溃恢复, 因此也支持快照.
-* 定期需要垃圾回收 (GC), 清除不再需要的旧版本数据. 总体的时间/空间开销仍大于传统 FS.
-* 随机读取的延迟抖动大. 
-
-### 方法
-
-...
-
-* Segment: 固定大小日志块. 所有新写入都顺序写到 Segments 末尾, 同时将旧版本标记为失效. 当 Segments 内部数据全部失效时, 就会被 GC 定期清除.
-* Inode Map : 将 inode 映射到实际的 Segment 内部位置.
-* Checkpoint: 定期落盘时, 保持一次快照. 
+LSM Tre is tiered, write-optimized data structure that organizes *key-value* pairs in multiple components, residing partly in memory and partly on disk.
+* Each Level of LSM-Tree is tuned to the characteristics of its underlying storage medium
+* Data is efficiently migrate across media in *rolling write batches*, using an algorithm reminiscent of [merge sort](sort/merge-sort.md)
+* Component is maintained as an *append-only sequence*, so new records and updates are written sequentially rather than issuing costly random writes to persistent media. 
 
 
-## 参考
+### MemTable 
+
+*MemTable, the in-memory component*, absorbs incoming udpates. When it fills, it is flushed to a table on disk, creating an *immutable sorted strings table (SSTable)* file. Successive tables accumulate at level 0 until a background compaction thread merges them into the next level. Each level is larger than the one above by a configurable fan-out factor. 
+
+Dozens of overlapping SSTables must be merges, rewritten and re-indexed, which means one record might be rewritten 3~10 times before it settles in coldest level.
+
+The tree never overwirtes data in place, the design vaoids read-modify-write penaltis inherent in traditional B-Tree systems and scales on SSD or HHD.
+
+### SSTable 
+
+SSTable Compaction (in background):
+* Leveling: L0 --> L1 --> L2.. . SSTables are **non-verlapping in key ranges within a level, but different levels can overlap with each other**. 
+* Tiering: merge little tables into fewer large ones.
+
+### Trade-Off
+
+*Read Amplification* : A point lookup in LSM Tree may need to check multiple SSTables across multiple levels with many unnecessary disk reads. Hence, [Bloom Filter](hash-based/bloom-filter.md) is introduced to check whether the key is present in this SSTable. Although Bloom Filter accelerate the point lookup, ranges lookup still suffers.
+
+Best suited for: 
+* **Write-Heavy** systems, and **Random Writes are expensive**.
+* tolerant potentially read latency and complex background gc 
+
+## Reference 
 
 * 1996 -- O'Neil -- The Log-Structured Merge-Tree (LSM-Tree)
 * [2023 -- fackbook -- RocksDB Overview](https://github.com/facebook/rocksdb/wiki/RocksDB-Overview)
+* https://totoro-jam.github.io/battle-tested-patterns/zh/patterns/lsm-tree/

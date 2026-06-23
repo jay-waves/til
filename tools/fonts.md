@@ -89,15 +89,16 @@
 - JetBrains Mono NL (Nerd Fonts)
 - [Fira Code](https://github.com/tonsky/FiraCode) Regular (Nerd Fonts)
 - [Cascadia Code](https://github.com/microsoft/cascadia-code) (Nerd Fonts), 微软为终端开源的字体
+- FiraMono Nerd Font Mono 
+- **MonaSpace Argon**
 
-## 自用中文字体
+## 自用字体
 
 - 方正小标宋, 仿宋_GB2312, 用于政府公文标准
 - 得意黑, 设计字体, 用于海报.
 - 多米手写体, 品如手写体, 上首鸿志手写体, 依赖于UI软件显示效果.
 - Miscrosoft YaHei Mono 
 - 方正屏显雅宋简体
-- 
 - 悠哉字体
 - 文泉驿微米黑
 - 文泉驿正黑, 等宽正黑, 点阵正黑
@@ -110,3 +111,5 @@
 - 手写体
 	- [辰宇落雁體](http://github.com/Chenyu-otf/chenyuluoyan_thin)
 	- 荷塘月色手写体
+- EB Garamond (en)
+- Noto Serif SC 
