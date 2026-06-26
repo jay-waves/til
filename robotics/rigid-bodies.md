@@ -94,7 +94,7 @@ a_{3} & 0 & -a_{1} \\
 
 $$w_{b}=R^{-1}w_{s}$$ 
 
-对于任意旋转矩阵 $R$ 和向量 ${} \Vec{v} {}$ ，有： $$R[\Vec{v}]R^{-1}=R[\Vec{v}]R^{\top}=[R\Vec{v}]$$
+对于任意旋转矩阵 $R$ 和向量 $\Vec{v}$ ，有： $$R[\Vec{v}]R^{-1}=R[\Vec{v}]R^{\top}=[R\Vec{v}]$$
 
 因此： $$[w_{b}]=[R^{-1}w_{s}]\dot{=}R^{-1}[w_{s}]R=R^{-1}(\dot{R}R^{-1})R=R^{-1}\dot{R}$$
 
@@ -124,11 +124,49 @@ $\newcommand{W}{{[\Vec{w}]}}$
 
 $$Rot(\Vec{w},\theta)=e^{\W\theta}=I+\sin \theta\W+(1-\cos \theta)\W^{2}\in SO(3)\tag{2}\label{rodrigues}$$
 
-将 $\W$ 的斜对称矩阵形式 $\eqref{skew-symmetric}$ 代入 $\eqref{rodrigues}$ 式中，得到： 
+Subsituting the skew-symmetric matrix representation of $\W$ in $\eqref{skew-symmetric}$  into $\eqref{rodrigues}$ , we obtain: 
 
 $$R-R^{\top}=e^{\W}-(e^\W)^{\top}=2\sin \theta\W$$
 
 ## Rigid-Body Motion and Twist
+
+### Homogenous Transformation Matrices 
+
+Represent the regid-body transofrmation by a homogeneous transformation matrix in $SE(3)$: 
+
+$$T=\begin{bmatrix}
+R & p \\
+0 & 1
+\end{bmatrix}$$
+
+where $R\in SO(3)$ represents the orientation of the coordinate frame, and $p\in \R^{3}$ represents the position of its origin.
+
+<br> 
+
+Some properties of T: 
+
+$$T^{-1}=\begin{bmatrix}
+R^{\top} & -R^{\top}p \\
+0 & 1
+\end{bmatrix}$$
+
+appling on vectors:  
+
+$$T\begin{bmatrix}
+x  \\ 1
+\end{bmatrix}=\begin{bmatrix}
+R & p \\ 0  & 1
+\end{bmatrix}\begin{bmatrix}
+x \\ 1
+\end{bmatrix}=
+\begin{bmatrix}
+Rx+p  \\ 1
+\end{bmatrix}$$
+
+### Twists 
+
+
+
 #### Exponential Coordinats of Motion&Twist
 
 ## Wrench

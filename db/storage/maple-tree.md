@@ -1,6 +1,6 @@
 注意，Maple Tree 只支持非交叠的范围。
 
-|                      | [Red Black Tree](../tree/red-black-tree.md)   | [Radix Tree](../tree/xarray.md) | Maple Tree       |
+|                      | [Red Black Tree](../../algo/tree/red-black-tree.md)   | [Radix Tree](../../algo/tree/xarray.md) | Maple Tree       |
 |----------------------|----------|------------|------------------|
 | RCU Safe             | No       | Yes        | Yes              |
 | Range support        | Yes      | Limited    | Non-overlapping  |

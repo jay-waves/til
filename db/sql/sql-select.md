@@ -102,7 +102,47 @@ select note_text from productnotes where Match(note_text) Against('rabbit');
 
 DBMS 为 FTS 提供了很多功能, 定制化匹配的权重. 如配置停用字符, 高频率词停用. 无字符分隔语言(如汉语)的 fts 结果不恰当.
 
-## 联结表
+## Order By & Group By
+
+```sql
+SELECT name, id FROM students ORDER BY id;
+```
+
+可以按多个列排序, 即稳定排序:
+
+```sql
+SELECT name, id FROM students ORDER  BY math, english;
+```
+
+降序:
+
+```sql
+SELECT name, id FROM students ORDER  BY math DESC, english;
+```
+
+`DESC` 只作用于 math 列, 定语应后置. `ASC` 指升序, 但升序是默认的.
+
+找出最大值:
+```sql
+SELECT name, math FROM students ORDER BY math DESC LIMIT 1;
+```
+
+分组: 
+```sql
+select name, id,  math from  students group by id;
+```
+
+## Join (多表联合查询)
+
+![|500](http://oss.jay-waves.cn/til/数据库_JOIN语法.avif)
+
+套集合关系:
+
+|     | =   | <>     | <    | <=    | >    | >=    |
+| --- | --- | ------ | ---- | ----- | ---- | ----- |
+| ANY | IN  | --     | <MAX | <=MAX | >MIN | >=MIN |
+| ALL | --  | NOT IN | <MIN | <=MIN | >MAX | >=MAX      |
+
 
 ```sql
 SELECT vend_name, prod_name, prod_price FROM vendors, products
@@ -136,7 +176,7 @@ WHERE products.vend_id = vendors.vend_id
 	AND order_num = 20005;
 ```
 
-### 自联结:
+### 自联结
 
 常用来替代子语句, 速度更快.
 ```sql
@@ -144,6 +184,10 @@ SELECT p1.prod_id, p1.prod_name
 FROM products AS p1, products AS p2
 WHERE p1.vend_id = p2.vend_id AND p2.prod_id = 'hello';
 ```
+
+### 全称量词 (For All)
+
+数据库没有全称量词 (for all), 需要用存在量词等价转换: $(\forall x) P\equiv \neg (\exists x(\neg P))$, 其中量词 $x\in Q$, P 为谓词. 举例而言, "选择了所有课程的学生" 等价于 "不存在有课程没有被该学生选过", 其中 $x=\text{课程}\in Q=\text{所有课程集合}$, $P=\text{学生选择了该门课}$.
 
 ## 分组聚合函数
 

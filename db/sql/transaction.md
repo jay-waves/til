@@ -58,41 +58,36 @@ ACID 特性:
 - 登记次序严格按照并发事务执行的时间次序
 - 先写日志文件, 后写数据库
 
-## 数据安全
 
-安全性控制方法:
-- **用户标识** (Identification) 和 用户鉴别 (Authentication), I&A
-- [**存取控制** (Access Control)](../../security/security-models.md): 用户权限定义 + 合法权限审查
-- 视图 (View)
-- [审计 (Audit)](../../security/security-models.md)
-- 数据加密 (Encryption)
-- 数据备份与恢复
+### 事务处理 Transaction
 
-### SQL-DAC
+当自动化执行一组 sql 指令时, 如果出现错误而指令执行不完整, 此时可使用 rollback 自动回退到执行前状态.
 
-SQL 语句中定义 `GRANT` 和 `REVOKE` 语句来实现自主存取控制 (DAC), 定义权限的过程称为"授权":
+- 事务 transaction, 指一组 sql 语句.
+- 回退 rollback, 撤销指定 sql 语句的过程.
+- 提交 commit, 将未存储的 sql 语句结果写入表.
+- 保留点 savepoint, 使用它发布部分回退, 而不是整个事务.
 
-SQL 
+应使用支持事务管理的引擎, 如 InnoDB, 并且事务管理只支持处理: `delete`, `update`, `insert` 语句.
 
 ```sql
-revoke <权限1> [, <其他权限> ...]
-on <对象类型> <对象名>[, <对象类型> <对象名> ...]
-from <用户> [, <用户>...] [cascade | restrict]
+-- 回滚
+start transaction;
+/* do sth */
+rollback;
 
-grant <权限1> [, <其他权限> ...]
-on <对象类型> <对象名>[, <对象类型> <对象名> ...]
-to <用户> [, <用户>...]
-[with grant option] -- 允许其权限传播
+-- 提交, 先修改虚拟表, 当所有语句成功执行后, 才真正将修改结果同步到数据库. 非事务管理中, 提交都是隐式立即进行的.
+start transaction;
+/* do sth */
+commit;
+
+-- 创建保留点
+start transaction;
+/* ... */
+savepoint hello1;
+/* ... */
+rollback to hello1;
+
+-- 更改默认提交行为, 由内建布尔值 autocommit 控制. 仅针对此连接.
+set autocommit=0; 
 ```
-
-举例:
-
-```sql
-grant update(no), select, insert(name)
-on table students
-to teacher;
-```
-
-### 数据透明加密技术
-
-透明数据加密 (Transparent Data Encryption, TDE) 是对应用系统完全透明的数据库端存储加密技术, 在数据库引擎中实现. **数据在内存中是明文, 而在磁盘(数据文件)是密文**.

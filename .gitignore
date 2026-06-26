@@ -4,17 +4,6 @@
 /.stash/**
 .obsidian.vimrc
 
-# 代码相关文件
-build/
-tags
-paper
-
-# 不相关文件
-/Language/Haskell/Haskell LLVM JIT Compiler/**
-/src/sgi/
-NSFW/
-
-# PPT 和 DrawIO 可能产生的临时文件
 ~$*.ppt*
 *.ppt.bak
 *.pptx.bak

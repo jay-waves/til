@@ -8,7 +8,7 @@
 
 模型组成:
 - [数据结构](relational-algebra.md)
-- [数据操作](../SQL/ReadMe.md): CRUD (create, read, update, delete)
+- [数据操作](../sql/sql.md): CRUD (create, read, update, delete)
 - [数据的完整性约束条件](data-integrity.md)
 
 ### 关系模型

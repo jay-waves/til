@@ -23,7 +23,7 @@ Level 1:        [1] ---------> [4] ----------> [8] ---------> [11] ---------> [1
 Level 0:        [1] -> [2] -> [4] -> [7] ----> [8] -> [9] -> [11] -> [13] -> [17] -> [19]
 ```
 
-跳表类似 [B树](btree/b-tree.md) + [链表](linked-list/prefer-array-to-linked-list.md).
+跳表类似 [B树](../db/storage/b-tree.md) + [链表](linked-list/prefer-array-to-linked-list.md).
 
 ```c
 /*
