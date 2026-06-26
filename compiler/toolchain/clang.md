@@ -1,7 +1,7 @@
 
 llvm 是编译器框架, clang 作为前端, 则可以*控制和驱动*整个编译流程 (调用 llvm 库各种工具, 实现编译). 使用 clang 直接驱动编译过程时, 所有 `IR` 都是内存格式. 在编译器中作为前端. 
 
-btw, gcc 也是驱动 cc, as, ld 程序来编译的. llvm 所有编译工具列表见 [llvm-project source tree](llvm-project%20source%20tree.md)
+btw, gcc 也是驱动 cc, as, ld 程序来编译的.
 
 ### 编译动态库
 
@@ -20,3 +20,18 @@ clang++ -shared -fPIC -o hello.so hello.cpp \
 	$(llvm-config --libs) \
 	$(llvm-config --system-libs)
 ```
+
+### llvm-project 
+
+clang 实际调用的 LLVM 工具链：
+- bugpoint: 用于定位出错的 Pass
+- llvm-ar: archiver
+- llvm-as: `.ll` -> `.bc`
+- llvm-dis: `.bc` -> `.ll`
+- llvm-link: link ir
+- lli: llvm JIT  解释器, 直接执行 bitcode
+- llc: `.bc` -> `.s`
+- opt: IR 优化器/分析器
+- llvm-objdump: `.o` -> `.ll` 
+- lldb : 内置调试器
+

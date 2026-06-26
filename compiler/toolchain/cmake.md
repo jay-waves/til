@@ -126,7 +126,7 @@ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g -o3")
 - `CMAKE_SYSTEM_PROCESSOR`: x86_64, arm64
 - `CMAKE_VERSION`
 - `CMAKE_CROSSCOMPILING`
-- `CMAKE_CXX_COMPILER_ID`: MSVC, GNU, Clang 
+- `CMAKE_CXX_COMPILER_ID`: MSVC, GNU, Clang z
 - `CMAKE_CXX_COMPILER`, `CAMKE_C_COMPILER`: 编译器路径.
 
 > [CMake Basics](https://nu-msr.github.io/navigation_site/lectures/cmake_basics.html)

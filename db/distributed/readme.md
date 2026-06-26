@@ -81,6 +81,25 @@ CREATE INDEX edges_tails ON edges (tail_vertex);
 CREATE INDEX edges_heads ON edges (head_vertex);
 ```
 
+以 Neo4j 图数据库的 Cypher 查询语言为例：
+
+```cypher
+CREATE
+(namerica  :Location {name:'North America', type:'continent'}),
+(usa       :Location {name:'United States', type:'country'}),
+(idaho     :Location {name:'Idaho',         type:'state'}),
+(lucy      :Person {name:'Lucy'}),
+(idaho) -[:WITHIN]->  (usa)   -[:WITHIN]-> (namerica),
+(lucy)  -[:BORN_IN]-> (idaho)
+```
+
+```cypher
+MATCH
+(person) -[:BORN_IN]->  () -[:WITHIN*0..]-> (:Location {name:'United States'}),
+(person) -[:LIVES_IN]-> () -[:WITHIN*0..]-> (:Location {name:'Europe'})
+RETURN person.name
+```
+
 ## 参考
 
 *Designing Data-Intensive Applications*. Martin Kleppmann. 2017. 1e.
