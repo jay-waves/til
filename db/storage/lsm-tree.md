@@ -1,4 +1,4 @@
-[bloom-filter](../hash-based/bloom-filter.md)
+[bloom-filter](../../algo/hash-based/bloom-filter.md)
 
 #TODO 
 

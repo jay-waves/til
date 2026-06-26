@@ -119,3 +119,18 @@ USE my_new_database;
 ```sql
 source /path/to/cmd.sql
 ```
+
+### 数据引擎
+
+```sql
+CREATE TABLE xxx (
+
+) ENGINE=InnoDB;
+```
+
+MySQL 支持的数据库引擎有：
+- `InnoDB` 事务处理引擎, 不支持全文搜索
+- `MyISAM` 支持全文搜索, 不支持事务处理
+- `MEMORY` 功能类似 `MyISAM`, 但数据存储在内存, 速度很快 (适合创建临时表)
+
+不同引擎的外键不能混用.

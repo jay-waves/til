@@ -9,20 +9,17 @@
 
 ### 2 数据库标准查询语言
 
-[ReadMe](../SQL/ReadMe.md)
+[SQL](../sql/sql.md)
 
-### 3 数据库安全性
+### 3 数据库完整性及安全性
 
-- 数据安全
-- [数据与事务恢复](data-security.md)
-- [concurrency-control](concurrency-control.md)
+- [数据完整性](data-integrity.md) 
+- [数据安全性](data-integrity.md)
+	- [事务安全性](../sql/transaction.md)
+	- 数据访问控制
 
-### 4 数据库完整性
+### 4 数据库设计
 
-[data-integrity](data-integrity.md)
-
-### 5 数据库设计
-
-- [database-models](database-models.md)
+- [数据库模型](database-models.md)
 - [数据库设计与建模](database-design.md)
 - 查询与性能优化

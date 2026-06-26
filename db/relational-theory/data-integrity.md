@@ -1,6 +1,3 @@
-- 数据完整性: 防范不合语义的, 不正确的数据
-- [data-security](data-security.md): 防止恶意破坏和非法存取
-
 完整性控制机制: 定义 -> 检查 -> 违约处理
 
 ### 实体完整性
@@ -82,7 +79,76 @@ create trigger <name>
 - 行级触发器   `for each row`, 若语句操作了100行数据, 则触发器执行100次. 行级触发器可以用 `new`, `old` 引用事件发生前后的元组值.
 - 语句级触发器 `for each statement`
 
-事件 (event) 类型
-- `update`
-- `delete`
-- `insert`
+**MySQL 仅能为表创建触发器 (视图和虚拟表不能), 仅支持响应如下语句:**
+- `DELETE`
+- `INSERT`
+- `UPDATE`
+- procedure
+
+```sql
+-- products 表每添加新行, 就输出一个 'Product Added'
+CREATE TRIGGER newproduct AFTER INSERT ON products 
+FOR EACH ROW 
+	SELECT 'Product added';
+	
+-- 删除触发器
+DROP TRIGGER newproduct;
+
+-- insert 类型触发器, 可访问虚拟表: new, 访问被插入的行 (new auto_increment 数据为0), 并且可以修改. 
+CREATE TRIGGER neworder AFTER INSERT ON orders 
+FOR EACH ROW
+	SELECT NEW.order_num; -- 每次插入时, 显示被插入的数据内容
+
+-- delete 类型触发器, 可访问虚拟表: old, 但该表只读.
+DELIMITER //
+CREATE TRIGGER deleteorder BEFORE DELETE ON orders
+FOR EACH ROW
+BEGIN -- begin 能够容纳多条 sql 语句.
+	INSERT INTO archive_orders(order_num, order_date, cust_id); -- 每当删除时, 进行备份和现实.
+	VALUES(OLD.order_num, OLD.order_date, OLD.cust_id);
+END//
+DELIMITER ;
+
+-- update 类型触发器, 常和 BEFORE 搭配, 用于数据净化
+CREATE TRIGGER updatevendor BEFORE UPDATE ON vendors
+FOR EACH ROW 
+	SET NEW.vend_state = Upper(NEW.vend_state); -- 保证更新的数据大写
+```
+
+**BEFORE 触发器失败, MySQL 将不执行操作, 也不执行 AFTER 触发器; 请求失败, 不执行 AFTER 触发器.**
+
+## 数据安全
+
+安全性控制方法:
+- **用户标识** (Identification) 和 用户鉴别 (Authentication), I&A
+- [**存取控制** (Access Control)](../../security/security-models.md): 用户权限定义 + 合法权限审查
+- 视图 (View)
+- [审计 (Audit)](../../security/security-models.md)
+- 数据加密 (Encryption)
+- 数据备份与恢复
+
+### SQL-DAC
+
+SQL 语句中定义 `GRANT` 和 `REVOKE` 语句来实现自主存取控制 (DAC), 定义权限的过程称为"授权":
+
+SQL 
+
+```sql
+revoke <权限1> [, <其他权限> ...]
+on <对象类型> <对象名>[, <对象类型> <对象名> ...]
+from <用户> [, <用户>...] [cascade | restrict]
+
+grant <权限1> [, <其他权限> ...]
+on <对象类型> <对象名>[, <对象类型> <对象名> ...]
+to <用户> [, <用户>...]
+[with grant option] -- 允许其权限传播
+```
+
+举例:
+
+```sql
+grant update(no), select, insert(name)
+on table students
+to teacher;
+```
+

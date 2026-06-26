@@ -19,7 +19,7 @@
 **平衡二叉树**: 叶子节点的深度差至多为一. 平衡树有多种实现:
 - [red-black-tree](red-black-tree.md)
 - [avl-tree](avl-tree.md)
-- [b-tree](../btree/b-tree.md)
+- [b-tree](../../db/storage/b-tree.md)
 
 **完全二叉树**: 所有叶节点的深度相同, 内部节点的出度 (子节点数) 相同.
 

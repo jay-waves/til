@@ -16,4 +16,4 @@
 * 并发访问时需要大锁。因为节点操作后的树平衡可能会导致大面积修改。
 * 不擅长*范围*查找和遍历
 
-为了解决上述问题，内核引入了 [MapLe](../btree/b-tree.md)，一种 B 树变体。原本内核中 `mm_struct` 中的 `vma` 管理，从 RB Tree + 循环链表，切换到 Maple Tree.
+为了解决上述问题，内核引入了 [MapLe](../../db/storage/b-tree.md)，一种 B 树变体。原本内核中 `mm_struct` 中的 `vma` 管理，从 RB Tree + 循环链表，切换到 Maple Tree.

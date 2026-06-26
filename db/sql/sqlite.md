@@ -15,16 +15,13 @@ sqlite3 命令行环境接收三种输入:
 - 点命令,  `.` 开头.
 - 注释, `#` 开头.
 
-```bash
-sqlite3
+```sql
+.help
+.quit
 
-sql> .help
-sql> .quit
-
-sql> .dump
-sql> .sha3sum
-sql> .read file.sql
-sql> .quit
+.dump
+.read file.sql
+.quit
 ```
 
 #### 格式化输出
@@ -44,18 +41,23 @@ sql> .quit
 
 SQLite 默认打开 main 主数据库, 以及 temp 临时 (内存中) 数据库. 
 
-```bash
-sql> .tables
-sql> .schema
-sql> .databases
+```sql
+.tables           -- 查看所有表
+.schema           -- 查看所有表的建表语句
+.databases        -- 查看所有数据库
 
-sql> .open mydb.db
-sql> .save mydb.db
+-- 全局元信息存储在 sqlite_master 表
+select * from sqlite_master 
+select * from sqlite_master where type = 'index'  -- 查看所有索引
+select * from sqlite_master where type = 'table'
+
+.open mydb.db
+.save mydb.db
 ```
 
 ### SQLite 数据类型
 
-详见 [SQL数据类型](SQL/数据类型.md)
+详见 [SQL数据类型](sql/数据类型.md)
 
 | 类型      | 解释                |
 | --------- | ------------------- |
