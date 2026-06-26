@@ -54,53 +54,16 @@ select name from students where name like `%Yu%`
 
 - `_` 匹配单个字符.
 
-### 正则表达式
+### [正则表达式](../../appx/正则表达式表.md)
 
-关键字: `regexp`. 正则表达式和通配符有重要区别: ==通配符默认匹配整个列, 但是正则表达式仅在列值内匹配==. 比如 '1000' 在正则表达式下会匹配 '21000', 而在通配符下不会.
+正则表达式匹配: `regexp`. 区分大小写的正则表达式：`regexp binary`
 
-`regexp` 默认也不区分大小写. 要区分大小写, 应使用 `regexp binary`
-
-- `.` 匹配单个字符
-- `|` 表示 or
-- `[123]` 匹配几个字符之一, `[^1-3a-z]` 取反.
-- `\\.` 使用 `\\` 来转义.
-- `*` 0或多个匹配
-- `+` 1或多个匹配, 等于 `{1,}`
-- `?` 0或1个匹配, 等于 `{0,1}`
-- `{n}` 指定数目匹配
-- `{n,m}` 指定范围
 
 ```sql
 select name from students where name regexp '\\([a-z] sticks?\\)'
 ```
 
 `sticks?` 匹配 sticks 或 stick
-
-正则表达式 定位符:
-
-- `^` 匹配开头
-- `$` 匹配结尾
-- `[[:<:]]` 匹配词首
-- `[[:>:]]` 匹配词尾
-
-比如仅匹配一个数:
-
-```sql
-select name from students where name regexp '^[0-9\\.]'
-```
-
-### 全文本搜索
-
-Full-Text Search (FTS) 功能. 一般需要手动开启, 应先导入所有数据后再建立全文本索引, 以提高效率. 
-
-在 **mySQL** 中: 用 `match()` 指定被搜索的列, `against()` 指定要使用的搜索表达式. 在建立表时, 指定全文索引列 `FULLTEXT(<column_name>)`.
-
-`match(...)against(...)` 实际上为每行建立权重, 出现次数多的权重大, 未出现的权重为0 (不显示).
-```sql
-select note_text from productnotes where Match(note_text) Against('rabbit');
-```
-
-DBMS 为 FTS 提供了很多功能, 定制化匹配的权重. 如配置停用字符, 高频率词停用. 无字符分隔语言(如汉语)的 fts 结果不恰当.
 
 ## Order By & Group By
 
@@ -189,7 +152,7 @@ WHERE p1.vend_id = p2.vend_id AND p2.prod_id = 'hello';
 
 数据库没有全称量词 (for all), 需要用存在量词等价转换: $(\forall x) P\equiv \neg (\exists x(\neg P))$, 其中量词 $x\in Q$, P 为谓词. 举例而言, "选择了所有课程的学生" 等价于 "不存在有课程没有被该学生选过", 其中 $x=\text{课程}\in Q=\text{所有课程集合}$, $P=\text{学生选择了该门课}$.
 
-## 分组聚合函数
+## Aggregation
 
 注意 `where` 不能使用聚合函数, 需要使用 `having`. 除 `count()` 外的所有聚合函数会忽略 `null` 行, 分组时多个 `null` 会被分为一组.
 
@@ -206,7 +169,7 @@ group by CustomerID
 having SUM(Amount) > 500;
 ```
 
-## 集合查询
+## Union
 
 将多个 `select` 语句结果组合为一次查询结果. 在同时从多个表中查询类似数据时, 比 `where` 复合条件简洁.
 

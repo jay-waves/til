@@ -27,6 +27,10 @@ Index (索引) uses a B-Tree structure to reduce the time complexity of SQL quer
 
 CRUD: Create & Read & Update & Delete Data 
 
+OLTP(Online Transaction Processing)
+
+OLAP(Online Analytical Processing)
+
 ## SQL Implementation 
 
 在底层，SQL 表按内存页存储，新插入数据会直接附加在现有内存后，可能是无序的。如 InnoDB 等引擎，会用 B-Tree 给 PRIMARY KEY 建立独立索引，但是其他辅助性索引需要用户手动建。
@@ -47,10 +51,6 @@ flowchart TD
     C <---> S[(System Catalog / Metadata)]
     E <---> S
 ```
-
-OLTP 
-
-OLAP 
 
 ## Create
 
@@ -161,7 +161,7 @@ insert into students2(id, name, math) select id, name, math from students
 
 ### Update
 
-`update` 和 `delete` 关键词一定要谨慎使用, 容易毁坏现有数据. ==更改和删除数据库表时, 须完整备份.== 
+`update` 和 `delete` 关键词要谨慎使用, 容易毁坏[数据完整性](../relational-theory/data-integrity.md).
 
 ```sql
 update students
