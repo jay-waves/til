@@ -1,5 +1,5 @@
 
-@lamport1978
+[Lamport, 1978]
 
 ## Happens-Before
 
@@ -112,7 +112,7 @@ func on_read_end(x, clock R) {
 
 ## FastTrack: efficient and precise dynamic race detection
 
-@flanagan2009
+[Flanagan, 2009]
 
 - [eraser](eraser.md): low cost, low precision
 - [happens before](happens%20before.md): high cost, high precision

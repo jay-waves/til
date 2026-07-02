@@ -15,7 +15,8 @@ revised: 2026-01-27
 ## Windows GUI
 
 * 邮箱：Thunderbird 
-* PDF 阅读与编辑：SumatraPDF、Adobe Acrobat DC
+* PDF 阅读：SumatraPDF、Readest 
+* PDF 编辑：Stirling PDF、Adobe Acrobat DC
 * EPUB 阅读：Readest（Jane Reader 分支）
 * 正式笔记：Obsidian 
 * 简单笔记：NVim 
@@ -27,7 +28,7 @@ revised: 2026-01-27
 * ~~电子书库管理：Calbibre~~
 * 媒体库管理：Jellyfin
 * 远程桌面：向日葵、RustDesk 
-* 表格：Excel、Google Sheet 
+* 应用卸载器：geek, O&O AppBuster
 
 ### 监控
 

@@ -65,4 +65,4 @@ Bloom1 || Bloom2 || Bloom 3 || ...
 
 支持删除。
 
-见 Cuckoo filter: Practically better than bloom. @fan2014
+见 Cuckoo filter: Practically better than bloom. [Fan, 2014] 

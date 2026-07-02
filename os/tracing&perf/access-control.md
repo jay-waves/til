@@ -44,5 +44,5 @@ uid 有四种表达方式:
 
 ## Namspaces & CGroup 
 
-详见 [os/linux/ns&cgroup](../proc/linux-ns&cgroup.md)
+详见 [os/linux/ns&cgroup](../vm/linux-ns&cgroup.md)
 
