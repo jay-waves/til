@@ -118,3 +118,4 @@
 - [Shantell Sans](https://fonts.google.com/specimen/Shantell+Sans)	
 - [辰宇落雁體](http://github.com/Chenyu-otf/chenyuluoyan_thin)
 - 荷塘月色手写体
+- [Ma Shan Zheng](https://fonts.google.com/specimen/Ma+Shan+Zheng?lang=zh_Hans)

@@ -58,7 +58,9 @@ dof&=m(N-1)-\sum^{J}_{i=1}(m-f_{i}) \\
 
 设固定单位坐标系 $s$ ，移动刚体单位坐标系 $b$ ，以两者原点为首尾的向量 $\Vec{p}$ 。
 
-忽略位移， $s$ 中向量可通过单位旋转矩阵 $R$ 变为 $b$ 中向量： $$\Vec{v}_{s}=R\Vec{v}_{b}$$
+忽略位移， $b$ 中向量可通过单位旋转矩阵 $R$ 变为 $s$ 中向量： $$\Vec{v}_{s}=R\Vec{v}_{b}$$
+
+反之：$$\Vec{v}_{b}=R^{-1}\Vec{v}_{s}=R^{\top}\Vec{v}_{s}$$
 
 这里的单位坐标系都是右手系，满足： $$\Vec{x}\times \Vec{y}=\Vec{z}$$ 
 
@@ -76,7 +78,7 @@ $$\begin{align}
 
 ![|300](http://oss.jay-waves.cn/til/angular-velocity.avif)
 
-用固定坐标系 $s$ 表示*旋转变化量* $w$, 即 $w_{s}$ ，设从固定坐标系到刚体坐标系的旋转矩阵 $R$ ，此时角速度可表示为： $$\dot{R}=w_{s}\times R=[w_{s}]R$$
+用固定坐标系 $s$ 表示*旋转变化量* $w$, 即 $w_{s}$ ，设从固定坐标系 $s$ 到刚体坐标系 $b$ 的旋转矩阵 $R$ ，此时角速度可表示为： $$\dot{R}=w_{s}\times R=[w_{s}]R$$
 
 向量叉乘可以写为“左乘一个斜对称矩阵”的形式，类似：
 
@@ -139,7 +141,9 @@ R & p \\
 0 & 1
 \end{bmatrix}$$
 
-where $R\in SO(3)$ represents the orientation of the coordinate frame, and $p\in \R^{3}$ represents the position of its origin.
+where $R\in SO(3)$ represents the orientation of the coordinate frame, and $p\in \R^{3}$ represents the position of its origin. 
+
+> $R\in SO(3)$ 是纯旋转群，3DoF；$T\in SE(3)$ 是刚体运动群，还有平移运动，6DoF。
 
 <br> 
 
@@ -163,11 +167,95 @@ x \\ 1
 Rx+p  \\ 1
 \end{bmatrix}$$
 
-### Twists 
+pre-multiply $\dot{T}$ by $T^{-1}$ : 
+
+$$T^{-1}\dot{T}=\begin{bmatrix}
+R^{\top} & -R^{\top}p \\
+ & 1
+\end{bmatrix}\begin{bmatrix}
+\dot{R} & \dot{p} \\
+0 & 0
+\end{bmatrix}=\begin{bmatrix}
+R^{\top}\dot{R} & R^{\top}\dot{p} \\
+0 & 0
+\end{bmatrix}=\begin{bmatrix}
+[\omega_{b}]  & v_{b} \\
+0 & 0
+\end{bmatrix}$$
+
+from $Rx_{b}=x_{s}$, we get: $R^{\top}\dot{p}=v_{b}$ 
+
+<br>
+
+pre-multiply ${} T^{-1}$ by ${} \dot{T}$ : 
+$$T^{-1}\dot{T}=
+\begin{bmatrix}
+\dot{R} & \dot{p} \\
+0 & 0
+\end{bmatrix}\begin{bmatrix}
+R^{\top} & -R^{\top}p \\
+j & 1
+\end{bmatrix}=\begin{bmatrix}
+\dot{R}R^{\top} & \dot{p}-\dot{R}R^{\top}p\\
+0 & 0
+\end{bmatrix}=\begin{bmatrix}
+[\omega_{s}]  & v_{s} \\
+0 & 0
+\end{bmatrix}$$
+
+in which, $\dot{p}-\dot{R}R^{\top}p=\dot{p}-[w_{s}]p=\dot{p}-w_{s}\times p=v_{s}$ .
+
+对于空间中刚体，描述其任意一点 $x$ 的运动状态的量，称为*速度场*： $\dot{x}=\omega_{s}\times x+v_{s}$ 。令 $x=p$ ，即代表 $s$ 坐标系下的 $b$ 刚体坐标系原点的速度场，必须有： ${} \dot{p}-w_{s}\times p=v_{s} {}$
+
+### Twist
+
+*Body Twists* ( Spatial Velocity in body frame): 
+
+$$\mathcal{V}_{b}=\begin{bmatrix}
+\omega_{b} \\ v_{b}
+\end{bmatrix}\in \R^{6}$$
+
+defining: 
+
+$$T^{-1}\dot{T}=[\mathcal{V}_{b}]=\begin{bmatrix}
+[\omega_{b}]  & v_{b} \\
+0 & 0k
+\end{bmatrix}\in SE(3)
+$$
+
+similarly, defining *spatial twist (spatial velocity in the space frame)*: 
+
+$$\mathcal{V}_{s}=\begin{bmatrix}
+\omega_{s} \\ v_{s}
+\end{bmatrix}\in \R^{6}$$ 
+
+$$[\mathcal{V}_{s}]=
+\begin{bmatrix}
+[\omega_{s}]  & v_{s} \\
+0 & 0
+\end{bmatrix}=
+\dot{T}T^{-1}\in SE(3)$$
+
+then: $$[\mathcal{V}_{s}]=T^{-1}[\mathcal{V}_{b}] T$$
+
+### Adjoint representation of T
+
+Given $T$, its adjoint representation is: 
+
+$$[Ad_{T}]=\begin{bmatrix}
+R & 0  \\
+[p]R & R
+\end{bmatrix}\in \R^{6\times 6}$$
+
+we have adjoint map: $$[\mathcal{V}_{s}]=\begin{bmatrix}
+R & 0 \\
+[p]R & R
+\end{bmatrix}[\mathcal{V}_{b}]=Ad_{T}(\mathcal{V}_{b})$$
+
+which can be proven equivalent as: $$[\mathcal{V}_{s}]=T^{-1}[\mathcal{V}_{b}]T$$
 
 
-
-#### Exponential Coordinats of Motion&Twist
+#### Exponential Coordinates of Motion&Twist
 
 ## Wrench
 

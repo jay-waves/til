@@ -1,13 +1,14 @@
 ## API Architecture 
 
-| Style     |  Format  | Use Cases                                     |
-| --------- | ------------ | --------------------------------------------- |
-| SOAP      |    XML          | XML_based, for enterprise applications        |
-| RESTful   |  XML, JSON, HTML, text            | Resource-based, for web servers               |
-| GraphQL   |   JSON            | Queryy language, reduce network load          |
-| gRPC      | XML, JSON, Protobuf, ...              | High performance, for microservices           |
-| WebSocket |              | Bi-directional, for low-latency data exchange |
-| Webhook   |              | Asynchronous, for event-driven                                              |
+| Style     | Format                   | Use Cases                                     |
+| --------- | ------------------------ | --------------------------------------------- |
+| SOAP      | XML                      | XML_based, for enterprise applications        |
+| RESTful   | XML, JSON, HTML, text    | Resource-based, for web servers               |
+| GraphQL   | JSON                     | Queryy language, reduce network load          |
+| gRPC      | XML, JSON, Protobuf, ... | High performance, for microservices           |
+| WebSocket |                          | Bi-directional, for low-latency data exchange |
+| Webhook   |                          | Asynchronous, for event-driven                |
+| SSE (Server-Sent Events)          |                          |                                               |
 
 ### API Performance Improvement 
 

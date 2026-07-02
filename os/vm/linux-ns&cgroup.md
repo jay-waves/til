@@ -1,4 +1,4 @@
-namespaces 用于资源隔离, cgroup 用于资源用量限制, 两者通常结合使用.
+namespaces 用于系统资源隔离, cgroup 用于资源用量限制和追踪, 两者通常结合使用. 
 
 ## Namespace
 
@@ -28,6 +28,18 @@ task1
         ├─ pid_ns = P0
         ├─ net_ns = N0
 ```
+
+NS 用户态命令是 `unshare`，用于隔离一个进程的资源：
+
+```bash
+unshare --pid --mount --uts --ipc --net --fork chroot /xxxx /bin/sh 
+```
+* `pid` 隔离进程 ID 空间
+* `mount` 隔离硬盘加载表
+* `uts` 隔离 hostname
+* `ipc` 隔离 [IPC](../io/ipc/ipc.md) 
+* `net` 隔离协议栈
+* `chroot` 指定一个新的 rootfs ，比如自行下载一个 alphine linux
 
 ## CGroup 
 

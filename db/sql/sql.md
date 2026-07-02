@@ -33,7 +33,7 @@ OLAP(Online Analytical Processing)
 
 ## SQL Implementation 
 
-在底层，SQL 表按内存页存储，新插入数据会直接附加在现有内存后，可能是无序的。如 InnoDB 等引擎，会用 B-Tree 给 PRIMARY KEY 建立独立索引，但是其他辅助性索引需要用户手动建。
+在底层，SQL 表按内存页存储，新插入数据会直接附加在现有内存后，可能是无序的。如 InnoDB 等引擎，会用 B-Tree 给 PRIMARY KEY 建立独立索引，但是其他辅助性索引需要用户自行创建，用内存消耗换取索引速度。
 
 * Location Plan(Query Tree): 关注查询语义信息，进行语句的关系代数优化。
 * Execution Plan(Execution Code): 关注物理执行开销。

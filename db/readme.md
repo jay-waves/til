@@ -27,7 +27,7 @@ Metrics:
 
 *HOL, Head-of-Line* (护航效应). small number of slow requests to hold up the processing of subsequent requets. 
 
-![|600](http://oss.jay-waves.cn/til/p99.avif)
+![ddis-f2-1|600](http://oss.jay-waves.cn/til/p99.avif)
 
 ### Batching 
 

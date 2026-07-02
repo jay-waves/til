@@ -47,8 +47,8 @@ BCube 设计中，由服务器决定转发路径。一个服务器有 K+1 个网
 
 ## 参考
 
-综述 @lebiednik2016
+综述 [Lebiednik, 2016]
 
 文章: 
-- @Singh2015. jupiter rising, a decade of Clos Topologies and Centralized Control in google's DAtaCenter Network. Goolge.
-- @Greenberg2009. VL2, a scalable and flexible Data Center Network. Microsoft.
+- [Singh, 2015]. jupiter rising, a decade of Clos Topologies and Centralized Control in google's DAtaCenter Network. Goolge.
+- [Greenberg, 2009]. VL2, a scalable and flexible Data Center Network. Microsoft.

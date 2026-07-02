@@ -1,5 +1,5 @@
 
-@Savage1997
+[Savage, 1997]
 
 ## Eraser: a dynamic data race detector for multithreaded programs
 

@@ -10,6 +10,30 @@
 * 函数头等公民: 函数像变量一样, 被赋值 / 传递 / 操作.
 
 
+## 高阶函数
+
+使用函数作为参数的函数. 
+
+### map
+
+传统 STL:  `std::transform()` 
+
+ranges: `std::views::transform()`
+
+### reduce 
+
+old STL: `std::acumulate`
+
+ranges: `std::fold_left(range, init, op)` 
+
+### filter 
+
+old STL: `std::copy_if`, `std::remove_if`
+
+ranegs: `std::views::filter()`
+
+### Y 组合子
+
 ## 闭包
 
 Closures, 使函数能够 "记住" 其定义时的环境. 
@@ -107,17 +131,6 @@ factorial(5)
 
 通过*模式匹配 (Pattern Matching)* 来简化条件逻辑. 将数据集 + 数据操作 + 返回值都紧凑到一起, 减少控制逻辑带来的干扰.
 
-## 高阶函数
-
-使用函数作为参数的函数. 
-
-### map
-
-### reduce 
-
-### filter 
-
-### Y 组合子
 
 ## 修饰器模式
 
