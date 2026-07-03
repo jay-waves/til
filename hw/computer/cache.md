@@ -130,6 +130,6 @@ https://colin-scott.github.io/personal_website/research/interactive_latency.html
 
 https://github.com/sirupsen/napkin-math
 
-[^1]: 参考 https://gist.github.com/jboner/2841832 及其他源. 详见 [计算机操作延迟一览](../../appx/计算机操作延迟一览.md)
+[^1]: 参考 https://gist.github.com/jboner/2841832 及其他源. 详见 [computer-ops-latencies](../../appx/computer-ops-latencies.md)
 
 [^2]: 本地局域网延迟大概为 0.1~1 ms, 无认证访问本地数据中心, 数据中心的热点数据直接缓存在内存中 (如 Redis 技术).

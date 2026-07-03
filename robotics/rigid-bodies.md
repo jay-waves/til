@@ -3,9 +3,10 @@ at its most basic level a robot consists of rigid bodies connected by joints, wi
 $$
 \newcommand{\Vec}[1]{\mathbf{#1}}
 \newcommand{\R}{\mathbb{R}}
+\newcommand{\W}{{[\Vec{w}]}}
 $$
 
-## configuration space of rigid bodies 
+## Configuration Space of rigid bodies 
 
 描述一个刚体的姿态的最小 $n$ 个实数，被称为*自由度（degrees of freedom）*。描述为一个向量，向量空间被称为 *configuration space (C-space)*.
 
@@ -105,31 +106,6 @@ $$w_{b}=R^{-1}w_{s}$$
 [w_{b}]&=R^{-1}\dot{R}
 \end{align}$$
 
-### Exponential Coordinates of Rotation
-
-![|300](http://oss.jay-waves.cn/til/rigid-body-motion.avif)
-
-再来考察线速度，参考[四元数推导过程](quaternion.md)，对于固定坐标系中的向量 $p\in\R^{3}$ ，设其旋转角速度向量为 $w=\Vec{w}\dot{\theta}$ ，其端点线速度为： 
-
-$$\dot{p}=w\times p=[w]p$$ 
-
-这是一个线性微分方程，其解是 $$p(t)=e^{[w]t}p(0)$$ 
-
-
-设 $t$ 时刻时，向量 $p$ 旋转了 $\theta$ 角度，此时将指数 $e^{[\Vec{w}]\theta}$ 泰勒展开得到 Rodrigues' Formula：
-
-### Rodrigues' Formula 
-
-$\newcommand{W}{{[\Vec{w}]}}$
-
-**Given vector $\Vec{w}\theta\in \mathbb{R}^{3}$, such that $\theta$ is any scalar and $\Vec{w}\in \mathbb{R}^{3}$ is a unit vector, the matrix exponential of $\W\theta=[\Vec{w}\theta]\in SO(3)$ is**
-
-$$Rot(\Vec{w},\theta)=e^{\W\theta}=I+\sin \theta\W+(1-\cos \theta)\W^{2}\in SO(3)\tag{2}\label{rodrigues}$$
-
-Subsituting the skew-symmetric matrix representation of $\W$ in $\eqref{skew-symmetric}$  into $\eqref{rodrigues}$ , we obtain: 
-
-$$R-R^{\top}=e^{\W}-(e^\W)^{\top}=2\sin \theta\W$$
-
 ## Rigid-Body Motion and Twist
 
 ### Homogenous Transformation Matrices 
@@ -205,7 +181,7 @@ j & 1
 
 in which, $\dot{p}-\dot{R}R^{\top}p=\dot{p}-[w_{s}]p=\dot{p}-w_{s}\times p=v_{s}$ .
 
-对于空间中刚体，描述其任意一点 $x$ 的运动状态的量，称为*速度场*： $\dot{x}=\omega_{s}\times x+v_{s}$ 。令 $x=p$ ，即代表 $s$ 坐标系下的 $b$ 刚体坐标系原点的速度场，必须有： ${} \dot{p}-w_{s}\times p=v_{s} {}$
+对于空间中刚体，描述其任意一点 $x$ 的运动状态的量，称为*速度场*： $\dot{x}=\omega_{s}\times x+v_{s}$ 。令 $x=p$ ，即代表 $s$ 坐标系下的 $b$ 刚体坐标系原点的速度场，必须有： $\dot{p}-w_{s}\times p=v_{s}$
 
 ### Twist
 
@@ -252,15 +228,138 @@ R & 0 \\
 [p]R & R
 \end{bmatrix}[\mathcal{V}_{b}]=Ad_{T}(\mathcal{V}_{b})$$
 
-which can be proven equivalent as: $$[\mathcal{V}_{s}]=T^{-1}[\mathcal{V}_{b}]T$$
+Equivalently, $$\begin{align}
+w'&=Rw  \\
+v' & = p\times (Rw) + Rv
+\end{align}$$
+
+Equivalently, $$[\mathcal{V}_{s}]=T^{-1}[\mathcal{V}_{b}]T$$
+
+> $T$ 作用在坐标系的点 $x$ 上，$Ad_{T}$ 作用在运动量 $\mathcal{V}$ 上。都用于转换坐标系。
+
+Inverse:
+
+$$[Ad_{T}]^{-1}=[Ad_{T^{-1}}]=\begin{bmatrix}
+R^{\top} & 0 \\
+-R^{\top}[p]  & R^\top
+\end{bmatrix}$$
+
+### Twist in Screw Axis $\mathcal{S}$
+
+Screw axis $\mathcal{S}=\set{q,\hat{s},h}$ represents the motion of a screw: rotating about the axis while also translating along the axis:
+* $q\in \R^{3}$ is a point on the axis 
+* $\hat{s}$ is a unit vector in the direction of axis 
+* $h$ is the *screw pitch (螺距，螺旋节距)*, defining as: linear speed / angular speed， or translation along the axis / rotation angle. 
+
+> $h=0$ 是纯旋转，$h=\infty$ 是纯平移。螺旋运动的转角、轴向平移有一个固定比例。
 
 
-#### Exponential Coordinates of Motion&Twist
+![Modern Robotics F3.19|300](http://oss.jay-waves.cn/til/screw-axis.webp)
+
+write the twist $\mathcal{V}=(w,v)$ to an angular velocity $\dot{\theta}$ about $\mathcal{S}$ as: 
+
+$$\mathcal{V}=\begin{bmatrix}
+w\\v
+\end{bmatrix}=\begin{bmatrix}
+\hat{s}\dot{\theta} \\
+-\hat{s}\dot{\theta}\times q + h\hat{s}\dot{\theta}
+\end{bmatrix}$$
+
+where:
+* $\hat{s}=w/\Vert w\Vert$
+* $\dot{\theta}=\Vert w\Vert$
+* $h=\hat{w}^{\top}v/\dot{\theta}$
+
+反之，用规范化（Normalized）的 $\mathcal{V}$ 来表示 $S$  坐标系：
+
+$$\mathcal{S}=\begin{bmatrix}
+w \\ v 
+\end{bmatrix}\in \R^{6}$$
+
+* 当 $\Vert w\Vert = 1$ 时， $v=-w\times q+hw$ 。
+* 当 $w=0,\Vert v\Vert=1$ 时，螺距 $h$ 是无穷大，运动量 $\mathcal{V}$ 沿着 $v$ 所在轴平移
+
+$$[\mathcal{S}]=\begin{bmatrix}
+\W & v \\ 0 & 0
+\end{bmatrix}$$
+
+## Exponential Coordinates 
+
+
+### Exponential Repr. of Rotation
+
+![|300](http://oss.jay-waves.cn/til/rigid-body-motion.avif)
+
+考察线速度，参考[四元数推导过程](quaternion.md)，对于固定坐标系中的向量 $p\in\R^{3}$ ，设其旋转角速度向量为 $w=\Vec{w}\dot{\theta}$ ，其端点线速度为： 
+$$\dot{p}=w\times p=[w]p$$ 
+
+这是一个线性微分方程，其解是 $$p(t)=e^{[w]t}p(0)$$ 
+
+
+设 $t$ 时刻时，向量 $p$ 旋转了 $\theta$ 角度，此时将指数 $e^{[\Vec{w}]\theta}$ 泰勒展开得到 Rodrigues' Formula：
+
+### Rodrigues' Formula 
+
+
+Given vector $\Vec{w}\theta\in \mathbb{R}^{3}$, such that $\theta$ is any scalar and $\Vec{w}\in \mathbb{R}^{3}$ is a unit vector, the matrix exponential of $\W\theta=[\Vec{w}\theta]\in SO(3)$ is
+$$Rot(\Vec{w},\theta)=e^{\W\theta}=I+\sin \theta\W+(1-\cos \theta)\W^{2}\in SO(3)\tag{2}\label{rodrigues}$$
+
+Subsituting the skew-symmetric matrix representation of $\W$ in $\eqref{skew-symmetric}$  into $\eqref{rodrigues}$ , we obtain: 
+$$R-R^{\top}=e^{\W}-(e^\W)^{\top}=2\sin \theta\W$$
+
+### Exponential Repr. of Motion
+
+Let $\mathcal{S}=(w, v)$ be a screw axis, and  $\Vert w\Vert =1$ , for any distance $\theta\in \R$ traveled along the axis: 
+
+$$\newcommand{\S}{[\mathcal{S}]}$$
+
+$$\begin{align}
+e^{[\mathcal{S}]\theta} & = I+\S \theta + \S^{2} \frac{\theta^{2}}{2!}+\S^{3} \frac{\theta^{3}}{3!}+\dots \\
+& =\begin{bmatrix}
+e^{\W\theta} & G(\theta)v \\
+0 & 1
+\end{bmatrix}, \quad G(\theta)=I\theta + \W \frac{\theta^{2}}{2!}+\W^{2} \frac{\theta^{3}}{3!}+\dots \\
+&= \begin{bmatrix}
+R & p \\ 0  & 1
+\end{bmatrix}
+\end{align}
+$$
+
+Using the $\W^{3}=-\W$, $G(\theta)$ can be simplified to : 
+
+$$G(\theta)=I\theta + (1-\cos \theta)\W+(\theta-\sin \theta)\W^{2}$$
+
+If $w=0, \Vert v\Vert=1$, then: 
+
+$$e^{\S\theta}=\begin{bmatrix}
+I & v\theta \\
+0 & 1
+\end{bmatrix}$$
+
+> 也就是说，建立了一个指数坐标系到实际位姿坐标系 $T$ 的映射：$$\S\theta\in se(3)\to T\in SE(3)$$  。其中 $\mathcal{S}$ 是归一化的螺旋坐标系， $R$ 是累计绕轴旋转，$p=G(\theta)v$ 是累计平移，因为 $v$ 方向随着旋转不断变化，因此需要用 $G(\theta)$ 积分修正。
 
 ## Wrench
 
-#TODO
+$$\newcommand{\F}{\mathcal{F}}$$
 
+*Wrench* (spatial force, moment, torque) is expressed in the $\set{a}$ frame: 
+
+$$\mathcal{F}_{a}=\begin{bmatrix}
+m_{a} \\ f_{a}
+\end{bmatrix}\in \R^{6}$$
+
+Considering another frame $\set{b}$ , the relationship between $\mathcal{F}_{a}$ and $\mathcal{F}_{b}$ is:  the power generated by $(\mathcal{F, V})$ pair must be the same regardless of the frame:
+
+$$
+\mathcal{V}_{b}^{\top}\F_{b}=\mathcal{V}_{a}^{\top}\F_{a}
+ = ([Ad_{T_{ab}}]\cal{V}_{b})^{\top}\F_{a}
+ =\mathcal{V}_{b}^{\top}[Ad_{T_{ab}}]^{\top}\F_{a}
+$$
+
+Thus, 
+$$\F_{a}=[Ad_{T_{ba}}]^{\top}\F_{b}$$
+
+$$\F_{b}=[Ad_{T_{ab}}]^{\top}\F_{a}$$
 
 [^1]: 这里使用 Modern Robotics 中的表示法。
 

@@ -111,7 +111,7 @@ struct cfs_rq {
 
 实时调度器。**按任务优先级抢占调度 (Priority Scheduling, PR)，优先级 0~99（99 最高）**。同一优先级中，`SCHED_FIFO` 表示任务不轮转，`SCHED_RR` 表示按时间片任务轮转。
 
-## EDF (Earliest Deadline First)
+## EDF (Earliest Deadline First, EEVDF)
 
 最早的 Deadline 优先。
 

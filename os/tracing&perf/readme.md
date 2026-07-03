@@ -1,4 +1,4 @@
-![linuxperf](../../appx/Linux%20Perf%20Tools.avif)
+![linuxperf](linux-perf-tools.avif)
 
 核心工具：
 * **`htop`** 任务管理器
