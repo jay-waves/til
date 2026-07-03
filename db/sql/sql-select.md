@@ -54,7 +54,7 @@ select name from students where name like `%Yu%`
 
 - `_` 匹配单个字符.
 
-### [正则表达式](../../appx/正则表达式表.md)
+### [正则表达式](../../appx/regular-expr-reference.md)
 
 正则表达式匹配: `regexp`. 区分大小写的正则表达式：`regexp binary`
 
