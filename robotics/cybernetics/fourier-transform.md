@@ -1,3 +1,6 @@
+---
+math-engine: mathjax
+---
 
 对于非周期性函数，可以用 $T\to \infty$ 的周期函数模拟，此时傅里叶级数变换为： $$f(t)=\sum^{\infty}_{k=-\infty}c_{k}e^{jk\omega_{0} t},\quad \omega_{0}\to 0$$
 

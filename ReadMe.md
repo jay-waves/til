@@ -95,7 +95,7 @@
 - 重要的*定理、引理、定义*使用标题格式，并用数字编号 `x.m.n` 便于整理和引用。
 - 数学证明中，用 `\Proof{}` 和 `\square` 标识开始与结束。
 - 数学公式符号 `$$` 和左右文字间隔一个半角空格，避免渲染问题。
-- 需要 `\newcommand` 和 `\DeclareMathOperator` 支持
+- 260707 起，切换为 [Typst](https://github.com/azyarashi/obsidian-typst-mate) 数学渲染引擎，一些自定义命令见 [appx/preamble](appx/latex-preamble.md)
 
 ### Attachments 
 

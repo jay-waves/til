@@ -1,3 +1,8 @@
+---
+math-engine: mathjax
+---
+
+
 ### 线性移不变系统
 
 Linear Shift-invariant System

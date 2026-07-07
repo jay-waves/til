@@ -2,6 +2,7 @@
 license: CC BY-NC-SA 
 source: https://github.com/Krasjet/quaternion
 author: Krasjet
+math-engine: mathjax
 ---
 
 $$\newcommand{\zm}{\lvert z\rvert}

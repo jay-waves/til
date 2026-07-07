@@ -1,5 +1,6 @@
 ---
 source: https://zh.wikipedia.org/zh-cn/傅里叶级数
+math-engine: mathjax
 ---
 
 ## 三角形式

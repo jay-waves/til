@@ -49,3 +49,8 @@
 } 
 ```
 
+```typst
+#let vec(x) = math.bold(math.upright(x))
+#let argmin = math.op("arg min", limits:true)
+#let bmat(..args) = mat(delim: "[", ..args)
+```
