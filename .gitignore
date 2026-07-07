@@ -1,5 +1,7 @@
 # Obsidian 相关文件
-/.obsidian/**
+/.obsidian/
+/.vscode/
+/.agents/
 /.trash/**
 /.stash/**
 .obsidian.vimrc
@@ -11,6 +13,9 @@
 *.drawio.bak
 *.drawio~
 *.drawio.dtmp
+
+# Typst 生成文件
+*.pdf
 
 # 系统文件
 .DS_Store

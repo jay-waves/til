@@ -1,10 +1,13 @@
+---
+math-engine: mathjax
+---
 
 傅里叶变换只能研究信号频率，但无法研究信号的稳定性，因为 $e^{-j\omega t}$ 只是**周期三角函数，没有衰减能力**。一些工程上常见信号，在傅里叶变换中全部不收敛。从微分方程角度看，从傅里叶到*拉普拉斯变换（Laplace Transform）*，通解基底由三角函数，扩展到三角函数与指数函数（特征根 $p$ 不满足 $\Re(p)=0$ 时）；从复平面角度看，从傅里叶到拉普拉斯变换，是从线 $j\omega$ 推广到整个平面 $s=\sigma +j\omega$ 。
 
 $$\mathcal{F}(\omega)=\mathcal{F}\{f(t)\}=\int f(t)e^{-j\omega t}\,dt$$  
 $$\mathcal{L}(s)=\mathcal{L}\{f(t)\}=\int_{0}^{\infty} f(t)e^{-st}\,dt, \quad s=\sigma+j\omega$$
 
-[fourier-transform](fourier-transform.md)和拉普拉斯变换的关系是： $$\mathcal{F}\{f(t)u(t)\}=F(s)\vert_{s=j\omega}$$
+[傅里叶变换](fourier-transform.md)和拉普拉斯变换的关系是： $$\mathcal{F}\{f(t)u(t)\}=F(s)\vert_{s=j\omega}$$
 
 
 拉普拉斯变换一般仅研究单边 $\Re(s)>0$ ，因为现实中研究的系统必须是：

@@ -30,7 +30,7 @@ define i32 @main() {
 
 ### 编译目标平台信息
 
-![|500](../../../attach/Pasted%20image%2020240229161828.avif)
+![|500](../../attach/target-triples.avif)
 
 目标的数据布局. 具体而言:
 

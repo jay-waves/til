@@ -1,3 +1,7 @@
+---
+math-engine: mathjax
+---
+
 ## Motor Types 
 
 * DC Brushed Servo Motor (有刷、直流、伺服电机)：便宜，简单，容易磨损

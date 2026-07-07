@@ -1,4 +1,6 @@
 ---
+math-engine: mathjax
+
 url:  https: //zhuanlan.zhihu.com/p/346563055
 author:  dengtesla
 date:  22-02-03
