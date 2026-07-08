@@ -1,10 +1,3 @@
----
-math-engine: mathjax
----
-
-
-#TODO 
-
 ## 伺服电机的选型
 
 需求：

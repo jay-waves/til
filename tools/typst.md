@@ -19,3 +19,7 @@ typst 中使用 `#` 前缀来标记命令（表达式）。
   stroke: red,
 )
 ```
+
+## 绘图
+
+[gribouille 0.4.1](https://github.com/mcanouil/gribouille)
