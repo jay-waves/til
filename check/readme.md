@@ -26,6 +26,8 @@
 
 ## Workflow
 
+笔记库采用 Typst + Markdown 混合排版，推荐的编辑器为 VSCode。
+
 文件内属性 (YAML Preamble):
 
 | properties |                                                                 | type |

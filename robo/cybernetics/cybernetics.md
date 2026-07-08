@@ -1,6 +1,3 @@
----
-math-engine: mathjax
----
 
 开环控制系统（Open Loop）：
 
@@ -41,9 +38,6 @@ $$
 * $c=0$ 时，homogeneous，没有外部输入，纯系统动态。这是大多数情况，因为 $c$ 在计算误差时（目标值减去实际值）通常能被消除掉。
 * $c\neq 0$ 时，nonhomogeneous，有外部驱动。
 
-
----
-
 ## Bode Plot
 
 **传递函数**
@@ -52,18 +46,22 @@ $$
 
 *相位（phase）*
 
----
 
 ## LQR
 
----
 
 ## PID (Proportion Integration Differentiation)
 
 PID 方法用于反馈控制，使系统输出 $y(t)$ 追踪期望参考值 $r(t)$ 。
 
-误差定义为： $$\theta_{e}(t)=r(t)-y(t)$$
-PID 控制律的*控制输入*定义为： $$u(t)=K_{p}\theta_{e}(t)+K_{i}\int^{t}*{0}\theta*{e}(\tau)d\tau +K_{d} \frac{d\theta_{e}(t)}{dt}$$
+误差定义为： 
+
+$$\theta_{e}(t)=r(t)-y(t)$$
+
+PID 控制律的*控制输入*定义为： 
+
+$$u(t)=K_{p}\theta_{e}(t)+K_{i}\int^{t}*{0}\theta*{e}(\tau)d\tau +K_{d} \frac{d\theta_{e}(t)}{dt}$$
+
 * $K_{p}$ 比例增益，对误差立刻做出反应。可能产生震荡（oscillation）。
 * $K_{i}$ 积分增益，消除 *稳态误差（steady-state error）*
 * $K_{d}$ 微分增益，提高相位裕度（阻尼、damping）。
@@ -72,8 +70,9 @@ PID 控制律的*控制输入*定义为： $$u(t)=K_{p}\theta_{e}(t)+K_{i}\int^{
 
 ![no-copyright|400](http://oss.jay-waves.cn/til/pid-curve.avif)
 
-$K_{d}$ 微分项对噪声（高频信号）很敏感，因此会搭配低通滤波使用，或干脆不用。*带低通滤波的微分项（Dirty Derivative）* 定义为： $$D(s)=\frac{K_{d}s}{\tau s+1}$$
----
+$K_{d}$ 微分项对噪声（高频信号）很敏感，因此会搭配低通滤波使用，或干脆不用。*带低通滤波的微分项（Dirty Derivative）* 定义为： 
+
+$$D(s)=\frac{K_{d}s}{\tau s+1}$$
 
 ## Kalman Filter
 
