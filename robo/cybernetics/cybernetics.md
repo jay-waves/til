@@ -28,9 +28,8 @@ $$\text{overshoot}=\left| \frac{\theta_{e,min}-e_{ss}}{\theta_{e}(0)-e_{ss}}\rig
 
 误差随时间的波动构成一组*动力学* p 阶常微分方程：
 
-$$\newcommand{\E}{\theta_{e}}$$
-
 $$
+\newcommand{\E}{\theta_{e}}
 a_{p}\E^{(p)}+ a_{p-1}\E^{(p-1)} + \cdots +a_{2}\dot{\dot{\E}}+ a_{1}\dot{\E} + a_{0} \E=c
 $$
 
