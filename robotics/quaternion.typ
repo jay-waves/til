@@ -1,10 +1,11 @@
-#import "../.vscode/tufte.typ": tufte, note
+#import "../template.typ": tufte, meta, note
 
-#show: body => tufte(
-  title: [四元数],
-  subtitle: [],
-  body,
-)
+#show: tufte
+#let bmat(..args) = math.mat(delim: "[", ..args)
+
+#meta[
+- subtitle: 四元数
+]
 
 #note[
   来源：#link("https://github.com/Krasjet/quaternion")[四元数于三维旋转]，Krasjet，CC BY-NC-SA 4.0。原文中的远程图片在这里保留为链接。
@@ -15,31 +16,26 @@
 复数 $a + b i$ 同构映射于矩阵形式：
 
 $
-mat(delim: "[", a, -b; b, a)
+bmat(a, -b; b, a)
 $
 
 如：
 
 $
-i arrow.l.r mat(delim: "(", 0, -1; 1, 0)
+i arrow.l.r bmat(0, -1; 1, 0)
 $
 
 记复平面 $z = a + b i$ 与 $Re$ 的正方向夹角为 $theta$，那么：
 
-$
-cos theta = a / sqrt(a^2 + b^2)
-$
-
-$
-sin theta = b / sqrt(a^2 + b^2)
-$
+$ cos theta &= a / sqrt(a^2 + b^2) \
+ sin theta &= b / sqrt(a^2 + b^2) $
 
 记 $abs(z) = sqrt(a^2 + b^2)$，复数的同构矩阵可表示为_缩放矩阵_与_旋转矩阵_的乘积：
 
 $
-z = abs(z) dot I dot mat(delim: "[", cos theta, -sin theta; sin theta, cos theta)
-  = mat(delim: "[", abs(z), 0; 0, abs(z))
-    dot mat(delim: "[", cos theta, -sin theta; sin theta, cos theta)
+z = abs(z) dot I dot bmat(cos theta, -sin theta; sin theta, cos theta)
+  = bmat(abs(z), 0; 0, abs(z))
+    dot bmat(cos theta, -sin theta; sin theta, cos theta)
   = abs(z) e^(i theta)
 $
 
@@ -51,7 +47,7 @@ $
 
 轴角旋转有三个#link("rigid-bodies.md")[自由度]：一个表示 $theta$，两个表示单位向量 $bold(u)$。
 
-#link("http://oss.jay-waves.cn/til/20260331231138727.avif")[轴角旋转示意图]
+#image("/attach/轴式旋转示意图.webp")
 
 将向量 $bold(v)$ 沿垂直于轴 $bold(u)$ 和平行于轴的两个方向分解为 $bold(v)_1, bold(v)_2$。平行分量 $bold(v)_1$ 在旋转后保持不变，垂直分量旋转后变为：
 
@@ -61,13 +57,9 @@ $
 
 由于：
 
-$
-bold(v)_2 times bold(u) = bold(v) times bold(u)
-$
+$ bold(v)_2 times bold(u) = bold(v) times bold(u) $
 
-$
-bold(v)_1 = (bold(u) dot bold(v)) bold(u), quad
-bold(v)_2 = bold(v) - bold(v)_1
+$ bold(v)_1 = (bold(u) dot bold(v)) bold(u), quad bold(v)_2 = bold(v) - bold(v)_1
 $
 
 因此，旋转后的向量有_三维旋转公式_：
@@ -83,9 +75,7 @@ $
 
 定义四元数 $q in bb(H)$ 满足：
 
-$
-q = a + b i + c j + d k = [a, bold(v)]
-$
+$ q = a + b i + c j + d k = [a, bold(v)] $
 
 其中：
 
@@ -97,49 +87,37 @@ $
 
 四元数的模长：
 
-$
-abs(q) = sqrt(a^2 + b^2 + c^2 + d^2)
-$
+$ abs(q) = sqrt(a^2 + b^2 + c^2 + d^2) $
 
 纯四元数：
 
-$
-q = [0, bold(x)]
-$
+$ q = [0, bold(x)] $
 
 四元数的共轭：
 
-$
-overline(q) = [s, -bold(v)]
-$
+$ overline(q) = [s, -bold(v)] $
 
 四元数的互乘不满足交换律，因为叉乘不满足交换律：
 
-$
-q_1 q_2 - q_2 q_1 = [0, 2 bold(x) times bold(y)]
-$
+$ q_1 q_2 - q_2 q_1 = [0, 2 bold(x) times bold(y)] $
 
 换言之，当 $bold(x) parallel bold(y)$ 时，满足：
 
-$
-q_1 q_2 = q_2 q_1
-$
+$ q_1 q_2 = q_2 q_1 $
 
 == Grassmann Product
 
 $
-q_1 q_2 =
-  (a e - (b f + c g + d h))
-  + (b e + a f + c h - d g) i
-  + (c e + a g + d f - b h) j
-  + (d e + a h + b g - c f) k
+q_1 q_2 = 
+  &(a e - (b f + c g + d h)) \
+  + &(b e + a f + c h - d g) i\
+  + &(c e + a g + d f - b h) j\
+  + &(d e + a h + b g - c f) k
 $
 
 令向量 $bold(x) = (b, c, d)^T$，$bold(y) = (f, g, h)^T$，那么：
 
-$
-q_1 = [a, bold(x)], quad q_2 = [e, bold(y)]
-$
+$ q_1 = [a, bold(x)], quad q_2 = [e, bold(y)] $
 
 $
 q_1 q_2 =
@@ -147,9 +125,7 @@ q_1 q_2 =
    e bold(x) + a bold(y) + bold(x) times bold(y)]
 $
 
-$
-q overline(q) = overline(q) q = [a^2 + bold(v)^2, 0]
-$
+$ q overline(q) = overline(q) q = [a^2 + bold(v)^2, 0] $
 
 四元数的逆：
 
@@ -170,7 +146,7 @@ $
 四元数空间是一个#link("../math/linalg/向量分析/线性变换.md")[线性空间]，满足：
 
 $
-bb(H) equiv bb(R) + bb(R)^3 equiv bb(R)^4
+HH equiv RR + RR^3 equiv RR^4
 $
 
 四元数空间的代数结构是#link("../math/algebra/环/环.md")[除环]，满足：
@@ -192,15 +168,11 @@ $
 
 其中 $bold(u)$ 是单位旋转轴向量。
 
-$
-abs(q) = 1, quad q^(-1) = overline(q)
-$
+$ abs(q) = 1, quad q^(-1) = overline(q) $
 
 也可以证明：
 
-$
-q^2 = q q = [cos(2 theta), sin(2 theta) bold(u)]
-$
+$ q^2 = q q = [cos(2 theta), sin(2 theta) bold(u)] $
 
 = 旋转与单位四元数
 
@@ -308,11 +280,11 @@ $
 
 注意，由于 $abs(q) = 1$，四元数实际上只有三个自由度。旋转姿态活动于一个超球面内，但两个姿态 $q_0, q_1$ 位于同一个圆内，因此 $Delta q$ 只有两个自由度。
 
-#link("http://oss.jay-waves.cn/til/orientation_lerp.avif")[Orientation lerp 示意图]
+#image("../attach/orientation_lerp.webp", width: 50%)
 
 == Slerp 插值
 
-#link("http://oss.jay-waves.cn/til/slerp.avif")[Slerp 示意图]
+#image("../attach/slerp.webp", width: 50%)
 
 _球面线性插值（Spherical Linear Interpolation）_：
 
@@ -327,15 +299,11 @@ bold(v)_0 bold(v)_t =
   alpha (bold(v)_0 bold(v)_0) + beta (bold(v)_0 bold(v)_1)
 $
 
-$
-cos(t theta) = alpha + beta cos theta
-$
+$ cos(t theta) = alpha + beta cos theta $
 
 同理，同乘 $bold(v)_1$，得到：
 
-$
-cos((1 - t) theta) = alpha cos theta + beta
-$
+$ cos((1 - t) theta) = alpha cos theta + beta $
 
 解方程，得到 $upright("Slerp")(q_0, q_1, t)$：
 

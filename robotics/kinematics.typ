@@ -1,11 +1,11 @@
 
-#import "../.vscode/tufte.typ": tufte
+#import "../template.typ": tufte, meta
 
-#show: body => tufte(
-  title: [Kinematics],
-  body,
-)
+#show: tufte
 
+#meta[
+- subtitle: Kinematics
+]
 
 == forward kinematics
 
