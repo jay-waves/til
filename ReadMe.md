@@ -26,19 +26,7 @@
 
 ## Workflow
 
-分为内容标签和进度标签两类，进度标签不会出现在正文中。
-
-| tags                      |                      |
-| ------------------------- | --------------------------- |
-| #LGTM #BP         | 有兴趣，最佳实践      |
-| #DEBUG | 故障处理经验        |
-| #FAQ                      | 提问，一些好奇心            |
-| #NSFW                     | 奇怪内容，加入 `.gitignore` |
-| #TODO                     | 进度标签，未来会投入精力    |
-| #NOPLAN                   | 进度标签，未来不会投入精力  |
-| #WIP                      | 进度标签，正在              |
-
-文件内属性:
+文件内属性 (YAML Preamble):
 
 | properties |                                                                 | type |
 | ---------- | --------------------------------------------------------------- | ---- |
@@ -48,8 +36,7 @@
 | license    | 文内有非 CC-BY 许可证授权下的内容引用时，单个文件许可证可能变化 | 文本 |
 | code       | 指文内内容在 `/src` 目录下有对应的源码                          | 列表 |
 
-
-## Writing Guidelines
+## Guidelines
 
 - 语言简洁、严谨、准确、逻辑清晰。尽最大努力保持简洁。
 - *斜体*的使用：新名词，需要强调的概念等。
@@ -61,15 +48,19 @@
 
 - 260116 起，不再要求统一使用英文标点。为了排版美观，中文可以使用中文标点。
 - 中文（全角）和任意半角符号间应隔一个半角空格，括号内侧除外。
-- 全角标点符号应位于 Markdown 标记之外，如 **粗体之后再逗号**，避免渲染异常。
 
 ### Markdown
 
-- Markdown 开启严格断行
-- Markdown 链接使用 `[]()` 形式，关闭 wikilink.
-- 允许的扩展 Markdown 语法：Embedded HTML、Table、Mathjax、Checkbox、Footnote
-- 允许的 Obsidian Markdown 功能：Tag、Properties（Yaml Front Matter）、Mermaid
-- 需要高级样式（复杂表格、图片宽度等），优先使用嵌入 html
+- 样式使用 `./teamplte.css`，基于 [github-markdown-css](https://github.com/sindresorhus/github-markdown-css) 
+- 使用严格断行
+- 使用严格 `[]()` 链接与图片引用格式。
+- 允许的 Markdown 扩展语法：HTML、Table、Mathjax、Footnote、Mermaid、YAML Preamble 
+- 全角标点符号应位于 Markdown 标记之外，如 **粗体之后再逗号**，避免渲染异常。
+
+### Typst 
+
+- 样式使用 `./template.typ`，基于 [tufte-typst](https://github.com/fredguth/tufte-typst)
+- Typst 主要用于复杂数学公式与排版需求
 
 ### Naming
 
