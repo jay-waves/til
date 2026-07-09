@@ -1,4 +1,4 @@
-![|800](http://oss.jay-waves.cn/til/delta-robot.jpg)
+<img src="http://oss.jay-waves.cn/til/delta-robot.jpg" alt="" width="800">
 
 designed for lightweight pick-and-place. It used 3 identical parallel kinematic chains connected to a common end-effector playform.
 
@@ -6,7 +6,7 @@ designed for lightweight pick-and-place. It used 3 identical parallel kinematic 
 
 ## DoF
 
-![|400](http://oss.jay-waves.cn/til/delta-robot-dof.avif)
+<img src="http://oss.jay-waves.cn/til/delta-robot-dof.avif" alt="" width="400">
 
 只有 3DoF 
 

@@ -7,7 +7,7 @@
 
 ## 网络通信安全模型
 
-![|500](../../attach/Pasted%20image%2020230611205541.avif)
+<img src="../../attach/Pasted%20image%2020230611205541.avif" alt="" width="500">
 
 四个要素:
 - 加密和认证算法

@@ -13,6 +13,7 @@
 )
 
 #let accent = rgb("#2563a8")
+#let latin-text = regex("[A-Za-z][A-Za-z0-9'’.,:;!?()/-]*")
 
 #let sidenote(content) = {
   place(
@@ -156,6 +157,7 @@
     number-width: "tabular",
   )
   set par(leading: 0.72em)
+  show latin-text: set text(font: "EB Garamond", size: 1.1em)
 
   body
 }

@@ -2,7 +2,7 @@
 
 迭代型散列函数, 也称为 Merkle-Damgard 结构.
 
-![|550](attach/密码学_迭代型散列函数.avif)
+<img src="attach/密码学_迭代型散列函数.avif" alt="" width="550">
 
 ### 预处理
 

@@ -39,7 +39,7 @@
 
 模糊测试发展路径:[^3]
 
-![|1000](../../attach/fuzzing-evolution.avif)
+<img src="../../attach/fuzzing-evolution.avif" alt="" width="1000">
 
 ### 动态插桩方式
 
@@ -68,7 +68,7 @@
 
 研究表明[^1], 现存漏洞的数量随着代码生命周期指数下降. 假设平均漏洞生命周期为 $\lambda$, 于是漏洞的时间密度满足[指数分布](../../math/prob/随机变量分布/指数分布.md): $$\mathrm{density}(x)=\frac{1}{\lambda}e^{-\frac{1}{\lambda} x}$$
 
-![|400](../../attach/漏洞之生命周期.avif)
+<img src="../../attach/漏洞之生命周期.avif" alt="" width="400">
 
 谷歌[^2]认为处理内存安全的策略共有四代:
 1. reactive patching. 漏洞和风险曝光后再解决, 软件需要经常打安全补丁.

@@ -1,14 +1,6 @@
----
-math-engine: mathjax
----
+
 
 ## Motor Types 
-
-* DC Brushed Servo Motor (有刷、直流、伺服电机)：便宜，简单，容易磨损
-* DC Brushless Motor (BLDC, 无刷、直流电机)：寿命长，精密，效率高，贵。
-* Stepper Motor（步进电机）：按固定角度一步一步转，不容易高速控制
-
-伺服电机需要 Encoder（编码器）来控制它的位置，并且需要闭环控制。
 
 ## PID Control 
 

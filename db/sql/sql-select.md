@@ -97,7 +97,7 @@ select name, id,  math from  students group by id;
 
 ## Join (多表联合查询)
 
-![|500](http://oss.jay-waves.cn/til/数据库_JOIN语法.avif)
+<img src="http://oss.jay-waves.cn/til/数据库_JOIN语法.avif" alt="" width="500">
 
 套集合关系:
 

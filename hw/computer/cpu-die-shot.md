@@ -2,4 +2,4 @@
 
 ## Lunar Lake
 
-![lunar-lake|400](http://oss.jay-waves.cn/til/lunar-lake.jpg)
+<img src="http://oss.jay-waves.cn/til/lunar-lake.jpg" alt="lunar-lake" width="400">

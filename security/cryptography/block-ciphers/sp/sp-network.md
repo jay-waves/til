@@ -1,7 +1,7 @@
 代换-置换网络 (SPN, substitution-permutation), 使用多次**迭代** (非幂等算法) 和**算法乘积**提高安全性. 和 Feistel 结构相比, SP 网络扩散更快, 但加解密结构区别较大.
 
 **单轮流程**:
-![|300](/attach/密码学_SP结构.avif)
+<img src="/attach/密码学_SP结构.avif" alt="" width="300">
 
 **多轮流程**:
 

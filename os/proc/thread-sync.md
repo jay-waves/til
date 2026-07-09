@@ -193,5 +193,5 @@ void bar() {
 
 注意, 非安全状态不一定导致死锁, 但安全状态一定不会死锁: 
 
-![|200](../../attach/os-死锁.avif)
+<img src="../../attach/os-死锁.avif" alt="" width="200">
 

@@ -50,7 +50,8 @@
 
 ### Markdown
 
-- 样式使用 `./teamplte.css`，基于 [github-markdown-css](https://github.com/sindresorhus/github-markdown-css) 
+- 样式使用 `./teamplate.css`，基于 [github-markdown-css](https://github.com/sindresorhus/github-markdown-css)。
+- 样式 `./template.css` 仅保证对 VSCode MD Preview 生效，并且没有指定代码块样式。
 - 使用严格断行
 - 使用严格 `[]()` 链接与图片引用格式。
 - 允许的 Markdown 扩展语法：HTML、Table、Mathjax、Footnote、Mermaid、YAML Preamble 
@@ -69,7 +70,7 @@
 
 ### Coding
 
-详见 [personal-coding-styles](appx/personal-coding-styles.md)
+详见 [个人代码风格描述](appx/personal-coding-styles.md)
 
 ### Reference
 

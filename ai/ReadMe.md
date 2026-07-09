@@ -6,7 +6,7 @@
 - 强化学习: 有外部奖励和反馈
 - 深度学习 (Deep Learning): 模型使用神经网络. 
 
-![|400](http://oss.jay-waves.cn/til/20260125183124715.png)
+<img src="http://oss.jay-waves.cn/til/20260125183124715.png" alt="" width="400">
 
 
 ### landmarks

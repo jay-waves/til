@@ -1,4 +1,4 @@
-![|500](../attach/gartner-hype-cycle.avif)
+<img src="../attach/gartner-hype-cycle.avif" alt="" width="500">
 
 
 ## 标准库

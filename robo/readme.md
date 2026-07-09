@@ -61,7 +61,7 @@ map
 * y 左
 * z 上
 
-![pnd-botics|400](http://oss.jay-waves.cn/til/adam-lite.avif)
+<img src="http://oss.jay-waves.cn/til/adam-lite.avif" alt="pnd-botics" width="400">
 
 
 #### odometry 里程计坐标系
