@@ -1,4 +1,6 @@
-/* based on: https://github.com/sindresorhus/github-markdown-css */
+/* based on: https://github.com/sindresorhus/github-markdown-css 
+    no code block style is specified, define them by youself or use the vscode-builtin styles
+*/
 
 @font-face {
   font-family: "MD Latin";

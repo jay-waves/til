@@ -1,3 +1,5 @@
+// based on https://github.com/fredguth/tufte-typst
+
 #let main-fonts = (
   "EB Garamond",
   "LXGW WenKai Lite",

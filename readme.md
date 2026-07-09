@@ -27,6 +27,8 @@
 ## Workflow
 
 笔记库采用 Typst + Markdown 混合排版，推荐的编辑器为 VSCode。
+* Markdown 文档的推荐样式见 `./template.css` ，仅供 VSCode Preview 使用。
+* Typst 文档的推荐样式见 `./temaplte.typ` 
 
 文件内属性 (YAML Preamble):
 
@@ -50,17 +52,10 @@
 
 ### Markdown
 
-- 样式使用 `./teamplate.css`，基于 [github-markdown-css](https://github.com/sindresorhus/github-markdown-css)。
-- 样式 `./template.css` 仅保证对 VSCode MD Preview 生效，并且没有指定代码块样式。
 - 使用严格断行
 - 使用严格 `[]()` 链接与图片引用格式。
 - 允许的 Markdown 扩展语法：HTML、Table、Mathjax、Footnote、Mermaid、YAML Preamble 
 - 全角标点符号应位于 Markdown 标记之外，如 **粗体之后再逗号**，避免渲染异常。
-
-### Typst 
-
-- 样式使用 `./template.typ`，基于 [tufte-typst](https://github.com/fredguth/tufte-typst)
-- Typst 主要用于复杂数学公式与排版需求
 
 ### Naming
 
