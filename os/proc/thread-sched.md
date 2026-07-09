@@ -5,7 +5,7 @@
 
 进程调度的原则是：提高 CPU 利用率，提高系统任务吞吐量，通过减少等待时间来减少总周转时间，提高系统的总任务吞吐量；同时确保某些实时任务的响应时间。对于 IO 密集型程序，CPU 大量短执行，可以赋予更高优先级；对于 CPU 密集型程序，不能让其长时间占用 CPU，应降低其优先级并抢占 CPU。
 
-![|300](../../attach/os-proc-cpu-burst.avif)
+<img src="../../attach/os-proc-cpu-burst.avif" alt="" width="300">
 
 ## 进程状态
 
@@ -124,7 +124,7 @@ struct cfs_rq {
 - Q1, RR, 时间片为16ms
 - Q2, FCFS
 
-![|400](../../attach/os-multilevel-queue-scheduling.avif)
+<img src="../../attach/os-multilevel-queue-scheduling.avif" alt="" width="400">
 
 调度策略:
 - 新进程先进入 Q0, 若无法在 8ms 时间片完成, 进入 Q1 

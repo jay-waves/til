@@ -34,7 +34,7 @@
 
 ### I/O 操作 中断处理
 
-![|400](../../attach/os-IO时序图.avif)
+<img src="../../attach/os-IO时序图.avif" alt="" width="400">
 
 1. CPU 通过 I/O 指令通知 I/O 设备控制器.
 2. 控制器操作具体设备执行 I/O 操作, CPU 执行其他指令.
@@ -46,7 +46,7 @@
 系统调用过程详见 [syscall](../libc/syscall.md), 常见类 Unix 系统的系统调用列表见 [Appendix/UnixSystemCall](../libc/linux-syscalls.md). 现代 CPU 通常提供多级不同权限的中断 (**特权等级**), 但 
 Linux 只使用其中两种, 含义仍是内核空间和用户空间.
 
-![|500](../../attach/os-用户态和内核态切换.avif)
+<img src="../../attach/os-用户态和内核态切换.avif" alt="" width="500">
 
 ![400](../../attach/os-系统调用过程.avif)
 

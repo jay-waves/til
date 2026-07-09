@@ -1,5 +1,14 @@
 /* based on: https://github.com/sindresorhus/github-markdown-css */
 
+@font-face {
+  font-family: "MD Latin";
+  src: local("EB Garamond Regular"), local("EBGaramond-Regular");
+  font-weight: 400;
+  font-style: normal;
+  size-adjust: 108%;
+  unicode-range: U+0000-00FF, U+0100-024F, U+1E00-1EFF;
+}
+
 :root,
 body {
   --md-fg: #1f2328;
@@ -12,12 +21,16 @@ body {
   --md-mark-bg: #fff8c5;
   --md-kbd-bg: #f6f8fa;
   --md-table-alt-bg: #f6f8fa;
+  --md-quote-bg: #f6f8fa;
   --md-code-bg: #818b981f;
+  --md-code-fg: #24292f;
   --md-pre-bg: #f6f8fa;
   --md-danger: #d1242f;
   --md-alert-important: #8250df;
   --md-alert-warning: #9a6700;
   --md-alert-tip: #1a7f37;
+  --md-font: "MD Latin", "霞鹜文楷", sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --md-mermaid-font-size: 18px;
   color-scheme: light;
 }
 
@@ -32,7 +45,9 @@ body.vscode-dark {
   --md-mark-bg: #ae7c1426;
   --md-kbd-bg: #262c36;
   --md-table-alt-bg: #262c36;
+  --md-quote-bg: #262c36;
   --md-code-bg: #656c7633;
+  --md-code-fg: #c9d1d9;
   --md-pre-bg: #262c36;
   --md-danger: #e5534b;
   --md-alert-important: #986ee2;
@@ -47,10 +62,10 @@ body {
   padding: 32px;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  font-weight: 400;
+  font-weight: 500;
   color: var(--md-fg);
   background-color: var(--md-bg);
-  font-family: "EB Garamond", "霞鹜文楷", sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-family: var(--md-font);
   font-size: 15px;
   line-height: 1.5;
   word-wrap: break-word;
@@ -136,7 +151,8 @@ body kbd,
 body pre,
 body samp {
   font-family: "Fira Code", monospace;
-  font-size: 11px;
+  font-weight: 400;
+  font-size: 12px;
 }
 
 body figure {
@@ -335,6 +351,7 @@ body blockquote {
   margin: 0;
   padding: 0 1em;
   color: var(--md-muted);
+  background-color: var(--md-quote-bg);
   border-left: .25em solid var(--md-border);
 }
 
@@ -365,14 +382,16 @@ body tt,
 body code,
 body samp {
   font-family: "Fira Code", monospace;
-  font-size: 11px;
+  font-weight: 400;
+  font-size: 12px;
 }
 
 body pre {
   margin-top: 0;
   margin-bottom: 0;
   font-family: "Fira Code", monospace;
-  font-size: 11px;
+  font-weight: 400;
+  font-size: 12px;
   word-wrap: normal;
 }
 
@@ -518,8 +537,9 @@ body code,
 body tt {
   padding: .2em .4em;
   margin: 0;
-  font-size: 13px;
+  font-size: 12px;
   white-space: break-spaces;
+  color: var(--md-code-fg);
   background-color: var(--md-code-bg);
   border-radius: 6px;
 }
@@ -534,11 +554,11 @@ body del code {
 }
 
 body samp {
-  font-size: 13px;
+  font-size: 12px;
 }
 
 body pre code {
-  font-size: 13px;
+  font-size: 12px;
 }
 
 body pre>code {
@@ -563,28 +583,80 @@ body .highlight pre,
 body pre {
   padding: 1rem;
   overflow: auto;
-  font-size: 13px;
+  font-size: 12px;
   font-family: "Fira Code", monospace;
   line-height: 1.45;
-  color: var(--md-fg);
-  background-color: var(--md-pre-bg);
   border-radius: 6px;
 }
 
 body pre code,
 body pre tt,
-body pre *,
-body code * {
+body pre span,
+body code span {
   display: inline;
   padding: 0;
   margin: 0;
   overflow: visible;
   font-family: "Fira Code", monospace;
-  font-size: 11px;
+  font-size: 12px;
   line-height: inherit;
   word-wrap: normal;
   background-color: rgba(0,0,0,0);
   border: 0;
+}
+
+body .mermaid,
+body pre.mermaid {
+  overflow: visible;
+  white-space: normal;
+  background-color: rgba(0,0,0,0);
+}
+
+body .mermaid svg {
+  display: block;
+  max-width: 80%;
+  overflow: visible;
+  margin: 0 auto;
+}
+
+body .mermaid foreignObject,
+body .mermaid .label,
+body .mermaid .nodeLabel,
+body .mermaid .edgeLabel {
+  overflow: visible;
+}
+
+body .mermaid,
+body .mermaid text,
+body .mermaid span,
+body .mermaid p,
+body .mermaid div {
+  font-family: var(--md-font) !important;
+  font-size: var(--md-mermaid-font-size) !important;
+  line-height: 1.25 !important;
+}
+
+body .mermaid .label,
+body .mermaid .nodeLabel,
+body .mermaid .edgeLabel,
+body .mermaid .label p,
+body .mermaid .nodeLabel p,
+body .mermaid .edgeLabel p,
+body .mermaid .label div,
+body .mermaid .nodeLabel div,
+body .mermaid .edgeLabel div {
+  margin: 0 !important;
+  padding: 0 !important;
+  text-indent: 0 !important;
+  text-align: center !important;
+}
+
+body .mermaid foreignObject > div {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100%;
+  height: 100%;
 }
 
 body [data-footnote-ref]::before {

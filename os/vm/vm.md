@@ -15,7 +15,7 @@ vSphere 这类虚拟化平台专用于将所有硬件集群统一为虚拟化平
 
 ## 虚拟机类型
 
-![|400](../../attach/vm-type.avif)
+<img src="../../attach/vm-type.avif" alt="" width="400">
 
 type-1 hypervisor (bare-metal hypervisor) 直接管理服务器硬件, 本身是最底层 OS. 如 KVM, Xen, ESXi, Hyper-V.
 

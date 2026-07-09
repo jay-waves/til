@@ -92,7 +92,7 @@ f = globalA.f; <-
 
 上述误报, 可以通过维护状态机来排除:
 
-![|450](../../../attach/Pasted%20image%2020240407141722.avif)
+<img src="../../../attach/Pasted%20image%2020240407141722.avif" alt="" width="450">
 
 误报: 同一线程中, 被不同锁保护的位置.
 ```c

@@ -10,13 +10,13 @@
 - 数据段, Data, 全局变量和静态变量
 - 堆栈段, 栈一般又编译器自动分配, 堆则由程序员动态分配.
 
-![|150](../../attach/Pasted%20image%2020230619171849.avif)
+<img src="../../attach/Pasted%20image%2020230619171849.avif" alt="" width="150">
 
 进程控制块, PCB, Process Control Block:
 
 操作系统用于存储进程相关信息的数据结构, 存放在独立内存区域. 
 
-![|150](../../attach/os-进程内存布局.avif)
+<img src="../../attach/os-进程内存布局.avif" alt="" width="150">
 
 ### 进程的创建, 终止, 唤醒, 切换, 阻塞
 
@@ -84,7 +84,7 @@ flowchart LR
 | TLS (thread local storage) | independent                 | independent |                                               |
 | os resources               | shared                      | independent | file handlers, socket handlers                                              |
 
-![|400](../../attach/os-线程和进程的资源对应关系.avif)
+<img src="../../attach/os-线程和进程的资源对应关系.avif" alt="" width="400">
 
 ### 多线程调度
 

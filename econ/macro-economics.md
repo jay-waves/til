@@ -68,7 +68,7 @@ $$\text{Inflation Rate} = \frac{CPI_t - CPI_{t-1}}{CPI_{t-1}}$$
 - demand pull inflation. 货币过多。
 - supply shock. 成本过高。
 
-![phillips-curve|400](http://oss.jay-waves.cn/til/phillips_curve.jpg)
+<img src="http://oss.jay-waves.cn/til/phillips_curve.jpg" alt="phillips-curve" width="400">
 
 一般认为，通胀率和失业率是负相关的，抑制通胀的经济政策通常会导致失业率上升。从比较阴暗的角度，社会对“降薪”非常敏感，适度通胀能使实际工资下降，促进劳动力在不同部门间流动，同时减少社会的整体债务负担。
 

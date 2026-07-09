@@ -1,6 +1,6 @@
 ## 栈
 
-![|400](../../attach/Pasted%20image%2020240718173953.avif)
+<img src="../../attach/Pasted%20image%2020240718173953.avif" alt="" width="400">
 
 栈用于保存函数调用信息, 也被称为**堆栈帧 (Stack Frame)**. 内容包括:
 - 函数的返回地址和参数.

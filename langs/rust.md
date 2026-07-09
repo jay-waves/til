@@ -387,7 +387,7 @@ K 有序映射表, `BTreeMap<K, V>`
 
 `std::string::String`
 
-![|400](http://oss.jay-waves.cn/til/strings-in-rust.avif)
+<img src="http://oss.jay-waves.cn/til/strings-in-rust.avif" alt="" width="400">
 
 抽象, 比 C++ 的字符串还复杂. 要不咱们还是用 `GC<str>` 吧.
 

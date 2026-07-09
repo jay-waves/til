@@ -183,7 +183,7 @@ FullForm[expr]
 TreeForm[expr]
 TraditionalForm[expr]
 ```
-![|300](../../../attach/Pasted%20image%2020240502130906.avif)
+<img src="../../../attach/Pasted%20image%2020240502130906.avif" alt="" width="300">
 
 ### Finite Field
 

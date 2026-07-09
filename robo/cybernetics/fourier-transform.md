@@ -6,7 +6,7 @@ math-engine: mathjax
 
 由于基频 $\omega_{0}\to 0$ ，每个离散频率点 $k\omega_{0}$ 间隔变小，**频谱变得连续**。数学上，级数变为积分： $$f(t)=\int^{\infty}_{-\infty}F(\omega)e^{j\omega t}  \, d\omega $$
 
-![no-copyright|400](http://oss.jay-waves.cn/til/spectrum.avif)
+<img src="http://oss.jay-waves.cn/til/spectrum.avif" alt="no-copyright" width="400">
 
 ## 傅里叶变换
 

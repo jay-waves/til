@@ -7,7 +7,7 @@
 5. 数据库实施: 创建数据库实例, 并载入真实数据.
 6. 数据库运行和维护
 
-![|400](http://oss.jay-waves.cn/til/数据库设计1.avif)
+<img src="http://oss.jay-waves.cn/til/数据库设计1.avif" alt="" width="400">
 
 ### 评判质量指标
 
@@ -31,7 +31,7 @@ DFD (数据流图) 描述系统业务流程的以下方面:
 - 处理过程 (Process)
 - 数据存储 (参与业务流程的数据实体)
 
-![|400](http://oss.jay-waves.cn/til/数据库设计2.avif)
+<img src="http://oss.jay-waves.cn/til/数据库设计2.avif" alt="" width="400">
 
 ![](http://oss.jay-waves.cn/til/数据库设计3.avif)
 
@@ -55,19 +55,19 @@ Entity Relationship Model, 1976, 陈品山.
 - 复合关键字: 标有相同数字
 - 多组关键字: 标有不同数字
 
-![|300](http://oss.jay-waves.cn/til/数据库设计4.avif)
+<img src="http://oss.jay-waves.cn/til/数据库设计4.avif" alt="" width="300">
 
 ##### Crow Foot's Notation
 
-![|450](http://oss.jay-waves.cn/til/数据库设计5.avif)
+<img src="http://oss.jay-waves.cn/til/数据库设计5.avif" alt="" width="450">
 
-![|400](http://oss.jay-waves.cn/til/数据库设计6.avif)
+<img src="http://oss.jay-waves.cn/til/数据库设计6.avif" alt="" width="400">
 
 举例:
 
-![|400](http://oss.jay-waves.cn/til/数据库设计7.avif)
+<img src="http://oss.jay-waves.cn/til/数据库设计7.avif" alt="" width="400">
 
-![|400](http://oss.jay-waves.cn/til/数据库设计8.avif)
+<img src="http://oss.jay-waves.cn/til/数据库设计8.avif" alt="" width="400">
 
 #### 实体和属性设计
 
