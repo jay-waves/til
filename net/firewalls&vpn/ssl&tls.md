@@ -89,10 +89,10 @@ Auth | {CertificateVerify*}
 #### 安全性改进
 
 TLS 1.3 移除了一些不安全的加密算法:
-- [RC4](../../security/cryptography/stream-ciphers&prng/流密码算法/RC4.md)
-- [DES](../../security/cryptography/block-ciphers/feistel/DES.md), [3DES](../../security/cryptography/block-ciphers/feistel/EDE.md) 
-- [MD5](../../security/cryptography/msg-digests/merkel-damgard/MD5.md)
-- [RSA](../../security/cryptography/public-key-crypto/RSA/RSA.md)
+- [RC4](../../sec/cryptography/stream-ciphers&prng/流密码算法/RC4.md)
+- [DES](../../sec/cryptography/block-ciphers/feistel/DES.md), [3DES](../../sec/cryptography/block-ciphers/feistel/EDE.md) 
+- [MD5](../../sec/cryptography/msg-digests/merkel-damgard/MD5.md)
+- [RSA](../../sec/cryptography/public-key-crypto/RSA/RSA.md)
 
 TLS1.3 使用了更强的密码套件: AEAD (Authenticated Encryption with Associated Data) 算法, 包括 AES-GCM, ChaCha20-Poly1305, 来同时实现加密和认证.
 

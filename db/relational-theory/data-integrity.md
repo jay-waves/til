@@ -121,9 +121,9 @@ FOR EACH ROW
 
 安全性控制方法:
 - **用户标识** (Identification) 和 用户鉴别 (Authentication), I&A
-- [**存取控制** (Access Control)](../../security/security-models.md): 用户权限定义 + 合法权限审查
+- [**存取控制** (Access Control)](../../sec/security-models.md): 用户权限定义 + 合法权限审查
 - 视图 (View)
-- [审计 (Audit)](../../security/security-models.md)
+- [审计 (Audit)](../../sec/security-models.md)
 - 数据加密 (Encryption)
 - 数据备份与恢复
 

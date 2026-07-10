@@ -1,6 +1,6 @@
 ## SeLinux
 
-SELinux (Security-Enhanced Linux) 由 NSA 和 RedHat 在 2000 年开发, 在 Linux2.6 中合并到主线 LSM (Linux Security Module) 接口中. 在传统的[自主访问控制 (DAC)](../../security/security-models.md) 基础上, 加入[强制访问控制 (MAC)](../../security/security-models.md).
+SELinux (Security-Enhanced Linux) 由 NSA 和 RedHat 在 2000 年开发, 在 Linux2.6 中合并到主线 LSM (Linux Security Module) 接口中. 在传统的[自主访问控制 (DAC)](../../sec/security-models.md) 基础上, 加入[强制访问控制 (MAC)](../../sec/security-models.md).
 
 对于每个对象 (进程, 文件, 端口, 设备), 都有一个安全标签: `user:role:type:level`. 
 - user:role:type, 用于 RBAC. 

@@ -6,7 +6,7 @@
 | ai          | artificial intelligence | 人工智能     |
 | *appx*      | appendices              | 附录         |
 | *attach*    | attachments             | 附件     |
-| compiler    | compilers               | 编译原理     |
+| cc          | compilers               | 编译原理     |
 | db          | databases               | 数据库       |
 | econ        | economics               | 经济学       |
 | hw          | hardware                | 体系架构     |
@@ -14,7 +14,7 @@
 | math        | mathematics             | 数学         |
 | net         | networking              | 网络通信     |
 | os          | operating system        | 操作系统     |
-| robotics    | robotics system         | 机器人       |
+| robo        | robotics system         | 机器人       |
 | sec         | security                | 网络安全     |
 | tools       | dev tools               | 开发工具     |
 | vision      | visual computing        | 可视计算     |
@@ -27,8 +27,9 @@
 ## Workflow
 
 笔记库采用 Typst + Markdown 混合排版，推荐的编辑器为 VSCode。
-* Markdown 文档的推荐样式见 `./template.css` ，仅供 VSCode Preview 使用。
-* Typst 文档的推荐样式见 `./temaplte.typ` 
+* Markdown 文档的推荐样式见 `./theme.css` ，仅供 VSCode Preview 使用。
+* Typst 文档的推荐样式见 `./theme.typ` 
+* 引用信息罗列在 `./reference.bib`
 
 文件内属性 (YAML Preamble):
 
@@ -72,13 +73,12 @@
 - 仓库整体使用 [CC-BY](license.md) 许可证，部分摘录文章或原创文章使用不同版权许可的，在文章开头标明
 - 提及人名或组织名时，使用：@google、@github/jay-waves、@yayvyn 
 - 引用时，使用简写格式： `[ITU-T x.800, 2002, p22]` `[Bjarne Stroustrup, 2014]` ，人名、文章名、期刊名皆可以简写。
-- 引用的详细信息罗列在 `./references.bib` 中
 
 ### Math
 
 - 重要的*定理、引理、定义*使用标题格式，并用数字编号 `x.m.n` 便于整理和引用。
 - 数学证明中，用 `\Proof{}` 和 `\square` 标识开始与结束。
-- 复杂的数学排版，请优先使用 Typst 而不是 Markdownk
+- 复杂的数学排版，请优先使用 Typst 而不是 Markdown
 
 ### Attachments 
 
