@@ -27,9 +27,9 @@
 ## Workflow
 
 笔记库采用 Typst + Markdown 混合排版，推荐的编辑器为 VSCode。
-* Markdown 文档的推荐样式见 `./theme.css` ，仅供 VSCode Preview 使用。
-* Typst 文档的推荐样式见 `./theme.typ` 
-* 引用信息罗列在 `./reference.bib`
+* Markdown 文档的推荐样式见 `appx/theme.css` ，仅供 VSCode Preview 使用。
+* Typst 文档的推荐样式见 `appx/theme.typ` 
+* 引用信息罗列在 `appx/library.bib`
 
 文件内属性 (YAML Preamble):
 

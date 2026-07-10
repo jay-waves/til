@@ -1,4 +1,4 @@
-#import "../../template.typ": tufte, note
+#import "../../appx/theme.typ": tufte, note
 #show: tufte
 
 #import "@preview/cetz:0.5.2"

@@ -1,4 +1,4 @@
-#import "../../../template.typ": tufte
+#import "../../../appx/theme.typ": tufte
 #show: tufte
 
 #let bmat(..args) = $mat(delim: "[", ..args)$

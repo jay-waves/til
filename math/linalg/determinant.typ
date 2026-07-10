@@ -1,4 +1,4 @@
-#import "../../template.typ": tufte, meta, note
+#import "../../appx/theme.typ": tufte, meta, note
 
 #show: tufte
 

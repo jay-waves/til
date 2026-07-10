@@ -40,24 +40,6 @@ PID is **reactive**: it corrects error only after the output has alraady deviate
 * increse speed of response 
 * reduce overshoot, and avoid a large *ki* building up.
 
-## MIT Mini Cheetah Control 
-
-$$\tau = K_{p}\times\Delta q+K_{d}\times \Delta dq + \tau_{ff}$$
-
-* $\tau$ 输出力矩（电流）
-* $\tau$ 前馈力矩 
-
-MIT 控制本质是 PID + Toruqe Feedforward. 但是没有积分项 I. MIT 将电机视为一种弹簧、阻尼系统，位置误差产生弹簧力矩，速度误差产生阻尼力矩，适合动态地接触控制。
-
-实际的力矩方程：
-
-$$\tau=J\alpha+B\omega + \tau_{f} + \tau_{g}+\tau_{load}$$
-
-* $J\alpha$ 加速度力矩
-* $B\omega$ 克服阻尼/粘性摩擦需要的力矩
-* $\tau_{f}$ 摩擦补偿
-* $\tau_{g}$ 重力补偿
-* $\tau_{load}$ 负载力矩
 
 ## Brake 
 

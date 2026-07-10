@@ -1,4 +1,4 @@
-#import "../../template.typ": tufte, note
+#import "../../appx/theme.typ": tufte, note
 #show: tufte
 
 雅各比坐标系 (Jacobian coordinates) 转换

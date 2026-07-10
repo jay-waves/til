@@ -1,10 +1,11 @@
-#import "../../template.typ": tufte, note
+#import "../../appx/theme.typ": tufte, note
 #show: tufte
 
 #import "@preview/cetz:0.5.2"
 
 #let dtheta = $dot(theta)$
 #let ddtheta = $dot.double(theta)$
+#let dddtheta = $theta^((3))$
 
 Motion Control 有两种目标：末端执行器位置 $X_d(t)$ 或关节位置 $theta_d(t)$ ，这里主要研究 $theta_d$
 
@@ -52,6 +53,50 @@ $ dtheta(t) = dtheta_d (t) + K_p theta_e (t) + K_i integral^t_0 theta_e (t) d t 
   image("../../attach/torque-control.webp", width: 50%),
   caption: [Modern Robotis, Fig 11.11]
 )
+
+设 $M$ 是（标量）转动惯量，$m$ 是单连杆质量，$r$ 是旋转轴到质心的距离，
+$tau_"fric"$ 是旋转摩擦力矩，$tau_"dist"$ 是扰动转矩（一般指杆自重和负载产生的力矩）。
+实际输出的关节力矩为：
+
+#note[单连杆转动惯量的计算方式: \ $I=sum m r^2$]
+
+$ 
+tau &= M ddtheta + tau_"dist" + tau_"fric" \
+ &= M ddtheta + m g r cos theta + b dtheta 
+$ 
+
+#note[这里的力矩公式没有考虑离心力（科氏力），因此隐含假设是低速或静止模型]
+
+== PID Control 
+
+$
+  tau = K_p theta_e + K_i integral theta_e (t) d t + K_d dtheta_e
+$
+
+where $K_d$ is the derivative gain. 
+
+#figure(
+  image("../../attach/pid-controller.webp", width: 70%),
+  caption: "Fig 11.5 Modern Robotics, PID Controller Diagram",
+  numbering: none
+)
+
+让控制系统输出力矩，追踪总力矩：
+
+$ tau &= M ddtheta + tau_"dist" + tau_"fric" \
+ &= K_p theta_e + K_i integral theta_e d t + K_d dtheta_e, quad theta_e = theta_d - theta $
+
+*假设是零点控制*，即 $dot.double(theta)_d = dtheta_d=0$，左右同时求导，得到：
+$
+  M dddtheta_e + (b+ K_d)ddtheta_e + K_p dtheta_e + K_i theta_e = dot(tau)_"dist"
+$
+
+
+== PD Control (MIT Mini Cheetach Control)
+
+MIT: PD + Torque Feedforward. 适合接触控制 
+
+在·
 
 = Task-Space Motion Control 
 
