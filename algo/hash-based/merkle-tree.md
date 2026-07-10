@@ -2,7 +2,7 @@
 
 验证某个数据局部 $D$ 是否被篡改/损坏，只需验证其 Merkle Tree 路径上的哈希值正确性，无需计算完整数据块哈希。
 
-Merkle Tree 在 Crypto 中使用较多，为了避免哈希碰撞，建议使[密码学哈希函数](../../security/cryptography/msg-digests/msg-digest.md)。
+Merkle Tree 在 Crypto 中使用较多，为了避免哈希碰撞，建议使[密码学哈希函数](../../sec/cryptography/msg-digests/msg-digest.md)。
 
 ```ascii
                  Root Hash

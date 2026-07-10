@@ -31,7 +31,7 @@ Client ── Firewall Proxy ── Server
 * 电路级网关：工作在会话层，关注连接建立和维护，例如握手信息、序列号等，不检查应用层载荷。
 * 应用层网关：工作在应用层，针对 HTTP、FTP、SMTP 等协议进行代理和内容过滤。
 * 深度包检测（DPI,Deep Packet Inspection Firewall) 
-* WAF Web Application Firewall ，云厂商在路由中提供，重点检测用于分析数据包内的 [SQL 注入, XSS 攻击等 WEB 安全威胁](../../security/security-attack.md#1.3%20注入攻击).
+* WAF Web Application Firewall ，云厂商在路由中提供，重点检测用于分析数据包内的 [SQL 注入, XSS 攻击等 WEB 安全威胁](../../sec/security-attack.md#1.3%20注入攻击).
 
 > 防火墙的技术越复杂, 成本越高, 安全性越低. 反之亦然.
 
