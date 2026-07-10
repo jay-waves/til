@@ -1,4 +1,4 @@
-#import "../template.typ": tufte, meta, note
+#import "../appx/theme.typ": tufte, meta, note
 
 #show: tufte
 #let bmat(..args) = math.mat(delim: "[", ..args)

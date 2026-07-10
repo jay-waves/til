@@ -1,4 +1,4 @@
-#import "../../../template.typ": tufte
+#import "../../../appx/theme.typ": tufte
 #show: tufte
 
 = 线性代数基本定理

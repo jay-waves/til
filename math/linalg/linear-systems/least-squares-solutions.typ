@@ -1,4 +1,4 @@
-#import "../../../template.typ" : tufte, note
+#import "../../../appx/theme.typ" : tufte, note
 #show: tufte
 
 #let vec(x) = $upright(bold(#x))$
