@@ -1,10 +1,8 @@
-#import "../../appx/theme.typ": tufte, meta, note
+#import "../../appx/theme.typ": tufte, meta, note, theorem, proof
 
 #show: tufte
 
-#meta[
-- subtitle: 矩阵运算
-]
+#meta(subtitle: [矩阵运算])
 
 #let bmat(..arg) = $mat(delim: "[", ..arg)$
 #let vec(x) = $upright(bold(#x))$
@@ -98,24 +96,28 @@ $
 
 只要矩阵可交换 $A B = B A$, 就可以牛顿展开, 并且两矩阵共享公共的特征向量基底.
 
-*定理* 如果 $A, B$ 是对称矩阵, 且可交换, 那么 $A B$ 也是对称阵.
+#theorem[如果 $A, B$ 是对称矩阵, 且可交换, 那么 $A B$ 也是对称阵.]
 
-$( A B )^T = B^T A^T = B A = A B$
+#proof[$( A B )^T = B^T A^T = B A = A B$]
 
-*定理:* 如果 $A, B$ 是对称矩阵, 且可交换, 那么 $A$ 和 $B$ 能通过同一正交阵进行相似对角化.
+#theorem[如果 $A, B$ 是对称矩阵, 且可交换, 那么 $A$ 和 $B$ 能通过同一正交阵进行相似对角化.]
 
-设 $v$ 是 $A$ 的特征向量, 满足 $A v = lambda_A v$, 考虑到: 
+#proof[
+  设 $v$ 是 $A$ 的特征向量, 满足 $A v = lambda_A v$, 考虑到: 
 
-$
-A ( B v ) = B ( A v ) = lambda_A B v
-$
- 这意味 $B v$ 仍是 $A$ 的特征向量, 这可以理解为 $B$ 是在 $A$ 特征空间内闭合的线性变换, 因此可以找到 $v'$ 既是 $A$ 的特征向量, 又是 $B$ 的特征向量.
+  $
+  A ( B v ) = B ( A v ) = lambda_A B v
+  $
+  这意味 $B v$ 仍是 $A$ 的特征向量, 这可以理解为 $B$ 是在 $A$ 特征空间内闭合的线性变换, 因此可以找到 $v'$ 既是 $A$ 的特征向量, 又是 $B$ 的特征向量.
+]
 
-*定理:* 如果 $A, B$ 是正定矩阵, 且可交换, 那么 $A B$ 也是正定的.
+#theorem[如果 $A, B$ 是正定矩阵, 且可交换, 那么 $A B$ 也是正定的.]
 
-由上一个定理知 $Q^T A Q = Lambda_A \, Q^T B Q = Lambda_B$. 
+#proof[
+  由上一个定理知 $Q^T A Q = Lambda_A \, Q^T B Q = Lambda_B$. 
 
-因此 $vec(x)^T Q^T A B Q vec(x) = vec(x)^T Q^T A Q Q^T B Q vec(x) = vec(x)^T Lambda_A Lambda_B vec(x) = x^T Lambda vec(x) > 0$
+  因此 $vec(x)^T Q^T A B Q vec(x) = vec(x)^T Q^T A Q Q^T B Q vec(x) = vec(x)^T Lambda_A Lambda_B vec(x) = x^T Lambda vec(x) > 0$
+]
 
 == 矩阵的转置
 

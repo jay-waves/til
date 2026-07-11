@@ -1,4 +1,4 @@
-#import "../../../appx/theme.typ" : tufte
+#import "../../../appx/theme.typ" : tufte, definition, proof
 
 #show: tufte
 
@@ -66,17 +66,17 @@ $
 
 当 $V=W$ 时, 称为*线性变换空间* $cal(L) ( V \, V )$. 
 
-== 定义
+#definition[
+  对于线性映射 $T in cal(L) ( V \, W )$: 
 
-对于线性映射 $T in cal(L) ( V \, W )$: 
+  *核空间 (零空间)*: $upright("Ker")(T)=N(T)={x in V | T(x)=0}$
 
-*核空间 (零空间)*: $upright("Ker")(T)=N(T)={x in V | T(x)=0}$
+  *像空间 (值空间)*: $upright("Im")(T)=R(T)={y in W | y=T(x), forall x in V}$
 
-*像空间 (值空间)*: $upright("Im")(T)=R(T)={y in W | y=T(x), forall x in V}$
+  *零度 (亏)*: $dim N(T)$
 
-*零度 (亏)*: $dim N(T)$
-
-*秩*: $dim R(T)$
+  *秩*: $dim R(T)$
+]
 
 = 亏加秩定理
 
@@ -84,13 +84,13 @@ $
 
 $upright("dim") N ( T ) + upright("dim") R ( T ) = upright("dim") V$
 
-== 定义-同构映射
+#definition[
+  同构映射: $T : V arrow.r W$ 是双射, 同时是线性映射. 
 
-同构映射: $T : V arrow.r W$ 是双射, 同时是线性映射. 
+  对于同构映射 $T$, 满足:
+  1. 单位元保持: $T(0)=0$
+  2. 逆元保持: $T(-x)=-T(x)$
+  3. 基底保持: $epsilon_1 \, dots.h \, epsilon_n$  是 $V$ 的一组基, 则 $T ( epsilon_1 ) \, dots.h \, T ( epsilon_n )$ 是 $W$ 的一组基.
+]
 
-对于同构映射 $T$, 满足:
-1. 单位元保持: $T(0)=0$
-2. 逆元保持: $T(-x)=-T(x)$
-3. 基底保持: $epsilon_1 \, dots.h \, epsilon_n$  是 $V$ 的一组基, 则 $T ( epsilon_1 ) \, dots.h \, T ( epsilon_n )$ 是 $W$ 的一组基.
-
-*证明:* 因为 $T$ 是双射, 所以 $upright("Ker")(T)={0}, upright("Im")(T)=W$. 又因为 $upright("dim") V = upright("dim") upright("Ker") ( T ) + upright("dim") upright("Im") ( T )$, 所以 $upright("dim") V = upright("dim") W$.
+#proof[因为 $T$ 是双射, 所以 $upright("Ker")(T)={0}, upright("Im")(T)=W$. 又因为 $upright("dim") V = upright("dim") upright("Ker") ( T ) + upright("dim") upright("Im") ( T )$, 所以 $upright("dim") V = upright("dim") W$.]

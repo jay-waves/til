@@ -6,11 +6,10 @@
 | ai          | artificial intelligence | 人工智能     |
 | *appx*      | appendices              | 附录         |
 | *attach*    | attachments             | 附件     |
-| cc          | compilers               | 编译原理     |
-| db          | databases               | 数据库       |
+| db          | databases               | 分布式系统   |
 | econ        | economics               | 经济学       |
 | hw          | hardware                | 体系架构     |
-| langs       | languages               | 编程语言     |
+| langs       | languages               | 编程与编译     |
 | math        | mathematics             | 数学         |
 | net         | networking              | 网络通信     |
 | os          | operating system        | 操作系统     |
@@ -40,6 +39,7 @@
 | copyright  | 作者与出版日期                                                  | 列表 |
 | license    | 文内有非 CC-BY 许可证授权下的内容引用时，单个文件许可证可能变化 | 文本 |
 | code       | 指文内内容在 `/src` 目录下有对应的源码                          | 列表 |
+| tags       | 文章内容关键词                         | 列表 |
 
 ## Guidelines
 

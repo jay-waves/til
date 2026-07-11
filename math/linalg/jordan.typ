@@ -1,3 +1,5 @@
+#import "../../appx/theme.typ": theorem
+
 == Jordan 标准型
 
 
@@ -88,23 +90,19 @@ $
 
 === Smith-Frobenius 结构定理
 
-*定理*:
+#theorem[
+  对矩阵 $x I - A$, 在多项式环 $F[x]$ 上存在可逆矩阵 $U ( x ) \, V ( x ) in G L_n ( F [ x ] )$, 使得:
 
-*对矩阵 $x I - A$, 在多项式环 $F[x]$ 上存在可逆矩阵 $U ( x ) \, V ( x ) in G L_n ( F [ x ] )$, 使得:*
+  $
+  U ( x ) ( x I - A ) V ( x ) = upright("diag") ( d_1 ( x ) \, dots.h \, d_n ( x ) )
+  $
 
+  $
+  d_1 ( x ) | d_2 ( x ) | dots.h | d_n ( x )
+  $
 
-$
-U ( x ) ( x I - A ) V ( x ) = upright("diag") ( d_1 ( x ) \, dots.h \, d_n ( x ) )
-$
-
-
-
-$
-d_1 ( x ) | d_2 ( x ) | dots.h | d_n ( x )
-$
-
-
-*其中, $d_i ( x )$ 唯一确定, 称为*不变因子*.* 
+  其中, $d_i ( x )$ 唯一确定, 称为*不变因子*.
+]
 
 $U/V$ 可以理解为初等行/列变换, 是多项式环上的不改变模的同构构造.
 

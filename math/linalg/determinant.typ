@@ -1,10 +1,8 @@
-#import "../../appx/theme.typ": tufte, meta, note
+#import "../../appx/theme.typ": tufte, meta, note, theorem, corollary, proof
 
 #show: tufte
 
-#meta[
-- subtitle: 行列式
-]
+#meta(subtitle: [行列式])
 
 == 行列式等值变换
 
@@ -27,18 +25,13 @@ dots.v, dots.v, dots.v, dots.v, dots.down, dots.v ;
 1, x_(n), x_(n)^(2), x_(n)^(3), ..., x_(n)^(n - 1))
 $
 
-
 范德蒙行列式 (Vandermonde Matrix):
-
 
 $
 | V | = product_(1 <= i < j <= n)(x_j- x_i)
 $
 
-
-*证明*:
-
-...
+#proof[...]
 
 == 块三角矩阵
 
@@ -48,40 +41,34 @@ A = mat(delim: "[", B, C ; 0, D)
 $
 
 
-*定理:* 
-$
-det A = det B det D
-$
- 
+#theorem[
+  $
+  det A = det B det D
+  $
+]
 
-证明: 
+#proof[
+  $
+  A = mat(delim: "[", I, C D^(- 1) ; 0, I) mat(delim: "[", B, 0 ; 0, D)
+  $
+]
 
+#corollary[
+  $
+  det (A - lambda I)= det (B - lambda I)det (D - lambda I)
+  $
+]
 
-$
-A = mat(delim: "[", I, C D^(- 1) ; 0, I) mat(delim: "[", B, 0 ; 0, D)
-$
+#corollary[
+  $
+  A = mat(delim: "[", A_(1 1), A_(1 2), ..., A_(1 m) ; 
+  0, A_(2 2), ..., A_(3 m) ; 
+  dots.v, dots.v, dots.down, dots.v ; 
+  0, 0, ..., A_(m m))
+  $
 
-
-$square.filled$ 
-
-*推论:* 
-$
-det (A - lambda I)= det (B - lambda I)det (D - lambda I)
-$
-
-
-*推论:* 
-
-
-$
-A = mat(delim: "[", A_(1 1), A_(1 2), ..., A_(1 m) ; 
-0, A_(2 2), ..., A_(3 m) ; 
-dots.v, dots.v, dots.down, dots.v ; 
-0, 0, ..., A_(m m))
-$
-
-
-, 其中每个 ${} A_(i i) {}$ 皆是方阵, 那么有: 
-$
-det A=product^m_(i=1)det A_(i i)
-$
+  其中每个 ${} A_(i i) {}$ 皆是方阵, 那么有: 
+  $
+  det A=product^m_(i=1)det A_(i i)
+  $
+]

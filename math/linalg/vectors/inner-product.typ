@@ -1,4 +1,4 @@
-#import "../../../appx/theme.typ" : tufte
+#import "../../../appx/theme.typ" : tufte, theorem, proof
 
 #show: tufte
 
@@ -49,24 +49,18 @@ $
 
 , 其中 $G$ 称为基底 $epsilon.alt_1 \, epsilon.alt_2 \, dots.h.c \, epsilon.alt_n$ 的*度量矩阵 (Gram)*. *内积和度量矩阵是一一对应的*. 
 
-=== 定理1
+#theorem[度量矩阵是 Hermite 矩阵.]
 
-*度量矩阵是 Hermite 矩阵.*
+#proof[$( upright(bold(x)) \, upright(bold(y)) ) = y^H G x = overline(( upright(bold(y)) \, upright(bold(x)) )) = overline(x^H G y) = y^H G^H x$]
 
-证明: $( upright(bold(x)) \, upright(bold(y)) ) = y^H G x = overline(( upright(bold(y)) \, upright(bold(x)) )) = overline(x^H G y) = y^H G^H x$
+#theorem[度量矩阵是正定的.]
 
-=== 定理2
+#proof[取 $x=y$, 那么 $( x \, x ) = upright(bold(x))^T G upright(bold(x)) > 0$.]
 
-*度量矩阵是正定的.*
+#theorem[不同基底下的度量矩阵是合同的.]
 
-证明: 取 $x=y$, 那么 $( x \, x ) = upright(bold(x))^T G upright(bold(x)) > 0$. 
-
-=== 定理3
-
-*不同基底下的度量矩阵是合同的.*
-
-证明: 对于另一组基底 $eta_1 \, eta_2 \, dots.h.c \, eta_n$, 有过度矩阵满足:
-
+#proof[
+  对于另一组基底 $eta_1 \, eta_2 \, dots.h.c \, eta_n$, 有过度矩阵满足:
 
 $
 ( eta_1 \, eta_2 \, dots.h.c \, eta_n ) = ( epsilon.alt_1 \, epsilon.alt_2 \, dots.h.c \, epsilon.alt_n ) C
@@ -81,7 +75,8 @@ G_2 = ( eta_1 \, dots.h \, eta_n )^T ( eta_1 \, dots.h \, eta_n ) = [ ( epsilon.
 $
 
 
-所以两个矩阵合同. $square.filled.medium$
+  所以两个矩阵合同.
+]
 
 == 向量长度
 
@@ -100,21 +95,21 @@ bar.v.double x + y bar.v.double^2 + bar.v.double x - y bar.v.double^2 = 2 ( bar.
 $
 
 
-=== 定理
+#theorem[
+  三角不等式:
+  $
+  bar.v.double x + y bar.v.double lt.eq bar.v.double x bar.v.double + bar.v.double y bar.v.double
+  $
+]
 
-*三角不等式:* 
-$
-bar.v.double x + y bar.v.double lt.eq bar.v.double x bar.v.double + bar.v.double y bar.v.double
-$
 
-
-=== 定理
-
-*Cauchy-Schwarz 不等式:* 
-$
-| ( x \, y ) | lt.eq bar.v.double x bar.v.double bar.v.double y bar.v.double
-$
- *当且仅当 $x,y$ 线性相关时等号成立*. 
+#theorem[
+  Cauchy-Schwarz 不等式:
+  $
+  | ( x \, y ) | lt.eq bar.v.double x bar.v.double bar.v.double y bar.v.double
+  $
+  *当且仅当 $x,y$ 线性相关时等号成立*. 
+]
 
 == 向量夹角
 
