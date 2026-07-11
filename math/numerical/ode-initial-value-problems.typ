@@ -5,7 +5,8 @@
 #let bmat(..args) = $mat(delim: "[", ..args)$
 #let vmat(..args) = $mat(delim: "|", ..args)$
 
-== IVP 问题
+== 常微分方程的初值问题
+
 给定常微分方程及其初值:
 
 $ {y'(t) & = & f(t , y) , quad t in [ t_0 , T ]\

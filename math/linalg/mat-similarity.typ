@@ -1,4 +1,4 @@
-#import "../../theme.typ: tufte, meta, note
+#import "../../appx/theme.typ": tufte, meta, note, theorem, proof
 
 #show: tufte
 
@@ -6,7 +6,8 @@
 
 若存在可逆矩阵 $P$, 使得 $P^(- 1) A P = B$, 则称矩阵 $A$ 和 $B$ 相似, 记为 $A tilde.op B$.
 
-矩阵相似描述了同一线性变换在不同基底下的表示, $P$ 是某种#link("向量分析/空间基底变换.typ")[过渡矩阵], $P upright(bold(x))$ 将坐标 $upright(bold(x))$ 转换为新基底下的坐标, $A P upright(bold(x))$ 指对新基底下的向量进行 $A$ #link("向量分析/线性变换.typ")[线性变换], 然后 $P^(- 1) A P upright(bold(x))$ 将坐标重新转换回原基底. 一系列操作的效果, 等价于直接进行 $B upright(bold(x))$ 线性变换.
+矩阵相似描述了同一线性变换在不同基底下的表示, $P$ 是某种
+#link("向量分析/空间基底变换.typ")[过渡矩阵], $P upright(bold(x))$ 将坐标 $upright(bold(x))$ 转换为新基底下的坐标, $A P upright(bold(x))$ 指对新基底下的向量进行 $A$ #link("向量分析/线性变换.typ")[线性变换], 然后 $P^(- 1) A P upright(bold(x))$ 将坐标重新转换回原基底. 一系列操作的效果, 等价于直接进行 $B upright(bold(x))$ 线性变换.
 
 > 秩相同, 不等于矩阵相似, 还需要矩阵同型; 特征值相同, 不等于特征方向相同.
 
@@ -16,19 +17,15 @@
 
 将 $A$ 看作一个线性变换, $A xi = lambda xi$ 表示 $xi$ 在线性变换后只有尺度上的伸缩, 而没有方向的变化, 也没有维度上的变化. 对于特征值 $lambda_i$, $xi$ 位于 $( A - lambda_i E ) xi = 0$ 的解空间 (也成为 $lambda_i$ 的特征空间) 之中, 该解空间维数 ($n - r ( A - lambda_i E )$) 称为该特征值的几何重数; 要使解空间存在, 应保证 $| A - lambda E | = 0$, 方程 $f ( lambda ) = | A - lambda E | = 0$ 在复数域上的完全分解中, 项 $( lambda - lambda_i )^k$ 的(重根)次数 $k$ 称为该特征值的代数重数.
 
-=== 定理一
+#theorem[如果 $A$ 和 $B$ 相似, 那么 $A$ 和 $B$ 的特征值相同.]
 
-*定理一: 如果 $A$ 和 $B$ 相似, 那么 $A$ 和 $B$ 的特征值相同.*
-
-*证明*:
-
-设 $A xi = lambda xi$, $P^(- 1) A P = B$, 则有 $P^(- 1) A xi = P^(- 1) A P dot.op P^(- 1) xi = B dot.op P^(- 1) xi = P^(- 1) lambda xi$. 所以 $A$ 和 $B$ 特征值相同, $B$ 对应的特征向量为 $P^(- 1) xi$.
-
-$square.filled.medium$ 
+#proof[
+  设 $A xi = lambda xi$, $P^(- 1) A P = B$, 则有 $P^(- 1) A xi = P^(- 1) A P dot.op P^(- 1) xi = B dot.op P^(- 1) xi = P^(- 1) lambda xi$. 所以 $A$ 和 $B$ 特征值相同, $B$ 对应的特征向量为 $P^(- 1) xi$.
+]
 
 注: 在 $A$ 的特征方向上, 向量只有长度变化, 而向量在不同基底表示下是同一的. 将特征向量的坐标 $xi$ 从旧基底变换到新基底下 $P^(- 1) xi$, 向量模数仍变化 $lambda$ 倍.
 
-#note("这部分论述可以参考 ./vectors/change-of-basis.typ 空间基底变换")
+#note("这部分论述可以参考 math/linalg/vectors/change-of-basis.typ 空间基底变换")
 
 #linebreak()
 

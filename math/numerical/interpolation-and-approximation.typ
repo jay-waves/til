@@ -5,6 +5,8 @@
 #let bmat(..args) = $mat(delim: "[", ..args)$
 #let vmat(..args) = $mat(delim: "|", ..args)$
 
+= 插值与多项式逼近问题
+
 == 多项式友矩阵
 $f(lambda) = lambda^n + a_(n - 1) lambda^(n - 1) + dots.h + a_1 lambda + a_0$
 
@@ -17,7 +19,7 @@ $f(lambda) = lambda^n + a_(n - 1) lambda^(n - 1) + dots.h + a_1 lambda + a_0$
 
 $ P_n(x_0) = y_0 \ P_n(x_1) = y_1 \ dots.v \ P_n(x_n) = y_n $
 
-可以通过矩阵直接求解系数 (#link("../algebra/环/多项式环.md")[范德蒙方法]), 也可以通过拉格朗日插值法和牛顿插值法.
+可以通过矩阵直接求解系数 (#link("../algebra/环/多项式环.typ")[范德蒙方法]), 也可以通过拉格朗日插值法和牛顿插值法.
 
 #strong[插值是函数的相反操作], 函数通过曲线确定点, 插值通过点寻找曲线. #strong[插值是级数拟合的一种方式], 其他方式还有: #link("../../robotics/cybernetics/fourier-series.md")[fourier-series], #link("../calculus/泰勒级数.typ")[泰勒级数], 幂级数和函数, 线性回归.
 

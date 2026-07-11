@@ -55,3 +55,23 @@ Intel Xeon E-2236 3.4GHz with 12 (virtual) cores. For reference only, with a gra
 [^1]: "Fast serialization/deserialization" is typically a simple wire-protocol that just dumps bytes, or a very efficient environment. Typically standard serialization such as e.g. JSON will be of the slower kind. We include both here as serialization/deserialization is a very, very broad topic with extremely different performance characteristics depending on data and implementation.
 
 [^2]: Some throughput and latency numbers don't line up, this is intentional for ease of calculations.
+
+
+version from Jeff Dean:
+
+```
+L1 cache reference                         0.5 ns
+L2 cache reference                           3 ns
+Branch mispredict                            5 ns
+Mutex lockunlock (uncontended)              15 ns
+Main memory refrence                        50 ns
+Compress 1K bytes with Snappy            1,000 ns
+Read 4KB from SSD                       20,000 ns
+Round trip within same datacenter       50,000 ns
+Read 1MB sequentially from memory       64,000 ns
+Read 1MB over 100Gbps network          100,000 ns
+Read 1MB from SSD                    1,000,000 ns
+Disk seek                            5,000,000 ns
+Read 1MB sequentially from disk     10,000,000 ns
+Send packet CA->Netherlands->CA    150,000,000 ns
+```

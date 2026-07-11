@@ -1,4 +1,4 @@
-#import "../../appx/theme.typ" : tufte, note
+#import "../../appx/theme.typ" : tufte, note, theorem, lemma, corollary, definition, proof
 
 #show: tufte
 
@@ -14,9 +14,10 @@ $( sigma ( alpha ) \, beta ) = ( alpha \, sigma ( beta ) )$
 
 $Q^top Q = Q Q^top = E_n$
 
-推论:
-- $| det Q | = 1$
-- $Q^top = Q^(- 1)$
+#corollary[
+  - $| det Q | = 1$
+  - $Q^top = Q^(- 1)$
+]
 
 描述空间中一组正交的单位基底. 乘向量时 (表线性变换时), 使向量旋转, 长度不变; $det Q = - 1$ 时使向量镜像旋转 (改变手性).
 
@@ -32,7 +33,7 @@ $
 
 酉矩阵 (幺正矩阵, Unitary Matrix) 是复数域 $bb(C)$ 上的正交矩阵, 记为 $U$.
 
-- 定义: $U^top U = U U^top = E_n$
+- $U^top U = U U^top = E_n$
 - $U^(- 1) = U^top$
 - $| lambda_n | = 1$
 - $|U|=1$
@@ -57,37 +58,32 @@ $ ( U V )^top ( U V ) = ( U V ) ( U V )^top = E_n $
 
 如果 $A = A^top$, 且属于实数域, 则称 $A$ 为实对称矩阵.
 
-== 定理一
+#theorem[如果 $A$ 是实对称矩阵, 那么 $A$ 的特征值全部是实数.]
 
-*定理一: 如果 $A$ 是实对称矩阵, 那么 $A$ 的特征值全部是实数.*
-...
+#proof[...]
 
-== 定理二
+#theorem[如果 $A$ 是实对称矩阵, 那么 $A$ 的几何重数一定等于代数重数.]
 
-*定理二*: 如果 $A$ 是实对称矩阵, 那么 $A$ 的几何重数一定等于代数重数.
+#proof[该定理是说, $A$ 特征空间维数一定等于代数重数, 即能找到代数重数个数的线性无关向量]
 
-*证明*: 该定理是说, $A$ 特征空间维数一定等于代数重数, 即能找到代数重数个数的线性无关向量
+#theorem[如果 $A$ 是实对称矩阵, 那么 $A$ 不同特征的特征向量一定正交.]
 
-== 定理三
-
-*定理三: 如果 $A$ 是实对称矩阵, 那么 $A$ 不同特征的特征向量一定正交.*
-
-*证明*:
-
-设不同特征值 $lambda_1 \, lambda_2$, 有 $A xi_1 = lambda_1 xi_1 \, A xi_2 = lambda_2 xi_2$.  
-有: $lambda_2 xi_1^top xi_2 = xi_1^top A xi_2 = xi_1^top A^top xi_2 = ( A xi_1 )^top xi_2 = lambda_1 xi_1^top xi_2$  
-因为 $lambda_1 eq.not lambda_2$, 所以 $xi_1 perp xi_2$
-
-$square.filled$
+#proof[
+  设不同特征值 $lambda_1 \, lambda_2$, 有 $A xi_1 = lambda_1 xi_1 \, A xi_2 = lambda_2 xi_2$.  
+  有: $lambda_2 xi_1^top xi_2 = xi_1^top A xi_2 = xi_1^top A^top xi_2 = ( A xi_1 )^top xi_2 = lambda_1 xi_1^top xi_2$  
+  因为 $lambda_1 eq.not lambda_2$, 所以 $xi_1 perp xi_2$
+]
 
 == 谱定理
 
-*实对称矩阵 $A_(n times n)$ 可以被正交矩阵相似对角化:*
+#theorem[
+  实对称矩阵 $A_(n times n)$ 可以被正交矩阵相似对角化:
 
 
-$
-Q^top A Q = Q^(- 1) A Q = Lambda = upright("diag") ( lambda_1 \, lambda_2 \, dots.h.c \, lambda_k )
-$
+  $
+  Q^top A Q = Q^(- 1) A Q = Lambda = upright("diag") ( lambda_1 \, lambda_2 \, dots.h.c \, lambda_k )
+  $
+]
 
 
 其中, 
@@ -114,9 +110,9 @@ $
 
 $A = Q Lambda Q^T$ 也被称为*正交分解*, 属于特征值分解的一种特例. 当 $A$ 不满秩时, 也能对角化, 但是存在特征值 $lambda = 0$.
 
-*在实数域上, A 可正交对角化, 当且仅当, A 是实对称矩阵 ($A^T = A$)*.
+#theorem[在实数域上, A 可正交对角化, 当且仅当, A 是实对称矩阵 ($A^T = A$).]
 
-*在复数域上, A 可酉对角化, 当且仅当, A 是正规矩阵 ($A^H A = A A^H$)*.
+#theorem[在复数域上, A 可酉对角化, 当且仅当, A 是正规矩阵 ($A^H A = A A^H$).]
 
 == 谱半径
 
@@ -129,11 +125,10 @@ $
 
 = 实对称矩阵的交换性
 
-== 引理一
+#lemma[对角矩阵 $Lambda$ 和 $B$ 可交换, 当且仅当 $B$ 是和 $Lambda$ 结构对应的分块对角矩阵.]
 
-*引理: 对角矩阵 $Lambda$ 和 $B$ 可交换, 当且仅当 $B$ 是和 $Lambda$ 结构对应的分块对角矩阵.*
-
-*证明*: 不妨设 $Lambda$ 形式如下, $lambda_i$ 值各不相同: 
+#proof[
+  不妨设 $Lambda$ 形式如下, $lambda_i$ 值各不相同: 
 $
 Lambda = mat(delim: "(", lambda_1 I_(k_1), 0, dots.h.c, 0; 0, lambda_2 I_(k_2), dots.h.c, 0; dots.v, dots.v, dots.down, dots.v; 0, 0, dots.h.c, lambda_m I_(k_m))
 $
@@ -161,29 +156,27 @@ $
 $
 B = mat(delim: "[", B_1, 0, dots.h.c, 0; 0, B_2, dots.h.c, 0; dots.v, dots.v, dots.down, dots.v; 0, 0, dots.h.c, B_m)
 $
+]
 
-== 定理二
-
-*定理: 如果 $A, B$ 皆为实对称矩阵, $A B = B A$, 当且仅当存在正交矩阵 $Q$, 可将 $A, B$ 同时相似对角化: $Q^top A Q$, $Q^top B Q$*
+#theorem[如果 $A, B$ 皆为实对称矩阵, $A B = B A$, 当且仅当存在正交矩阵 $Q$, 可将 $A, B$ 同时相似对角化: $Q^top A Q$, $Q^top B Q$]
 
 > 这个定理很重要, 可以将条件 $A,B$ 为实对称矩阵泛化为 $A,B$ 是可对角化的.
 
-*证明*:
-
-*必要性*: 如果 $A, B$ 可被矩阵 $Q$ 同时相似对角化, 即 $A, B$ 有相同特征空间, 那么 ${} A B = B A$.  
-不妨令 $Q^(- 1) A Q = Lambda_1 \, Q^(- 1) B Q = Lambda_2$, 则有: 
+#proof[
+  *必要性*: 如果 $A, B$ 可被矩阵 $Q$ 同时相似对角化, 即 $A, B$ 有相同特征空间, 那么 ${} A B = B A$.  
+  不妨令 $Q^(- 1) A Q = Lambda_1 \, Q^(- 1) B Q = Lambda_2$, 则有: 
 $
 A B = Q Lambda_1 Q^(- 1) Q Lambda_2 Q^(- 1) = Q Lambda_1 Lambda_2 Q^(- 1)\
 B A = Q Lambda_2 Q^(- 1) Q Lambda_1 Q^(- 1) = Q Lambda_2 Lambda_1 Q^(- 1)
 $
    
-由于对角矩阵可交换: $Lambda_1 Lambda_2 = Lambda_2 Lambda_1$, 所以 $A B = B A$. 必要性得证.
-
-#linebreak()
+  由于对角矩阵可交换: $Lambda_1 Lambda_2 = Lambda_2 Lambda_1$, 所以 $A B = B A$. 必要性得证.
+]
 
 #note[[^1]: 该证明来自: R. A. Horn and C. R. Johnson, *Matrix Analysis*, 2nd ed. Cambridge, UK: Cambridge University Press, 2013, p. 62, Theorem 1.3.12.]
 
-*充分性*[^1]: $A,B$ 为实对称矩阵, 如果 $A B = B A$, 那么 $A, B$ 可被同一矩阵相似对角化.
+#proof[
+  *充分性*[^1]: $A,B$ 为实对称矩阵, 如果 $A B = B A$, 那么 $A, B$ 可被同一矩阵相似对角化.
 
 矩阵 $A \, B in M_n$ 是实对称矩阵, 所以它们是可相似对角化的.   
 对 $A$ 相似对角化, 不妨设 $Q^top A Q = Lambda_A$, $Q^top B Q = C$, 注意 $C$ 不一定是对角矩阵.  
@@ -214,12 +207,11 @@ $
  
 
 所以存在可逆矩阵 $T Q$, 使得矩阵 $A, B$ 可同时相似对角化.
+]
 
-$square.filled$
+#lemma[$A B = B A$, 当且仅当 $A, B$ 有公共的特征向量.]
 
-*引理1: $A B = B A$, 当且仅当 $A, B$ 有公共的特征向量.*
-
-*证明*:
+#proof[
 
 任取 $A$ 的一个特征值 $lambda$, 设其对应的特征子空间 $bb(V)_lambda = {p | A p = lambda p}$, ${ alpha_1 \, alpha_2 \, dot.op dot.op dot.op \, alpha_m }$ 是 $bb(V)_lambda$ 的一个基.  
 由 $A B = B A$ 知, $A ( B alpha_i ) = B ( A alpha_i ) = lambda B alpha_i in bb(V)_lambda \, ( i = 1 \, 2 \, dots.h \, m )$.  
@@ -235,18 +227,14 @@ $
 于是 $B p = B ( C beta ) = C K beta = C ( mu beta ) = mu p$.   
 于是 $p$ 也是 $B$ 的对应于 $mu$ 的特征向量, 故 $A$ 与 $B$ 有公共的特征向量. 
 (不过难以确认 $K$ 是否有足够数量的线性无关特征向量)
+]
 
-$square.filled$
 
+#theorem[如果 $A, B$ 皆为正定矩阵, $A B = B A$, 当且仅当 $A B$ 也是正定的]
 
-== 定理三
-
-*定理: 如果 $A, B$ 皆为正定矩阵, $A B = B A$, 当且仅当 $A B$ 也是正定的*
-
-*证明:*
+#proof[
 
 因为 $A, B$ 正定, 所以存在可逆矩阵 $P_1 \, P_2$, 使得 $A = P_1^top P_1 \, B = P_2^top P_2$  
 于是 $A B = ( P_1^top P_1 ) ( P_2^top P_2 ) = P_2^(- 1) med ( P_2 P_1^top ) ( P_1 P_2^top ) med P_2 = P_2^(- 1) med ( P_1 P_2^top )^top ( P_1 P_2^top ) med P_2 = P_2^(- 1) C^top C P_2$  
 矩阵 $C^top C$ 正定, 而 $A B tilde.op C^T C$, 所以 $A B$ 正定.
-
-$square.filled$
+]

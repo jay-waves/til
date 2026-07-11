@@ -5,6 +5,8 @@
 #let bmat(..args) = $mat(delim: "[", ..args)$
 #let vmat(..args) = $mat(delim: "|", ..args)$
 
+= 非线性方程的迭代解法
+
 通过数值方法求解非线性方程, 其中 $s$ 为重根:
 
 $ f(x) = ( x - s )^m phi(x) = 0 $
@@ -13,7 +15,8 @@ $ f(x) = ( x - s )^m phi(x) = 0 $
 
 $ x_(k + 1) = phi(x_k) $
 
-=== 收敛性判断 (压缩映射原理)
+== 收敛性判断 (压缩映射原理)
+
 对于初始值 $x_0 in [ a , b ]$, 若简单迭代法收敛, 那么必须满足以下两个条件:
 
 - 自映射: 当 $ x in [ a , b ] , quad phi(x) in [ a , b ] $
@@ -27,7 +30,8 @@ $ | s - x_k | lt.eq frac(L^k, 1 - L) | x_1 - x_0 | $ $ | s - x_k | lt.eq frac(L,
 
 $ frac(| x_k - x_(k - 1) |, | x_k |) lt.eq eta $
 
-=== 收敛速度
+== 收敛速度
+
 定义 $e_k = s - x_k$, 收敛因子 $c$ 以及 $r$ 阶收敛速度:
 
 $ lim_(k arrow.r oo) frac(| e_(k + 1) |, | e_k |^r) = c $
@@ -45,7 +49,8 @@ $ lim_(k arrow.r oo) frac(| e_(k + 1) |, | e_k |^r) = c $
 
 那么简单迭代法序列 $m$ 阶收敛于 $s$.
 
-== Steffensen 迭代法
+= Steffensen 迭代法
+
 Steffensen 迭代法收敛比普通迭代法快.
 
 由 $x_k$,$x_(k + 1)$,$x_(k + 2)$ 三个迭代值，可通过微分中值定理得到：
@@ -62,11 +67,12 @@ $ x_(k + 1) = x_k - frac(( phi(x_k) - x_k )^2, phi ( phi(x_k) ) - 2 phi(x_k) + x
 
 Steffensen 迭代法局部二阶收敛于 $s$.
 
-== 牛顿法
+= 牛顿法
 
 牛顿法也叫切线法, 由迭代点 $x_k$ 处的切线公式推导而来. $ x_(k + 1) = x_k - frac(f(x_k), f'(x_k)) $
 
-=== 收敛性判断
+== 收敛性判断
+
 存在小范围和大范围两个收敛定理.
 
 #strong[小范围(局部)收敛定理]:
@@ -82,7 +88,8 @@ Steffensen 迭代法局部二阶收敛于 $s$.
 - $f(x_0) f''(x_0) > 0$
 - 满足上述四个条件, 那么牛顿法#strong[单调平方收敛]于 $s$.
 
-=== 重根牛顿法
+== 重根牛顿法
+
 对于含有重根的函数 $f(x) = ( x - s )^m phi(x)$, 满足:
 
 $ f(s) = f'(s) = dots.c = f^(( m - 1 )) ( s ) = 0 $
@@ -99,7 +106,8 @@ $ u(x) = frac(f(x), f'(x)) $
 
 $ x_(k + 1) = x_k - frac(f(x_k) f'(x_k), [ f'(x_k) ]^2 - f(x_k) f''(x_k)) $
 
-== 割线法
+= 割线法
+
 部分函数没有显式, 此时用差分形式模拟其导数:
 
 $ f'(x) approx frac(f(x_k) - f ( x_(k - 1) ), x_k - x_(k - 1)) $

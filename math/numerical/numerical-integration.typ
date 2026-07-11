@@ -5,6 +5,8 @@
 #let bmat(..args) = $mat(delim: "[", ..args)$
 #let vmat(..args) = $mat(delim: "|", ..args)$
 
+= 数值积分
+
 数值积分求积公式的一般形式为: $ integral_a^b f(x) upright(d) x approx sum_(k = 0)^n lambda_k f(x_k) $
 
 求积节点 $x_i$ 满足: $a lt.eq x_0 < x_1 < dots.h < x_n lt.eq b$.

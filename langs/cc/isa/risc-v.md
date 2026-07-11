@@ -75,7 +75,7 @@ RV32I:
 
 没有标准状态寄存器. 
 
-RISC-V 没有寄存器上下文管理指令 (如 [SPARC](SPARCv8.md) save/store), 必须手动操作寄存器管理上下文 (中断, 函数调用等).
+RISC-V 没有寄存器上下文管理指令 (如 [SPARC](sparc-v8.md) save/store), 必须手动操作寄存器管理上下文 (中断, 函数调用等).
 
 ## RV32I
 

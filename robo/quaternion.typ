@@ -3,9 +3,7 @@
 #show: tufte
 #let bmat(..args) = math.mat(delim: "[", ..args)
 
-#meta[
-- subtitle: 四元数
-]
+#meta(subtitle: [四元数])
 
 #note[
   来源：#link("https://github.com/Krasjet/quaternion")[四元数于三维旋转]，Krasjet，CC BY-NC-SA 4.0。原文中的远程图片在这里保留为链接。

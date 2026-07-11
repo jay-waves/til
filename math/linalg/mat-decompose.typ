@@ -1,13 +1,11 @@
 
-#import "../../appx/theme.typ": tufte, meta, note
+#import "../../appx/theme.typ": tufte, meta, note, theorem, proof
 
 #show: tufte
 
 #let bmat(..args) = math.mat(delim: "[", ..args)
 
-#meta[
-- subtitle: 矩阵分解
-]
+#meta(subtitle: [矩阵分解])
 
 #image("../../attach/matrix-world.webp")
 
@@ -36,13 +34,13 @@ $A in bb(C)_r^(m times n) ( r > 0 )$, 存在列满秩矩阵 $B in bb(C)_r^(m tim
 
 #note[等价，也成为矩阵相抵，详见 math/linalg/readme.typ ] #linebreak()
 
-*证明*: $A$ 和 $bmat(I_r, 0; 0, 0)$ *等价*, 因此存在可逆矩阵 $P,Q$, 满足: 
+#proof[
+  $A$ 和 $bmat(I_r, 0; 0, 0)$ *等价*, 因此存在可逆矩阵 $P,Q$, 满足: 
 
-$ A = P bmat(I_r, 0; 0, 0) Q = P bmat(I_r; 0) bmat(I_r, 0) Q $
+  $ A = P bmat(I_r, 0; 0, 0) Q = P bmat(I_r; 0) bmat(I_r, 0) Q $
 
-那么有 $B = P bmat(I_r; 0)$ 以及 $C = bmat(I_r, 0) Q$, 即 $A = B C$. 
-
-#align(right)[$square.filled$]
+  那么有 $B = P bmat(I_r; 0)$ 以及 $C = bmat(I_r, 0) Q$, 即 $A = B C$. 
+]
 
 这里 $B$ 是 $A$ 的列空间基向量. 显然, 满秩分解并不唯一.
 
@@ -92,11 +90,12 @@ $
 最终 $A_n arrow.r T$, 算法逼近一个上三角矩阵 $T$, 而 $U = Q_0 Q_1 Q_2 dots.h Q_n$, 最终得到 Schur 分解: 
 $ A = U T U^H $
 
-*证明*: 
+#proof[
 
-$A_k = R_(k - 1) Q_(k - 1) = Q_(k - 1)^H A_(k - 1) Q_(k - 1)$ 这是一次酉相似变换, 不改变特征值. 
+  $A_k = R_(k - 1) Q_(k - 1) = Q_(k - 1)^H A_(k - 1) Q_(k - 1)$ 这是一次酉相似变换, 不改变特征值. 
 
-其他证明看不懂, 先略.
+  其他证明看不懂, 先略.
+]
 
 == 奇异值分解
 
@@ -117,19 +116,15 @@ $
 
 称 $u,v$ 为 $sigma$ 的左右奇异向量.
 
-=== 定理一
+#theorem[$A^H A$ 和 $A A^H$ 有完全相同的非零特征值 (含重数).]
 
-$A^H A$ 和 $A A^H$ 有完全相同的非零特征值 (含重数).
+#proof[
+  假设 $lambda eq.not 0$, $A^H A x = lambda x$
 
-*证明*: 
+  两边左乘 $A$, 得到: $A A^H ( A x ) = lambda ( A x )$
 
-假设 $lambda eq.not 0$, $A^H A x = lambda x$
-
-两边左乘 $A$, 得到: $A A^H ( A x ) = lambda ( A x )$
-
-由于 $A x$ 是非零向量, 因此 $lambda$ 也是 $A A^H$ 的特征值. 
-
-#align(right)[$square.filled$]
+  由于 $A x$ 是非零向量, 因此 $lambda$ 也是 $A A^H$ 的特征值. 
+]
 
 对于 $A^T A$ 和 $A A^T$ 的零特征值, 其个数由其矩阵维数决定, 因为两个矩阵可能不同型. 
 

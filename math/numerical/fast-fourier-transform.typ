@@ -9,6 +9,8 @@
 参考: #link("https://www.bilibili.com/video/BV1za411F76U/?vd_source=389ad1f24e143504d05c538916c8c532")[Introduction to FFT, Reducible]
 ]
 
+= 快速傅里叶变换
+
 FFT 是以 O(nlogn) 复杂度计算多项式乘积的算法. 此前算法复杂度为 O(n^2)
 
 FFT 有四个关键思想: - 估值和插值相互转换. - 在对称点进行估值. - 估值点选为 1 的 $n^(t h)$ 根. - 插值运算和估值运算相似性.

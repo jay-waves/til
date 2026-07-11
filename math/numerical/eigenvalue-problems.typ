@@ -5,6 +5,8 @@
 #let bmat(..args) = $mat(delim: "[", ..args)$
 #let vmat(..args) = $mat(delim: "|", ..args)$
 
+= 特征值求解问题
+
 给定 $A$, 求 $A x = lambda x$.
 
 == 幂法

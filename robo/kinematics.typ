@@ -3,9 +3,7 @@
 
 #show: tufte
 
-#meta[
-- subtitle: Kinematics
-]
+#meta(subtitle: [Kinematics])
 
 == forward kinematics
 

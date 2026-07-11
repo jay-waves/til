@@ -5,6 +5,8 @@
 #let bmat(..args) = $mat(delim: "[", ..args)$
 #let vmat(..args) = $mat(delim: "|", ..args)$
 
+= 线性方程组的解法
+
 == 克莱姆 (Cramer) 方法
 克莱姆法则 (Cramer's Rule) 使用行列式来求解线性方程组.
 
