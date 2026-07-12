@@ -10,8 +10,16 @@
 
 #let main-fonts = (
   "EB Garamond",
-  "LXGW WenKai Lite",
+  "Source Han Serif",
   "Libertinus Serif",
+  "Libertinus Sans",
+)
+
+#let heading-fonts = (
+  "EB Garamond",
+  "Source Han Sans",
+  "Microsoft YaHei",
+  "SimHei",
   "Libertinus Sans",
 )
 
@@ -41,26 +49,46 @@
 #let accent = if dark { rgb("#478be6") } else { rgb("#0969da") }
 #let code-fg = if dark { rgb("#c9d1d9") } else { rgb("#24292f") }
 #let pre-bg = if dark { rgb("#262c36") } else { rgb("#f6f8fa") }
-#let latin-text = regex("[A-Za-z][A-Za-z0-9'’.,:;!?()/-]*")
+#let cjk-text = regex("\p{Han}+")
+
+#let margin-width = 16em
+#let margin-gutter = 2em
+#let note-size = 7pt
 
 #let sidenote(content) = {
   place(
-    dx: 47.5em,
+    dx: 43em,
     block(
       breakable: false,
-      width: 13em,
+      width: margin-width,
       content,
     ),
   )
 }
 
-#let note(body) = sidenote(text(size: 8.5pt, body))
+#let note(body) = sidenote(text(size: note-size, body))
 
-#let theorem = thmbox("theorem", "定理", fill: pre-bg, stroke: 0.4pt + border, radius: 3pt)
-#let lemma = thmplain("lemma", "引理", titlefmt: strong)
+#let note2(body, note) = {
+  block(
+    width: 100% + margin-width + margin-gutter,
+    grid(
+      columns: (1fr, margin-width),
+      column-gutter: margin-gutter,
+      block(width: 100%, body),
+      text(size: note-size, block(width: margin-width, note)),
+    ),
+  )
+}
+
+#let theorem = thmbox("theorem", "定理", titlefmt: strong, fill: pre-bg, stroke: 0.4pt + border, radius: 3pt)
+#let lemma = thmbox("lemma", "引理", titlefmt: strong, fill: pre-bg, stroke: 0.4pt + border, radius: 3pt)
 #let corollary = thmplain("corollary", "推论", titlefmt: strong)
 #let definition = thmbox("definition", "定义", fill: pre-bg, stroke: 0.4pt + border, radius: 3pt)
-#let proof = thmproof("proof", "证明")
+#let proof-env = thmproof("proof", "证明", titlefmt: strong, inset: (top: 0em, left: 0pt, bottom: 0em, right: 0pt))
+#let proof(..args, body) = {
+  proof-env(..args, body)
+  linebreak()
+}
 
 #let meta(
   subtitle: none,
@@ -93,7 +121,7 @@
           row-gutter: 0.25em,
           column-gutter: 0.8em,
           ..fields.map(field => (
-            text(fill: accent, weight: "semibold", upper(field.at(0))),
+            text(fill: accent, weight: "bold", upper(field.at(0))),
             value(field.at(1)),
           )).flatten(),
         )
@@ -116,19 +144,18 @@
   set page(
     paper: "a4",
     fill: bg,
-    margin: (y: 6em, left: 4em, right: 16em),
+    margin: (y: 4.5em, left: 4em, right: 19em),
     header: context {
       if here().page() != 1 {
         set text(
           font: main-fonts,
           fill: muted,
-          weight: "semibold",
+          weight: "bold",
           size: 7pt,
-          tracking: 1.1pt,
           number-type: "old-style",
           number-width: "tabular",
         )
-        place(right, dy: 6em, dx: 16em)[
+        place(right, dy: 6em, dx: 19em)[
           #upper(title) #h(1em) #text(size: 11pt, counter(page).display())
         ]
       }
@@ -148,12 +175,13 @@
       )
       v(0.8em)
     } else {
-      it
+      text(font: code-fonts, weight: "regular", fill: code-fg, it)
     }
   }
 
   show link: set text(fill: accent)
   show link: underline
+  show strong: set text(weight: "bold")
 
   let has-authors = authors != () and authors.len() > 0
   if title != none or abstract != none or subtitle != none or has-authors {
@@ -161,7 +189,7 @@
       width: 100% + 14em - 4em,
       inset: 0pt,
       radius: 4pt,
-      text(font: main-fonts, weight: "medium", size: 9pt, tracking: 2pt, fill: fg)[
+      text(font: main-fonts, weight: "medium", size: 9pt, fill: fg)[
         #if title != none [#text(size: 12pt, upper(title))]
 
         #if has-authors [#upper(authors.join(", ", last: " and "))]
@@ -169,7 +197,7 @@
         #if abstract != none [
           #pad(
             x: 5em,
-            block(text(tracking: 0pt, abstract)),
+            block(abstract),
           )
         ]
       ],
@@ -182,7 +210,7 @@
     let is-ack = it.body in ([Acknowledgment], [Acknowledgement])
 
     if it.level == 1 [
-      #set text(if is-ack { 9pt } else { 14pt }, weight: "semibold", fill: accent)
+      #set text(font: heading-fonts, if is-ack { 9pt } else { 14pt }, weight: "bold", fill: accent)
       #v(32pt, weak: true)
       #if it.numbering != none and not is-ack {
         text(fill: accent)[#numbering("1.1", ..levels).]
@@ -194,7 +222,7 @@
       #v(12pt, weak: true)
     ] else if it.level == 2 [
       #set par(first-line-indent: 0pt)
-      #set text(size: 11.5pt, weight: "semibold", fill: accent)
+      #set text(font: heading-fonts, size: 11.5pt, weight: "bold", fill: accent)
       #v(18pt, weak: true)
       #if it.numbering != none {
         text(fill: accent)[#numbering("1.1", ..levels).]
@@ -203,7 +231,7 @@
       #it.body
       #v(9pt, weak: true)
     ] else [
-      #set text(size: 9.5pt, weight: "semibold", fill: accent)
+      #set text(font: heading-fonts, size: 9.5pt, weight: "bold", fill: accent)
       #if it.numbering != none {
         text(fill: accent)[#numbering("1.1", ..levels). ]
       }
@@ -215,13 +243,12 @@
   set text(
     font: main-fonts,
     fill: fg,
-    weight: "medium",
-    size: 9pt,
-    tracking: 0pt,
+    weight: "regular",
+    size: 9.3pt,
     number-type: "old-style",
     number-width: "tabular",
   )
-  set par(leading: 0.72em)
+  set par(leading: 0.86em)
   show figure: it => {
     v(1.1em)
     it
@@ -229,7 +256,7 @@
   }
   show figure.caption: set text(size: 7pt)
   show image: set block(above: 1.1em, below: 1.1em)
-  show latin-text: set text(font: "EB Garamond", size: 1.1em)
+  show cjk-text: set text(tracking: 0.05em)
   show: thmrules.with(qed-symbol: $square$)
 
   body

@@ -18,7 +18,7 @@ $
 
 *尝试将向量 $y$ 转换到旧基底 $eta_1 \, eta_2 \, eta_3 \, dots.h \, eta_n$ 下表示:*
 
-== 将旧基底转化为新基底
+= 将旧基底转化为新基底
 
 新基底本质上仍是空间中的一组向量, 那么用旧基底 $eta_1 \, eta_2 \, eta_3 \, dots.h \, eta_n$ 的坐标语言一定也能描述新基底的位置. 那么就有:
 
@@ -29,7 +29,7 @@ $
 
 即: $( epsilon.alt_1 \, epsilon.alt_2 \, epsilon.alt_3 \, dots.h \, epsilon.alt_n ) = ( eta_1 \, eta_2 \, eta_3 \, dots.h \, eta_n ) P$, 其中 $P = ( x_(i j) )_(i j)$ 称为过渡矩阵, 将旧基底转化为新基底. 
 
-== 坐标变换
+= 坐标变换
 
 对于新基底 ${epsilon_(1), epsilon_(2), epsilon_(3), ..., epsilon_(n)}$ 下的向量坐标 $upright(bold(x)) = ( k_1 \, k_2 \, dots.h \, k_n )^top$, 其表示的向量为: 
 
@@ -41,7 +41,7 @@ $
 
 所以该向量在旧基底 ${eta_(1),eta_(2),eta_(3),...,eta_(n)}$ 下的坐标 $upright(bold(y)) = P upright(bold(x))$, 其中 $x$ 为新基底下的坐标, 称为坐标-基底变换公式.
 
-== 将线性变换表示为矩阵
+= 将线性变换表示为矩阵
 
 线性变换 $sigma ( epsilon.alt_i )$ 将向量 $epsilon.alt_i$ 移动到同一空间另一位置. 我们可以先描述两个位置下的基底变换, 然后将原坐标套用在新基底下得到变换后的向量.
 
@@ -53,9 +53,7 @@ B = P_(H arrow.l E) A P_(E arrow.l H)
 $
 
 
-#line(length: 100%)
-
-== 例题
+= 例题
 
 两组基底: 
 $

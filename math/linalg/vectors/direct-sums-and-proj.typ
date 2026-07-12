@@ -2,46 +2,36 @@
 
 #show: tufte
 
-设 $W_1 \, W_2$ 是线性空间 $V$ 的子空间. 若 $W_1 + W_2$ 中任意向量*均唯一地*表示为 $W_1$ 中的一个向量和 $W_2$ 中的一个向量之和, 则称 $W_1 + W_2$ 是 $W_1 \, W_2$ 的*直和*. 记为 $W_1 plus.dot W_2$
+设 $W_1 , W_2$ 是线性空间 $V$ 的子空间. 若 $W_1 + W_2$ 中任意向量*均唯一地*表示为 $W_1$ 中的一个向量和 $W_2$ 中的一个向量之和, 则称 $W_1 + W_2$ 是 $W_1 , W_2$ 的*直和*. 记为 $W_1 plus.dot W_2$
 
-若 $W_1 perp W_2$, 则称 $W_1 plus.dot W_2$ 是 $W_1 \, W_2$ 的正交直和, 记为 $W_1 xor W_2$. $W_2$ 称为 $W_1$ 的正交补空间, 记为 $W_2 = W_1^perp$
+若 $W_1 perp W_2$, 则称 $W_1 plus.dot W_2$ 是 $W_1 , W_2$ 的正交直和, 记为 $W_1 xor W_2$. $W_2$ 称为 $W_1$ 的正交补空间, 记为 $W_2 = W_1^perp$
 
 #linebreak()
 
-*直和判定定理*: $W_1 \, W_2$ 是线性空间的两个子空间, 以下命题等价:
+*直和判定定理*: $W_1, W_2$ 是线性空间的两个子空间, 以下命题等价:
 1. $W_2 + W_1$ 是直和
 2. $W_1 + W_2$ 中零元素的表示法唯一
-3. $W_1 upright("∩") W_2 = upright("∅")$
-4. $upright("dim") ( W_1 + W_2 ) = upright("dim") W_1 + upright("dim") W_2$
+3. $W_1 upright("∩") W_2 = emptyset$
+4. $"dim"( W_1 + W_2 ) = "dim" W_1 + "dim" W_2$
 
 = 投影
 
-设 $V = W_1 plus.dot W_2$, 其中任意向量 $x in V$ 皆可唯一分解为 $x=y+z$, 其中 $y in W_1 \, z in W_2$. 称 $y$ 为 $x$ 在子空间 $W_1$ 上的*投影*.
+设 $V = W_1 plus.dot W_2$, 其中任意向量 $x in V$ 皆可唯一分解为 $x=y+z$, 
+其中 $y in W_1, z in W_2$. 称 $y$ 为 $x$ 在子空间 $W_1$ 上的*投影*.
 
 若 $V = W_1 xor W_2$, 则称 $y$ 为向量 $x$ 在 $W_1$ 上的*正交投影*. 
 
 == 格拉姆-施密特正交化
 
-将一组线性无关的向量 ${alpha_(1),alpha_(2),...,alpha_(n)}$ 正交化. 
+将一组线性无关的向量 ${alpha_1,alpha_2,...,alpha_n}$ 正交化. 
 
-
-$
-q_1 = alpha_1
-$
-
-
+$ q_1 = alpha_1 $
 
 $
 q_2 = alpha_2 - frac(chevron.l alpha_2 \, q_1 chevron.r, chevron.l q_1 \, q_1 chevron.r) q_1
 $
 
-
-
-$
-dots.h.c
-$
-
-
+$ dots.h.c $
 
 $
 q_k = alpha_k - sum_(i = 1)^(k - 1) frac(chevron.l alpha_k \, q_i chevron.r, chevron.l q_i \, q_i chevron.r) q_i = alpha_k - sum_(i = 1)^(k - 1) chevron.l alpha_k \, e_i chevron.r e_i
@@ -55,12 +45,18 @@ $
 e_k = frac(u_k, bar.v.double u_k bar.v.double)
 $
 
-
 == QR 分解
 
 将上述 Gram-Schmidt 正交化过程表示为上三角矩阵: 
 $
-( alpha_1 \, alpha_2 \, dots.h.c \, alpha_n ) = ( e_1 \, dots.h \, e_n ) dot.op mat(delim: "[", bar.v.double q_1 bar.v.double, ( alpha_2 \, e_1 ), dots.h, ( alpha_n \, e_1 ); 0, bar.v.double q_2 bar.v.double, dots.h, ( alpha_n \, e_2 ); #none, 0, dots.h, dots.v; #none, , 0, bar.v.double q_n bar.v.double)
+( alpha_1 , alpha_2 , dots.h.c , alpha_n ) =
+ ( e_1 , dots.h , e_n ) dot.op 
+ mat(delim: "[", 
+  norm(q_1), ( alpha_2 , e_1 ), dots.h, ( alpha_n , e_1 ); 
+  0, norm(q_2), dots.h, ( alpha_n \, e_2 ); 
+  #none, 0, dots.h, dots.v; 
+  #none, , 0, norm(q_n)
+  )
 $
 
 

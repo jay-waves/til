@@ -1,21 +1,4 @@
-## Style
-- Curly
-- Andale
-- Anonymous Pro
-- Consolas
-- Menlo
-- Fira Code
-- Liberation
-- Monaco
-- Pragmata Pro
-- Source Code Pro
-- Envy Code R
-- X Windows fixed
-- Ubuntu
-- Lucida
-- JetBrains
-- IBM Plex
-- PT
+
 
 ### Weights
 
@@ -37,8 +20,8 @@
 
 衬线
 - slab serif
-- serif
-- sans serif
+- serif 中文字体下，一般指宋体。字母笔画末端有小装饰线。
+- sans serif (sans 是法语，意为“没有”) 中文字体下，一般指黑体。
 
 ### ligatures
 
@@ -54,6 +37,9 @@
 
 - Nerd Fonts
 - CN 支持汉字
+
+挑选泛 CJK 字体时，需要注意语言对字形的影响，
+比如同一个 Unicode 字符在 ja, ko, zh 显示会不一样。
 
 ## Mono
 
@@ -79,6 +65,8 @@
 
 ## 字体文件类型
 
+字体文件不代表字体本身支持“字形可变”。
+
 - TTF
 - OTF 
 - WOFF2: 多用于网页版本
@@ -102,15 +90,13 @@
 - 方正屏显雅宋简体
 - 文泉驿微米黑
 - 文泉驿正黑, 等宽正黑, 点阵正黑
-- 思源黑体 CN
+- 思源黑体 CN, 思源宋体 CN (Source Han Serif + Sans)
 - [霞鹜文楷](https://github.com/lxgw/LxgwWenKai) (LXWG WenKai /Mono), 霞鹜文楷GB
 - [霞鹜新晰黑](https://github.com/lxgw/LxgwNeoXiHei), 挺喜欢这个作者的字体的.
 - [SarasaMono](https://github.com/be5invis/Sarasa-Gothic) 等距更纱黑体, **特色为保持全角字符为半角字符的两倍宽度**.
 - Maple Mono NF CN. 连体等宽字体
 - Cambria (微软的公式字体)
-- EB Garamond (en)
-- Noto Serif SC 
-
+- EB Garamond (en): 小写字母高度低，视觉上更优雅（更小）
 
 ## 自用手写体
 
@@ -119,3 +105,24 @@
 - [辰宇落雁體](http://github.com/Chenyu-otf/chenyuluoyan_thin)
 - 荷塘月色手写体
 - [Ma Shan Zheng](https://fonts.google.com/specimen/Ma+Shan+Zheng?lang=zh_Hans)
+
+***
+
+## Fonts Style
+- Curly
+- Andale
+- Anonymous Pro
+- Consolas
+- Menlo
+- Fira Code
+- Liberation
+- Monaco
+- Pragmata Pro
+- Source Code Pro
+- Envy Code R
+- X Windows fixed
+- Ubuntu
+- Lucida
+- JetBrains
+- IBM Plex
+- PT

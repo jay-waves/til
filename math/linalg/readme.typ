@@ -4,8 +4,24 @@
 
 #meta(
   subtitle: [矩阵关系],
-  tags: ("矩阵正交", "矩阵合同", "矩阵相似")
 )
+
+= 目录
+
+- `./vectors/`
+  - `./vectors/change-of-basis.typ` 空间基底变换
+  - `./vectors/direct-sums-and-proj.typ` 线性空间的直和与相交
+  - `./vectors/vector-space.typ` 内积空间
+- `./linear-systems/` 线性方程组
+- `./matrix-ops.typ`  矩阵基本运算
+- `./invertible-matrix.typ` 矩阵的逆 
+- `./othogonal-matrix.typ` 正交矩阵
+- `./equivalence.typ` 矩阵的秩，矩阵等价
+- `./jordan-matrix.typ` 
+- `./congruence.md` 矩阵相合，正定矩阵
+- `./similarity.typ` 矩阵相似
+- `./symmetric-matrix.typ` 对称矩阵与相似对角化 
+- `./eigen-values.typ` 矩阵的特征与特征多项式
 
 = 矩阵的关系
 
@@ -53,58 +69,10 @@
 
 #image("../../attach/mat-relation.webp", width: 60%)
 
-= 矩阵的分解
-
-详见矩阵分解一节 #link("./mat-decompose.typ")[math/linalg/mat-decompose.typ]
 
 = 参考
 
-#let books = (
-  (
-    [The Art of Linear Algebra],
-    [Kenji Hiranabe],
-    [GitHub],
-    [2021],
-    [],
-    [#link("https://github.com/kenjihiranabe/The-Art-of-Linear-Algebra")[The-Art-of-Linear-Algebra]],
-  ),
-  (
-    [Linear Algebra for Everyone],
-    [Gilbert Strang],
-    [Wellesley-Cambridge Press],
-    [2020],
-    [],
-    [ISBN: 978-1-7331466-3-0],
-  ),
-  (
-    [Linear Algebra Done Right],
-    [Sheldon Axler],
-    [Springer],
-    [2015],
-    [3rd ed.],
-    [ISBN: 978-3-319-11079-0],
-  ),
-  (
-    [线性代数],
-    [李尚志],
-    [高等教育出版社],
-    [2004],
-    [4th ed.],
-    [ISBN: 978-7-04-014815-5],
-  ),
-)
-
-#table(
-  columns: 6,
-
-  table.header(
-    [TITLE],
-    [AUTHORS],
-    [PUBL / CONF / JOUR],
-    [YEAR],
-    [VOLUME],
-    [URL / DOI / ISBN],
-  ),
-
-  ..books.flatten(),
-)
+- [The Art of Linear Algebra, Hiranabe, 2021]
+- [Linear Algebra for Everyone, Strang, 2020]
+- [Linear Algebra Done Right, Axler, 2015]
+- [线性代数, 李尚志, 2004]
