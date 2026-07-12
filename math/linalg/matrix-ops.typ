@@ -17,20 +17,16 @@ $
 $
 A (vec(x), vec(y)) = A dot E dot (vec(x), vec(y))
 $
- 
 
-== 矩阵乘向量
+= 矩阵乘向量
 
 矩阵描述了欧氏空间的一个线性变换, 如平面旋转或拉伸. 其实质是改变*基底*, $A vec(x)$ 将坐标 $vec(x)$ 从单位基底下, 转到*矩阵 $A$ 变换后的基底下*, 举例而言:
-
 
 $
 bmat(a, b; c, d) dot bmat(x_1; x_2) = bmat(a dot x_1 + b dot x_2; c dot x_1 + d dot x_2) = bmat(a; c) dot x_1 + bmat(b; d) dot x_2
 $
 
-
 观察单位基底下向量表示: 
-
 
 $ bmat(1; 0) dot x_1 + bmat(0; 1) dot x_2 = bmat(x_1; x_2) $
 
@@ -79,8 +75,7 @@ $ bold(a)^T A = a_1 bold(r)_1 + a_2 bold(r)_2 + dots + a_n bold(r)_n $
 
 此时, $A$ 的行向量张成了 $bb(C) ( A^T )$, $y dot.op A = 0$ 的解空间是 $A$ 的左零空间 $bb(N) ( A^T )$. 
 
-
-== 矩阵相乘
+= 矩阵相乘
 
 指矩阵相乘: $A dot.op B$, $A$ 决定结果行数, $B$ 决定结果列数. 
 
@@ -92,7 +87,7 @@ $
 
 从列空间角度理解, 结果是矩阵列的线性组合.  从行空间角度理解, 结果是矩阵行的线性组合.
 
-== 矩阵可交换
+= 矩阵可交换
 
 只要矩阵可交换 $A B = B A$, 就可以牛顿展开, 并且两矩阵共享公共的特征向量基底.
 
@@ -119,13 +114,13 @@ $
   因此 $vec(x)^T Q^T A B Q vec(x) = vec(x)^T Q^T A Q Q^T B Q vec(x) = vec(x)^T Lambda_A Lambda_B vec(x) = x^T Lambda vec(x) > 0$
 ]
 
-== 矩阵的转置
+= 矩阵的转置
 
 矩阵转置后, 其行空间和列空间被对偶交换, 此时 $A vec(x))$ 将 $x$ 坐标转换到列其列空间, $A^T vec(y)$ 将 $y$ 坐标转换到行空间.
 
 $< vec(x) \, A^T vec(y) > = vec(x)^T A^T vec(y) = ( A vec(x) )^T y = < A vec(x) \, vec(y) >$
 
-== 矩阵指数
+= 矩阵指数
 
 对于矩阵 $A_(n times n)$ ，定义其幂级数：
 
@@ -136,7 +131,7 @@ $ e^A = sum_(k = 0)^oo frac(A^k, k !) = I + A + frac(A^2, 2 !) + frac(A^3, 3 !) 
 
 $ e^A = e^(P D P^(- 1)) = P e^D P^(- 1) \, quad e^D = upright("diag") ( e^(lambda_1) \, dots.h \, e^(lambda_n) ) $
 
-== 矩阵对数
+= 矩阵对数
 
 矩阵对数定义为*矩阵指数的逆运算*，对于可相似对角化矩阵 $A$ ，矩阵对数 $X = log A$ 满足：
 

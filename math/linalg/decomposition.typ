@@ -1,6 +1,4 @@
-
-#import "../../appx/theme.typ": tufte, meta, note, theorem, proof
-
+#import "../../appx/theme.typ": tufte, meta, note, theorem, proof, note2
 #show: tufte
 
 #let bmat(..args) = math.mat(delim: "[", ..args)
@@ -9,59 +7,42 @@
 
 #image("../../attach/matrix-world.webp")
 
-#note(
-  "图片来自 *the Art of Linear Algebra*
-  翻译版本请见 ../../attach/matrix-world-zh.webp"
-)
+#note[
+  图片来自 *the Art of Linear Algebra*,
+  翻译版本请见 `../../attach/matrix-world-zh.webp`
+]
+
 
 = 矩阵分解的类型
 
-矩阵有五种分解: 
-1. 行列空间分解 (满秩分解)
-2. #link("../numerical/线性方程组的解法.typ")[LU 分解]
-3. #link("向量分析/直和与投影.typ")[QR 分解]
-4. #link("矩阵相似.typ")[特征值分解]
-5. 奇异值分解
+#note2[
+  矩阵有五种分解: 
+  + 行列空间分解 (满秩分解)
+  + LU 分解
+  + QR 分解
+  + 特征值分解
+  + 奇异值分解
 
-特征值分解中, 包含:
-- #link("若尔当分解.typ")[Jordan 分解]: 相似变换, $A = S J S^(- 1)$, 其中 $S$ 是可逆矩阵.
-- Shcur 分解: 酉/正交相似, $A = U T U^H$, 其中 $U$ 是酉矩阵.
-- #link("对称矩阵.typ")[谱定理 (正交分解)]: 酉/正交对角化, $A = U Lambda U^H$, 其中 $U$ 是酉矩阵, 并且要求 $A$ 是正规矩阵.
+  #linebreak()
 
-== 满秩分解
+  特征值分解中, 包含:
+  - Jordan 分解: 相似变换, $A = S J S^(- 1)$, 其中 $S$ 是可逆矩阵.
+  - Shcur 分解: 酉/正交相似, $A = U T U^H$, 其中 $U$ 是酉矩阵.
+  - 谱定理 (正交分解): 酉/正交对角化, $A = U Lambda U^H$, 其中 $U$ 是酉矩阵, 并且要求 $A$ 是正规矩阵.
 
-$A in bb(C)_r^(m times n) ( r > 0 )$, 存在列满秩矩阵 $B in bb(C)_r^(m times r)$ 和行满秩矩阵 $C in bb(C)_r^(r times n)$ 使得: $A = B C$
-
-#note[等价，也成为矩阵相抵，详见 math/linalg/readme.typ ] #linebreak()
-
-#proof[
-  $A$ 和 $bmat(I_r, 0; 0, 0)$ *等价*, 因此存在可逆矩阵 $P,Q$, 满足: 
-
-  $ A = P bmat(I_r, 0; 0, 0) Q = P bmat(I_r; 0) bmat(I_r, 0) Q $
-
-  那么有 $B = P bmat(I_r; 0)$ 以及 $C = bmat(I_r, 0) Q$, 即 $A = B C$. 
+][
+  #linebreak()
+  - 满秩分解，详见 矩阵的等价关系 `./equivalence.typ`
+  - LU 分解，详见 数值分析中对线性方程组的数值解法 `math/linalg/numerical/linear-systems.typ`
+  - QR 分解，详见 直和、投影与施密特正交化 `./vectors/direct-sums-and-proj.typ`
+  - 特征值分解，详见 矩阵相似对角化 `./similarity.typ`
+  - Jordan 分解，详见 `./jordan-matrix.typ`
+  - 正交分解（谱定理），详见 `./symmetric-matrix.typ`
 ]
-
-这里 $B$ 是 $A$ 的列空间基向量. 显然, 满秩分解并不唯一.
-
-=== 满秩分解的求法
-
-不妨设 $A$ 的秩为 $r$.
-
-行变换, 将 $A$ 化简为行最简矩阵: $ P A = R $
-
-
-取出 $R$ 的非零行作为 $C$: 
-
-$ P A = mat(delim: "[", I_r; 0) C $
-
-因此有: 
-
-$ A = P^(- 1) mat(delim: "[", I_r; 0) C = B C $
 
 == Schur 分解
 
-#note("酉矩阵详见 ./symmetric.typ")
+#note[酉矩阵详见 `./othogonal-matrix.typ`]
 
 *任意*矩阵 $A in bb(C)^(n times n)$ 皆存在*酉矩阵* $U$, 使得 
 
