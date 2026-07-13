@@ -60,3 +60,5 @@ git push -u new-origin new-start
 git checkout main -- .
 git checkout main -- path/to/xxx
 ```
+
+### git lfs

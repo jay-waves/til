@@ -88,9 +88,16 @@ $ tau &= M ddtheta + tau_"dist" + tau_"fric" \
 
 *假设是零点控制*，即 $dot.double(theta)_d = dtheta_d=0$，左右同时求导，得到：
 $
-  M dddtheta_e + (b+ K_d)ddtheta_e + K_p dtheta_e + K_i theta_e = dot(tau)_"dist"
+  M dddtheta_e + (b+ K_d)ddtheta_e + K_p dtheta_e + K_i theta_e = dot(tau)_"dist" = 0
 $
 
+#note[
+  考虑只有重力情况：$ dot(tau)_"dist" = m g r (-sin theta)dot(theta)=0 $  
+]
+
+得到特征方程：
+
+$  $
 
 == PD Control (MIT Mini Cheetach Control)
 
