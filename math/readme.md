@@ -46,17 +46,13 @@ Subjects:
 | 构造, Construction   | Const.          |                                                                     |
 
 
-## 数学工具
+## Sound & Complete
 
-- [Wolfram Mathematica](../CodeGlyph/Wolfram.md)
-- Python: 
-	- [numpy](../Language/Python/数学/numpy.md)
-	- [sympy](../Language/Python/数学/sympy.md)
-	- seaborn/matplotlib
-	- scipy
-	- [pandas](../Language/Python/数学/pandas.md)
-	- [3b1b/manim](../Language/Python/数学/manim.md)
-- [Latex/Mathjax](../tools/latex-mathjax.md)
+|          | Positive | False Positive |
+| -------- | -------- | -------------- |
+| Nagative |          |    no soundness            |
+| False Nagative         |  no completeness        |                |
+
 
 
 ## 参考

@@ -2,8 +2,7 @@
 /.obsidian/
 /.vscode/
 /.agents/
-/.trash/**
-/.stash/**
+/.blogs/
 .obsidian.vimrc
 
 ~$*.ppt*

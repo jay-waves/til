@@ -44,6 +44,8 @@ stateDiagram-v2
 * CPU 利用率： CPU Busy Time / (Busy Time + IDLE Time)
 * 公平性：是否有进程饥饿
 
+普通调度器主要关注总吞吐量，实时调度器还需要保证时间约束。
+
 ## Linux 调度类
 
 Linux 内核中，每个 CPU 绑定一个*运行队列* `struct rq` ，其下按调度类划分*子运行队列*，`struct cfs_rq, struct rt_rq, struct dl_rq` 。运行队列中的调度单位是 `struct sched_entity` ，这个调度单位是对线程类的成员 `task_struct->se` 的引用。
@@ -109,11 +111,60 @@ struct cfs_rq {
 
 ## RT Class 
 
-实时调度器。**按任务优先级抢占调度 (Priority Scheduling, PR)，优先级 0~99（99 最高）**。同一优先级中，`SCHED_FIFO` 表示任务不轮转，`SCHED_RR` 表示按时间片任务轮转。
+实时调度器。**按固定任务优先级抢占调度 (Priority Scheduling, PR)，优先级 0~99（99 最
+高**）。同一优先级中，`SCHED_FIFO` 表示任务不轮转，`SCHED_RR` 表示按时间片任务轮转。
+
+FIFO 模式下，高优先级线程永远抢占低优先级线程。没有时间片抢占，高优先级线程会持续执行，
+直到阻塞或被更高优先级线程抢占。
+
+RT Class 也被称为 Fixed Priority Class ，采用经典调度方式（RM, 周期越短，优先级越高）的条件下，其可调度的充分条件是 ($U$ 是 CPU 利用率):
+
+$$ U\leq n(2^{1/n} - 1) $$
+
+这个 $U$ 的上界是 $ln2$，远小于 100%。实际体感上，也是任务数越多，RT 配置越复杂。
 
 ## EDF (Earliest Deadline First, EEVDF)
 
-最早的 Deadline 优先。
+对于单核，EDF 调度器在以下情况被证明是最优的：对于 deadline 小于等于 period 的单核的周期性或偶发性任务（不包括突发任务）。每个 EDF 任务的参数如下，每次调度时，绝对截止日期最近的任务会被选择。
+
+* Runtime： WCET 最坏执行时间，即某个任务完成所需的至多 CPU 时间
+* Period：任务释放（release）的时间间隔
+* Deadline：一个任务从释放（release）开始，多久必须完成。
+
+对于 deadline 不明确的任务，EDF 调度器也能胜任，但是须保证任务集满足 
+$\sum U = \sum runtime/period \leq 1$ 。即只要预期的总 CPU 利用率不超过 100%，EDF 总能找到可行调度。
+
+| task | runtime (WCET) | period | deadline |
+| ---- | ---------------|-------|-----------|
+| $T_1$ | 1  | 4 | 4 |
+| $T_2$ | 2 | 6 | 6 |
+| $T_3$ | 3 | 8 | 8 |
+
+整体 CPU 利用率为： 
+$$U=1/4 + 2/6 + 3/8 = 23/24$$ 
+
+此任务对 EDF 是可调度的，但是对 Fixed Priority 是不可调度的。
+
+### EDF Parameters 
+
+总体选择方式是： 
+
+$$ runtime \leq deadline \leq period $$
+
+如果低估 $runtime$ (WCET, worst-case execution time), 线程会被节流，
+直到下个周期预算补充。可能导致偶发长尾抖动。
+
+如果高估 $runtime$ ，会占用调度容量。如果 runtime 接近 deadline，会导致其他任务
+几乎不可被调度。
+
+### EDF vs. RT (Fixed Prior)
+
+**在配置 EDF 调度器时，不需要关注其他任务的优先级（抢占顺序），只要总 CPU 时间占用
+不超过 100% 就可以。EDF 调度的 Context Switch 会更小，在系统抢占关系复杂时，
+调度配置比 Fixed Priority 调度器简单。**
+
+EDF 的缺点是，不保证任务的**最小响应时间**，只保证 deadline 前会执行任务。在多核
+调度下，EDF 也不能保证是最优的，事实上多核最优调度是 NP Hard 问题。
 
 ## MLQ 
 
@@ -136,3 +187,4 @@ struct cfs_rq {
 
 https://docs.kernel.org/scheduler/sched-design-CFS.html 
 
+[Deadline scheduling part 1 — overview and theory, Daniel Bristot, 2018](https://lwn.net/Articles/743740/)
