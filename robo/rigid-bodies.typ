@@ -82,6 +82,11 @@ $ dot(vec(x)) & = w times vec(x) \ dot(vec(y)) & = w times vec(y) \ dot(vec(z)) 
 
 用固定坐标系 $s$ 表示*旋转变化量* $w$, 即 $w_s$ ，设从固定坐标系 $s$ 到刚体坐标系 $b$ 的旋转矩阵 $R$ ，此时角速度可表示为： $ dot(R)=w_s times R=[w_s]R $
 
+#note[
+  旋转矩阵： $R=bmat(vec(r_x),vec(r_y), vec(r_z)) I$ \
+  其中 $r_x$ 是对标准坐标系中 $x$ 轴的变换。
+]
+
 向量叉乘可以写为“左乘一个斜对称矩阵”的形式，类似：
 
 #math.equation(
@@ -128,7 +133,7 @@ appling on vectors:
 
 $ T bmat(x ; 1) = bmat(R, p ; 0, 1) bmat(x ; 1) = bmat(R x + p ; 1) $
 
-pre-multiply ${} dot(T) {}$ by $T^(-1)$ : 
+pre-multiply $dot(T)$ by $T^(-1)$ : 
 
 $ T^(- 1)dot(T) = 
 bmat(R^(top), - R^(top)p ;, 1) 
@@ -210,21 +215,23 @@ Screw axis $cal(S)={q,hat(s),h}$ represents the motion of a screw: rotating abou
 
 write the twist $cal(V)=(w,v)$ to an angular velocity $dot(theta)$ about $cal(S)$ as: 
 
-$ cal(V) = bmat(w ;v) = bmat(hat(s) dot(theta) ; - hat(s) dot(theta) times q + h hat(s) dot(theta)) $
+$ cal(V) = bmat(w ;v) = 
+bmat(hat(s) dot(theta) ; - hat(s) dot(theta) times q + h hat(s) dot(theta)) 
+=bmat(hat(s); -hat(s)times q + h hat(s)) dot(theta) , 
+quad hat(s) = omega / norm(omega), dot(theta) = norm(omega) $
 
-where:
-- $hat(s) = w /(norm(w))$
-- $dot(theta) = norm(w)$
-- $h= hat(w)^(top)v /dot(theta)$
+其中 $ h = (hat(s)^top v) / dot(theta) =(hat(omega)^top v)/ norm(omega)^2 $
 
-反之，用规范化（Normalized）的 $cal(V)$ 来表示 $S$  坐标系：
+也就是说，$S$ 可以用归一化的 $cal(V)$ 表示：
 
-$ cal(S) = bmat(w ; v) in R^(6) $
+#note[注意，这里 $S$ 表示的不是速度，虽然内部 $omega,v$ 都是速度，但归一化后表示某种坐标系。]
 
-* 当 $norm(w) = 1$ 时， $v=-w times q+h w$ 。
-* 当 $w=0,norm(v)=1$ 时，螺距 $h$ 是无穷大，运动量 $cal(V)$ 沿着 $v$ 所在轴平移
+$ S = cal(V) / dot(theta) = cal(V) / norm(omega) in RR^6 $
 
-$ [cal(S) ]= bmat(W, v ; 0, 0) $
+- 当 $norm(w) = 1$ 时， $v=-w times q+h w$ 。
+- 当 $w=0,norm(v)=1$ 时，螺距 $h$ 是无穷大，运动量 $cal(V)$ 沿着 $v$ 所在轴平移
+
+$ [cal(S) ]= bmat([omega], v ; 0, 0) $
 
 = Exponential Coordinates 
 
@@ -243,7 +250,7 @@ $ dot(p)=w times p=[w]p $
 
 == Rodrigues' Formula 
 
-Given vector $vec(w)theta in RR^3$, such that $theta$ is any scalar and ${} vec(w) in RR^3$ is a unit vector, the matrix exponential of $[vec(w)] theta=[vec(w) theta] in S O(3)$ is
+Given vector $vec(w)theta in RR^3$, such that $theta$ is any scalar and $vec(w) in RR^3$ is a unit vector, the matrix exponential of $[vec(w)] theta=[vec(w) theta] in S O(3)$ is
 
 #math.equation(
   numbering: "(1)",
@@ -255,6 +262,8 @@ $ R o t(vec(w),theta)=e^([vec(w)] theta)=I+sin theta[vec(w)]+(1- cos theta)[vec(
 Subsituting the skew-symmetric matrix representation of $[vec(w)]$ in @eq1  into @eq2, we obtain: 
 $ R-R^top=e^[vec(w)]-(e^[vec(w)])^top=2 sin theta [vec(w)] $
 
+#note[ $omega in RR^3 -> e^(omega theta) in S O(3)$ ]
+
 == Exponential Repr. of Motion
 
 Let $cal(S)=(w, v)$ be a screw axis, and  $norm(w) =1$ , for any distance $theta in RR$ traveled along the axis: 
@@ -262,21 +271,25 @@ Let $cal(S)=(w, v)$ be a screw axis, and  $norm(w) =1$ , for any distance $theta
 $
 e^([cal(S) ] theta) 
 & = I +[cal(S) ] theta +[cal(S) ]^(2) frac(theta^(2), 2 !)+[cal(S) ]^(3) frac(theta^(3), 3 !)+ ... \ 
-& = bmat(e^(W theta), G(theta)v ; 0, 1), quad G(theta)= I theta + W frac(theta^(2), 2 !)+ W^(2) frac(theta^(3), 3 !)+ ... \ 
+& = bmat(e^(vec(w) theta), G(theta)v ; 0, 1), quad G(theta)= I theta + vec(w) frac(theta^(2), 2 !)+ vec(w)^(2) frac(theta^(3), 3 !)+ ... \ 
 & = bmat(R, p ; 0, 1)
 $
 
-Using the $vec(w)^{3}=-[vec(w)]$, $G(theta)$ can be simplified to : 
+Using the $vec(w)^3=-[vec(w)]$,  $G(theta)$ can be simplified to : 
 
 $
-G(theta)=I theta + (1-cos theta)[vec(w)]+(theta-sin theta)[vec(w)]^{2}
+G(theta)=I theta + (1-cos theta)[vec(w)]+(theta-sin theta)[vec(w)]^2
 $
+
+#note[
+  $[cal(S)] theta in s e (3) -> T in S E(3)$ \
+  $R$ 是累计绕轴旋转，$p =G(theta) v$ 是累计平移。因为 $v$ 方便不断随旋转变化，因此需要积分修正。
+]
 
 If $w=0, norm(v)=1$, then: 
 
 $ e^([cal(S)] theta)= bmat(I, v theta ; 0, 1) $
 
-> 也就是说，建立了一个指数坐标系到实际位姿坐标系 $T$ 的映射：$[cal(S)] theta in s e(3)-> T in S E(3)$  。其中 $cal(S)$ 是归一化的螺旋坐标系， $R$ 是累计绕轴旋转，$p=G(theta)v$ 是累计平移，因为 $v$ 方向随着旋转不断变化，因此需要用 $G(theta)$ 积分修正。
 
 = Wrench
 

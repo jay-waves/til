@@ -5,7 +5,7 @@
 #meta(
   subtitle: [Jacobians, singularities, manipulability],
   source: [Modern Robotics],
-  revised: [2026-07-13],
+  revised: [2026-07-17],
   tags: ("robotics", "modern-robotics", "modo"),
 )
 
