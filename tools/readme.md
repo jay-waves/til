@@ -88,6 +88,7 @@ revised: 2026-01-27
 - hl, lnav, 日志浏览器
 - tldr
 - rclone 云存储工具
+- strings 读取二进制中的字符串片段
 
 <br>
 

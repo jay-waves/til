@@ -45,16 +45,24 @@ procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
 - `lsusb` 展示 USB 设备的信息.
 - `dmidecode` 解析系统 DMI (桌面管理接口), 提供主板/BIOS/处理器/内存信息.
 
-***
+### `lsof`
+
+list open files. 因为 Unix 系统 "万物(硬件, 套接字, 管道)皆文件" 的思想, 该命令常用于调试系统问题.
+
+```bash
+# 列出某个用户打开的文件
+lsof -u username
+# 列出某个端口的进程
+lsof -i :port 
+# 列出某个进程打开的文件
+lsof -p  pid
+```
 
 ## 主存信息
 
 ### `free`
 
 `free` 检查主存空间
-
-
-***
 
 ## 硬盘信息
 

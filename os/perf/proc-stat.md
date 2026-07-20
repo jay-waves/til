@@ -1,4 +1,14 @@
 
+### `top`
+
+任务管理器. 其几个参数意义为:
+- `PRI`: Priority。标识任务的优先级，详见 [linux schduler: rt class](../proc/thread-sched.md)
+- `NI`: nice value。标识任务的调度优先级，详见 [linux scheduler: cfs](../proc/thread-sched.md) 。
+- `VIRT`: 虚拟内存使用量
+- `RES`: 实际使用物理内存大小
+- `SHR`: 共享内存大小
+- `S`: 状态, 包括: `R` running, `S` sleeping, `D` disk sleep, `T` stopped, `Z` zombie.
+
 ### `ldd`
 
 列出程序所依赖的共享库文件 (.so)
@@ -21,7 +31,6 @@ ldd 存在[严重安全漏洞](https://catonmat.net/ldd-arbitrary-code-execution
 
 - `-c`: 开启 profile 性能分析, `strace -c ./my_program`
 - `-p`: 附加到一个运行中的进程, `strace -p 1234`
-
 
 
 ### `dmesg`

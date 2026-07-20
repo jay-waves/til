@@ -1,70 +1,6 @@
 
-| 工具             |                           |
-| ---------------- | ------------------------- |
-| fmt              | 格式化文本, 如限定长度    |
-| sort             | 排序                      |
-| uniq             | 去重                      |
-| nl               | 打印行号                  |
-| expand, unexpand | `/t` 与 `/s` 转换         |
-| diff, delta      | 源代码对比工具 (搭配 git) |
-| patch            | 源代码合并工具 (搭配 git) |
 
-
-## 浏览
-
-### `echo` & `printf`
-
-```sh
-$ echo -ne "Hello\nWorld\n"
-Hello
-World
-```
-
-`printf` 类似 `echo -n`:
-
-```sh
-printf '%s\n' 'hello world'
-```
-
-**注意, `echo` 不接受文件输入或标准输入, 如 `echo < hello.txt` 是无效的. 它仅重复输入的参数, 其他情况应使用 `cat`**
-
-### `cat`
-  
-  ```bash
-  cat file1 file2 
-  cat file1 file2 > combinedfile
-  cat < file1 > file2           # copy file1 to file2
-  cat > file                    # accept input from keyboard
-  ```
-
-
-### `tail`
-
-Outputs the last 10 lines of file. Use `-f` to output appended data as the file grows.  
-
-```bash
-tail filename
-```
-
-### `head`
-
-Outputs the first 10 lines of file  
-
-```bash
-head filename
-```
-
-### `more`, `less`
-
-Shows the first part of a file (move with space and type q to quit).  
-
-```bash
-more filename
-```
-
-## 过滤
-
-### `awk`
+## `awk`
 
 awk is the most useful command for handling text files. It operates on an entire file line by line. By default it uses whitespace to separate the fields. The most common syntax for awk command is
 
@@ -100,7 +36,7 @@ sync
 
 For more detail on how to use `awk`, check following [link](https://www.cyberciti.biz/faq/bash-scripting-using-awk).
 
-### `sed`
+## `sed`
 
 Stream editor for filtering and transforming text
 
@@ -132,7 +68,7 @@ Hello This is a Test d d d d
  
  > [详见](https://www.cnblogs.com/liwei0526vip/p/5644163.html)
 
-### `grep`, `rip-grep`
+## `grep`, `rip-grep`
 
 ```bash
 $ grep admin /etc/passwd
@@ -154,21 +90,3 @@ $ grep -r admin /etc/
 grep -C 5 "pattern"
 ```
 
-### `tokei`
-
-代码行数统计, 替代 `clnc`
-
-### `wc`
-
-统计文件的行数, 列数, 单词数.
-```bash
-$ wc demo.txt
-7459   15915  398400 demo.txt
-```
-
-Where `7459` is lines, `15915` is words and `398400` is characters.
-
-- `wc -l`, lines
-- `wc -m`, characters 
-- `wc -w`, words
-- `wc -c`, bytes

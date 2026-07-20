@@ -41,6 +41,12 @@ unshare --pid --mount --uts --ipc --net --fork chroot /xxxx /bin/sh
 * `net` 隔离协议栈
 * `chroot` 指定一个新的 rootfs ，比如自行下载一个 alphine linux
 
+加入一个已有 ns:
+
+```bash
+nsenter -t PID -n bash
+```
+
 ## CGroup 
 
 cgroup (control groups) 是内核提供的资源控制工具 (限制和统计). 通过 `/sys/fs/cgroup` 下的接口进行控制.

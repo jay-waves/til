@@ -17,6 +17,12 @@ Windows 将 导出库 (DLL), 导出函数的声明头文件, 相关文件及工�
 
 部分类别的 Windows API 功能很原始, Windows 还提供了很多应用模块. 如 Internet 模块, OpenGL 模块, ODBC 模块, WIA 模块等.
 
+## Windows 内存概念
+
+* Virtial Size: 进程整个虚拟空间大小。一般不参考。
+* Private Working Set(RES): 当前驻留在物理内存的页面
+* Shared Working Set (SHR): 工作集中共享的部分
+* Commit Size (Priviate Bytes): 进程已提交的私有内存。这部分可能在 RAM，也可能已换页。
 
 ## Windows 开发框架
 

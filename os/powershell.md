@@ -13,7 +13,7 @@ PowerShell 寻求帮助:
 
 powershell 为 bash 和 cmd 用户准备了对应命令的别名.
 
-| bash                     | pwsl                                                    | pwsl alias                  | cmd                     |
+| bash                     | pwsh                                                    | pwsh alias                  | cmd                     |
 | ------------------------ | ------------------------------------------------------- | --------------------------- | ----------------------- |
 | `grep`                   | `find-string -Pattern`                                  |                             | `findstr`               |
 | `ls, dir`                | `get-childitem`                                         | `gci`                       | `dir`                   |
@@ -93,35 +93,6 @@ gci -Filter *.avif | % {
 
 如果子表达式 `$()` 返回多个结果, 将会自动展开为数组 (而不是空格隔开的字符串). 这导致子表达式很难直接嵌入到批处理命令中, 比如 `mv $(fd xxx.*)` 很可能报错, 此时仍需要使用 `ForEach-Object` 遍历列表.
 
-### 命令补全模块
-
-(powershell7)
-
-```powershell
-Install-Module -Name PSReadLine -AllowPrerelease -Scope CurrentUser -Force -SkipPublisherCheck
-Set-PSReadLineOption -ShowToolTips
-Set-PSReadLineOption -PredictionViewStyle ListView
-```
-
-### 命令编辑模块
-
-在外部编辑器中编辑命令行当前键入的命令: 
-
-```powershell
-Install-Module -Name PSReadLine -Force -Scope CurrentUser
-Set-PSReadLineOption -EditMode Vi
-$env:VISUAL = 'nvim' # 指定编辑器, 需要 nvim 在 PATH 中.
-
-# 建立键绑定: alt+x
-Set-PSReadLineKeyHandler -Chord Alt+x -Function ViEditVisually
-```
-
-### 命令历史模块
-
-直接编辑历史:
-```powershell
-nvim (Get-PSReadlineOption).HistorySavePath
-```
 
 ## Q&A 1
 

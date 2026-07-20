@@ -5,7 +5,7 @@ bash 变量没有严格数据类型, 默认都是字符串类型. 注意整型�
 ## 变量
 
 - **环境变量**在任何子程序中都能使用, 有专门的继承内存块
-- **自订变量**在当前父程序的子程序中无法使用
+- **自定义变量**在当前父程序的子程序中无法使用
 
 常见环境变量: 
 
@@ -61,6 +61,16 @@ VAR1=value1 VAR2=value2 command
 env -i command 
 ```
 
+
+### `which`
+
+模拟搜索 PATH 查询可执行文件的过程, 若成功, 显示完整路径. 
+
+```bash
+$ which php
+/c/xampp/php/php
+```
+
 ## 数组
 
 Examples:
@@ -76,7 +86,8 @@ array=(val val val)
 取址访问:
 
 ```bash
-${array[i]}     # where i is the index
+${arr[i]}     # where i is the index
+${arr:offset:length}
 ```
 
 获取当前数组大小:
@@ -85,25 +96,10 @@ ${array[i]}     # where i is the index
 ${#array[@]}
 ```
 
-变量三元操作:
-```bash
-# 如果 str 不存在, 返回 expr; 否则返回 str.
-${str-expr}
-# 如果 str 不存在或为空 (""), 返回 expr; 否则返回 str.
-# `:` 添加了对空 `""` 的检查.
-${str:-expr}
-# 如果 str 已经存在, 返回 str, 否则令 str=expr, 然后返回 str.
-${str=expr}
-# 如果 str 不存在(未初始化), 将 expr 输出到 stderr.
-${str?expr}
-# performs substring expansion. It returns the substring of $varname 
-# starting at offset and up to length characters
-${varname:offset:length}    
-```
-
 ## 字符串
 
-`""` 和 `''` 都用于定义字符串, 但 `''` 不进行任何变量展开(interpolation)和命令替换(command substitution), 纯字面量. 字符串皆支持直接跨行输入.
+- `'xxx'` 字面量字符串，不进行变量展开和命令替换的字符串
+- `"xxx"` 普通字符串
 
 三元匹配操作:
 
@@ -124,38 +120,15 @@ ${variable//pattern/string}
 ${#varname}     
 ```
 
-大小写转换:
+例子：
 
 ```bash
-# converts every letter in the variable to lowercase
-${variable,,}  
-# converts every letter in the variable to uppercase
-${variable^^}    
+filename="${path##*/}"
+extension="${filename##*.}"
+basename="${filename%.*}"
 ```
 
-索引:
-```bash
-# this returns a substring of a string, starting at the character at 
-# the 2 index(strings start at index 0, so this is the 3rd character),
-# the substring will be 8 characters long, so this would return a 
-# string made of the 3rd to the 11th characters.
-${variable:2:8}    
-```
-
-匹配字符串首尾:
-
-```bash
-#this returns true if the provided substring is *in* the variable
-if [[ "$variable" == *subString* ]]  
-#this returns true if the provided substring is not in the variable
-if [[ "$variable" != *subString* ]]  
-#this returns true if the variable starts with the given subString
-if [[ "$variable" == subString* ]]   
-#this returns true if the variable ends with the given subString
-if [[ "$variable" == *subString ]]   
-```
-
-使用模式匹配简化匹配操作:
+使用通配符简化匹配操作:
 
 ```bash
 case "$var" in

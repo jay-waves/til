@@ -1,8 +1,13 @@
-stdout, stderr 是 bash 命令的输出, 默认输出到屏幕. 但是可以重定向, 与其他命令相组合.
+
+Bash 执行命令时，可能有以下输入： 
+- `argv[]` 字符串，作为 `c main` **参数**输入
+- `stdin` ，可能来自文件，也可能来自终端用户输入
+
+有如下输出：`stdout, stderr`
 
 ## 重定向
 
-**stdout 重定向**:
+### stdout 重定向
 
 覆盖写入
 ```bash
@@ -17,7 +22,10 @@ echo "..." > /dev/null
 echo "hello, world!" >> output.txt
 ```
 
-**stderr 重定向**:
+注意 `echo` 不接受 `stdin` 输入，只将参数解析为字符串。而 `cat` 将参数作为文件读取，因此可接收
+`stdin` 输入。
+
+### stderr 重定向
 
 ```bash
 ls not_existing_file 2> error.log
@@ -33,7 +41,10 @@ ls not_exisiting_file &>> output.log
 cat not_existed_file >logfile 2>&1
 ```
 
-**stdin 重定向**: 默认 stdin 是输入设备. ==注意, 请不要将标准输入和命令参数搞混, 比如 `echo` 命令默认只接收字符串参数而不是标准输入, 因此 `echo < temp.txt` 是不对的, 需要 `cat temp.txt`==
+### stdin 重定向
+
+echo 命令默认将参数
+
 
 ```bash 
 sort < unsorted.txt
@@ -67,8 +78,6 @@ spec:
 EOF
 ```
 
-"here documents" 会展开 Shell 变量. 可以通过 `<<'EOF'` 禁用.
-
 ```bash
 cat << my-end-flag > lab.cc
 #include <stdio.h>
@@ -84,15 +93,18 @@ my-end-flag
 "here string" 类似, 将字符串重定向到 stdin.
 
 ```bash
-grep "example" <<< "here is an example"
+grep hello <<< "hello world"
+```
 
-# 常用于解析变量:
-read -r var1 var2 <<< "1 2"
+等价于： 
+
+```bash
+echo "hello world" | grep hello
 ```
 
 ## 管道
 
-管道 `|` 底层使用 Unix pipe 系统调用(一种进程间通信, IPC方式), sh 在两个命令之间建立一个缓冲区, 存储前一个命令的标准输出.
+管道 `|` 底层使用 Unix pipe 系统调用, sh 在两个命令之间建立一个缓冲区, 存储前一个命令的标准输出.
 
 ```bash
 # 统计行数
@@ -140,15 +152,6 @@ echo "on two three" | xargs mkdir
 find . -name "*.txt" -type f | xargs rm
 ```
 
-`-n` 指定每次命令执行时使用的参数个数. (输入多个参数时, xargs 实际在并发)
-
-`xargs echo` 拿不准替换结果时, 可以使用先实验一下.
-
-`-I` 指定一个替换字符串:
-```bash
-# 将 .txt 替换为 .bak
-find . -name "*.txt" -type f | xargs -I {} mv {} {}.bak
-```
 
 `-0` + `find ... --null`: 当文件名中可能包含空格或特殊字符时, 使用 `NULL` 隔开不同项, 而不是空格. 如 `fd, xargs` 支持用参数 `-0` 开启该功能, `find` 则使用参数 `-print0`
 
@@ -156,32 +159,5 @@ find . -name "*.txt" -type f | xargs -I {} mv {} {}.bak
 find . -name "*.txt" -type f -print0 | xargs -0 rm
 ```
 
-对于循环中文件名中的特殊字符, 可以设置 `IFS='$\n'`. IFS, Internal Field Separator, 是 Bash 用来定义字段或数据项分隔符的特殊变量, 默认值包含 `space, \t, \n`, 在读取一行数据或展开一个数组时可能导致问题.
+**Bash 默认的分隔符（IFS，Internal Field Separator）包括 `\s, \t, \n`，可以修改**。
 
-```bash
-IFS=$'\n'
-data="one two\nthree four"
-echo -e "$data" | while read line; do
-  echo "Line: $line"
-done
-unset IFS
-```
-
-## 过程替换
-
-```bash
-diff /etc/hosts <(ssh somehost cat /etc/hosts)
-```
-
-过程替换: `<(...)` 会将括号中命令执行后, 输出到一个临时命名管道 (named pipe), 然后继续传递. 对于接收这个输入的命令而言, **就像是在读取普通文件**
-
-
-## 用户输入
-
-```sh
-read -p "What's your name?" name
-
-# equal to:
-echo "What's your name?"
-read name
-```

@@ -79,3 +79,35 @@ Get-ChildItem -Path $completionDir -Filter *.ps1 | ForEach-Object {
     . $_.FullName
 }
 ```
+
+## 三方模块
+
+### 命令补全模块
+
+(powershell7)
+
+```powershell
+Install-Module -Name PSReadLine -AllowPrerelease -Scope CurrentUser -Force -SkipPublisherCheck
+Set-PSReadLineOption -ShowToolTips
+Set-PSReadLineOption -PredictionViewStyle ListView
+```
+
+### 命令编辑模块
+
+在外部编辑器中编辑命令行当前键入的命令: 
+
+```powershell
+Install-Module -Name PSReadLine -Force -Scope CurrentUser
+Set-PSReadLineOption -EditMode Vi
+$env:VISUAL = 'nvim' # 指定编辑器, 需要 nvim 在 PATH 中.
+
+# 建立键绑定: alt+x
+Set-PSReadLineKeyHandler -Chord Alt+x -Function ViEditVisually
+```
+
+### 命令历史模块
+
+直接编辑历史:
+```powershell
+nvim (Get-PSReadlineOption).HistorySavePath
+```
