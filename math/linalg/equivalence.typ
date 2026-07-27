@@ -8,9 +8,11 @@
 
 矩阵的秩指矩阵列 (行) 空间线性无关向量的个数.
 
-#theorem[矩阵行秩等于列秩]
-
-#note[这里的证明参考了#link("https://zh.wikipedia.org/wiki/线性代数基本定理")[维基百科]]
+#note[
+  #theorem[矩阵行秩等于列秩]
+][
+  这里的证明参考了#link("https://zh.wikipedia.org/wiki/线性代数基本定理")[维基百科]
+]
 
 #proof[
   对矩阵 $M_(m times n) ( R )$, 不妨假设 $m > n$.   

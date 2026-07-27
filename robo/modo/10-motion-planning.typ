@@ -183,13 +183,15 @@ still empty after $N$ independent samples is
 
 $ (1-p)^N arrow.r 0 " as " N arrow.r infinity. $
 
-A union bound over finitely many neighborhoods also tends to zero.  Positive
-clearance supplies the nonzero-volume neighborhoods; a zero-clearance passage
-does not satisfy this argument.
-
-#note[Nearest-neighbor distance is part of the planner model.  Raw Euclidean
-distance on mixed meters and radians can distort exploration; use normalized or
-task-informed weights and respect angle wraparound.]
+#note[
+  A union bound over finitely many neighborhoods also tends to zero. Positive
+  clearance supplies the nonzero-volume neighborhoods; a zero-clearance passage
+  does not satisfy this argument.
+][
+  Nearest-neighbor distance is part of the planner model. Raw Euclidean
+  distance on mixed meters and radians can distort exploration; use normalized or
+  task-informed weights and respect angle wraparound.
+]
 
 == Potential Fields
 

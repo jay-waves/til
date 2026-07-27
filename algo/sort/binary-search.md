@@ -124,3 +124,7 @@ int last_lt(const vector<int>& a, int trg) {
 	return l - 1;
 }
 ```
+
+## 参考
+
+[Static search trees: 40x faster than binary search](https://curiouscoding.nl/posts/static-search-tree)

@@ -1,0 +1,168 @@
+/*!
+ * GitHub-style highlight.js theme shared by VS Code and markdown-preview.nvim.
+ * The platform selectors only choose variables; all token rules are shared.
+ */
+
+:root,
+.vscode-light,
+main[data-theme]:not([data-theme="dark"]) {
+  --hljs-fg: #24292e;
+  --hljs-keyword: #d73a49;
+  --hljs-entity: #6f42c1;
+  --hljs-constant: #005cc5;
+  --hljs-string: #032f62;
+  --hljs-variable: #e36209;
+  --hljs-comment: #6a737d;
+  --hljs-tag: #22863a;
+  --hljs-section: #005cc5;
+  --hljs-bullet: #735c0f;
+  --hljs-addition: #22863a;
+  --hljs-addition-bg: #f0fff4;
+  --hljs-deletion: #b31d28;
+  --hljs-deletion-bg: #ffeef0;
+}
+
+.vscode-dark,
+main[data-theme="dark"] {
+  --hljs-fg: #adbac7;
+  --hljs-keyword: #f47067;
+  --hljs-entity: #dcbdfb;
+  --hljs-constant: #6cb6ff;
+  --hljs-string: #96d0ff;
+  --hljs-variable: #f69d50;
+  --hljs-comment: #768390;
+  --hljs-tag: #8ddb8c;
+  --hljs-section: #316dca;
+  --hljs-bullet: #eac55f;
+  --hljs-addition: #b4f1b4;
+  --hljs-addition-bg: #1b4721;
+  --hljs-deletion: #ffd8d3;
+  --hljs-deletion-bg: #78191b;
+}
+
+code[class*="language-"],
+.hljs {
+  color: var(--hljs-fg);
+  background: transparent;
+}
+
+/* markdown-preview.nvim's bundled #content code rule is more specific than
+ * the generic typography in theme.css. Keep highlighted code on the shared
+ * monospace face, including bare text nodes not wrapped in .hljs-* spans. */
+pre.hljs > code,
+#content pre.hljs > code {
+  font-family: "Fira Code", monospace;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+pre:has(> code[class*="language-"]),
+pre.hljs {
+  background-color: var(--md-pre-bg, #f3f4f6);
+  border: 1px solid var(--md-border, #d1d9e0);
+}
+
+code[class*="language-"].code-active-line {
+  background: transparent;
+}
+
+:is(code[class*="language-"], pre.hljs) :is(
+  .hljs-doctag,
+  .hljs-keyword,
+  .hljs-meta .hljs-keyword,
+  .hljs-template-tag,
+  .hljs-template-variable,
+  .hljs-type,
+  .hljs-variable.language_
+) {
+  color: var(--hljs-keyword);
+}
+
+:is(code[class*="language-"], pre.hljs) :is(
+  .hljs-title,
+  .hljs-title.class_,
+  .hljs-title.class_.inherited__,
+  .hljs-title.function_
+) {
+  color: var(--hljs-entity);
+}
+
+:is(code[class*="language-"], pre.hljs) :is(
+  .hljs-attr,
+  .hljs-attribute,
+  .hljs-literal,
+  .hljs-meta,
+  .hljs-number,
+  .hljs-operator,
+  .hljs-variable,
+  .hljs-selector-attr,
+  .hljs-selector-class,
+  .hljs-selector-id
+) {
+  color: var(--hljs-constant);
+}
+
+:is(code[class*="language-"], pre.hljs) :is(
+  .hljs-regexp,
+  .hljs-string,
+  .hljs-meta .hljs-string
+) {
+  color: var(--hljs-string);
+}
+
+:is(code[class*="language-"], pre.hljs) :is(
+  .hljs-built_in,
+  .hljs-symbol
+) {
+  color: var(--hljs-variable);
+}
+
+:is(code[class*="language-"], pre.hljs) :is(
+  .hljs-comment,
+  .hljs-code,
+  .hljs-formula
+) {
+  color: var(--hljs-comment);
+}
+
+:is(code[class*="language-"], pre.hljs) :is(
+  .hljs-name,
+  .hljs-quote,
+  .hljs-selector-tag,
+  .hljs-selector-pseudo
+) {
+  color: var(--hljs-tag);
+}
+
+:is(code[class*="language-"], pre.hljs) .hljs-subst {
+  color: var(--hljs-fg);
+}
+
+:is(code[class*="language-"], pre.hljs) .hljs-section {
+  color: var(--hljs-section);
+  font-weight: bold;
+}
+
+:is(code[class*="language-"], pre.hljs) .hljs-bullet {
+  color: var(--hljs-bullet);
+}
+
+:is(code[class*="language-"], pre.hljs) .hljs-emphasis {
+  color: var(--hljs-fg);
+  font-style: italic;
+}
+
+:is(code[class*="language-"], pre.hljs) .hljs-strong {
+  color: var(--hljs-fg);
+  font-weight: bold;
+}
+
+:is(code[class*="language-"], pre.hljs) .hljs-addition {
+  color: var(--hljs-addition);
+  background-color: var(--hljs-addition-bg);
+}
+
+:is(code[class*="language-"], pre.hljs) .hljs-deletion {
+  color: var(--hljs-deletion);
+  background-color: var(--hljs-deletion-bg);
+}

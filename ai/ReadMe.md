@@ -30,7 +30,3 @@
 * 2022. ChatGPT3.5
 * 2023. ChatGPT4, Multimodal model 
 
-## references
-
-
-* *Understanding Deep Learning*. Simon J.D. Prince. http://udlbook.com

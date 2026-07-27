@@ -1,13 +1,13 @@
-#import "../../appx/theme.typ": tufte, meta, note, theorem, proof, note2
+#import "../../appx/theme.typ": tufte, meta, note, theorem, proof
 #show: tufte
 
 #let bmat(..args) = math.mat(delim: "[", ..args)
 
 #meta(subtitle: [矩阵分解])
 
-#image("../../attach/matrix-world.webp")
-
 #note[
+  #image("../../attach/matrix-world.webp")
+][
   图片来自 *the Art of Linear Algebra*,
   翻译版本请见 `../../attach/matrix-world-zh.webp`
 ]
@@ -15,7 +15,7 @@
 
 = 矩阵分解的类型
 
-#note2[
+#note[
   矩阵有五种分解: 
   + 行列空间分解 (满秩分解)
   + LU 分解
@@ -42,9 +42,11 @@
 
 == Schur 分解
 
-#note[酉矩阵详见 `./othogonal-matrix.typ`]
-
-*任意*矩阵 $A in bb(C)^(n times n)$ 皆存在*酉矩阵* $U$, 使得 
+#note[
+  *任意*矩阵 $A in bb(C)^(n times n)$ 皆存在*酉矩阵* $U$, 使得
+][
+  酉矩阵详见 `./othogonal-matrix.typ`
+]
 
 $ U^H A U = T $
 
@@ -56,7 +58,7 @@ $ U^H A U = T $
 
 *算法*:
 
-对矩阵 $A$ 执行一次 #link("向量分析/直和与投影.typ")[QR] 分解: $A = Q R$, 然后构造 $A_1 = R Q$.
+对矩阵 $A$ 执行一次 #link("./vectors/direct-sums-and-proj.typ")[QR] 分解: $A = Q R$, 然后构造 $A_1 = R Q$.
 
 接着不断 QR 迭代: 
 

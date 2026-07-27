@@ -143,15 +143,17 @@ $ R(s) = R_("start") exp(log(R_("start")^T R_("end")) s) $
 
 $ p(s) = p_("start") + s (p_("end") - p_("start")) $
 
-This preserves straight translation while following the shortest selected
-geodesic in orientation.  It is distinct from screw interpolation.  Both are
-task-space paths and require IK at each sample; IK branch jumps, unreachable
-intermediate poses, joint limits, and collisions can make them infeasible even
-when the endpoint poses are valid.
-
-#note[Interpolate rotations on $"SO"(3)$, not by linearly interpolating rotation
-matrix entries or Euler angles.  The latter can leave $"SO"(3)$ or encounter
-coordinate singularities.]
+#note[
+  This preserves straight translation while following the shortest selected
+  geodesic in orientation. It is distinct from screw interpolation. Both are
+  task-space paths and require IK at each sample; IK branch jumps, unreachable
+  intermediate poses, joint limits, and collisions can make them infeasible even
+  when the endpoint poses are valid.
+][
+  Interpolate rotations on $"SO"(3)$, not by linearly interpolating rotation
+  matrix entries or Euler angles. The latter can leave $"SO"(3)$ or encounter
+  coordinate singularities.
+]
 
 == Polynomial Via-Point Trajectories
 

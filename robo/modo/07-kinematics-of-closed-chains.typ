@@ -82,13 +82,15 @@ points $p_i$, platform pose $(R,p)$, and leg lengths $l_i$ satisfy
 
 $ norm(p + R p_i - b_i)^2 = l_i^2, quad i=1,dots,6. $
 
-The inverse problem evaluates these six lengths directly.  The forward problem
-solves six nonlinear equations in the platform pose and may have several real
-solutions.
-
-#note[Choosing the nearest numerical root does not by itself preserve assembly
-mode.  Continuation should track the previous configuration and monitor
-singularities between samples.]
+#note[
+  The inverse problem evaluates these six lengths directly. The forward problem
+  solves six nonlinear equations in the platform pose and may have several real
+  solutions.
+][
+  Choosing the nearest numerical root does not by itself preserve assembly
+  mode. Continuation should track the previous configuration and monitor
+  singularities between samples.
+]
 
 == Velocity Constraints
 

@@ -17,6 +17,7 @@ Linux 的进程状态划分：
 - dead(X). 进程已删除
 
 
+
 ```mermaid
 stateDiagram-v2
 
@@ -48,7 +49,9 @@ stateDiagram-v2
 
 ## Linux 调度类
 
-Linux 内核中，每个 CPU 绑定一个*运行队列* `struct rq` ，其下按调度类划分*子运行队列*，`struct cfs_rq, struct rt_rq, struct dl_rq` 。运行队列中的调度单位是 `struct sched_entity` ，这个调度单位是对线程类的成员 `task_struct->se` 的引用。
+Linux 内核中，每个 CPU 绑定一个*运行队列* `struct rq` ，其下按调度类划分*子运行队列*，
+`struct cfs_rq, struct rt_rq, struct dl_rq` 。运行队列中的调度单位是 `struct sched_entity` ，
+这个调度单位是对线程类的成员 `task_struct->se` 的引用。
 
 | 调度类           | 策略                         | 描述                   |
 | ---------------- | ---------------------------- | ---------------------- |
@@ -62,9 +65,11 @@ Linux 的不同调度类之间也有优先级：stop > deadline > real-time > fa
 
 ## CFS (Completely Fair Schedulr)
 
-对于每个任务，追求虚拟运行时间 `vruntime` 的公平分配。`SCHED_NOFRMAL` 用于日常交互任务，`SCHED_BATCH` 用于吞吐任务。**CFS 是 Linux 默认的调度策略**。
+对于每个任务，追求虚拟运行时间 `vruntime` 的公平分配，不依赖固定时间片。
+`SCHED_NOFRMAL` 用于日常交互任务，`SCHED_BATCH` 用于吞吐任务。**CFS 是 Linux 默认的调度策略**。
 
-经典 CFS 调度类中，`vruntime` 则表示在“理想而公平的 CPU” 中，该进程已经运行了多少时间，这是一个经过 `nice` 值加权的虚拟时间，大概计算方式如下：
+经典 CFS 调度类中，`vruntime` 则表示在“理想而公平的 CPU” 中，该进程已经运行了多少时间，
+这是一个经过 `nice` 值加权的虚拟时间，大概计算方式如下：
 
 ```c
 // 为了减少 ^ 的计算损耗，内核实际在用查表法，这里只是近似值
@@ -78,9 +83,12 @@ delta_vruntime = delta_exec * NICE_0_LOAD / load_weight; // delta_exec * 1.25 ^ 
 vruntime += delta_vruntime;
 ```
 
-也就是说，`nice` 越小，`vruntime` 增长越慢。经典 CFS 算法将所有实体的 `vruntime` 放在一个红黑树里排序，每次选择最小的 `vruntime` 进行调度（树最左实体）。Linux 6.6+ 后，CFS 调度时不再仅选择`vruntime` 最小的实体，而是逐步切换到更复杂的 EEVDF（见下）。
+也就是说，`nice` 越小，`vruntime` 增长越慢。
+经典 CFS 算法将所有实体的 `vruntime` 放在一个红黑树里排序，每次选择最小的 `vruntime` 进行调度（树最左实体）。
+Linux 6.6+ 后，CFS 调度时不再仅选择`vruntime` 最小的实体，而是逐步切换到更复杂的 EEVDF。
 
-在完整的调度周期中，线程进入 `RUNNING` 状态就会触发调度，此时会更新 `vruntime` 并选择最终负载。当任务的时间片耗尽、陷入阻塞等情况触发调度时，`vruntime` 也会被重新计算。
+在完整的调度周期中，线程进入 `RUNNING` 状态就会触发调度，此时会更新 `vruntime` 并选择最终负载。
+当任务的时间片耗尽、陷入阻塞等情况触发调度时，`vruntime` 也会被重新计算。
 
 ```c
 struct sched_entity {
@@ -109,6 +117,8 @@ struct cfs_rq {
 
 每个 CPU 持有独立的 `struct cfs_rq` ，调度主要发生在本 CPU 核心内。跨 CPU 的调度由复杂均衡器负责。
 
+> CFS nice 和时间片分配是指数关系，意味着，nice=0 和 nice=10 进程间的时间片差距会很明显，符合用户期望。
+
 ## RT Class 
 
 实时调度器。**按固定任务优先级抢占调度 (Priority Scheduling, PR)，优先级 0~99（99 最
@@ -117,7 +127,8 @@ struct cfs_rq {
 FIFO 模式下，高优先级线程永远抢占低优先级线程。没有时间片抢占，高优先级线程会持续执行，
 直到阻塞或被更高优先级线程抢占。
 
-RT Class 也被称为 Fixed Priority Class ，采用经典调度方式（RM, 周期越短，优先级越高）的条件下，其可调度的充分条件是 ($U$ 是 CPU 利用率):
+RT Class 也被称为 Fixed Priority Class ，采用经典调度方式（RM, 周期越短，优先级越高）的条件下，
+其可调度的充分条件是 ($U$ 是 CPU 利用率):
 
 $$ U\leq n(2^{1/n} - 1) $$
 
@@ -125,7 +136,9 @@ $$ U\leq n(2^{1/n} - 1) $$
 
 ## EDF (Earliest Deadline First, EEVDF)
 
-对于单核，EDF 调度器在以下情况被证明是最优的：对于 deadline 小于等于 period 的单核的周期性或偶发性任务（不包括突发任务）。每个 EDF 任务的参数如下，每次调度时，绝对截止日期最近的任务会被选择。
+对于单核，EDF 调度器在以下情况被证明是最优的：
+对于 deadline 小于等于 period 的单核的周期性或偶发性任务（不包括突发任务）。
+每个 EDF 任务的参数如下，每次调度时，绝对截止日期最近的任务会被选择。
 
 * Runtime： WCET 最坏执行时间，即某个任务完成所需的至多 CPU 时间
 * Period：任务释放（release）的时间间隔

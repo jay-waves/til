@@ -209,14 +209,16 @@ $eta=-k nabla h(theta)$ can reduce a secondary cost $h$, such as distance to a
 preferred posture or a joint-limit barrier, without changing the primary task
 to first order.
 
-Null-space projection alone does not guarantee finite-step feasibility.
-Practical constrained IK may instead solve a bounded least-squares or quadratic
-program with joint position and step limits.  Collision avoidance requires
-additional distance constraints or costs and a collision model.
-
-#note[Clipping an unconstrained update at joint limits changes the direction of
-the step and can destroy convergence.  Active-set or bounded solvers account
-for the constrained directions while computing the step.]
+#note[
+  Null-space projection alone does not guarantee finite-step feasibility.
+  Practical constrained IK may instead solve a bounded least-squares or quadratic
+  program with joint position and step limits. Collision avoidance requires
+  additional distance constraints or costs and a collision model.
+][
+  Clipping an unconstrained update at joint limits changes the direction of
+  the step and can destroy convergence. Active-set or bounded solvers account
+  for the constrained directions while computing the step.
+]
 
 == Inverse Velocity Kinematics
 

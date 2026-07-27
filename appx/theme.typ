@@ -1,4 +1,8 @@
-// based on https://github.com/fredguth/tufte-typst
+/*
+* 数学宏： theorem, lemma, corollary, definition, proof
+* 样式宏：tufte + note, 
+* 接收的系统输入：theme=dark/light, layout=landscape/portrait
+*/
 
 #import "@preview/ctheorems:1.1.3": *
 #import "@preview/physica:0.9.8" as physica
@@ -39,7 +43,16 @@
   default: preview-info.at("theme", default: "light"),
 )
 
+#let layout = sys.inputs.at("layout", default: "landscape")
+#assert(
+  layout in ("portrait", "landscape"),
+  message: "The layout input must be either \"portrait\" or \"landscape\".",
+)
+
 #let dark = theme == "dark"
+#let landscape = layout == "landscape"
+#let page-columns = if landscape { 2 } else { 1 }
+#let column-gutter = 4%
 
 #let fg = if dark { rgb("#f0f6fc") } else { rgb("#1f2328") }
 #let bg = if dark { rgb("#212830") } else { white }
@@ -49,33 +62,36 @@
 #let accent = if dark { rgb("#478be6") } else { rgb("#0969da") }
 #let code-fg = if dark { rgb("#c9d1d9") } else { rgb("#24292f") }
 #let pre-bg = if dark { rgb("#262c36") } else { rgb("#f6f8fa") }
+#let shadow = if dark { rgb("#00000066") } else { rgb("#1f232826") }
 #let cjk-text = regex("\p{Han}+")
 
-#let margin-width = 16em
-#let margin-gutter = 2em
 #let note-size = 7pt
+#let note-body-ratio = 3fr
+#let note-aside-ratio = 1fr
+#let note-gutter = 4%
 
-#let sidenote(content) = {
-  place(
-    dx: 43em,
-    block(
-      breakable: false,
-      width: margin-width,
-      content,
-    ),
-  )
-}
-
-#let note(body) = sidenote(text(size: note-size, body))
-
-#let note2(body, note) = {
+#let note(body, aside) = {
   block(
-    width: 100% + margin-width + margin-gutter,
+    width: 100%,
+    breakable: true,
     grid(
-      columns: (1fr, margin-width),
-      column-gutter: margin-gutter,
+      columns: (note-body-ratio, note-aside-ratio),
+      column-gutter: note-gutter,
+      align: top + left,
       block(width: 100%, body),
-      text(size: note-size, block(width: margin-width, note)),
+      block(
+        width: 100%,
+        inset: (x: 0.75em, y: 0.6em),
+        radius: 5pt,
+        fill: pre-bg,
+        stroke: (
+          top: 0.35pt + border-muted,
+          left: 0.35pt + border-muted,
+          right: 1.2pt + shadow,
+          bottom: 1.2pt + shadow,
+        ),
+        text(size: note-size, aside),
+      ),
     ),
   )
 }
@@ -143,8 +159,20 @@
 
   set page(
     paper: "a4",
+    flipped: landscape,
+    columns: page-columns,
     fill: bg,
-    margin: (y: 4.5em, left: 4em, right: 19em),
+    margin: (y: 3em, x: 2.5em),
+    foreground: if landscape {
+      place(
+        center + horizon,
+        rect(
+          width: 0.55pt,
+          height: 100% - 6em,
+          fill: border-muted,
+        ),
+      )
+    },
     header: context {
       if here().page() != 1 {
         set text(
@@ -155,12 +183,13 @@
           number-type: "old-style",
           number-width: "tabular",
         )
-        place(right, dy: 6em, dx: 19em)[
+        place(right, dy: 3.5em)[
           #upper(title) #h(1em) #text(size: 11pt, counter(page).display())
         ]
       }
     },
   )
+  set columns(gutter: column-gutter)
 
   show raw: it => {
     if it.block {
@@ -186,7 +215,7 @@
   let has-authors = authors != () and authors.len() > 0
   if title != none or abstract != none or subtitle != none or has-authors {
     block(
-      width: 100% + 14em - 4em,
+      width: 100%,
       inset: 0pt,
       radius: 4pt,
       text(font: main-fonts, weight: "medium", size: 9pt, fill: fg)[
@@ -229,7 +258,7 @@
         h(7pt, weak: true)
       }
       #it.body
-      #v(9pt, weak: true)
+      #v(12pt, weak: true)
     ] else [
       #set text(font: heading-fonts, size: 9.5pt, weight: "bold", fill: accent)
       #if it.numbering != none {
@@ -237,6 +266,7 @@
       }
       #it.body
       #text(fill: accent)[:]
+      #v(12pt, weak: true)
     ]
   }
 
@@ -256,7 +286,7 @@
   }
   show figure.caption: set text(size: 7pt)
   show image: set block(above: 1.1em, below: 1.1em)
-  show cjk-text: set text(tracking: 0.05em)
+  show cjk-text: set text(size: 0.9em, tracking: 0.05em)
   show: thmrules.with(qed-symbol: $square$)
 
   body

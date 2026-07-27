@@ -10,6 +10,10 @@ Operators all interact with Vim’s built-in registers: operations first write c
 - `gv` 重选上次选中的文本
 - `va(` 选中当前所在括号，如 `(xxx)`，类似地还有 `", ', (, {, [`
 
+## 注释 
+
+`gc` 将选中的文本改为注释
+
 ## 删除 `d`
 
 Vim 删除等同于剪切，将文本从缓冲区删除，存储默认寄存器。
@@ -74,4 +78,5 @@ n      " 跳转到下一个 register 出现.
 " 将该行追加到寄存器 a, 使用 a 的大小模式 A 标识.
 "AY 
 ```
+
 

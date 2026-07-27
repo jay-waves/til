@@ -12,7 +12,9 @@
 }
 
 :root,
-body {
+body,
+.vscode-light,
+main[data-theme]:not([data-theme="dark"]) {
   --md-fg: #1f2328;
   --md-bg: #ffffff;
   --md-muted: #59636e;
@@ -26,7 +28,7 @@ body {
   --md-quote-bg: #f6f8fa;
   --md-code-bg: #818b981f;
   --md-code-fg: #24292f;
-  --md-pre-bg: #f6f8fa;
+  --md-pre-bg: #f3f4f6;
   --md-danger: #d1242f;
   --md-alert-important: #8250df;
   --md-alert-warning: #9a6700;
@@ -34,11 +36,12 @@ body {
   --md-font-serif: "MD Latin", "思源宋体 CN", serif;
   --md-font-sans: "MD Latin", "思源黑体 CN", sans-serif;
   --md-font: var(--md-font-serif);
-  --md-mermaid-font-size: 18px;
   color-scheme: light;
 }
 
-body.vscode-dark {
+body.vscode-dark,
+.vscode-dark,
+main[data-theme="dark"] {
   --md-fg: #f0f6fc;
   --md-bg: #212830;
   --md-muted: #9198a1;
@@ -610,58 +613,15 @@ body code span {
   border: 0;
 }
 
+/*
+ * Leave Mermaid's typography, geometry and SVG presentation to Mermaid.
+ * The preview theme only supplies the surrounding foreground/background
+ * palette; forcing label or foreignObject metrics breaks Mermaid's layout.
+ */
 body .mermaid,
 body pre.mermaid {
-  overflow: visible;
-  white-space: normal;
-  background-color: rgba(0,0,0,0);
-}
-
-body .mermaid svg {
-  display: block;
-  max-width: 80%;
-  overflow: visible;
-  margin: 0 auto;
-}
-
-body .mermaid foreignObject,
-body .mermaid .label,
-body .mermaid .nodeLabel,
-body .mermaid .edgeLabel {
-  overflow: visible;
-}
-
-body .mermaid,
-body .mermaid text,
-body .mermaid span,
-body .mermaid p,
-body .mermaid div {
-  font-family: var(--md-font) !important;
-  font-size: var(--md-mermaid-font-size) !important;
-  line-height: 1.25 !important;
-}
-
-body .mermaid .label,
-body .mermaid .nodeLabel,
-body .mermaid .edgeLabel,
-body .mermaid .label p,
-body .mermaid .nodeLabel p,
-body .mermaid .edgeLabel p,
-body .mermaid .label div,
-body .mermaid .nodeLabel div,
-body .mermaid .edgeLabel div {
-  margin: 0 !important;
-  padding: 0 !important;
-  text-indent: 0 !important;
-  text-align: center !important;
-}
-
-body .mermaid foreignObject > div {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  width: 100%;
-  height: 100%;
+  color: var(--md-fg);
+  background-color: transparent;
 }
 
 body [data-footnote-ref]::before {
@@ -825,4 +785,24 @@ body mjx-container,
 body mjx-container[display="true"],
 body mjx-container svg {
   font-size: 15px;
+}
+
+/*
+ * markdown-preview.nvim renders inside <main data-theme="...">, while
+ * VS Code adds .vscode-light/.vscode-dark. Both inherit the variables above.
+ */
+main[data-theme] {
+  min-height: 100vh;
+  color: var(--md-fg);
+  background-color: var(--md-bg);
+}
+
+html:has(main[data-theme="dark"]),
+body:has(main[data-theme="dark"]) {
+  background-color: #212830;
+}
+
+html:has(main[data-theme]:not([data-theme="dark"])),
+body:has(main[data-theme]:not([data-theme="dark"])) {
+  background-color: #ffffff;
 }

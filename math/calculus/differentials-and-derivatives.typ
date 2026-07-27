@@ -74,9 +74,11 @@ $ x dot sin(1 / x) = cases(1 & x arrow.r 0, "未定义" & x = 0) $
 
 == 一元函数
 
-#note[图示见 `./differentials-and-derivatices.md`]
-
-左右极限存在且相等, 说明函数在该点#strong[极限存在]: $ lim_(x arrow.r a^(+)) f(x) = lim_(x arrow.r a^(-)) f(x) $
+#note[
+  左右极限存在且相等, 说明函数在该点#strong[极限存在]: $ lim_(x arrow.r a^(+)) f(x) = lim_(x arrow.r a^(-)) f(x) $
+][
+  图示见 `./differentials-and-derivatices.md`
+]
 
 左右极限存在且等于该点定义值, 说明函数在该点局部#strong[连续]: $ lim_(x arrow.r a^(+)) f(x) = lim_(x arrow.r a^(-)) f(x) = f(a) $
 
@@ -84,9 +86,11 @@ $ x dot sin(1 / x) = cases(1 & x arrow.r 0, "未定义" & x = 0) $
 
 == 多元函数
 
-#note[图示见 `./differentials-and-derivatices.md`]
-
-对于多元函数, 偏导存在是指 $x , y$ 正方向上导数存在, 由于不关心其他方向, 因此偏导可能不连续.
+#note[
+  对于多元函数, 偏导存在是指 $x , y$ 正方向上导数存在, 由于不关心其他方向, 因此偏导可能不连续.
+][
+  图示见 `./differentials-and-derivatices.md`
+]
 
 #strong[若二阶偏导 $frac(partial^2 z, partial x partial y)$, $frac(partial^2 z, partial y partial x)$ 都在区域 D 内连续, 则] $ frac(partial^2 z, partial x partial y) = frac(partial^2 z, partial y partial x) $
 

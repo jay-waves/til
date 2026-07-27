@@ -10,10 +10,16 @@
 == 克莱姆 (Cramer) 方法
 克莱姆法则 (Cramer's Rule) 使用行列式来求解线性方程组.
 
-对于线性方程组: $ {a_11 x_1 + a_12 x_2 + dots.c + a_(1 n) x_n = b_1\
-a_21 x_1 + a_22 x_2 + dots.c + a_(2 n) x_n = b_2\
-dots.v\
-a_(n 1) x_1 + a_(n 2) x_2 + dots.c + a_(n n) x_n = b_n $
+对于线性方程组: 
+
+$ 
+cases(
+a_11 x_1 + a_12 x_2 + dots.c + a_(1 n) x_n = b_1,
+a_21 x_1 + a_22 x_2 + dots.c + a_(2 n) x_n = b_2,
+dots.v,
+a_(n 1) x_1 + a_(n 2) x_2 + dots.c + a_(n n) x_n = b_n,
+)
+$
 
 设系数矩阵 $A$ 的行列式 $D = | A | eq.not 0$, 则方程组有唯一解: $x_i = D_i / D$
 
@@ -36,27 +42,48 @@ $  & det(D_i)\
 == 高斯 (Gauss) 消去法
 本质上两种方法都首先构建了一个增广矩阵:
 
-$ mat(delim: "[", a_11, dots.c, a_(1 n), b_1; dots.v, dots.down, dots.v, dots.v; a_(n 1), dots.c, a_(n n), b_n; #none) $
+$ bmat(
+  a_11, dots.c, a_(1 n), b_1; 
+  dots.v, dots.down, dots.v, dots.v; 
+  a_(n 1), dots.c, a_(n n), b_n; 
+) $
 
 然后按行进行初等变化, 使得矩阵变为如下的形式:
 
-$ mat(delim: "[", 1, dots.c, a'_(1 n), b'_1; #none, dots.down, dots.v, dots.v; upright(bold(0)), , 1, b'_n; #none) $
+$ bmat(
+  1, dots.c, a'_(1 n), b'_1; 
+  #none, dots.down, dots.v, dots.v; 
+  upright(bold(0)), , 1, b'_n; 
+) $
 
 代回, 变化成下面的矩阵, 得到的即为向量 $upright(bold(x))$ 的解:
 
-$ mat(delim: "[", upright(bold(I))_(n times n), upright(bold(b'))_(n times 1)) $
+$ bmat(upright(bold(I))_(n times n), upright(bold(b'))_(n times 1)) $
 
 === LU 分解
 用高斯消除法求解#link("../linalg/线性方程组/线性方程组的解.md")[非齐次线性方程组] $A dot x = b$, 也被称为矩阵 $L dot U$ 分解. 每一步高斯消去, 等价于用一个单位下三角矩阵 $L_k^(- 1)$ 左乘 $A$, 将所有行变换操作连乘, 得到 $L^(- 1) A = U$, 即 $A = L U$.
 
-高斯消去法的充要条件是#strong[所有顺序主子式都非零], 即每一步都不会遇到零主元 (对角元). 如果某步主元为零 (或者非常小, 为了数值稳定性), 需要将其与非零行交换, 引入置换矩阵 $P$: $P A = L U$.
+高斯消去法的充要条件是*所有顺序主子式都非零*, 即每一步都不会遇到零主元 (对角元). 如果某步主元为零 (或者非常小, 为了数值稳定性), 需要将其与非零行交换, 引入置换矩阵 $P$: $P A = L U$.
 
 === 三角分解法
 $ A x = L U x = L y = b $, 求解时, 先求 $y$, 然后求 $x$.
 
 对于 $ D o o l i t t l e$ 分解, $L$ 为单位下三角阵 (主对角元为1), $U$ 为上三角阵:
 
-$ upright(bold(L)) = mat(delim: "[", 1, 0, 0, dots.h, 0; l_21, 1, 0, dots.h, 0; l_31, l_32, 1, dots.h, 0; dots.v, dots.v, dots.v, dots.down, 0; l_(n 1), l_(n 2), l_(n 3), dots.h, 1; #none) quad upright(bold(U)) = mat(delim: "[", u_11, u_12, u_13, dots.h, u_(1 n); 0, u_22, u_23, dots.h, u_(2 n); 0, 0, u_33, dots.h, u_(3 n); dots.v, dots.v, dots.v, dots.down, dots.v; 0, 0, 0, dots.h, u_(n n); #none) $
+$ 
+upright(bold(L)) = bmat(1, 0, 0, dots.h, 0; 
+  l_21, 1, 0, dots.h, 0; 
+  l_31, l_32, 1, dots.h, 0; 
+  dots.v, dots.v, dots.v, dots.down, 0; 
+  l_(n 1), l_(n 2), l_(n 3), dots.h, 1; 
+) quad upright(bold(U)) = bmat(
+  u_11, u_12, u_13, dots.h, u_(1 n); 
+  0, u_22, u_23, dots.h, u_(2 n); 
+  0, 0, u_33, dots.h, u_(3 n); 
+  dots.v, dots.v, dots.v, dots.down, dots.v; 
+  0, 0, 0, dots.h, u_(n n); 
+) 
+$
 
 对于 #emph[$C r o u t$ 分解], $L$ 为下三角阵, $U$ 为单位上三角阵:
 

@@ -1,16 +1,19 @@
 ## 会话
 
-文件被读取到内存后，vim 将其称为 *buffer* ，（而不是主流的 tab 称呼），buffer 被存储在单个进程的 buffer list 里。而 windows 则是显式一个 buffer 的区域。同一个界面可以被分屏，整体被称为 *tab* ，tab 基本不用，更多是直接用 buffer list。
+文件被读取到内存后，vim 将其称为 *buffer* ，（而不是主流的 tab 称呼），
+buffer 被存储在单个进程的 buffer list 里。而 windows 则是显式一个 buffer 的区域。
+同一个界面可以被分屏，整体被称为 *tab* ，tab 基本不用，更多是直接用 buffer list。
 
 ### 管理全局缓冲区
 
 ```vim
 :bn           " 切换到下一个缓冲区, buffer next
 :bp           " 切换到上一个缓冲区, buffer previous
-:b2           " 切换到第二个标签页, 用 :buffers 查看编号
 :bd <buffer>  " 删除缓冲区, buffer delete
-:ls
-:buffers      " 列出全局缓冲区列表
+
+:ls           " 列出全局缓冲区列表
+:b<n>         " 用缓冲区编号快速跳转
+
 :e <file>     " 激活新 buffer, 隐藏当前 buffer
 ```
 

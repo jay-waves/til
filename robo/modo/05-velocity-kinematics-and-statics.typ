@@ -130,12 +130,14 @@ Not every “Jacobian” in software is the $6 times n$ twist Jacobian:
   point.  If that point has fixed body coordinates $r_b$, its space position is
   $p+r$ with $r=R r_b$, and $dot(p+r)=v_s-omega_s times (p+r)$ under the spatial
   twist convention.
-- A Jacobian expressed at a different point changes its linear rows even if the
-  orientation coordinates are unchanged.
-
-#note[Always record the twist ordering, expression frame, and reference point
-when passing a Jacobian between libraries.  Matching matrix dimensions alone
-does not establish compatible conventions.]
+#note[
+  - A Jacobian expressed at a different point changes its linear rows even if the
+    orientation coordinates are unchanged.
+][
+  Always record the twist ordering, expression frame, and reference point
+  when passing a Jacobian between libraries. Matching matrix dimensions alone
+  does not establish compatible conventions.
+]
 
 == Statics
 

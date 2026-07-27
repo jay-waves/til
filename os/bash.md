@@ -13,11 +13,7 @@
 
 详见 [bash io redirect](./bash-io.md)
 
-## Bash Script
-
-Bash 有脚本能力，但是并不推荐写，隐蔽行为太多。越自作聪明，调试代码就越痛苦。   
-
-### Variables
+## Bash Variables
 
 Bash 变量包含继承自父程序的**环境变量**和局部变量。变量相关内容详见 [bash variables](./bash-var.md)
 
@@ -31,6 +27,10 @@ bash 有两种展开类型：
 ```bash
 (cd /tmp && command)
 ```
+
+## Bash Script
+
+Bash 有脚本能力，但是并不推荐写，隐蔽行为太多。越自作聪明，调试代码就越痛苦。   
 
 ### Shebang
 

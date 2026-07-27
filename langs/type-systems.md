@@ -11,6 +11,13 @@ char *s = "hello\n"
 
 Manifest Typing. 要求在源码中明确声明每个变量和函数的类型. 显式语言一般为静态语言, 但是有的静态语言支持类型推断 (如 c++ auto).
 
+对比一下前置类型和后置类型：
+
+```diff
+- int (*(*fp)(int))(char *); 
++ var fp func(int) func(byte) int
+```
+
 ## 动态类型
 
 在**运行时**确定变量的类型, 并检查类型错误. 更灵活. 
@@ -26,7 +33,6 @@ x = "Now x is a string"
 // 虽然 typescript 添加了静态类型, 但是仍允许类型推断
 let x = 10;
 ```
-
 
 ## 强/弱类型
 

@@ -84,7 +84,6 @@ revised: 2026-01-27
 - iconv, uchardet [char-encoding](../hw/char-encoding.md)工具
 - **fzf**, 模糊查找工具
 - zoxide
-- sl, genact 摸鱼用
 - hl, lnav, 日志浏览器
 - tldr
 - rclone 云存储工具
@@ -122,20 +121,18 @@ Windows 上一些 GNU 工具移植, 见 [GNUwin32](https://gnuwin32.sourceforge.
 - Picture in Picture
 - Obsidian Web Clipper 
 - Read Aloud 
-- [chatgpt long conversation optimization](https://github.com/bujue3709/chatgpt-Long-conversation-optimization)
 
 ## AI 
 
 * [OpenRouter](https://openrouter.ai/models)
-* copilot-cli
 * grok, chatgpt 
-* piper 文字转语音 TTS 工具
+* piper 文字转语音 TTS 工具 （非常轻量）
 
 ## Linux GUI
 
 also see [.bashrc](bashrc.md), here is the GUI choice:
 
-* yazi 命令行文件管理器
+* ~~[yazi](https://github.com/sxyazi/yazi) 命令行文件管理器~~ 最近更喜欢 [lf](https://github.com/gokcehan/lf)
 * flameshot 截图贴图工具
 * Alacritty 命令行
 * chrome 比 firefox 稳定很多

@@ -124,7 +124,7 @@ done
 
 ### `tee`
 
-用于保留一份 stdout 的副本, 同时不干扰正常 stdout 输出.
+复制 stdin 到多个输出流，比如同时输出到 stdout 和 file.
 
 ```bash
 # 保留 stdout 副本到多个文件, 同时屏幕仍有 cmd1 输出
@@ -133,9 +133,11 @@ cmd1 | tee file1 file2 file3
 # `cmd1 | cmd2`, 同时将 cmd1 输出附加到 file1 中
 cmd1 | tee -a file1 | cmd2
 
-# 修改 /etc/ocnfig.conf, 同时输出修改内容
+# 直接用 sudo echo > xxx 会报错，因为 `> xxx` 不属于 echo 命令一部分，而是 shell 环境做的重定向，
+# 不继承 sudo，因此无法打开高权限文件
 echo "Some configuration" | sudo tee /etc/someconfig.conf
 ```
+
 
 ## `xargs`
 

@@ -25,10 +25,10 @@
 
 ## Workflow
 
-笔记库采用 Typst + Markdown 混合排版，推荐的编辑器为 VSCode。
-* Markdown 文档的推荐样式见 `appx/theme.css` ，仅供 VSCode Preview 使用。
+笔记库采用 Typst + Markdown 混合排版。
+* Markdown 文档的推荐样式见 `appx/theme.css` 
+* Markdown 文档的代码块样式见 `appx/highlight.css`，供 hljs css 块使用。
 * Typst 文档的推荐样式见 `appx/theme.typ` 
-* 引用信息罗列在 `appx/library.bib`
 
 文件内属性 (YAML Preamble):
 
@@ -73,12 +73,6 @@
 - 仓库整体使用 [CC-BY](license.md) 许可证，部分摘录文章或原创文章使用不同版权许可的，在文章开头标明
 - 提及人名或组织名时，使用：@google、@github/jay-waves、@yayvyn 
 - 引用时，使用简写格式： `[ITU-T x.800, 2002, p22]` `[Bjarne Stroustrup, 2014]` ，人名、文章名、期刊名皆可以简写。
-
-### Math
-
-- 重要的*定理、引理、定义*使用标题格式，并用数字编号 `x.m.n` 便于整理和引用。
-- 数学证明中，用 `\Proof{}` 和 `\square` 标识开始与结束。
-- 复杂的数学排版，请优先使用 Typst 而不是 Markdown
 
 ### Attachments 
 
