@@ -58,49 +58,94 @@ lsof -i :port
 lsof -p  pid
 ```
 
-## 主存信息
+## 操作系统信息 
+
+### uname 
+
+```bash
+uname -a 
+
+# Linux ok3588 5.10.209-rt89 #9 SMP PREEMPT_RT Fri Jun 12 16:36:48 CST 2026 aarch64 aarch64 aarch64 GNU/Linux
+```
+
+### chrt 
+
+查看调度信息 
+
+```bash
+chrt -m
+
+# SCHED_OTHER min/max priority    : 0/0
+# SCHED_FIFO min/max priority     : 1/99
+# SCHED_DEADLINE min/max priority : 0/0
+```
+
+### ulimit
+
+查看系统参数（限制）
+
+```bash
+ulimit -a 
+
+# real-time non-blocking time  (microseconds, -R) unlimited
+# core file size              (blocks, -c) 0
+# data seg size               (kbytes, -d) unlimited
+# scheduling priority                 (-e) 0
+# file size                   (blocks, -f) unlimited
+# pending signals                     (-i) 30402
+# max locked memory           (kbytes, -l) 1006072
+# max memory size             (kbytes, -m) unlimited
+# open files                          (-n) 1024
+# pipe size                (512 bytes, -p) 8
+# POSIX message queues         (bytes, -q) 819200
+# real-time priority                  (-r) 0              < 当前用户不能启动实时线程
+# stack size                  (kbytes, -s) 8192
+# cpu time                   (seconds, -t) unlimited
+# max user processes                  (-u) 30402
+# virtual memory              (kbytes, -v) unlimited
+# file locks                          (-x) unlimited
+```
+
+## 磁盘信息
 
 ### `free`
 
-`free` 检查主存空间
-
-## 硬盘信息
-
-`df`，`mount`，`fdisk`，`mkfs`，`lsblk`
+检查运行内存 
 
 ### `df`
 
 Shows disk usage. (disk free)
 
-### `du`
+### [`du`]((http://www.linfo.org/du.html)
 
-Shows the disk usage of files or directories. For more information on this command check this [link](http://www.linfo.org/du.html)
-
-```bash
-du [option] [filename|directory]
-```
-
-Options:
-
-- `-h` (human readable) Displays output it in kilobytes (K), megabytes (M) and gigabytes (G).
-- `-s` (supress or summarize) Outputs total disk space of a directory and supresses reports for subdirectories. 
-
-Example:
+Shows the disk usage of files or directories. 
 
 ```bash
-du -sh pictures
-1.4M pictures
+du -hs # human readbale + summarize disk space info
 ```
 
 ### `quota`
 
 Shows what your disk quota is.  
 
-```bash
-quota -v
-```
-
 ### `ldparm`
 
 SATA/ATA 磁盘更改以及性能分析.
+
+## CPU 信息
+
+### lscpu 
+
+```bash
+lscpu -e
+
+# CPU SOCKET CORE L1d:L1i:L2:L3 ONLINE    MAXMHZ   MINMHZ MHZ
+#   0      0    0 0:0:0:0          yes 1800.0000 408.0000   -
+#   1      0    1 1:1:1:0          yes 1800.0000 408.0000   -
+#   4      0    0 4:4:4:0          yes 2256.0000 408.0000   -
+#   5      0    1 5:5:5:0          yes 2256.0000 408.0000   -
+```
+
+## 网卡信息
+
 

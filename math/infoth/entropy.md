@@ -1,9 +1,6 @@
 ---
-math-engine: mathjax
+epigraph: 信息是负熵
 ---
-
-
-> 信息是负熵
 
 ## 信息论
 

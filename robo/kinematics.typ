@@ -10,8 +10,9 @@
   tags: ("robotics", "modern-robotics"),
 )
 
-= Forward Kinematics 
+= Forward Kinematics
 
+aaa
 
 == D-H
 
@@ -29,7 +30,7 @@ $ T_04 = T_01 T_(12) T_23 T_34 $
 #let body(i) = $[cal(B)_#i]$
 
 
-Set all joint variables to zero and record the home configuration $M=T(0)$.  
+Set all joint variables to zero and record the home configuration $M=T(0)$.
 Express every joint screw axis *in the fixed space frame* at this zero position. Then
 
 $ T(theta) = e^([cal(S)_1] theta_1)
@@ -62,8 +63,8 @@ $
 
 $body(i) = mscrewm(i)$, i.e., $cal(B)_i = ["Ad"_M^(-1)]cal(S)_i$
 
-The ordering of the joint variables is unchanged; only the side on which the motion product acts 
-is different. 
+The ordering of the joint variables is unchanged; only the side on which the motion product acts
+is different.
 
 == the URDF Format
 
@@ -79,7 +80,7 @@ The URDF (Universal Robot Description Format) is an XML file sued by ROS2 to des
   在后续的运动学中，复杂关节都会被拆分为 1DoF Revolute/Prismatic 关节，这有利于计算。
 ]
   - _origin frame_: defines the child link frame relative to the parent link frame *in zero position*.
-  - _axis_: unit vector along the rotation axis in child link frame. 
+  - _axis_: unit vector along the rotation axis in child link frame.
 
 ```xml
 <joint name="joint1" type="continuous">
@@ -177,7 +178,7 @@ $
   dot(bold(x)) = J(bold(theta)) dot(bold(theta))
 $
 
-== Space Jacobian of Vecolity Kniematics 
+== Space Jacobian of Vecolity Kniematics
 
 #image("../attach/robot-2R.webp", width: 30%)
 
@@ -205,15 +206,15 @@ $
 
 = Inverse Kinematics
 
-For a n-DoF open chain with forward kinematics $T(theta)$ , $theta in RR^n$, the inverse 
-kinematics problem is: given a homogeneous transform $X \in S E(3)$, find solutions $theta$ 
-that satisfy $T(theta) = X$. 
+For a n-DoF open chain with forward kinematics $T(theta)$ , $theta in RR^n$, the inverse
+kinematics problem is: given a homogeneous transform $X \in S E(3)$, find solutions $theta$
+that satisfy $T(theta) = X$.
 
 == Numerical Newton-Raphson Method
 
 #note[
   假设正运动学有定位公式 $x=f(theta)$, 目标位置为 $x_d$, 则逆运动学的误差定义为 $Delta x = x_d - f(theta_d)$。
-  牛顿迭代法求解逆运动学方程是： 
+  牛顿迭代法求解逆运动学方程是：
 
     $ x_d = f(theta_0) + J(theta_0) (theta_d - theta_0) = f(theta_0) + J(theta_0) Delta theta  $
 
@@ -221,14 +222,14 @@ that satisfy $T(theta) = X$.
 ][
   逆运动学不一定有解析解或没有简单形式的解析解，一般会用非线性方程的数值解法，
   详见 `../math/numerical/nonlinear-equations.typ`。
-  
+
   这里 $J(theta)$ 是向量 $f in RR^m$ 对向量 $theta in RR^n$ 求导后的雅各比矩阵形式。
 
   $ J(theta) = (partial f) / (partial theta)(theta) = [(partial f_i)/(partial theta_j)]_(m times n) $
 ]
 
 
-== Inverse Velocity Kinematics 
+== Inverse Velocity Kinematics
 
 
 = Closed-chain Kinematics

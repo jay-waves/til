@@ -26,9 +26,10 @@ revised: 2026-01-27
 * 截图与贴图：Snipaste
 * 压缩：[7-Zip-zstd](https://github.com/mcmilk/7-Zip-zstd)
 * ~~电子书库管理：Calbibre~~
-* 媒体库管理：Jellyfin
+* ~~媒体库管理：Jellyfin~~
 * 远程桌面：向日葵、RustDesk 
 * 应用卸载器：geek, O&O AppBuster
+* 本地照片库：[Allusion](https://github.com/RafaUC/Allusion)
 
 ### 监控
 

@@ -31,15 +31,23 @@
 - Cascadia Code
 - Maple
 
-### Extended
+### Extended & Charset
 
 扩展字符集, 如中日文, 各种特殊符号, 多样式字符.
 
-- Nerd Fonts
-- CN 支持汉字
+- Nerd Fonts 连字、图案等字体
+- Variable Fonts 可变字重字体
 
-挑选泛 CJK 字体时，需要注意语言对字形的影响，
-比如同一个 Unicode 字符在 ja, ko, zh 显示会不一样。
+同一种字体可能有不同的字符集（文字系统）支持：
+* Han （汉字）或 CJK （中日韩统一表意文字）。CJK 字体的问题是，同一个 Unicode 字符在 zh, ja, ko 中字形不同，需要用地域字体区分：
+    * SC （简体中文）：一级汉字、二级汉字
+    * JP （日本汉字）
+    * TC （繁体中文）：TW、HK 
+    * KR （韩国汉字）：历史上韩国使用的汉字
+* latin 拉丁字母，指英法德西语
+* cyrillic 西里尔字幕，指俄语、乌克兰语 
+* greek 希腊字母，以及数学科学符号
+
 
 ## Mono
 

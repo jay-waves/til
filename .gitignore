@@ -2,8 +2,9 @@
 /.obsidian/
 /.vscode/
 /.agents/
+/.archive/
 /.blogs/
-.obsidian.vimrc
+/.zed/
 
 ~$*.ppt*
 *.ppt.bak
