@@ -2,6 +2,7 @@
 
 #show: tufte
 #let bmat(..args) = math.mat(delim: "[", ..args)
+#let vecb(x) = math.upright(math.bold(x))
 
 #note[
   #meta(subtitle: [四元数])
@@ -41,46 +42,46 @@ $
 
 = 轴角式旋转
 
-设经过原点的旋转轴 $bold(u) = (x, y, z)^T$ 满足 $abs(bold(u)) = 1$，给定向量 $bold(v)$，使其沿着旋转轴转动 $theta$ 角度，得到 $bold(v)'$。这里使用右手系统来定义旋转正方向。
+设经过原点的旋转轴 $vecb(u) = (x, y, z)^T$ 满足 $norm(vecb(u)) = 1$，给定向量 $vecb(v)$，使其沿着旋转轴转动 $theta$ 角度，得到 $vecb(v)'$。这里使用右手系统来定义旋转正方向。
 
-轴角旋转有三个#link("rigid-bodies.md")[自由度]：一个表示 $theta$，两个表示单位向量 $bold(u)$。
+轴角旋转有三个#link("rigid-bodies.md")[自由度]：一个表示 $theta$，两个表示单位向量 $vecb(u)$。
 
 #image("/attach/轴式旋转示意图.webp")
 
-将向量 $bold(v)$ 沿垂直于轴 $bold(u)$ 和平行于轴的两个方向分解为 $bold(v)_1, bold(v)_2$。平行分量 $bold(v)_1$ 在旋转后保持不变，垂直分量旋转后变为：
+将向量 $vecb(v)$ 沿垂直于轴 $vecb(u)$ 和平行于轴的两个方向分解为 $vecb(v)_1, vecb(v)_2$。平行分量 $vecb(v)_1$ 在旋转后保持不变，垂直分量旋转后变为：
 
 $
-bold(v)'_2 = cos theta dot bold(v)_2 + sin theta dot (bold(u) times bold(v)_2)
+vecb(v)'_2 = cos theta dot vecb(v)_2 + sin theta dot (vecb(u) times vecb(v)_2)
 $
 
 由于：
 
-$ bold(v)_2 times bold(u) = bold(v) times bold(u) $
+$ vecb(v)_2 times vecb(u) = vecb(v) times vecb(u) $
 
-$ bold(v)_1 = (bold(u) dot bold(v)) bold(u), quad bold(v)_2 = bold(v) - bold(v)_1
+$ vecb(v)_1 = (vecb(u) dot vecb(v)) vecb(u), quad vecb(v)_2 = vecb(v) - vecb(v)_1
 $
 
-因此，旋转后的向量有_三维旋转公式_：
+因此，旋转后的向量有_三维旋转公式_ (Rodrigues Formulation)：
 
 $
-bold(v)' =
-  cos theta dot bold(v)
-  + (1 - cos theta)(bold(u) dot bold(v)) bold(u)
-  + sin theta (bold(u) times bold(v))
+vecb(v)' =
+  cos theta dot vecb(v)
+  + (1 - cos theta)(vecb(u) dot vecb(v)) vecb(u)
+  + sin theta (vecb(u) times vecb(v))
 $
 
 = 四元数
 
 定义四元数 $q in bb(H)$ 满足：
 
-$ q = a + b i + c j + d k = [a, bold(v)] $
+$ q = a + b i + c j + d k = [a, vecb(v)] $
 
 其中：
 
 $
 a, b, c, d in bb(R), quad
 i^2 = j^2 = k^2 = i j k = -1, quad
-bold(v) = (b, c, d)^T in bb(R)^3
+vecb(v) = (b, c, d)^T in bb(R)^3
 $
 
 四元数的模长：
@@ -89,41 +90,41 @@ $ abs(q) = sqrt(a^2 + b^2 + c^2 + d^2) $
 
 纯四元数：
 
-$ q = [0, bold(x)] $
+$ q = [0, vecb(x)] $
 
 四元数的共轭：
 
-$ overline(q) = [s, -bold(v)] $
+$ overline(q) = [a, -vecb(v)] $
 
 四元数的互乘不满足交换律，因为叉乘不满足交换律：
 
-$ q_1 q_2 - q_2 q_1 = [0, 2 bold(x) times bold(y)] $
+$ q_1 times.o q_2 - q_2 times.o q_1 = [0, 2 vecb(x) times bold(y)] $
 
-换言之，当 $bold(x) parallel bold(y)$ 时，满足：
+换言之，当 $vecb(x) parallel bold(y)$ 时，满足：
 
-$ q_1 q_2 = q_2 q_1 $
+$ q_1 times.o q_2 = q_2 times.o q_1 $
 
 == Grassmann Product
 
 $
-q_1 q_2 = 
+q_1 times.o q_2 = 
   &(a e - (b f + c g + d h)) \
   + &(b e + a f + c h - d g) i\
   + &(c e + a g + d f - b h) j\
   + &(d e + a h + b g - c f) k
 $
 
-令向量 $bold(x) = (b, c, d)^T$，$bold(y) = (f, g, h)^T$，那么：
+令向量 $vecb(x) = (b, c, d)^T$，$vecb(y) = (f, g, h)^T$，那么：
 
-$ q_1 = [a, bold(x)], quad q_2 = [e, bold(y)] $
+$ q_1 = [a, vecb(x)], quad q_2 = [e, vecb(y)] $
 
 $
-q_1 q_2 =
-  [a e - bold(x) dot bold(y),
-   e bold(x) + a bold(y) + bold(x) times bold(y)]
+q_1 times.o q_2 =
+  [a e - vecb(x) dot vecb(y),
+   e vecb(x) + a vecb(y) + vecb(x) times vecb(y)]
 $
 
-$ q overline(q) = overline(q) q = [a^2 + bold(v)^2, 0] $
+$ q times.o overline(q) = overline(q) times.o q = [a^2 + norm(vecb(v))^2, 0] = [norm(q)^2, 0] $
 
 四元数的逆：
 
@@ -135,8 +136,8 @@ $
 纯四元数的积：
 
 $
-v u = [0, bold(v)] dot [0, bold(u)]
-  = [-bold(v) dot bold(u), bold(v) times bold(u)]
+v times.o u = [0, vecb(v)] dot [0, vecb(u)]
+  = [-vecb(v) dot vecb(u), vecb(v) times vecb(u)]
 $
 
 == 代数结构
@@ -144,113 +145,96 @@ $
 四元数空间是一个#link("../math/linalg/向量分析/线性变换.md")[线性空间]，满足：
 
 $
-HH equiv RR + RR^3 equiv RR^4
+HH equiv RR plus.o "Im"(HH) equiv RR^4
 $
 
-四元数空间的代数结构是#link("../math/algebra/环/环.md")[除环]，满足：
+其中，
+- 实部 $RR = "span"_RR {1}$  
+- 虚部 $"Im"(HH) = "span"_RR {i, j, k}$
 
-1. 加法是交换群
-2. 乘法封闭，结合律
-3. 乘法单位元
-4. 分配律
-5. 非零元素有逆元
+
+需要注意，$"Im"(HH)$ 在四元数乘法下并不封闭，纯四元数相乘可能产生实部。
 
 == 单位四元数
 
 任意单位四元数都可表示为：
 
 $
-q = cos theta + sin theta bold(u)
-  = [cos theta, sin theta bold(u)]
+q = cos theta + sin theta vecb(u)
+  = [cos theta, sin theta vecb(u)]
 $
 
-其中 $bold(u)$ 是单位旋转轴向量。
+其中 $vecb(u)$ 是单位旋转轴向量。
 
 $ abs(q) = 1, quad q^(-1) = overline(q) $
 
 也可以证明：
 
-$ q^2 = q q = [cos(2 theta), sin(2 theta) bold(u)] $
+$ q^2 = q times.o q = [cos(2 theta), sin(2 theta) vecb(u)] $
 
 = 旋转与单位四元数
 
-设垂直于轴的四元数 $v_2 = [0, bold(v)_2]$，垂直分量的旋转公式可以改写为：
+令 
 
-$
-v'_2 = q v_2
-     = [cos theta, sin theta bold(u)] [0, bold(v)_2]
-     = [-sin theta bold(u) dot bold(v)_2,
-        cos theta bold(v)_2 + sin theta (bold(u) times bold(v)_2)]
-     = [0, bold(v)'_2]
-$
+$ q = [c, s vecb(u)],quad c = cos(phi/2), quad s = sin(phi/2),quad v = [0,vecb(v)] $
 
-令 $bold(w) = cos theta bold(v)_2 + sin theta (bold(u) times bold(v)_2)$，右乘 $q^(-1)$ 得到：
+展开该项：
 
-$
-(q v_2) q^(-1)
-  = [0, bold(w)] [cos theta, -sin theta bold(u)]
-  = [0, cos(2 theta) bold(v)_2 + sin(2 theta)(bold(u) times bold(v)_2)]
-$
+$ q times.o v times.o q^(-1) = [0, (c^2 - s^2)vecb(v) + 2s^2 (vecb(u)^top vecb(v))vecb(u) + 2c s(vecb(u)times vecb(v))] $
 
-对于平行分量 $v_1$ 有：
 
-$
-q v_1 = [cos theta, sin theta bold(u)] [0, (bold(u) dot bold(v)) bold(u)]
-$
+#note[
+利用三角函数公式，也能得到三位旋转公式：
 
-$
-(q v_1) q^(-1) = [0, bold(v)_1]
-$
-
-令 $phi = 2 theta$，于是_四元数形式的三维旋转公式为_：
-
-$
-q v q^(-1)
-  = [0,
-     cos phi bold(v)
-     + (1 - cos phi)(bold(u) dot bold(v)) bold(u)
-     + sin phi (bold(u) times bold(v))]
-$
+$ vecb(v)' = cos phi vecb(v) + (1-cos phi)(vecb(u)^top vecb(v))vecb(u) + sin phi (vecb(u)times vecb(v)) $
+][
+  其实利用分量 $v_2 = [0, vecb(v)_2],quad v_1=[0,vecb(v)_1]$ 也能推导出来。但很麻烦。
+]
 
 == 三维旋转公式
 
-任意向量 $bold(v)$ 绕单位轴向量 $bold(u)$ 旋转 $phi$ 度后得到 $bold(v)'$，在四元数定义下有旋转公式：
+任意向量 $vecb(v)$ 绕单位轴向量 $vecb(u)$ 旋转 $phi$ 度后得到 $vecb(v)'$，在四元数定义下有旋转公式：
 
 $
-v' = q v q^(-1) = q v overline(q)
+v' = q times.o v times.o q^(-1) = q times.o v times.o overline(q)
+$
+
+也称为单位四元数群对纯四元数的伴随作用，定义为：
+
+$
+"Ad"_q (v) := q times.o v times.o q^(-1), quad "Ad"_q (v) in "Im"(HH)
 $
 
 其中：
 
-- $q = [cos(phi / 2), sin(phi / 2) bold(u)]$
-- $v = [0, bold(v)]$
+- $q = [cos(phi / 2), sin(phi / 2) vecb(u)] in "Sp"(1)$
+- $v = [0, vecb(v)] in "Im"(HH)$
 
 公式变形：
 
 $
-v' = q (v_1 + v_2) q^(-1) = v_1 + q v_2 q^(-1)
+v' = "Ad"_q (v_1 + v_2)  = v_1 + "Ad"_q (v_2) 
 $
 
-可以证明 $q v_2 = v_2 q^(-1)$，因此有：
+可以证明 $q times.o v_2 = v_2 times.o q^(-1)$，因此有：
 
 $
-v' = v_1 + q^2 v_2
-   = v_1 + [cos phi, sin phi bold(u)] v_2
+v' = v_1 + q^2 times.o v_2
+   = v_1 + [cos phi, sin phi vecb(u)] times.o v_2
 $
 
 == 旋转的复合
 
-设 $q_1, q_2$ 都是单位旋转四元数，可以证明 $q_1^(-1) q_2^(-1) = (q_2 q_1)^(-1)$，因此复合旋转：
+设 $q_1, q_2$ 都是单位旋转四元数，可以证明 $q_1^(-1) times.o q_2^(-1) = (q_2 times.o q_1)^(-1)$，因此复合旋转：
 
 $
-v'' = q_2 q_1 v q_1^(-1) q_2^(-1)
-    = (q_2 q_1) v (q_2 q_1)^(-1)
+v'' = "Ad"_q_2 ("Ad"_q_1 (v)) = "Ad"_(q_2 q_1)(v) 
 $
 
-向量绕 $q$ 旋转 $theta$，就等于反方向旋转 $2 pi - theta$，用 $-q$ 表示：
+向量绕 $q$ 旋转 $theta$，就等于反方向旋转 $2 pi - theta$，实际是同一个旋转，用 $-q$ 表示：
 
 $
-(-q) v (-q)^(-1) = q v q^(-1)
+"Ad"_q (v) = "Ad"_(-q) (v)
 $
 
 为了走“最短路径”，会先求夹角，取 $pi$ 内旋转。
@@ -263,20 +247,22 @@ $
 
 = 插值
 
-在工程上，*单位旋转四元数用于表示一个刚体的旋转姿态（Orientation）*。刚体运动过程中，$q_0$ 表示初始位姿，$q_1$ 表示目标位姿，两者是离散的。需要用插值，来获取中间状态，完成平滑旋转过渡。
+*单位旋转四元数常用于表示一个刚体的旋转姿态（Orientation）*。刚体运动过程中，$q_0$ 表示初始位姿，$q_1$ 表示目标位姿，两者是离散的。
+需要用插值，来获取中间状态，完成平滑旋转过渡。
 
 设一个旋转 $Delta q$，那么有：
 
 $
-Delta q dot q_0 = q_1, quad
-Delta q = q_1 q_0^(-1)
+Delta q times.o q_0 = q_1, quad
+Delta q = q_1 times.o q_0^(-1)
 $
 
 $
-q_t = (Delta q)^t q_0
+q_t = (Delta q)^t times.o q_0
 $
 
-注意，由于 $abs(q) = 1$，四元数实际上只有三个自由度。旋转姿态活动于一个超球面内，但两个姿态 $q_0, q_1$ 位于同一个圆内，因此 $Delta q$ 只有两个自由度。
+注意，由于 $abs(q) = 1$，四元数实际上只有三个自由度。旋转姿态活动于一个超球面内，
+但两个姿态 $q_0, q_1$ 和原点共同位于一个平面圆内，因此固定端点并选定路径后，插值只剩 $t$ 一个自由度。
 
 #image("../attach/orientation_lerp.webp", width: 50%)
 
@@ -284,42 +270,53 @@ $
 
 #image("../attach/slerp.webp", width: 50%)
 
-_球面线性插值（Spherical Linear Interpolation）_：
+设 $q_0, q_1 in "Sp"(1)$ 为单位四元数，并定义四维欧式内积：
 
 $
-bold(v)_t = alpha bold(v)_0 + beta bold(v)_1
+q_0^top q_1 = a e + vecb(x)^top vecb(y)
 $
 
-同乘 $bold(v)_0$，由于单位向量性质，得到：
+
+定义四元数在 $bb(R)^4$ 中的球面夹角：
 
 $
-bold(v)_0 bold(v)_t =
-  alpha (bold(v)_0 bold(v)_0) + beta (bold(v)_0 bold(v)_1)
+theta = arccos (q_0^top q_1)
 $
 
-$ cos(t theta) = alpha + beta cos theta $
-
-同理，同乘 $bold(v)_1$，得到：
-
-$ cos((1 - t) theta) = alpha cos theta + beta $
-
-解方程，得到 $upright("Slerp")(q_0, q_1, t)$：
+设插值四元数位于 $q_0, q_1$ 张成的平面内：
 
 $
-beta = sin(t theta) / sin theta, quad
-alpha = sin((1 - t) theta) / sin theta, quad
-theta = cos^(-1)(q_0 q_1)
+"Slerp"(q_0, q_1;t) = q_t = alpha q_0 + beta q_1
 $
+
+分别与 $q_0, q_1$ 取欧氏内积：
+
+$
+cos(t theta) &= alpha + beta cos theta \
+cos((1 - t) theta) &= alpha cos theta + beta
+$
+
+解得：
+
+$
+alpha = sin((1 - t) theta) / sin theta,
+quad
+beta = sin(t theta) / sin theta
+$
+
+实际求解时需要注意两个问题：
+- $theta approx 0$ 时，会有数值不稳定
+- 由于 $q$ 和 $-q$ 表示同一个旋转，为选取路径最短，若 $d < 0$，可以将其 $q_1$ 取反。
 
 == Squad 插值
 
-Slerp 在两点间对角度进行线性插值，但不能保证端点处*平滑*。假设三个姿态 $q_0, q_1, q_2$，那么 $upright("Slerp")(q_0, q_1)$ 和 $upright("Slerp")(q_1, q_2)$ 在 $q_1$ 点不能保证导数连续。
+Slerp 在两点间对角度进行线性插值，但不能保证端点处*平滑*。假设三个姿态 $q_0, q_1, q_2$，那么 $"Slerp"(q_0, q_1)$ 和 $"Slerp"(q_1, q_2)$ 在 $q_1$ 点不能保证导数连续。
 
 Squad 算法：
 
 $
-upright("Quad")(q_0, q_1, q_2, q_3; t)
-  = upright("Slerp")(upright("Slerp")(q_0, q_3; t), upright("Slerp")(q_1, q_2); 2 t (1 - t))
+"Quad"(q_0, q_1, q_2, q_3; t)
+  = "Slerp"("Slerp"(q_0, q_3; t), "Slerp"(q_1, q_2; t); 2 t (1 - t))
 $
 
 $h(t) = 2 t (1 - t)$ 是一个对称的抛物线权重函数。
@@ -328,7 +325,21 @@ $h(t) = 2 t (1 - t)$ 是一个对称的抛物线权重函数。
 
 2D、3D 旋转矩阵都是#link("../math/linalg/对称矩阵.md")[_正交矩阵（Orthogonal Matrix）_]，它们的行列式值为 $1$，代表着旋转；$-1$ 代表反射。
 
-李群（Special Orthogonal Group, SO）是讨论旋转的更一般情况。单位四元数同构于某种李群。
+特殊正交群 $"SO"(n)$ (Special Orthogonal Group) 是一种李群，定义为：
+
+$ "SO"(3) = {R in RR^(3 times 3) | R^top R = I, det(R) = 1} $
+
+单位四元数群则定义为： 
+
+$ "Sp"(1) = { q in HH | norm(q) = 1} $ 
+
+并且单位四元数群也是一种李群： 
+
+$ "Sp"(1) tilde.equiv "SU"(2) tilde.equiv S^3  $
+
+但单位四元数不和 $"SO"(3)$ 同构，因为 $q$ 和 $-q$ 映射到同一个旋转，即关系为：
+
+$ "Sp"(1)\/{plus.minus 1} tilde.equiv "SO"(3) $
 
 = 参考资料
 

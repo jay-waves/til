@@ -14,13 +14,13 @@ revised: 2026-01-27
 
 ## Windows GUI
 
-* 邮箱：Thunderbird 
-* PDF 阅读：SumatraPDF、Readest 
-* PDF 编辑：Stirling PDF、Adobe Acrobat DC
-* EPUB 阅读：Readest（Jane Reader 分支）
-* 正式笔记：Obsidian 
+* 邮箱：~~Thunderbird~~，切换为网页应用 GMail、QQMail 
+* PDF 阅读：~~SumatraPDF、Readest~~，切换为 `pdf.ts`
+* PDF 编辑：Stirling PDF、~~Adobe Acrobat DC~~
+* EPUB 阅读：~~Readest（Jane Reader 分支）~~，切换为 `epub.ts`
+* ~~正式笔记：Obsidian~~ 
 * 简单笔记：NVim 
-* 代码：VSCode / Zed 
+* 代码：~~VSCode~~、 Zed 
 * 流程与框架图绘制：DrawIO、PPT、reveal.js
 * 终端：Windows Terminal，Alacritty（Linux 平台）
 * 截图与贴图：Snipaste
@@ -41,7 +41,7 @@ revised: 2026-01-27
 
 ### 媒体
 
-* Potplayer 
+* ~~Potplayer~~
 * mpv 
 * ffmpeg 
 * ImageMagick 
@@ -51,12 +51,6 @@ revised: 2026-01-27
 * ClipChamp：轻剪辑，仅支持 MP4 导出
 * OBS-Studio：录屏
 * OnePhoto：图片库
-
-### Network
-
-- Clash Verge Rev 
-- WinSCP、sshfs 
-- V2rayN
 
 ### Hack & Security
 
@@ -69,40 +63,46 @@ revised: 2026-01-27
 
 ## Cli
 
-- PowerShell7. Windows 下使用的命令行.
-	- PSReadline 插件
-	- posh-git 插件
-- Bash 相关见 [/System/Shell](../os/shell/bash.md)
-
-<br>
-
-* GnuPG 加密
-* ~~gopass 密文管理~~ 已切换到我自己写的
+- Bash 相关见 [/os/bash ](../os/bash.md)
+- Powershell 相关间 [/os/powershell](../os/powershell.md)
 
 <br>
 
 - **[`pandoc`](http://pandoc.org/)** 
 - iconv, uchardet [char-encoding](../hw/char-encoding.md)工具
 - **fzf**, 模糊查找工具
-- zoxide
-- hl, lnav, 日志浏览器
 - tldr
 - rclone 云存储工具
 - strings 读取二进制中的字符串片段
 
 <br>
 
-Rewrite-in-Rust：
-* duf dust 磁盘空间查询
-* bat 重写了 cat 
-* ripgrep 重写了 grep 
-* fd 重写了 find ，支持正则表达式匹配
-* tokei 重写了 cloc 
 
-Windows 上一些 GNU 工具移植, 见 [GNUwin32](https://gnuwin32.sourceforge.net/packages.html)
-- file.
-- trid，类似 file 
-- uutils/coreutils，模拟的 GNU CoreUtils 套件。先取消 Powershell7 别名，再用这个
+~~[yazi](https://github.com/sxyazi/yazi) 命令行文件管理器~~ 最近更喜欢 [lf](https://github.com/gokcehan/lf)，配置如下：
+* `VISUAL = 'nvim'`
+* `EDITOR = 'nvim'`
+* `PAGER = 'bat --pager=builtin'`
+* `SHELL = 'pwsh'`
+
+
+| GNU  | Rewrite-in-Rust | Powershell | Description |
+| ----- | ------------- | ---------- | --------- |
+| lsdisk  | duf         |    | 磁盘统计            |
+| du    | dust          |    |  目录下文件体积统计（直方图） |
+| grep  | ripgrep       | findstr   |     |
+| find  | fd            |      |     |
+| cat   | bat           | Get-Content |  |
+| cloc  | tokei         |    |    |
+| file  |               |    |    |
+| cd    | zoxide        |    |    |
+| man   | tldr          |    | 百科全书，简短版   |
+| diff  | delta      |    |    |
+| curl  |  xh           | Invoke-WebRequest   |    |
+
+
+> Windows 上还有一些绿色（不依赖 MinGW） GNU 工具移植：[GNUwin32](https://gnuwin32.sourceforge.net/packages.html),
+> `Microsoft.CoreUtils`
+
 
 ## Browser Plugins
 
@@ -133,7 +133,6 @@ Windows 上一些 GNU 工具移植, 见 [GNUwin32](https://gnuwin32.sourceforge.
 
 also see [.bashrc](bashrc.md), here is the GUI choice:
 
-* ~~[yazi](https://github.com/sxyazi/yazi) 命令行文件管理器~~ 最近更喜欢 [lf](https://github.com/gokcehan/lf)
 * flameshot 截图贴图工具
 * Alacritty 命令行
 * chrome 比 firefox 稳定很多

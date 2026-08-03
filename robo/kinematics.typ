@@ -7,14 +7,12 @@
   subtitle: [机器人运动学],
   source: [Modern Robotics, Chapter 4-6],
   revised: [2026-07-13],
-  tags: ("robotics", "modern-robotics"),
+  tags: ("robotics", "kinematics"),
 )
 
 = Forward Kinematics
 
-aaa
-
-== D-H
+= D-H
 
 Denavit-Hartenberg form:
 
@@ -68,7 +66,7 @@ is different.
 
 == the URDF Format
 
-The URDF (Universal Robot Description Format) is an XML file sued by ROS2 to describe
+The URDF (Universal Robot Description Format) is an XML file used by ROS2 to describe
  the kinematics, inertial properties, and link geometry of robots
 
 === Joints
