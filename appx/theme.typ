@@ -1,11 +1,10 @@
 /*
-* 数学宏： theorem, lemma, corollary, definition, proof
-* 样式宏：tufte + note, 
-* 接收的系统输入：theme=dark/light, layout=landscape/portrait
+* arguments (sys-input): theme=dark/light, layout=landscape/portrait
 */
 
 #import "@preview/ctheorems:1.1.3": *
 #import "@preview/physica:0.9.8" as physica
+#import "@preview/merman:0.1.0": mermaid as merman
 
 #assert(
   sys.version >= version(0, 15, 0),
@@ -147,6 +146,28 @@
   }
 }
 
+#let mermaid(source, width:  78%) = align(
+  center,
+  merman(
+    source,
+    width: width,
+
+    base-theme: "neutral",
+
+    background: "#ffffff",
+    theme: (
+      primaryColor: "#ffffff",
+      primaryTextColor: "#222222",
+      primaryBorderColor: "#666666",
+      lineColor: "#666666",
+    ),
+    layout: (
+      node_spacing: 25,
+      rank_spacing: 30,
+    )
+  ),
+)
+
 #let template(
   title: none,
   abstract: none,
@@ -213,7 +234,7 @@
   show strong: set text(weight: "bold")
 
   let has-authors = authors != () and authors.len() > 0
-  if title != none or abstract != none or subtitle != none or has-authors {
+  if title != none or abstract != none or has-authors {
     block(
       width: 100%,
       inset: 0pt,
@@ -288,6 +309,8 @@
   show image: set block(above: 1.1em, below: 1.1em)
   show cjk-text: set text(size: 0.9em, tracking: 0.05em)
   show: thmrules.with(qed-symbol: $square$)
+
+  show raw.where(lang: "mermaid"): it => mermaid(it.text)
 
   body
 }

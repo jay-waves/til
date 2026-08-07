@@ -3,63 +3,44 @@ revised: 2026-01-27
 ---
 
 品味如下:
-- 命令行优先，GUI 不丑
-- 可以复杂，但不能繁琐丑陋，不能绕圈子解决问题。
+- 命令行优先，GUI 扁平现代。
 - 开源优先。
-- 多平台，跨平台功能不过分阉割。
-- 控制资源占用。不喜欢 Java。不喜欢 Chome 套壳，可以直接运行在浏览器 
-- 功能不搞大杂烩
+- 最好支持多平台。
+- 控制资源占用，不喜欢大杂烩应用。
+- 复杂，但不能繁琐丑陋，不能绕圈子解决问题。
+- 喜欢 WEB 应用，但不喜欢 Chome 套壳的独立应用。
 
 ***
 
 ## Windows GUI
 
-* 邮箱：~~Thunderbird~~，切换为网页应用 GMail、QQMail 
-* PDF 阅读：~~SumatraPDF、Readest~~，切换为 `pdf.ts`
+* 邮箱： GMail、QQMail WEB 、~~Thunderbird~~
+* PDF 阅读：pdf.ts、~~SumatraPDF、Readest~~ 
 * PDF 编辑：Stirling PDF、~~Adobe Acrobat DC~~
-* EPUB 阅读：~~Readest（Jane Reader 分支）~~，切换为 `epub.ts`
-* ~~正式笔记：Obsidian~~ 
-* 简单笔记：NVim 
-* 代码：~~VSCode~~、 Zed 
-* 流程与框架图绘制：DrawIO、PPT、reveal.js
+* EPUB 阅读：epub.ts、 ~~Readest（Jane Reader 分支）~~
+* 笔记：NVim、~~Obsidian~~ 
+* 代码：Zed 、~~VSCode~~
+* 流程图：DrawIO、PPT、reveal.js、Mermaid.js 
 * 终端：Windows Terminal，Alacritty（Linux 平台）
 * 截图与贴图：Snipaste
 * 压缩：[7-Zip-zstd](https://github.com/mcmilk/7-Zip-zstd)
-* ~~电子书库管理：Calbibre~~
-* ~~媒体库管理：Jellyfin~~
 * 远程桌面：向日葵、RustDesk 
 * 应用卸载器：geek, O&O AppBuster
-* 本地照片库：[Allusion](https://github.com/RafaUC/Allusion)
+* 视频播放：mpv
+* 视频处理：ffmpeg、HandBrake、ClipChamp 
+* 图像处理：ImageMagic、GIMP3 
+* 录屏：OBS-Studio （简单场景，有 WEB 应用替代品）
+* 媒体库：[Allusion](https://github.com/RafaUC/Allusion)、Calibre、Jellyfin 
+* 抓包：wireshark 
+* 二进制：imhex 
 
-### 监控
+### Windows OS
 
 * 刷盘：refus 
 * 流量和硬件监控: ~~Traffic Monitor~~ 改为 [taskbar-monitor](https://github.com/leandrosa81/taskbar-monitor)
 * 硬件监控：LibreHardwareMonitor 
 * CPU 性能测试：CPU-Z
 * 硬盘管理：CrystallDiskInfo、DiskGenius 
-
-### 媒体
-
-* ~~Potplayer~~
-* mpv 
-* ffmpeg 
-* ImageMagick 
-* GIMP3 
-* HandBrake：视频编码与压缩
-* LosslessCut：无损快速裁切视频
-* ClipChamp：轻剪辑，仅支持 MP4 导出
-* OBS-Studio：录屏
-* OnePhoto：图片库
-
-### Hack & Security
-
-- **CyberChefs**
-- Wireshark，抓包工具
-- imhex，二进制查看
-- SET，社工库
-- Chidra，逆向工具
-- binwalk，二进制分析工具
 
 ## Cli
 
@@ -74,6 +55,7 @@ revised: 2026-01-27
 - tldr
 - rclone 云存储工具
 - strings 读取二进制中的字符串片段
+- psmux, tmux 终端多路复用器
 
 <br>
 
@@ -123,12 +105,6 @@ revised: 2026-01-27
 - Obsidian Web Clipper 
 - Read Aloud 
 
-## AI 
-
-* [OpenRouter](https://openrouter.ai/models)
-* grok, chatgpt 
-* piper 文字转语音 TTS 工具 （非常轻量）
-
 ## Linux GUI
 
 also see [.bashrc](bashrc.md), here is the GUI choice:
@@ -164,3 +140,5 @@ also see [.bashrc](bashrc.md), here is the GUI choice:
 - Catppuccin
 - [solarized](https://github.com/altercation/vim-colors-solarized)
 - vim-material
+- Gruvbox
+- Dracula 
