@@ -93,32 +93,46 @@ Set-PSReadLineOption -PredictionViewStyle ListView
 行内模式，搭配 Fzf 模块：
 
 ```powershell
-# PSReadLine
-Set-PSReadLineOption -PredictionSource History
-Set-PSReadLineOption -PredictionViewStyle InlineView
-# lazy load PSFzf on Ctrl+R
-Set-PSReadLineKeyHandler -Chord 'Ctrl+r' -ScriptBlock {
-    if (-not (Get-Module PSFzf)) {
-        Import-Module PSFzf -ErrorAction Stop
-    }
 
-    Invoke-FzfPsReadlineHandlerHistory
+Import-Module CompletionPredictor
+
+# PSReadLine
+Set-PSReadLineOption -PredictionSource HistoryAndPlugin
+Set-PSReadLineOption -PredictionViewStyle InlineView
+Set-PSReadLineOption -Colors @{
+    InlinePrediction = "`e[38;2;100;100;110;3m"
 }
 
+
+# lazy load PSFzf on Ctrl+R
+Import-Module PSFzf
+Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
 ```
+
+注意，导入 PSFzf 模块，必须在所有 PSReadLine 命令完全配置结束之后，否则可能不生效。
 
 ### 命令编辑模块
 
-在外部编辑器中编辑命令行当前键入的命令: 
+PSReadLine 支持行内 Vi 编辑：
 
 ```powershell
 Install-Module -Name PSReadLine -Force -Scope CurrentUser
-Set-PSReadLineOption -EditMode Vi
-$env:VISUAL = 'nvim' # 指定编辑器, 需要 nvim 在 PATH 中.
 
-# 建立键绑定: alt+x
-Set-PSReadLineKeyHandler -Chord Alt+x -Function ViEditVisually
+function OnViModeChange {
+    param($mode)
+
+    if ($mode -eq 'Command') {
+        Write-Host -NoNewline "`e[2 q" # steady block
+    }
+    else {
+        Write-Host -NoNewline "`e[0 q" # terminal default
+    }
+}
+Set-PSReadLineOption -EditMode Vi
+Set-PSReadLineOption -ViModeIndicator Script -ViModeChangeHandler $Function:OnViModeChange
 ```
+
+`Esc` --> Inline Vi --> `v` --> Vi Editor
 
 ### 命令历史模块
 

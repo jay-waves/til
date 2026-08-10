@@ -14,6 +14,15 @@ Operators all interact with Vim’s built-in registers: operations first write c
 
 `gc` 将选中的文本改为注释
 
+## 缩进
+
+`=` 按当前 local 配置，将文件重新缩进
+
+```vim
+:setlocal shiftwidth=4
+gg=G 
+```
+
 ## 删除 `d`
 
 Vim 删除等同于剪切，将文本从缓冲区删除，存储默认寄存器。
