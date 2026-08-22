@@ -10,6 +10,8 @@
   tags: ("robotics", "dynamics"),
 )
 
+"./imu.typ"
+
 
 $tau in RR^n$ 机器人的力矩表示为：
 

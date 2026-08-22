@@ -4,6 +4,7 @@
 * zoxide 模糊跳转
 * fzf 模糊搜索，集成到 `ctrl+R`
 * tldr 
+* neovim
 
 ## 键映射
 
