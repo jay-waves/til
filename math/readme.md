@@ -1,35 +1,25 @@
-| 目录      | 中文标题         | 英文标题                           |
-| --------- | ---------------- | ---------------------------------- |
-| prob      | 概率论与随机过程 | probability and Stochastic Process |
-| algebra   | 抽象代数         | Group, Ring and Field              |
-| toc       | 计算理论 (理论计算机)                  |              |
-| numth     | 数论             | Number Theory                      |
-| calculus  | 微积分           | Calculus                           |
-| linalg    | 线性代数         | Linear Algebra, Vector Calculus    |
-| numerical | 数值分析         | Numerical Analysis                 |
-| ...       | 泛函分析         | Functional Analysis                |
-| ...       | 复变函数         | Complex Analysis                   |
-| ...       | 图论             | Graph and Network Analysis         |
-| ...       | 微分方程         | Differential Equations             |
-| ...       | 数学建模         |                                    |
-| infoth          | 信息论                 |                                    |
+## 目录
 
-Subjects:
-- ODEs
-- Laplace Transforms
-- Matrices and Linear Systems
-- Vector Algrebra and Calculus
-- Fourier Series and PDEs
-- Complex Analysis
-- Numeric Analysis
-- Numeric Linear Algbra
-- Optimization
-- Graphs and Combinatorial Optimization
-- Probablitiy and Statistics
-- Abstract Algebra
-- Number Theory
+* 数学分析 Anslysis 
+    * Calculus 微积分 
+    * Vector calculus 向量分析 
+    * Complex analysis 复变函数、复分析 
+    * Differnential Equations 微分方程 (ode, pde)
+    * Fourier、Laplace、Z Transforms (-->til/robo/cyberntics)
+    * Analytics Geometry 解析几何
+* 线性代数、Linear Algebra (linalg)
+    * Linear Systems 线性方程组 
+    * Vector 向量空间 
+    * Matrix 矩阵论
+* 概率与统计、Probability and Stochastic Process (prob)
+* 数论 Number Theory (numth)
+* 抽象代数 (algebra)：群、环、域
+* 理论计算机、计算理论、Theory of Computation (toc)
+    * Discrete Math 离散数学：数理逻辑、组合数学、图论
+* 信息论 Information Theory (infoth)
+* 数值分析 Numerical Analysis (numerical)
+* 运筹学 Operations & Optimization 
 
-形式语言, 自动机, 数理逻辑, 关系代数...
 
 ## 数学证明
 
