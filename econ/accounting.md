@@ -35,7 +35,7 @@ Everything that isn't a current assets is, *a long-term asset*.
 Some Balance over a period of time is split up on the sheet, so the next 12m' payments are shown 
 as a current asset (Liability), while the remainders are shown as a long-term one.
 
-## The Incomee Statement (资产损益表、利润表、Profit and loss statement、P&L)
+## The Income Statement (损益表、利润表、Profit and loss statement、P&L)
 
 Income Statement | | |
 ---|---|--
@@ -57,8 +57,10 @@ $$\text{Gross Profit} = \text{Revenue} - \text{CoGS}$$
 
 $$\text{Net Income} = \text{Revenue} - \text{Expenses} - \text{Interest} - \text{Taxes}$$
 
-> 毛利润是看产品本身盈利，净利润是看公司总体盈利。
-
+> 毛利润是看产品本身盈利，净利润是看公司总体盈利。净利润一部分分红给股东，另一部分汇入留存收益 
+> (Retained Earnings)。留存收益是总的累计余额，表达了负债表与利润表之间的关系，分红不是支出。
+>  
+> 在中国，收益要划出一部分*法定盈余公积*，用于弥补累计亏损；然后再进行分红，最后才是留存收益。
 
 ## The Statement of Cash Flow (现金流量表)
 
