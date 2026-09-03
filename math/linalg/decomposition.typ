@@ -15,38 +15,25 @@
 
 = 矩阵分解的类型
 
-#note[
   矩阵有五种分解: 
-  + 行列空间分解 (满秩分解)
-  + LU 分解
-  + QR 分解
-  + 特征值分解
+  + 行列空间分解 (满秩分解) #footnote[详见 矩阵的等价关系 `./equivalence.typ`]
+  + LU 分解 #footnote[LU 分解，详见 数值分析中对线性方程组的数值解法 `../numerical/linear-systems.typ`]
+  + QR 分解 #footnote[QR 分解，详见 直和、投影与施密特正交化 `./vectors/direct-sums-and-proj.typ`]
+  + 特征值分解 #footnote[特征值分解，详见 矩阵相似对角化 `./similarity.typ`]
   + 奇异值分解
 
   #linebreak()
 
   特征值分解中, 包含:
-  - Jordan 分解: 相似变换, $A = S J S^(- 1)$, 其中 $S$ 是可逆矩阵.
+  - Jordan 分解: 相似变换, $A = S J S^(- 1)$, 其中 $S$ 是可逆矩阵. #footnote[Jordan 分解，详见 `./jordan-matrix.typ`]
   - Shcur 分解: 酉/正交相似, $A = U T U^H$, 其中 $U$ 是酉矩阵.
-  - 谱定理 (正交分解): 酉/正交对角化, $A = U Lambda U^H$, 其中 $U$ 是酉矩阵, 并且要求 $A$ 是正规矩阵.
-
-][
-  #linebreak()
-  - 满秩分解，详见 矩阵的等价关系 `./equivalence.typ`
-  - LU 分解，详见 数值分析中对线性方程组的数值解法 `math/linalg/numerical/linear-systems.typ`
-  - QR 分解，详见 直和、投影与施密特正交化 `./vectors/direct-sums-and-proj.typ`
-  - 特征值分解，详见 矩阵相似对角化 `./similarity.typ`
-  - Jordan 分解，详见 `./jordan-matrix.typ`
-  - 正交分解（谱定理），详见 `./symmetric-matrix.typ`
-]
+  - 谱定理 (正交分解): 酉/正交对角化, $A = U Lambda U^H$, 其中 $U$ 是酉矩阵, 并且要求 $A$ 是正规矩阵. #footnote[正交分解（谱定理），详见 `./symmetric-matrix.typ`]
 
 == Schur 分解
 
-#note[
-  *任意*矩阵 $A in bb(C)^(n times n)$ 皆存在*酉矩阵* $U$, 使得
-][
-  酉矩阵详见 `./othogonal-matrix.typ`
-]
+
+*任意*矩阵 $A in bb(C)^(n times n)$ 皆存在*酉矩阵* $U$, 使得
+#footnote[酉矩阵详见 `./othogonal-matrix.typ`]
 
 $ U^H A U = T $
 

@@ -33,6 +33,7 @@ revised: 2026-01-27
 * 媒体库：[Allusion](https://github.com/RafaUC/Allusion)、Calibre、Jellyfin 
 * 抓包：wireshark 
 * 二进制：imhex 
+* 手机传文件：LocalSend 
 
 ### Windows OS
 

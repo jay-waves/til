@@ -5,12 +5,7 @@
 #let bmat(..args) = math.mat(delim: "[", ..args)
 #let vec(x) = math.bold(math.upright(x))
 
-图形渲染管线：
-
-```mermaid
-flowchart LR;
-  Application-->Geometry-->Rasterizer;
-``` 
+图形渲染管线主要分为两部分：Geomotry --> Rasterizer，几何阶段 --> 光栅化阶段。 
 
 = Geometry Statge 
 
@@ -57,4 +52,84 @@ _着色 (shading)_ 是指确定虚拟材质上的光照、颜色、纹理效果�
 flowchart LR;
   A[Triangle Setup]-->B[Triangle Traversal]-->C[Pixel Shading]-->D[Merging];
 ```
+
+= GPU Pipeline 
+
+```mermaid
+flowchart LR;
+  A[Vertex Shader]-->B[Clipping]-->C[Screen Mapping]-->D[Triangle]-->E[Pixel Shader]-->F[Merger]
+```
+
+其中 Vertex Shader (VS) 和 Pixel Shader (PS) 是可编程的，其他的受限。着色阶段有独立的编程语言，如 GLSL、HLSL、Slang，
+这些着色语言最终会被翻译为 GPU 硬件支持的汇编语言。
+
+```
+                    GPU Program
+                        │
+                  Execution Stage
+                        │
+                     Dispatch
+                        │
+                    Workgroup
+                        │
+                     Subgroup
+                        │
+                      Lanes
+                        │
+                   Invocations
+                        │
+          ┌─────────────┼─────────────┐
+          │             │             │
+       private       shared        global
+        state         state         state
+```
+
+在逻辑上，一个 Shader 程序被拆分为多个 `invocation` 任务并行执行，在底层（硬件层），
+`invocation` 被映射到 GPU SIMD 执行单元 `lane`，多个 `lane` 被划归一个 `warp` 执行组。
+
+这个概念在不同 GPU/API 上的称呼不同：
+
+#table(
+  columns: 3,
+  table.header([Brand], [Invocation Group], [Invocation Insight],),
+  [NVIDIA, CUDA], [Warp], [Lane], 
+  [AMD], [Wave], [Lane], 
+  [Intel], [Subgroup], [Lane],
+  [Vulkan, GLSL], [Subgroup], [Invocation],
+  [DirectX], [Wave], [Lane],
+)
+
+一个执行组内的所有 `invocations` 是并行执行的，遇到*条件语句*时，需要用掩码屏蔽一部分
+不符合条件的 `invocations`。
+
+
+
+Shader 程序的资源模型：
+
+```
+                     Host / CPU
+                          │
+                   Resource Binding
+                          │
+        ┌─────────────────┼───────────────┐
+        │                 │               │
+     Uniform Buffer     Texture       Storage Buffer
+     Constant Buffer    Sampler       Storage Image
+        │                │               │
+        └────────────────┼───────────────┘
+                         ▼
+                  Shader Invocation
+                        │
+        ┌───────────────┼────────────────┐
+        │               │                │
+     private         workgroup         device
+     memory           memory           memory
+```
+
+Shader 程序有两种不同的变量：
+- Uniform ：不变的，被所有线程共享的数据 
+- Varying ：私有的、可变的数据，每个线程独有
+
+= Deferred Rendering 
+
 

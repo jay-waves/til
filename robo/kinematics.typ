@@ -12,7 +12,7 @@
 
 = Forward Kinematics
 
-= D-H
+== D-H
 
 Denavit-Hartenberg form:
 
@@ -21,6 +21,7 @@ $ T_04 = T_01 T_(12) T_23 T_34 $
 == PoE
 
 === Space POE Formula
+
 #image("../attach/robo-PoE.webp", width: 70%)
 
 #let screw(i) = $[cal(S)_#i]$
@@ -176,7 +177,7 @@ $
   dot(bold(x)) = J(bold(theta)) dot(bold(theta))
 $
 
-== Space Jacobian of Vecolity Kniematics
+#linebreak()
 
 #image("../attach/robot-2R.webp", width: 30%)
 
@@ -200,12 +201,139 @@ $
 当且仅当 $det (J) = L_1 L_2 sin theta_2 = 0$ 时，某些方向的末端 速度无法继续由角速度产生。
 该情况被称为*奇点 (Singularity)*。
 
-== Statcis & Singularities
+=== Manipulability Ellipsoids
+
+
+*在运动学奇点，$J$ 不满秩；在靠近奇点处，逆运动学解就已经接近病态。* 奇点可能有两种来源，
+第一种是内部关节无法对齐；另一种是超出了作业空间。
+
+实践中，用 $J$ 的奇异值（分解）来判断 $J$ 是否存在奇点。设 $J = U Sigma V^top $ 是 $J$ 
+的奇异值分解，其中 $Sigma = "diag"(sigma_1, sigma_2, dots)$ 。
+
+对于奇异值 $sigma_i$ ，有： $ J v_i = sigma_i u_i $ ，
+
+因为 $ J J^top = U Sigma^2 U^top $ ，所以令 $y = U x$
+
+
+For unit joint-rate norm, $norm(dot(theta))=1$, the principal axes of the
+velocity ellipsoid are determined by the singular value decomposition
+$J=U Sigma V^T$.  The achievable principal twist directions are the columns of
+$U$, with semiaxis lengths $sigma_i$.
+
+When $J$ has full row rank, its boundary can be written
+
+$ cal(V)^T (J J^T)^(-1) cal(V) = 1 $
+
+To derive it, fix a desired twist $cal(V)$ and choose the minimum-norm joint
+rate
+
+$ dot(theta)^*=J^T(J J^T)^(-1)cal(V). $
+
+Then
+
+$ norm(dot(theta)^*)^2
+  =cal(V)^T(J J^T)^(-1)J J^T(J J^T)^(-1)cal(V)
+  =cal(V)^T(J J^T)^(-1)cal(V). $
+
+Thus the image of the unit joint-rate sphere has the stated boundary.
+
+For unit joint-torque norm and a full-row-rank $J$, the corresponding wrench
+ellipsoid is
+
+$ cal(F)^T (J J^T) cal(F) = 1 $
+
+This follows directly from unit joint torque:
+
+$ 1=norm(tau)^2=norm(J^T cal(F))^2
+  =cal(F)^T J J^T cal(F). $
+
+The force semiaxis in a principal direction is $1/sigma_i$: large velocity
+capability implies low force capability in the same direction.  At rank loss,
+use the SVD directly rather than the inverse formula.
+
+Scalar summaries include
+
+$ mu_1 = sqrt(det(J J^T)), quad
+  mu_2 = sigma_("min") / sigma_("max"), quad
+  mu_3 = sigma_("min"). $
+
+$mu_1$ measures ellipsoid volume up to a constant, $mu_2$ measures isotropy,
+and $mu_3$ measures distance from a velocity singularity.  These measures
+depend on units and on the relative weighting of translation and rotation.
+
+
+== Space Jacobian of Vecolity Kniematics
+
+Let $A_i = e^([cal(S)_i] theta_i)$, $T_i = A_1 A_2 dots A_i M$. Since $dot(A_i)A_i^(-1)=[cal(S)_i]dot(theta_i)$, 
+
+$ 
+  [cal(V)_s] & = dot(T_n) T_n^(-1) \
+  & = dot(A_1)A_1^(-1) + A_1 dot(A_2) A_2^(-1) A_1^(-1) + dots \ 
+  & = [cal(S)_1] dot(theta)_1 + A_1 [cal(S)_2]dot(theta)_2 A_1^(-1) + dots \
+  & = [cal(S)_1] dot(theta)_1 + "Ad"_(A_1) [cal(S)_2]dot(theta)_2 + dots + "Ad"_(A_1 A_2 dots A_(i-1)) [cal(S)_i]dot(theta)_i + dots \ 
+  & = sum_(i=1)^n ["Ad"_(T_(i-1))][cal(S)_i] dot(theta)_i 
+$
+
+从矩阵系换回 Twist 系，得到：
+
+$ cal(V)_s = sum_(i=1)^n "Ad"_(T_(i-1))cal(S)_i dot(theta)_i $
+
+对比 Jacobian 定义：
+
+$ cal(V)_s = J_s dot(theta) = sum J_(s i) dot(theta) $
+
+For home screw axes $cal(S)_i$:
+
+$ J_s(theta) = mat(cal(S)_1, "Ad"_(e^([cal(S)_1] theta_1)) cal(S)_2, dots, "Ad"_(e^([cal(S)_1] theta_1) dots e^([cal(S)_(n-1)] theta_(n-1))) cal(S)_n) $
+
+Equivalently, define $T_i=e^([cal(S)_1]theta_1)dots
+e^([cal(S)_i]theta_i)$.  Then
+
+$ J_(s 1)=cal(S)_1, quad J_(s i)="Ad"_(T_(i-1))cal(S)_i. $
+
+Earlier joints move later joint axes in the space frame, so column $i$ depends
+only on $theta_1,dots,theta_(i-1)$, never on its own joint value or later joints.
+
+=== Body Jacobian
+
+For body screw axes $cal(B)_i$:
+
+$ J_b(theta) = mat("Ad"_(e^(-[cal(B)_n] theta_n) dots e^(-[cal(B)_2] theta_2)) cal(B)_1, dots, "Ad"_(e^(-[cal(B)_n] theta_n)) cal(B)_(n-1), cal(B)_n) $
+
+Later joints affect how earlier axes are seen from the body frame.  Thus column
+$i$ depends only on $theta_(i+1),dots,theta_n$, and the last column is always
+$cal(B)_n$.
+
+=== Space-Body Relation
+
+For end-effector pose $T_("sb")(theta)$:
+
+$ J_s(theta) = "Ad"_(T_("sb")(theta)) J_b(theta) $
+
+Therefore $J_b="Ad"_(T_("sb")^(-1))J_s$ and both Jacobians have the same rank.
+
+== Statics
+
+Let $cal(F)$ be the wrench applied by the environment to the end effector, in
+the same coordinates as $cal(V)$.  Virtual power balance gives
+
+$ tau^T dot(theta) = cal(F)^T cal(V) $
+
+With $cal(V) = J dot(theta)$:
+
+$ tau = J(theta)^T cal(F) $
+
+The Jacobian transpose maps endpoint wrench to joint torque.  This is not an
+inverse and remains meaningful at singularities. 
+
+Static equilibrium including actuator torque, external wrench, gravity, and
+other generalized loads requires their signed sum to vanish.  The equation
+$tau=J^T cal(F)$ alone describes only the wrench-to-joint mapping.
 
 = Inverse Kinematics
 
 For a n-DoF open chain with forward kinematics $T(theta)$ , $theta in RR^n$, the inverse
-kinematics problem is: given a homogeneous transform $X \in S E(3)$, find solutions $theta$
+kinematics problem is: given a homogeneous transform $X in S E(3)$, find solutions $theta$
 that satisfy $T(theta) = X$.
 
 == Numerical Newton-Raphson Method
@@ -218,8 +346,8 @@ that satisfy $T(theta) = X$.
 
   不能认为 $J(theta)_(m times n)$ 是可逆的，关节数 $n$ 通常会多于末端执行器维度 $m$。
 ][
-  逆运动学不一定有解析解或没有简单形式的解析解，一般会用非线性方程的数值解法，
-  详见 `../math/numerical/nonlinear-equations.typ`。
+  逆运动学不一定有解析解或没有简单形式的解析解，一般会用数值解法
+  #footnote[非线性方程的数值解法，详见 `../numerical/nonlinear-equations.typ`]
 
   这里 $J(theta)$ 是向量 $f in RR^m$ 对向量 $theta in RR^n$ 求导后的雅各比矩阵形式。
 

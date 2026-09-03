@@ -46,7 +46,7 @@ $
 
 轴角旋转有三个#link("rigid-bodies.md")[自由度]：一个表示 $theta$，两个表示单位向量 $vecb(u)$。
 
-#image("/attach/轴式旋转示意图.webp")
+#image("/attach/轴式旋转示意图.webp", width: 70%)
 
 将向量 $vecb(v)$ 沿垂直于轴 $vecb(u)$ 和平行于轴的两个方向分解为 $vecb(v)_1, vecb(v)_2$。平行分量 $vecb(v)_1$ 在旋转后保持不变，垂直分量旋转后变为：
 

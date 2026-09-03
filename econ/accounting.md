@@ -64,6 +64,42 @@ $$\text{Net Income} = \text{Revenue} - \text{Expenses} - \text{Interest} - \text
 
 ## The Statement of Cash Flow (现金流量表)
 
+Cash FLow Statement | | |
+---| ----| --
+**Operating Activities** | | 
+Cash receipts from customers | | 
+Cash paid to suppliers | | 
+Cash paid to employees | | 
+Income taxes paid | | 
+Net Cash Flow from Operating | |
+ | | 
+**Investing Activities** | 公司投资活动 |
+Purchase or sale of property, plant, or equipment | | 
+Purchase or sale of stocks ro bonds | | 
+Interest or dividends received from investments | | 
+Net Cash Flow from Investing | | 
+ | | 
+**Financing Activities** | 公司融资活动 | 
+Dividends paid to sharedholders | |
+Cash received from issuing new shares | | 
+Net Cash Flow from Financing | | 
+
+## Financial Analysis 
+
+The company's ability to pay off its current liabilities using its current assets (within a year or less):
+
+$$\text{Current Ratio} = \frac{\text{Current Assets}}{\text{Current Liabilities}}$$
+
+ability to uflfill its current liabilities if sales are slow (inventories are note converted to cash)
+
+$$\text{Quick Ratio} = \frac{\text{Current Assets} - \text{Inventory}}{\text{Current Liabiliteis}}$$
+
+Profitability:
+
+$$\text{Rreturn on Assets} = \frac{\text{Net Income}}{\text{Total Assets}}$$
+
+$$\text{Rreturn on Equity} = \frac{\text{Net Income}}{\text{Sharedholders' Equity}}$$
+
 ## GAAP 
 
 ## Debits & Credits & Cash & Accrual
