@@ -207,60 +207,71 @@ $
 *在运动学奇点，$J$ 不满秩；在靠近奇点处，逆运动学解就已经接近病态。* 奇点可能有两种来源，
 第一种是内部关节无法对齐；另一种是超出了作业空间。
 
-实践中，用 $J$ 的奇异值（分解）来判断 $J$ 是否存在奇点。设 $J = U Sigma V^top $ 是 $J$ 
-的奇异值分解，其中 $Sigma = "diag"(sigma_1, sigma_2, dots)$ 。
+实践中，规范化关节速度输入 $norm(dot(theta)) = 1$ ，观察末端执行器状态 $cal(V)$ 。
 
-对于奇异值 $sigma_i$ ，有： $ J v_i = sigma_i u_i $ ，
+#note[
+对于 $J$ 进行奇异值分解：
 
-因为 $ J J^top = U Sigma^2 U^top $ ，所以令 $y = U x$
+$ cal(V) = J dot(theta) = U Sigma V^top dot(theta) $
 
 
-For unit joint-rate norm, $norm(dot(theta))=1$, the principal axes of the
-velocity ellipsoid are determined by the singular value decomposition
-$J=U Sigma V^T$.  The achievable principal twist directions are the columns of
-$U$, with semiaxis lengths $sigma_i$.
+其中 $Sigma = "diag"(sigma_1, sigma_2, dots)$ 。
 
-When $J$ has full row rank, its boundary can be written
+由于 $V$ 是正交矩阵，令 $q = V^top dot(theta)$ ，有：
 
-$ cal(V)^T (J J^T)^(-1) cal(V) = 1 $
+$ norm(dot(theta))^2 = dot(theta)^top dot(theta) = (V q)^top (V q) = q^top q = 1 $
 
-To derive it, fix a desired twist $cal(V)$ and choose the minimum-norm joint
-rate
+所以有：
 
-$ dot(theta)^*=J^T(J J^T)^(-1)cal(V). $
+$ cal(V) = U Sigma q $
 
-Then
+令 $y = U^top cal(V) = Sigma q$ ，由于 $q^top q = 1$ ，有椭球：
 
-$ norm(dot(theta)^*)^2
-  =cal(V)^T(J J^T)^(-1)J J^T(J J^T)^(-1)cal(V)
-  =cal(V)^T(J J^T)^(-1)cal(V). $
+$ 1 = (y_1 / sigma_1)^2 + (y_2 / sigma_2)^2 + dots + (y_n / sigma_n)^2 $
+][
+  等价于：
+  $ 
+    &cal(V)^top (J J^top) cal(V) \ 
+    &= cal(V)^top U(Sigma Sigma^top)^(-1) U^top cal(V) \ 
+    &= y^top (Sigma Sigma^top)^(-1) y \
+    &= 1 
+  $
 
-Thus the image of the unit joint-rate sphere has the stated boundary.
+  其中 
 
-For unit joint-torque norm and a full-row-rank $J$, the corresponding wrench
-ellipsoid is
+  $
+    (Sigma Sigma^top)^(-1) = "diag"(dots, 1/(sigma_i^2), dots)
+  $
+]
 
-$ cal(F)^T (J J^T) cal(F) = 1 $
+整体来看：
 
-This follows directly from unit joint torque:
+$ y = U^top cal(V) = Sigma V dot(theta) $
 
-$ 1=norm(tau)^2=norm(J^T cal(F))^2
-  =cal(F)^T J J^T cal(F). $
+对于奇异值分解，$U, V$ 都是酉矩阵（或正交矩阵），即 $cal(V)$ 进入了 $U$ 坐标系；
+$dot(theta)$ 进入了 $V$ 坐标系，然后由 $Sigma$ 进行缩放。对于奇异值 $sigma_i$ ，有：
 
-The force semiaxis in a principal direction is $1/sigma_i$: large velocity
-capability implies low force capability in the same direction.  At rank loss,
-use the SVD directly rather than the inverse formula.
+$ J v_i = sigma_i u_i $ 
 
-Scalar summaries include
+其中 $v_i$ 是速度输入方向，$u_i$ 是输出主轴方向，$y_i$ 是在 $u_i$ 方向上的输出分量，
+$sigma_i$ 是椭球半轴长度。如果 $sigma_i -> 0$ ，椭球会越来越扁直到失去该方向的运动能力。
 
-$ mu_1 = sqrt(det(J J^T)), quad
-  mu_2 = sigma_("min") / sigma_("max"), quad
-  mu_3 = sigma_("min"). $
+==== $mu_1$
 
-$mu_1$ measures ellipsoid volume up to a constant, $mu_2$ measures isotropy,
-and $mu_3$ measures distance from a velocity singularity.  These measures
-depend on units and on the relative weighting of translation and rotation.
+$ mu_1 = sqrt("det"(J J^top)) = sqrt(product(sigma^2_i)) = product(sigma_i) $
 
+椭球的总体体积，$mu_1$ 越大，整体运动能力越强。
+
+==== $mu_2$
+
+$ mu_2 = (sigma_"min")/(sigma_"max") $
+
+
+椭球的各向同性（isotropy），也就是椭球圆不圆。因为 $ 0 <= mu_2 <= 1 $，越接近 $1$，各方向运动能力越均匀。
+
+$ mu_3 = sigma_"min" $ 
+
+$mu_3$ 是最差运动方向，需要监控这个值 $mu_3 >= epsilon.alt$，用来判断是否接近奇点。
 
 == Space Jacobian of Vecolity Kniematics
 
@@ -333,26 +344,155 @@ $tau=J^T cal(F)$ alone describes only the wrench-to-joint mapping.
 = Inverse Kinematics
 
 For a n-DoF open chain with forward kinematics $T(theta)$ , $theta in RR^n$, the inverse
-kinematics problem is: given a homogeneous transform $X in S E(3)$, find solutions $theta$
-that satisfy $T(theta) = X$.
+kinematics problem is: given a desired end-effector configuration $T_d in S E(3)$, find 
+solutions $theta$ that satisfy $T(theta) = T_d$.
 
-== Numerical Newton-Raphson Method
+Unlike forward kinematics, the inverse map is generally neither unique nor globally smooth.
+Redundant rotos may have infinitely many solutions. Near a singularity or outside the 
+reachable workspace, no exact (or bounded) solution exists.
+
+求解逆运动学有很多方法。书中重点介绍了解析几何建模的方式，但是这需要机器的几何结构比较
+优美，否则最终的三角函数方程仍可能非常复杂。
+另外，由于需要同时满足 关节限位碰撞限制、速度力矩限制、最小能量 等多种约束条件，更合适的
+求解方法是数值迭代与最优化建模。#footnote[非线性方程的数值解法，详见 `../numerical/nonlinear-equations.typ`]
+
+== Newton-Raphson IK
+
 
 #note[
-  假设正运动学有定位公式 $x=f(theta)$, 目标位置为 $x_d$, 则逆运动学的误差定义为 $Delta x = x_d - f(theta_d)$。
-  牛顿迭代法求解逆运动学方程是：
+  假设标量的定位公式 $x=f(theta)$, 目标位置为 $x_d$, 则逆运动学的误差定义为 $Delta x = x_d - f(theta_d)$。
+  牛顿迭代方程为：
 
     $ x_d = f(theta_0) + J(theta_0) (theta_d - theta_0) = f(theta_0) + J(theta_0) Delta theta  $
 
-  不能认为 $J(theta)_(m times n)$ 是可逆的，关节数 $n$ 通常会多于末端执行器维度 $m$。
-][
-  逆运动学不一定有解析解或没有简单形式的解析解，一般会用数值解法
-  #footnote[非线性方程的数值解法，详见 `../numerical/nonlinear-equations.typ`]
+  对于刚体位姿坐标系 $S E(3)$ ，可以类比：
 
-  这里 $J(theta)$ 是向量 $f in RR^m$ 对向量 $theta in RR^n$ 求导后的雅各比矩阵形式。
+    $ cal(V)_b approx J_b(theta) Delta theta $
+][
+  这里 $J(theta)$ 是 $f in RR^m$ 对 $theta in RR^n$ 求导后的雅各比矩阵。
 
   $ J(theta) = (partial f) / (partial theta)(theta) = [(partial f_i)/(partial theta_j)]_(m times n) $
+
+  注意，不能认为 $J(theta)_(m times n)$ 是可逆的，关节数 $n$ 通常多于末端执行器的运动维度 $m$
 ]
+
+每一步取最小二乘解：
+
+$ Delta theta = J_b(theta)^dagger cal(V)_b $
+
+$ theta arrow theta + Delta theta $
+
+注意，这里是刚体坐标系 $BB$ ，位姿变化表示为：
+
+
+$ T(theta+Delta theta) = T(theta) Delta T
+  approx T(theta)exp([J_b(theta)Delta theta]). $
+
+Consequently,
+
+$ T(theta+Delta theta)^(-1)T_d
+  approx exp(-[J_b Delta theta])T(theta)^(-1)T_d. $
+
+Keeping first-order Lie-algebra terms gives
+
+$ log(T(theta+Delta theta)^(-1)T_d)^("vee")
+  approx cal(V)_b-J_b Delta theta. $
+
+Setting the linearized residual to zero yields
+$J_b Delta theta=cal(V)_b$ and therefore the pseudoinverse update.
+
+A robust numerical procedure is:
+
+1. Compute $T(theta)$ and $cal(V)_b=log(T(theta)^(-1)T_d)^("vee")$.
+2. Stop successfully when angular and linear errors meet their tolerances.
+3. Compute $J_b(theta)$ and solve $J_b Delta theta approx cal(V)_b$.
+4. Limit or line-search the step, update $theta$, and normalize revolute joints
+   only when their limits permit wrapping.
+5. Stop with failure if the iteration limit is reached, the step becomes tiny
+   while the error remains large, or the residual repeatedly fails to decrease.
+
+Convergence is local and depends strongly on the initial guess.  Different
+seeds can converge to different branches or fail even when a solution exists.
+Warm-starting from the previous solution is effective for a continuous pose
+trajectory.
+
+== Damped Least Squares
+
+The pseudoinverse magnifies error along directions with small singular values.
+Damped least squares solves
+
+$ "argmin"_(Delta theta) norm(J Delta theta-cal(V))^2
+  + lambda^2 norm(Delta theta)^2 $
+
+with solution
+
+$ Delta theta = J^T (J J^T + lambda^2 I)^(-1) cal(V) $
+
+Damping trades exact local error reduction for bounded joint steps.  Fixed
+$lambda$ is simple but slows convergence everywhere; adaptive damping can stay
+small in well-conditioned regions and grow as $sigma_("min")(J)$ decreases.
+
+The damped equation is the stationary condition of
+
+$ min_(Delta theta)
+  norm(J Delta theta-cal(V))^2+lambda^2 norm(Delta theta)^2. $
+
+Differentiating with respect to $Delta theta$ gives
+
+$ (J^T J+lambda^2 I)Delta theta=J^T cal(V). $
+
+The identity
+$(J^T J+lambda^2 I)^(-1)J^T
+=J^T(J J^T+lambda^2 I)^(-1)$ produces the displayed right-inverse form.
+
+Step-size control is a separate mechanism.  Using
+$theta arrow theta+alpha Delta theta$ with $0<alpha<=1$ and accepting a step
+only when the pose error decreases improves global behavior.
+
+== Redundancy and Constraints
+
+For a redundant robot, the general differential update is
+
+$ Delta theta = J^dagger cal(V)
+  + (I-J^dagger J) eta. $
+
+The second term is a first-order null-space motion.  Choosing
+$eta=-k nabla h(theta)$ can reduce a secondary cost $h$, such as distance to a
+preferred posture or a joint-limit barrier, without changing the primary task
+to first order.
+
+#note[
+  Null-space projection alone does not guarantee finite-step feasibility.
+  Practical constrained IK may instead solve a bounded least-squares or quadratic
+  program with joint position and step limits. Collision avoidance requires
+  additional distance constraints or costs and a collision model.
+][
+  Clipping an unconstrained update at joint limits changes the direction of
+  the step and can destroy convergence. Active-set or bounded solvers account
+  for the constrained directions while computing the step.
+]
+
+== Inverse Velocity Kinematics
+
+Inverse velocity kinematics solves the instantaneous problem
+
+$ J(theta) dot(theta) = cal(V)_d $
+
+Minimum-norm solution:
+
+$ dot(theta) = J^dagger cal(V)_d $
+
+This is not the same as finite-pose IK: integrating a desired twist open loop
+accumulates modeling and numerical errors.  For trajectory tracking, add pose
+feedback, for example
+
+$ cal(V)_("cmd") = cal(V)_d + K cal(V)_("err"), quad
+  dot(theta)=J^dagger cal(V)_("cmd"). $
+
+The feedforward twist, error twist, and Jacobian must all use consistent space
+or body coordinates.
+
+== Numerical Newton-Raphson Method
 
 
 == Inverse Velocity Kinematics

@@ -76,7 +76,42 @@
 
 #let cjk-text = regex("\p{Han}+")
 
-#let note(body, aside) = {
+#let note(body, aside, side-image: none) = {
+    let aside-text = if aside == [] {
+        none
+    } else {
+        block(
+            width: 100%,
+            inset: (x: 0.75em, y: 0.6em),
+            radius: 3pt,
+            fill: pre-bg,
+            text(size: fsize.tiny, aside),
+        )
+    }
+    let aside-content = if side-image == none {
+        aside-text
+    } else {
+        let pinned-image = if type(side-image) == str {
+            image(side-image, width: 100%)
+        } else {
+            block(width: 100%, {
+                show image: set image(width: 100%)
+                side-image
+            })
+        }
+
+        if aside-text == none {
+            block(width: 100%, pinned-image)
+        } else {
+            stack(
+                dir: ttb,
+                spacing: 0.6em,
+                block(width: 100%, pinned-image),
+                aside-text,
+            )
+        }
+    }
+
     block(
         width: 100%,
         breakable: true,
@@ -85,13 +120,7 @@
             column-gutter: 4%,
             align: top + left,
             block(width: 100%, body),
-            block(
-                width: 100%,
-                inset: (x: 0.75em, y: 0.6em),
-                radius: 3pt,
-                fill: pre-bg,
-                text(size: fsize.tiny, aside),
-            ),
+            block(width: 100%, aside-content),
         ),
     )
 }
@@ -242,8 +271,16 @@
         box(skew(ax: -12deg, reflow: false, it.body)),
     )
 
-    set par(leading: 0.8em, spacing: 1.1em)
-    set heading(numbering: "1.1")
+    let paragraph-leading = 0.8em
+    set par(
+        leading: paragraph-leading,
+        spacing: 1.5 * paragraph-leading,
+    )
+    set heading(numbering: (..numbers) => {
+        if numbers.pos().len() <= 3 {
+            numbering("1.1", ..numbers)
+        }
+    })
 
     show heading: it => context {
         let level = calc.min(it.level, 3)
@@ -262,7 +299,7 @@
 
         v(if level == 1 { 24pt } else { 12pt }, weak: true)
 
-        if it.numbering != none {
+        if it.numbering != none and it.level <= 3 {
             counter(heading).display(it.numbering)
             h(7pt, weak: true)
         }

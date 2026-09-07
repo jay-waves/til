@@ -173,13 +173,19 @@ $
 
 = Fusing IMU with sensors & filters 
 
+#note[
 - VIO: Camera + IMU + Slided Windows 
 - LIO: LiDAR + IMU + ESIKF (IEKF) 。LiDAR 是激光雷达。
 - GNSS + IMU 
-- Radar + IMU。Radar 是无线电波雷达，无线电波比光的频率低很多，可以利用多普勒效应来测量径向速度。
+- Radar + IMU。Radar 是无线电波雷达。
+][
+  Radar 发射的无线电波、毫米波，比光的频率低很多，容易测量。因此，可以利用多普勒效应来测量径向速度
+]
 
 == ESKF 
 
 == Factor Graph 
 
+=== asfasd
 
+==== asdfad

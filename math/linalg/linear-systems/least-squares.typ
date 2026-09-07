@@ -9,7 +9,6 @@
 
 #import "@preview/cetz:0.5.2"
 
-
 #cetz.canvas(length: 13mm, {
   import cetz.draw: *
 

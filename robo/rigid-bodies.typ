@@ -177,14 +177,14 @@ $ cal(V)_(b)= bmat(omega_(b) ; v_(b)) in RR^(6) $
 defining: 
 
 $
-T^(- 1)dot(T) = [cal(V)_(b)]= bmat([omega_(b)], v_(b) ; 0, 0 k) in S E (3)
+T^(- 1)dot(T) = [cal(V)_(b)]= bmat([omega_(b)], v_(b) ; 0, 0 k) in "se"(3)
 $
 
 similarly, defining *spatial twist (spatial velocity in the space frame)*: 
 
 $ cal(V)_(s)= bmat(omega_(s) ; v_(s)) in RR^(6) $ 
 
-$ [cal(V)_s]= bmat([omega_s], v_s ; 0, 0) = dot(T) T^(- 1)in S E (3) $
+$ [cal(V)_s]= bmat([omega_s], v_s ; 0, 0) = dot(T) T^(- 1)in "se"(3) $
 
 then: $ [cal(V)_s]=T^(-1)[cal(V)_b] T $
 
@@ -305,6 +305,39 @@ If $w=0, norm(v)=1$, then:
 
 $ e^([cal(S)] theta)= bmat(I, v theta ; 0, 1) $
 
+== Summary 
+
+旋转向量（角速度）、李代数与矩阵李群相关转换：
+
+$ 
+ &bold(w) = bmat(w_x; w_y; w_z) \
+  <==> &[bold(w)] = bmat(0, -w_z, w_y; w_z, 0, -w_x; -w_y, w_x, 0) in "so"(3)\
+  <==> &R = exp([bold(w)]) in "SO"(3) 
+$
+
+旋量、李代数与李群相互转换：
+
+$
+  &cal(V) = bmat(omega; v) in RR^6 \
+  <==>& [cal(V)] = bmat([omega], v; 0, 0) in "se"(3) \
+  <==>& T = exp([cal(V)]) in "SE"(3) 
+$
+
+在世界坐标系（固定坐标系）:
+
+$
+  dot(T)T^(-1) & = [cal(V)_s] \
+  dot(R)R^(-1) & = dot(R)R^top = [bold(w)_s] 
+$
+
+在刚体坐标系：
+
+$
+  T^(-1)dot(T) &= [cal(V)_b] \
+  R^(-1)dot(R) & = [bold(w)_b] 
+$
+
+*我也没搞懂 李代数和李群 的关系是啥。*
 
 = Wrench
 
