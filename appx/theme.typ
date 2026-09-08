@@ -5,6 +5,7 @@
 #import "@preview/ctheorems:1.1.3": *
 #import "@preview/physica:0.9.8" as physica
 #import "@preview/merman:0.1.0": mermaid as merman
+#import "@preview/equate:0.3.3": equate
 
 #assert(
     sys.version >= version(0, 15, 0),
@@ -62,16 +63,16 @@
 #let landscape = layout == "landscape"
 #let page-columns = if landscape { 2 } else { 1 }
 
-#let fg = if dark { rgb("#e5e7e9") } else { rgb("#26282b") }
-#let bg = if dark { rgb("#18191b") } else { white }
-#let muted = if dark { rgb("#989da3") } else { rgb("#62666b") }
-#let border = if dark { rgb("#494e54") } else { rgb("#cbd0d5") }
-#let border-muted = if dark { rgb("#494e54b3") } else { rgb("#cbd0d5b3") }
-#let accent = if dark { rgb("#f0f1f2") } else { rgb("#202326") }
-#let accent2 = if dark { rgb("#c0c4c8") } else { rgb("#4b5157") }
-#let code-fg = if dark { rgb("#d2d5d8") } else { rgb("#33373b") }
-#let pre-bg = if dark { rgb("#1e2023") } else { rgb("#f6f7f8") }
-#let code-bg = if dark { rgb("#1e202399") } else { rgb("#f6f7f8cc") }
+#let fg = if dark { rgb("#c9cdd2") } else { rgb("#26282b") }
+#let bg = if dark { rgb("#1e1e1e") } else { white }
+#let muted = if dark { rgb("#a0a5ad") } else { rgb("#62666b") }
+#let border = if dark { rgb("#50555d") } else { rgb("#cbd0d5") }
+#let border-muted = if dark { rgb("#50555db3") } else { rgb("#cbd0d5b3") }
+#let accent = if dark { rgb("#dde0e4") } else { rgb("#202326") }
+#let accent2 = if dark { rgb("#bfc5cd") } else { rgb("#4b5157") }
+#let code-fg = if dark { rgb("#c3c9d1") } else { rgb("#33373b") }
+#let pre-bg = if dark { rgb("#2d3035") } else { rgb("#f6f7f8") }
+#let code-bg = if dark { rgb("#2d3035cc") } else { rgb("#f6f7f8cc") }
 #let shadow = if dark { rgb("#00000066") } else { rgb("#383c4018") }
 
 #let cjk-text = regex("\p{Han}+")
@@ -127,6 +128,7 @@
 
 #let theorem = thmbox(
     "theorem", "定理", 
+    supplement: [Thm.],
     titlefmt: strong, 
     fill: pre-bg, 
     stroke: 0.4pt + border, 
@@ -135,6 +137,7 @@
 
 #let lemma = thmbox(
     "lemma", "引理", 
+    supplement: [Lemma],
     titlefmt: strong, 
     fill: pre-bg, 
     stroke: 0.4pt + border, 
@@ -143,11 +146,13 @@
 
 #let corollary = thmplain(
     "corollary", "推论", 
+    supplement: [Cor.],
     titlefmt: strong
 )
 
 #let definition = thmbox(
     "definition", "定义", 
+    supplement: [Def.],
     fill: pre-bg, 
     stroke: 0.4pt + border, 
     radius: 3pt
@@ -221,27 +226,83 @@
             source,
             width: width,
                 theme-name: "base",
-                background: if dark { "#18191b" } else { "#ffffff" },
+                background: bg.to-hex(),
                 theme: (
                     fontFamily: "Noto Sans SC",
-                    primaryColor: if dark { "#212326" } else { "#f6f7f8" },
-                    primaryTextColor: if dark { "#e5e7e9" } else { "#26282b" },
-                    primaryBorderColor: if dark { "#666b70" } else { "#b3b8bd" },
-                    secondaryColor: if dark { "#1e2023" } else { "#f1f2f3" },
-                    tertiaryColor: if dark { "#26282b" } else { "#eceeef" },
-                    lineColor: if dark { "#989da3" } else { "#686d72" },
-                    textColor: if dark { "#e5e7e9" } else { "#26282b" },
-                    titleColor: if dark { "#f0f1f2" } else { "#202326" },
-                    clusterBkg: if dark { "#1e2023" } else { "#fafafa" },
-                    clusterBorder: if dark { "#494e54" } else { "#cbd0d5" },
-                    edgeLabelBackground: if dark { "#18191b" } else { "#ffffff" },
+                    primaryColor: pre-bg.to-hex(),
+                    primaryTextColor: fg.to-hex(),
+                    primaryBorderColor: if dark { "#707680" } else { "#b3b8bd" },
+                    secondaryColor: if dark { pre-bg.to-hex() } else { "#f1f2f3" },
+                    tertiaryColor: if dark { "#353940" } else { "#eceeef" },
+                    lineColor: if dark { muted.to-hex() } else { "#686d72" },
+                    textColor: fg.to-hex(),
+                    titleColor: accent.to-hex(),
+                    clusterBkg: if dark { pre-bg.to-hex() } else { "#fafafa" },
+                    clusterBorder: border.to-hex(),
+                    edgeLabelBackground: bg.to-hex(),
                 ),
         ),
     )
 }
 
 
+#let equation-numbering(number, ..sub) = context {
+    let chapter = counter(heading).get().first()
+    let suffix = if sub.pos().len() > 0 { numbering("a", sub.pos().first()) } else { "" }
+    // Keep serif letterforms while reserving equal space for each sub-number letter.
+    show regex("[a-z]+"): it => {
+        it.text.clusters().map(letter => box(width: 0.55em, align(center, letter))).join()
+    }
+    text(
+        font: main-fonts,
+        size: fsize.tiny,
+        fill: muted,
+        number-type: "lining",
+        number-width: "tabular",
+        "(" + str(chapter) + "." + str(number) + suffix + ")",
+    )
+}
+
+// Chapter-based lettered sub-equations by default; opt out with sub-numbering: false.
+// Label lines with #<label> before the line break.
+#let equate-lines(
+    body,
+    numbering: equation-numbering,
+    sub-numbering: true,
+    ..options,
+) = {
+    set math.equation(numbering: if numbering == auto { equation-numbering } else { numbering })
+    equate(body, sub-numbering: sub-numbering, ..options)
+}
+
 #let template(body) = {
+
+    set math.equation(numbering: equation-numbering, supplement: [Eq.])
+    set heading(supplement: [Sec.])
+    show figure.where(kind: image): set figure(supplement: [Fig.])
+    show figure.where(kind: table): set figure(supplement: [Table])
+    show ref: it => context {
+        // Resolve the chapter at the target, including equate's per-line figures.
+        let target = it.element
+        if it.form == "normal" and target != none and target.has("numbering") and target.numbering == equation-numbering {
+            let chapter = counter(heading).at(target.location()).first()
+            // The numbering function also runs inside refs; restore the surrounding text style.
+            let ref-size = text.size
+            let ref-font = text.font
+            let ref-fill = text.fill
+            show regex("\\([0-9]+\\.[0-9]+[a-z]*\\)"): match => {
+                text(
+                    font: ref-font,
+                    size: ref-size,
+                    fill: ref-fill,
+                    str(chapter) + "." + match.text.slice(1, -1).split(".").last(),
+                )
+            }
+            equate(it)
+        } else {
+            equate(it)
+        }
+    }
 
     set page(
         paper: "a5",
@@ -249,6 +310,7 @@
         columns: page-columns,
         fill: bg,
         margin: (y: 2.25em, x: 1.8em),
+        header: counter(footnote).update(0),
         foreground: if landscape {
             place(
                 center + horizon,
@@ -283,6 +345,9 @@
     })
 
     show heading: it => context {
+        if it.level == 1 and it.numbering != none {
+            counter(math.equation).update(0)
+        }
         let level = calc.min(it.level, 3)
         let size = (
             fsize.h1,
@@ -406,7 +471,15 @@
         it
     }
 
-    // footnote: TODO
+    // Footnotes restart on each page: superscript [a]; entries: [a] content.
+    set footnote(numbering: "[a]")
+    show footnote.entry: it => context {
+        let note = it.note
+        let number = counter(footnote).at(note.location()).first()
+        block[
+            #link(note.location(), numbering(note.numbering, number))#h(0.3em)#note.body
+        ]
+    }
 
     body
 }

@@ -20,7 +20,7 @@ of the robot can reach.
 
 平面上的刚体有三个自由度： $(x, y, theta)$ 分别对应 xy 方向的平移与绕垂直轴旋转。
 
-空间中的刚体有六个自由度： $(x,y,z, r o l l,y a w,p i t c h)$
+空间中的刚体有六个自由度： $(x,y,z, "roll","yaw","pitch")$ #footnote[roll,yaw,pithc 翻译为： 滚转、俯仰、偏航]
 
 #image("../attach/adam-lite.webp", width: 50%)
 
