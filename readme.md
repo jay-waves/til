@@ -5,11 +5,11 @@
 | algo        | algorithm               | 算法         |
 | ai          | artificial intelligence | 人工智能     |
 | *appx*      | appendices              | 附录         |
-| *attach*    | attachments             | 附件     |
+| *assets*    | attachments             | 附件         |
 | db          | databases               | 分布式系统   |
 | econ        | economics               | 经济学       |
 | hw          | hardware                | 体系架构     |
-| langs       | languages               | 编程与编译     |
+| langs       | languages               | 编程与编译   |
 | math        | mathematics             | 数学         |
 | net         | networking              | 网络通信     |
 | os          | operating system        | 操作系统     |

@@ -45,13 +45,13 @@ RS-232C 是流行的串行数据接口标准 (EIA, 1969), 负责连接 DTE (数�
 - Ringing-RI (振铃指示): 当调制解调器收到交换台送来的振铃呼叫时, 使该信号有效 (ON), 通知终端已被呼叫.
 - SGND (信号接地)
 
-<img src="../../attach/rs232c-io.avif" alt="引用 2, 图 2.9" width="600">
+<img src="../../assets/rs232c-io.avif" alt="引用 2, 图 2.9" width="600">
 
 CPU 是并行的, 一次处理 64 位数据. 串口则是串行的, 一次处理一位. CPU 向串口发送数据时, 先通过 *UART (通用异步收发器)* 将并行数据转换为串行数据, 并按 RS-232C 协议的格式进行编码. 接着, 将 CMOS/TTL 电平转化为 RS-232C 电平.
 
 RS-232C 总线的传输距离不超过 15m, 最高传输速率为 20Kbps. 低电平在 `5~15V`, 高电平在 `-5~-15V`. 也因此不能直接连接 TTL 电路. RS232C 规定 25 针接口, 但常用的只有 9 根.
 
-<img src="../../attach/rs-232c.avif" alt="" width="400">
+<img src="../../assets/rs-232c.avif" alt="" width="400">
 
 ## UART
 
@@ -116,7 +116,7 @@ SPI (Serial Peripheral Interface, 串行外设接口) 是高速全双工同步�
 - 主机输出/从机输入数据线 (MOSI), 传输数据和操作码.
 - 低电平有效的从机选择线 (SS)
 
-<img src="../../attach/spi-io.avif" alt="引用 2, 图 2.9" width="400">
+<img src="../../assets/spi-io.avif" alt="引用 2, 图 2.9" width="400">
 
 通过配置 输出串行同步时钟极性 (CPOL) 和相位 (CPHA), SPI 可以配置适应不同外设的频率, 采样时刻. 
 - CPOL=0, 串行同步时钟的空闲状态为低电平
@@ -153,7 +153,7 @@ IEEE 802.3 定义了以太网接口 (数据链路层). 以太网接口由 MAC (�
 
 数据接口包含接受和发送两个独立信道, 每个信道有独立的数据 / 时钟 / 控制信号; 管理接口包含一个时钟信号和一个数据信号. 因此 MII 接口总共包含 16 个信号. 通常网卡会集成 MAC 和 PHY.
 
-<img src="../../attach/ethernet-io.avif" alt="" width="600">
+<img src="../../assets/ethernet-io.avif" alt="" width="600">
 
 ## ISA 
 
@@ -174,7 +174,7 @@ eMMC (Embedded Multi Media Card) 是移动设备本地存储标准, 封装了 NA
 
 CAN （Controller Area Network）总线是一种广泛应用于汽车行业的串行通信网络。采用 [NRZ 编码](../../net/physical-l1.md)，同步依靠本地时钟以及一些微调方法。
 
-<img src="../../attach/can-bus.png" alt="" width="600">
+<img src="../../assets/can-bus.png" alt="" width="600">
 
 CAN 总线始终在广播报文，每个 CAN 节点有一个*接收滤波 ID 表*，过滤出包含感兴趣 ID 的报文。
 

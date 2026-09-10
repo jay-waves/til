@@ -65,7 +65,7 @@
 ```
 
 
-![Windows 系统架构](../../attach/win-arch.avif)
+![Windows 系统架构](../../assets/win-arch.avif)
 
 ## 参考
 

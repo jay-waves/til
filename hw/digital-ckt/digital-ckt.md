@@ -28,7 +28,7 @@ Karnaugh Map (K-Map) 是一种化简复杂布尔逻辑的方法. 一般能处理
 
 #### NOT
 
-![](../../attach/logic-gate-not.avif)
+![](../../assets/logic-gate-not.avif)
 
 | In1 | NOT |
 | --- | --- |
@@ -37,7 +37,7 @@ Karnaugh Map (K-Map) 是一种化简复杂布尔逻辑的方法. 一般能处理
 
 #### AND
 
-![](../../attach/logic-gate-and.avif)
+![](../../assets/logic-gate-and.avif)
 
 真值表:
 
@@ -50,7 +50,7 @@ Karnaugh Map (K-Map) 是一种化简复杂布尔逻辑的方法. 一般能处理
 
 #### OR
 
-![](../../attach/logic-gate-or.avif)
+![](../../assets/logic-gate-or.avif)
 
 用 AND 门表示 OR 门, 需要使用德摩根定理 (De Morgan's laws): $$\lnot (A \wedge B)=\lnot A\vee \lnot B$$
 

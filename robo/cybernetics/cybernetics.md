@@ -1,15 +1,15 @@
 
 开环控制系统（Open Loop）：
 
-<img src="/attach/open-loop-system.png" alt="" width="200">
+<img src="/assets/open-loop-system.png" alt="" width="200">
 
 **闭环控制系统**：
 
-<img src="../../attach/closed-loop-system.png" alt="" width="400">
+<img src="../../assets/closed-loop-system.png" alt="" width="400">
 
 控制理论目的是借由控制器的工作让系统稳定在设定值，而不会有误差或震荡。设定值不变的控制称为*调节*，设定值快速变化的控制称为*伺服*。
 
-<img src="../../attach/pid-curve.webp" alt="Modern Robotics, 2019, Fig11.2" width="500">
+<img src="../../assets/pid-curve.webp" alt="Modern Robotics, 2019, Fig11.2" width="500">
 
 当 $t\to \infty$ 时，系统响应达到稳态后的误差被称为*稳态误差*（steady-state error） $e_{ss}$
 

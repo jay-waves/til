@@ -6,10 +6,10 @@
 #meta(subtitle: [矩阵分解])
 
 #note[
-  #image("../../attach/matrix-world.webp")
+  #image("../../assets/matrix-world.webp")
 ][
   图片来自 *the Art of Linear Algebra*,
-  翻译版本请见 `../../attach/matrix-world-zh.webp`
+  翻译版本请见 `../../assets/matrix-world-zh.webp`
 ]
 
 

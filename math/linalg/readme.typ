@@ -67,7 +67,7 @@
   矩阵合同，详见 #link("./mat-congruence.md")[math/lialg/mat-congruence.md]
 ]
 
-#image("../../attach/mat-relation.webp", width: 60%)
+#image("../../assets/mat-relation.webp", width: 60%)
 
 
 = 参考

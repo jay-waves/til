@@ -35,9 +35,9 @@ ZeroMQ 将多个消息合并为一次请求处理, 避免频繁地系统调用, 
 
 TCP 中的批处理算法被称为 *Nagle's Algorithm*, 通常网络场景总有消息排队 (queueing effect), 推荐开启.
 
-![](../../attach/net-0mq-batch-processing.avif)
+![](../../assets/net-0mq-batch-processing.avif)
 
-![](../../attach/net-zmq-batch-processing.avif)
+![](../../assets/net-zmq-batch-processing.avif)
 
 ## Data Models 
 

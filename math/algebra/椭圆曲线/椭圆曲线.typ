@@ -59,7 +59,7 @@ $
 
 === $P != Q$ 推导
 
-#image("../../../attach/密码学_ECC加法.webp", width: 45%)
+#image("../../../assets/sec-crypto-ecc-point-addition.webp", width: 45%)
 
 设 $P(x_1, y_1)$, $Q(x_2, y_2)$.
 斜率 $k = (y_2 - y_1) \/ (x_2 - x_1)$, 所以直线表示为 $y = k x + t$.
@@ -84,7 +84,7 @@ $
 
 === $P = Q$ 推导
 
-#image("../../../attach/密码学_ECC倍乘.webp", width: 45%)
+#image("../../../assets/sec-crypto-ecc-point-doubling.webp", width: 45%)
 
 此时直线为 $P$ 点切线. 同时对 $x$ 求导:
 $

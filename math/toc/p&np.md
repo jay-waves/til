@@ -1,5 +1,5 @@
 
-<img src="../../attach/P_NP_NPC_NPH.avif" alt="" width="400">
+<img src="../../assets/P_NP_NPC_NPH.avif" alt="" width="400">
 
 ## P 与 NP
 

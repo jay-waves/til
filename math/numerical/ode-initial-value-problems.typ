@@ -40,7 +40,7 @@ $ y_(n + 1) = y_n + h times phi(t_n , y_n , h) $
 - 迭代次数: $n approx frac(t_n - t, h)$
 
 #quote(block: true)[
-#link("../../assets/单步迭代法的误差证明.png")[详细证明如图]
+#link("../../assets/math-numerical-single-step-iteration-error-proof.png")[详细证明如图]
 ]
 
 单步迭代法的全局误差为 $O(h^p)$, 那么就称其为 $p$ 阶方法.

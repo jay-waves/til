@@ -41,7 +41,7 @@ def padding(msg: bytes):
 ### 单轮迭代结构
 
 单轮结构:
-<img src="attach/Pasted%20image%2020240405172905.avif" alt="图源wiki" width="250">
+<img src="assets/sec-crypto-md5-round-structure.avif" alt="图源wiki" width="250">
 
 ```python
 '''input: msg: bytes'''

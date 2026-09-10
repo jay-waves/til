@@ -60,7 +60,7 @@ $$\mathcal{F}\{f(at)\}=\frac{1}{|a|}F\left( \frac{\omega}{a} \right)$$
 
 ## 参考资料
 
-![](../../assets/四种傅里叶变换形式.avif)
+![](../../assets/math-fourier-four-forms-of-fourier-transform.avif)
 
 > [3blue1Brown – 形象傅里叶变换](https://www.bilibili.com/video/BV1pW411J7s8/?spm_id_from=333.337.search-card.all.click&vd_source=389ad1f24e143504d05c538916c8c532)
 

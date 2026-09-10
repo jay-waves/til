@@ -2,7 +2,7 @@
 revised: 24-09-19
 ---
 
-<img src="../../attach/crypto-turing-machine.avif" alt="" width="500">
+<img src="../../assets/crypto-turing-machine.avif" alt="" width="500">
 
 ## 图灵机
 

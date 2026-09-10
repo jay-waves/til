@@ -4,7 +4,7 @@
 
 LFSR 由其反馈逻辑函数定义: $s_{n+1}=f(s_{1},\ s_{2},\ \dots,\ s_{n})=c_{1}s_{n}+c_{2}s_{n-1}+\dots+c_{n}s_{1}$, 递推式是布尔函数, 也是时序电路. 其中 $c_{i}\in GF(2)$, 加法定义为 "$\oplus$". LFSR 内部状态 $(s_{n},\ s_{n-1},\dots,s_{n-k})$ 在每个时钟移位迭代, 左侧接收 $s_{n+1}$, 右侧输出 $s_{n-k-1}$. 初始状态 $\mathrm{s}$ 可能由初始密钥决定.
 
-<img src="/attach/Pasted%20image%2020230609234108.avif" alt="" width="450">
+<img src="/assets/sec-crypto-lfsr-state-diagram.avif" alt="" width="450">
 
 可使用列向量 $\mathbf{s}_{k}$ 来表示 LFSR 内部状态: 
 
@@ -21,7 +21,7 @@ LFSR 的状态更新表示为: ${} \mathbf{s}_{k+1} = A\cdot\mathbf{s}_k {}$, �
 最终得到 $GF(2^{n})$ 上定义的特征多项式 (级联多项式) 如下, $n$ 代表了内部存在的状态数: $$P(x)=x^n - c_1 x^{n-1} - c_2 x^{n-2} - \dots - c_{n-1} x - c_n$$
 
 例子:  
-<img src="../../../../attach/Pasted%20image%2020230609220658.avif" alt="" width="500">
+<img src="../../../../assets/sec-crypto-lfsr-characteristic-polynomial-example.avif" alt="" width="500">
 
 ### 生成函数
 
