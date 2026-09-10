@@ -27,3 +27,7 @@ desktop.ini
 # OSS mount and persistent VFS cache
 /assets/
 /.oss-assets/
+
+# Local-only study notes
+/robo/modo/
+/ai/udl/

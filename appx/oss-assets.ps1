@@ -53,11 +53,11 @@ if ($Action -eq 'Start') {
             $credential = Import-Clixml $credentialPath
             $arguments = @(
                 'mount', $remote, $mount,
-                '--vfs-cache-mode=full', '--vfs-cache-max-age=8760h',
+                '--vfs-cache-mode=full', '--vfs-cache-max-age=8760h', '--vfs-cache-poll-interval=1h',
                 '--dir-cache-time=720h', '--poll-interval=0', '--vfs-fast-fingerprint',
                 '--contimeout=10s', '--timeout=30s',
                 '--rc', '--rc-addr=127.0.0.1:5579',
-                '--log-level=NOTICE', '--log-file-max-size=10M', '--log-file-max-backups=2',
+                '--log-level=INFO', '--log-file-max-size=10M', '--log-file-max-backups=2',
                 '--cache-dir', "$state/cache", '--log-file', "$state/mount.log"
             )
             $process = Start-Process rclone.exe -WindowStyle Hidden -PassThru `
