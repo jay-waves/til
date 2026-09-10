@@ -196,7 +196,7 @@ MutationDispatcher::MutationDispatcher(Random &Rand,const FuzzingOptions &Option
 }
 ```
 
-![](http://oss.jay-waves.cn/til/libfuzzer-arch.avif)
+![](../../../assets/libfuzzer-arch.avif)
 
 > source: 
 > - [Source-and-Fuzzing](https://github.com/lcatro/Source-and-Fuzzing)
@@ -204,6 +204,5 @@ MutationDispatcher::MutationDispatcher(Random &Rand,const FuzzingOptions &Option
 >
 
 ## Q&A
-
 
 

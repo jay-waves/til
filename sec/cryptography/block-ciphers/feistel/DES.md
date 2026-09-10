@@ -12,7 +12,7 @@ DES, Data Encryption Standard, 是 1977 年颁布的美帝标准加密算法, �
 
 DES 共 16 轮迭代, 每轮有独立派生的子密钥. 输入 64 位明文, 输入 64 位密钥 (有效位数为 56 位), 输出 64 位密文. 
 
-<img src="../../../../attach/crypto-des-diagram.avif" alt="" width="350">
+<img src="../../../../assets/crypto-des-diagram.avif" alt="" width="350">
 
 解密可复用整个加密结构, 同时逆序输入轮密钥. 为了对称性, 最后一轮的 Feistel 结构并不完整, $L,R$ 没有交换顺序.
 
@@ -22,7 +22,7 @@ DES密钥长度虽然是56位, 但实现中DES加上了8位校验位, 共64位. 
 
 循环左移 `LCS` 操作的*移动比特数*遵循**轮次左移调度表** $\{1,1,2,2,2,2,2,2,1,2,2,2,2,2,2,1\}$, 16轮后正好左移 `28bits` 回到初态.
 
-<img src="../../../../attach/crypto-des-diagram2.avif" alt="" width="500">
+<img src="../../../../assets/crypto-des-diagram2.avif" alt="" width="500">
 
 PC-2 盒的置换, 也是分为左右 `28 bits` 进行压缩, 互不相干. 即左 `28 bits` 压缩为 前 `24 bits`, 后 `28bits` 压缩为后 `24 bits`.
 
@@ -38,7 +38,7 @@ DES采用单轮 [Feistel 迭代结构](Feistel.md), 共16轮. 加密流程如下
 	$\quad R_{i}\leftarrow L_{i-1}\oplus P(\ S[\ E(R_{i-1})\oplus rk_{i}\ ]\ )$
 3. $IP^{-1}(R_{16}L_{16})$
 
-<img src="../../../../attach/crypto-des-1round.avif" alt="" width="350">
+<img src="../../../../assets/crypto-des-1round.avif" alt="" width="350">
 
 > 这个IP有什么用? 为了加解密结构相同还必须在末尾加上逆IP.
 
@@ -69,6 +69,7 @@ DES 结构很美很简洁, 但也降低了算法破译的难度.
 #### 互补特性
 
 对于输入 $m$, 记 $\overline{m}$ 为其补, 那么可以证明: (原理是 $\overline{A}\oplus \overline{B}=\overline{A\oplus B}$, 结合结构分析即可)
+
 $$\mathrm{DES}_{\overline{k}}(\overline{m})=\overline{\mathrm{DES}_k(m)}$$
 
 因此在穷举攻击时, 复杂度可以减少一半. 假设使用已知明文攻击的攻击者, 选取明密文对 $(M, C)$ 和 $(\overline{M}, C^{*})$, 那么其只需遍历 $2^{55}$  对互补的 $(k, \overline{k})$ 密钥对, 如果 $DES_{k}(M)=C$ 或 $DES_{k}(M)=\overline{C^{*}}$, 就可以破译出密钥.

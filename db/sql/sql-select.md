@@ -97,7 +97,7 @@ select name, id,  math from  students group by id;
 
 ## Join (多表联合查询)
 
-<img src="http://oss.jay-waves.cn/til/数据库_JOIN语法.avif" alt="" width="500">
+<img src="../../assets/数据库_JOIN语法.avif" alt="" width="500">
 
 套集合关系:
 
@@ -185,4 +185,3 @@ where prod_price <= 5 OR vend_id in (1001, 1002);
 ```
 
 `union` 会去掉重复, `unioin all` 则会全部显示. 个别数据库还支持 `minus` 和 `intersect`.
-

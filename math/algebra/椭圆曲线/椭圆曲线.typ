@@ -1,4 +1,4 @@
-#import "../../../appx/theme.typ": tufte, meta, definition, theorem, proof
+#import "../../../appx/theme.typ": tufte, definition, theorem, proof
 
 #show: tufte
 
@@ -25,12 +25,12 @@ $
   columns: 2,
   [$y^2 = x^3 - 3x + 3$],
   [$y^2 = x^3 - 6x + 5$],
-  image("../../../attach/curve_-3_3.webp", width: 80%),
-  image("../../../attach/curve_-6_5.webp", width: 80%),
+  image("../../../assets/curve_-3_3.webp", width: 80%),
+  image("../../../assets/curve_-6_5.webp", width: 80%),
   [$y^2 = x^3$ 含不可导点],
   [$y^2 = x^3 - 3x + 2$ 含自相交点],
-  image("../../../attach/curve_0_0.webp", width: 80%),
-  image("../../../attach/curve_-3_2.webp", width: 80%),
+  image("../../../assets/curve_0_0.webp", width: 80%),
+  image("../../../assets/curve_-3_2.webp", width: 80%),
 )
 
 == 负元

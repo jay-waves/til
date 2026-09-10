@@ -3,7 +3,7 @@
 
 [Humanity's Last Machine](https://www.humanityslastmachine.com/)
 
-<img width=500 src="http://oss.jay-waves.cn/til/humanoid-hardwares.webp"/>
+<img width=500 src="../assets/humanoid-hardwares.webp"/>
 
 关机（执行器 Actuator）：
 * 伺服电机（Servo Motor）

@@ -94,11 +94,10 @@ $$u(t)=K_{p}\theta_{e}(t)+K_{i}\int^{t}_{0}\theta_{e}(\tau)d\tau +K_{d} \frac{d\
 * $K_{i}$ 积分增益，消除 *稳态误差（steady-state error）*
 * $K_{d}$ 微分增益，提高相位裕度（阻尼、damping）。
 
-<img src="http://oss.jay-waves.cn/til/pid-curve.avif" alt="no-copyright" width="400">
+<img src="../../assets/pid-curve.avif" alt="no-copyright" width="400">
 
 $K_{d}$ 微分项对噪声（高频信号）很敏感，因此会搭配[低通滤波器](low-pass-filter.md)使用，或干脆不用。*带低通滤波的微分项（Dirty Derivative）* 定义为： 
 
 $$D(s)=\frac{K_{d}s}{\tau s+1}$$
 
 ## Kalman Filter
-

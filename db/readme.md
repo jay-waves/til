@@ -6,7 +6,7 @@
 
 常见数据系统架构：
 
-<img src="http://oss.jay-waves.cn/til/ddis-f1-1.avif" alt="ddis-f1-1" width="500">
+<img src="../assets/ddis-f1-1.avif" alt="ddis-f1-1" width="500">
 
 ## 网络应用的性能
 
@@ -27,7 +27,7 @@ Metrics:
 
 *HOL, Head-of-Line* (护航效应). small number of slow requests to hold up the processing of subsequent requets. 
 
-<img src="http://oss.jay-waves.cn/til/p99.avif" alt="ddis-f2-1" width="600">
+<img src="../assets/p99.avif" alt="ddis-f2-1" width="600">
 
 ### Batching 
 

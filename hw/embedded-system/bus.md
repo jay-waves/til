@@ -57,7 +57,7 @@ RS-232C 总线的传输距离不超过 15m, 最高传输速率为 20Kbps. 低电
 
 通用异步收发器 （UART， Universal Asynchronous Receive/Transmitter). 通用同步和异步收发器 （Universal ASynchronous and Synchronous Receive/Transmitter, USART). CPU 将数据总线并行数据送至 "缓冲区", 然后控制 TxD 线按位送出, 转化为串行数据. 每帧的起始位和停止位由 UART 自动添加. 接受数据时, UART 监听 RxD 线, 当有低电平 (起始位) 时开始接受一帧数据, 直至数据帧完全读取至 "缓冲区", 通过中断促使 CPU 取走数据.
 
-<img src="http://oss.jay-waves.cn/til/uart.avif" alt="" width="400">
+<img src="../../assets/uart.avif" alt="" width="400">
 
 UART 按时钟 (RxC) 上升沿采用 RxD 线, 当连续采集到 RxD 上 K 个低电平 (一般设置为起始位的二分之一时间) 后, UART 确认对方在发送数据 而不是干扰信号. 
 
@@ -185,7 +185,7 @@ CAN 总线始终在广播报文，每个 CAN 节点有一个*接收滤波 ID 表
 * 遥控帧，接受单元向发送单元请求数据，没有数据段。
 * 错误帧
 
-![](http://oss.jay-waves.cn/til/20260323123433732.avif)
+![](../../assets/20260323123433732.avif)
 
 * SOF, Start of Frame. 1b
 * ID. 11b

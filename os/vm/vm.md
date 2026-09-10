@@ -9,7 +9,7 @@
 | 物理硬件     |        |
 | 网络基础设施             |        |
 
-![On-prem and Cloud -- Network Academic IO, Fig 6](http://oss.jay-waves.cn/til/on-prem-off-prem.webp)
+![On-prem and Cloud -- Network Academic IO, Fig 6](../../assets/on-prem-off-prem.webp)
 
 vSphere 这类虚拟化平台专用于将所有硬件集群统一为虚拟化平台，允许 CPU 和硬件资源超卖。VMWare vSphere 基于 EXSi 虚拟机内核，类似的还有 OpenStack （基于 Linux KVM 内核）、Windows System Center（基于 Hyper-V 内核）
 

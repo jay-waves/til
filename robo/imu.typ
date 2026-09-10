@@ -1,26 +1,23 @@
 
-#import "../appx/theme.typ": tufte, meta, note, theorem, definition, equate-lines
+#import "../appx/theme.typ": tufte, note, theorem, definition, equate-lines
 
 #show: tufte
 
-#meta(
-  subtitle: [IMU-driven systems],
-  revised: [2026-08-03],
-  tags: ("robotics", "imu", "kinematics", "quaternion"),
+#set document(
+  title: [IMU Driven Systems],
+  date: datetime.today(),
+  keywords: ("robotics", "imu", "kinematics", "quaternion")
 )
 
 #let bmat(..args) = math.mat(delim: "[", ..args)
 #let vecb(x) = math.upright(math.bold(x))
 
-
 = Inertial Measurement Unit (IMU)
 
 IMU 集成了加速度计（Accelerometer）和陀螺仪（Gyrometer），提供刚体 (IMU) 坐标系下测量的加速度 $a_m$ 和角速度 $omega_m$。
+
 直接由 IMU 积分计算出的姿态信息，称为刚体的*名义状态*（标称状态、Nominal State），随时间会产生误差（飘移），需要修正。
 通过融合其他传感器信息（如 GPS 或视觉），可以减少和修正飘移。常见技术有 ESKF 或 Factor Graph。
-
-The error-state Kalman filter (ESKF) 负责估计名义状态附近的*小状态误差*。
-最终真实的姿态表达为一个名义姿态和一个小误差补偿之和。
 
 #let r1 = (
   [Full state], [$vecb(x)_t$], [$vecb(x)$], [$delta vecb(x)$], [$vecb(x)_t = vecb(x) plus.o delta vecb(x)$], [], [],
@@ -74,23 +71,39 @@ The error-state Kalman filter (ESKF) 负责估计名义状态附近的*小状态
   ..r9,
 )
 
-== 典型的测量模型
+== 典型的 IMU 测量原理
 
 陀螺仪：
 
 $ omega_m = omega_t + omega_"bt" + omega_n $
 
 - $omega_t$ 是真实角速度
-- $omega_"bt"$ 是陀螺仪的偏移误差 (bias) ，是持续存在，可估计的系统误差。
-- $omega_n$ 是陀螺仪的测量白噪声 (noise)，在每个采样时刻快速变化，不可直接估计的随机扰动。
+- $omega_"bt"$ 是陀螺仪的物理偏差 (bias)，是由于器件不理想导致的零位偏置 (offset)，是持续存在可估计的系统误差。
+  由于该值持续存在，会导致积分计算位姿 $T = (p, R)$ 有随时间线性增长的*偏移（drift）*。
+- $omega_n$ 是陀螺仪的测量噪声误差 (noise)，在每个采样时刻快速变化，不可直接估计的随机扰动。
 - $omega_m$ 是 IMU 实际测量的角速度
 
 同理，加速度：
 
 $ a_m = a_t + a_"bt" + a_n $
 
+注意，这里用了 "bt" 而不是 "b"，因为滤波器对 bias 的估计（名义值）也不是准确的 ：
 
-== 姿态表达 (orientation)
+$ a_"bt" = a_b plus.o delta a $ <eq:bias>
+
+#note[
+注意，bias 并不是常量，仍然会随时间缓慢随机改变，因此建模为白噪声 $a_w$ 驱动的随机游走：
+
+$ dot(a_"bt") = a_w,quad E[a_w] = 0 $
+
+作为对比，噪声误差 $a_n$ 本身是高斯分布的，随着时间的累计基本为零。
+
+$ a_n ~ cal(N)(0, sum_n),quad E[a_n] = 0 $
+][
+可以理解为：bias 是持续存在的偏置量，并且随时间缓慢移动；noise 是快速变化的噪声，和时间无关。
+]
+
+=== 姿态表达 (orientation)
 
 IMU 的测量值是相对刚体坐标系的，因此旋转量 $R$ 表达从刚体坐标系 $BB$ 到
 世界坐标系 $WW$ 的姿态变换（orientation）。
@@ -106,7 +119,7 @@ $ dot(v) = R a_t + g = R(a_m - a_b - a_n) + g $
 
 其中 $a_"xxx"$  是 IMU 在 $BB$ 刚体坐标系的测量量，通过 $R$ 旋转到世界坐标系。
 
-== 四元数处理
+=== 四元数处理
 
 误差很小时，四元数误差可用三维旋转向量 $Delta theta$ 表示：
 
@@ -133,91 +146,132 @@ $ q(t + upright(d)t) = q(t) times.o (bmat(1; 0) + bmat(0; 1/2 ddelta)) =q(t) + q
 
 $ dot(q(t)) = (q(t+ upright(d)t) - q(t))/ (upright(d)t) = 1/2 q(t) times.o bmat(0; omega) $
 
-== 微分 
+=== 微分 
 
 旋转的累积：
 
-$ R_(k+1) = R_k exp([w_k "d"t]) approx R_k (I + [w_k "d"t]) $
+$ R_(k+1) = R_k e^([w_k "d"t]) approx R_k (I + [w_k "d"t]) $
 
 $ q_(k+1) = q_k times.o delta q = q_k times.o bmat(cos(theta/2); (w_k "d"t)/theta sin(theta/2)) $
 
 注意，因为 $ddelta = w "d"t$，可知，
 
-$ R(t + "d"t) = R(t) exp([ddelta]) = R(t) exp([w]"d"t) approx R(t)(I + [w]"d"t) $
+$ R(t + "d"t) = R(t) e^([ddelta]) = R(t) e^([w]"d"t) approx R(t)(I + [w]"d"t) $
 
-$ dot(R) = (R(t + "d"t) - R(t))/("d"t) approx R(t) [w] $
+$ dot(R) = (R(t + "d"t) - R(t))/("d"t) approx R(t) [w] $ <eq:dotR>
 
 位置与速度的累计：
 
-$ p_(k+1) = p_k + v Delta t + 1/2 (R(a_m - a_n - a_b) + g)Delta t^2 $
+$ p_(k+1) = p_k + v "d"t + 1/2 (R(a_m - a_n - a_b) + g)"d"t^2 $
 
-$ v_(k+1) = v_k + (R(a_m - a_n - a_b) + g) Delta t $
+$ v_(k+1) = v_k + (R(a_m - a_n - a_b) + g) "d"t $
 
-== 真实状态建模
+== 名义状态建模
 
-由于误差（bias）是长期积累的，时间相关的，因此也被记入状态中。噪声（noise）是随机扰动，不计入状态。
-$g$ 是一个未知量（指精确值），初始的世界坐标系和重力方向不一定严格对齐，因此也是需要估计和修正的。
+IMU 状态建模：（$g$ 用于对齐世界坐标系，除此外的其他量均位于 $BB$ 体坐标系）
 
 $
- x = bmat(p, v, q, a_b, omega_b, g) 
+ x = bmat(p, v, q, a_b, w_b, g) 
 $
 
-// 定义真实状态 $x_t$ 、名义状态 $x$ 、误差状态 $delta x$ ，满足： 
-//
-// $ 
-// x_t &= x plus.o delta x\ 
-// x &= bmat(p, v, q, a_b, omega_b, g),
-// $
-//
 IMU 输入为： 
 
-$ u_m = bmat(a_m ; omega_m) $
+$ u_m = bmat(a_m ; w_m) $
 
-IMU 积累的误差（bias）为 $a_b, omega_b$，误差积累的过程建模为随机游走，由白噪声 $a_w, omega_w$ 驱动。
 重力加速度 $g$ 被认为短时间不变，初始时，将世界坐标系的 $z$ 轴和 $g$ 方向对齐。
 
-#definition[
-IMU 姿态建模 (nominal state)：
-
+#definition[Nominal State：
 
 #equate-lines($
-dot(p) & = v, \
-dot(v) &= R(q) (a_m - a_b - a_n) + g, \
-dot(q) &= 1/2 q times.o (omega_m - omega_b - omega_n), \
-dot(a)_b & = a_w, \
-dot(omega)_b & = omega_w, \
-dot(g) &= 0
+&dot(p) && = v, \
+&dot(v) &&= R(q) (a_m - a_b - a_n) + g, \
+&dot(q) &&= 1/2 q times.o (omega_m - omega_b - omega_n), \
+&dot(a)_"bt" && = a_w, \
+&dot(omega)_"bt" && = omega_w, \
+&dot(g) &&= 0
 $)
 ]
 
 == 误差状态建模
 
-$delta a_b$ 是对 $a_b$ 的修正，即，对偏移量的小修正。当 IMU 数据更新时，通过 $delta a_b$ 来修正 $a_b$ 估计。
+上文 @eq:bias 提到，$a_b, w_b$ 均为名义值，需要不断误差修正：
 
-#definition[
-Error-state: #footnote[详细推导见 @sola2017 P58-60, ESKF 的标准卡尔曼滤波形式见 P61]
+#definition[Error State: #footnote[详细推导见 @sola2017 P58-60, ESKF 的标准卡尔曼滤波形式见 P61]
+
 #equate-lines($
-dot(delta p) & = delta v, \
-dot(delta v) &= -R [a_m - a_b] delta theta - R delta a_b - R a_n + delta g, #<ESKF1>\
-dot(delta theta) &= -[w_m - w_b]delta theta  - delta w_b - w_n, \
-dot(delta a)_b & = a_w, \
-dot(delta omega)_b & = omega_w, \
-dot(delta g) &= 0
+&dot(delta p) && = delta v, \
+&dot(delta v) &&= -R [a_m - a_b] delta theta - R delta a_b - R a_n + delta g, #<ESKF1>\
+&dot(delta theta) &&= -[w_m - w_b]delta theta  - delta w_b - w_n, #<ESKF2> \
+&dot(delta a)_b && = a_w, #<ESKF3> \
+&dot(delta omega)_b && = omega_w, #<ESKF4> \
+&dot(delta g) &&= 0
 $)
+
 ]
 
-@ESKF1
+#pagebreak()
 
-=== $delta v$ 推导
+=== @ESKF1
 
-#theorem[
-  aaaa
-]
+不妨令 $a = a_m - a_b$，有：
 
-=== $delta theta$ 推导 
+$ dot(v)_t = R_t (a - delta a_b - a_n) + g + delta g,quad R_t approx R(I+[delta theta]) $
+
+忽略二阶无穷小量：
+
+$ dot(v)_t approx R a + R[delta theta]a- R delta a_b - R a_n + g + delta g $
+
+两侧约掉名义量 $dot(v) = R(a) + g$，得到：
+
+$ 
+dot(delta v) &= R[delta theta]a- R delta a_b - R a_n + delta g \ 
+& = -R[a]delta theta - R delta a_b  - R a_n + delta g
+$
+
+#linebreak()
+
+上式等价于：
+
+$
+dot(delta v) &= delta (R a) + delta g \ 
+&= - R[a]delta theta + R delta a + delta g, \
+delta a &= -delta a_b - a_n
+$
+
+=== @ESKF2
+
+将 $R_t approx R(I + [delta theta])$ 同乘 $R^top$ ，得到：
+
+$ Delta R = R^top R_t approx I + [delta theta] $ <eq:DR>
+
+不妨令 $w = w_m - w_b$。因为 @eq:dotR ，得到：
+
+$
+dot(R^top) &= -[w]R^top \
+dot(R_t) &= R_t [w_t] = R_t [w - delta w_b - w_n] 
+$
+
+代入 @eq:DR 中，得到：
+
+$ 
+dot(delta theta) = -[w] delta theta + delta w, quad delta w = - delta w_b - w_n
+$
+
+=== @ESKF3 & @ESKF4 
+
+偏置（bias）是一个缓慢的随机游走：（固定零点偏置，逐帧累计白噪声）
+
+$ dot(a_"bt") = a_w $
+
+偏置的名义值（nominal bias）保持不变（我觉得等价于固定零偏，没有累计噪声）
+
+$ dot(a_b) = 0 $
+
+因为 $a_"bt" = a_b + delta a_b$ ，两侧求导可知：
+
+$ a_w = dot(delta a_b) $
 
 == ESKF (fusing IMU with sensors)
-
 
 #note[
 - VIO: Camera + IMU + Slided Windows 
@@ -227,6 +281,76 @@ $)
 ][
   Radar 发射的无线电波、毫米波，比光的频率低很多，容易测量。因此，可以利用多普勒效应来测量径向速度
 ]
+
+=== Kalman Filter 
+
+将上述 Error-State 的建模，改写为标准卡尔曼滤波形式（连续时间下）：
+
+$
+delta x = bmat(
+  delta p;
+  delta v;
+  delta theta;
+  delta a_b;
+  delta omega_b;
+  delta g
+),
+quad
+n = bmat(
+  a_n;
+  omega_n;
+  a_w;
+  omega_w
+)
+$
+
+$
+dot(delta x) = F delta x + G n
+$
+
+误差状态转移矩阵：
+
+$
+F = bmat(
+  0, I, 0, 0, 0, 0;
+  0, 0, -R [a], -R, 0, I;
+  0, 0, -[w], 0, -I, 0;
+  0, 0, 0, 0, 0, 0;
+  0, 0, 0, 0, 0, 0;
+  0, 0, 0, 0, 0, 0
+)
+$
+
+噪声输入矩阵：
+
+$
+G = bmat(
+  0, 0, 0, 0;
+  -R, 0, 0, 0;
+  0, -I, 0, 0;
+  0, 0, I, 0;
+  0, 0, 0, I;
+  0, 0, 0, 0
+)
+$
+
+如果噪声满足：
+
+$
+E(n(t) n(tau)^T) = Q_c delta(t - tau),
+$
+
+那么连续时间的协方差传播：
+
+$
+dot(P) = F P + P F^T + G Q_c G^T
+$
+
+=== reset 
+
+=== 离散化（离散采样）
+
+TODO 
 
 == Factor Graph 
 

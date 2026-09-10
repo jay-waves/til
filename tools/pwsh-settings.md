@@ -2,6 +2,8 @@ Powershell7 比较稳定的配置位置，应该在 `~/Documents/Powershell/Micr
 
 编辑方式是： `nvim $PROFILE`
 
+我的详细配置详见 [jay-waves/dotfiles/pwsh](https://github.com/jay-waves/dotfiles)
+
 ```powershell
 # using utf-8
 $OutputEncoding = [System.Text.Encoding]::UTF8

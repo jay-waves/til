@@ -18,10 +18,11 @@
 | tools       | dev tools               | 开发工具     |
 | vision      | visual computing        | 可视计算     |
 
-
 ## License
 
-如未明确说明，原创内容一律使用 CC-BY 4.0 许可。您可以自由使用，但需要保留署名。
+本仓库中的原创内容均采用 CC BY 4.0 许可证授权。您可自由使用，但须保留署名。
+
+部分文件可能包含受其他许可证或权利约束的第三方内容，此类内容以文件内的具体说明为准。
 
 ## Workflow
 
@@ -30,17 +31,9 @@
 * Markdown 文档的代码块样式见 `appx/highlight.css`，供 hljs css 块使用。
 * Typst 文档的推荐样式见 `appx/theme.typ` 
 
-文件内属性 (YAML Preamble):
+个人博客不在此仓库，详见[个人主页](https://jay-waves.cn)。
 
-| properties |                                                                 | type |
-| ---------- | --------------------------------------------------------------- | ---- |
-| source     | 来源统一资源定位符，包括网址和源码路径                          | 列表 |
-| revised    | 最后大幅修改日期                                                | 日期 |
-| copyright  | 作者与出版日期                                                  | 列表 |
-| license    | 文内有非 CC-BY 许可证授权下的内容引用时，单个文件许可证可能变化 | 文本 |
-| code       | 指文内内容在 `/src` 目录下有对应的源码                          | 列表 |
-| tags       | 文章内容关键词                                                  | 列表 |
-| epigraph   | 文字开头引用的一段引文                                          | 文本 |
+所有图片附件托管在 [OSS](./appx/oss-assets.md) ，通过 FUSE 映射到本地 `./assets` 目录。
 
 ## Guidelines
 
@@ -78,7 +71,6 @@
 ### Attachments 
 
 * 优先选择 ASCII/Mermaid 图，非必要不引入图像文件。
-* Markdown 优先将图片放在 [OSS](oss.jay-waves.cn) 中，远程引用。支持  `avif, png, webp` 格式。
+* Markdown 图片通过挂载目录 `./assets` 访问 OSS，使用相对当前文档的路径引用。支持 `avif, png, webp` 格式；挂载与离线缓存见 [OSS 图片目录](appx/oss-assets.md)。
 * Typst 优先选择 `webp` 格式的本地图片，放在 `./attach` 中。
 * 图片如有版权信息，同样需要在 `[]` 中著名来源
-

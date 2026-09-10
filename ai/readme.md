@@ -6,7 +6,7 @@
 - 强化学习: 有外部奖励和反馈
 - 深度学习 (Deep Learning): 模型使用神经网络. 
 
-<img src="http://oss.jay-waves.cn/til/20260125183124715.png" alt="" width="400">
+<img src="../assets/20260125183124715.png" alt="" width="400">
 
 
 ### landmarks
@@ -29,4 +29,3 @@
 * 2022. Dall-E2 Image synthesis frome text prompts
 * 2022. ChatGPT3.5
 * 2023. ChatGPT4, Multimodal model 
-

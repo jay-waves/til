@@ -1,6 +1,28 @@
-/*
-* arguments (sys-input): theme=dark/light, layout=landscape/portrait
-*/
+/// Shared document theme and typesetting helpers.
+///
+/// Common imports and usage (adjust the path relative to your document):
+/// ```typst
+/// #import "../appx/theme.typ": template, note, theorem, lemma, corollary,
+///   definition, proof, mermaid, equate-lines, physica
+/// #show: template
+/// #set document(title: "Notes", keywords: ("robotics",))
+/// ```
+///
+/// Feature index:
+/// - `template(body)` / `tufte(body)`: page layout and styling; `tufte` is a compatibility entry point.
+/// - `note(body, aside, side-image: none)`: body with a right-hand sidenote and optional image.
+/// - `theorem` / `lemma` / `corollary`: theorem, lemma, and corollary environments.
+/// - `definition` / `proof`: definition and proof environments.
+/// - `mermaid(source, width: 78%)`: Mermaid diagrams from strings or raw content.
+/// - `equate-lines(body, ...)`: multiline equations with chapter numbers and lettered subnumbers.
+/// - `physica`: physics utilities module; use `physica.xxx`.
+///
+/// Style variables: `main-fonts`, `heading-fonts`, `code-fonts`, `fsize`, `spacing`,
+/// `fg`, `bg`, `muted`, `accent`, `accent2`, `border`, `border-muted`, `code-fg`,
+/// `pre-bg`, `code-bg`, and `shadow`.
+///
+/// CLI inputs: `--input theme=dark/light`, `--input layout=landscape/portrait`.
+/// The recommended interfaces are listed above; other top-level names remain importable.
 
 #import "@preview/ctheorems:1.1.3": *
 #import "@preview/physica:0.9.8" as physica
@@ -77,6 +99,7 @@
 
 #let cjk-text = regex("\p{Han}+")
 
+/// Body with a right-hand sidenote: `#note[Body][Aside]`; `side-image` accepts an image path or content.
 #let note(body, aside, side-image: none) = {
     let aside-text = if aside == [] {
         none
@@ -126,6 +149,7 @@
     )
 }
 
+/// Theorem environment: `#theorem[Theorem content]`.
 #let theorem = thmbox(
     "theorem", "定理", 
     supplement: [Thm.],
@@ -135,6 +159,7 @@
     radius: 3pt
 )
 
+/// Lemma environment: `#lemma[Lemma content]`.
 #let lemma = thmbox(
     "lemma", "引理", 
     supplement: [Lemma],
@@ -144,12 +169,14 @@
     radius: 3pt
 )
 
+/// Corollary environment: `#corollary[Corollary content]`.
 #let corollary = thmplain(
     "corollary", "推论", 
     supplement: [Cor.],
     titlefmt: strong
 )
 
+/// Definition environment: `#definition[Definition content]`.
 #let definition = thmbox(
     "definition", "定义", 
     supplement: [Def.],
@@ -164,52 +191,13 @@
     inset: (top: 0em, left: 0pt, bottom: 0em, right: 0pt)
 )
 
+/// Proof environment: `#proof[Proof content]`; automatically adds a QED symbol.
 #let proof(..args, body) = {
     proof-env(..args, body)
     linebreak()
 }
 
-#let meta(
-    subtitle: none,
-    source: none,
-    revised: none,
-    copyright: none,
-    license: none,
-    code: none,
-    tags: none,
-) = {
-    let fields = (
-        ("Subtitle", subtitle),
-        ("Source", source),
-        ("Revised", revised),
-        ("Copyright", copyright),
-        ("License", license),
-        ("Code", code),
-        ("Tags", tags),
-    ).filter(field => field.at(1) != none)
-    let value = item => if type(item) == array { item.join(", ") } else { item }
-
-    if fields.len() > 0 {
-        block(
-            width: 100%,
-            inset: (left: 0.8em, y: 0.45em),
-            stroke: (left: 2pt + accent),
-            text(font: main-fonts, size: fsize.small, fill: muted)[
-                #grid(
-                    columns: (6.5em, 1fr),
-                    row-gutter: 0.25em,
-                    column-gutter: 0.8em,
-                    ..fields.map(field => (
-                        text(fill: accent, weight: "bold", upper(field.at(0))),
-                        value(field.at(1)),
-                    )).flatten(),
-                )
-            ],
-        )
-        v(1.1em)
-    }
-}
-
+/// Render a Mermaid diagram from a string or raw content; `width` defaults to `78%`.
 #let mermaid(source, width: 78%) = {
 
     let source = if type(source) == str {
@@ -246,6 +234,7 @@
 }
 
 
+// Internal numbering helper shared by ordinary equations and equate-lines.
 #let equation-numbering(number, ..sub) = context {
     let chapter = counter(heading).get().first()
     let suffix = if sub.pos().len() > 0 { numbering("a", sub.pos().first()) } else { "" }
@@ -263,8 +252,8 @@
     )
 }
 
-// Chapter-based lettered sub-equations by default; opt out with sub-numbering: false.
-// Label lines with #<label> before the line break.
+/// Multiline equations with chapter numbers and lettered subnumbers; disable with `sub-numbering: false`.
+/// Label each line with `#<label>` before its line break.
 #let equate-lines(
     body,
     numbering: equation-numbering,
@@ -275,6 +264,7 @@
     equate(body, sub-numbering: sub-numbering, ..options)
 }
 
+/// Main layout entry point: `#show: template`; accepts `theme` and `layout` CLI inputs.
 #let template(body) = {
 
     set math.equation(numbering: equation-numbering, supplement: [Eq.])
@@ -327,9 +317,10 @@
     show link: set text(fill: accent2)
     show link: underline
 
-    show strong: set text(weight: "bold")
+    // Raise regular body text (400) to bold (700).
+    set strong(delta: 300)
     show emph: it => text(
-        weight: "medium",
+        weight: 550,
         box(skew(ax: -12deg, reflow: false, it.body)),
     )
 
@@ -484,4 +475,5 @@
     body
 }
 
+/// Compatibility entry point for `template`; prefer `#show: template` in new documents.
 #let tufte(body) = template(body)

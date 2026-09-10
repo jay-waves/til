@@ -4,22 +4,20 @@
 neovim 原生的查看 lsp 报错的命令有些复杂，包装一个自定义命令：
 
 ```lua 
-vim.api.nvim_create_user_command("Diag", function()
+vim.keymap.set("n", "gl", function()
   vim.diagnostic.open_float({
     scope = "line",
     source = true,
   })
 end, {
-  desc = "show diagnostic of current line",
+  desc = "Show line diagnostics",
 })
 
-vim.api.nvim_create_user_command("DiagList", function()
-  vim.diagnostic.setloclist()
-  vim.cmd.lopen()
+vim.keymap.set("n", "gL", function()
+  vim.diagnostic.setloclist({ open = true })
 end, {
-  desc = "show diagnostic of this buffer",
+  desc = "Show buffer diagnostics",
 })
-
 ```
 
 ## markdown 环境

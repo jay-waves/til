@@ -23,3 +23,7 @@
 MACDOX_*
 Thumbs.db
 desktop.ini
+
+# OSS mount and persistent VFS cache
+/assets/
+/.oss-assets/

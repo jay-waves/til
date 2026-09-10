@@ -1,13 +1,12 @@
 
-#import "../appx/theme.typ": tufte, meta, note, theorem
+#import "../appx/theme.typ": tufte, note, theorem
 
 #show: tufte
 
-#meta(
-  subtitle: [机器人运动学],
-  source: [Modern Robotics, Chapter 4-6],
-  revised: [2026-07-13],
-  tags: ("robotics", "kinematics"),
+#set document(
+  title: "机器人运动学",
+  date: datetime.today(),
+  keywords: ("robotics", "kinematics")
 )
 
 = Forward Kinematics
@@ -22,7 +21,7 @@ $ T_04 = T_01 T_(12) T_23 T_34 $
 
 === Space POE Formula
 
-#image("../attach/robo-PoE.webp", width: 70%)
+#image("../assets/robo-PoE.webp", width: 70%)
 
 #let screw(i) = $[cal(S)_#i]$
 #let mscrewm(i) = $M^(-1) [cal(S)_#i] M$
@@ -179,7 +178,7 @@ $
 
 #linebreak()
 
-#image("../attach/robot-2R.webp", width: 30%)
+#image("../assets/robot-2R.webp", width: 30%)
 
 $
 x_1 = L_1 cos(theta_1) + L_2 cos(theta_1 + theta_2) \

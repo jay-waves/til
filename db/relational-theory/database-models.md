@@ -17,7 +17,7 @@
 
 ### 数据库模式抽象级别:
 
-<img src="http://oss.jay-waves.cn/til/数据库模型.avif" alt="" width="400">
+<img src="../../assets/数据库模型.avif" alt="" width="400">
 
 **模式 Schema**: 定义数据库的结构. *一个数据库只有一个模式*.
 
@@ -34,4 +34,3 @@
 ### 实体关系图 ERD
 
 见 [database-design](database-design.md)
-

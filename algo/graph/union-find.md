@@ -59,7 +59,7 @@ public:
 	}
 ```
 
-![union-find](http://oss.jay-waves.cn/til/20260308210719646.avif)
+![union-find](../../assets/20260308210719646.avif)
 
 ## 参考
 
