@@ -13,7 +13,7 @@ Time, Clocks, and the Ordering of Events in a Distributed System. Lamport. 1978.
 - 如果所有互斥访问可以被线性排序 -> 无数据竞争执行
 - 如果存在互斥访问不能被排序 -> 可能存在数据竞争
 
-<img src="../../../assets/sec-software-analysis-happens-before-ordering.avif" alt="" width="300">
+<img src="../../../assets/sec/sec-software-analysis-happens-before-ordering.avif" alt="" width="300">
 
 ### Algorithm
 

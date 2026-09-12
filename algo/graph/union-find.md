@@ -59,7 +59,7 @@ public:
 	}
 ```
 
-![union-find](../../assets/20260308210719646.avif)
+![union-find](../../assets/algo/20260308210719646.avif)
 
 ## 参考
 

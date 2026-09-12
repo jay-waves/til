@@ -18,7 +18,7 @@ $ x_k^+ = x_k^- + K_k (z_k - H x_k^-) $
 其中 $K_i$ 是每次迭代的最优权重，被称为_卡尔曼增益（Kalman Gain）_。
 
 #figure(
-  image("../../assets/kalman-filter-wiki.png", width: 50%),
+  image("../../assets/robo/kalman-filter-wiki.png", width: 50%),
   caption: link("https://en.wikipedia.org/wiki/Kalman_filter")[Kalman Filter -- Wikipedia],
 )
 
@@ -50,22 +50,27 @@ $
 
 设真实状态和建模预测之间的误差为：$ e^- = x - x^- $
 
-每次测量时，传感器读数 $z$ 和真实状态间存在误差 $v$: $ v = H x - z $
+每次测量时，传感器读数 $z$ 和真实状态间存在测量噪声 $v$: $ z = H x + v $
 
 其中
 - $H$ 只是映射矩阵，将建模空间映射到测量空间
-- $v ~ cal(N)(0, R)$ , 协方差矩阵 $"Cov"(v) = R$ 越大，传感器越不可信。
+- $v ~ cal(N)(0, R)$ , 协方差矩阵 $"Cov"(v) = R$ 越大，传感器噪声范围越宽，越不可信。
 
-测量时，我们只能观测到带噪声的测量残差： $ r = z - H x^- = H(x - x^-) + v = H e^- + v $
+由于噪声的存在，测量直接获得 $x$，必须附带一个噪声 $v$。
+定义测量残差为：
+
+$ r = z - H x^- = H(x - x^-) + v = H e^- + v $
 
 #note[
-  *问题变为，已知 $r$ ，如何通过增益 $K r$ ，逼近真实的误差 $e^-$ 。
-  即让估计误差 $e^+ = e^- - K r$ 的方差尽可能小（二阶优化，最小方差估计）*。
+  $r$ 和 $e^-$ 紧密相关，我们希望通过 $r$ 来估计实际的 $e^-$ ，从而估计真实状态 $x$ 。
+  由于用 $r$ 估计 $e^-$ 时有误差，因此得到的结果 $x^+$ 和真实 $x$ 也有误差。
+
+  Kalman 使用 $K r$ 来逼近 $e^-$ 。设 $e^+ = e^- - K r = x - x^+$ ，取 $e^+$ 的最小方差估计：
 ][
   注意 $e^+$ 是向量，没有“最小”的定义，需要看它的统计量。
 ]
 
-$ limits("min")_K E[norm(e^+)^2] = limits("min")_K E[norm(e^- - K r)^2] $
+$ limits("min")_K P^+ = limits("min")_K  E[norm(e^+)^2] = limits("min")_K E[norm(e^- - K r)^2] $
 
 最小方差估计问题的最优性条件为（最优估计下，误差 $e^+$ 已经和 $r$ 没有线性相关性）： 
 
@@ -73,7 +78,7 @@ $ E[e^+ r^top] = 0 $
 
 得到 $ E[(e^- - K r) r^top ] = E[e^- r^top] - K E[r r^top] = 0 $
 
-因此 $ K = E[e^- r^top](E[r r^top])^(-1)  = "Cov"(e^-, r)"Cov"(r)^(-1) $
+*因此 $ K = E[e^- r^top](E[r r^top])^(-1)  = "Cov"(e^-, r)"Cov"(r)^(-1) $*
 
 $"Cov"(e^-, r)$ 是状态误差和 $r$ 的相关性，展开可得（过程略）：
 
@@ -92,6 +97,8 @@ $
 最终有：
 
 $ K = P^- H^top (H P^- H^top + R)^(-1) $
+
+当 $e^-$ 和 $r$ 的相关性大时，K 
 
 == 迭代过程
 
@@ -112,23 +119,16 @@ $ x_k^- = F_k x_(k-1)^+ + w_k $
     $cal(M)[#x, #y]$ }
 }
 
-#note[
+不确定性传播 (注意 $"Cov"(e^+, w) = 0$，定义二阶矩符号 $cal(M)(x) eq.def E[x x^top]$ ）：
 
-  不确定性传播 (注意 $"Cov"(e^+, w) = 0$）：
-
-  $ 
-    P_k^- 
-      & = Mo(e_k^-) = Mo(x_k - x_k^-) \
-      & = Mo(F xk1 + w - F xk1^+)\
-      & = Mo(F ek1^+ + w_k) \
-      & = F Mo(ek1) F^top + Mo(w) \
-      & = F_k P^+_(k-1) F_k^top + Q_k 
-  $
-
-][
-  这里定义二阶矩符号 $cal(M)(x) eq.def E[x x^top]$ ，
-
-]
+$ 
+  P_k^- 
+    & = Mo(e_k^-) = Mo(x_k - x_k^-) \
+    & = Mo(F xk1 + w - F xk1^+)\
+    & = Mo(F ek1^+ + w_k) \
+    & = F Mo(ek1) F^top + Mo(w) \
+    & = F_k P^+_(k-1) F_k^top + Q_k 
+$
 
 得到 $(x_k^-, P_k^-)$ ，接下来通过观测值进行修正。
 
@@ -152,7 +152,7 @@ $
     & = (I - K H) P^- (I- K H)^top + K R K^top 
 $
 
-此公式称为Joseph Form。
+此公式称为Joseph Form。此形式就像一种 $(1-k)x + k y$ 的线性插值。
 
 #quote[
 还有一种简洁形式。可以证明：
@@ -170,4 +170,42 @@ $
 
 = 一维卡尔曼滤波
 
-aaa
+系统状态模型：
+
+$ x_k = xk1 + w_k ,quad w_k ~N(0, Q) $
+
+测量模型：
+
+$ z_k =  x_k + v_k, quad v_k ~ N(0, R) $
+
+其中：
+- $F = 1$
+- $B u_k = 0$ 
+- $H = 1$
+
+预测过程：
+
+$ 
+  x_k^- &= x_(k-1)^+ + w_k \
+  P_k^- &= P_(k-1)^+ + Q
+$
+
+
+卡尔曼增益：
+
+$
+  K = P_k^-/(P_k^- + R)
+$
+
+修正过程：
+
+$
+  x_k^+ 
+    &= x_k^- + K r \
+  P_k^+ 
+    &= (I- K) P_k^- \
+    &= 1/P_k^- + 1/R
+$
+
+$P$ 是当前估计的置信度，$R$ 是测量噪声。当 $R->0$ 时，有 $P^+->0$ ，估计几乎完全确定。
+当 $R->infinity$ 时，测量噪声的范围太大，有 $P^+->P^-$ ，此时测量基本不起作用。

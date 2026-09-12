@@ -66,16 +66,23 @@ PV  <---------------------  FV
 
 #### DCF (Discounted Cash FLow) 
 
-$$PV=\sum^T_{t=1} \frac{FV_t}{(1+r)^t}$$
+把一项资产未来 $t$ 年能产生的现金流 $CF_i$ ，通过折现率 $r$ ，折现为资产今天的价值 $PV$ 。
+其中 $CF_0$ 是初始投资（本金），不计入折现计算，通常记为负数。
 
-把一项资产未来 $t$ 年能产生的现金流 $FV_i$ ，通过折现率 $r$ ，折现为资产今天的价值 $PV$. 
+$$PV=\sum^T_{t=1} \frac{CF_t}{(1+r)^t}$$
 
-#### IRR (Internal Rate of Return)
+净折现值（加上初始本金，注意本金是负数）：
 
-IRR 是 DCF 的逆问题，找到一个折现率 $r$ ，使得所有未来现金流折现回今天后，刚好等于初始投资。
-（即，收益率为零）
+$$NPV = CF_0 + PV$$
 
-$$ 0=\sum^T_{t=1} \frac{FV_t}{(1+IRR)^t}$$
+
+#### **IRR (Internal Rate of Return)**
+
+IRR 目的是找到一个折现率 $r$ ，使得所有未来现金流折现回今天后，净现值 NPV 为零。
+**通过 IRR，可以将现金流复杂的投资产品计算出一个近似的年化收益，方便投资比较**。
+
+$$0=CF_0 + \sum^T_{t=1} \frac{CF_t}{(1+IRR)^t}$$
+
 
 
 ## Money Market
@@ -92,4 +99,4 @@ $$ 0=\sum^T_{t=1} \frac{FV_t}{(1+IRR)^t}$$
 
 ## Yield Curve
 
-![](../assets/econ-yield-curve.webp)
+![](../assets/econ/econ-yield-curve.webp)

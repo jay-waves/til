@@ -17,7 +17,7 @@
 
 ### 数据库模式抽象级别:
 
-<img src="../../assets/db-relational-database-model.avif" alt="" width="400">
+<img src="../../assets/db/db-relational-database-model.avif" alt="" width="400">
 
 **模式 Schema**: 定义数据库的结构. *一个数据库只有一个模式*.
 

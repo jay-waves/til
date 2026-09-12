@@ -46,7 +46,7 @@ $
 
 轴角旋转有三个#link("rigid-bodies.md")[自由度]：一个表示 $theta$，两个表示单位向量 $vecb(u)$。
 
-#image("/assets/robo-quaternion-axis-rotation.webp", width: 70%)
+#image("/assets/robo/robo-quaternion-axis-rotation.webp", width: 70%)
 
 将向量 $vecb(v)$ 沿垂直于轴 $vecb(u)$ 和平行于轴的两个方向分解为 $vecb(v)_1, vecb(v)_2$。平行分量 $vecb(v)_1$ 在旋转后保持不变，垂直分量旋转后变为：
 
@@ -264,11 +264,11 @@ $
 注意，由于 $abs(q) = 1$，四元数实际上只有三个自由度。旋转姿态活动于一个超球面内，
 但两个姿态 $q_0, q_1$ 和原点共同位于一个平面圆内，因此固定端点并选定路径后，插值只剩 $t$ 一个自由度。
 
-#image("../assets/orientation_lerp.webp", width: 50%)
+#image("../assets/robo/orientation_lerp.webp", width: 50%)
 
 == Slerp 插值
 
-#image("../assets/slerp.webp", width: 50%)
+#image("../assets/robo/slerp.webp", width: 50%)
 
 设 $q_0, q_1 in "Sp"(1)$ 为单位四元数，并定义四维欧式内积：
 

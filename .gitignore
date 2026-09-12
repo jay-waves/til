@@ -24,10 +24,6 @@ MACDOX_*
 Thumbs.db
 desktop.ini
 
-# OSS assets, bisync state and legacy VFS cache
-/assets/
-/.oss-assets/
-
 # Local-only study notes
 /robo/modo/
 /ai/udl/

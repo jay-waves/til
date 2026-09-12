@@ -48,7 +48,7 @@ $L(G_{3})\subseteq L(G_{2})\subseteq L(G_{1})\subseteq L(G_{0})$, 对文法分�
 $A\rightarrow \alpha$, 其中 $A\in N, \alpha\in (N\cup \Sigma)^{*}$
 
 上下文无关文法生成的**句子**可用派生树表示:
-<img src="../../../assets/math-formal-languages-derivation-tree.avif" alt="" width="450">
+<img src="../../../assets/math/math-formal-languages-derivation-tree.avif" alt="" width="450">
 
 如果一个句子可以由不止一个派生树生成, 就称该文法有**二义性**.
 

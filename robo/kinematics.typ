@@ -21,7 +21,7 @@ $ T_04 = T_01 T_(12) T_23 T_34 $
 
 === Space POE Formula
 
-#image("../assets/robo-PoE.webp", width: 70%)
+#image("../assets/robo/robo-PoE.webp", width: 70%)
 
 #let screw(i) = $[cal(S)_#i]$
 #let mscrewm(i) = $M^(-1) [cal(S)_#i] M$
@@ -178,7 +178,7 @@ $
 
 #linebreak()
 
-#image("../assets/robot-2R.webp", width: 30%)
+#image("../assets/robo/robot-2R.webp", width: 30%)
 
 $
 x_1 = L_1 cos(theta_1) + L_2 cos(theta_1 + theta_2) \

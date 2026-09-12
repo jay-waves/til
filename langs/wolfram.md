@@ -183,7 +183,7 @@ FullForm[expr]
 TreeForm[expr]
 TraditionalForm[expr]
 ```
-<img src="../../../assets/langs-wolfram-tree-form.avif" alt="" width="300">
+<img src="../../../assets/langs/langs-wolfram-tree-form.avif" alt="" width="300">
 
 ### Finite Field
 

@@ -42,4 +42,4 @@ upright(a)[x]=upright(R e L U)[x ]=cases(
 )
 $
 
-![udl-fig3.4|400](../../assets/shallow-neural-network.avif)
+![udl-fig3.4|400](../../assets/ai/shallow-neural-network.avif)
