@@ -33,7 +33,7 @@
 
 个人博客不在此仓库，详见[个人主页](https://jay-waves.cn)。
 
-所有图片附件托管在 [OSS](./appx/oss-assets.md) ，通过 FUSE 映射到本地 `./assets` 目录。
+所有图片附件托管在 OSS，通过 [同步脚本](./appx/sync.ps1) 提交并同步本地 `./assets` 目录。
 
 ## Guidelines
 
@@ -70,7 +70,5 @@
 
 ### Attachments 
 
-* 优先选择 ASCII/Mermaid 图，非必要不引入图像文件。
-* Markdown 图片通过挂载目录 `./assets` 访问 OSS，使用相对当前文档的路径引用。支持 `avif, png, webp` 格式；挂载与离线缓存见 [OSS 图片目录](appx/oss-assets.md)。
-* Typst 优先选择 `webp` 格式的本地图片，放在 `./attach` 中。
+* 所有图片全部托管在 OSS 中，定期和本地目录 `./assets/` 双向同步。
 * 图片如有版权信息，同样需要在 `[]` 中著名来源

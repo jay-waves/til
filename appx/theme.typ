@@ -159,6 +159,17 @@
     radius: 3pt
 )
 
+// Titleless, unnumbered theorem box used to render block quotes.
+#let quote-box = thmbox(
+    "quote", [],
+    supplement: none,
+    titlefmt: body => body,
+    separator: [],
+    fill: pre-bg,
+    stroke: 0.4pt + border,
+    radius: 3pt,
+).with(numbering: none)
+
 /// Lemma environment: `#lemma[Lemma content]`.
 #let lemma = thmbox(
     "lemma", "引理", 
@@ -423,14 +434,9 @@
     // mermaid, not as a codeblock
     show raw.where(lang: "mermaid"): it => mermaid(it.text)
 
-    // quote 
-    show quote.where(block: true): it => block(
-        width: 100%,
-        inset: (x: 0.9em, y: 0.65em),
-        fill: pre-bg,
-        stroke: (left: 1.2pt + border),
-        radius: (right: 3pt),
-        text(fill: muted)[
+    // Render block quotes as titleless, unnumbered ctheorems boxes.
+    show quote: it => quote-box[
+        #text(fill: muted)[
             #it.body
 
             #if it.attribution != none [
@@ -445,8 +451,8 @@
                     ],
                 )
             ]
-        ],
-    )
+        ]
+    ]
 
     set table(
         inset: (x: 0.65em, y: 0.45em),

@@ -24,7 +24,7 @@ MACDOX_*
 Thumbs.db
 desktop.ini
 
-# OSS mount and persistent VFS cache
+# OSS assets, bisync state and legacy VFS cache
 /assets/
 /.oss-assets/
 
