@@ -33,7 +33,7 @@
 
 个人博客不在此仓库，详见[个人主页](https://jay-waves.cn)。
 
-所有图片附件托管在 OSS，通过 [同步脚本](./appx/sync.ps1) 提交并同步本地 `./assets` 目录。
+所有图片附件托管在 OSS，通过 [同步脚本](./appx/sync.ps1) 同步本地 `./assets`。
 
 ## Guidelines
 
