@@ -1,6 +1,6 @@
-#import "../../../appx/theme.typ": tufte, theorem, lemma, corollary, proof, note
+#import "../../../appx/theme.typ": template, theorem, lemma, corollary, proof, sidenote
 
-#show: tufte
+#show: template
 
 #let GF(x) = $upright("GF")(#x)$
 #let ZZ = $bb(Z)_p$
@@ -109,7 +109,7 @@ $x^(p^n) - x$ 在有限域 $#GF($p^n$)$ 上可以完全线性分解, 但是在�
   所以问题等价于证明: 素域存在任意阶不可约多项式.
 ]
 
-#note[
+#sidenote[
   #lemma[
     素域 $#FF$ 上总能找到任意 $n$ 阶不可约多项式.
   ]

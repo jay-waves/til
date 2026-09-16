@@ -1,6 +1,6 @@
-#import "../../appx/theme.typ": tufte, meta, note, theorem, proof
+#import "../../appx/theme.typ": template, meta, sidenote, theorem, proof
 
-#show: tufte
+#show: template
 
 #meta(subtitle: [矩阵运算])
 
@@ -31,7 +31,7 @@ $
 $ bmat(1; 0) dot x_1 + bmat(0; 1) dot x_2 = bmat(x_1; x_2) $
 
 
-#note[
+#sidenote[
   可以发现矩阵 $A = [ vec(alpha) \, vec(alpha) ]$ 将基底变换为 $alpha = ( a \, c )$ 和 $beta = ( b \, d )$, 张成 (线性组合成) 子空间记为 $bb(C) ( A )$. 注意, $x \, med y$ 仍是新基底下的坐标, 而新基底 $alpha = ( a \, c )$ 和 $beta = ( b \, d )$ 是用单位基底表示的.
 ][
   除了#link("向量分析/空间基底变换.typ")[空间基底变换]过程, 
@@ -42,7 +42,7 @@ $ bmat(1; 0) dot x_1 + bmat(0; 1) dot x_2 = bmat(x_1; x_2) $
 
 $A_(n times n)$不一定是满秩的, 即其描述的新基底无法张成n维空间. 这种降维有一个生动的例子: 沿着平面内一条直线旋转平面, 垂直纸面时, 平面降维为了一条直线.
 
-#note[
+#sidenote[
   此时 $A dot.op x = 0$ 的解空间是零空间 $bb(N) ( A )$. 在 $bb(R)^n$ 上, $bb(N) ( A )$ 和 $bb(C) ( A^T )$ 相互正交. 这是从列空间来理解矩阵.
 ][
   类似请参考 ./linear-systems/solutions-of-linear-systems.typ 线性方程组的解的结构

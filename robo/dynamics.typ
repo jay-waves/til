@@ -1,7 +1,7 @@
 
-#import "../appx/theme.typ": tufte, meta, note, theorem
+#import "../appx/theme.typ": template, meta, sidenote, theorem
 
-#show: tufte
+#show: template
 
 #meta(
   subtitle: [机器人动力学],

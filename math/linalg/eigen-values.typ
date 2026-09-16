@@ -1,6 +1,6 @@
-#import "../../appx/theme.typ": theorem, tufte
+#import "../../appx/theme.typ": theorem, template
 
-#show: tufte
+#show: template
 #let bmat(..args) = math.mat(delim: "[", ..args)
 
 = 矩阵特征

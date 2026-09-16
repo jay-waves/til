@@ -1,6 +1,6 @@
-#import "../../appx/theme.typ" : tufte, theorem, lemma, corollary, proof
+#import "../../appx/theme.typ" : template, theorem, lemma, corollary, proof
 
-#show: tufte
+#show: template
 #let bmat(..args) = math.mat(delim: "[", ..args)
 
 

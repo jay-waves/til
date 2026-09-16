@@ -1,11 +1,11 @@
 
-#import "../appx/theme.typ": tufte, meta, note
+#import "../appx/theme.typ": template, meta, sidenote
 
-#show: tufte
+#show: template
 
 #let bmat(..args) = math.mat(delim: "[", ..args)
 
-#note[
+#sidenote[
   Mobile Robots:
   - kinematic: wheel speed $->$ velocity
   - dynamic: wheel torque $->$ acceleration

@@ -1,6 +1,6 @@
 
-#import "../../appx/theme.typ": tufte, meta, note
-#show: tufte
+#import "../../appx/theme.typ": template, meta, sidenote
+#show: template
 
 = 正交矩阵
 
@@ -21,7 +21,7 @@ $
 
 = 酉矩阵
 
-#note[
+#sidenote[
   酉矩阵 (幺正矩阵, Unitary Matrix) 是复数域 $bb(C)$ 上的正交矩阵, 记为 $U$.
 ][
   $A^H$ 共轭矩阵是指：对每个复数取共轭，再转置矩阵。

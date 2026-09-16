@@ -1,5 +1,5 @@
-#import "../../../appx/theme.typ" : tufte, note
-#show: tufte
+#import "../../../appx/theme.typ" : template, sidenote
+#show: template
 
 #let vec(x) = $upright(bold(#x))$
 
@@ -149,7 +149,7 @@ $ A^dagger = V Sigma^dagger U^top $
 
 == 求最小二乘解
 
-#note[
+#sidenote[
   设矩阵 $P=A A^dagger$,
 
   因为 $ P^2 = A A^dagger A A^dagger = A A^dagger = P = P^top $

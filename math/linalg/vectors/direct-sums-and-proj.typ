@@ -1,6 +1,6 @@
-#import "../../../appx/theme.typ" : tufte
+#import "../../../appx/theme.typ" : template
 
-#show: tufte
+#show: template
 
 设 $W_1 , W_2$ 是线性空间 $V$ 的子空间. 若 $W_1 + W_2$ 中任意向量*均唯一地*表示为 $W_1$ 中的一个向量和 $W_2$ 中的一个向量之和, 则称 $W_1 + W_2$ 是 $W_1 , W_2$ 的*直和*. 记为 $W_1 plus.dot W_2$
 

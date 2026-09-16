@@ -1,6 +1,6 @@
-#import "../../appx/theme.typ": tufte, note
+#import "../../appx/theme.typ": template, sidenote
 
-#show: tufte
+#show: template
 
 #let bmat(..args) = $mat(delim: "[", ..args)$
 #let vmat(..args) = $mat(delim: "|", ..args)$
@@ -138,4 +138,3 @@ err(n+1)
 <= sum_(k=0)^n R(n+1-k)(1+h K)^k
 +err(0)(1+h K)^(n+1)
 $
-

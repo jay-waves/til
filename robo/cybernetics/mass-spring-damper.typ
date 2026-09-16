@@ -1,5 +1,5 @@
-#import "../../appx/theme.typ": tufte, note
-#show: tufte
+#import "../../appx/theme.typ": template, sidenote
+#show: template
 
 #import "@preview/cetz:0.5.2"
 

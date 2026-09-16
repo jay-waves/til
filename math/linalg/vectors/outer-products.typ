@@ -1,6 +1,6 @@
-#import "../../../appx/theme.typ" : tufte
+#import "../../../appx/theme.typ" : template
 
-#show: tufte
+#show: template
 
 = 叉乘
 
@@ -49,4 +49,3 @@ $
 
 
 = 外积
-

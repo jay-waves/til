@@ -1,6 +1,6 @@
-#import "../../appx/theme.typ" : tufte, note, theorem, lemma, corollary, proof
+#import "../../appx/theme.typ" : template, sidenote, theorem, lemma, corollary, proof
 
-#show: tufte
+#show: template
 #let bmat(..args) = math.mat(delim: "[", ..args)
 #let vec(x) = math.upright(math.bold(x))
 
@@ -8,7 +8,7 @@
 
 矩阵的秩指矩阵列 (行) 空间线性无关向量的个数.
 
-#note[
+#sidenote[
   #theorem[矩阵行秩等于列秩]
 ][
   这里的证明参考了#link("https://zh.wikipedia.org/wiki/线性代数基本定理")[维基百科]

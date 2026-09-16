@@ -1,6 +1,6 @@
-#import "../../../appx/theme.typ": tufte, definition, theorem, proof
+#import "../../../appx/theme.typ": template, definition, theorem, proof
 
-#show: tufte
+#show: template
 
 #let GF(x) = $upright("GF")(#x)$
 #let EC(a, b) = $upright("EC")(#a, #b)$

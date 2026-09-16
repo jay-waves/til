@@ -1,6 +1,6 @@
 
-#import "../appx/theme.typ": tufte, note
-#show: tufte
+#import "../appx/theme.typ": template, sidenote
+#show: template
 
 #let bmat(..args) = math.mat(delim: "[", ..args)
 #let vec(x) = math.bold(math.upright(x))
@@ -56,7 +56,7 @@ $
 
 双铰链机械臂： $S^1 times S^1=T^2$
 
-#note[
+#sidenote[
   = Rigid-Body Rotation
 ][
   这里使用 Modern Robotics 中的表示法。
@@ -80,7 +80,7 @@ $ dot(vec(x)) & = w times vec(x) \ dot(vec(y)) & = w times vec(y) \ dot(vec(z)) 
 
 #image("../assets/robo/angular-velocity.webp", width: 50%)
 
-#note[
+#sidenote[
   用固定坐标系 $s$ 表示*旋转变化量* $w$, 即 $w_s$ ，设从固定坐标系 $s$ 到刚体坐标系 $b$ 的旋转矩阵 $R$ ，此时角速度可表示为： $ dot(R)=w_s times R=[w_s]R $
 ][
   旋转矩阵： $R=bmat(vec(r_x),vec(r_y), vec(r_z)) I$ \
@@ -99,7 +99,7 @@ $ dot(vec(x)) & = w times vec(x) \ dot(vec(y)) & = w times vec(y) \ dot(vec(z)) 
 
 因此，$w_s$ 可以表示 SO(3) 中的等价矩阵：$ [w_s]=dot(R)R^(-1)=dot(R)R^top $
 
-#note[
+#sidenote[
   在考虑刚体坐标系下的旋转变化量 $w_b$ ，满足：
 ][
   再次强调，这里 $R$ 是指从固定坐标轴到刚体坐标轴的旋转矩阵。
@@ -143,7 +143,7 @@ bmat(dot(R), dot(p) ; 0, 0)
 = bmat(R^top dot(R), R^top dot(p) ; 0, 0) 
 = bmat([omega_(b)], v_(b) ; 0, 0) $
 
-#note[
+#sidenote[
   from $R x_b=x_s$, we get: $R^(-1)dot(p)=R^top dot(p)=v_b$
 ][
   此处 T: ${b}->{s}$
@@ -233,7 +233,7 @@ quad hat(s) = omega / norm(omega), dot(theta) = norm(omega) $
 
 其中 $ h = (hat(s)^top v) / dot(theta) =(hat(omega)^top v)/ norm(omega)^2 $
 
-#note[
+#sidenote[
   也就是说，$S$ 可以用归一化的 $cal(V)$ 表示：
 ][
   注意，这里 $S$ 表示的不是速度，虽然内部 $omega,v$ 都是速度，但归一化后表示某种坐标系。
@@ -272,7 +272,7 @@ Given vector $vec(w)theta in RR^3$, such that $theta$ is any scalar and $vec(w) 
 $ R o t(vec(w),theta)=e^([vec(w)] theta)=I+sin theta[vec(w)]+(1- cos theta)[vec(w)]^2 in S O(3) $ 
 ) <eq2> 
 
-#note[
+#sidenote[
   Subsituting the skew-symmetric matrix representation of $[vec(w)]$ in @eq1 into @eq2, we obtain:
   $ R-R^top=e^[vec(w)]-(e^[vec(w)])^top=2 sin theta [vec(w)] $
 ][
@@ -292,7 +292,7 @@ $
 
 Using the $vec(w)^3=-[vec(w)]$,  $G(theta)$ can be simplified to : 
 
-#note[
+#sidenote[
   $
   G(theta)=I theta + (1-cos theta)[vec(w)]+(theta-sin theta)[vec(w)]^2
   $

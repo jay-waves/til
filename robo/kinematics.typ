@@ -1,7 +1,10 @@
 
-#import "../appx/theme.typ": tufte, note, theorem
+#import "../appx/theme.typ" as theme 
 
-#show: tufte
+#import theme: template, sidenote, theorem
+
+#show: template
+
 
 #set document(
   title: "机器人运动学",
@@ -71,7 +74,7 @@ The URDF (Universal Robot Description Format) is an XML file used by ROS2 to des
 
 === Joints
 
-#note[
+#sidenote[
 *Joints* connect two links: a _parent_ and a _child_ link
   - types: prismatic, revolute, continuous (revolute without joint limits), fixed (virtual joints which doesnot permit any motion)
 ][
@@ -91,7 +94,7 @@ The URDF (Universal Robot Description Format) is an XML file used by ROS2 to des
 
 === Link
 
-#note[
+#sidenote[
   The joints describe the kinematics of a robot, the link define tis mass properteis.
   - _origin frame_ describes the position and orientation of a frame at the link's center of mass relative to the link's joint frame
   - _inertia matrix_ ... (inertia matrix is symmetric, it's only necessary to define the terms on and above the diagonal)
@@ -99,7 +102,7 @@ The URDF (Universal Robot Description Format) is an XML file used by ROS2 to des
   Inertia Matrix 详见机器人动力学（dynamics of robots）
 ]
 
-#note[
+#sidenote[
 ```xml
 <link name="world"/>
 
@@ -125,7 +128,7 @@ The URDF (Universal Robot Description Format) is an XML file used by ROS2 to des
   URDF 不支持环结构
 ]
 
-#note[
+#sidenote[
   = velocity kinematics & Statics
 ][
   Statics: 静力学；Dynamics：动力学
@@ -208,7 +211,7 @@ $
 
 实践中，规范化关节速度输入 $norm(dot(theta)) = 1$ ，观察末端执行器状态 $cal(V)$ 。
 
-#note[
+#sidenote[
 对于 $J$ 进行奇异值分解：
 
 $ cal(V) = J dot(theta) = U Sigma V^top dot(theta) $
@@ -358,7 +361,7 @@ reachable workspace, no exact (or bounded) solution exists.
 == Newton-Raphson IK
 
 
-#note[
+#sidenote[
   假设标量的定位公式 $x=f(theta)$, 目标位置为 $x_d$, 则逆运动学的误差定义为 $Delta x = x_d - f(theta_d)$。
   牛顿迭代方程为：
 
@@ -460,7 +463,7 @@ $eta=-k nabla h(theta)$ can reduce a secondary cost $h$, such as distance to a
 preferred posture or a joint-limit barrier, without changing the primary task
 to first order.
 
-#note[
+#sidenote[
   Null-space projection alone does not guarantee finite-step feasibility.
   Practical constrained IK may instead solve a bounded least-squares or quadratic
   program with joint position and step limits. Collision avoidance requires

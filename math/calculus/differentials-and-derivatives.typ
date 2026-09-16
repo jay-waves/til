@@ -1,6 +1,6 @@
-#import "../../appx/theme.typ": tufte, note
+#import "../../appx/theme.typ": template, sidenote
 
-#show: tufte
+#show: template
 
 #let bmat(..args) = $mat(delim: "[", ..args)$
 #let vmat(..args) = $mat(delim: "|", ..args)$
@@ -74,7 +74,7 @@ $ x dot sin(1 / x) = cases(1 & x arrow.r 0, "未定义" & x = 0) $
 
 == 一元函数
 
-#note[
+#sidenote[
   左右极限存在且相等, 说明函数在该点#strong[极限存在]: $ lim_(x arrow.r a^(+)) f(x) = lim_(x arrow.r a^(-)) f(x) $
 ][
   图示见 `./differentials-and-derivatices.md`
@@ -86,7 +86,7 @@ $ x dot sin(1 / x) = cases(1 & x arrow.r 0, "未定义" & x = 0) $
 
 == 多元函数
 
-#note[
+#sidenote[
   对于多元函数, 偏导存在是指 $x , y$ 正方向上导数存在, 由于不关心其他方向, 因此偏导可能不连续.
 ][
   图示见 `./differentials-and-derivatices.md`

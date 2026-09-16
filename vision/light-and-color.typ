@@ -1,6 +1,6 @@
 
-#import "../appx/theme.typ": tufte, note, mermaid
-#show: tufte
+#import "../appx/theme.typ": template, sidenote, mermaid
+#show: template
 
 #let bmat(..args) = math.mat(delim: "[", ..args)
 #let vec(x) = math.bold(math.upright(x))
@@ -14,7 +14,7 @@
 介质分界处的_表面粗糙度 (roughness)_。 光线经过某个介质分界处， 传播速度改变，导致观察出的传播方向发生偏折，
 称为_折射（refraction）_。
 
-#note[
+#sidenote[
 三种不同的光线类型：
 - 平行光源（太阳光）
 - 点光源（_Point Light_）：光从一个点向四面八方发射。

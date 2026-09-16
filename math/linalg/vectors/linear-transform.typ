@@ -1,6 +1,6 @@
-#import "../../../appx/theme.typ" : tufte, definition, proof
+#import "../../../appx/theme.typ" : template, definition, proof
 
-#show: tufte
+#show: template
 
 = 线性变换
 

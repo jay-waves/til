@@ -1,6 +1,6 @@
-#import "../../../appx/theme.typ": tufte, definition, lemma, theorem, proof, note
+#import "../../../appx/theme.typ": template, definition, lemma, theorem, proof, sidenote
 
-#show: tufte
+#show: template
 
 = 作为向量空间的扩域
 

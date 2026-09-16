@@ -1,6 +1,6 @@
-#import "../../appx/theme.typ": tufte, meta, note, theorem, corollary, proof
+#import "../../appx/theme.typ": template, meta, sidenote, theorem, corollary, proof
 
-#show: tufte
+#show: template
 
 #meta(subtitle: [行列式])
 

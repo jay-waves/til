@@ -1,6 +1,6 @@
-#import "../../appx/theme.typ" : tufte, note, theorem, lemma, corollary, definition, proof
+#import "../../appx/theme.typ" : template, sidenote, theorem, lemma, corollary, definition, proof
 
-#show: tufte
+#show: template
 
 #let vec(x) = math.upright(math.bold(x))
 #let bmat(..args) = math.mat(delim: "[", ..args)
@@ -59,7 +59,7 @@ $ ( sigma ( alpha ) \, beta ) = ( alpha \, sigma ( beta ) ) $
 - $upright("diag")()$ 表示对角矩阵 (Dignomal Matrix), 参数为对角元素.
 - $k lt.eq n$, 因为可能存在重根, 重根按重数记入 $Lambda$ 参数.
 
-#note[
+#sidenote[
   根据矩阵相似对角化原理, 有 $Q = ( xi_1 \, xi_2 \, dots.h \, xi_n )$,
   $Q^top = Q^(- 1) = ( xi_1^top \, xi_2^top \, dots.h \, xi_n^top )^top$. 于是有:
 ][
@@ -157,7 +157,7 @@ B = bmat(
 $
 ]
 
-#note[
+#sidenote[
   #theorem[如果 $A, B$ 皆为实对称矩阵, 那么: $A B = B A$, 当且仅当, 存在正交矩阵 $Q$, 可将 $A, B$ 同时相似对角化: $Q^top A Q$, $Q^top B Q$]
 ][
   [1]: 证明请参考: R. A. Horn and C. R. Johnson, *Matrix Analysis*, 2nd ed. Cambridge, UK: Cambridge University Press, 2013, p. 62, Theorem 1.3.12.

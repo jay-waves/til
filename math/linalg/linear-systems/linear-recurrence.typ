@@ -1,5 +1,5 @@
-#import "../../../appx/theme.typ": tufte
-#show: tufte
+#import "../../../appx/theme.typ": template
+#show: template
 
 = 数列通项的特征根
 

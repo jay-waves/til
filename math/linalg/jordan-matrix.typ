@@ -1,5 +1,5 @@
-#import "../../appx/theme.typ": theorem, tufte 
-#show: tufte
+#import "../../appx/theme.typ": theorem, template 
+#show: template
 
 #let bmat(..args) = math.mat(delim: "[", ..args)
 #let vec(x) = math.upright(math.bold(x))

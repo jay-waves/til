@@ -1,6 +1,6 @@
-#import "../../../appx/theme.typ" : tufte, theorem, proof
+#import "../../../appx/theme.typ" : template, theorem, proof
 
-#show: tufte
+#show: template
 
 = 内积空间
 

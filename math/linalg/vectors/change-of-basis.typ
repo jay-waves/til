@@ -1,6 +1,6 @@
-#import "../../../appx/theme.typ" : tufte
+#import "../../../appx/theme.typ" : template
 
-#show: tufte
+#show: template
 
 *描述坐标, 先要明确基底, 默认为标准正交单位基底. 坐标不代表向量, 规定基底后, 才代表向量.*
 

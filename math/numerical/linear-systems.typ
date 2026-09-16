@@ -1,6 +1,6 @@
-#import "../../appx/theme.typ": tufte, note
+#import "../../appx/theme.typ": template, sidenote
 
-#show: tufte
+#show: template
 
 #let bmat(..args) = $mat(delim: "[", ..args)$
 #let vmat(..args) = $mat(delim: "|", ..args)$

@@ -1,6 +1,6 @@
-#import "../../appx/theme.typ": tufte, meta, note
+#import "../../appx/theme.typ": template, meta, sidenote
 
-#show: tufte
+#show: template
 
 #meta(
   subtitle: [矩阵关系],
@@ -49,7 +49,7 @@
   ),
 )
 
-#note[
+#sidenote[
   #table(
     columns: 5,
     table.header(

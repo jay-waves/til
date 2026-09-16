@@ -1,11 +1,11 @@
-#import "../../appx/theme.typ": tufte, meta, note, theorem, proof
-#show: tufte
+#import "../../appx/theme.typ": template, meta, sidenote, theorem, proof
+#show: template
 
 #let bmat(..args) = math.mat(delim: "[", ..args)
 
 #meta(subtitle: [矩阵分解])
 
-#note[
+#sidenote[
   #image("../../assets/math/matrix-world.webp")
 ][
   图片来自 *the Art of Linear Algebra*,

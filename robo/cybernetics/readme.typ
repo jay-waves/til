@@ -1,5 +1,5 @@
-#import "../../appx/theme.typ": tufte, note
-#show: tufte
+#import "../../appx/theme.typ": template, sidenote
+#show: template
 
 = 符号的定义
 

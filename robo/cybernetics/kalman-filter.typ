@@ -1,7 +1,7 @@
 
-#import "../../appx/theme.typ": tufte, note, theorem, definition
+#import "../../appx/theme.typ": template, sidenote, theorem, definition
 
-#show: tufte
+#show: template
 
 = Kalman Filter 
 
@@ -36,7 +36,7 @@ $
   x_k^- = F x_(k-1)^+ + B u_k
 $
 
-#note[
+#sidenote[
 - *$x_i^+$ 是观测后修正后结果，$x_i^-$ 是模型估计结果，$x_i$ 是实际值。*
 - $F_k$ 是状态转移矩阵
 - $B_k$ 是控制输入，$u_k$ 是控制向量。目前没有接入控制器，不关心。 
@@ -56,12 +56,12 @@ $
 - $H$ 只是映射矩阵，将建模空间映射到测量空间
 - $v ~ cal(N)(0, R)$ , 协方差矩阵 $"Cov"(v) = R$ 越大，传感器噪声范围越宽，越不可信。
 
-由于噪声的存在，测量直接获得 $x$，必须附带一个噪声 $v$。
+由于噪声的存在，测量无法直接获得 $x$，含有一个（误差）噪声 $v$。
 定义测量残差为：
 
 $ r = z - H x^- = H(x - x^-) + v = H e^- + v $
 
-#note[
+#sidenote[
   $r$ 和 $e^-$ 紧密相关，我们希望通过 $r$ 来估计实际的 $e^-$ ，从而估计真实状态 $x$ 。
   由于用 $r$ 估计 $e^-$ 时有误差，因此得到的结果 $x^+$ 和真实 $x$ 也有误差。
 
@@ -167,6 +167,61 @@ $
 ]
 
 最终，得到 $(x^+_k, P_k^+)$ 后，即可进入下一轮。
+
+== 总结
+
+#let cov = math.op("Cov")
+
+定义估计误差 $e^plus.minus = x - x^plus.minus$。
+假设噪声零均值，且与相应的先验误差不相关。
+
+=== Predict
+
+预测状态（这里 $x^+$ 是上一轮修正后的状态）：
+
+$
+  x^- <- F x^+ + w
+$
+
+传播误差协方差：
+
+$
+  cov(e^-) <- F cov(e^+) F^top + cov(w)
+$
+
+=== Update
+
+计算观测残差：
+
+$
+  r <- z - H x^-
+$
+
+计算残差协方差与交叉协方差：
+
+$
+  cov(r) <- H cov(e^-) H^top + cov(v) \
+  cov(e^-, r) <- cov(e^-) H^top
+$
+
+计算卡尔曼增益：
+
+$
+  K <- cov(e^-, r) cov(r)^(-1)
+$
+
+修正状态：
+
+$
+  x^+ <- x^- + K r
+$
+
+更新剩余误差协方差：
+
+$
+  cov(e^+) <- (I - K H) cov(e^-) (I - K H)^top
+    + K cov(v) K^top
+$
 
 = 一维卡尔曼滤波
 

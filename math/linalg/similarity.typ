@@ -1,12 +1,12 @@
-#import "../../appx/theme.typ": tufte, meta, note, theorem, proof
+#import "../../appx/theme.typ": template, meta, sidenote, theorem, proof
 
-#show: tufte
+#show: template
 
 #let vec(x) = math.upright(math.bold(x))
 
 = 矩阵相似
 
-#note[
+#sidenote[
   若存在可逆矩阵 $P$, 使得 $P^(- 1) A P = B$, 则称矩阵 $A$ 和 $B$ 相似, 记为 $A tilde.op B$.
 ][
   线性变换 可以参考 `./vectors/linear-transform.typ`
@@ -24,7 +24,7 @@ $A P vec(x)$ 指对新基底下的向量进行 $A$ *线性变换*, 然后 $P^(- 
 
 将 $A$ 看作一个线性变换, $A xi = lambda xi$ 表示 $xi$ 在线性变换后只有尺度上的伸缩, 而没有方向的变化, 也没有维度上的变化. 对于特征值 $lambda_i$, $xi$ 位于 $( A - lambda_i E ) xi = 0$ 的解空间 (也成为 $lambda_i$ 的特征空间) 之中, 该解空间维数 ($n - r ( A - lambda_i E )$) 称为该特征值的几何重数; 要使解空间存在, 应保证 $| A - lambda E | = 0$, 方程 $f ( lambda ) = | A - lambda E | = 0$ 在复数域上的完全分解中, 项 $( lambda - lambda_i )^k$ 的(重根)次数 $k$ 称为该特征值的代数重数.
 
-#note[
+#sidenote[
   #theorem[如果 $A$ 和 $B$ 相似, 那么 $A$ 和 $B$ 的特征值相同.]
 ][
   在 $A$ 的特征方向上, 向量只有长度变化, 而向量在不同基底表示下是同一的.
@@ -39,7 +39,7 @@ $A P vec(x)$ 指对新基底下的向量进行 $A$ *线性变换*, 然后 $P^(- 
 
 == 相似对角化
 
-#note[
+#sidenote[
   如果用 $A$ 的全部特征方向作为*新基底*, 该线性变化就可以描述为对新基底的数乘, 即一个对角矩阵, 该过程称为矩阵的相似对角化. 不是所有矩阵都可以相似对角化, 如果 $lambda_i$ 特征空间的线性无关向量个数少于 $lambda_i$ 的代数重数, 就凑不出*新基底*数量.
 ][
   这部分论述可以参考 `./vectors/change-of-basis.typ` 空间基底变换

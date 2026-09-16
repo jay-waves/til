@@ -1,7 +1,7 @@
+#import "../appx/theme.typ" as theme
+#import theme: theorem, definition, equate-lines, diagram, node, edge
 
-#import "../appx/theme.typ": tufte, note, theorem, definition, equate-lines
-
-#show: tufte
+#show: theme.template
 
 #set document(
   title: [IMU Driven Systems],
@@ -18,6 +18,16 @@ IMU 集成了加速度计（Accelerometer）和陀螺仪（Gyrometer），提供
 
 直接由 IMU 积分计算出的姿态信息，称为刚体的*名义状态*（标称状态、Nominal State），随时间会产生误差（飘移），需要修正。
 通过融合其他传感器信息（如 GPS 或视觉），可以减少和修正飘移。常见技术有 ESKF 或 Factor Graph。
+常见的观测传感器有：
+
+#theme.sidenote[
+  - VIO: Camera + IMU + Slided Windows 
+  - LIO: LiDAR (激光雷达) + IMU + ESIKF (IEKF) 。
+  - GNSS + IMU 
+  - Radar + IMU。Radar 是无线电波雷达。
+][
+  Radar 发射的无线电波、毫米波，比光的频率低很多，容易测量。因此，可以利用多普勒效应来测量径向速度
+]
 
 #let r1 = (
   [Full state], [$vecb(x)_t$], [$vecb(x)$], [$delta vecb(x)$], [$vecb(x)_t = vecb(x) plus.o delta vecb(x)$], [], [],
@@ -91,16 +101,16 @@ $ a_m = a_t + a_"bt" + a_n $
 
 $ a_"bt" = a_b plus.o delta a $ <eq:bias>
 
-#note[
-注意，bias 并不是常量，仍然会随时间缓慢随机改变，因此建模为白噪声 $a_w$ 驱动的随机游走：
+#theme.sidenote[
+  注意，bias 并不是常量，仍然会随时间缓慢随机改变，因此建模为白噪声 $a_w$ 驱动的随机游走：
 
-$ dot(a_"bt") = a_w,quad E[a_w] = 0 $
+  $ dot(a_"bt") = a_w,quad E[a_w] = 0 $
 
-作为对比，噪声误差 $a_n$ 本身是高斯分布的，随着时间的累计基本为零。
+  作为对比，噪声误差 $a_n$ 本身是高斯分布的，随着时间的累计基本为零。
 
-$ a_n ~ cal(N)(0, sum_n),quad E[a_n] = 0 $
+  $ a_n ~ cal(N)(0, sum_n),quad E[a_n] = 0 $
 ][
-可以理解为：bias 是持续存在的偏置量，并且随时间缓慢移动；noise 是快速变化的噪声，和时间无关。
+  可以理解为：bias 是持续存在的偏置量，并且随时间缓慢移动；noise 是快速变化的噪声，和时间无关。
 ]
 
 === 姿态表达 (orientation)
@@ -166,12 +176,15 @@ $ p_(k+1) = p_k + v "d"t + 1/2 (R(a_m - a_n - a_b) + g)"d"t^2 $
 
 $ v_(k+1) = v_k + (R(a_m - a_n - a_b) + g) "d"t $
 
-== 名义状态建模
+
+== ESKF (fusing IMU with sensors)
+
+=== 名义状态建模
 
 IMU 状态建模：（$g$ 用于对齐世界坐标系，除此外的其他量均位于 $BB$ 体坐标系）
 
 $
- x = bmat(p, v, q, a_b, w_b, g) 
+x = bmat(p, v, q, a_b, w_b, g)^top
 $
 
 IMU 输入为： 
@@ -192,9 +205,11 @@ $ u_m = bmat(a_m ; w_m) $
 $)
 ]
 
-== 误差状态建模
+=== 误差状态建模
 
-上文 @eq:bias 提到，$a_b, w_b$ 均为名义值，需要不断误差修正：
+上文 @eq:bias 提到，$a_b, w_b$ 均为名义值，和真实状态之间，存在误差 $delta a_b, delta w_b$ 等。
+另外需要注意的是，这个误差是真实存在的，但是我们无法获得这个误差的准确值，所以 ESKF 的目的，就是
+对这个误差值进行估计和修正。
 
 #definition[Error State: #footnote[详细推导见 @sola2017 P58-60, ESKF 的标准卡尔曼滤波形式见 P61]
 
@@ -209,9 +224,7 @@ $)
 
 ]
 
-#pagebreak()
-
-=== @ESKF1
+==== @ESKF1
 
 不妨令 $a = a_m - a_b$，有：
 
@@ -238,7 +251,7 @@ dot(delta v) &= delta (R a) + delta g \
 delta a &= -delta a_b - a_n
 $
 
-=== @ESKF2
+==== @ESKF2
 
 将 $R_t approx R(I + [delta theta])$ 同乘 $R^top$ ，得到：
 
@@ -257,7 +270,7 @@ $
 dot(delta theta) = -[w] delta theta + delta w, quad delta w = - delta w_b - w_n
 $
 
-=== @ESKF3 & @ESKF4 
+==== @ESKF3 & @ESKF4 
 
 偏置（bias）是一个缓慢的随机游走：（固定零点偏置，逐帧累计白噪声）
 
@@ -271,22 +284,13 @@ $ dot(a_b) = 0 $
 
 $ a_w = dot(delta a_b) $
 
-== ESKF (fusing IMU with sensors)
-
-#note[
-- VIO: Camera + IMU + Slided Windows 
-- LIO: LiDAR + IMU + ESIKF (IEKF) 。LiDAR 是激光雷达。
-- GNSS + IMU 
-- Radar + IMU。Radar 是无线电波雷达。
-][
-  Radar 发射的无线电波、毫米波，比光的频率低很多，容易测量。因此，可以利用多普勒效应来测量径向速度
-]
-
-=== Kalman Filter 
+=== Kalman Filter (Predict Stage)
 
 将上述 Error-State 的建模，改写为标准卡尔曼滤波形式（连续时间下）：
 
 $
+x = bmat(p; v; q; a_b; w_b; g)_(16 times 1),
+quad 
 delta x = bmat(
   delta p;
   delta v;
@@ -294,18 +298,25 @@ delta x = bmat(
   delta a_b;
   delta omega_b;
   delta g
-),
+)_(15 times 1),
+quad 
+u_m = bmat(
+  a_m;
+  w_m
+)_(6 times 1),
 quad
 n = bmat(
   a_n;
   omega_n;
   a_w;
   omega_w
-)
+) 
 $
 
+其中噪声源的协方差（假设所有噪声都是 $E[x] = 0$ 的）：
+
 $
-dot(delta x) = F delta x + G n
+Q_c = "Cov"(n, n) = E[n n^top] 
 $
 
 误差状态转移矩阵：
@@ -334,26 +345,231 @@ G = bmat(
 )
 $
 
-如果噪声满足：
+卡尔曼滤波#footnote[卡尔曼滤波详见 `./cybernetics/kalman-filter.typ`]的预测阶段：
+
+#theme.sidenote[
+
+  $
+  delta x^- &<- F dot delta x^+ + G n \
+  P^- &<- F P^+ F^top + G Q_c G^top
+  $
+
+][
+
+  这里 $F, G$ 不过是用于转换坐标系的雅各比矩阵而已。
+]
+
+=== Kalman Filter (Update Stage)
+
+观测到带噪的传感器信号：
+
+$ z = h(x_t) + v,quad v~ cal(N)(0,V) $
+
+在名义状态 $x$ 附近展开：
+
+$ z approx h(x) + H delta x + v, quad H =
+attach(
+  lr(
+    (partial h(x plus.o delta x ))/(partial delta x) |
+  ), 
+  b: delta x = 0,
+) 
+$ <eq:H>
+
+因此 KF 的观测残差为：
+
+$ r = z - h(x) approx H delta x + v $
+
+修正状态：
+
+$ 
+K &= P^- H^top (H P^- H^top + V)^(-1) \
+delta x^+ &<- K r \
+P^+ &<- (I- K H)P^- 
+$
+
+随后将 KF 修正后的误差注入名义状态：
 
 $
-E(n(t) n(tau)^T) = Q_c delta(t - tau),
+x <- x plus.o delta x^+
 $
 
-那么连续时间的协方差传播：
+==== @eq:H
+
+用链式法则展开 $H$ ：
 
 $
-dot(P) = F P + P F^T + G Q_c G^T
+H = 
+attach(
+  lr(
+    (partial h(x_t))/(partial delta x) |
+  ), b: x,
+) =
+attach(
+  lr(
+    (partial h(x_t))/(partial x_t) |
+  ), b: x_t = x,
+) 
+attach(
+  lr(
+    (partial x_t)/(partial delta x) |
+  ), b: delta x -> 0,
+) 
+= H_x X_(delta x)
 $
 
-=== reset 
+其中，
 
-=== 离散化（离散采样）
+$
+X_(delta x) = 
+attach(
+  lr(
+    (partial (x plus.o delta x))/(partial delta x) |
+  ), b: delta x -> 0,
+) =
+op("diag")(
+  frac(partial p_t, partial delta p),
+  frac(partial v_t, partial delta v),
+  bold(frac(partial q_t, partial delta theta)),
+  frac(partial a_"bt", partial delta a_"b"),
+  frac(partial w_"bt", partial delta w_"b"),
+  frac(partial g_t, partial delta g),
+)
+$
 
-TODO 
+值得注意的是 $J_q = partial q_t slash partial delta theta$ 这一项，
 
-== Factor Graph 
+$
+q = bmat(q_w; q_v), quad 
+delta q approx bmat(1; 1/2 delta theta), quad
+q_t = q times.o delta q = 
+attach(
+  lr(bmat(
+    q_w - 1/2 q_v^top delta theta; 
+    q_v + 1/2(q_w I + [q_v])delta theta
+  )),
+  b: delta theta -> 0
+)
+$
 
+$
+J_q = attach(
+    (partial q_t)/(partial delta theta),
+    b: 0
+) = 1/2 bmat(
+    - q_v^top;
+    q_w I + [q_v]
+) in RR^(4 times 3)
+$
+
+#let derivhx = $frac(partial h(x_t), partial x_t)$
+
+另一项，$derivhx$ 由传感器的观测模型直接决定，
+
+比如：
+- GPS 的观测函数为： $ h(x_t) = p_t = p + delta p, quad derivhx = bmat(I_3, 0_(3 times 16)) $
+- 测量到固定信标的距离：$ h(x_t) = d = norm(p_t - a), quad derivhx = bmat(frac((p-a)^top, norm(p-a)), 0_(1 times 16)) $
+
+=== Reset 
+
+在 Update 状态，我们将估计出的误差 $delta x^+$ 注入名义值 $x$ 对其修正。
+
+$ x^+ = x^- plus.o delta x^+ $
+
+修正后，名义值和真实状态的误差不再是 $delta x$（注意这是实际误差），变成了一个新值。
+因此需要重置我们的误差估计。
+
+$ x_t = x^- plus.o delta x = x^+ plus.o delta x_"new" $
+
+定义 $delta x_"new" = f(delta x) = (x^- plus.o delta x)minus.o x^+$ ，#footnote[注意这里的运算需要考虑四元数，不能交换。但是大意就是：$f(delta x) = (x^- + delta x)-x^+= delta x - delta x^+$]
+$f(delta x^+) = 0$，在接近 $delta x^+$ 处一阶展开得到：
+
+$
+delta x_"new" approx F (delta x - delta x^+) ,quad F eq.def attach(
+    lr(frac(partial f, partial delta x)|),
+    b: delta x = delta x^+
+)
+$
+
+记 $e^+ = delta x - delta x^+, quad delta x_"new" = F e^+$，新的协方差为：
+
+$
+  P_"new"
+    &approx E[(F e^+)(F e^+)^top] \
+    &= F E[e^+ e^+^top] F^top = F P^+ F^top
+$
+
+*在注入误差，并修正 $P$ 之后，丢弃估计值 $delta x^+$ ，在下一轮迭代中重新计算*。因此，Reset 阶段的实际工作是：
+
+$
+  delta x &<- 0 \
+  P &<-  F P^+ F^top
+$
+
+至此，ESKF 的总体流程如下：
+
+#align(center, diagram(
+  node-stroke: 0.5pt,
+
+  node((0, 0), align(center)[
+    Previous State \
+    $x^+, P^+$
+  ]),
+  node((0, 1), [
+    IMU (KF) Predict \
+    $x^-, delta x^-, P^-$
+  ]),
+  node((0, 2), align(center)[
+    Residual and Jacobian \
+    $r = z - h(x^-), quad H$
+  ]),
+  node((0, 3), align(center)[
+    Kalman Update \
+    $delta x^+ = K r$ \
+    $P^+ = (I - K H) P^-$
+  ]),
+  node((0, 4), align(center)[
+    Error Injection \
+    $x^+ = x^- plus.o delta x^+$
+  ]),
+  node((0, 5), align(center)[
+    Reset Error Estimate \
+    $P <- F P^+ F^top$ \
+    $delta x <- 0$
+  ]),
+
+  node((-1, 1), [
+    IMU Measurements\
+    $a_m, w_m$
+  ]),
+  node((-1, 2), align(center)[
+    Sensor Observation \
+    $z$
+  ]),
+  node((1, 5), align(center)[
+    Output \
+    $x^+$
+  ]),
+
+  edge((0, 0), (0, 1), "-|>"),
+  edge((0, 1), (0, 2), "-|>"),
+  edge((0, 2), (0, 3), "-|>"),
+  edge((0, 3), (0, 4), "-|>"),
+  edge((0, 4), (0, 5), "-|>"),
+
+  edge((-1, 1), (0, 1), "-|>"),
+  edge((-1, 2), (0, 2), "-|>"),
+  edge((0, 5), (1, 5), "-|>"),
+
+  // Return to the next prediction cycle.
+  edge((0, 5), "l,l,u,u,u,u,u,r,r", "-|>"),
+))
+
+// ---------------------------------------
+
+//TODO == 离散化（离散采样）
+
+//TODO == Factor Graph 
 
 
 #bibliography("./references.bib")

@@ -1,13 +1,11 @@
-#import "../appx/theme.typ": tufte, meta, note
+#import "../appx/theme.typ": template, sidenote
 
-#show: tufte
+#show: template
 #let bmat(..args) = math.mat(delim: "[", ..args)
 #let vecb(x) = math.upright(math.bold(x))
 
-#note[
-  #meta(subtitle: [四元数])
-][
-  来源：#link("https://github.com/Krasjet/quaternion")[四元数于三维旋转]，Krasjet，CC BY-NC-SA 4.0。原文中的远程图片在这里保留为链接。
+#quote[
+  来源：#link("https://github.com/Krasjet/quaternion")[四元数于三维旋转]，Krasjet，CC BY-NC-SA 4.0。
 ]
 
 = 复数
@@ -183,7 +181,7 @@ $ q = [c, s vecb(u)],quad c = cos(phi/2), quad s = sin(phi/2),quad v = [0,vecb(v
 $ q times.o v times.o q^(-1) = [0, (c^2 - s^2)vecb(v) + 2s^2 (vecb(u)^top vecb(v))vecb(u) + 2c s(vecb(u)times vecb(v))] $
 
 
-#note[
+#sidenote[
 利用三角函数公式，也能得到三位旋转公式：
 
 $ vecb(v)' = cos phi vecb(v) + (1-cos phi)(vecb(u)^top vecb(v))vecb(u) + sin phi (vecb(u)times vecb(v)) $
@@ -323,7 +321,7 @@ $h(t) = 2 t (1 - t)$ 是一个对称的抛物线权重函数。
 
 = 四元数与李群
 
-2D、3D 旋转矩阵都是#link("../math/linalg/对称矩阵.md")[_正交矩阵（Orthogonal Matrix）_]，它们的行列式值为 $1$，代表着旋转；$-1$ 代表反射。
+2D、3D 旋转矩阵都是#link("../math/linalg/othogonal-matrix.typ")[_正交矩阵（Orthogonal Matrix）_]，它们的行列式值为 $1$，代表着旋转；$-1$ 代表反射。
 
 特殊正交群 $"SO"(n)$ (Special Orthogonal Group) 是一种李群，定义为：
 
