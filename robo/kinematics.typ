@@ -1,10 +1,8 @@
-
-#import "../appx/theme.typ" as theme 
+#import "@local/ypst-template:0.1.0" as theme 
 
 #import theme: template, sidenote, theorem
 
 #show: template
-
 
 #set document(
   title: "机器人运动学",
@@ -473,6 +471,10 @@ to first order.
   the step and can destroy convergence. Active-set or bounded solvers account
   for the constrained directions while computing the step.
 ]
+
+== Cyclic-Coordiinate Descent
+
+COMP7508
 
 == Inverse Velocity Kinematics
 

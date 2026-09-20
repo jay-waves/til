@@ -1,4 +1,4 @@
-#import "../../appx/theme.typ": theorem, template
+#import "@local/ypst-template:0.1.0": theorem, template
 
 #show: template
 #let bmat(..args) = math.mat(delim: "[", ..args)

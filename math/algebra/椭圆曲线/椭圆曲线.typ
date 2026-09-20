@@ -1,4 +1,4 @@
-#import "../../../appx/theme.typ": template, definition, theorem, proof
+#import "@local/ypst-template:0.1.0": template, definition, theorem, proof
 
 #show: template
 

@@ -83,8 +83,6 @@ IRR 目的是找到一个折现率 $r$ ，使得所有未来现金流折现回�
 
 $$0=CF_0 + \sum^T_{t=1} \frac{CF_t}{(1+IRR)^t}$$
 
-
-
 ## Money Market
 
 市场参与者：
@@ -97,6 +95,9 @@ $$0=CF_0 + \sum^T_{t=1} \frac{CF_t}{(1+IRR)^t}$$
 * Market Risk. Assets value changes due to rate monvements 
 * Inflation Risk. 
 
-## Yield Curve
+### Yield Curve
 
 ![](../assets/econ/econ-yield-curve.webp)
+
+### Market Instruments & Valuation
+

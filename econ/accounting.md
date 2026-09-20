@@ -209,7 +209,7 @@ DR. CoGS         40
 Accrual Accounting 被广泛使用，如 Balance Sheet 和 P&L。而 Cash Flow Statement 则仅作为信息补充。
 
 
- | Cash | Accrual 
+| | Cash | Accrual 
 ---| ---- | ---- 
 12 月提供服务，1 月客户付款 | 1 月确定收入  | 12 月确定收入 
 12 月收到账单，1 月付款 | 1 月确定费用 | 12 月确定费用 

@@ -1,4 +1,4 @@
-#import "../../../appx/theme.typ": template
+#import "@local/ypst-template:0.1.0": template
 #show: template
 
 = 线性代数基本定理

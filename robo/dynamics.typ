@@ -1,5 +1,5 @@
 
-#import "../appx/theme.typ": template, meta, sidenote, theorem
+#import "@local/ypst-template:0.1.0": template, meta, sidenote, theorem
 
 #show: template
 

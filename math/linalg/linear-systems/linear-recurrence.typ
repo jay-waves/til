@@ -1,4 +1,4 @@
-#import "../../../appx/theme.typ": template
+#import "@local/ypst-template:0.1.0": template
 #show: template
 
 = 数列通项的特征根

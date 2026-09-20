@@ -1,4 +1,4 @@
-#import "../appx/theme.typ" as theme
+#import "@local/ypst-template:0.1.0" as theme
 #import theme: theorem, definition, equate-lines, diagram, node, edge
 
 #show: theme.template
@@ -509,8 +509,6 @@ $
 至此，ESKF 的总体流程如下：
 
 #align(center, diagram(
-  node-stroke: 0.5pt,
-
   node((0, 0), align(center)[
     Previous State \
     $x^+, P^+$

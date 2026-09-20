@@ -1,4 +1,4 @@
-#import "../../../appx/theme.typ": template, definition, lemma, theorem, proof, sidenote
+#import "@local/ypst-template:0.1.0": template, definition, lemma, theorem, proof, sidenote
 
 #show: template
 

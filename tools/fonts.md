@@ -113,6 +113,7 @@
 - [辰宇落雁體](http://github.com/Chenyu-otf/chenyuluoyan_thin)
 - 荷塘月色手写体
 - [Ma Shan Zheng](https://fonts.google.com/specimen/Ma+Shan+Zheng?lang=zh_Hans)
+- [Cagliostro](https://fonts.google.com/specimen/Cagliostro?preview.script=Latn) 带有一些复古的手写体，`x-height` 偏低，又比较温和。
 
 ***
 

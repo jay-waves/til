@@ -3,7 +3,7 @@
 | toc         | en                      | zh           |
 | ----------- | ----------------------- | ------------ |
 | algo        | algorithm               | 算法         |
-| ai          | artificial intelligence | 人工智能     |
+| ai          | intelligence            | 人工智能     |
 | *appx*      | appendices              | 附录         |
 | *assets*    | attachments             | 附件         |
 | db          | databases               | 分布式系统   |
@@ -16,7 +16,7 @@
 | robo        | robotics system         | 机器人       |
 | sec         | security                | 网络安全     |
 | tools       | dev tools               | 开发工具     |
-| vision      | visual computing        | 可视计算     |
+| vision      | visualization           | 可视化       |
 
 ## License
 
@@ -24,12 +24,13 @@
 
 部分文件可能包含受其他许可证或权利约束的第三方内容，此类内容以文件内的具体说明为准。
 
+
 ## Workflow
 
 笔记库采用 Typst + Markdown 混合排版。
 * Markdown 文档的推荐样式见 `appx/theme.css` 
-* Markdown 文档的代码块样式见 `appx/highlight.css`，供 hljs css 块使用。
-* Typst 文档的推荐样式见 `appx/theme.typ` 
+* Markdown 文档的代码块样式不规定，可以按需引入 hljs 
+* Typst 文档的样式模板见 [yst-template](https://github.com/jay-waves/yst-template)
 
 个人博客不在此仓库，详见[个人主页](https://jay-waves.cn)。
 
@@ -42,15 +43,16 @@
 - **粗体**的使用：重点强调，突出逻辑。
 - 标题级别从二级开始，避免出现四级以下标题，保持层级扁平和简洁。
 - 文章篇幅不宜过长，5 个以内三级标题为宜。
-- 为了排版美观，不再要求中文强制使用英文标点。
+- 为了排版美观，不再要求中文强制使用英文标点，但混排时优先使用英文标点。
 - 中文（全角）和任意半角符号间应隔一个半角空格，括号内侧除外。
 
 ### Markdown
 
 - 使用严格断行
 - 使用严格 `[]()` 链接与图片引用格式。
-- 允许的 Markdown 扩展语法：HTML、Table、Mathjax、Footnote、Mermaid、YAML Preamble 
+- 允许的 Markdown 扩展语法：HTML、Table、Mathjax、Footnote、YAML Preamble 
 - 全角标点符号应位于 Markdown 标记之外，如 **粗体之后再逗号**，避免渲染异常。
+- 因为样式定制过于复杂，不再支持 Mermaid 图标，可以绘制完后嵌入 SVG。
 
 ### Naming
 
@@ -72,3 +74,5 @@
 
 * 图片附件按 `assets/<主题>/` 一级目录归档，并与引用它们的笔记一起提交。
 * 图片如有版权信息，同样需要在 `[]` 中著名来源
+
+

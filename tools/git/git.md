@@ -73,6 +73,23 @@ git checkout -- build/
 
 ## 提交
 
+### 命名惯例
+
+提交格式： `tag(scope): xxx`
+
+标签包括：
+* feat: 新增功能
+* fix: 修复 BUG 
+* chore: 杂物和日常事物，如文档
+* refractor: 重构代码，不改变功能。
+其他不常见的：
+* perf: 性能优化 
+* style: 格式调整
+* ci (build)：构建系统，依赖，持续集成等改动
+* test: 测试
+* docs 文档改动
+
+
 ## .git 
 
 ### 清理某个文件的历史

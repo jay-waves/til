@@ -1,5 +1,5 @@
 
-#import "../appx/theme.typ": template, sidenote, mermaid
+#import "@local/ypst-template:0.1.0": template, sidenote, mermaid
 #show: template
 
 #let bmat(..args) = math.mat(delim: "[", ..args)

@@ -1,4 +1,4 @@
-#import "../../appx/theme.typ": template, meta, sidenote, theorem, corollary, proof
+#import "@local/ypst-template:0.1.0": template, meta, sidenote, theorem, corollary, proof
 
 #show: template
 
