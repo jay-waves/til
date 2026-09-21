@@ -11,12 +11,12 @@
 | hw          | hardware                | 体系架构     |
 | langs       | languages               | 编程与编译   |
 | math        | mathematics             | 数学         |
-| net         | networking              | 网络通信     |
+| net         | networking              | 网络         |
 | os          | operating system        | 操作系统     |
 | robo        | robotics system         | 机器人       |
 | sec         | security                | 网络安全     |
 | tools       | dev tools               | 开发工具     |
-| vision      | visualization           | 可视化       |
+| vision      |                         | 视觉         |
 
 ## License
 
