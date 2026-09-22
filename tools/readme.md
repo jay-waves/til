@@ -23,7 +23,6 @@ revised: 2026-01-27
 * 流程图：DrawIO、PPT、reveal.js、Mermaid.js 
 * 终端：Windows Terminal，Alacritty（Linux 平台）
 * 截图与贴图：Snipaste
-* 压缩：[7-Zip-zstd](https://github.com/mcmilk/7-Zip-zstd)
 * 远程桌面：向日葵、RustDesk 
 * 应用卸载器：geek, O&O AppBuster
 * 视频播放：mpv
@@ -32,8 +31,12 @@ revised: 2026-01-27
 * 录屏：OBS-Studio （简单场景，有 WEB 应用替代品）
 * 媒体库：[Allusion](https://github.com/RafaUC/Allusion)、Calibre、Jellyfin 
 * 抓包：wireshark 
-* 二进制：imhex 
-* 手机传文件：LocalSend 
+* 二进制查看：imhex 
+* 手机传文件：LocalSend     
+
+文件系统增强：
+* 文件压缩、解压缩：[7-Zip-zstd](https://github.com/mcmilk/7-Zip-zstd)
+* 文件系统缩略图：SageThumbs2K
 
 ### Windows OS
 

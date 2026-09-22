@@ -25,10 +25,10 @@
 
 ## 公钥密码算法
 
-- [DH](DiffieHellman.md), 基于有限域离散对数困难问题.
-- [RSA](RSA/RSA.md), 基于大整数分解困难问题.
-- [ElGamal](ElGamal.md), 基于有限域离散对数困难问题.
-- [ECC](ECC/ECC.md), 基于椭圆曲线上有限域离散对数困难问题.
+- [DH](./diffie-hellman.md), 基于有限域离散对数困难问题.
+- [RSA](./rsa/RSA.md), 基于大整数分解困难问题.
+- [ElGamal](./el-gamal.md), 基于有限域离散对数困难问题.
+- [ECC](./ecc/ECC.md), 基于椭圆曲线上有限域离散对数困难问题.
 - Lattice
 
 ## DLP 公钥密码性能优化
