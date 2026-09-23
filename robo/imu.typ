@@ -102,7 +102,7 @@ $ a_m = a_t + a_"bt" + a_n $
 $ a_"bt" = a_b plus.o delta a $ <eq:bias>
 
 #theme.sidenote[
-  注意，bias 并不是常量，仍然会随时间缓慢随机改变，因此建模为白噪声 $a_w$ 驱动的随机游走：
+  bias 并不是常量，仍然会随时间缓慢随机改变，因此建模为白噪声 $a_w$ 驱动的随机游走：
 
   $ dot(a_"bt") = a_w,quad E[a_w] = 0 $
 
@@ -204,6 +204,11 @@ $ u_m = bmat(a_m ; w_m) $
 &dot(g) &&= 0
 $)
 ]
+
+--> a_m - a_b
+--> w_m - w_b
+--> dot(a_b) = 0 
+--> dot(w_b) = 0
 
 === 误差状态建模
 
