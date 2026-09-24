@@ -82,22 +82,3 @@ IRR 目的是找到一个折现率 $r$ ，使得所有未来现金流折现回�
 **通过 IRR，可以将现金流复杂的投资产品计算出一个近似的年化收益，方便投资比较**。
 
 $$0=CF_0 + \sum^T_{t=1} \frac{CF_t}{(1+IRR)^t}$$
-
-## Money Market
-
-市场参与者：
-* Borrower / Lender 
-* Broker / Dealer 
-
-市场风险：
-* Credit Risk. Borrower may fail to repay 
-* Liquidity Risk. Cannot sell assets into cash quickly 
-* Market Risk. Assets value changes due to rate monvements 
-* Inflation Risk. 
-
-### Yield Curve
-
-![](../assets/econ/econ-yield-curve.webp)
-
-### Market Instruments & Valuation
-

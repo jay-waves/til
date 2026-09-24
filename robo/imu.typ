@@ -191,24 +191,22 @@ IMU 输入为：
 
 $ u_m = bmat(a_m ; w_m) $
 
-重力加速度 $g$ 被认为短时间不变，初始时，将世界坐标系的 $z$ 轴和 $g$ 方向对齐。
-
 #definition[Nominal State：
 
 #equate-lines($
 &dot(p) && = v, \
-&dot(v) &&= R(q) (a_m - a_b - a_n) + g, \
-&dot(q) &&= 1/2 q times.o (omega_m - omega_b - omega_n), \
-&dot(a)_"bt" && = a_w, \
-&dot(omega)_"bt" && = omega_w, \
+&dot(v) &&= R(q) (a_m - a_b) + g, \
+&dot(q) &&= 1/2 q times.o (w_m - w_b), \
+&dot(a)_b && = 0, \
+&dot(w)_b && = 0, \
 &dot(g) &&= 0
 $)
 ]
 
---> a_m - a_b
---> w_m - w_b
---> dot(a_b) = 0 
---> dot(w_b) = 0
+重力加速度 $g$ 被认为短时间不变，初始时，将世界坐标系的 $z$ 轴和 $g$ 方向对齐。
+由 IMU 信息计算出的名义状态，既不知晓偏移误差 $a_b$ 的真实值（存在 $delta a_b$），也不知晓
+噪声的真实值 $delta a_n$，所以名义状态传播时另它们为零。
+
 
 === 误差状态建模
 

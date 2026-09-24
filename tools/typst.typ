@@ -176,6 +176,12 @@ $
   display("display") > inline("inline") = "default" > script("script") > sscript("sscript")
 $
 
+Typst 数学间隙（空格）：
+
+$
+  A quad A wide A thin A med A thick
+$
+
 Typst 数字字形：
 
 $
@@ -197,3 +203,4 @@ $
 Typst 输入箭头很方便
 
 $->$
+

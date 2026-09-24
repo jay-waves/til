@@ -223,7 +223,9 @@ $
     + K cov(v) K^top
 $
 
-= 一维卡尔曼滤波
+= Appendix
+
+== 一维卡尔曼滤波
 
 系统状态模型：
 
@@ -264,3 +266,22 @@ $
 
 $P$ 是当前估计的置信度，$R$ 是测量噪声。当 $R->0$ 时，有 $P^+->0$ ，估计几乎完全确定。
 当 $R->infinity$ 时，测量噪声的范围太大，有 $P^+->P^-$ ，此时测量基本不起作用。
+
+== 连续时间下的卡尔曼滤波形式
+
+根据线性系统#footnote[详见 `./sampling.typ`]的离散化关系，有：$ F = e^(A Delta t) approx I + A Delta t $
+
+代入离散协方差公式：
+
+$ P_(k+1) 
+  & = (I+ A Delta t )P_k (I + A Delta t)^top + Q_d \
+  & = P_k + (A P_k + P_k A^top) Delta t + A P_k A^top Delta t^2 + Q_d \
+  Q_d 
+  &= G Q_c G^top Delta t
+$
+
+忽略二阶项得到：
+
+$
+  dot(P) = frac(P_(k+1) - P_k, Delta t) approx A P_k + P_k A^top + G Q_c G^top
+$

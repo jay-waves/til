@@ -35,6 +35,7 @@
 * Reverberation
 * Microphone: Polar Pattern 
 
+## Speaker
 
 # Small AI Tasks 
 

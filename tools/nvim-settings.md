@@ -9,20 +9,20 @@
 * GIT 状态、差异对比： gitsigns 
 * 补全：blink.cmp 
 * find, grep 集成：fzf-lua 
-
-不太喜欢 nvim 内部的文件树插件，我主要用：
-* `:e .` 内置的文件选择器 
-* [`lf`](https://github.com/gokcehan/lf) 命令行文件管理器，GO 写的，很轻量好用。
+* 文件树：mini.files 
 
 详细配置详见 [jay-waves/dotfiels](https://github.com/jay-waves/dotfiles)
 
-### lsp 
+### keymaps 
 
-lsp code jump:
-* `grt` type definition 
-* `gri` implementation 
-* `grr` references
-* `gra` code actions 
-* `grn` rename 
-* `K`   hover (documentation)
-* `Ctrl-]` definition (gvim)
+* `K` hover -> document 
+* `gD` 
+* `gd` 
+* `<leader>l`, `<leader>L` : diagnostics 
+* `<C-space>` : blink.cmp menu toggle 
+* `<C-LeftMouse>` : jump to file `gf`
+* `<leader>p` FzfLua 
+* `<leader>b` FzfLua buffers 
+* `<leader>O` FzfLua lsp_document_symbols / treesitter symbols
+* `<leader>f` format selected buffer (lsp)
+
