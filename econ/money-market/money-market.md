@@ -28,7 +28,7 @@ Fixed Data Conventions:
 
 ## Money Market Instruments 
 
-Money Market 工具属于短期、低风险、高流动性货币工具，短期内借钱来服务于流动性。
+Money Market 工具属于短期、低风险、高流动性货币工具，短期内借钱来服务于流动性。  
 Derivatives 则主要是钱生钱工具，建立在底层工具之上。
 
 Govern or Municipal Debt:  
