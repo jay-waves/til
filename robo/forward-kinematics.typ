@@ -10,6 +10,13 @@
   keywords: ("robotics", "kinematics")
 )
 
+#import "@preview/physica:0.9.8": pdv
+
+#let screw(i) = $[cal(S)_#i]$
+#let mscrewm(i) = $M^(-1) [cal(S)_#i] M$
+#let body(i) = $[cal(B)_#i]$
+#let Ad = math.op("Ad")
+
 = Forward Kinematics
 
 == D-H
@@ -23,10 +30,6 @@ $ T_04 = T_01 T_(12) T_23 T_34 $
 === Space POE Formula
 
 #image("../assets/robo/robo-PoE.webp", width: 70%)
-
-#let screw(i) = $[cal(S)_#i]$
-#let mscrewm(i) = $M^(-1) [cal(S)_#i] M$
-#let body(i) = $[cal(B)_#i]$
 
 
 Set all joint variables to zero and record the home configuration $M=T(0)$.
@@ -154,9 +157,9 @@ $
 vec( dot(x_1), dots.v, dot(x_n),)
 =
 mat(
-  (partial f_1)/(partial theta_1), dots.h.c, (partial f_1)/(partial theta_n);
+  pdv(f_1, theta_1), dots.h.c, pdv(f_1, theta_n);
   dots.v, dots.down, dots.v;
-  (partial f_n)/(partial theta_1), dots.h.c, (partial f_n)/(partial theta_n);)
+  pdv(f_n, theta_1), dots.h.c, pdv(f_n, theta_n);)
 vec( dot(theta_1), dots.v, dot(theta_n),)
 $
 
@@ -165,9 +168,9 @@ $
 $
 J(bold(theta)) = (partial bold(x))/(partial bold(theta))
 = mat(
-  (partial f_1)/(partial theta_1), dots.h.c, (partial f_1)/(partial theta_n);
+  pdv(f_1, theta_1), dots.h.c, pdv(f_1, theta_n);
   dots.v, dots.down, dots.v;
-  (partial f_n)/(partial theta_1), dots.h.c, (partial f_n)/(partial theta_n);
+  pdv(f_n, theta_1), dots.h.c, pdv(f_n, theta_n);
   )
 $
 
@@ -275,16 +278,17 @@ $mu_3$ 是最差运动方向，需要监控这个值 $mu_3 >= epsilon.alt$，用
 
 == Space Jacobian of Vecolity Kniematics
 
-Let $A_i = e^([cal(S)_i] theta_i)$, $T_i = A_1 A_2 dots A_i M$. Since $dot(A_i)A_i^(-1)=[cal(S)_i]dot(theta_i)$, 
+Let $A_i = e^(screw(i) theta_i)$, $T_i = A_1 A_2 dots A_i M$. Since $dot(A_i)A_i^(-1)=screw(i)dot(theta_i)$, 
 
 $ 
   [cal(V)_s] & = dot(T_n) T_n^(-1) \
   & = dot(A_1)A_1^(-1) + A_1 dot(A_2) A_2^(-1) A_1^(-1) + dots \ 
-  & = [cal(S)_1] dot(theta)_1 + A_1 [cal(S)_2]dot(theta)_2 A_1^(-1) + dots \
-  & = [cal(S)_1] dot(theta)_1 + "Ad"_(A_1) [cal(S)_2]dot(theta)_2 + dots + "Ad"_(A_1 A_2 dots A_(i-1)) [cal(S)_i]dot(theta)_i + dots \ 
-  & = sum_(i=1)^n ["Ad"_(T_(i-1))][cal(S)_i] dot(theta)_i 
+  & = screw(1) dot(theta)_1 + A_1 screw(2)dot(theta)_2 A_1^(-1) + dots \
+  & = screw(1) dot(theta)_1 + Ad_(A_1) screw(2) dot(theta)_2 + dots + Ad_(A_1 A_2 dots A_(i-1)) screw(i)dot(theta)_i + dots \ 
+  & = sum_(i=1)^n [Ad_(T_(i-1))]screw(i) dot(theta)_i 
 $
 
+#let S(i) = $[cal(S)_#i]$
 从矩阵系换回 Twist 系，得到：
 
 $ cal(V)_s = sum_(i=1)^n "Ad"_(T_(i-1))cal(S)_i dot(theta)_i $
@@ -295,12 +299,12 @@ $ cal(V)_s = J_s dot(theta) = sum J_(s i) dot(theta) $
 
 For home screw axes $cal(S)_i$:
 
-$ J_s(theta) = mat(cal(S)_1, "Ad"_(e^([cal(S)_1] theta_1)) cal(S)_2, dots, "Ad"_(e^([cal(S)_1] theta_1) dots e^([cal(S)_(n-1)] theta_(n-1))) cal(S)_n) $
+$ J_s(theta) = mat(cal(S)_1, Ad_(e^(screw(1) theta_1)) cal(S)_2, dots, Ad_(e^(screw(1) theta_1) dots e^(screw(n-1) theta_(n-1))) cal(S)_n) $
 
-Equivalently, define $T_i=e^([cal(S)_1]theta_1)dots
-e^([cal(S)_i]theta_i)$.  Then
+Equivalently, define $T_i=e^(screw(1)theta_1)dots
+e^(screw(i) theta_i)$.  Then
 
-$ J_(s 1)=cal(S)_1, quad J_(s i)="Ad"_(T_(i-1))cal(S)_i. $
+$ J_(s 1)=cal(S)_1, quad J_(s i)=Ad_(T_(i-1))cal(S)_i. $
 
 Earlier joints move later joint axes in the space frame, so column $i$ depends
 only on $theta_1,dots,theta_(i-1)$, never on its own joint value or later joints.
@@ -309,7 +313,15 @@ only on $theta_1,dots,theta_(i-1)$, never on its own joint value or later joints
 
 For body screw axes $cal(B)_i$:
 
-$ J_b(theta) = mat("Ad"_(e^(-[cal(B)_n] theta_n) dots e^(-[cal(B)_2] theta_2)) cal(B)_1, dots, "Ad"_(e^(-[cal(B)_n] theta_n)) cal(B)_(n-1), cal(B)_n) $
+$ 
+J_b(theta) = 
+  mat( 
+    Ad_(e^(-[cal(B)_n] theta_n) dots e^(-[cal(B)_2] theta_2)) cal(B)_1; 
+    dots; 
+    Ad_(e^(-[cal(B)_n] theta_n)) cal(B)_(n-1); 
+    cal(B)_n
+  )^top 
+$
 
 Later joints affect how earlier axes are seen from the body frame.  Thus column
 $i$ depends only on $theta_(i+1),dots,theta_n$, and the last column is always
@@ -319,9 +331,9 @@ $cal(B)_n$.
 
 For end-effector pose $T_("sb")(theta)$:
 
-$ J_s(theta) = "Ad"_(T_("sb")(theta)) J_b(theta) $
+$ J_s(theta) = Ad_(T_("sb")(theta)) J_b(theta) $
 
-Therefore $J_b="Ad"_(T_("sb")^(-1))J_s$ and both Jacobians have the same rank.
+Therefore $J_b=Ad_(T_("sb")^(-1))J_s$ and both Jacobians have the same rank.
 
 == Statics
 

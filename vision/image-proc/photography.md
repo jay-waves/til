@@ -2,7 +2,8 @@
 
 ## Perspective
 
-Common assumptions:
+Common assumptions: 
+
 1. light leaving an object travels in straight lines
 2. These lines converge to a point at the eye
 3. More distant objects subtend smaller visual angles
@@ -27,7 +28,7 @@ But pinhole model can have very large _depth of field (景深, DOF)_, and ideall
 To focus on objects at different distances, move sensor relative to lens. 像手机镜头，_焦距 (focal length)_ 很短，
 景深天然很大，即有很长距离看起来清晰，没有那么强的失焦虚化感，但不等于清晰或锐度高了。
 
-## FOV (Field of View)
+## FOV (Field of View) 
 
 视场角由焦距和传感器大小（底片大小）共同决定。更大的底片，更小的焦距，得到更宽的视角。
 The lens creates an image projection, while the sensor size determines how much of that

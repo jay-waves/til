@@ -37,8 +37,28 @@
 - 依赖管理, 版本管理, 包配置文件
 - 虚拟环境
 
-
 > -- Jeff Atwood 
 > 
 > Code Tells You How, Comments Tell You Why.
 
+> -- Robert Kowalski. **Algotirhm = Logic + Conrtol**. 1979
+> 
+> An algorithm can be regarded as consisting of a logic component, which specifies the
+knowledge to be used in solving problems, and a control component, which determines
+the problem-solving strategies by means of which that knowledge is used. The logic
+component determines the meaning of the algorithm whereas the control component
+only affects its efficiency. The efficiency of an algorithm can often be improved by
+improving the control component without changing the logic of the algorithm. We argue
+that computer programs would be more often correct and more easily improved and
+modified if their logic and control aspects were identified and separated in the program
+text.
+
+> -- Niklaus Emil Wirth. 1976.
+>
+> **Algorithms + Data Structures = Programs**
+
+> -- Design Patterns
+> 
+> Program to an 'Interface', not an 'Implementation'
+> 
+> Favor 'Object Composition' over "Class Inheritance"

@@ -81,13 +81,30 @@ The underlying asset is usually: govn bonds, stock index, interest rates, commod
 
 [*FRA (Forward Rate Agreement)*](./forward-rate.md):  
 an OTC (场外交易) forward contract that locks in an interest rate for a future period. 
-FRA 只在约定日期结算一次，OTC 市场；而 Futures 则是每日结算，在交易市场 (Exchange) 交易。
 
 [*Options*](./options.md):   
 Calls & Puts 
 
 [*Swaps*](./swaps.md):
 
+## RR (Risk-Free Rate)
+
+### US SOFR (Secured Overnight Financing Rate)
+
+* Secured: 有美国国债作抵押
+* Overnight：当日隔夜利率
+* Transaction-based: 基于实际市场交易
+
+由于每日结算利率，因此每期存款利率不能提前知晓，需要累计每日隔夜利率（复利计算），到期末确定最终利息。
+
+### CN DR007 & FR 007
+
+境内人民币的利率基准不适用 LIBOR，不同市场有不同基准（利率基准不统一）：
+
+* 7D Reverse Repo Rate: 央行政策利率
+* DR007: 银行间市场利率。存款类机构7天质押式回购加权平均利率
+* FR007: 银行间7天回购定盘利率
+* LPR: 贷款市场报价利率
 
 ## Glossary
 

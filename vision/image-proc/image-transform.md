@@ -11,15 +11,32 @@
 
 通常仅研究正方图像, 即 $M=N$, ${} u,v\in [0,N-1] {}$, 于是有:
 
-变换核: $$\begin{align}
-g(x,y,u,v)&=\exp[-j2\pi(ux+vy)/N] =\exp[-j2\pi ux/N]\cdot\exp[-j2\pi vy/N]\\
-h(x,y,u,v)&=\frac{1}{N^{2}}\exp[j2\pi(ux+vy)/N]
-\end{align}$$
+变换核: 
 
-变换: $$\begin{align}
-\mathcal{F}(u,v)&=\sum\limits^{N-1}_{x=0}\sum\limits^{N-1}_{y=0}f(x,y)\cdot g(x,y,u,v) \\
-f(x,y)&=\sum\limits^{N-1}_{u=0}\sum\limits^{N-1}_{v=0}\mathcal{F(u,v)}\cdot h(x,y,u,v)
-\end{align}$$
+\[
+\begin{aligned}
+g(x,y,u,v)
+&=e^{-j2\pi(ux+vy)/N}\\
+&=e^{-j2\pi ux/N}e^{-j2\pi vy/N},\\
+h(x,y,u,v)
+&=\frac{1}{N^2}e^{j2\pi(ux+vy)/N}.
+\end{aligned}
+\]
+
+傅里叶变换: 
+
+\[
+\begin{aligned}
+\mathcal{F}(u,v) &=
+    \sum_{x=0}^{N-1}
+    \sum_{y=0}^{N-1}
+    f(x,y)g(x,y,u,v),\\
+f(x,y) &=
+    \sum_{u=0}^{N-1}
+    \sum_{v=0}^{N-1}
+    \mathcal{F}(u,v)h(x,y,u,v).
+    \end{aligned}
+\]
 
 **缺点:**
 - 复数运算费时 (尽管有 [FFT](../../math/numerical/快速傅里叶变换.md))
@@ -29,17 +46,20 @@ f(x,y)&=\sum\limits^{N-1}_{u=0}\sum\limits^{N-1}_{v=0}\mathcal{F(u,v)}\cdot h(x,
 
 **平移性**:
 
-- $f(x-x_{0},y-y_{0})\equiv F(u,v)\exp[-j2\pi(ux_{0}+vy_{0})/N]$
-- $F(u-u_{0},v-v_{0})\equiv f(x,y)\exp[j2\pi(u_{0}x+v_{0}y)/N]$
+\[ \begin{aligned}
+    f(x-x_0,y-y_0) &\xleftrightarrow{\mathcal{F}} F(u,v)e^{-j2\pi(ux_0+vy_0)/N},\\
+    F(u-u_0,v-v_0) &\xleftrightarrow{\mathcal{F}^{-1}} f(x,y)e^{j2\pi(u_0x+v_0y)/N}.
+\end{aligned} \]
 
 时域 $f(x,y)$ 移动时, 频域仅发生相移, 傅里叶变换幅值不变: 
 
-$$\vert F(u,v)\exp[-j2\pi(ux_{0}+vy_{0})/N]\vert=\lvert F(u,v)\rvert$$
+\[ \lvert F(u,v)e^{-j2\pi(ux_0+vy_0)/N} \rvert = |F(u,v)| \]
 
 因而常将 $F(u,v)$ 平移到图像中心 $\left( \frac{N}{2}, \frac{N}{2} \right)$, 以使频谱更加清晰: 
 
-$$f(x,y)(-1)^{x+y}\equiv f(x,y)\exp[j\pi (x+y)]\equiv F(u-\frac{N}{2}, v-\frac{N}{2})$$
-
+\[
+f(x,y)(-1)^{x+y} \equiv f(x,y)e^{j\pi(x+y)} \xleftrightarrow{\mathcal{F}} F\left(u-\frac{N}{2},v-\frac{N}{2}\right)
+\]
 
 ## 离散沃尔什变换
 
@@ -52,7 +72,7 @@ $$f(x,y)(-1)^{x+y}\equiv f(x,y)\exp[j\pi (x+y)]\equiv F(u-\frac{N}{2}, v-\frac{N
 
 $$W(u)=\frac{1}{N}\sum\limits^{N=1}_{x=0}f(x)\cdot G$$
 
-变换核为: $$\large G=\prod\limits^{n-1}_{i=0}(-1)^{b_{i}(x)b_{(n-1-i)}(u)}$$ 
+变换核为: $$G=\prod\limits^{n-1}_{i=0}(-1)^{b_{i}(x)b_{(n-1-i)}(u)}$$ 
 
 其中 $b_{k}(I)$ 是 I 的二进制表示的第 k 位:
 
@@ -89,7 +109,14 @@ N=4 时变换核: $$G_{4}=\begin{pmatrix}
 
 主要用于图像压缩，比如 JPEG 核心算法就是分块 DCT
 
-$$DCT(u,v)=\frac{2}{\sqrt{ MN }}C(u)C(v)∑\limits^{M-1}_{m=0}​∑\limits^{N-1}_{m=0}f(m,n)cos\left[ \frac{(2m+1)uπ}{2M}​ \right]cos\left[ \frac{(2n+1)vπ}{2N}​ \right]$$
+\[ DCT(u,v) =
+\frac{2}{\sqrt{MN}}C(u)C(v)
+\sum_{m=0}^{M-1}
+\sum_{n=0}^{N-1}
+f(m,n)
+\cos\frac{(2m+1)u\pi}{2M}
+\cos\frac{(2n+1)v\pi}{2N}
+\]
 
 - $f(m, n)$ 是输入图像($M\times N$)像素值
 - $C(u)$, $C(v)$ 是归一化系数:
@@ -98,10 +125,25 @@ $$DCT(u,v)=\frac{2}{\sqrt{ MN }}C(u)C(v)∑\limits^{M-1}_{m=0}​∑\limits^{N-1
 
 如果是正方形图像:
 
-$$DCT(u,v)=\frac{2}{N}∑\limits_{m=0}^{M-1}​∑\limits^{N-1}_{m=0}f(x,y)cos\left[ \frac{(2x+1)uπ}{2N}​ \right]cos\left[ \frac{(2y+1)vπ}{2N}​ \right]$$
+\[ F(u,v) = 
+\frac{2}{N}
+\sum_{x=0}^{M-1}
+\sum_{y=0}^{N-1}
+f(x,y)
+\cos\frac{(2x+1)u\pi}{2N}
+\cos\frac{(2y+1)v\pi}{2N}
+\]
 
 逆变换: 类似
-$$f(x,y)=\frac{2}{N}∑\limits^{M-1}_{m=0}​∑\limits^{N-1}_{m=0}DCT(u, v)cos\left[ \frac{(2x+1)uπ}{2N}​ \right]cos\left[ \frac{(2y+1)vπ}{2N}​ \right]$$
+
+\[ f(x,y) =
+\frac{2}{N}
+\sum_{u=0}^{M-1}
+\sum_{v=0}^{N-1}
+F(u,v)
+\cos\frac{(2x+1)u\pi}{2N}
+\cos\frac{(2y+1)v\pi}{2N}
+\]
 
 - DC 系数: $DCT(u,v)$ 的左上角系数, 代表整个块的平均亮度, 照明部分.
 - AC 系数: 除 DC 系数外其他(右下角)系数, 代表图像细节和纹理信息. AC系数通常可进行更多压缩, 反射部分. 

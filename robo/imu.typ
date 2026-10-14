@@ -1,5 +1,5 @@
 #import "@local/ypst-template:0.1.0" as theme
-#import theme: theorem, definition, equate-lines, diagram, node, edge
+#import theme: theorem, definition, diagram, node, edge
 
 #show: theme.template
 
@@ -193,14 +193,15 @@ $ u_m = bmat(a_m ; w_m) $
 
 #definition[Nominal State：
 
-#equate-lines($
+$
 &dot(p) && = v, \
 &dot(v) &&= R(q) (a_m - a_b) + g, \
 &dot(q) &&= 1/2 q times.o (w_m - w_b), \
 &dot(a)_b && = 0, \
 &dot(w)_b && = 0, \
 &dot(g) &&= 0
-$)
+$
+
 ]
 
 重力加速度 $g$ 被认为短时间不变，初始时，将世界坐标系的 $z$ 轴和 $g$ 方向对齐。
@@ -216,18 +217,18 @@ $)
 
 #definition[Error State: #footnote[详细推导见 @sola2017 P58-60, ESKF 的标准卡尔曼滤波形式见 P61]
 
-#equate-lines($
+$
 &dot(delta p) && = delta v, \
-&dot(delta v) &&= -R [a_m - a_b] delta theta - R delta a_b - R a_n + delta g, #<ESKF1>\
-&dot(delta theta) &&= -[w_m - w_b]delta theta  - delta w_b - w_n, #<ESKF2> \
-&dot(delta a)_b && = a_w, #<ESKF3> \
-&dot(delta omega)_b && = omega_w, #<ESKF4> \
+&dot(delta v) &&= -R [a_m - a_b] delta theta - R delta a_b - R a_n + delta g,\
+&dot(delta theta) &&= -[w_m - w_b]delta theta  - delta w_b - w_n,\
+&dot(delta a)_b && = a_w, \
+&dot(delta omega)_b && = omega_w, \
 &dot(delta g) &&= 0
-$)
+$ <eq:ESKF>
 
 ]
 
-==== @ESKF1
+==== @eq:ESKF $dot(delta v)$
 
 不妨令 $a = a_m - a_b$，有：
 
@@ -254,7 +255,7 @@ dot(delta v) &= delta (R a) + delta g \
 delta a &= -delta a_b - a_n
 $
 
-==== @ESKF2
+==== @eq:ESKF $dot(delta theta)$
 
 将 $R_t approx R(I + [delta theta])$ 同乘 $R^top$ ，得到：
 
@@ -273,7 +274,7 @@ $
 dot(delta theta) = -[w] delta theta + delta w, quad delta w = - delta w_b - w_n
 $
 
-==== @ESKF3 & @ESKF4 
+==== @eq:ESKF  $dot(delta a)_b,quad dot(delta omega)_b$
 
 偏置（bias）是一个缓慢的随机游走：（固定零点偏置，逐帧累计白噪声）
 

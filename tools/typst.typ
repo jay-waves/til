@@ -114,7 +114,7 @@ $ aaa^aaa $
 
 $ n = #sample-count $
 
-定义数学算子时，推荐明确用 `math.op`：
+定义数学算子时，推荐明确用 `math.op`，并且避免单字符（会被视作内置符号）：
 
 #let argmin = math.op("arg min", limits: true)
 #let KL = math.op("KL")

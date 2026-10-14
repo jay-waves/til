@@ -28,7 +28,7 @@
 ## Workflow
 
 笔记库采用 Typst + Markdown 混合排版。
-* Markdown 文档的推荐样式见 `appx/theme.css` 
+* Markdown 文档的推荐样式见 [theme.css](https://github.com/jay-waves/yst-template/blob/main/html/theme.css)
 * Markdown 文档的代码块样式不规定，可以按需引入 hljs 
 * Typst 文档的样式模板见 [yst-template](https://github.com/jay-waves/yst-template)
 

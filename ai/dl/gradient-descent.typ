@@ -1,4 +1,6 @@
 #import "@local/ypst-template:0.1.0" as theme
+#import "@preview/physica:0.9.8": dv, pdv, grad, curl, ket
+
 #show: theme.template
 
 #let vec(x) = math.bold(math.upright(x))

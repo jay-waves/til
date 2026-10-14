@@ -8,6 +8,7 @@
   来源：#link("https://github.com/Krasjet/quaternion")[四元数于三维旋转]，Krasjet，CC BY-NC-SA 4.0。
 ]
 
+
 = 复数
 
 复数 $a + b i$ 同构映射于矩阵形式：
@@ -44,7 +45,7 @@ $
 
 轴角旋转有三个#link("rigid-bodies.md")[自由度]：一个表示 $theta$，两个表示单位向量 $vecb(u)$。
 
-#image("/assets/robo/robo-quaternion-axis-rotation.webp", width: 70%)
+#image("../assets/robo/robo-quaternion-axis-rotation.webp", width: 70%)
 
 将向量 $vecb(v)$ 沿垂直于轴 $vecb(u)$ 和平行于轴的两个方向分解为 $vecb(v)_1, vecb(v)_2$。平行分量 $vecb(v)_1$ 在旋转后保持不变，垂直分量旋转后变为：
 
@@ -169,6 +170,13 @@ $ abs(q) = 1, quad q^(-1) = overline(q) $
 也可以证明：
 
 $ q^2 = q times.o q = [cos(2 theta), sin(2 theta) vecb(u)] $
+
+典型的极值：
+- `wxyz=(1, 0, 0, 0)` 不旋转
+- `wxyz(-1, 0, 0, 0)` 不旋转
+- `wxyz=(0, x, y, z)` 旋转 180D
+- `wxyz=(0.7071, x, y, z)` 旋转 90D
+- `wxyz=(0, 1, 0, 0)` 绕 X 轴旋转 180D
 
 = 旋转与单位四元数
 
