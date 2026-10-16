@@ -28,8 +28,8 @@
 ## Workflow
 
 笔记库采用 Typst + Markdown 混合排版。
-* Markdown 文档的推荐样式见 [theme.css](https://github.com/jay-waves/yst-template/blob/main/html/theme.css)
-* Markdown 文档的代码块样式不规定，可以按需引入 hljs 
+
+* Markdown 文档的推荐样式见 [theme.css](https://github.com/jay-waves/yst-template/blob/main/html/theme.css)，不包含代码块与数学样式。
 * Typst 文档的样式模板见 [yst-template](https://github.com/jay-waves/yst-template)
 
 个人博客不在此仓库，详见[个人主页](https://jay-waves.cn)。
@@ -50,9 +50,9 @@
 
 - 使用严格断行
 - 使用严格 `[]()` 链接与图片引用格式。
-- 允许的 Markdown 扩展语法：HTML、Table、Mathjax、Footnote、YAML Preamble 
+- 允许的 Markdown 扩展语法：HTML、Table、Katex、Footnote、YAML Preamble 
 - 全角标点符号应位于 Markdown 标记之外，如 **粗体之后再逗号**，避免渲染异常。
-- 因为样式定制过于复杂，不再支持 Mermaid 图标，可以绘制完后嵌入 SVG。
+- 因为样式控制不稳定，不再支持 Mermaid 图标，可以绘制完后嵌入 SVG。
 
 ### Naming
 
