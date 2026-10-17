@@ -16,11 +16,10 @@ rollback  -- 事务异常终止, 回滚到开始状态
 
 ### 事务 ACID 特性
 
-ACID 特性:
-- 原子性, atomicity
-- 一致性, consisitency
-- 隔离性, isolation
-- 持续性, durability
+- 原子性, Atomicity. 操作要么全部执行，要么完全不执行。
+- 一致性, Consisitency. TX 结果是否违反了数据库约束。
+- 隔离性, Isolation. 并发是否具有隔离性。
+- 持续性, Durability. 系统故障时，能否保护已经提交的结果。
 
 ## 故障
 

@@ -27,10 +27,6 @@ Index (索引) uses a B-Tree structure to reduce the time complexity of SQL quer
 
 CRUD: Create & Read & Update & Delete Data 
 
-OLTP(Online Transaction Processing)
-
-OLAP(Online Analytical Processing)
-
 ## SQL Implementation 
 
 在底层，SQL 表按内存页存储，新插入数据会直接附加在现有内存后，可能是无序的。如 InnoDB 等引擎，会用 B-Tree 给 PRIMARY KEY 建立独立索引，但是其他辅助性索引需要用户自行创建，用内存消耗换取索引速度。
