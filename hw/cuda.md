@@ -306,7 +306,7 @@ CUDA 标准库:
 ## 参考
 
 
-<img src="../assets/vision/vision-cuda-installation-guide.avif" alt="docs.nvidia.com/cuda/wsl-user-guide/index.html" width="300">
+https://docs.nvidia.com/cuda/wsl-user-guide/index.html
 
 https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html
 
