@@ -1,4 +1,51 @@
-## 基础字段类型
+## Create Schema
+
+| 对象                    | 创建操作      | 删除操作    | 修改操作    |
+| ----------------------- | ------------- | ----------- | ----------- |
+| 模式 <br> (无标准, 类似表命名空间) | create schema | drop schema |             |
+| 表                      | create table  | drop table  | alter table |
+| 视图                    | create view   | drop view   |             |
+| 索引                    | create index  | drop index  | alter index            |
+
+每个 Field 的数据类型详见 [SQL/数据类型](sql-field-types.md)。
+
+对于每个字段，定义格式为：`<name> <field_type> <column_constraints>`。表级约束则定义在末尾，如主键和外键约束。
+
+```sql
+	create table Student(
+		Sno char(9),
+		Sname char(20) unique,
+		Ssec char(2) null, -- null: 允许空缺
+		Cno char(4),
+		Math int not null default 60, -- not null: 不允许空缺
+		foreign key (Cno) reference Class(Cno),
+		primary key (Sno)
+	);
+```
+
+删除表: `drop table <t> [restrict | cascade]`
+- restrict: 和 cascade 相反
+- cascade: 若存在其他依赖该表对象, 相关依赖对象一起删除
+
+定义视图：视图本质是嵌套子查询，不实际存储数据，可用于简化查询。
+
+```sql
+-- 创建视图
+CREATE VIEW productscustomers AS
+SELECT cust_name, cust_contact, prod_id FROM customers, orders, orderitems
+WHERE cusomers.cust_id = orders.cust_id AND orderitems.order_num=orders.order_num;
+
+-- 使用视图
+SELECT * FROM productscustomers;
+
+-- 查看某视图的SQL定义语句:
+SHOW CREATE VIEW view_name
+```
+
+其他表操作见 [Data Manipulation SQL](./sql-data-manipulation.md)
+
+## Field Types
+
 
 | 数据类型                     | 含  义                                                         |
 | ---------------------------- | -------------------------------------------------------------- |
@@ -64,16 +111,6 @@ select 3*2, Now()
 - `Length` 返回串长度
 - `Lower` 转换为小写, `Upper` 转为大写.
 
-#### 汇总统计
-
-- `Avg`: 平均值, 忽略 null
-- `Count`: `Count(column)`, 统计具体行, 忽略null; `Count(*)`, 统计表中行数, 包括 null.
-- `Max`, `Min`: 忽略 null
-- `Sum`: 忽略 null
-
-```sql
-select Avg(math) as math_avg from students;
-```
 
 #### 日期处理函数
 

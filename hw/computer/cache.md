@@ -10,6 +10,8 @@
 | Disk              | HDD       | 0.00004         | 10 ms               |          |
 | CPU               |           |                 | 5.6 GHz (i9-13900k) |          |
 
+<img src="../../assets/hw/dram-ssd-hhd-history.webp">
+
 计算机操作延迟一览 (2020) [^1]
 
 | 存储器操作                            | 访问时延 (ns) | 访问时延 (us) | 访问时延 (ms) | 说明                        |
